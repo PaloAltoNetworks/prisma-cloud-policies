@@ -1,0 +1,176 @@
+{
+  "0":[
+    {
+      "policyId":"3beed53c-3f2d-47b6-bb6f-95da39ff0f26",
+      "policyType":"config",
+      "cloudType":"azure",
+      "severity":"high",
+      "name":"Azure Network Security Group (NSG) allows SSH traffic from internet on port 22",
+      "description":"Blocking SSH port 22 will protect users from attacks like Account compromise.",
+      "rule.criteria":"3beed53c-3f2d-47b6-bb6f-95da39ff0f26",
+      "rule.query":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')]\u200c.destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')]\u200c.destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')].destinationPortRange contains * or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')].destinationPortRange contains *\"",
+      "recommendation":"1. Login to Azure Portal\n2. Click on All services\n3. Under NETWORKING, Click on Network security groups\n4. Click on reported Network security group\n5. Under SETTINGS, Click on Inbound security rules\n6. Click on reported row (22 PORT)\n7. Set Action to Deny\n8. Click on OK",
+      "remediable":true,
+      "remediation.cliScriptTemplate":"az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description":"This CLI command requires 'Microsoft.Network\/networkSecurityGroups\/securityRules\/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing SSH traffic from Internet on port 22.",
+      "remediation.impact":"reject SSH traffic from Internet on port 22",
+      "compliance.standard":[
+        "HIPAA",
+        "PCI DSS v3.2",
+        "NIST 800-53 Rev4",
+        "CSA CCM v3.0.1",
+        "CIS v1.1 (Azure)",
+        "SOC 2",
+        "HITRUST CSF v9.3",
+        "GDPR",
+        "PIPEDA",
+        "NIST CSF",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated":"Azure Network Security Group (NSG) allows SSH traffic from 'internet' source service tag on port 22",
+      "rule.query_updated":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Tcp' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Tcp' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Tcp' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Tcp' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(22,22)\"",
+      "RLP":"RLP-25378"
+    }
+  ],
+  "1":[
+    {
+      "policyId":"0a3f1d49-4c05-47c4-98e2-3a42b822d05b",
+      "policyType":"config",
+      "cloudType":"azure",
+      "severity":"high",
+      "name":"Azure Network Security Group allows ICMP (Ping)",
+      "description":"ICMP is used by devices to communicate error messages and status. While ICMP is useful for  diagnostics and troubleshooting, it can also be used to exploit or disrupt systems.\n \nThis policy detects any NSG rule that allows ICMP (Ping) traffic from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict ICMP (Ping) solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria":"5c1e59f6-2e1a-4d2e-8864-00a8365ac10a",
+      "rule.query":"config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == '*' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == 'Internet' )].destinationPortRange contains *  \"",
+      "recommendation":"Before making any changes, please check the impact to your applications\/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable":false,
+      "remediation.cliScriptTemplate":"",
+      "remediation.description":"",
+      "remediation.impact":"",
+      "compliance.standard":[
+        "PIPEDA",
+        "CCPA 2018"
+      ],
+      "rule.query_updated":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule =  \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == '*' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == 'Internet' )].destinationPortRange contains *  or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == 'Icmp' && @.sourceAddressPrefix == '*' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == 'Icmp' && @.sourceAddressPrefix == 'Internet' )].destinationPortRange contains * \"",
+      "RLP":"RLP-25378"
+    }
+  ],
+  "2":[
+    {
+      "policyId":"543c6a0a-a50c-11e8-98d0-529269fb1459",
+      "policyType":"config",
+      "cloudType":"azure",
+      "severity":"medium",
+      "name":"Azure Network Security Group (NSG) having Inbound rule overly permissive to all traffic from Internet on TCP protocol",
+      "description":"This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic from Internet on TCP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria":"543c664a-a50c-11e8-98d0-529269fb1459",
+      "rule.query":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='TCP' &&  @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "recommendation":"1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Service Tag\nb) Source Service Tag: Internet\nc) Destination Port Range: *\nd) Destination: Any\ne) Protocol: TCP\nf) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable":true,
+      "remediation.cliScriptTemplate":"az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description":"This CLI command requires 'Microsoft.Network\/networkSecurityGroups\/securityRules\/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on TCP protocol.",
+      "remediation.impact":"reject all traffic from Internet on TCP protocol",
+      "compliance.standard":[
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated":"Azure Network Security Group (NSG) with Inbound rule overly permissive to 'Internet' source service tag on TCP protocol",
+      "rule.query_updated":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='Tcp' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound or securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='*' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "RLP":"RLP-25387"
+    }
+  ],
+  "3":[
+    {
+      "policyId":"2378dbf4-b104-4bda-9b05-7417affbba3f",
+      "policyType":"config",
+      "cloudType":"aws",
+      "severity":"high",
+      "name":"AWS Default Security Group does not restrict all traffic",
+      "description":"This policy identifies the default security group which does not restrict all inbound and outbound traffic. A VPC comes with a default security group whose initial configuration deny all inbound traffic from internet and allow all outbound traffic. If you do not specify a security group when you launch an instance, the instance is automatically assigned to this default security group. As a result, the instance may accidentally send outbound traffic.",
+      "rule.criteria":"8824de78-7e99-4ef2-9c3d-8110e12c7df7",
+      "rule.query":"config where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-security-groups' AND json.rule = '((groupName == default)and ((ipPermissions[*].ipRanges[*] contains 0.0.0.0\/0 or ipPermissions[*].ipv6Ranges[*].cidrIpv6 contains ::\/0) or (ipPermissionsEgress[*].ipRanges[*] contains 0.0.0.0\/0 or ipPermissionsEgress[*].ipv6Ranges[*].cidrIpv6 contains ::\/0)))'",
+      "recommendation":"1.Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. navigate to the 'VPC' service\n4. For each region, Click on 'Security Groups' specific to the alert\n5. Click on 'Inbound Rules' and remove the row with the IP 'Source' value as 0.0.0.0\/0\n6. Click on the 'Outbound Rules' and remove the row which has the IP 'Destination' value as 0.0.0.0\/0",
+      "remediable":false,
+      "remediation.cliScriptTemplate":"",
+      "remediation.description":"",
+      "remediation.impact":"",
+      "compliance.standard":[
+        "CIS v1.2.0 (AWS)",
+        "SOC 2",
+        "NIST CSF",
+        "GDPR",
+        "NIST 800-53 Rev4",
+        "ISO 27001:2013",
+        "NIST 800-171 Rev1",
+        "CSA CCM v3.0.1",
+        "HITRUST CSF v9.3",
+        "PIPEDA",
+        "CCPA 2018"
+      ],
+      "rule.query_updated":"config where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-security-groups' AND json.rule = '((groupName == default) and (ipPermissions[*] is not empty or ipPermissionsEgress[*] is not empty))'",
+      "recommendation_updated":"1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. navigate to the 'VPC' service\n4. For each region, Click on 'Security Groups' specific to the alert\n5. Click on 'Inbound Rules' and remove existing rule\n6. Click on the 'Outbound Rules' and remove existing rule",
+      "RLP":"RLP-25229"
+    }
+  ],
+  "4":[
+    {
+      "policyId":"630d3779-d932-4fbf-9cce-6e8d793c6916",
+      "policyType":"config",
+      "cloudType":"aws",
+      "severity":"high",
+      "name":"AWS S3 buckets are accessible to public",
+      "description":"This policy identifies S3 buckets which are publicly accessible. Amazon S3 allows customers to store or retrieve any type of content from anywhere in the web. Often, customers have legitimate reasons to expose the S3 bucket to public, for example, to host website content. However, these buckets often contain highly sensitive enterprise data which if left open to public may result in sensitive data leaks.",
+      "rule.criteria":"67dc23e7-e6db-4efb-b7e8-b4bd7778c891",
+      "rule.query":"config where cloud.type = 'aws' AND api.name='aws-s3api-get-bucket-acl' AND json.rule=\"((((acl.grants[?(@.grantee=='AllUsers')] size > 0) or policyStatus.isPublic is true) and publicAccessBlockConfiguration does not exist) or ((acl.grants[?(@.grantee=='AllUsers')] size > 0) and publicAccessBlockConfiguration.ignorePublicAcls is false) or (policyStatus.isPublic is true and publicAccessBlockConfiguration.restrictPublicBuckets is false)) and websiteConfiguration does not exist\"",
+      "recommendation":"1. Login to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the 'S3' resource reported in the alert\n4. Click on the 'Permissions'\n5. If Access Control List' is set to 'Public' follow below steps\na. Under 'Access Control List', Click on 'Everyone' and uncheck all items\nb. Click on Save\n6. If 'Bucket Policy' is set to public follow below steps\na. Under 'Bucket Policy', modify the policy to remove public access\nb. Click on Save\nc. If 'Bucket Policy' is not required delete the existing 'Bucket Policy'.\n\nNote: Make sure updating 'Access Control List' or 'Bucket Policy' does not affect S3 bucket data access.",
+      "remediable":true,
+      "remediation.cliScriptTemplate":"aws s3api put-bucket-acl --acl private --bucket ${resourceName}",
+      "remediation.description":"This CLI command requires 's3:PutBucketAcl' permission. Successful execution will reset this S3 bucket's ACL (Access Control List) to private. This will ensure that only Owner has full privileges.",
+      "remediation.impact":"make this bucket private",
+      "compliance.standard":[
+        "PCI DSS v3.2",
+        "SOC 2",
+        "GDPR",
+        "NIST 800-53 Rev4",
+        "ISO 27001:2013",
+        "NIST 800-171 Rev1",
+        "CSA CCM v3.0.1",
+        "HITRUST CSF v9.3",
+        "PIPEDA",
+        "NIST CSF",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "remediable_updated":false,
+      "rule.query_updated":"config where cloud.type = 'aws' AND api.name='aws-s3api-get-bucket-acl' AND json.rule = \"((((acl.grants[?(@.grantee=='AllUsers')] size > 0) or policyStatus.isPublic is true) and publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration does not exist) or ((acl.grants[?(@.grantee=='AllUsers')] size > 0) and ((publicAccessBlockConfiguration.ignorePublicAcls is false and accountLevelPublicAccessBlockConfiguration does not exist) or (publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration.ignorePublicAcls is false) or (publicAccessBlockConfiguration.ignorePublicAcls is false and accountLevelPublicAccessBlockConfiguration.ignorePublicAcls is false))) or (policyStatus.isPublic is true and ((publicAccessBlockConfiguration.restrictPublicBuckets is false and accountLevelPublicAccessBlockConfiguration does not exist) or (publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration.restrictPublicBuckets is false) or (publicAccessBlockConfiguration.restrictPublicBuckets is false and accountLevelPublicAccessBlockConfiguration.restrictPublicBuckets is false)))) and websiteConfiguration does not exist\"",
+      "RLP":"RLP-25227"
+    }
+  ],
+  "5":[
+    {
+      "policyId":"0546188d-6f21-449d-948e-677c285a5fcf",
+      "policyType":"config",
+      "cloudType":"azure",
+      "severity":"high",
+      "name":"Azure Network Security Group allows SQLServer (UDP Port 1434)",
+      "description":"This policy detects any NSG rule that allows SQLServer traffic on UDP port 1434 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict SQLServer solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria":"0113c405-c954-4ace-9d94-f0e9728bdf03",
+      "rule.query":"config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(1434,1434) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(1434,1434) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains *  \"",
+      "recommendation":"Before making any changes, please check the impact to your applications\/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable":false,
+      "remediation.cliScriptTemplate":"",
+      "remediation.description":"",
+      "remediation.impact":"",
+      "compliance.standard":[
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated":"Azure Network Security Group allowing SQLServer (UDP Port 1434) traffic from 'any' source or with 'Internet' source service tag",
+      "rule.query_updated":"config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Udp' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Udp' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Udp' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Udp' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(1434,1434)\"",
+      "RLP":"RLP-25387"
+    }
+  ]
+}
