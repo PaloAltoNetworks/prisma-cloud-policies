@@ -7,3 +7,5 @@ Notes:
 * The release notice currently includes only RQL based policies (Config, Network, and Audit Event policies). Other policy types (Anomaly, Data, Build) are not included. 
 * Saved searches not part of default policies are currently not included.
 * Compliance changes are currently not included.
+
+*The JSON files contain custom data fields in addition to the data from the Prisma Cloud Policy and Search Manager API endpoints*
