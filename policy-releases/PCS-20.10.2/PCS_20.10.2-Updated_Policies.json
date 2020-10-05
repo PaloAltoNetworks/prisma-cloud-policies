@@ -1,0 +1,796 @@
+{
+  "0": [
+    {
+      "policyId": "f48eda6b-5d66-4d73-a62e-671de3844555",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows FTP-Data (TCP Port 20)",
+      "description": "This policy detects any NSG rule that allows FTP-Data traffic on TCP port 20 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict FTP-Data solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "ae2e5e26-4f3b-4bd3-9a8f-93fc2794607c",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(20,20) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(20,20) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(20,20) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(20,20) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on FTP-Data (TCP Port 20)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on FTP-Data (TCP Port 20). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict FTP-Data solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(20,20) or destinationPortRanges[*] contains _Port.inRange(20,20) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26555"
+    }
+  ],
+  "1": [
+    {
+      "policyId": "3beed53c-3f2d-47b6-bb6f-95da39ff0f26",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group (NSG) allows SSH traffic from 'internet' source service tag on port 22",
+      "description": "Blocking SSH port 22 will protect users from attacks like Account compromise.",
+      "rule.criteria": "3beed53c-3f2d-47b6-bb6f-95da39ff0f26",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Tcp' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Tcp' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Tcp' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Tcp' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(22,22) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(22,22)\"",
+      "recommendation": "1. Login to Azure Portal\n2. Click on All services\n3. Under NETWORKING, Click on Network security groups\n4. Click on reported Network security group\n5. Under SETTINGS, Click on Inbound security rules\n6. Click on reported row (22 PORT)\n7. Set Action to Deny\n8. Click on OK",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing SSH traffic from Internet on port 22.",
+      "remediation.impact": "reject SSH traffic from Internet on port 22",
+      "compliance.standard": [
+        "HIPAA",
+        "PCI DSS v3.2",
+        "NIST 800-53 Rev4",
+        "CSA CCM v3.0.1",
+        "CIS v1.1 (Azure)",
+        "SOC 2",
+        "HITRUST CSF v9.3",
+        "GDPR",
+        "PIPEDA",
+        "NIST CSF",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on SSH port 22",
+      "description_updated": "This policy identifies Network security groups (NSG) that allow all traffic on SSH port 22. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict SSH solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (destinationPortRange contains _Port.inRange(22,22) or destinationPortRanges[*] contains _Port.inRange(22,22) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-27130"
+    }
+  ],
+  "2": [
+    {
+      "policyId": "a36a7170-d628-47fe-aab2-0e734702373d",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group (NSG) allows traffic from internet on port 3389",
+      "description": "Blocking RDP port 3389 will protect users from attacks like account compromise, Denial of service and ransomware.",
+      "rule.criteria": "a36a7170-d628-47fe-aab2-0e734702373d",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')].destinationPortRange contains _Port.inRange(3389,3389) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')].destinationPortRange contains _Port.inRange(3389,3389) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')]‌.destinationPortRanges[*] contains _Port.inRange(3389,3389) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')]‌.destinationPortRanges[*] contains _Port.inRange(3389,3389) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*')].destinationPortRange contains * or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet')].destinationPortRange contains *\"",
+      "recommendation": "1. Login to Azure Portal\n2. Click on All services\n3. Under NETWORKING, Click on Network security groups\n4. Click on reported Network security group\n5. Under SETTINGS, Click on Inbound security rules\n6. Click on reported row (3389 PORT)\n7. Set Action to Deny\n8. Click on OK",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing traffic from Internet on port 3389.",
+      "remediation.impact": "reject all traffic from Internet on port 3389",
+      "compliance.standard": [
+        "HIPAA",
+        "PCI DSS v3.2",
+        "NIST 800-53 Rev4",
+        "CSA CCM v3.0.1",
+        "CIS v1.1 (Azure)",
+        "SOC 2",
+        "HITRUST CSF v9.3",
+        "GDPR",
+        "PIPEDA",
+        "NIST CSF",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on RDP Port 3389",
+      "description_updated": "This policy identifies any NSG rule that allow all traffic on RDP port 3389. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict RDP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (destinationPortRange contains _Port.inRange(3389,3389) or destinationPortRanges[*] contains _Port.inRange(3389,3389) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26656"
+    }
+  ],
+  "3": [
+    {
+      "policyId": "d979e854-a50d-11e8-98d0-529269fb1459",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) having Inbound rule overly permissive to all traffic from Internet on UDP protocol",
+      "description": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic from Internet on UDP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria": "d979e41c-a50d-11e8-98d0-529269fb1459",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='UDP' &&  @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Service Tag\nb) Source Service Tag: Internet\nc) Destination Port Range: *\nd) Destination: Any\ne) Protocol: UDP\nf) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on UDP protocol.",
+      "remediation.impact": "reject all traffic from Internet on UDP protocol",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group having Inbound rule overly permissive to all traffic on UDP protocol",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic on UDP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and protocol equals Udp and access equals Allow and direction equals Inbound and destinationPortRange contains *)] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses and Port ranges OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26655"
+    }
+  ],
+  "4": [
+    {
+      "policyId": "0a3f1d49-4c05-47c4-98e2-3a42b822d05b",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows ICMP (Ping)",
+      "description": "ICMP is used by devices to communicate error messages and status. While ICMP is useful for  diagnostics and troubleshooting, it can also be used to exploit or disrupt systems.\n \nThis policy detects any NSG rule that allows ICMP (Ping) traffic from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict ICMP (Ping) solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "5c1e59f6-2e1a-4d2e-8864-00a8365ac10a",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule =  \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == '*' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == '*' && @.sourceAddressPrefix == 'Internet' )].destinationPortRange contains *  or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == 'Icmp' && @.sourceAddressPrefix == '*' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.protocol == 'Icmp' && @.sourceAddressPrefix == 'Internet' )].destinationPortRange contains * \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on ICMP (Ping)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on ICMP (Ping) protocol. ICMP is used by devices to communicate error messages and status. While ICMP is useful for  diagnostics and troubleshooting, it can also be used to exploit or disrupt systems. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict ICMP (Ping) solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Icmp or protocol equals *) and access equals Allow and direction equals Inbound and destinationPortRange contains *)] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP_27130"
+    }
+  ],
+  "5": [
+    {
+      "policyId": "22979dcf-b4d4-4a74-bf7f-2fae67adc3a9",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "low",
+      "name": "Azure Network Security Group with Outbound rule to allow all traffic to any source",
+      "description": "This policy identifies NSGs which allows outgoing traffic to any source. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic to known sources on authorized protocols and ports.",
+      "rule.criteria": "f2f5d323-77f0-473c-b29d-458c7d6cca99",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='*' &&  @.access=='Allow' && @.destinationAddressPrefix=='*')].direction contains Outbound\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Outbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Any\nb) Destination: Any\nc) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the outbound rule records allowing all traffic to any source.",
+      "remediation.impact": "reject all traffic to any source",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group with overly permissive outbound rule",
+      "description_updated": "This policy identifies NSGs with overly permissive outbound rules allowing outgoing traffic from source type any or source with public IP range. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic to known sources on authorized protocols and ports.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Outbound and (sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (destinationAddressPrefix equals * or destinationAddressPrefix equals Internet))] exists",
+      "recommendation_updated": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Outbound security rules\n6. Identify the row which matches conditions mentioned below:\na) Source: Any, public IPs\nb) Destination: Any\nc) Action: Allow\n7. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.",
+      "impact": "",
+      "RLP": "RLP-26572"
+    }
+  ],
+  "6": [
+    {
+      "policyId": "bc7929f8-fe70-48ec-8690-4288aa0b98ae",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows CIFS (UDP Port 445)",
+      "description": "This policy detects any NSG rule that allows CIFS traffic on UDP port 445 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict CIFS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "0f7fb1e1-dc2b-431f-8dad-efdeae05ebcb",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on CIFS (UDP Port 445)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on Windows SMB UDP port 445. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Udp or protocol equals *) and (destinationPortRange contains _Port.inRange(445,445) or destinationPortRanges[*] contains _Port.inRange(445,445) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26657"
+    }
+  ],
+  "7": [
+    {
+      "policyId": "500e9f2a-1063-4066-8eea-780efa90a0d7",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows Windows SMB (TCP Port 445)",
+      "description": "This policy detects any NSG rule that allows Windows SMB traffic on TCP port 445 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict Windows SMB solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "c446ec59-db8f-47a1-ace1-cfe6cd366982",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(445,445) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on Windows SMB (TCP Port 445)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on Windows SMB TCP port 445. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(445,445) or destinationPortRanges[*] contains _Port.inRange(445,445) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26657"
+    }
+  ],
+  "8": [
+    {
+      "policyId": "91a53c5d-d629-45bb-9610-fbd2cb4c6f3c",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows VNC Listener (TCP Port 5500)",
+      "description": "This policy detects any NSG rule that allows VNC Listener traffic on TCP port 5500 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict VNC Listener solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "23c0c9e7-bef8-4c41-a9ec-b5b670667afa",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5500,5500) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5500,5500) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5500,5500) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5500,5500) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on VNC Listener (TCP Port 5500)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on VNC Listener TCP port 5500. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict VNC Listener solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(5500,5500) or destinationPortRanges[*] contains _Port.inRange(5500,5500) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26656"
+    }
+  ],
+  "9": [
+    {
+      "policyId": "840b4b1c-a50b-11e8-98d0-529269fb1459",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) having Inbound rule overly permissive to all traffic from Internet on any protocol",
+      "description": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic from Internet on any protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria": "840b475c-a50b-11e8-98d0-529269fb1459",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='*' &&  @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Service Tag\nb) Source Service Tag: Internet\nc) Destination Port Range: *\nd) Destination: Any\ne) Protocol: Any\nf) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on any protocol.",
+      "remediation.impact": "reject all traffic from Internet on any protocol",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group having Inbound rule overly permissive to all traffic on any protocol",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic on any protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and protocol equals * and access equals Allow and destinationPortRange contains * and direction equals Inbound)] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses and Port ranges OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26655"
+    }
+  ],
+  "10": [
+    {
+      "policyId": "0c620876-4549-46c4-a5b3-16e86e3cefe7",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows DNS (TCP Port 53)",
+      "description": "This policy detects any NSG rule that allows DNS traffic on TCP port 53 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "7a4a4cb3-8584-4844-ae91-4db22d115cd5",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on NetBIOS DNS (TCP Port 53)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on DNS TCP port 53. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(53,53) or destinationPortRanges[*] contains _Port.inRange(53,53) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26657"
+    }
+  ],
+  "11": [
+    {
+      "policyId": "5dbd0da1-cfa4-4bce-a753-56dade428bd4",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows MySQL (TCP Port 3306)",
+      "description": "This policy detects any NSG rule that allows MySQL traffic on TCP port 3306 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict MySQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "8c36bb5c-2a53-4c58-97bf-2ccf2f4742fc",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(3306,3306) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(3306,3306) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(3306,3306) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(3306,3306) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on MySQL (TCP Port 3306)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on MySQL (TCP Port 3306). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict MySQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(3306,3306) or destinationPortRanges[*] contains _Port.inRange(3306,3306) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26046"
+    }
+  ],
+  "12": [
+    {
+      "policyId": "3784cdfd-dd25-4cf3-b506-ad77033ccc35",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows NetBIOS (UDP Port 138)",
+      "description": "This policy detects any NSG rule that allows NetBIOS traffic on UDP port 138 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict NetBIOS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "5b2a3e46-799c-4ae7-b918-e4679ade50cb",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(138,138) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(138,138) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(138,138) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(138,138) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on NetBIOS (UDP Port 138)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on NetBIOS UDP port 138. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict NetBIOS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Udp or protocol equals *) and (destinationPortRange contains _Port.inRange(138,138) or destinationPortRanges[*] contains _Port.inRange(138,138) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26656"
+    }
+  ],
+  "13": [
+    {
+      "policyId": "4afdc071-53ca-4516-8a3c-d5c91345c409",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows Windows RPC (TCP Port 135)",
+      "description": "This policy detects any NSG rule that allows Windows RPC traffic on TCP port 135 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict Windows RPC solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "cb1fb96b-919f-4042-a745-cd070497f475",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(135,135) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(135,135) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(135,135) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(135,135) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on Windows RPC (TCP Port 135)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on Windows RPC (TCP Port 135). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict Windows RPC solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(135,135) or destinationPortRanges[*] contains _Port.inRange(135,135) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26046"
+    }
+  ],
+  "14": [
+    {
+      "policyId": "3aa12e75-d78b-4157-9eca-6049187a30d7",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows SqlServer (TCP Port 1433)",
+      "description": "This policy detects any NSG rule that allows SqlServer traffic on TCP port 1433 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict SqlServer solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "65c342f9-1663-4114-bb70-f3ef303aa561",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(1433,1433) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(1433,1433) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(1433,1433) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(1433,1433) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on SQL Server (TCP Port 1433)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on SQL Server (TCP Port 1433). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict SQL Server solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(1433,1433) or destinationPortRanges[*] contains _Port.inRange(1433,1433) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26554"
+    }
+  ],
+  "15": [
+    {
+      "policyId": "72b422c8-bef1-4842-a6c6-7230bf0b3492",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP VM instances have block project-wide SSH keys feature disabled",
+      "description": "This policy identifies VM instances which have block project-wide SSH keys feature disabled. Project-wide SSH keys are stored in Compute/Project-metadata. Project-wide SSH keys can be used to login into all the instances within a project. Using project-wide SSH keys eases the SSH key management but if compromised, poses the security risk which can impact all the instances within a project. It is recommended to use Instance specific SSH keys which can limit the attack surface if the SSH keys are compromised.",
+      "rule.criteria": "8ae5d48f-8f65-4844-8f32-c83e1d6626ba",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule =  'metadata.items[*].key does not contain block-project-ssh-keys'",
+      "recommendation": "1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to VM instances\n4. From the list of VMs, choose the reported VM\n5. Click on Edit button\n6. Under SSH Keys section, Check 'Block project-wide SSH keys' on the checkbox\n7. Click on Save",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "CIS v1.1.0 (GCP)",
+        "CIS v1.0.0 (GCP)",
+        "ISO 27001:2013",
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "searchModel.query_updated": "config where  cloud.type = 'gcp' AND api.name = 'gcloud-compute-project-info' AND json.rule = commonInstanceMetadata.kind equals \"compute#metadata\" and commonInstanceMetadata.items[?any(key contains \"block-project-ssh-keys\" and (value contains \"true\" or value contains \"TRUE\" or value contains \"1\"))] does not exist as X; config where api.name = 'gcloud-compute-instances-list' AND json.rule = metadata.items[?any(key exists and key contains \"block-project-ssh-keys\" and (value contains \"true\" or value contains \"TRUE\" or value contains \"1\"))] does not exist as Y; filter ' $.Y.zone contains $.X.name'; show Y;",
+      "impact": "",
+      "RLP": "RLP-26467"
+    }
+  ],
+  "16": [
+    {
+      "policyId": "8a2315b0-70b9-477b-bd5c-41cb92a7b726",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Storage account container storing activity logs is publicly accessible",
+      "description": "This policy identifies the Storage account containers containing the activity log export is publicly accessible. Allowing public access to activity log content may aid an adversary in identifying weaknesses in the affected account's use or configuration.",
+      "rule.criteria": "499c23da-b67f-441a-81e3-9fc0fd05ea75",
+      "searchModel.query": "config where api.name = 'azure-storage-account-list' as X; config where api.name = 'azure-monitor-log-profiles-list' as Y; filter '$.X.publicContainersList[*] contains insights-operational-logs and $.X.id contains $.Y.properties.storageAccountId'; show X;",
+      "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage Accounts'\n3. Select the reported storage account\n4. Under 'Blob service' section, Select 'Containers'\n5. Select the container named as 'insight-operational-logs'\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "CIS v1.1 (Azure)"
+      ],
+      "searchModel.query_updated": "config where api.name = 'azure-storage-account-list' AND json.rule= publicContainersList[*] contains insights-operational-logs and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) as X; config where api.name = 'azure-monitor-log-profiles-list' as Y; filter'$.X.id contains $.Y.properties.storageAccountId'; show X;",
+      "impact": "",
+      "RLP": "RLP-26658"
+    }
+  ],
+  "17": [
+    {
+      "policyId": "472e08a2-c741-43eb-a3ca-e2f5cd275cf7",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows FTP (TCP Port 21)",
+      "description": "This policy detects any NSG rule that allows FTP traffic on TCP port 21 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict FTP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "1fb5d1ac-17f1-43f1-8bf6-aa73005175b6",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(21,21) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(21,21) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(21,21) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(21,21) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on FTP (TCP Port 21)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on FTP (TCP Port 21). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict FTP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(21,21) or destinationPortRanges[*] contains _Port.inRange(21,21) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26555"
+    }
+  ],
+  "18": [
+    {
+      "policyId": "4cddc286-94b0-427a-8747-7f06b51d4689",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows VNC Server (TCP Port 5900)",
+      "description": "This policy detects any NSG rule that allows VNC Server traffic on TCP port 5900 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict VNC Server solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "ef4acda9-3e9b-4e75-98c5-f0c64363654d",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5900,5900) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5900,5900) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5900,5900) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5900,5900) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on VNC Server (TCP Port 5900)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on VNC Server (TCP Port 5900). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict VNC Server solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(5900,5900) or destinationPortRanges[*] contains _Port.inRange(5900,5900) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26554"
+    }
+  ],
+  "19": [
+    {
+      "policyId": "ac851899-1007-48c8-842f-dddb9a38c4ba",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows SMTP (TCP Port 25)",
+      "description": "This policy detects any NSG rule that allows SMTP traffic on TCP port 25 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict SMTP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "63199794-1208-4e6b-aa02-c257f84a6e6b",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(25,25) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(25,25) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(25,25) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(25,25) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on SMTP (TCP Port 25)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on SMTP (TCP Port 25). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict SMTP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(25,25) or destinationPortRanges[*] contains _Port.inRange(25,25) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26555"
+    }
+  ],
+  "20": [
+    {
+      "policyId": "936dd3cb-a9cc-4a13-9a2c-ea5d40856072",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows Telnet (TCP Port 23)",
+      "description": "Telnet provides a plaintext connection to manage devices using the command line, and is less secure than SSH.\nThis policy detects any NSG rule that allows Telnet traffic on TCP port 23 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict Telnet solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "d148612d-6f2e-455a-89fc-a1e917fa715f",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(23,23) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(23,23) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(23,23) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(23,23) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on Telnet (TCP Port 23)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on Telnet (TCP Port 23). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict MySQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(23,23) or destinationPortRanges[*] contains _Port.inRange(23,23) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on you requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26574"
+    }
+  ],
+  "21": [
+    {
+      "policyId": "7a506ab4-d0a2-48ee-a6f5-75a97f11397d",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure storage account has a blob container with public access",
+      "description": "This policy identifies blob containers within an Azure storage account that allow anonymous/public access ('CONTAINER' or 'BLOB'). As a best practice, do not allow anonymous/public access to blob containers unless you have a very good reason. Instead, you should consider using a shared access signature token for providing controlled and time-limited access to blob containers.\n\n'Public access level' allows you to grant anonymous/public read access to a container and the blobs within Azure blob storage. By doing so, you can grant read-only access to these resources without sharing your account key, and without requiring a shared access signature.",
+      "rule.criteria": "c085d057-d5a4-4118-afdf-f653e6b47995",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0'",
+      "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage Accounts'\n3. Select the reported storage account\n4. Under 'Blob service' section, Select 'Containers'\n5. Select the blob container you need to modify\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "CIS v1.1 (Azure)",
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist)",
+      "impact": "",
+      "RLP": "RLP-26658"
+    }
+  ],
+  "22": [
+    {
+      "policyId": "18e1dd76-9d0f-4cdb-96d4-9d01b5cd68dc",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows NetBIOS (UDP Port 137)",
+      "description": "This policy detects any NSG rule that allows NetBIOS traffic on UDP port 137 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict NetBIOS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "e51a22c2-f8d1-4f12-86ad-f64751ba3406",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(137,137) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(137,137) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(137,137) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(137,137) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on NetBIOS (UDP Port 137)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on NetBIOS (UDP Port 137). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict NetBIOS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Udp or protocol equals *) and (destinationPortRange contains _Port.inRange(137,137) or destinationPortRanges[*] contains _Port.inRange(137,137) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26555"
+    }
+  ],
+  "23": [
+    {
+      "policyId": "543c6a0a-a50c-11e8-98d0-529269fb1459",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) with Inbound rule overly permissive to 'Internet' source service tag on TCP protocol",
+      "description": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic from Internet on TCP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria": "543c664a-a50c-11e8-98d0-529269fb1459",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='Tcp' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound or securityRules[?(@.sourceAddressPrefix=='Internet' && @.protocol=='*' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Service Tag\nb) Source Service Tag: Internet\nc) Destination Port Range: *\nd) Destination: Any\ne) Protocol: TCP\nf) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on TCP protocol.",
+      "remediation.impact": "reject all traffic from Internet on TCP protocol",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group having Inbound rule overly permissive to all traffic on TCP protocol",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic on TCP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and protocol equals Tcp and access equals Allow and direction equals Inbound and destinationPortRange contains *)] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses and Port ranges OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-27130"
+    }
+  ],
+  "24": [
+    {
+      "policyId": "709b47cd-6b7a-4500-b99e-a58529a6c79e",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows DNS (UDP Port 53)",
+      "description": "This policy detects any NSG rule that allows DNS traffic on UDP port 53 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "4f0dc13f-88d1-4820-8e9b-3e04779b0da9",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRanges[*] contains _Port.inRange(53,53) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'TCP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'TCP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on NetBIOS DNS (UDP Port 53)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on DNS UDP port 53. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Udp or protocol equals *) and (destinationPortRange contains _Port.inRange(53,53) or destinationPortRanges[*] contains _Port.inRange(53,53) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26657"
+    }
+  ],
+  "25": [
+    {
+      "policyId": "5826e50f-2f29-4444-9cad-3bb4e66ee3ca",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows MSQL (TCP Port 4333)",
+      "description": "This policy detects any NSG rule that allows MSQL traffic on TCP port 4333 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict MSQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "79428a6c-0c5b-42af-a1a5-2f287a984d91",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(4333,4333) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(4333,4333) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(4333,4333) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(4333,4333) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on MSQL (TCP Port 4333)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on MSQL (TCP Port 4333). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict MSQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(4333,4333) or destinationPortRanges[*] contains _Port.inRange(4333,4333) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26554"
+    }
+  ],
+  "26": [
+    {
+      "policyId": "0546188d-6f21-449d-948e-677c285a5fcf",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allowing SQLServer (UDP Port 1434) traffic from 'any' source or with 'Internet' source service tag",
+      "description": "This policy detects any NSG rule that allows SQLServer traffic on UDP port 1434 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict SQLServer solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "0113c405-c954-4ace-9d94-f0e9728bdf03",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = \"securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Udp' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Udp' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == 'Udp' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == 'Udp' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRange contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(1434,1434) or securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol == '*' )].destinationPortRanges[*] contains _Port.inRange(1434,1434)\"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on SQL Server (UDP Port 1434)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on SQL Server (UDP Port 1434). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict SQL Server solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Udp or protocol equals *) and (destinationPortRange contains _Port.inRange(1434,1434) or destinationPortRanges[*] contains _Port.inRange(1434,1434) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-27130"
+    }
+  ],
+  "27": [
+    {
+      "policyId": "a0791206-a669-4948-a845-cc735212013c",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "high",
+      "name": "Azure Network Security Group allows PostgreSQL (TCP Port 5432)",
+      "description": "This policy detects any NSG rule that allows PostgreSQL traffic on TCP port 5432 from the internet. Review your list of NSG rules to ensure that your resources are not exposed.\nAs a best practice, restrict PostgreSQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "rule.criteria": "b498a297-ae00-43ee-b767-d458785c7e00",
+      "searchModel.query": "config where api.name= 'azure-network-nsg-list' AND json.rule =  \"  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5432,5432) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains _Port.inRange(5432,5432) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5432,5432) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRanges[*] contains _Port.inRange(5432,5432) or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == '*' && @.protocol != 'UDP' )].destinationPortRange contains * or  securityRules[?(@.access == 'Allow' && @.direction == 'Inbound' && @.sourceAddressPrefix == 'Internet' && @.protocol != 'UDP' )].destinationPortRange contains *  \"",
+      "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses , set the 'Action' to 'Deny' or 'Delete' the rule.\n7. 'Save' your changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "name_updated": "Azure Network Security Group allows all traffic on PostgreSQL (TCP Port 5432)",
+      "description_updated": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on PostgreSQL (TCP Port 5432). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict PostgreSQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+      "searchModel.query_updated": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(5432,5432) or destinationPortRanges[*] contains _Port.inRange(5432,5432) ))] exists",
+      "recommendation_updated": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+      "impact": "",
+      "RLP": "RLP-26046"
+    }
+  ]
+}

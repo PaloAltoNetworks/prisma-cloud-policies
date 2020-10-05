@@ -1,0 +1,74 @@
+{
+  "0": [
+    {
+      "policyId": "466f24c0-bd65-4c8c-9694-fec4acbd40cd",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) having Inbound rule overly permissive to all TCP traffic from any source",
+      "description": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to open TCP traffic from any source. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria": "bbceabc8-5a2b-4473-b1e0-e1cb70e38254",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"(securityRules[?(@.sourceAddressPrefix=='*' && @.protocol=='TCP' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound) or (securityRules[?(@.sourceAddressPrefix=='*' && @.protocol=='Tcp' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound)\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Any\nb) Destination Port Range: *\nc) Destination: Any\nd) Protocol: TCP\ne) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing TCP traffic from any source.",
+      "remediation.impact": "reject TCP traffic from any source",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "impact": "",
+      "RLP": "RLP-26655"
+    }
+  ],
+  "1": [
+    {
+      "policyId": "86bf4d56-a509-11e8-98d0-529269fb1459",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) having Inbound rule overly permissive to all UDP traffic from any source",
+      "description": "This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to open UDP traffic from any source. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+      "rule.criteria": "86bf4978-a509-11e8-98d0-529269fb1459",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"(securityRules[?(@.sourceAddressPrefix=='*' && @.protocol=='UDP' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound) or (securityRules[?(@.sourceAddressPrefix=='*' && @.protocol=='Udp' && @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound)\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na) Source: Any\nb) Destination Port Range: *\nc) Destination: Any\nd) Protocol: UDP\ne) Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing UDP traffic from any source.",
+      "remediation.impact": "reject UDP traffic from any source",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "impact": "",
+      "RLP": "RLP-26655"
+    }
+  ],
+  "2": [
+    {
+      "policyId": "1ec4333f-fee0-481b-8039-0f908982d98a",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Network Security Group (NSG) having Inbound rule overly permissive to allow all traffic from any source on any protocol",
+      "description": "This policy identifies NSGs which allows incoming traffic from any source. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources on authorized protocols and ports.",
+      "rule.criteria": "e918bfb6-fadd-453f-99a3-2d818e3fa33d",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule=\"securityRules[?(@.sourceAddressPrefix=='*' && @.protocol=='*' &&  @.access=='Allow' && @.destinationAddressPrefix=='*' && @.destinationPortRange=='*')].direction contains Inbound\"",
+      "recommendation": "1. Sign in to the Azure Portal\n2. On left Navigation, Click on All services\n3. Under NETWORKING, click on Network security groups\n4. Choose the reported resource\n5. Under SETTINGS, Click on Inbound security rules\n6. Identify the row which matches all five conditions mentioned below:\na)Source: Any\nb)Destination Port Range: *\nc)Destination: Any\nd)Protocol: Any\ne)Action: Allow\n7. Click on the identified row with matching conditions\n8. Click on More and choose Delete to remove that row",
+      "remediable": true,
+      "remediation.cliScriptTemplate": "az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+      "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from any source.",
+      "remediation.impact": "reject all traffic from any source",
+      "compliance.standard": [
+        "PIPEDA",
+        "CCPA 2018",
+        "MITRE ATT&CK [Beta]"
+      ],
+      "impact": "",
+      "RLP": "RLP-26655"
+    }
+  ]
+}
