@@ -1,0 +1,122 @@
+{
+  "0": [
+    {
+      "policyId": "f0e09192-0716-11eb-adc1-0242ac120002",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP cloud storage bucket with uniform bucket-level access disabled",
+      "description": "This policy identifies GCP storage buckets for which the uniform bucket-level access is disabled. Enabling uniform bucket-level access guarantees that if a Storage bucket is not publicly accessible, no object in the bucket is publicly accessible either. It is recommended that uniform bucket-level access is enabled on Cloud Storage buckets.",
+      "rule.criteria": "761e3fae-4a27-41bb-a9ea-ab063b35d574",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = iamConfiguration.uniformBucketLevelAccess.enabled contains false",
+      "recommendation": "1. log in to GCP Console\n2. Navigate to 'Storage'\n3. Click on 'Browser' to get the list of storage buckets\n4. Search for the alerted bucket and click on the bucket name\n5. From the top menu go to 'PERMISSION' tab\n6. Under the section 'Access control' click on 'SWITCH TO UNIFORM'\n7. On the pop-up window select 'uniform'\n8. Click on 'Save'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27242"
+    }
+  ],
+  "1": [
+    {
+      "policyId": "f2c2c424-6fc9-4f99-8efb-4cb09810be97",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "high",
+      "name": "AWS SageMaker notebook instance not configured with data encryption at rest using KMS key",
+      "description": "This policy identifies SageMaker notebook instances that are not configured with data encryption at rest using the AWS managed KMS key. It is recommended to implement encryption at rest in order to protect data from unauthorized entities.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html",
+      "rule.criteria": "99872307-ffae-4bc9-8b7b-17597c4054bf",
+      "searchModel.query": "config where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = 'notebookInstanceStatus equals InService and kmsKeyId does not exist'",
+      "recommendation": "AWS SageMaker notebook instance can not be configured with data encryption at rest once it is created. You need to create a new notebook instance with encryption at rest using the KMS key; migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, From the 'Permissions and encryption' section, \nselect the KMS key from the 'Encryption key - optional' dropdown list. If no KMS keys already, you have to create a KMS key first.\n5. Choose other parameters as per your requirement and click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu and, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27124"
+    }
+  ],
+  "2": [
+    {
+      "policyId": "68ab0618-0716-11eb-adc1-0242ac120002",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP VM instance configured with default service account",
+      "description": "This policy identifies GCP VM instances configured with the default service account. To defend against privilege escalations if your VM is compromised and prevent an attacker from gaining access to all of your project, it is recommended to not use the default Compute Engine service account because it has the Editor role on the project.",
+      "rule.criteria": "6f326cc0-c19e-4d9d-9cbc-e226dd6b58eb",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = (name does not start with \"gke-\" or (name starts with \"gke-\" and labels.goog-gke-node does not exist) ) and serviceAccounts[?any( email contains \"compute@developer.gserviceaccount.com\")] exists",
+      "recommendation": "Log in to GCP Console\n2. Navigate to 'Compute Engine' and click on 'VM instances'\n3. Search for the alerted instance and click on the instance name\n4. To make a change first we have to stop the instance; click on 'STOP' from the top menu\n5. Click on 'EDIT' and Go to section 'Service account' \n6. From the dropdown select a non-default service account \n7. Click on 'Save'\n8. Click on 'START/RESUME' from the top menu",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27241"
+    }
+  ],
+  "3": [
+    {
+      "policyId": "f552fc4a-b210-4ec1-adfe-c29350a04f92",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Application gateways listener that allow connection requests over HTTP",
+      "description": "This policy identifies Azure Application gateways that are configured to accept connection requests over HTTP. As a best practice, use the HTTPS protocol to encrypt the communication between the application clients and the application gateways.",
+      "rule.criteria": "864d0191-9e8f-46d0-9b3d-f76680579ff6",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name = 'azure-application-gateway' AND json.rule = ['properties.httpListeners'][*].['properties.protocol'] equals Http",
+      "recommendation": "1. Log in to the Azure Portal\n2. Select 'All services'\n3. Select 'Application gateways', under NETWORKING\n4. Select the Application gateways needed to be modified\n5. Select 'Listeners' under Settings\n6. To add HTTPS listener follow below step, if already HTTPS listener present jump to point 10\n7. Click on 'Add listener', enter 'Listener name', 'Frontend IP'\n8. Select 'Protocol' as HTTPS and fill in 'Https Settings' and 'Additional settings' and click on 'Add'\n9. Click on 'Rules' in the left pane and click on 'Request routing rule' and associate HTTPS listener to a rule \n10. Click on three dots on the right corner of a row containing 'Protocol' as HTTP\n11. Click on 'Delete'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27163"
+    }
+  ],
+  "4": [
+    {
+      "policyId": "5c0ba8b1-9b88-486f-9fe1-a0eb9071a42b",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "medium",
+      "name": "AWS SageMaker notebook instance configured with direct internet access feature",
+      "description": "This policy identifies SageMaker notebook instances that are configured with direct internet access feature. If AWS SageMaker notebook instances are configured with direct internet access feature, any machine outside the VPC can establish a connection to these instances, which provides an additional avenue for unauthorized access to data and the opportunity for malicious activity.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/appendix-notebook-and-internet-access.html",
+      "rule.criteria": "f7743e85-4180-44d9-b383-d45821eb0d90",
+      "searchModel.query": "config where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = 'notebookInstanceStatus equals InService and directInternetAccess equals Enabled'",
+      "recommendation": "AWS SageMaker notebook instance direct internet access feature can not be disabled; once it is created. You need to create a new notebook instance with disabled direct internet access feature; and migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, within the 'Network' section, \nFrom 'VPC – optional' dropdown list, select the VPC where you want to deploy a new SageMaker notebook instance.\n5. Select the 'Disable - Access the internet through a VPC' button under the 'Direct internet access' to disable direct internet access for the new notebook instance.\n6. Choose other parameters as per your requirement and Click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27123"
+    }
+  ],
+  "5": [
+    {
+      "policyId": "447fc9ef-a871-4e4b-b34c-46d4aad81f51",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "medium",
+      "name": "AWS Database Migration Service endpoint do not have SSL configured",
+      "description": "This policy identifies Database Migration Service (DMS) endpoints that are not configured with SSL to encrypt connections for source and target endpoints. It is recommended to use SSL connection for source and target endpoints; enforcing SSL connections help protect against 'man in the middle' attacks by encrypting the data stream between endpoint connections.\n\nNOTE: Not all databases use SSL in the same way. An Amazon Redshift endpoint already uses an SSL connection and does not require an SSL connection set up by AWS DMS. So there are some exlcusions included in policy RQL to report only those endpoints which can be configured using DMS SSL feature. \n\nFor more details:\nhttps://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.SSL",
+      "rule.criteria": "61764822-555e-4492-b9d6-0b5210e11ee4",
+      "searchModel.query": "config where cloud.type = 'aws' AND api.name = 'aws-dms-endpoint' AND json.rule = status equals active and (endpointType equals SOURCE and sslMode equals none and engineName is not member of (\"s3\", \"azuredb\")) or (endpointType equals TARGET and sslMode equals none and engineName is not member of (\"dynamodb\", \"kinesis\", \"neptune\", \"redshift\", \"s3\", \"elasticsearch\", \"kafka\"))",
+      "recommendation": "1. Log in to the AWS Console\n2. Navigate to the AWS DMS dashboard\n3. In the navigation pane, choose 'Endpoints'\n4. Select the reported DMS endpoint\n5. Under 'Actions', choose 'Modify'\n6. In the 'Endpoint configuration' section, select the 'Secure Socket Layer (SSL) mode' from the dropdown list select suitable SSL mode according to your requirement other than 'none'.\n7. Click on 'Save'\n\nNOTE: Before modifying the SSL setting, you should be configured with the proper certificate you want to use for SSL connection under the DMS 'Certificate' service.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27126"
+    }
+  ]
+}
