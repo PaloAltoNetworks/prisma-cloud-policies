@@ -1,0 +1,162 @@
+{
+  "0": [
+    {
+      "policyId": "7ebe7135-63e8-437d-9c83-7e7d0d73f415",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Cosmos DB IP range filter not configured",
+      "description": "This policy identifies Azure Cosmos DB with IP range filter not configured. Azure Cosmos DB should be restricted access from All Networks. It is recommended to add defined set of IP / IP range which can access Azure Cosmos DB from the Internet.",
+      "rule.criteria": "b721b2eb-1de0-47e8-9a5b-9ec5bb0516de",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name = 'azure-cosmos-db' AND json.rule = properties.ipRangeFilter is empty",
+      "recommendation": "1. Log in to the Azure Portal\n2. Go to Azure Cosmos DB\n3. Select the reported Cosmos DB resource \n4. Click on 'Firewall and virtual networks' under 'Settings'\n5. Click on 'Selected networks' radio button\n6. Under 'Firewall' add IP ranges\n7. Click on 'Save'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-28135"
+    }
+  ],
+  "1": [
+    {
+      "policyId": "0e72ff6d-9d6e-4fa1-8c3b-b815b9e4d459",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP Kubernetes cluster node auto-repair configuration disabled",
+      "description": "This policy identifies GCP Kubernetes cluster nodes with auto-repair configuration disabled. GKE's node auto-repair feature helps you keep the nodes in your cluster in a healthy, running state. When enabled, GKE makes periodic checks on the health state of each node in your cluster. If a node fails consecutive health checks over an extended time period, GKE initiates a repair process for that node.\n\nFMI: https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-repair",
+      "rule.criteria": "6769e686-5e96-4f67-8985-2646f9d90f1b",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = nodePools[?any(management.autoRepair does not exist or management.autoRepair is false)] exists",
+      "recommendation": "1. Log in to Google cloud console\n2. Navigate to Google Kubernetes Engine, click on 'Clusters' to get the list\n3. Click on the alerted cluster and go to section 'Node pools'\n4. Click on a node pool to ensure Auto repair' is enabled in the 'Management' section\n5. To modify click on the 'Edit' button at the top\n6. To enable the configuration click on the check box against 'Enable auto-repair'\n7. Click on 'Save'\n8. Repeat Step 4-7 for each node pool associated with the reported cluster",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-6301"
+    }
+  ],
+  "2": [
+    {
+      "policyId": "7b14d2f7-0632-4adf-97c9-8c88b1d7f084",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP Kubernetes cluster Shielded GKE Nodes feature disabled",
+      "description": "This policy identifies GCP Kubernetes clusters for which the Shielded GKE Nodes feature is not enabled. Shielded GKE nodes protect clusters against boot- or kernel-level malware or rootkits\nwhich persist beyond infected OS. It is recommended to enable Shielded GKE Nodes for all the Kubernetes clusters.\n\nFMI: https://cloud.google.com/kubernetes-engine/docs/how-to/shielded-gke-nodes",
+      "rule.criteria": "706e0406-3a74-4c5b-b4ef-7a9392d42733",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = shieldedNodes.enabled does not exist or shieldedNodes.enabled equals \"false\"",
+      "recommendation": "1. Log in to Google cloud console\n2. Navigate to Google Kubernetes Engine, click on 'Clusters' to get the list\n3. Browse the alerted cluster\n4. Click on the 'Edit' button on top\n5. From the drop-down for 'Shielded GKE Nodes' select 'Enable'\n6. Click on 'Save'",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-28166"
+    }
+  ],
+  "3": [
+    {
+      "policyId": "f70918b1-7c19-4de6-b851-967bea5648ba",
+      "policyType": "config",
+      "cloudType": "gcp",
+      "severity": "medium",
+      "name": "GCP Kubernetes cluster node auto-upgrade configuration disabled",
+      "description": "This policy identifies GCP Kubernetes cluster nodes with auto-upgrade configuration disabled. Node auto-upgrades help you keep the nodes in your cluster up to date with the cluster master version when your master is updated on your behalf. When you create a new cluster using Google Cloud Platform Console, node auto-upgrade is enabled by default.\n\nFMI: https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades",
+      "rule.criteria": "ee11eb8a-a8a1-4703-980c-940057b84f24",
+      "searchModel.query": "config where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = nodePools[?any(management.autoUpgrade does not exist or management.autoUpgrade is false)] exists",
+      "recommendation": "1. Log in to Google cloud console\n2. Navigate to Google Kubernetes Engine, click on 'Clusters' to get the list\n3. Click on the alerted cluster and go to section 'Node pools'\n4. Click on a node pool to ensure 'Auto-upgrade' is enabled in the 'Management' section\n5. To modify click on the 'Edit' button at the top\n6. To enable the configuration click on the check box against 'Enable auto-upgrade'\n7. Click on 'Save'\n8. Repeat Step 4-7 for each node pool associated with the reported cluster",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-6302"
+    }
+  ],
+  "4": [
+    {
+      "policyId": "cf7274bc-24ec-443a-8d2e-01835a27f879",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "medium",
+      "name": "AWS SageMaker notebook instance not encrypted using Customer Managed Key",
+      "description": "This policy identifies SageMaker notebook instances that are not encrypted using Customer Managed Key. SageMaker notebook instances should be encrypted with Amazon KMS Customer Master Keys (CMKs) instead of AWS managed-keys in order to have more granular control over the data-at-rest encryption/decryption process and meet compliance requirements.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html",
+      "rule.criteria": "0afd7ae2-a3c7-4529-8623-2b88b0e94ce0",
+      "searchModel.query": "config where api.name = 'aws-sagemaker-notebook-instance' AND json.rule = notebookInstanceStatus equals InService and kmsKeyId exists as X; config where api.name = 'aws-kms-get-key-rotation-status' as Y; filter '$.X.kmsKeyId equals $.Y.key.keyArn and $.Y.keyMetadata.keyManager contains AWS'; show X;",
+      "recommendation": "AWS SageMaker notebook instance encryption can not be modified once it is created. You need to create a new notebook instance with encryption using a custom KMS key; migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, within the 'Permissions and encryption' section,\nFrom the 'Encryption key - optional' dropdown list, choose a custom KMS key for the new SageMaker notebook instance.\n5. Choose other parameters as per your requirement and click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27825"
+    }
+  ],
+  "5": [
+    {
+      "policyId": "4af86954-7e52-46d6-bf4a-efa0c4ccee41",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "medium",
+      "name": "AWS SageMaker notebook instance is not placed in VPC",
+      "description": "This policy identifies SageMaker notebook instances that are not placed inside a VPC. It is recommended to place your SageMaker inside VPC so that VPC-only resources able to access your SageMaker data, which cannot be accessed outside a VPC network.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/process-vpc.html",
+      "rule.criteria": "e776dc78-2f1a-4b19-b86f-79eeec8c90c0",
+      "searchModel.query": "config where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = notebookInstanceStatus equals InService and subnetId does not exist",
+      "recommendation": "AWS SageMaker notebook instance can be not placed in VPC once it is created. You need to create a new notebook instance placing it in VPC; migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, within the 'Network' section,\nFrom the 'VPC – optional' dropdown list, select the VPC where you want to deploy a new SageMaker notebook instance.\n5. Choose other parameters as per your requirement and click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27828"
+    }
+  ],
+  "6": [
+    {
+      "policyId": "62fe6a48-9084-449b-87b1-c9c0ab9350ba",
+      "policyType": "config",
+      "cloudType": "azure",
+      "severity": "medium",
+      "name": "Azure Active Directory Guest users found",
+      "description": "This policy identifies Azure Active Directory Guest users. Azure Active Directory allows B2B collaboration which lets you invite people from outside your organisation to be guest users in your cloud account. Avoid creating guest user in your cloud account unless you have business need. Guest users are usually added for users outside your employee on-boarding/off-boarding process and could potentially be overlooked leading to a potential vulnerability.",
+      "rule.criteria": "38a82dc7-6402-43fc-ab34-3b7848c642c3",
+      "searchModel.query": "config where cloud.type = 'azure' AND api.name = 'azure-active-directory-user' AND json.rule = userType equals Guest",
+      "recommendation": "1. Log in to the Azure Portal\n2. Go to 'Azure Active Directory' (Left Panel)\n3. Click on 'Users' under 'Manage'\n4. Search for reported user in search pane\n5. Select on check box for the reported user\n6. Click on 'Delete user' in top pane\n7. Select 'OK' to confirm\n\nNote: Verify impact caused by deleting Guest user",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-28137"
+    }
+  ],
+  "7": [
+    {
+      "policyId": "cd2dd664-59a9-469d-a6d0-d6f4a9f8d94c",
+      "policyType": "config",
+      "cloudType": "aws",
+      "severity": "high",
+      "name": "AWS SageMaker notebook instance IAM policy overly permissive to all traffic",
+      "description": "This policy identifies SageMaker notebook instances IAM policies that are overly permissive to all traffic. It is recommended that the SageMaker notebook instances should be granted access restrictions so that only authorized users and applications have access to the service.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/security_iam_id-based-policy-examples.html",
+      "rule.criteria": "70f28bb5-c2c3-45be-b1cb-81716b508e34",
+      "searchModel.query": "config where cloud.type = 'aws' AND api.name = 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any((Condition.IpAddress.aws:SourceIp contains 0.0.0.0/0 or Condition.IpAddress.aws:SourceIp contains ::/0) and Effect equals Allow and Action anyStartWith sagemaker:)] exists",
+      "recommendation": "1. Login to AWS console\n2. Goto IAM Services\n3. Click on 'Policies' in left hand panel\n4. Search for the Policy for which the Alert is generated and click on it\n5. Under Permissions tab, click on Edit policy\n6. Under the Visual editor, for each of the 'SageMaker' Service, click to expand and perform following.\n6.a. Click to expand 'Request conditions'\n6.b. Under the 'Source IP', remove the row with the entry '0.0.0.0/0' or '::/0'. Add condition with restrictive IP ranges.\n7. Click on Review policy and Save changes.",
+      "remediable": false,
+      "remediation.cliScriptTemplate": "",
+      "remediation.description": "",
+      "remediation.impact": "",
+      "compliance.standard": "",
+      "impact": "",
+      "RLP": "RLP-27713"
+    }
+  ]
+}
