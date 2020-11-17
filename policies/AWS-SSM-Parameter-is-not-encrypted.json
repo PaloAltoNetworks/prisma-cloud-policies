@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-SSM-370",
+  "policyId":"926b7056-6a39-4885-a806-8e4cf958fced",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS SSM Parameter is not encrypted",
+  "description":"This policy identifies the AWS SSM Parameters which are not encrypted. AWS Systems Manager (SSM) parameters that store sensitive data, for example, passwords, database strings, and permit codes are encrypted so as to meet security and compliance prerequisites. An encrypted SSM parameter is any sensitive information that should be kept and referenced in a protected way.",
+  "rule.criteria":"22fc52a7-6446-4cf4-b5ac-c1631c52922d",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ssm-parameter' AND json.rule = 'type does not contain SecureString'",
+  "recommendation":"1. Sign in to the AWS Console\n2. Go to System Manager\n3. In the navigation panel, Click on 'Parameter Store'\n4. Choose the reported parameter and port it to a new parameter with Type 'SecureString'\n5. Delete the reported parameter by clicking on 'Delete'\n6. Click on 'Delete parameters'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

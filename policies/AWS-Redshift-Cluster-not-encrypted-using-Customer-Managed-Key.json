@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-RED-318",
+  "policyId":"dae05966-c2ac-480f-9ef5-50e91fd57782",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS Redshift Cluster not encrypted using Customer Managed Key",
+  "description":"This policy identifies Redshift Clusters which are encrypted with default KMS keys and not with Keys managed by Customer. It is a best practice to use customer managed KMS Keys to encrypt your Redshift databases data. Customer-managed CMKs give you more flexibility, including the ability to create, rotate, disable, define access control for, and audit the encryption keys used to help protect your data.",
+  "rule.criteria":"3597d4f8-7e3b-4c73-9418-00e3314e5f39",
+  "searchModel.query":"config from cloud.resource where api.name = 'aws-redshift-describe-clusters' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' as Y; filter '$.X.encrypted is true and $.X.kmsKeyId equals $.Y.key.keyArn and $.Y.keyMetadata.keyManager contains AWS'; show X;",
+  "recommendation":"AWS Redshift Cluster encryption can be set only at the time of creation of the cluster. So to resolve this alert, create a new cluster with encryption enabled with customer managed key, then migrate all required cluster data from the reported cluster to this newly created cluster and delete reported Redshift Cluster.\n\nTo create new Redshift Cluster with encryption enabled with customer managed key, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Redshift dashboard\n4. Click on 'Clusters' (Left Panel)\n5. Click on 'Launch cluster' button\n6. On the 'CLUSTER DETAILS' page, specify Cluster details as per your requirements and Click on 'Continue'\n7. On the 'NODE CONFIGURATION' page, specify Node configuration details as per your requirements and Click on 'Continue'\n8. On the 'ADDITIONAL CONFIGURATION' page, Choose 'KMS' for 'Database encryption' and Select customer managed key [i.e. Other than (default)aws\/redshift] from 'Master key' dropdown list along with other parameters and Click on 'Continue'\n9. On the 'REVIEW' page, Review all your setting and Click on 'Launch cluster' button\n\nTo delete reported Redshift Cluster which does not has encryption, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Redshift dashboard\n4. Click on 'Clusters' (Left Panel)\n5. Select reported Redshift Cluster\n6. Click on 'Clusters' dropdown\n7. Click on 'Delete cluster'\n8. In the 'Delete cluster' popup box, if you want a 'Create snapshot' then choose 'Yes', provide a name for the snapshot and Click on 'Delete'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

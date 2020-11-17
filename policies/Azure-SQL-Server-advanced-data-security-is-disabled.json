@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-AZR-SQL-332",
+  "policyId":"4169132e-ead6-4c01-b147-d2b47b443678",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure SQL Server advanced data security is disabled",
+  "description":"Advanced data security (ADS) provides a set of advanced SQL security capabilities, including vulnerability assessment, threat detection, and data discovery and classification.\n\nThis policy identifies Azure SQL servers that do not have ADS enabled. As a best practice, enable ADS on mission-critical SQL servers.",
+  "rule.criteria":"d7d19f58-2868-47a1-9ed6-63bf8074770d",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule =  \"$.serverSecurityAlertPolicy.properties.retentionDays does not exist or $.serverSecurityAlertPolicy.properties.state equals Disabled\"",
+  "recommendation":"1. Log in to the Azure portal.\n2. Select 'SQL servers', and select the SQL server you need to modify.\n3. Select 'Advanced Data Security', and set status as 'ON'.\n4. 'Save' your changes.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

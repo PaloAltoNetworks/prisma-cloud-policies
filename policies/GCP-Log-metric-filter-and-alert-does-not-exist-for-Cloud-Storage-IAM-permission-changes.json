@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-GCP-MON-521",
+  "policyId":"b7ee0045-ba97-40f2-acc9-7050dee8d1fb",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"low",
+  "name":"GCP Log metric filter and alert does not exist for Cloud Storage IAM permission changes",
+  "description":"This policy identifies the GCP account which does not have a log metric filter and alert for Cloud Storage IAM permission changes. Monitoring Cloud Storage IAM permission activities will help in reducing time to detect and correct permissions on sensitive Cloud Storage bucket and objects inside the bucket. It is recommended to create a metric filter and alarm to detect activities related to the Cloud Storage IAM permission.",
+  "rule.criteria":"e775fe7b-13f3-455b-ab65-bba82d3ea2e3",
+  "searchModel.query":"config from cloud.resource where api.name = 'gcloud-logging-metric' as X; config from cloud.resource where api.name = 'gcloud-monitoring-policies-list' as Y; filter '$.Y.conditions[*].metricThresholdFilter contains $.X.name and ($.X.filter does not contain \"resource.type =\" or $.X.filter does not contain \"resource.type=\") and ($.X.filter does not contain \"resource.type !=\" and $.X.filter does not contain \"resource.type!=\") and $.X.filter contains \"gcs_bucket\" and ($.X.filter contains \"protoPayload.methodName=\" or $.X.filter contains \"protoPayload.methodName =\") and ($.X.filter does not contain \"protoPayload.methodName!=\" and $.X.filter does not contain \"protoPayload.methodName !=\") and $.X.filter contains \"storage.setIamPermissions\"'; show X; count(X) less than 1",
+  "recommendation":"1. Sign in to GCP Console\n2. Navigate to Stackdriver Logging dashboard\n3. Click on 'CREATE METRIC'\n4. In 'Filter by label or text search' text box, add filter as\nresource.type=\"gcs_bucket\" AND protoPayload.methodName=\"storage.setIamPermissions\"\n5. In 'Metric Editor', Choose appropriate Metric Name, Description, Unit and Type parameters accordingly\n6. Click on 'Create Metric' \n7. In Stackdriver Logging dashboard, Click on 'Logs-based metrics' (Left panel)\n8. Under 'User-defined Metrics' section, choose the metric you created in step 6 and click on kebab menu (Vertical 3 dots) on the right side of metrics\n9. Under kebab menu (Vertical 3 dots) option choose the click on 'Create alert from metric'\n10. Enter any name to the condition and select metric name that was created in step 6 under 'Find resource type and metric' section, choose an appropriate value for other alert condition parameters as desired\n11. Click on 'SAVE'\n12. In 'Create new alerting policy' page,\n- Name the alert policy\n- Choose the 'Policy triggers' value\n- Set the 'Notifications' channel type and value as desired\n13. Click on 'SAVE'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

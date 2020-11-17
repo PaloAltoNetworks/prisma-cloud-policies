@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-AWS-ELB-294",
+  "policyId":"2bfc9a1e-bbad-4778-8116-99d07f1d2ba5",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS Elastic Load Balancer (Classic) SSL negotiation policy configured with vulnerable SSL protocol",
+  "description":"This policy identifies Elastic Load Balancers (Classic) which are configured with SSL negotiation policy containing vulnerable SSL protocol. The SSL protocol establishes a secure connection between a client and a server and ensures that all the data passed between the client and your load balancer is private. As a security best practice, it is recommended to use the latest version SSL protocol.",
+  "rule.criteria":"01a96be9-dcdb-4161-8607-876d0e3e3769",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elb-describe-load-balancers' AND json.rule = \"(policies[*].policyAttributeDescriptions[?(@.attributeValue=='true')].attributeName equals Protocol-TLSv1) or (policies[*].policyAttributeDescriptions[?(@.attributeValue=='true')].attributeName equals Protocol-SSLv3) or (policies[*].policyAttributeDescriptions[?(@.attributeValue=='true')].attributeName equals Protocol-TLSv1.1)\"",
+  "recommendation":"1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EC2 Dashboard\n4. Click on 'Load Balancers' (Left Panel)\n5. Click on the reported Load Balancer\n6. On 'Listeners' tab, Click on 'Edit' button\n7. On 'Edit Listeners' popup for rule 'HTTPS\/SSL',\n-  If your cipher is 'Predefined Security Policy', change 'Cipher' to 'ELBSecurityPolicy-TLS-1-2-2017-01 or latest'\nOR\n- If your cipher is 'Custom Security Policy', Choose 'Protocol-TLSv1.2' only on 'SSL Protocols' section\n8. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

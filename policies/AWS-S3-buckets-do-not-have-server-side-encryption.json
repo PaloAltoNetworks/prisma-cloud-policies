@@ -1,0 +1,31 @@
+{
+  "policyUpi":"PC-AWS-S3-64",
+  "policyId":"7913fcbf-b679-5aac-d979-1b6817becb22",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS S3 buckets do not have server side encryption",
+  "description":"Customers can protect the data in S3 buckets using the AWS server-side encryption. If the server-side encryption is not turned on for S3 buckets with sensitive data, in the event of a data breach, malicious users can gain access to the data.\n\nNOTE: Do NOT enable this policy if you are using 'Server-Side Encryption with Customer-Provided Encryption Keys (SSE-C).'",
+  "rule.criteria":"d0658e3d-4d59-4333-b80c-b90e2e28dbaa",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-s3api-get-bucket-acl' AND json.rule = 'policyAvailable is true and denyUnencryptedUploadsPolicies[*] is empty and sseAlgorithm equals None'",
+  "recommendation":"1. Login to the AWS Console and navigate to the 'S3' service\n2. Click on the reported S3 bucket\n3. Click on the 'Properties' tab\n4. Under the 'Default encryption' section, choose encryption option either AES-256 or AWS-KMS based on your requirement.\nFor more information about Server-side encryption,\nDefault encryption:\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/dev\/bucket-encryption.html\nPolicy based encryption:\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/dev\/serv-side-encryption.html",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

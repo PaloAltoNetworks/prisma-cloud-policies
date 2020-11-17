@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-ECS-398",
+  "policyId":"b17e95d3-901c-4aec-aefd-bcd52b10089d",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS ECS\/ Fargate task definition execution IAM Role not found",
+  "description":"The execution IAM Role is required by tasks to pull container images and publish container logs to Amazon CloudWatch on your behalf. This policy generates an alert if a task execution role is not found in your task definition.",
+  "rule.criteria":"adce7d18-b67c-418c-89b5-c9a95b073d42",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-describe-task-definition' AND json.rule =  executionRoleArn does not exist or executionRoleArn contains <none> or executionRoleArn does not start with arn:aws:iam",
+  "recommendation":"Create a task definition revision.\n\n1. Open the Amazon ECS console.\n2. From the navigation bar, choose the region that contains your task definition.\n3. In the navigation pane, choose Task Definitions.\n4. On the Task Definitions page, select the box to the left of the task definition to revise and choose Create new revision.\n5. Under Task execution IAM role, select a Task execution role, or create a new one.\n6. Verify the information and choose Update, then Create.\n7. If your task definition is used in a service, update your service with the updated task definition.\n8. Deactivate previous task definition",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

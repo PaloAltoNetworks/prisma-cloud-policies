@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AZR-LB-335",
+  "policyId":"0280e32d-9366-4700-9763-a03be7196614",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Load Balancer diagnostics logs are disabled",
+  "description":"Azure Load Balancers provide different types of logs—alert events, health probe, metrics—to help you manage and troubleshoot issues. This policy identifies Azure Load Balancers that have diagnostics logs disabled. As a best practice, enable diagnostic logs to start collecting the data available through these logs.",
+  "rule.criteria":"a1fe94d9-606f-4aac-bd73-bca797d3ba9f",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-lb-list' AND json.rule =  diagnosticSettings.value[*] size equals 0",
+  "recommendation":"1. Log in to the Azure portal.\n2. Navigate to 'Load Balancers', and select the reported load balancer from the list\n3. Select 'Diagnostic settings' under 'Monitoring' section\n4. Click on '+Add diagnostic setting'\n5. Specify a 'Diagnostic settings name',\n6. Under 'Category details' section, select the type of 'Log' that you want to enable\n7. Under section 'Destination details',\na. If you select 'Send to Log Analytics', select the 'Subscription' and 'Log Analytics workspace'\nb. If you set 'Archive to storage account', select the 'Subscription', 'Storage account' and set the 'Retention (days)'\nc. If you set 'Stream to an event hub', select the 'Subscription', 'Event hub namespace', 'Event hub name' and set the 'Event hub policy name'\n8. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

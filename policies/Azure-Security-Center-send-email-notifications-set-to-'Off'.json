@@ -1,0 +1,29 @@
+{
+  "policyUpi":"PC-AZR-SC-125",
+  "policyId":"8d78bf42-4e80-4e25-89fa-5f8a7fe8ddb1",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Security Center send email notifications set to 'Off'",
+  "description":"Ensure that 'Send email notification for high severity alerts' is 'On'",
+  "rule.criteria":"084973b5-bb39-456c-bfef-6ec42c261c59",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = 'securityContacts is empty or securityContacts[*].properties.email is empty or securityContacts[*].properties.alertNotifications equals Off'",
+  "recommendation":"1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & Settings'\n4. Click on the Subscription\n5. Ensure 'Email address' is filled in\n6. Set 'Send email notification for high severity alerts' is set to 'On'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "SOC 2"
+  ]
+}

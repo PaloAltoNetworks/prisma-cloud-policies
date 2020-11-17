@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-GCP-GCE-197",
+  "policyId":"bb3cb1ba-55f8-4c14-b299-777d7be79697",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP VM instances have IP Forwarding enabled",
+  "description":"This policy identifies VM instances that have IP Forwarding enabled. IP Forwarding could open unintended and undesirable communication paths and allows VM instances to send and receive packets with the non-matching destination or source IPs. To enable the source and destination IP match check, disable IP Forwarding.",
+  "rule.criteria":"87220e37-d092-4d21-81e6-1bc21a2ef5ec",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = 'canIpForward is true'",
+  "recommendation":"GCP VM instances IP forwarding feature cannot be updated. After an instance is created, the IP forwarding field becomes read-only. So to fix this alert, Create a new VM instance with IP forwarding disabled, migrate all required data from reported VM to newly created and delete the VM instance reported.\n\nTo create a new VM Instance with IP forwarding disabled:\n1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to VM instances\n4. Click the CREATE INSTANCE button\n5. Specify other instance parameters as you desire\n6. Click Management, disk, networking, SSH keys\n7. Click Networking\n8. Click on the specific Network interfaces\n9. Set IP forwarding to Off\n10. Click on Done\n11. Click on Create button\n\nTo Delete VM instance which has IP forwarding enabled:\n1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to VM instances\n4. From the list of VMs, choose the reported VM\n5. Click on Delete button",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "ISO 27001:2013",
+    "PIPEDA"
+  ]
+}

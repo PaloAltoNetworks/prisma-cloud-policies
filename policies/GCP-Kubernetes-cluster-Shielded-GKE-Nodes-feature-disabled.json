@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-GCP-GKE-566",
+  "policyId":"7b14d2f7-0632-4adf-97c9-8c88b1d7f084",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP Kubernetes cluster Shielded GKE Nodes feature disabled",
+  "description":"This policy identifies GCP Kubernetes clusters for which the Shielded GKE Nodes feature is not enabled. Shielded GKE nodes protect clusters against boot- or kernel-level malware or rootkits\nwhich persist beyond infected OS. It is recommended to enable Shielded GKE Nodes for all the Kubernetes clusters.\n\nFMI: https:\/\/cloud.google.com\/kubernetes-engine\/docs\/how-to\/shielded-gke-nodes",
+  "rule.criteria":"706e0406-3a74-4c5b-b4ef-7a9392d42733",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = shieldedNodes.enabled does not exist or shieldedNodes.enabled equals \"false\"",
+  "recommendation":"1. Log in to Google cloud console\n2. Navigate to Google Kubernetes Engine, click on 'Clusters' to get the list\n3. Browse the alerted cluster\n4. Click on the 'Edit' button on top\n5. From the drop-down for 'Shielded GKE Nodes' select 'Enable'\n6. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

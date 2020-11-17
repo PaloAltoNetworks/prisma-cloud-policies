@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-GCP-GKE-376",
+  "policyId":"49ca849a-73bb-44be-9d0a-1a33a2cdf398",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP Kubernetes cluster size contains less than 3 nodes with auto upgrade enabled",
+  "description":"Ensure your Kubernetes cluster size contains 3 or more nodes. (Clusters smaller than 3 may experience downtime during upgrades.)\n\nThis policy checks the size of your cluster pools and alerts if there are fewer than 3 nodes in a pool.",
+  "rule.criteria":"5d8a8cc6-64d6-4911-9e2a-bec83a8fd65f",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  $.nodePools[*].management.autoUpgrade is true and $.currentNodeCount less than 3",
+  "recommendation":"Resize your cluster.\n\n1. Visit the Google Kubernetes Engine menu in GCP Console.\n2. Click the cluster's Edit button, which looks like a pencil.\n3. In the Node pools section, expand the disclosure arrow for the node pool you want to change, and change the value of the Current size field to the desired value, then click Save.\n4. Repeat for each node pool as needed.\n5. Click Save to exit the cluster modification screen.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

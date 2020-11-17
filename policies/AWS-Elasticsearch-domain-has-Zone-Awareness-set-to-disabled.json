@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-ES-176",
+  "policyId":"17004d48-becd-4578-a3d6-f82054bc9239",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS Elasticsearch domain has Zone Awareness set to disabled",
+  "description":"This policy identifies Elasticsearch domains for which Zone Awareness is disabled in your AWS account. Enabling Zone Awareness (cross-zone replication) increases the availability by distributing your Elasticsearch data nodes across two availability zones available in the same AWS region. It also prevents data loss and minimizes downtime in the event of node or availability zone failure.",
+  "rule.criteria":"108d1101-6da1-43b4-96ec-a2f92c3362a3",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = 'elasticsearchClusterConfig.zoneAwarenessEnabled is false or elasticsearchClusterConfig.zoneAwarenessEnabled does not exist'",
+  "recommendation":"1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Elasticsearch Service Dashboard\n4. Choose reported Elasticsearch domain\n5. Click on 'Configure cluster'\n6. On the 'Configure cluster' page, in the 'Node configuration' section,\n\ta. Make sure you have an even number of data nodes in the 'Instance count' box.\n\tNote: To use the Zone Awareness feature, your Amazon Elasticsearch clusters must have an even number of instances in their configuration.\n\tb. Check 'Enable zone awareness' checkbox to switch on the Zone Awareness feature\n7. In the 'Network configuration' section, Choose the subnets for each data nodes across availability zone\n8. Click on 'Submit'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CSA CCM v3.0.1",
+    "HITRUST CSF v9.3",
+    "NIST 800-53 Rev4",
+    "SOC 2"
+  ]
+}

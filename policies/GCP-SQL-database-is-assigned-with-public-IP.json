@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-GCP-SQL-551",
+  "policyId":"4e58f169-5632-4b3c-9f8a-74348cf93957",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP SQL database is assigned with public IP",
+  "description":"This policy identifies GCP SQL databases which are assigned with public IP.  To lower the organisation's attack surface, Cloud SQL databases should not have public IPs. Private IPs provide improved network security and lower latency for your application. It is recommended to configure Second Generation Sql instance to use private IPs instead of public IPs. ",
+  "rule.criteria":"7e85ecdd-e58b-470f-b086-50928e8b44ce",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = backendType equals SECOND_GEN and ipAddresses[*].type contains PRIMARY",
+  "recommendation":"1. Login to GCP Console\n2. Navigate to SQL\n3. Click on the reported SQL instance, \n4. On overview page, click on 'EDIT' from top menu\n5. Under 'Configuration options' Click on  'Connectivity'\n6. From dropdown deselect 'Public IP' checkbox \n7. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-AZR-NWK-187",
+  "policyId":"d979e854-a50d-11e8-98d0-529269fb1459",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Network Security Group having Inbound rule overly permissive to all traffic on UDP protocol",
+  "description":"This policy identifies Azure Network Security Groups (NSGs) which are overly permissive to all traffic on UDP protocol. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic from known sources, allowing only authorized protocols and ports.",
+  "rule.criteria":"d979e41c-a50d-11e8-98d0-529269fb1459",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0\/0 or sourceAddressPrefix equals ::\/0) and protocol equals Udp and access equals Allow and direction equals Inbound and destinationPortRange contains *)] exists",
+  "recommendation":"Before making any changes, please check the impact to your applications\/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses and Port ranges OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az network nsg rule update --name ${ruleName} --resource-group ${resourceGroup} --nsg-name ${resourceName} --access Deny",
+  "remediation.description":"This CLI command requires 'Microsoft.Network\/networkSecurityGroups\/securityRules\/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on UDP protocol.",
+  "remediation.impact":"reject all traffic from Internet on UDP protocol",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

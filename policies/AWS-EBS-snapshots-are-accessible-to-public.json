@@ -1,0 +1,32 @@
+{
+  "policyUpi":"PC-AWS-EC2-31",
+  "policyId":"7c714cb4-3d47-4c32-98d4-c13f92ce4ec5",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"high",
+  "name":"AWS EBS snapshots are accessible to public",
+  "description":"This policy identifies EC2 EBS snapshots which are accessible to public. Amazon Elastic Block Store (Amazon EBS) provides persistent block storage volumes for use with Amazon EC2 instances in the AWS Cloud. If EBS snapshots are inadvertently shared to public, any unauthorized user with AWS console access can gain access to the snapshots and gain access to sensitive data.",
+  "rule.criteria":"7c714cb4-3d47-4c32-98d4-c13f92ce4ec5",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' and api.name='aws-ec2-describe-snapshots' AND json.rule='createVolumePermissions[*].group contains all'",
+  "recommendation":"1. Log in to the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to 'EC2' service.\n4. Under the 'Elastic Block Storage', click on the 'Snapshots'.\n5. For the specific Snapshots, change the value of field 'Property' to 'Private'.\n6. Under the section 'Encryption Details', set the value of 'Encryption Enabled' to 'Yes'.",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"aws ec2 --region ${region} modify-snapshot-attribute --snapshot-id ${resourceId} --attribute createVolumePermission --operation-type remove --group-names all",
+  "remediation.description":"This CLI command requires 'ec2:ModifySnapshotAttribute' permission. Successful execution will make this EBS snapshot's access to private. This will ensure that only Owner has full privileges.",
+  "remediation.impact":"make this EBS snapshot private",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

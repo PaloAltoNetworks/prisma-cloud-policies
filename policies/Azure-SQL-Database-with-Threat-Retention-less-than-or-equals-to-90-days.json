@@ -1,0 +1,29 @@
+{
+  "policyUpi":"PC-AZR-SQL-137",
+  "policyId":"c83a7b1d-ac74-475b-80fe-b1244daa1b27",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure SQL Database with Threat Retention less than or equals to 90 days",
+  "description":"This policy identifies SQL Databases which have Threat Retention less than or equals to 90 days. Threat Logs can be used to check for anomalies and gives an understanding of suspected breaches or misuse of data and access. It is recommended to configure SQL database Threat Retention to be greater than 90 days.",
+  "rule.criteria":"aae33c37-cf9e-4a57-9ef3-ebf9815a8bc7",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-db-list' AND json.rule = 'securityAlertPolicy does not exist or securityAlertPolicy[*] is empty or (securityAlertPolicy.properties.state equals Enabled and (securityAlertPolicy.properties.retentionDays does not equal 0 and securityAlertPolicy.properties.retentionDays less than 91))'",
+  "recommendation":"Modification of the Threat Retention day is not supported on the UI, it can only be updated using CLI command 'az sql db threat-policy update --ids ${resourceId} --retention-days 91'.",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az sql db threat-policy update --ids ${resourceId} --retention-days 91",
+  "remediation.description":"This CLI command requires 'Microsoft.Sql\/servers\/databases\/securityAlertPolicies\/*' permission. Successful execution will configure SQL database Threat Retention to 91 days.",
+  "remediation.impact":"configure SQL database Threat Retention to 91 days",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

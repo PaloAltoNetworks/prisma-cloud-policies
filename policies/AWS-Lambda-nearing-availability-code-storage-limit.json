@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-AWS-LMB-262",
+  "policyId":"f2c2d8e3-4e88-4887-a7af-1d0cfcad0a48",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS Lambda nearing availability code storage limit",
+  "description":"This policy identifies Lambda nearing availability code storage limit per region. AWS provides a reasonable starting amount of compute and storage resources that you can use to run and store functions. As a best practice, it is recommended to either remove the functions that you no longer in use or reduce the code size of the functions that you do not want to remove. It will also help you avoid unexpected charges on your bill.\nNOTE: As per https:\/\/docs.aws.amazon.com\/lambda\/latest\/dg\/limits.html. On the date, Lambda account limit per region is 75 GB. This policy will trigger an alert if Lambda account limit per region reached to 90% (i.e. 67500000 KB) of resource availability limit allocated. If you need more Lambda account code storage size per region, You can contact AWS for a service limit increase.",
+  "rule.criteria":"59f9703b-bca0-46ae-bd6f-bbe9f83b3a67",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-lambda-get-region-summary' AND json.rule = 'lambdaCodeSize.size > 67500000'",
+  "recommendation":"1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to the AWS Lambda Dashboard\n4. Click on 'Functions', choose each the lambda function \n5. Either remove the function that you no longer use or deduce the code size of the function that if you do not want to remove.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

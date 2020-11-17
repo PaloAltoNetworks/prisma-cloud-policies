@@ -1,0 +1,29 @@
+{
+  "policyUpi":"PC-AZR-SQL-138",
+  "policyId":"4d2615bb-091e-48fd-87b7-77a277d7d2fd",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"SQL servers which do not have Azure Active Directory admin configured",
+  "description":"Checks to ensure that SQL servers are configured with Active Directory admin authentication. Azure Active Directory authentication is a mechanism of connecting to Microsoft Azure SQL Database and SQL Data Warehouse by using identities in Azure Active Directory (Azure AD). With Azure AD authentication, you can centrally manage the identities of database users and other Microsoft services in one central location.",
+  "rule.criteria":"186ce6b6-15d4-409c-b864-7c62922ef198",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = '$.serverAdmins !exists or $.serverAdmins[*] size equals 0 or ($.serverAdmins[*].properties.administratorType exists and $.serverAdmins[*].properties.administratorType does not equal ActiveDirectory and $.serverAdmins[*].properties.login is not empty)'",
+  "recommendation":"1. Login to Azure Portal\n2. Click on All services (Left Panel)\n3. Click on SQL servers (under 'DATABASES')\n4. Select reported each SQL server\n5. Click on Active Directory admin (under 'SETTINGS')\n6. Click on Set admin\n7. Select an AD account\n8. Click on Select\n9. Click on Save",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "CSA CCM v3.0.1",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

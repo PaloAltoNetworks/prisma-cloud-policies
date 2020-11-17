@@ -1,0 +1,31 @@
+{
+  "policyUpi":"PC-AZR-SQL-52",
+  "policyId":"5a772daf-17c0-4a20-a689-2b3ab3f33779",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"high",
+  "name":"SQL databases has encryption disabled",
+  "description":"Transparent data encryption protects Azure database against malicious activity. It performs real-time encryption and decryption of the database, related reinforcements, and exchange log records without requiring any changes to the application. It encrypts the storage of the entire database by using a symmetric key called the database encryption key.",
+  "rule.criteria":"5a772daf-17c0-4a20-a689-2b3ab3f33779",
+  "searchModel.query":"config from cloud.resource where api.name = 'azure-sql-db-list' AND json.rule='$.transparentDataEncryption != true'",
+  "recommendation":"1. Login to Azure Portal\n2. Click on SQL databases (Left Panel)\n3. Choose the reported database\n4. Under SECURITY, Click on Transparent data encryption\n5. Set Data encryption to ON\n6. Click on Save",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az sql db tde set --ids ${resourceId} --status Enabled",
+  "remediation.description":"This CLI command requires 'Microsoft.Sql\/servers\/databases\/transparentDataEncryption\/*' permission. Successful execution will enable SQL database encryption.",
+  "remediation.impact":"enable SQL database encryption",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

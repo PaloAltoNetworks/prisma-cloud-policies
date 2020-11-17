@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-AZR-STO-309",
+  "policyId":"85a4a77f-0d46-4c3d-ae8c-37d945a0b44e",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure storage account logging for blobs is disabled",
+  "description":"Storage Logging records details of requests (read, write, and delete operations) against your Azure blobs. The logs include additional information such as:\n- Timing and server latency.\n- Success or failure, and HTTP status code.\n- Authentication details\n\nThis policy identifies Azure storage accounts that do not have logging enabled for blobs. As a best practice, enable logging for read, write, and delete request types on blobs.",
+  "rule.criteria":"56a50f39-4dc9-4af2-a9cb-4407cdaa191f",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = 'sku.tier equals Standard and (loggingProperties.blob.readEnabled is false or loggingProperties.blob.writeEnabled is false or loggingProperties.blob.deleteEnabled is false)'",
+  "recommendation":"1. Log in to the Azure portal.\n2. Select 'Storage Accounts'.\n3. Select the storage account you need to modify.\n4. Select 'Diagnostic Logs (classic)'.\n5. Set the 'status' to 'On'.\n6. Select 'Blob properties' tab.\n7. Enable 'Logging' for the three operations - 'Read', 'Write', 'Delete'.\n8. (Optionally) Select 'Delete data', and specify the number of days for which to retain data.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

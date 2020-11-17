@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AWS-ACM-327",
+  "policyId":"369dcce6-f088-445d-95a7-777af0347821",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS Certificate Manager (ACM) has certificates expiring in 30 days or less",
+  "description":"This policy identifies ACM certificates expiring in 30 days or less, which are in the AWS Certificate Manager. If SSL\/TLS certificates are not renewed prior to their expiration date, they will become invalid and the communication between the client and the AWS resource that implements the certificates is no longer secure. As a best practice, it is recommended to renew certificates before their validity period ends. AWS Certificate Manager automatically renews certificates issued by the service that is used with other AWS resources. However, the ACM service does not renew automatically certificates that are not in use or not associated anymore with other AWS resources. So the renewal process must be done manually before these certificates become invalid.\n\nNOTE: If you wanted to be notified other than before or less than 30 days; you can clone this policy and replace '30' in RQL with your desired days value. For example, 15 days OR 7 days which will alert certificates expiring in 15 days or less OR 7 days or less respectively.",
+  "rule.criteria":"cd84a846-2c3d-4062-9a61-c9e2c2b302a5",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-acm-describe-certificate' AND json.rule = 'status equals ISSUED and (_DateTime.ageInDays($.notAfter) > -31)'",
+  "recommendation":"1. Log in to the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Go to the Certificate Manager(ACM) service\n4. Choose the reported certificate\n5. Verify that the 'Status' column shows 'Issued' for the reported certificate\n6. Under 'Actions' drop-down select 'Reimport certificate' option\n7. On the Import a certificate page, perform the following actions:\n7a. In 'Certificate body*' box, paste the PEM-encoded certificate to import, purchased from your SSL certificate provider.\n7b. In 'Certificate private key*' box, paste the PEM-encoded, unencrypted private key that matches the SSL\/TLS certificate public key.\n7c.(Optional) In 'Certificate chain' box, paste the PEM-encoded certificate chain delivered with the certificate body specified at step 7a.\n8. Click on 'Review and import' button\n9. On the Review and import page, review the imported certificate details then click on 'Import'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

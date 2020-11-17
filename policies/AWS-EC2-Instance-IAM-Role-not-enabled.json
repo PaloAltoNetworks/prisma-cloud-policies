@@ -1,0 +1,26 @@
+{
+  "policyUpi":"PC-AWS-EC2-269",
+  "policyId":"8f2a2ff7-b484-463d-95df-aecd038f62b0",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS EC2 Instance IAM Role not enabled",
+  "description":"AWS provides Identity Access Management (IAM) roles to securely access AWS services and resources. The role is an identity with permission policies that define what the identity can and cannot do in AWS. As a best practice, create IAM roles and attach the role to manage EC2 instance permissions securely instead of distributing or sharing keys or passwords.",
+  "rule.criteria":"2f6f7f84-d2c1-4393-b7eb-e61df34e2700",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-instances' AND json.rule =  iamInstanceProfile.arn does not exist and state.code equals 16",
+  "recommendation":"The most common setup is the AWS default that allows for EC2 access to AWS Services. For most, this is a great way to realize flexible, yet secure, EC2 access enabled for your instances. Select this when you launch EC2 instances to automatically inherit these permissions.\n\nIAM\n1. Go to the AWS console IAM dashboard.\n2. In the navigation pane, choose Roles, Create new role.\n3. Under 'Choose the service that will use this role' select EC2, then 'Next:Permissions.'\n4. On the Attach permissions policies page, select an AWS managed policy that grants your instance access to the resources that they need, then 'Next:Tags.'\n5. Add tags (optional), the select 'Next:Review.'\n6. On the Create role and Review page, type a name for the role and choose Create role.\n\nEC2\n1. Go to the AWS console EC2 dashboard.\n2. Select Running Instances.\n3. Check the instance you want to modify.\n4. From the Actions pull down menu, select Instance Settings and Attach\/Replace IAM Role.\n5. On the Attach\/Replace IAM Role page, under the IAM role pull down menu, choose the role created in the IAM steps above.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

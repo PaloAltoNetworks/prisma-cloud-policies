@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AZR-MON-524",
+  "policyId":"64f0ec41-cdcb-42e4-b556-eb66946a62ff",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"low",
+  "name":"Azure Monitor log profile does not capture all activities",
+  "description":"This policy identifies the Monitor log profiles which are not configured to capture all activities. A log profile controls how the activity log is exported. Configuring the log profile to collect logs for the categories 'Write', 'Delete' and 'Action' ensures that all the control\/management plane activities performed on the subscription are exported.",
+  "rule.criteria":"03a90ea7-d8f5-4761-beb7-ffcc24237741",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-monitor-log-profiles-list' AND json.rule = 'isLegacy is true and (properties.categories[*] does not contain Write or properties.categories[*] does not contain Delete or properties.categories[*] does not contain Action)'",
+  "recommendation":"On the Azure Portal, there is no provision to check or set categories. However, when a log profile is created using the Azure Portal, Write, Delete and Action categories are set by default.\n\nLog profile activities can be set only through CLI using REST API and CLI is:\n1. To list the Log profile run,\naz monitor log-profiles list\n\n2. Note the name of reported log profile and replace it with <LOG_PROFILE_NAME> in below command:\naz account get-access-token --query \"{subscription:subscription,accessToken:accessToken}\" --out tsv | xargs -L1 bash -c 'curl -X GET -H \"Authorization: Bearer $1\" -H \"Content-Type: application\/json\" https:\/\/management.azure.com\/subscriptions\/$0\/providers\/microsoft.insights\/logprofiles\/<LOG_PROFILE_NAME>?api-version=2016-03-01' | jq\nCopy the JSON output and save it as 'input.json' file.\n\n3. Edit the saved 'input.json' file to add all activities 'Write', 'Delete' and 'Action' in categories JSON array section.\n\n4. Run below command taking 'input.json' as input file,\naz account get-access-token --query \"{subscription:subscription,accessToken:accessToken}\" --out tsv | xargs -L1 bash -c 'curl -X PUT -H \"Authorization: Bearer $1\" -H \"Content-Type: application\/json\" https:\/\/management.azure.com\/subscriptions\/$0\/providers\/microsoft.insights\/logprofiles\/<LOG_PROFILE_NAME>?api-version=2016-03-01 -d@\"input.json\"'\n\nNOTE: To run all above CLIs you have to be configured with Azure subscription and accessToken locally. And these CLI commands require 'microsoft.insights\/logprofiles\/*' permission.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AZR-MON-489",
+  "policyId":"3824beaa-6228-4c90-9fd8-3441251183ba",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"low",
+  "name":"Azure Activity log alert for Create policy assignment does not exist",
+  "description":"This policy identifies the Azure accounts in which activity log alert for Create policy assignment does not exist. Creating an activity log alert for Create policy assignment gives insight into changes done in azure policy - assignments and may reduce the time it takes to detect unsolicited changes.",
+  "rule.criteria":"69ab9f3a-7631-4c8f-982e-e2da7b18967e",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-activity-log-alerts' AND json.rule = \"location equals Global and properties.enabled equals true and properties.condition.allOf[?(@.field=='operationName')].equals equals Microsoft.Authorization\/policyAssignments\/write\" as X; count(X) less than 1",
+  "recommendation":"1. Log in to Azure Portal\n2. Click on Monitor (Left Panel)\n3. Select 'Alerts'\n4. Click on 'New alert rule'\n5. In 'Create rule' page, under the CONDITION section, choose 'Create policy assignment (Microsoft.Authorization\/policyAssignments)' and Other fields you can set based on your custom settings.\n6. Click on Create alert rule",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

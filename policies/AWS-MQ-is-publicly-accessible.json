@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-AWS-MQ-535",
+  "policyId":"be6e507b-b1e5-4043-a8d7-94df078f81e6",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS MQ is publicly accessible",
+  "description":"This policy identifies the AWS MQ brokers which are publicly accessible. It is advisable to use MQ brokers privately only from within your AWS Virtual Private Cloud (VPC). Ensure that the AWS MQ brokers provisioned in your AWS account are not publicly accessible from the Internet to avoid sensitive data exposure and minimize security risks. ",
+  "rule.criteria":"ac5e8046-6e9f-4eba-8132-9a6500fd760e",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-mq-broker' AND json.rule = 'brokerState equals RUNNING and publiclyAccessible is true'",
+  "recommendation":"Note: MQ broker configuration for public access cannot be modified. In case we need to update the MQ not to be public we need to recreate it.\n\n1. Go to AWS console\n2. Navigate to service 'Amazon MQ' from the 'Services' Menu\n3. From the list of 'Brokers' select the reported MQ broker\n4. From 'Details' section, copy all the configuration information.\n5. Within 'Users' section, locate and copy the ActiveMQ Web Console access credentials.\n6. Click on 'Brokers' from left panel, click on 'Create broker' \n7. Provide an unique name in field 'Broker name'\n8. In 'Advanced settings' section, select 'No' for 'Public accessibility'\n9. Set the new broker configuration parameters using the information copied at step no. 4\n10. Set the existing ActiveMQ Web Console access credentials copied at step no. 5\n11. Click on 'Create broker'\n12. Once the new broker is created, you can replace the broker endpoints within your applications\n\nTo delete the publicly accessible broker, \n1. select the alerted from the list of 'Brokers' \n2. Click on 'Delete' button\n3. When a dialog box pops up, enter the broker name to confirm and click on 'delete' button",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

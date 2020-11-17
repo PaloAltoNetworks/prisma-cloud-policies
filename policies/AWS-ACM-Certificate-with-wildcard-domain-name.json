@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-ACM-214",
+  "policyId":"4f729fe3-3c9d-4255-81da-ae2f6fe0c34b",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS ACM Certificate with wildcard domain name",
+  "description":"This policy identifies ACM Certificates which are using wildcard certificates for wildcard domain name instead of single domain name certificates. ACM allows you to use an asterisk (*) in the domain name to create an ACM Certificate containing a wildcard name that can protect several sites in the same domain. For example, a wildcard certificate issued for *.prismacloud.io can match both www.prismacloud.io and images.prismacloud.io. When you use wildcard certificates, if the private key of a certificate is compromised, then all domain and subdomains that use the compromised certificate are potentially impacted. So it is recommended to use single domain name certificates instead of wildcard certificates to reduce the associated risks with a compromised domain or subdomain.",
+  "rule.criteria":"70cbe31e-4a01-4462-96ea-0d2baeeb8dd8",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-acm-describe-certificate' AND json.rule = 'domainValidationOptions[*].domainName contains *'",
+  "recommendation":"To resolve this alert, you have to replace the reported wildcard certificate with single domain name certificate for all the first-level subdomains resulted from the domain name of the website secured with the wildcard certificate and delete the reported wildcard domain certificate.\n\nTo create a new certificate with a single domain:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Certificate Manager\n4. In 'Request a certificate' page,\na. On Step 1: 'Add domain names' page, in the 'Domain name' box, type the fully qualified domain name. Click on 'Next'\nb. On Step 2: 'Select validation method' page, Select the validation method. Click on 'Review'\nc. On Step 3: 'Review' page, review the domain name and validation method details. click on 'Confirm'\nd. On Step 4: 'Validation' page, validate the certificate request based on the validation method selected. then click on 'Continue'\nThe certificate status should change from 'Pending validation' to 'Issued'. Now access your application's web server configuration and replace the wildcard certificate with the newly issued single domain name certificate.\n\nTo delete wildcard certificate:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Go to Certificate Manager(ACM) service\n4. Choose the reported certificate\n5. Under 'Actions' drop-down click on 'Delete'\n6. On 'Delete certificate' popup windows, Click on 'Delete' button",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

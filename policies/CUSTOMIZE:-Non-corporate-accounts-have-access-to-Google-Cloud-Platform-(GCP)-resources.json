@@ -1,0 +1,32 @@
+{
+  "policyUpi":"PC-GCP-RM-139",
+  "policyId":"ab8c488d-9669-41ad-8617-c6cd2d56bd20",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"CUSTOMIZE: Non-corporate accounts have access to Google Cloud Platform (GCP) resources",
+  "description":"Using personal accounts to access GCP resources may compromise the security of your business. Using fully managed corporate Google accounts to access Google Cloud Platform resources is recommended to make sure that your resources are secure.\n\nNOTE : This policy requires customization before using it.\n\nTo customize, follow the steps mentioned below:\n\t- Clone this policy and replace '@yourcompanydomainname' in RQL with your domain name. For example: 'user does not end with @prismacloud.io and user does not end with gserviceaccount.com'.\n\t- For multiple domains, update the RQL with conditions for each domain. For example: 'user does not end with @prismacloud.io and user does not end with @prismacloud.com and user does not end with gserviceaccount.com'.",
+  "rule.criteria":"0de28a38-9b34-4376-973a-2d05b150cc2f",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-projects-get-iam-user' AND json.rule = 'user does not end with @yourcompanydomainname and user does not end with gserviceaccount.com'",
+  "recommendation":"It is recommended to use fully managed corporate Google accounts for increased visibility, auditing, and control over access to Google Cloud Platform resources. Do not access GCP resources through personal accounts.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

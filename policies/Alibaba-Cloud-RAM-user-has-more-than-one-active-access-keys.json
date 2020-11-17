@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-ALB-RAM-479",
+  "policyId":"0f4a8434-1797-430d-8e58-984c2909198f",
+  "policyType":"config",
+  "cloudType":"alibaba_cloud",
+  "severity":"medium",
+  "name":"Alibaba Cloud RAM user has more than one active access keys",
+  "description":"This policy identifies Resource Access Management (RAM) users who have more than one active access keys. RAM users having more than one key can lead to increased chances of accidental exposure. As a best security practice, it is recommended to delete unused access keys.",
+  "rule.criteria":"dfeab695-9305-4113-a620-e37fdda6ef97",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ram-user' AND json.rule =  'accessKeys[*] size > 1 and accessKeys[*].status all equal Active'",
+  "recommendation":"1. Login to Alibaba Cloud Portal\n2. Go to Resource Access Management\n3. In the left-side navigation pane, click 'Users'\n4. Select the reported user\n5. In the 'Authentication' tab, under 'User AccessKeys'\n6. In the list of access keys, Make a note on the access keys which is not used or not required as per your requirements.\n7. Click on 'Delete'\n8. On the 'Delete AccessKey' popup window, select 'I am aware of the risk and confirm that the deletion' and click on 'Close'.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

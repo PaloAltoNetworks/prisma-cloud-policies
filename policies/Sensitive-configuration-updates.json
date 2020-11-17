@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-ALL-ALL-55",
+  "policyId":"1b2d8b57-3c98-4ef7-9d83-a5117e0426d4",
+  "policyType":"audit_event",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"Sensitive configuration updates",
+  "description":"Detects sensitive configuration changes such as deleting or modifying buckets. Making such changes may leave cloud workloads in vulnerable state and it's important that security teams have visibility into and get alerted when sensitive configuration changes are performed.",
+  "rule.criteria":"05a1a433-e0a6-4e6d-ab0c-1af058f536ea",
+  "searchModel.query":"event from cloud.audit_logs where operation IN ('DeleteBucket', 'DeleteConfigRule', 'DeleteTrail', 'PutBucketAcl', 'PutBucketLogging', 'PutBucketPolicy')",
+  "recommendation":"1. Login to the Cloud Console and make sure that the user indeed had the permissions to make the changes to the configuration that were reported.\n2. Make sure that the configuration changes does not put the cloud resources in a vulnerable state.\n3. If the user was not suppose to perform the reported changes, make sure that the IAM policy is modified such that the only user has minimal permissions to perform normal job function.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "HIPAA",
+    "NIST CSF",
+    "SOC 2"
+  ]
+}

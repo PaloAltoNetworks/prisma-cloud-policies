@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AZR-STO-523",
+  "policyId":"217f8556-ccdb-4746-b4b7-2237298c81f1",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Storage Account Container with activity log has BYOK encryption disabled",
+  "description":"This policy identifies the Storage Accounts in which container with activity log has BYOK encryption disabled. Azure storage account with the activity logs being exported to container should use BYOK (Use Your Own Key) for encryption, which provides additional confidentiality controls on log data.",
+  "rule.criteria":"35b58abb-fd38-4ab0-8432-b17c4b994489",
+  "searchModel.query":"config from cloud.resource where api.name = 'azure-storage-account-list' as X; config from cloud.resource where api.name = 'azure-monitor-log-profiles-list' as Y; filter '($.X.properties.encryption.keySource does not equal \"Microsoft.Keyvault\" and $.X.properties.encryption.keyvaultproperties.keyname is not empty and $.X.properties.encryption.keyvaultproperties.keyversion is not empty and $.X.properties.encryption.keyvaultproperties.keyvaulturi is not empty and $.Y.properties.storageAccountId contains $.X.name)'; show X;",
+  "recommendation":"1. Log in to Azure Portal\n2. Go to Storage accounts dashboard and Click on reported storage account\n3. Under the Settings menu, click on Encryption\n4. Select Customer Managed Keys\n- Choose 'Enter key URI' and Enter 'Key URI'\nOR\n- Choose 'Select from Key Vault', Enter 'Key Vault' and 'Encryption Key'\n5. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

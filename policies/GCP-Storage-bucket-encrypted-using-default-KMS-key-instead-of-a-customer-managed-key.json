@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-GCP-STO-384",
+  "policyId":"3a51554f-323e-4342-bce9-0f31f1ad7967",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP Storage bucket encrypted using default KMS key instead of a customer-managed key",
+  "description":"This policy identifies Storage buckets that are encrypted with the default Google-managed keys. As a best practice, use Customer-managed key to encrypt the data in your storage bucket and ensure full control over your data.",
+  "rule.criteria":"c5fa3bff-7bdd-4a6c-a3ea-fd2ff2e7176c",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = 'encryption does not exist or encryption.defaultKmsKeyName is empty'",
+  "recommendation":"1. Login to GCP Portal\n2. Go to Storage (Left Panel)\n3. Select Browser\n4. Click on the reported bucket\n5. Click on the 'EDIT BUCKET' button\n6. Click on Show advanced settings, Change the 'Encryption' to 'Customer-managed key' and Select a customer-managed key from the dropdown or Enter key resource ID.\n7. Click on 'Save'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

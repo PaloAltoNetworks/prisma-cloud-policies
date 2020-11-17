@@ -1,0 +1,30 @@
+{
+  "policyUpi":"PC-GCP-RM-91",
+  "policyId":"1d700141-3d41-4bf3-8a7a-89684fb8b066",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"Primitive IAM roles should not be used",
+  "description":"Primitive roles are Roles that existed prior to Cloud IAM. Primitive roles (owner, editor) are built-in and provide a broader access to resources making them prone to attacks and privilege escalation. Predefined roles provide more granular controls than primitive roles and therefore Predefined roles should be used.",
+  "rule.criteria":"c33b4710-0874-4a42-a7bc-63884c67b859",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-projects-get-iam-user' AND json.rule = 'roles contains roles\/editor or roles contains roles\/owner'",
+  "recommendation":"Review the projects \/ resources that have Primitive roles assigned to them and replace them with equivalent Predefined roles.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

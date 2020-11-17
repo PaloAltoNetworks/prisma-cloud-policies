@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-RDS-261",
+  "policyId":"bf55f5c1-d05d-4e2a-bd39-560f7900be88",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS RDS retention policy less than 7 days",
+  "description":"RDS Retention Policies for Backups are an important part of your DR\/BCP strategy. Recovering data from catastrophic failures, malicious attacks, or corruption often requires a several day window of potentially good backup material to leverage. As such, the best practice is to ensure your RDS clusters are retaining at least 7 days of backups, if not more (up to a maximum of 35).",
+  "rule.criteria":"15a9ec38-a48f-415b-9c0c-14b9ae5b37c2",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-describe-db-instances' AND json.rule = backupRetentionPeriod does not exist or backupRetentionPeriod less than 7",
+  "recommendation":"Configure your RDS backup retention policy to at least 7 days.\n\n1. Go to the AWS console RDS dashboard.\n2. In the navigation pane, choose Instances.\n3. Select the database instance you wish to configure.\n4. From the 'Instance actions' menu, select Modify.\n5. Scroll down to 'Backup Retention' options and set the retention period to at least 7 days.\n6. Click Continue.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

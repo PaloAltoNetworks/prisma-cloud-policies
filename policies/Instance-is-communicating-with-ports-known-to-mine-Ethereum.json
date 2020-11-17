@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-ALL-ALL-92",
+  "policyId":"d9153688-38cb-45d9-af12-4077a37d2c9b",
+  "policyType":"network",
+  "cloudType":"all",
+  "severity":"high",
+  "name":"Instance is communicating with ports known to mine Ethereum",
+  "description":"Identifies traffic on ports 8545 and 30303 from internal workloads to internet IPs that are known to mine Ethereum. Unless this traffic is part of authorized applications and processes, your instances may have been compromised.",
+  "rule.criteria":"5b9ef8da-bb08-4735-8821-508e1d785d88",
+  "searchModel.query":"network from vpc.flow_record where dest.port IN (8545,30303) and dest.publicnetwork IN ('Internet IPs' , 'Suspicious IPs' ) and bytes > 0 and src.resource IN ( resource where role not in ( 'AWS NAT Gateway', 'AWS ELB'))",
+  "recommendation":"1. Review the identified instance and investigate the network traffic to make sure there is sufficient volume of egress traffic to indicate a compromise.\n      2. Log in to the host and make sure that there are no processes running that indicate a potential compromise.\n      3. If this instance is not authorized to process or host cryptocurrency related services, terminate the services and change the ACL to block outgoing traffic on port 8545,30303.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "HIPAA",
+    "MITRE ATT&CK [Beta]",
+    "NIST CSF",
+    "PIPEDA"
+  ]
+}

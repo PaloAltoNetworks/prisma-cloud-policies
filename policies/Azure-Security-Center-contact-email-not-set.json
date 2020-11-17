@@ -1,0 +1,29 @@
+{
+  "policyUpi":"PC-AZR-SC-123",
+  "policyId":"46e24e8c-945c-4048-91f2-800cccf54613",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Security Center contact email not set",
+  "description":"Ensure that 'Security contact email' is set",
+  "rule.criteria":"1de985c8-bacb-4780-9296-d0d7e3b596f6",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = 'securityContacts is empty or securityContacts[*].properties.email is empty'",
+  "recommendation":"1. Log in to the Azure portal\n2. Go to Security Center\n3. Click on Pricing & Settings\n4. Click on the Subscription\n5. Click on 'Email Notification'\n6. Ensure 'Email address' is filled in",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "SOC 2"
+  ]
+}

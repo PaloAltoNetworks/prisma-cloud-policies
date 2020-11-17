@@ -1,0 +1,31 @@
+{
+  "policyUpi":"PC-AWS-EC2-35",
+  "policyId":"81a2200a-c63e-4860-85a0-b54eaa581135",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"high",
+  "name":"AWS Amazon Machine Image (AMI) is publicly accessible",
+  "description":"This policy identifies AWS AMIs which are accessible to the  Amazon Machine Image (AMI) provides information to launch an instance in the cloud. The AMIs may contain proprietary customer information and should be accessible only to authorized internal users.",
+  "rule.criteria":"81a2200a-c63e-4860-85a0-b54eaa581135",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name='aws-ec2-describe-images' AND json.rule='image.public is true'",
+  "recommendation":"1. Login to the AWS Console and navigate to 'EC2' service\n2. Navigate to the AMI that was reported in the alert\n3. Click on 'Modify Image Permission' and make sure 'public' is deselected to make sure the image is not available to the public",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"aws ec2 --region ${region} modify-image-attribute --image-id ${resourceId} --launch-permission \"{\\\"Remove\\\": [{\\\"Group\\\":\\\"all\\\"}]}\"",
+  "remediation.description":"This CLI command requires 'ec2:ModifyImageAttribute' permission. Successful execution will make this AMI's access to private. This will ensure that only Owner has full privileges.",
+  "remediation.impact":"make this AMI private",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

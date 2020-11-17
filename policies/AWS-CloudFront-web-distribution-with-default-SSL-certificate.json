@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AWS-CFR-349",
+  "policyId":"a072bd68-25cd-4245-94e1-fffee0590a50",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS CloudFront web distribution with default SSL certificate",
+  "description":"This policy identifies CloudFront web distributions which have a default SSL certificate to access CloudFront content. It is a best practice to use custom SSL Certificate to access CloudFront content. It gives you full control over the content data. custom SSL certificates also allow your users to access your content by using an alternate domain name. You can use a certificate stored in AWS Certificate Manager (ACM) or you can use a certificate stored in IAM.",
+  "rule.criteria":"64519df3-368a-4329-a67a-4f2059f8eb5c",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = 'viewerCertificate.certificateSource contains cloudfront'",
+  "recommendation":"1. Sign in to the AWS console\n2. Select the region, from the region drop-down, in which the alert is generated\n3. Navigate to CloudFront Distributions Dashboard\n4. Click on the reported distribution\n5. On the 'General' tab, Click on the 'Edit' button\n6. On 'Edit Distribution' page set 'SSL Certificate' to 'Custom SSL Certificate (example.com):', Select a certificate or type your certificate ARN in the field and other parameters as per your requirement.\n7. Click on 'Yes, Edit'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

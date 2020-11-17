@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-IAM-264",
+  "policyId":"3fb665cb-d0af-42e7-ba0f-1ddccd82356b",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS IAM SSH keys for AWS CodeCommit have aged more than 90 days without being rotated",
+  "description":"This policy identifies all of your IAM SSH public keys which haven't been rotated in the past 90 days. It is recommended to verify that they are rotated on a regular basis in order to protect your AWS CodeCommit repositories.",
+  "rule.criteria":"1e93c308-f2d6-410d-9a82-7c8e2f9e466d",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-ssh-public-keys' AND json.rule = '(_DateTime.ageInDays($.uploadDate) > 91) and status==Active'",
+  "recommendation":"1. Login to AWS Console\n2. Goto IAM and select Users\n3. Choose the reported user\n4. Goto Security Credential\n5. Delete the SSH Key ID and upload a new SSH Key\nKey creation steps: https:\/\/docs.aws.amazon.com\/codecommit\/latest\/userguide\/setting-up-ssh-unixes.html",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

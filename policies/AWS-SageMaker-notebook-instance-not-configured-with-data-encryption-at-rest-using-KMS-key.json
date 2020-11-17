@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-AWS-SGM-554",
+  "policyId":"f2c2c424-6fc9-4f99-8efb-4cb09810be97",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"high",
+  "name":"AWS SageMaker notebook instance not configured with data encryption at rest using KMS key",
+  "description":"This policy identifies SageMaker notebook instances that are not configured with data encryption at rest using the AWS managed KMS key. It is recommended to implement encryption at rest in order to protect data from unauthorized entities.\n\nFor more details:\nhttps:\/\/docs.aws.amazon.com\/sagemaker\/latest\/dg\/encryption-at-rest.html",
+  "rule.criteria":"99872307-ffae-4bc9-8b7b-17597c4054bf",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = 'notebookInstanceStatus equals InService and kmsKeyId does not exist'",
+  "recommendation":"AWS SageMaker notebook instance can not be configured with data encryption at rest once it is created. You need to create a new notebook instance with encryption at rest using the KMS key; migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, From the 'Permissions and encryption' section, \nselect the KMS key from the 'Encryption key - optional' dropdown list. If no KMS keys already, you have to create a KMS key first.\n5. Choose other parameters as per your requirement and click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu and, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

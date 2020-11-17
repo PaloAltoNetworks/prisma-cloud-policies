@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AZR-NWK-300",
+  "policyId":"360ca34f-141e-4772-8e07-52d5a14f2e6f",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Network Watcher Network Security Group (NSG) flow logs are disabled",
+  "description":"This policy identifies Azure Network Security Groups (NSG) for which flow logs are disabled. To perform this check, enable this action on the Azure Service Principal: 'Microsoft.Network\/networkWatchers\/queryFlowLogStatus\/action'.\n\nNSG flow logs, a feature of the Network Watcher app, enable you to view information about ingress and egress IP traffic through an NSG. The flow logs include information such as:\n- Outbound and inbound flows on a per-rule basis.\n- Network interface to which the flow applies.\n- 5-tuple information about the flow (source\/destination IP, source\/destination port, protocol).\n- Whether the traffic was allowed or denied.\n\nAs a best practice, enable NSG flow logs to improve network visibility.",
+  "rule.criteria":"2b871a47-9ad5-4d7b-9613-5d28a6d6d685",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-nsg-list' AND json.rule =  ($.flowLogsSettings does not exist or $.flowLogsSettings.enabled is false)",
+  "recommendation":"To enable Flow Logs:\n\n1. Log in to Azure portal.\n2. Select 'Network Watcher'.\n3. Select 'NSG flow logs'.\n4. Select the NSG for which you need to modify the flow log settings.\n5. Set the Flow logs 'Status' to 'On'.\n6. 'Save' your changes.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-IAM-485",
+  "policyId":"0425bd06-9799-4d6b-8887-7f7304820424",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS IAM support access policy is not associated to any role",
+  "description":"This policy identifies IAM policies with support role access which are not attached to any role for an account. AWS provides a support centre that can be used for incident notification and response, as well as technical support and customer services.",
+  "rule.criteria":"1ec24666-fffe-40e7-b293-96190e67b158",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-get-policy-version' AND json.rule = 'policyName equals AWSSupportAccess and policyArn contains arn:aws:iam::aws:policy\/AWSSupportAccess and (isAttached is false or (isAttached is true and entities.policyRoles[*].roleId is empty))'",
+  "recommendation":"1. Log in to AWS console\n2.Go to service IAM under Services panel.\n3.From left panel click on 'Policies'\n4.Search for the existence of a support policy 'AWSSupportAccess'\n5.Create a IAM role \n6.Attach 'AWSSupportAccess' managed policy to the created IAM role",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

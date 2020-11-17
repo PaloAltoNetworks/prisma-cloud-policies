@@ -1,0 +1,20 @@
+{
+  "policyUpi":"PC-AWS-IAM-293",
+  "policyId":"4d39fd5d-b4c9-414b-b95b-d465d2e38540",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"high",
+  "name":"AWS IAM deprecated managed policies in use by User",
+  "description":"This policy checks for any usage of deprecated AWS IAM managed policies and returns an alert if it finds one in your cloud resources.\n\nWhen AWS deprecate an IAM managed policy, a new alternative is released with improved access restrictions. Existing IAM users and roles can continue to use the previous policy without interruption, however new IAM users and roles will use the new replacement policy.\n\nBefore you migrate any user or role to the new replacement policy, we recommend you review their differences in the Policy section of AWS IAM console. If you require one or more of the removed permissions, please add them separately to any user or role.\n\nList of deprecated AWS IAM managed policies:\n\nAmazonElasticTranscoderFullAccess (replaced by AmazonElasticTranscoder_FullAccess)",
+  "rule.criteria":"0b684ee4-9ee6-44b7-b197-172a2aa5b430",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-attached-user-policies' AND json.rule = attachedPolicies[*].policyArn contains \"arn:aws:iam::aws:policy\/AmazonElasticTranscoderFullAccess\"",
+  "recommendation":"1. Go to the AWS console IAM dashboard.\n2. Click Policies on the left navigation menu.\n3. Enter the deprecated IAM policy name into the filter.\n4. Click on the policy name.\n5. Select the Policy usage tab.\n6. Check all attached users, make note of them, then select Detach.\n7. Click Policies on the left navigation menu.\n8. Enter the new IAM policy name into the filter.\n9. Click on the policy name.\n10. Select the Policy usage tab.\n11. Select Attach and check all the users you made a note of.\n12. Click Attach policy.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0"
+  ]
+}

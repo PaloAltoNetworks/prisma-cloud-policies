@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-CFR-256",
+  "policyId":"39df6f76-fc34-4660-97a1-fc967e3abe33",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"high",
+  "name":"AWS CloudFront distribution is using insecure SSL protocols for HTTPS communication",
+  "description":"CloudFront, a content delivery network (CDN) offered by AWS, is not using a secure cipher for distribution. It is a best security practice to enforce the use of secure ciphers TLSv1.0, TLSv1.1, and\/or TLSv1.2 in a CloudFront Distribution's certificate configuration. This policy scans for any deviations from this practice and returns the results.",
+  "rule.criteria":"90b66466-c8e7-4cc0-a49d-104ae5451e52",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = (origins.items[*] contains \"customOriginConfig\") and (origins.items[?(@.customOriginConfig.originSslProtocols.items)] contains \"SSLv3\")",
+  "recommendation":"Communication between CloudFront and your Custom Origin should enforce the use of secure ciphers. Modify the CloudFront Origin's Origin SSL Protocol to include TLSv1.0, TLSv1.1, and\/or TLSv1.2.\n\n1. Go to the AWS console CloudFront dashboard.\n2. Select your distribution Id.\n3. Select the 'Origins' tab.\n4. Check the origin you want to modify then select Edit.\n5. Remove (uncheck) 'SSLv3' from Origin SSL Protocols.\n6. Select 'Yes, Edit.'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

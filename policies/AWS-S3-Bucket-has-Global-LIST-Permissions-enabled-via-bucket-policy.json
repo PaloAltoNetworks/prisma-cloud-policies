@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-S3-226",
+  "policyId":"de67bb9a-f776-4ff3-a27f-c1560cb563ce",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS S3 Bucket has Global LIST Permissions enabled via bucket policy",
+  "description":"This policy identifies the S3 Bucket(s) which will allow any unauthenticated user to LIST objects from a bucket. These permissions permit anyone, malicious or not, to LIST objects from your S3 bucket if they can guess the namespace. Since the S3 service does not protect the namespace other than with ACLs and Bucket Policy, you risk loss or compromise of critical data by leaving this open.",
+  "rule.criteria":"0e1b80d4-16b7-49be-a949-eca7513e7dcf",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action contains s3:* or policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action contains s3:List or policy.Statement[?(@.Action=='*' && @.Effect=='Allow')].Principal.AWS equals * or policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action equals * or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Action contains s3:* or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Action contains s3:List\"",
+  "recommendation":"1. Log into your AWS console and select the S3 service.\n2. Choose the reported bucket.\n3. Click Properties in the upper right of the window, and expand the 'Permissions' object.\n4. Select 'Edit Bucket Policy' and consider defining what explicit 'Principal' should have the ability to LIST objects in your S3 bucket. You may also want to specifically limit the 'Principal' ability to perform specific LIST functions, without the wild card.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

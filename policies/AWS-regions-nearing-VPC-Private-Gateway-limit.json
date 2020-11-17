@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-AWS-VPC-308",
+  "policyId":"4a37335a-64d6-4582-8dee-7d3969815f6d",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS regions nearing VPC Private Gateway limit",
+  "description":"This policy identifies if your account is near the private gateway limitation per VPC per Region. AWS provides a reasonable starting limitation for the maximum number of Virtual private gateways you can assign in each VPC. If you approach the limit in a particular VPC, this alert indicates that you have nearly exhausted your allocation.\nNOTE: As per http:\/\/docs.aws.amazon.com\/general\/latest\/gr\/aws_service_limits.html Virtual private gateway per region limit is 5. This policy will trigger an alert if Virtual private gateway per region reached 80% (i.e. 4) of resource availability limit allocated.",
+  "rule.criteria":"d3fb2c69-93c0-4b33-a1c3-121faf243bc5",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-vpn-gateways-summary' AND json.rule = 'TotalVPNGateways greater than 3'",
+  "recommendation":"1. Sign in to the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to VPC Dashboard\n4. Click on 'Virtual Private Gateways' (Left Panel)\n5. Choose the Virtual Private Gateway you want to delete, which is not used or required\n6. Click on 'Actions' dropdown\n7. Click on 'Delete Virtual Private Gateway'NOTE: If Virtual Private Gateway is already in use it can not be deleted. Make sure gateways unassociated before going to deleting it.\n8. On 'Delete Virtual Private Gateway' popup dialog, Click on 'Yes, Delete'NOTE: If existing Virtual Private Gateways are properly associated and exhausted your VPC Virtual Private Gateway limit allocation, you can contact AWS for a service limit increase.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

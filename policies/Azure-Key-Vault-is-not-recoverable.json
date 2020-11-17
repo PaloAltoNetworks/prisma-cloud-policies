@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AZR-KV-416",
+  "policyId":"6c9c2a98-811f-4a04-8202-51285308bad9",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Key Vault is not recoverable",
+  "description":"The key vault contains object keys, secrets and certificates. Accidental unavailability of a key vault can cause immediate data loss or loss of security functions (authentication, validation, verification, non-repudiation, etc.) supported by the key vault objects.\nIt is recommended the key vault be made recoverable by enabling the \"Do Not Purge\" and \"Soft Delete\" functions. This is in order to prevent loss of encrypted data including storage accounts, SQL databases, and\/or dependent services provided by key vault objects (Keys, Secrets, Certificates) etc., as may happen in the case of accidental deletion by a user or from disruptive activity by a malicious user.",
+  "rule.criteria":"045f2c23-66af-40ef-a0cf-e04f5cda9843",
+  "searchModel.query":"config from cloud.resource where api.name = 'azure-key-vault-list' AND json.rule = 'properties.enableSoftDelete does not exist or properties.enablePurgeProtection does not exist'",
+  "recommendation":"Azure Portal\nAzure Portal does not have provision to update the respective configurations\n\nAzure CLI 2.0\naz resource update --id \/subscriptions\/xxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\/resourceGroups\/<resourceGroupName>\/providers\/Microsoft.KeyVault\/vaults\/<keyVaultName> --set properties.enablePurgeProtection=true properties.enableSoftDelete=true",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az keyvault update --name ${resourceName} --set properties.enablePurgeProtection=true properties.enableSoftDelete=true",
+  "remediation.description":"This CLI command requires 'Microsoft.KeyVault\/*' permission. Successful execution will enable Purge Protection and Soft Delete rule for Key Vault.\nNote: Once purge-protection and soft-delete is enabled for a key vault, the action is irreversible.",
+  "remediation.impact":"enables enablePurgeProtection and enableSoftDelete in Azure Key Vault",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

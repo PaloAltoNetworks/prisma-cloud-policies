@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AWS-CF-270",
+  "policyId":"a89cca38-34d1-4c4e-b2dd-17654648a1ca",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS CloudFormation stack configured without SNS topic",
+  "description":"This policy identifies CloudFormation stacks which are configured without SNS topic. It is recommended to configure Simple Notification Service (SNS) topic to be notified of CloudFormation stack status and changes.",
+  "rule.criteria":"dbca4d6a-e785-4b71-b734-e4b55eb0cb8a",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudformation-describe-stacks' AND json.rule = 'notificationARNs[*] size less than 1'",
+  "recommendation":"1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to CloudFormation Dashboard\n4. Select reported CloudFormation stack\n5. Click on 'Actions' dropdown and Click on 'Update Stack'\n6. Lets keep all setting same and choose 'Next'\n7. On 'Options' page, Under 'Advanced' section, Modify the appropriate notification options to create a new SNS topic or select a pre-existing topic and Click on 'Next'\n8. On 'Review' page, review the changes and Click on 'Update'",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

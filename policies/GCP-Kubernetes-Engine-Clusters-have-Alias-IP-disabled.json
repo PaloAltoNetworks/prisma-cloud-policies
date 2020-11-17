@@ -1,0 +1,30 @@
+{
+  "policyUpi":"PC-GCP-GKE-152",
+  "policyId":"63b162f4-628c-4d4a-a094-63c12ebc4ba2",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"low",
+  "name":"GCP Kubernetes Engine Clusters have Alias IP disabled",
+  "description":"This policy identifies Kubernetes Engine Clusters which have disabled Alias IP. Alias IP allows the networking layer to perform anti-spoofing checks to ensure that egress traffic is not sent with arbitrary source IPs. By enabling Alias IPs, Kubernetes Engine clusters can allocate IP addresses from a CIDR block known to Google Cloud Platform. This makes your cluster more scalable and allows your cluster to better interact with other GCP products and entities.",
+  "rule.criteria":"79ac5d52-f01a-4b82-8aab-f2dd674452a3",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = 'ipAllocationPolicy.useIpAliases does not exist or ipAllocationPolicy.useIpAliases equals false'",
+  "recommendation":"GCP Kubernetes Clusters Alias IP can be enabled only at the time of creation of clusters. So to fix this alert, create a new cluster with Alias IP enabled and then migrate all required cluster data or containers from the reported cluster to this new cluster.\nTo create the cluster with Alias IP enabled, perform following steps:\n1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters\n5. Click on 'CREATE CLUSTER' button\n6. Configure your cluster and click on 'More'\n7. From the 'VPC-native (using alias IP)' drop-down menu, select 'Enabled'. New menu items appear\n8. From 'Automatically create secondary ranges' drop-down menu, select 'Enabled' \n9. Configure the 'Network', 'Node subnet', 'Node address range', 'Container address range', and 'Service address range' as needed\n10. Click on Create",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GKE)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

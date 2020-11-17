@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-GCP-VPC-198",
+  "policyId":"3a83223b-821a-494b-8456-6dfc22fc58d9",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP VPC Flow logs for the subnet is set to Off",
+  "description":"This policy identifies the subnets in VPC Network which have Flow logs disabled. It enables to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
+  "rule.criteria":"4e0039a6-ead7-4a28-8041-ef4889c312df",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-subnets-list' AND json.rule =  'enableFlowLogs is false or enableFlowLogs does not exist'",
+  "recommendation":"1. Login to GCP Portal\n2. Goto VPC Network (Left Panel)\n3. Choose the reported VPC network and subnet and click on EDIT\n4. Set Flow Logs to On\n5. Click Save",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"gcloud compute networks subnets update ${resourceName} --project=${account} --region ${region} --enable-flow-logs",
+  "remediation.description":"This CLI command requires 'compute.securityAdmin' permission. Successful execution will enables GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
+  "remediation.impact":"Enables GCP VPC Flow logs for subnets",
+  "compliance.standard":[
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

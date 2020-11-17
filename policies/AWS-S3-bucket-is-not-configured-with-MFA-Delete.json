@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-S3-417",
+  "policyId":"55486658-ae4a-4691-9eb7-a1074981fbe7",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS S3 bucket is not configured with MFA Delete",
+  "description":"This policy identifies the S3 buckets which do not have Multi-Factor Authentication(MFA) enabled to delete S3 object version. Enabling MFA Delete on a versioned bucket adds another layer of protection. In order to permanently delete an object version or suspend or reactivate versioning on the bucket valid code from the account's MFA device required.\n\nNote: MFA Delete only works for CLI or API interaction, not in the AWS Management Console. Also, you cannot make version DELETE actions with MFA using IAM user credentials. You must use your root AWS account.",
+  "rule.criteria":"be7fdc80-f111-47b1-8688-e32fda4b5920",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = 'versioningConfiguration.status equals Enabled and (versioningConfiguration.mfaDeleteEnabled does not exist or versioningConfiguration.mfaDeleteEnabled equals false)'",
+  "recommendation":"Using console you can enable versioning on the bucket but you cannot enable MFA delete.\nYou can do it via only with the AWS CLI:\naws s3api put-bucket-versioning --bucket <BUCKET_NAME> --versioning-configuration Status=Enabled,MFADelete=Enabled --mfa \"<MFA_SERIAL_NUMBER> <MFA_CODE>\"\n\nNOTE: The bucket owner, the AWS account that created the bucket (root account), and all authorized IAM users can enable versioning, but only the bucket owner (root account) can enable MFA Delete. Successful execution will enable the S3 bucket versioning and MFA delete on the bucket.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

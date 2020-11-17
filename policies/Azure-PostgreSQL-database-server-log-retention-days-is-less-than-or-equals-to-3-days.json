@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AZR-PG-427",
+  "policyId":"e7bf8164-149e-4e05-aca7-ee2e95e188d0",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure PostgreSQL database server log retention days is less than or equals to 3 days",
+  "description":" This policy identifies PostgreSQL database servers which have log retention days less than or equals to 3 days. Enabling log_retention_days helps PostgreSQL database server to Sets number of days a log file is retained which in turn generates query and error logs. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.",
+  "rule.criteria":"df0d88e1-2c09-406f-a100-d1ddd29fc1bc",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = \"configurations.value[?(@.name=='log_retention_days')].properties.value less than 4\"",
+  "recommendation":"1. Login to Azure console.\n2. Navigate to 'Azure Database for PostgreSQL servers' dashboard\n3. Click on the alerted database name\n4. Go to 'Server parameters' under 'Settings' block\n5. For 'log_retention_days', enter value in range 4-7 (inclusive) and click on 'Save' button.",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az postgres server configuration set --resource-group ${resourceGroup} --server-name ${resourceName} --name log_retention_days --value 4",
+  "remediation.description":"This CLI command requires 'Microsoft.DBforPostgreSQL servers\/configuration\/*' permission. Successful execution will enable log_retention_days which helps the PostgreSQL database to set number of days a log file is retained, which in turn generates query and error logs. NOTE: Recommended Log retention days value can be in 4-7 inclusive range. This CLI will set log retention days to 4.",
+  "remediation.impact":"enables log_retention_days in Azure PostgreSQL database servers",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

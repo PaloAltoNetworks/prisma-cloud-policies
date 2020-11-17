@@ -1,0 +1,17 @@
+{
+  "policyUpi":"PC-AWS-SGM-553",
+  "policyId":"5c0ba8b1-9b88-486f-9fe1-a0eb9071a42b",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS SageMaker notebook instance configured with direct internet access feature",
+  "description":"This policy identifies SageMaker notebook instances that are configured with direct internet access feature. If AWS SageMaker notebook instances are configured with direct internet access feature, any machine outside the VPC can establish a connection to these instances, which provides an additional avenue for unauthorized access to data and the opportunity for malicious activity.\n\nFor more details:\nhttps:\/\/docs.aws.amazon.com\/sagemaker\/latest\/dg\/appendix-notebook-and-internet-access.html",
+  "rule.criteria":"f7743e85-4180-44d9-b383-d45821eb0d90",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = 'notebookInstanceStatus equals InService and directInternetAccess equals Enabled'",
+  "recommendation":"AWS SageMaker notebook instance direct internet access feature can not be disabled; once it is created. You need to create a new notebook instance with disabled direct internet access feature; and migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, within the 'Network' section, \nFrom 'VPC – optional' dropdown list, select the VPC where you want to deploy a new SageMaker notebook instance.\n5. Select the 'Disable - Access the internet through a VPC' button under the 'Direct internet access' to disable direct internet access for the new notebook instance.\n6. Choose other parameters as per your requirement and Click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":""
+}

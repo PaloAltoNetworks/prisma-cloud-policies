@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AWS-DYN-365",
+  "policyId":"e1322a56-1172-4034-a793-300c062b66d2",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS DynamoDB encrypted using AWS owned CMK instead of AWS managed CMK",
+  "description":"This policy identifies the DynamoDB tables that use AWS owned CMK (default ) instead of AWS managed CMK (KMS ) to encrypt data. AWS managed CMK provide additional features such as the ability to view the CMK and key policy, and audit the encryption and decryption of DynamoDB tables.",
+  "rule.criteria":"458c6ad0-ed21-4a99-872a-431ef81deb05",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dynamodb-describe-table' AND json.rule =  'ssedescription does not exist or (ssedescription exists and ssedescription.ssetype == AES256)'",
+  "recommendation":"1. Sign in to AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'DynamoDB' dashboard\n4. Select the reported table from the list of DynamoDB tables\n5. In 'Overview' tab, go to 'Table Details' section\n6. Click on the 'Manage Encryption' link available for 'Encryption Type'\n7. On 'Manage Encryption' pop up window, Select 'KMS' as the encryption type.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

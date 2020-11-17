@@ -1,0 +1,20 @@
+{
+  "policyUpi":"PC-AWS-RDS-498",
+  "policyId":"74a52c45-75ae-404f-abf5-84b5cbd3d22f",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS RDS DB snapshot is not encrypted",
+  "description":"This policy identifies AWS RDS DB (Relational Database Service Database) cluster snapshots which are not encrypted. It is highly recommended to implement encryption at rest when you are working with production data that have sensitive information, to protect from unauthorized access.",
+  "rule.criteria":"c246e82d-85f0-4ead-b08b-4b7478ce6bcf",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-describe-db-snapshots' AND json.rule = 'snapshot.status equals available and snapshot.encrypted is false'",
+  "recommendation":"You can encrypt a copy of an unencrypted snapshot. This way, you can quickly add encryption to a previously unencrypted DB instance.\nFollow below steps to encrypt a copy of an unencrypted snapshot:\n1. Log in to the AWS Console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'RDS' dashboard from 'Services' dropdown.\n4. Click on 'Snapshot' from left menu.\n5. Select the alerted snapshot\n6. From 'Action' dropdown, select 'Copy Snapshot'\n7. In 'Settings' section, from 'Destination Region' select a region,\n8. Provide an identifier for the new snapshot in field 'New DB Snapshot Identifier'\n9.In 'Encryption' section, select 'Enable Encryption'\n10. Select a master key for encryption from the dropdown 'Master key'.\n11. Click on 'Copy Snapshot'.\n\nThe source snapshot needs to be removed once the copy is available.\nNote: If you delete a source snapshot before the target snapshot becomes available, the snapshot copy may fail. Verify that the target snapshot has a status of AVAILABLE before you delete a source snapshot.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

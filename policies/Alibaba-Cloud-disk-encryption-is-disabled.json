@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-ALB-ECS-442",
+  "policyId":"305caeb2-efb9-4414-91fd-0c5cdeb70714",
+  "policyType":"config",
+  "cloudType":"alibaba_cloud",
+  "severity":"medium",
+  "name":"Alibaba Cloud disk encryption is disabled",
+  "description":"This policy identifies disks for which encryption is disabled. As a best practice enable disk encryption to improve data security without making changes to your business or applications. Snapshots created from encrypted disks and new disks created from these snapshots are automatically encrypted.",
+  "rule.criteria":"fb2e4b0a-1882-40e2-ab96-12b08491d286",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ecs-disk' AND json.rule = 'encrypted is false'",
+  "recommendation":"Alibaba Cloud disk can only be encrypted at the time of disk creation. So to resolve this alert, create a new disk with encryption and then migrate all required disk data from the reported disk to this newly created disk.\n\nTo create an Alibaba Cloud disk with encryption:\n1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, click on 'Disks' which is under 'Storage & Snapshots'\n4. Click on 'Create Disk'\n5. Check the 'Disk Encryption' box in the 'Disk' section\n6. Click on 'Preview Order' make sure parameters are chosen correctly\n7. Click on 'Create', After you create a disk, attach that disk to other resources per your requirements.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

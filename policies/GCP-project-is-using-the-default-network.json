@@ -1,0 +1,25 @@
+{
+  "policyUpi":"PC-GCP-VPC-206",
+  "policyId":"c2cf4439-9ac2-44b8-a0d2-7076cf82c29a",
+  "policyType":"config",
+  "cloudType":"gcp",
+  "severity":"medium",
+  "name":"GCP project is using the default network",
+  "description":"This policy identifies the projects which have default network configured. It is recommended to use network configuration based on your security and networking requirements, you should create your network and delete the default network.",
+  "rule.criteria":"8e8236e9-8e8f-4ab0-a953-9f68f6cf602d",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-list' AND json.rule =  'name equals default'",
+  "recommendation":"1.Login to GCP Portal\n2.Goto VPC network (Left panel)\n3.Click on the reported default network\n4.Click on 'DELETE VPC NETWORK'\n5.Create a new VPC network according to your requirement\nMore info: https:\/\/cloud.google.com\/vpc\/docs\/vpc#firewall_rules",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

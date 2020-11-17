@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AZR-ACR-389",
+  "policyId":"9a28b0fb-67cd-4de9-80b0-702bc0ca6177",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure ACR HTTPS not enabled for webhook",
+  "description":"Ensure you send container registry webhooks only to a HTTPS endpoint. This policy checks your container registry webhooks and alerts if it finds a URI with HTTP.",
+  "rule.criteria":"5290ede6-4164-467d-9e3a-f55f23593765",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-container-registry' AND json.rule = 'webhooks[*] contains config and webhooks[*].config.serviceUri starts with http:\/\/'",
+  "recommendation":"Update your container registry webhook URI to use HTTPS.\n\n1. Sign in to the Azure portal.\n2. Navigate to the container registry in which you want to modify the webhook.\n3. Under Services, select Webhooks.\n4. Select your existing webhook.\n5. Near the top of the next window pane, select Configure.\n6. Under Service URI in the next window, modify your URI to use https:\/\/ and click Save.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

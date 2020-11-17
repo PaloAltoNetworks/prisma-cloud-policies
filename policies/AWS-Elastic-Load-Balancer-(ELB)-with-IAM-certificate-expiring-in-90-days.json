@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AWS-ELB-317",
+  "policyId":"2066c4ed-70ad-420e-acd6-a7d6df0797eb",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS Elastic Load Balancer (ELB) with IAM certificate expiring in 90 days",
+  "description":"This policy identifies Elastic Load Balancers (ELB) which are using IAM certificates expiring in 90 days or using expired certificates. Removing expired IAM certificates eliminates the risk and prevents the damage of credibility of the application\/website behind the ELB. As a best practice, it is recommended to reimport expiring certificates while preserving the ELB associations of the original certificate.",
+  "rule.criteria":"2b143680-1406-4c53-a8d4-fdb3221ef275",
+  "searchModel.query":"config from cloud.resource where api.name = 'aws-elb-describe-load-balancers' as X; config from cloud.resource where api.name = 'aws-iam-list-server-certificates' as Y; filter '($.X.description.listenerDescriptions[*].listener.sslcertificateId equals $.Y.arn and ((_DateTime.ageInDays($.Y.expiration) > -90 and (_DateTime.ageInDays($.Y.expiration) < 0 or _DateTime.ageInDays($.Y.expiration) == 0)) or (_DateTime.ageInDays($.Y.expiration) > 0)))'; show X;",
+  "recommendation":"Removing invalid certificates via AWS Management Console is not currently supported. To delete\/upload SSL\/TLS certificates stored in IAM via the AWS API use the Command Line Interface (CLI).\n\nRemediation CLI:\n1. Run describe-load-balancers command to make sure that the expiring server certificate is not currently used by any active load balancer.\naws elb describe-load-balancers --region <COMPUTE_REGION> --load-balancer-names <ELB_NAME> --query 'LoadBalancerDescriptions[*].ListenerDescriptions[*].Listener.SSLCertificateId'\nThis command output will return the Amazon Resource Name (ARN) for the SSL certificate currently used by the selected ELB:\n[\n\t[\n\t\t\\\"arn:aws:iam::1234567890:server-certificate\/MyCertificate\\\"\n\t]\n]\n2. Create new AWS IAM certificate with your desired parameters value\n3. To upload new IAM Certificate:\naws iam upload-server-certificate --server-certificate-name <NEW_CERTIFICATE_NAME> --certificate-body file:\/\/Certificate.pem --certificate-chain file:\/\/CertificateChain.pem --private-key file:\/\/PrivateKey.pem\n4. To replaces the existing SSL certificate for the specified HTTPS load balancer:\naws elb set-load-balancer-listener-ssl-certificate --load-balancer-name <ELB_NAME> --load-balancer-port 443 --ssl-certificate-id arn:aws:iam::1234567890:server-certificate\/<NEW_CERTIFICATE_NAME>\n5. Now that is safe to remove the expiring SSL\/TLS certificate from AWS IAM, To delete it run:\naws iam delete-server-certificate --server-certificate-name <CERTIFICATE_NAME>",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

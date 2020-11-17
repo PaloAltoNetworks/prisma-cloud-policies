@@ -1,0 +1,22 @@
+{
+  "policyUpi":"PC-AZR-PG-432",
+  "policyId":"703f7b61-be54-4b6f-be1d-bab81899ec87",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure PostgreSQL database server with log checkpoints parameter disabled",
+  "description":"This policy identifies PostgreSQL database servers for which server parameter is not set for log checkpoints. Enabling log_checkpoints helps the PostgreSQL Database to Log each checkpoint in turn generates query and error logs. However, access to transaction logs is not supported. Query and error logs can be used to identify, troubleshoot, and repair configuration errors and sub-optimal performance.",
+  "rule.criteria":"52e0ab32-b1ae-4e4e-9245-4bd0f8057895",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = \"configurations.value[?(@.name=='log_checkpoints')].properties.value equals OFF or configurations.value[?(@.name=='log_checkpoints')].properties.value equals off\"",
+  "recommendation":"1. Login to Azure console.\n2. Navigate to 'Azure Database for PostgreSQL servers' dashboard\n3. Click on the alerted database name\n4. Go to 'Server parameters' under 'Settings' block\n5. From the list of parameters find 'log_checkpoints' and set it to on\n6. Click on 'Save' button from top menu to save the change.",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az postgres server configuration set --resource-group ${resourceGroup} --server-name ${resourceName} --name log_checkpoints --value on",
+  "remediation.description":"This CLI command requires 'Microsoft.DBforPostgreSQL servers\/configuration\/*' permission. Successful execution will enable log_checkpoints which helps the PostgreSQL Database server to log each checkpoint in turn generates query and error logs.",
+  "remediation.impact":"enables log_checkpoints in Azure PostgreSQL database servers",
+  "compliance.standard":[
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "policyUpi":"PC-AZR-SC-110",
+  "policyId":"6c5091cc-2da3-42b3-877e-42fd7d9e85d6",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Security Center automatic provisioning of monitoring agent is set to Off",
+  "description":"This policy identifies the Azure Security Center policies which have automatic provisioning of monitoring agent is set to Off. When Automatic provisioning of monitoring agent is turned on, Azure Security Center provisions the Microsoft Monitoring Agent on all existing supported Azure virtual machines and any new ones that are created. The Microsoft Monitoring agent scans for different security-related setups and events such as system updates, OS weaknesses and endpoint protection and provides alerts.",
+  "rule.criteria":"a885d51a-0b78-4a2f-88ed-3f4bf58616ab",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = 'autoProvisioningSettings[*].name equals default and (autoProvisioningSettings[*].properties.autoProvision equals Off or autoProvisioningSettings[*] does not exist)'",
+  "recommendation":"1. Login to Azure Portal\n2. Go to Security Center (Left Panel)\n3. Click on Pricing & settings\n4. Choose the reported Subscription\n5. Click on Data Collection(Left Panel)\n6. Set 'Auto Provisioning' to On\n7. Click on Save",
+  "remediable":true,
+  "remediation.cliScriptTemplate":"az security auto-provisioning-setting update --name \"${resourceName}\" --auto-provision \"on\"",
+  "remediation.description":"This CLI command requires 'Microsoft.Security\/autoProvisioningSettings\/*' permission. Successful execution will enable automatic provisioning of monitoring agent.",
+  "remediation.impact":"enable automatic provisioning of monitoring agent",
+  "compliance.standard":[
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "HIPAA",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

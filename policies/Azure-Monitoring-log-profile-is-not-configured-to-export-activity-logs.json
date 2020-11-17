@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AZR-MON-528",
+  "policyId":"ebdba5a4-af9e-4015-a024-e8eb650e3be3",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Monitoring log profile is not configured to export activity logs",
+  "description":"This policy identifies the Azure accounts in which at least one monitoring log profile is not configured. A Log Profile controls how your Activity Log is exported; using which you could export the logs and store them for a longer duration for analyzing security activities within your Azure account. So it is recommended to have at least one monitoring log profile in an account to export all activity logs.",
+  "rule.criteria":"ac5c8332-e33c-4118-b982-6173a4b92781",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-monitor-log-profiles-list' as X; count(X) less than 1",
+  "recommendation":"To create a new log profile (Export to a storage account) use follwoing command:\naz monitor log-profiles create --name <NAME_OF_LOGPROFILE> --location <LOCATION> --locations <LOCATIONS_LIST> --categories \"Delete\" \"Write\" \"Action\" --enabled true --days <RETENTION_IN_DAYS> --storage-account-id \"\/subscriptions\/<SUBSCRIPTION_ID>\/resourceGroups\/<RESOURCE_GROUPNAME>\/providers\/Microsoft.Storage\/storageAccounts\/<STORAGE_ACCOUNT_NAME>\"\n\nOR\n\nTo create a new log profile (Export to an event hub) use follwoing command:\naz monitor log-profiles create --name <NAME_OF_LOGPROFILE> --location <LOCATION> --locations <LOCATIONS_LIST> --categories \"Delete\" \"Write\" \"Action\" --enabled true --days <RETENTION_IN_DAYS> --service-bus-rule-id \"\/subscriptions\/<SUBSCRIPTION_ID>\/resourceGroups\/<RESOURCE_GROUPNAME>\/providers\/Microsoft.EventHub\/namespaces\/<EVENTHUB_NAMESPACENAME>\/authorizationrules\/RootManageSharedAccessKey\"\n\nNOTE: Make sure before referring Storage Account or Eventhub in above CLI commands, you have already created Storage Account or Eventhub as per your requirements.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

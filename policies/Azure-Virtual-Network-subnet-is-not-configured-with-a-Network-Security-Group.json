@@ -1,0 +1,23 @@
+{
+  "policyUpi":"PC-AZR-NWK-334",
+  "policyId":"d3ed9388-fa76-44b7-ac6f-72503b6340e0",
+  "policyType":"config",
+  "cloudType":"azure",
+  "severity":"medium",
+  "name":"Azure Virtual Network subnet is not configured with a Network Security Group",
+  "description":"This policy identifies Azure Virtual Network (VNet) subnets that are not associated with a Network Security Group (NSG). While binding an NSG to a network interface of a Virtual Machine (VM) enables fine-grained control to the VM, associating a NSG to a subnet enables better control over network traffic to all resources within a subnet. As a best practice, associate an NSG with a subnet so that you can protect your VMs on a subnet-level.\n\nFor more information, see https:\/\/blogs.msdn.microsoft.com\/igorpag\/2016\/05\/14\/azure-network-security-groups-nsg-best-practices-and-lessons-learned\/",
+  "rule.criteria":"4780e61a-51ac-46ff-822c-421a97b6c96e",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-subnet-list' AND json.rule =  networkSecurityGroupId does not exist",
+  "recommendation":"1. Log in to the Azure Portal.\n2. Select 'Virtual Networks', and select the virtual network you need to modify.\n3. Select 'Subnets', and select the subnet you need to modify.\n4. Select the Network security group (NSG) you want to associate with the subnet.\n5. 'Save' your changes.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

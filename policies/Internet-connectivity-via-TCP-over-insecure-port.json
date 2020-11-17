@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-ALL-ALL-37",
+  "policyId":"cd94c83e-6f84-4a37-a116-13ccba78a615",
+  "policyType":"network",
+  "cloudType":"all",
+  "severity":"high",
+  "name":"Internet connectivity via TCP over insecure port",
+  "description":"This policy identifies network traffic in AWS coming from the Internet which is in plain text FTP, Telnet or HTTP.\n\nNote: This policy alerts AWS workloads correctly and for Azure and GCP this policy could trigger FP for NAT Gateway and ELB configured resources",
+  "rule.criteria":"33d85130-385e-405d-a055-b20c2a5fc514",
+  "searchModel.query":"network from vpc.flow_record where src.ip=0.0.0.0 AND protocol='TCP' AND dest.port IN (21,23,80) AND source.publicnetwork IN ( 'Internet IPs' , 'Suspicious IPs' ) AND dest.resource IN ( resource where role not in ( 'AWS ELB', 'AWS NAT Gateway' )) AND accepted.bytes > 0",
+  "recommendation":"1. Login to AWS Cloud Console\n2. Navigate to the service for which the resource is reported\n3. Check if the Security Group which is attached to the resource indeed allows connections from internet\n4. Assign another Security Group to the resource that has more restrictive ACL, which does not permit connection from internet\n\nNote: This policy recommendation is for AWS resources only",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "GDPR",
+    "HIPAA",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "policyUpi":"PC-AWS-CF-353",
+  "policyId":"40351182-3b54-4f35-9e1e-423bbc5476ff",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"AWS CloudFormation template contains globally open resources",
+  "description":"This alert triggers if a CloudFormation template that when launched will result in resources allowing global network access. Below are three common causes:\n\n- Security Group with a {0.0.0.0\/0, ::\/0} rule\n- Network Access Control List with a {0.0.0.0\/0, ::\/0} rule\n- Network Access Control List with -1 IpProtocol",
+  "rule.criteria":"f3e37827-223c-424b-ae35-3ac7dfde770b",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudformation-describe-stacks' AND json.rule = \"(($.stackResources[?( @.resourceType == 'AWS::EC2::SecurityGroup' || @.resourceType == 'AWS::EC2::SecurityGroupIngress' || @.resourceType == 'AWS::EC2::NetworkAclEntry')].resourceStatus any equal CREATE_COMPLETE) or ($.stackResources[?( @.resourceType == 'AWS::EC2::SecurityGroup' || @.resourceType == 'AWS::EC2::SecurityGroupIngress' || @.resourceType == 'AWS::EC2::NetworkAclEntry')].resourceStatus any equal UPDATE_COMPLETE)) and (($.cloudFormationTemplate.Resources.{}.SecurityGroupIngress[*].CidrIp any equal 0.0.0.0\/0 or $.cloudFormationTemplate.Resources.{}.SecurityGroupIngress[*].CidrIpv6 any equal ::\/0 or $.cloudFormationTemplate.Resources.{}.Properties.CidrIp any equal 0.0.0.0\/0 or $.cloudFormationTemplate.Resources.{}.Properties.CidrIpv6 any equal ::\/0) or ($.cloudFormationTemplate.Resources.{}.Properties.CidrBlock any equal 0.0.0.0\/0 or $.cloudFormationTemplate.Resources.{}.Properties.Ipv6CidrBlock any equal ::\/0 or $.cloudFormationTemplate.Resources.{}.Properties.Protocol any equal -1))\"",
+  "recommendation":"Prisma Cloud encourages you to review the template and ensure this is the intended behavior.\n\n1. Goto the AWS CloudFormation dashboard.\n2. Click on the Stack you want to modify.\n3. Select the Template tab and then View in Designer.\n4. Make your template modifications.\n5. Check for syntax errors in your template by choosing Validate template near the top of the page.\n6. Select Save from the file (icon) menu.\n7. Choose Amazon S3 bucket, name your template and Save.\n8. Copy the bucket URL and click OK.\n9. Select Close to close Designer. \n10. Click on the Stack you want to modify.\n11. From the Actions pull down menu, select Update stack\n12. Choose Replace current template and paste the URL from Designer into the Amazon S3 URL field. Then click on Next.\n13. Specify stack details, then click on Next.\n14. Configure stack options, then click on Next.\n15. Review, then select Update stack near the bottom of the page.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

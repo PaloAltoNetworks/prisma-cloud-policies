@@ -1,0 +1,24 @@
+{
+  "policyUpi":"PC-AWS-S3-313",
+  "policyId":"a5fe47e1-54f3-47e1-a2a3-deedfb2f70b2",
+  "policyType":"config",
+  "cloudType":"aws",
+  "severity":"medium",
+  "name":"AWS S3 Bucket Policy allows public access to CloudTrail logs",
+  "description":"This policy scans your bucket policy that is applied to the S3 bucket to prevent public access to the CloudTrail logs. CloudTrail logs a record of every API call made in your AWS account. These logs file are stored in an S3 bucket. Bucket policy or the access control list (ACL) applied to the S3 bucket does not prevent public access to the CloudTrail logs. It is recommended that the bucket policy or access control list (ACL) applied to the S3 bucket that stores CloudTrail logs prevents public access. Allowing public access to CloudTrail log content may aid an adversary in identifying weaknesses in the affected account's use or configuration.",
+  "rule.criteria":"8d5fb79e-88d7-48a2-a7cf-89345197ad17",
+  "searchModel.query":"config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudtrail-describe-trails' as X; config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' as Y; filter \"($.Y.bucketName==$.X.s3BucketName) and ($.Y.acl.grants[*].grantee contains AllUsers or $.Y.acl.grants[*].permission contains FullControl) and ($.Y.policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action contains s3:* or $.Y.policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Action contains s3:*)\" ; show Y;",
+  "recommendation":"1. Sign in to the AWS Console\n2. Goto S3\n3. Choose the reported S3 bucket and click Properties\n4. In the Properties pane, click the Permissions tab.\n5. If the Edit bucket policy button is present, select it.\n6. Remove any statement having an effect Set to 'Allow' and a principal set to '*'.\nNote: We recommend that you do not configure CloudTrail to write into an S3 bucket that resides in a different AWS account.",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

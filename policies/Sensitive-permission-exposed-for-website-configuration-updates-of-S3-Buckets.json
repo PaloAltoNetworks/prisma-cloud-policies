@@ -1,0 +1,19 @@
+{
+  "policyUpi":"PC-ALL-ALL-140",
+  "policyId":"3ec3b6ec-07e8-4b5f-9e57-5c238eae31d5",
+  "policyType":"audit_event",
+  "cloudType":"aws",
+  "severity":"low",
+  "name":"Sensitive permission exposed for website configuration updates of S3 Buckets",
+  "description":"This policy identifies operations such as GetBucketWebsite, PutBucketWebsite, and DeleteBucketWebsite on S3 buckets. Make sure that only legitimate users can perform the sensitive operations such as read, modify and delete.",
+  "rule.criteria":"63cdb3fa-9f49-41f0-900c-52bcb3fc6e19",
+  "searchModel.query":"event from cloud.audit_logs where operation IN ( 'GetBucketWebsite', 'PutBucketWebsite', 'DeleteBucketWebsite')",
+  "recommendation":"Use the instructions in these links to configure s3 bucket:\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/dev\/cloudtrail-logging.html\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/API\/RESTBucketGETwebsite.html\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/API\/RESTBucketPUTwebsite.html\nhttps:\/\/docs.aws.amazon.com\/AmazonS3\/latest\/API\/RESTBucketDELETEwebsite.html",
+  "remediable":false,
+  "remediation.cliScriptTemplate":"",
+  "remediation.description":"",
+  "remediation.impact":"",
+  "compliance.standard":[
+    "MITRE ATT&CK [Beta]"
+  ]
+}
