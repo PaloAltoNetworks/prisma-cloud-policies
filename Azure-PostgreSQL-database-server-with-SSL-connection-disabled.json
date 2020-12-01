@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AZR-PG-433",
+  "policyId": "bf4ad407-076c-40b9-a8fa-a0c80352a744",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure PostgreSQL database server with SSL connection disabled",
+  "description": "This policy identifies PostgreSQL database servers for which SSL enforce status is disabled. SSL connectivity helps to provide a new layer of security, by connecting database server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between database server and client applications helps protect against \"man in the middle\" attacks by encrypting the data stream between the server and application.",
+  "rule.criteria": "ccfaf3f9-0bbf-4235-82ac-8910058ee060",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = 'properties.sslEnforcement contains Disabled'",
+  "recommendation": "1. Login to Azure console\n2. Navigate to 'Azure Database for PostgreSQL servers' dashboard\n3. Click on the alerted database name\n4. Go to 'Connection security' under 'Settings' block.\n5. In 'SSL settings' block, for 'Enforce SSL connection' field, click on 'Enabled’ on the toggle button\n6. Click on 'Save' button from top menu to save the change.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az postgres server update --resource-group ${resourceGroup} --name ${resourceName} --ssl-enforcement Enabled",
+  "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable SSL enforce which helps to provide a new layer of security, by connecting database server to client applications using Secure Sockets Layer (SSL).",
+  "remediation.impact": "enables SSL enforce on Azure PostgreSQL database servers",
+  "compliance.standard": [
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

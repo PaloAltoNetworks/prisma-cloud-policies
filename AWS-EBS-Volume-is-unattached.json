@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AWS-EC2-268",
+  "policyId": "cc911950-a215-4dfb-ba84-0481c36c74c8",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EBS Volume is unattached",
+  "description": "EBS volumes often persist after an EC2 instance has been terminated. We recommend regular review of these volumes, since they can contain sensitive data related to your company, application, infrastructure, or even users.",
+  "rule.criteria": "b0f25cb4-3e92-422d-825a-02b802363333",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-volumes' AND json.rule = attachments[*] all empty or attachments[*].state does not contain \"attached\"",
+  "recommendation": "Periodically review EBS volumes. Archive them to Glacier, remove the volume entirely, or reattach them if they were inadvertently orphaned.\n\n1. Go to the AWS console EC2 dashboard.\n2. In the navigation pane, choose Volumes.\n3. Sort using the State column and locate the volumes marked 'available.'\n4. Review the volume information (create date, size, status, etc).\n5. Determine if you wish to retain or remove each volume.\n\nWe recommend taking the time to attach volumes to test instances so you can actively browse the content. While volume names and tags are often generic, the data on each volume will be highly informative as to the volume's previous use.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0"
+  ]
+}

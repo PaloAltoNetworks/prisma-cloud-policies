@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-GCP-GKE-397",
+  "policyId": "57aeebc5-ac6c-4ec2-8735-3a29863336a5",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP GKE unsupported Master node version",
+  "description": "Ensure your GKE Master node version is supported. This policy checks your GKE master node version and generates an alert if the version running is unsupported.",
+  "rule.criteria": "2a4de97b-446b-48ed-ab50-01446cecc676",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  'isMasterVersionSupported exists and isMasterVersionSupported does not equal true'",
+  "recommendation": "Manually initiate a master upgrade.\n\n1. Visit the Google Kubernetes Engine menu in Google Cloud Platform Console.\n2. Select the desired cluster.\n3. Click the Upgrade available link next to Master version.\n4. Select the desired version, then click Change.\n5. Click the arrow at the top of the screen to go back to the cluster cluster overview page.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "PIPEDA"
+  ]
+}

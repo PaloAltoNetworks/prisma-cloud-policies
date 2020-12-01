@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AWS-ACM-168",
+  "policyId": "e8fe99a1-7b84-4b9e-a0e7-0777b12cb081",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Certificate Manager (ACM) has unused certificates",
+  "description": "This policy identifies unused certificates which are in AWS Certificate Manager. AWS Certificate Manager (ACM) is the preferred tool to provision, manage, and deploy your server certificates. With ACM you can request a certificate or deploy an existing ACM or external certificate to AWS resources. This policy generates alerts if there are any unused ACM managed certificates. As a best practice, it is recommended to delete unused certificates or associate those certificates with any resources.",
+  "rule.criteria": "1dcfd876-fe49-4a8f-8615-474622ddb609",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-acm-describe-certificate' AND json.rule = 'inUseBy[*] is empty or inUseBy does not exist'",
+  "recommendation": "To delete Unused Certificates:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Go to Certificate Manager(ACM) service\n4. Choose the reported certificate\n5. Under 'Actions' drop-down click on 'Delete'\n\nor You can associate/use the unused certificate to the resource which requires the certificate.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CSA CCM v3.0.1",
+    "HITRUST CSF v9.3",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "SOC 2"
+  ]
+}

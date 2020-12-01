@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AWS-ELB-315",
+  "policyId": "f2b80edb-79d3-4842-b86a-3bbbcfd95c98",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic Load Balancer (ELB) has security group with no inbound rules",
+  "description": "This policy identifies Elastic Load Balancers (ELB) which have security group with no inbound rules. A security group with no inbound rule will deny all incoming requests. ELB security groups should have at least one inbound rule, ELB with no inbound permissions will deny all traffic incoming to ELB; in other words, the ELB is useless without inbound permissions.",
+  "rule.criteria": "30fb1cc3-9161-4e5b-9322-b5692b71f0d5",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-elb-describe-load-balancers' as X; config from cloud.resource where api.name = 'aws-ec2-describe-security-groups' as Y; filter '$.X.description.securityGroups[*] contains $.Y.groupId and $.Y.ipPermissions[*] is empty'; show X;",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EC2 Dashboard\n4. Click on 'Load Balancers', choose the reported load balancer\n5. Click on the 'Description' tab, click on the security group, it will open Security Group properties in a new tab in your browser\n6. Click on the 'Inbound Rules'\n7. If there are no rules, click on 'Edit rules', add an inbound rule according to your ELB functional requirement\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

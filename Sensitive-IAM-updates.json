@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-ALL-ALL-93",
+  "policyId": "9456d5e8-f0be-4cea-8a55-060c55ccc065",
+  "policyType": "audit_event",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "Sensitive IAM updates",
+  "description": "Detects sensitive IAM updates such as addition, and deletion of Service Account Key, IAM policies etc. Changing these configurations in the cloud environment may leave the cloud in a vulnerable state and it is important that security teams have visibility into and get alerted when these operations are performed.",
+  "rule.criteria": "d21e6b13-091d-4ac7-98e2-311f4bbb4171",
+  "searchModel.query": "event from cloud.audit_logs where operation IN ('google.iam.admin.v1.CreateServiceAccountKey', 'google.iam.admin.v1.DeleteServiceAccountKey', 'SetIamPolicy')",
+  "recommendation": "1. Log in to the Cloud Console and make sure that the user indeed had the permissions to make the changes to the configuration that was reported.\n2. Make sure that the configuration changes do not put the cloud resources in a vulnerable state.\n3. If the user was not authorized to perform the reported changes, make sure that the IAM permissions are correctly set.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev4",
+    "PCI DSS v3.2",
+    "SOC 2"
+  ]
+}

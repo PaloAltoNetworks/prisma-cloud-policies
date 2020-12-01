@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AZR-NWK-281",
+  "policyId": "0a3f1d49-4c05-47c4-98e2-3a42b822d05b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Network Security Group allows all traffic on ICMP (Ping)",
+  "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on ICMP (Ping) protocol. ICMP is used by devices to communicate error messages and status. While ICMP is useful for  diagnostics and troubleshooting, it can also be used to exploit or disrupt systems. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict ICMP (Ping) solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+  "rule.criteria": "5c1e59f6-2e1a-4d2e-8864-00a8365ac10a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Icmp or protocol equals *) and access equals Allow and direction equals Inbound and destinationPortRange contains *)] exists",
+  "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

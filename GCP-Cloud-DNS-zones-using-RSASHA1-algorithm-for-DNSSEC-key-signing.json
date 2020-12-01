@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-GCP-DNS-209",
+  "policyId": "f828325a-6bc0-4f37-8cb6-757949fb433b",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud DNS zones using RSASHA1 algorithm for DNSSEC key-signing",
+  "description": "This policy identifies the GCP Cloud DNS zones which are using the RSASHA1 algorithm for DNSSEC key-signing. DNSSEC is a feature of the Domain Name System that authenticates responses to domain name lookups and also prevents attackers from manipulating or poisoning the responses to DNS requests. So the algorithm used for key signing should be recommended one and it should not be weak.",
+  "rule.criteria": "dba7e15a-9bfb-4faa-bc9d-f80ce00034fa",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-dns-managed-zone' AND json.rule = 'dnssecConfig.defaultKeySpecs[*].keyType contains keySigning and dnssecConfig.defaultKeySpecs[*].algorithm contains rsasha1'",
+  "recommendation": "Currently, DNSSEC key-signing can be updated using command line interface only.\n1. If you need to change the settings for a managed zone where it has been enabled, you have to turn DNSSEC off and then re-enable it with different settings. To turn off DNSSEC, run following command:\ngcloud dns managed-zones update <ZONE_NAME> --dnssec-state off\n2. To update key-signing for a reported managed DNS Zone, run following command:\ngcloud dns managed-zones update <ZONE_NAME> --dnssec-state on --ksk-algorithm <KSK_ALGORITHM> --ksk-key-length <KSK_KEY_LENGTH> --zsk-algorithm <ZSK_ALGORITHM> --zsk-key-length <ZSK_KEY_LENGTH> --denial-of-existence <DENIAL_OF_EXISTENCE>",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "ISO 27001:2013",
+    "PIPEDA"
+  ]
+}

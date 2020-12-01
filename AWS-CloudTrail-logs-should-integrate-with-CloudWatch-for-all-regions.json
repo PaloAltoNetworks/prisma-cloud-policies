@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AWS-CT-80",
+  "policyId": "962e0daa-3c2d-4d79-9a5f-e0bf8fd4bb3b",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudTrail logs should integrate with CloudWatch for all regions",
+  "description": "This policy identifies the Cloudtrails which is not integrated with cloudwatch for all regions. CloudTrail uses Amazon S3 for log file storage and delivery, so log files are stored durably. In addition to capturing CloudTrail logs within a specified S3 bucket for long term analysis, realtime analysis can be performed by configuring CloudTrail to send logs to CloudWatch Logs. For a trail that is enabled in all regions in an account, CloudTrail sends log files from all those regions to a CloudWatch Logs log group. It is recommended that CloudTrail logs be sent to CloudWatch Logs.",
+  "rule.criteria": "962e0daa-3c2d-4d79-9a5f-e0bf8fd4bb3b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudtrail-describe-trails' as X; config from cloud.resource where api.name = 'aws-cloudtrail-get-trail-status' as Y; filter '(($.X.name == $.Y.trail) and ($.X.cloudWatchLogsLogGroupArn is not empty and $.X.cloudWatchLogsLogGroupArn exists) and $.X.isMultiRegionTrail is false and ($.Y.status.latestCloudWatchLogsDeliveryTime exists))'; show X;",
+  "recommendation": "1. Sign into AWS and navigate to CloudTrail service.\n2. Click on Trail in the left menu navigation and choose the reported cloudtrail.\n3. Go to CloudWatch Logs section and click Configure.\n4. Define a new or select an existing log group and click Continue to complete the process.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

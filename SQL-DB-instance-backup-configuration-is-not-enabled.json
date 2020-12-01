@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-GCP-SQL-85",
+  "policyId": "a6935f1a-6c88-4327-87a5-75fd60ce9673",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "SQL DB instance backup configuration is not enabled",
+  "description": "Checks to verify that the configuration for automated backups is enabled.\n        Restoring from a backup reverts your instance to its state at the backup's creation time. Enabling automated backups creates backup during the scheduled backup window.",
+  "rule.criteria": "fdf37d02-781f-4893-bec5-d689f6f99a31",
+  "searchModel.query": "config from cloud.resource where api.name='gcloud-sql-instances-list' AND json.rule='$.settings.backupConfiguration.enabled is false'",
+  "recommendation": "1. Login to GCP Console and from Storage, select SQL.\n        2. Select the identified SQL instance.\n        3. For the PostgreSQL, click on 'BACKUPS' tab.\n        3.a. Click on 'Managed automated backups', enable the option 'Automate backups' and choose a backup window and Save.\n        4. For MySQL, click on 'BACKUPS' tab.\n        4.a. Click on 'Managed automated backups', enable the option 'Automate backups' and choose a backup window and Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA"
+  ]
+}

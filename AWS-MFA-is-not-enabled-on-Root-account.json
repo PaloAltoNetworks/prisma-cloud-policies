@@ -1,0 +1,33 @@
+{
+  "policyUpi": "PC-AWS-IAM-8",
+  "policyId": "478434a1-ff6c-492e-b411-c427c06291d9",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS MFA is not enabled on Root account",
+  "description": "This policy identifies root account which has MFA enabled. Root accounts have privileged access to all AWS services. Without MFA, if the root credentials are compromised, unauthorized users will get full access to your account.\n\nNOTE: This policy does not apply to AWS GovCloud Accounts. As you cannot enable an MFA device for AWS GovCloud (US) account root user. For more details refer: https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-console.html",
+  "rule.criteria": "478434a1-ff6c-492e-b411-c427c06291d9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND cloud.service = 'IAM' AND api.name = 'aws-iam-get-credential-report' AND json.rule = 'user equals \"<root_account>\" and mfa_active is false and arn does not contain gov:'",
+  "recommendation": "1. Sign in to the 'AWS Console' using Root credentials.\n2. Navigate to the 'IAM' service.\n3. On the dashboard, click on 'Activate MFA on your root account', click on 'Manage MFA' and follow the steps to configure MFA for the root account.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

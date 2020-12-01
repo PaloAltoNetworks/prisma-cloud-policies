@@ -1,0 +1,32 @@
+{
+  "policyUpi": "PC-AWS-VPC-27",
+  "policyId": "2dbda57f-33d4-459a-97ae-dec7e81f9ec4",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Security groups allow internet traffic",
+  "description": "This policy identifies that Security Groups do not allow all traffic from internet. A Security Group acts as a virtual firewall that controls the traffic for one or more instances. Security groups should have restrictive ACLs to only allow incoming traffic from specific IPs to specific ports where the application is listening for connections.",
+  "rule.criteria": "a7b83eef-04ca-471f-878b-57200a8afaa5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-security-groups' AND json.rule = '(ipPermissions[*].ipRanges[*] contains 0.0.0.0/0 or ipPermissions[*].ipv6Ranges[*].cidrIpv6 contains ::/0) and isShared is false'",
+  "recommendation": "If the Security Groups reported indeed need to restrict all traffic, follow the instructions below:\n1. Log in to the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to the 'VPC' service\n4. Click on the 'Security Group' specific to the alert\n5. Click on 'Inbound Rules' and remove the row with the ip value as 0.0.0.0/0 or ::/0",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws --region ${region} ec2 revoke-security-group-ingress --group-id ${resourceId} --ip-permissions '[{\"IpProtocol\": \"${protocol}\", \"FromPort\": ${fromPort}, \"ToPort\": ${toPort}, \"Ip${ipV4/6}Ranges\":[{\"CidrIp${ipV4/6}\":\"${cidr}\"}]}]'",
+  "remediation.description": "\"This CLI command requires 'ec2:RevokeSecurityGroupIngress' permission. Successful execution will update the security group to revoke the ingress rule records open to internet either on IPv4 or on IPv6 protocol.\"}",
+  "remediation.impact": "reject all traffic from internet",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AWS-CT-50",
+  "policyId": "0d07ac51-fbfe-44fe-8edb-3314c9995ee0",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "CloudTrail trail is not integrated with CloudWatch Log",
+  "description": "Enabling the CloudTrail trail logs integrated with CloudWatch Logs will enable the real-time as well as historic activity logging. This will further effective monitoring and alarm capability.",
+  "rule.criteria": "0d07ac51-fbfe-44fe-8edb-3314c9995ee0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudtrail-describe-trails' AND json.rule = 'cloudWatchLogsRoleArn equals null or cloudWatchLogsRoleArn does not exist'",
+  "recommendation": "1. Login to the AWS Admin Console and access the CloudTrail service.\n2. Click on the Trails in the left hand menu.\n3. Click on the identified CloudTrail and navigate to the 'CloudWatch Logs' section.\n4. Click on 'Configure' tab and provide required\n5. Provide a log group name in field 'New or existing log group'\n6. Click on 'Continue'\n7. In the next page from 'IAM role' dropdown select an IAM role with required access or select the 'Create a new IAM role'\n8. Click on 'Allow'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

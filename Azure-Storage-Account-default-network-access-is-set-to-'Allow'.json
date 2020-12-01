@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-STO-404",
+  "policyId": "991aca47-286f-45be-8737-ff9c069beab6",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage Account default network access is set to 'Allow'",
+  "description": "Restricting default network access helps to provide a new layer of security, since storage accounts accept connections from clients on any network. To limit access to selected networks, the default action must be changed.",
+  "rule.criteria": "0c8ba0ca-2414-4d62-897c-4b57a291ae2b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = 'networkRuleSet.defaultAction equals Allow'",
+  "recommendation": "Azure Portal\n\n1. Go to Storage Accounts\n2. Choose relevant Account\n3. Under the Settings menu, click Firewalls and virtual networks\n4. Set Allow access from to 'Selected networks'\n",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az storage account update --name ${resourceName} --resource-group ${resourceGroup} --default-action Deny",
+  "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will disable default network access rule for Storage Accounts.'.",
+  "remediation.impact": "disables default-action in Azure Storage Account network access",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

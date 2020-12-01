@@ -1,0 +1,30 @@
+{
+  "policyUpi": "PC-AWS-RED-44",
+  "policyId": "7446ad28-8502-4d71-b334-18cef8d85a2b",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Redshift does not have require_ssl configured",
+  "description": "This policy identifies Redshift databases in which data connection to and from is occurring on an insecure channel. SSL connections ensures the security of the data in transit.",
+  "rule.criteria": "7446ad28-8502-4d71-b334-18cef8d85a2b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-redshift-describe-clusters' AND json.rule = \"clusterGroupsDetails[*].parameters[?(@.parameterName=='require_ssl')].parameterValue is false\"",
+  "recommendation": "1. Login to the AWS and navigate to the 'Amazon Redshift' service.\n2. Expand the identified 'Redshift' cluster and make a note of the 'Cluster Parameter Group'\n3. In the navigation panel, click on the 'Parameter group'.\n4. Select the identified 'Parameter Group' and click on 'Edit Parameters'.\n5. Review the require_ssl flag. Update the parameter 'require_ssl' to true and save it.\nNote: If the current parameter group is a Default parameter group, it cannot be edited. You will need to create a new parameter group and point it to an affected cluster.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

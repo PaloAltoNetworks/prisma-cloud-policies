@@ -1,0 +1,30 @@
+{
+  "policyUpi": "PC-AWS-ELB-39",
+  "policyId": "836a7c8c-34c2-4861-be1e-df2f8cd27aab",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic Load Balancer with listener TLS/SSL is not configured",
+  "description": "This policy identifies AWS Elastic Load Balancers which have non-secure listeners. As Load Balancers will be handling all incoming requests and routing the traffic accordingly. The listeners on the load balancers should always receive traffic over secure channel with a valid SSL certificate configured.",
+  "rule.criteria": "836a7c8c-34c2-4861-be1e-df2f8cd27aab",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elb-describe-load-balancers' AND json.rule = '((description.listenerDescriptions[*].listener.protocol equals HTTPS or description.listenerDescriptions[*].listener.protocol equals SSL) and (description.listenerDescriptions[*].listener.sslcertificateId is empty or description.listenerDescriptions[*].listener.sslcertificateId does not exist)) or description.listenerDescriptions[*].listener.protocol equals HTTP or description.listenerDescriptions[*].listener.protocol equals TCP'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EC2 dashboard\n4. Click on 'Load Balancers' (Left Panel)\n5. Select the reported ELB\n6. On the Listeners tab, Click the 'Edit' button under the available listeners\n7. In the Load Balancer Protocol, Select 'HTTPS (Secure HTTP)' or 'SSL (Secure TCP)'\n8. In the SSL Certificate column, click 'Change'\n9. On 'Select Certificate' popup dialog, Choose a certificate from ACM or IAM or upload a new certificate based on requirement and Click on 'Save'\n10. Back to the 'Edit listeners' dialog box, review the secure listeners configuration, then click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

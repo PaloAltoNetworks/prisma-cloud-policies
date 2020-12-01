@@ -1,0 +1,28 @@
+{
+  "policyUpi": "PC-AWS-IAM-28",
+  "policyId": "d4524070-4c2d-4316-bf67-3716d5667102",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Elasticsearch IAM policy overly permissive to all traffic",
+  "description": "This policy identifies Elasticsearch IAM policies that are overly permissive to all traffic. Amazon Elasticsearch service makes it easy to deploy and manage Elasticsearch. Customers can create a domain where the service is accessible. The domain should be granted access restrictions so that only authorized users and applications have access to the service.",
+  "rule.criteria": "27427cb4-e9c0-4a07-a5b1-5be46c956f81",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any((Condition.IpAddress.aws:SourceIp contains 0.0.0.0/0 or Condition.IpAddress.aws:SourceIp contains ::/0) and Effect equals Allow and Action anyStartWith es:)] exists",
+  "recommendation": "1. Log in to AWS console\n2. Goto the IAM Services\n3. Click on 'Policies' in the left-hand panel\n4. Search for the Policy for which the Alert is generated and click on it\n5. Under the Permissions tab, click on Edit policy\n6. Under the Visual editor, for each of the 'Elasticsearch Service', click to expand and perform following.\n6.a. Click to expand 'Request conditions'\n6.b. Under the 'Source IP', remove the row with the entry '0.0.0.0/0' or '::/0'. Add condition with restrictive IP ranges.\n7. Click on Review policy and Save changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "SOC 2"
+  ]
+}

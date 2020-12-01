@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-AGW-329",
+  "policyId": "927d2db7-ae6f-4122-bc61-cdbc14c71d7d",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Application Gateway does not have the Web application firewall (WAF) enabled",
+  "description": "This policy identifies Azure Application Gateways that do not have Web application firewall (WAF) enabled. As a best practice, enable WAF to manage and protect your web applications behind the Application Gateway from common exploits and vulnerabilities.",
+  "rule.criteria": "de2a7533-42ca-4ba6-b7cc-bd39f98ee1cd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-application-gateway' AND json.rule =  ['properties.webApplicationFirewallConfiguration'] does not exist or ['properties.webApplicationFirewallConfiguration'].enabled is false",
+  "recommendation": "1. Log in to the Azure portal.\n2. Select 'Application gateways', and select the application gateway you need to modify.\n3. Select 'Web Application Firewall'.\n4. Change the 'Tier' to 'WAF'.\n5. 'Save' your changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

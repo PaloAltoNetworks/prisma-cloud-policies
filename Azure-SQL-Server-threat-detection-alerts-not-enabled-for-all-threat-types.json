@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-SQL-333",
+  "policyId": "d265abb4-03b6-44fd-826f-1b769617077f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure SQL Server threat detection alerts not enabled for all threat types",
+  "description": "Advanced data security (ADS) provides a set of advanced SQL security capabilities, including vulnerability assessment, threat detection, and data discovery and classification.\n\nThis policy identifies Azure SQL servers that have disabled the detection of one or more threat types. To protect your SQL Servers, as a best practice, enable ADS detection for all types of threats.",
+  "rule.criteria": "bf4765f7-8820-451f-8dc7-64e3794c3f7d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule =  $.serverSecurityAlertPolicy.properties.state equals Enabled and $.serverSecurityAlertPolicy.properties.disabledAlerts[*] is not empty",
+  "recommendation": "1. Log in to the Azure portal.\n2. Select 'SQL servers', and select the SQL server you need to modify.\n3. Select 'Advanced Data Security'.\n4. Ensure that 'Advanced Data Security' status is 'ON'.\n5. Select 'Threat Detection Types', and check the 'All' checkbox.\n6. Select 'OK', and 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

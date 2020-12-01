@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-CMP-324",
+  "policyId": "bfb072a7-f602-47ad-89ac-a3eb61d3427e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure VM OS disk is encrypted with the default encryption key instead of ADE/CMK",
+  "description": "This policy identifies the OS disks which are encrypted with the default encryption key instead of ADE/CMK. Azure encrypts OS disks by default Server-Side Encryption (SSE) with platform-managed keys [SSE with PMK]. It is recommended to use either SSE with Azure Disk Encryption [SSE with PMK+ADE] or Customer Managed Key [SSE with CMK] which improves on platform-managed keys by giving you control of the encryption keys to meet your compliance need.",
+  "rule.criteria": "c151fa4a-419f-4366-b165-b60d0e96a424",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-disk-list' and json.rule = 'osType exists and (encryptionSettings does not exist or encryptionSettings.enabled == false) and encryption.type does not equal EncryptionAtRestWithCustomerKey'",
+  "recommendation": "To enable SSE with Azure Disk Encryption [SSE with PMK+ADE],\nFollow https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption-prerequisites based VM the data disk is assigned.\n\nTo enable SSE with Customer Managed Key [SSE with CMK],\nFollow https://docs.microsoft.com/en-us/azure/virtual-machines/disks-enable-customer-managed-keys-portal",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

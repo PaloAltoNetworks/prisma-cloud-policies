@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-GCP-GKE-367",
+  "policyId": "dd7a6aaf-e5bb-4a24-a187-37f4d9686feb",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Kubernetes Engine Clusters not configured with network traffic egress metering",
+  "description": "This policy identifies Kubernetes Engine Clusters which are not configured with network traffic egress metering. When network traffic egress metering enabled, deployed DaemonSet pod meters network egress traffic by collecting data from the conntrack table, and exports the metered metrics to the specified destination. It is recommended to use, network egress metering so that you will be having data and track over monitored network traffic.\n\nNOTE: Measuring network egress requires a network metering agent (NMA) running on each node. The NMA runs as a privileged pod, consumes some resources on the node (CPU, memory, and disk space), and enables the nf_conntrack_acct sysctl flag on the kernel (for connection tracking flow accounting). If you are comfortable with these caveats, you can enable network egress tracking for use with GKE usage metering.",
+  "rule.criteria": "76a3fc59-1e56-4212-8e4f-bbbd86814548",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  'resourceUsageExportConfig.enableNetworkEgressMetering does not exist or resourceUsageExportConfig.enableNetworkEgressMetering is false'",
+  "recommendation": "You cannot currently enable usage metering using the Google Cloud Platform Console.\n1. To use usage metering for clusters in your Google Cloud Platform project, you first create the BigQuery dataset, and then configure clusters to use it.\n2. To enable usage metering on an existing cluster, run the following command. Substitute the name of your cluster where you see test-cluster and substitute the name of your BigQuery dataset where you see test_usage_metering_dataset:\ngcloud beta container clusters update <CLUSTER_NAME> --resource-usage-bigquery-dataset <BIGQUERY_DATASET_NAME --enable-network-egress-metering",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "PIPEDA"
+  ]
+}

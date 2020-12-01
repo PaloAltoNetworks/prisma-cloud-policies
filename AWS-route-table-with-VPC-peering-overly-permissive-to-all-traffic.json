@@ -1,0 +1,26 @@
+{
+  "policyUpi": "PC-AWS-VPC-418",
+  "policyId": "8d403b9b-794b-4516-84fa-e9415155fb27",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS route table with VPC peering overly permissive to all traffic",
+  "description": "This policy identifies VPC route tables with VPC peering connection  which are overly permissive to all traffic. Being highly selective in peering routing tables is a very effective way of minimizing the impact of breach as resources outside of these routes are inaccessible to the peered VPC.",
+  "rule.criteria": "307c7a74-7fed-4087-b0b0-2215d690267b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-route-tables' AND json.rule = \"routes[*].vpcPeeringConnectionId exists and routes[?(@.destinationCidrBlock=='0.0.0.0/0' || @.destinationIpv6CidrBlock == '::/0')].vpcPeeringConnectionId starts with pcx\"",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'VPC' dashboard from 'Services' dropdown\n4. From left menu, select 'Route Tables'\n5. Click on the alerted route table\n6. From top click on 'Action' button\n7. From the Action menu dropdown, select 'Edit routes'\n8. From the list of destination remove the extra permissive destination by clicking the cross symbol available for that destination\n9. Add a destination with 'least access'\n10. Click on 'Save Routes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

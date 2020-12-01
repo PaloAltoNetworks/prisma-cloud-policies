@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AWS-KMS-241",
+  "policyId": "4779ab55-2f4b-48cf-b4a9-828165a73f77",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS KMS Key scheduled for deletion",
+  "description": "This policy identifies KMS Keys which are scheduled for deletion. Deleting keys in AWS KMS is destructive and potentially dangerous. It deletes the key material and all metadata associated with it and is irreversible. After a key is deleted, you can no longer decrypt the data that was encrypted under that key, which means that data becomes unrecoverable. You should delete a key only when you are sure that you don't need to use it anymore. If you are not sure, It is recommended that to disable the key instead of deleting it.",
+  "rule.criteria": "bbb3d3f9-3caa-47ef-8ac0-d40e7f891312",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-kms-get-key-rotation-status' AND json.rule = 'keyMetadata.keyState contains PendingDeletion'",
+  "recommendation": "You should delete a KMS key only when you are sure that you don't need to use it anymore. To fix this alert, If you sure you no longer need a reported KMS key; dismiss the alert. If you are not sure, consider disabling the KMS key instead of deleting it.\n\nTo enable KMS CMKs which are scheduled for deletion, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Key Management Service (KMS)\n4. Click on 'Customer managed keys' (Left Panel)\n5. Select reported KMS Customer managed key\n6. Click on 'Key actions' dropdown\n7. Click on 'Cancel key deletion'\n8. Click on 'Enable'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

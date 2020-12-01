@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-GCP-GKE-149",
+  "policyId": "e41fea47-678f-4aeb-97a8-bdf721d08e57",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Kubernetes Engine Clusters not using Container-Optimized OS for Node image",
+  "description": "This policy identifies Kubernetes Engine Clusters which do not have a container-optimized operating system for node image. Container-Optimized OS is an operating system image for your Compute Engine VMs that is optimized for running Docker containers. By using Container-Optimized OS for node image, you can bring up your Docker containers on Google Cloud Platform quickly, efficiently, and securely. The Container-Optimized OS node image is based on a recent version of the Linux kernel and is optimized to enhance node security. It is also regularly updated with features, security fixes, and patches. The Container-Optimized OS image provides better support, security, and stability than other images.",
+  "rule.criteria": "84aedafc-aec4-4e7d-a604-a0a0ea1fd3ca",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = 'nodeConfig.imageType does not exist or nodeConfig.imageType does not start with COS'",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters\n4. From the list of clusters, choose the reported cluster\n5. Under Node Pools, For Node image click on 'Change'\n6. Choose 'Container-Optimized OS (cos)' \n7. Click on Change",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GKE)",
+    "MITRE ATT&CK [Beta]",
+    "PCI DSS v3.2"
+  ]
+}

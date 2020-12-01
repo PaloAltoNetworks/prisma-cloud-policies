@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-API-543",
+  "policyId": "fccd881f-26d1-485d-a742-3602afe72035",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS API gateway request parameter is not validated",
+  "description": "This policy identifies the AWS API gateways for with the request parameters are not validated. It is recommended to validate the request parameters in the URI, query string, and headers of an incoming request to focus on the validation efforts specific to your application.\n",
+  "rule.criteria": "382a9838-eb65-4d34-a4ad-3f0fd0d795ab",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-apigateway-method' AND json.rule = requestValidatorId does not exist ",
+  "recommendation": "1. Login to AWS management console\n2. Navigate to 'API Gateway' service\n3. Select the region for which the API gateway is reported.\n4. Find the alerted API by the API gateway ID which is the first part of reported resource and click on it\n5. Navigate to the reported method\n6. Click on the clickable link of 'Method Request'\n7. Under section ‘Settings' ,click on the pencil symbol for 'Request Validator' field\n8. From the dropdown, Select the type of Request Validator as per the requirement\n9. Click on the tick symbol next to it to save the changes\n",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

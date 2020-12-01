@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALB-ECS-469",
+  "policyId": "c4e86238-2b53-468d-a10c-6a30a0db069f",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "high",
+  "name": "Alibaba Cloud Security group allow internet traffic to Oracle DB port (1521)",
+  "description": "This policy identifies Security groups that allow inbound traffic on Oracle DB port (1521) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
+  "rule.criteria": "f83a3b54-8a1f-476a-8bb1-870aa9fd86a3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ecs-security-group' AND json.rule = \"permissions is not empty and permissions[?(@.policy=='Accept' && @.direction=='ingress' && @.sourceCidrIp=='0.0.0.0/0')].portRange contains _Port.inRange(1521,1521)\"",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, choose Network & Security > Security Groups\n4. Select the reported security group and then click Add Rules in the Actions column\n5. In Inbound tab, Select the rule with 'Action' as Allow, 'Authorization Object' as 0.0.0.0/0 and 'Port Range' value as 1521, Click Modify in the Actions column\n6. Replace the value 0.0.0.0/0 with specific IP address range\n7. Click on 'OK'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

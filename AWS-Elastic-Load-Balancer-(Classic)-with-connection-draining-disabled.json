@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-267",
+  "policyId": "7eb7f61e-df59-42d4-8236-7d012f278fa6",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic Load Balancer (Classic) with connection draining disabled",
+  "description": "This policy identifies Classic Elastic Load Balancers which have connection draining disabled. Connection Draining feature ensures that a Classic load balancer stops sending requests to instances that are de-registering or unhealthy, while keeping the existing connections open. This enables the load balancer to complete in-flight requests made to instances that are de-registering or unhealthy.",
+  "rule.criteria": "cb2775f3-36e4-44c1-a1a9-7d24fdf95c31",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elb-describe-load-balancers' AND json.rule = 'attributes.connectionDraining.enabled is false'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EC2 dashboard\n4. Click on 'Load Balancers' (Left Panel)\n5. Select the reported ELB\n6. On the Instances tab, for 'Connection Draining', choose '(Edit)'\n7. On the 'Configure Connection Draining' popup dialog, select 'Enable Connection Draining'\n8. (Optional) For Timeout, type a value between 1 and 3,600 seconds\nNOTE: When you enable connection draining, you can specify a maximum time for the load balancer to keep connections alive before reporting the instance as de-registered. The maximum timeout value can be set between 1 and 3,600 seconds (the default is 300 seconds).\n9. Click on 'Save'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws elb modify-load-balancer-attributes --load-balancer-name ${resourceName} --region ${region} --load-balancer-attributes \"{\\\"ConnectionDraining\\\":{\\\"Enabled\\\":true,\\\"Timeout\\\":300}}\"",
+  "remediation.description": "This CLI command requires 'elasticloadbalancing:ModifyLoadBalancerAttributes' permission. Successful execution will enable connection draining for the respective ELB.",
+  "remediation.impact": "Enable connection draining for the respective ELB",
+  "compliance.standard": ""
+}

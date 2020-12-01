@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AWS-ECS-399",
+  "policyId": "0ad8c26b-f3b5-4917-b9a4-057f6c2ddebc",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS ECS/ Fargate task definition root user found",
+  "description": "The user name to use inside the container should not be root. This policy generates an alert if root user is found in your container definition.\n\nThe User parameter maps to User in the Create a container section of the Docker Remote API and the --user option to docker run\n\nNote: This parameter is not supported for Windows containers.",
+  "rule.criteria": "797d24e3-edc7-4452-8579-cd5fa9a6463d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-describe-task-definition' AND json.rule =  containerDefinitions[*].user exists and containerDefinitions[*].user contains root",
+  "recommendation": "Create a task definition revision.\n\n1. Open the Amazon ECS console.\n2. From the navigation bar, choose the region that contains your task definition.\n3. In the navigation pane, choose Task Definitions.\n4. On the Task Definitions page, select the box to the left of the task definition to revise and choose Create new revision.\n5. On the Create new revision of Task Definition page, change the existing Container Definitions.\n6. Under Security, remove root from the User field.\n7. Verify the information and choose Update, then Create.\n8. If your task definition is used in a service, update your service with the updated task definition.\n9. Deactivate previous task definition",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

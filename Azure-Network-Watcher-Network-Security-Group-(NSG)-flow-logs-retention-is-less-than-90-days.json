@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AZR-NWK-304",
+  "policyId": "09fcb4f7-59f3-4101-a717-d4f5a5235067",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Network Watcher Network Security Group (NSG) flow logs retention is less than 90 days",
+  "description": "This policy identifies Azure Network Security Groups (NSG) for which flow logs retention period is 90 days or less. To perform this check, enable this action on the Azure Service Principal: 'Microsoft.Network/networkWatchers/queryFlowLogStatus/action'.\n\nNSG flow logs, a feature of the Network Watcher app, enable you to view information about ingress and egress IP traffic through an NSG. The flow logs include information such as:\n- Outbound and inbound flows on a per-rule basis.\n- Network interface to which the flow applies.\n- 5-tuple information about the flow (source/destination IP, source/destination port, protocol).\n- Whether the traffic was allowed or denied.\n\nAs a best practice, enable NSG flow logs and set the log retention period to at least 90 days.",
+  "rule.criteria": "7c0570f7-d467-4652-b699-9189d5fe86a3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-nsg-list' AND json.rule =  ' $.flowLogsSettings does not exist or  $.flowLogsSettings.enabled is false or  ($.flowLogsSettings.retentionPolicy.days does not equal 0 and $.flowLogsSettings.retentionPolicy.days less than 90) '",
+  "recommendation": "To enable Flow Logs:\n\n1. Log in to the Azure portal.\n2. Select 'Network Watcher'.\n3. Select 'NSG flow logs'.\n4. Select the NSG for which you need to modify the flow log settings.\n5. Set the Flow logs 'Status' to 'On'.\n6. Select the destination 'Storage account'.\n7. Set the 'Retention (days)' to 90 days or greater.\n8. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

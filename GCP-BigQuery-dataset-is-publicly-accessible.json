@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-BGQ-544",
+  "policyId": "181a00f7-9ca4-45a7-9e2a-b8ebd12223ff",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP BigQuery dataset is publicly accessible",
+  "description": "This policy identifies BigQuery datasets that are anonymously or publicly accessible. Granting permissions to allUsers or allAuthenticatedUsers allows anyone to access the dataset. Such access might not be desirable if sensitive data is being stored in the dataset. So it is recommended to not allow anonymous and/or public access to BigQuery datasets.",
+  "rule.criteria": "c347d096-1c4b-4605-8eea-cbf1343ce6c7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-bigquery-dataset-list' AND json.rule = \"acl[?(@.entity.iamMember=='allUsers' || @.entity.identifier=='allAuthenticatedUsers')] exists\"",
+  "recommendation": "1. Log in to GCP console\n2. Navigate BigQuery page\n3. Under the 'Resources' section, Find and click on the reported BigQuery dataset\n4. Click 'SHARE DATASET' near the right side of the window\n5. Review each attached role, Click the delete icon for each member 'allUsers' or 'allAuthenticatedUsers', On the popup click on 'Remove'.\n6. Click on 'Done'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALL-ALL-57",
+  "policyId": "eb63f3df-a523-4aec-aba8-33e79104d9ca",
+  "policyType": "audit_event",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "Sensitive network configuration updates in AWS",
+  "description": "Detects sensitive network configuration updates such as modification of VPC configurations and security groups. Changing network configuration in the cloud environment may leave cloud workloads in a vulnerable state and it's important that security teams have visibility into and get alerted when sensitive network operations are performed. ",
+  "rule.criteria": "0af2d7e1-47d7-4539-bc1a-30d6b1b62fae",
+  "searchModel.query": "event from cloud.audit_logs where operation IN ('AuthorizeSecurityGroupEgress', 'AuthorizeSecurityGroupIngress', 'CreateVpc', 'DeleteFlowLogs', 'DeleteVpc', 'ModifyVpcAttribute', 'RevokeSecurityGroupIngress')",
+  "recommendation": "1. Login to AWS Console and make sure that the user indeed had the permissions to make the changes to the configuration that were reported.\n          2. Make sure that the configuration changes does not put the cloud resources in a vulnerable state.\n          2. If the user was not suppose to perform the reported changes, make sure that the IAM policy is modified such that the only user has minimal permissions to perform normal job function. ",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "HIPAA",
+    "NIST CSF",
+    "SOC 2"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AWS-VPC-232",
+  "policyId": "89cbc2f1-fcb0-48b9-be71-4cbe2d18a5f7",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Security Groups allow internet traffic from internet to VNC Server port (5900)",
+  "description": "This policy identifies the security groups which are exposing VNC Server port (5900) to the internet. It is recommended that Global permission to access the well known services VNC Server port (5900) should not be allowed in a security group.",
+  "rule.criteria": "bba4e627-6d5d-4214-982e-6ed4d8ac8739",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name='aws-ec2-describe-security-groups' AND json.rule = (((ipPermissions[?(@.toPort > 5900 && @.fromPort < 5900)].ipRanges[*] contains 0.0.0.0/0) or (ipPermissions[?(@.toPort == 5900 || @.fromPort == 5900)].ipRanges[*] contains 0.0.0.0/0)) or ((ipPermissions[?(@.toPort > 5900 && @.fromPort < 5900)].ipv6Ranges[*].cidrIpv6 contains ::/0) or (ipPermissions[?(@.toPort == 5900 || @.fromPort == 5900)].ipv6Ranges[*].cidrIpv6 contains ::/0))) and isShared is false",
+  "recommendation": "If the Security Groups reported indeed need to restrict all traffic, follow the instructions below:\n\n1. Login to the AWS Console and navigate to the 'VPC' service\n2. Select the 'Security Group' reported in the alert. Click on the 'Inbound Rule'\n3. Remove the rule which has 'Source' value as 0.0.0.0/0 or ::/0 and 'Port Range' value as 5900 (or range containing 5900)",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

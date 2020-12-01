@@ -1,0 +1,30 @@
+{
+  "policyUpi": "PC-AWS-RDS-62",
+  "policyId": "5956e19e-eb8a-e0ba-68ec-a2ce2da26029",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS Snapshot with access for unmonitored cloud accounts",
+  "description": "This policy identifies RDS snapshots with access for unmonitored cloud accounts. The RDS Snapshot which have either the read / write permission opened up for Cloud Accounts which are NOT part of Cloud Accounts monitored by Prisma Cloud. These accounts with read / write privileges should be reviewed and confirmed that these are valid accounts of your organisation (or authorised by your organisation) and are not active under Prisma Cloud monitoring.",
+  "rule.criteria": "5956e19e-eb8a-e0ba-68ec-a2ce2da26029",
+  "searchModel.query": "config from cloud.resource where cloud.type ='aws' and api.name = 'aws-rds-describe-db-snapshots' AND json.rule = \"attributes[?(@.attributeName=='restore')].attributeValues[*] size != 0 and _AWSCloudAccount.isRedLockMonitored(attributes[?(@.attributeName=='restore')].attributeValues) is false\"",
+  "recommendation": "1. Sign into the AWS console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to the RDS service.\n4. Select the identified 'RDS Snapshot' under the 'Snapshots' in the left hand menu.\n5. Under the tab 'Snapshot Actions', selection the option 'Share Snapshot'.\n6. Review and delete the AWS Accounts which should not have read access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

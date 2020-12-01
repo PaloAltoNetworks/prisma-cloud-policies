@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AWS-CFR-257",
+  "policyId": "366ac171-3066-46d3-a32f-df80b0a9fe56",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS CloudFront origin protocol policy does not enforce HTTPS-only",
+  "description": "It is a best security practice to enforce HTTPS-only traffic between a CloudFront distribution and the origin. This policy scans for any deviations from this practice and returns the results.",
+  "rule.criteria": "701c180d-c57a-4cc0-bf1b-93d7c5c1a488",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = (origins.items[*] contains \"customOriginConfig\") and (origins.items[?(@.customOriginConfig.originProtocolPolicy)] does not contain \"https-only\")",
+  "recommendation": "Communication between CloudFront and your Custom Origin should enforce HTTPS-only traffic. Modify the CloudFront Origin's Origin Protocol Policy to HTTPS only.\n\n1. Go to the AWS console CloudFront dashboard.\n2. Select your distribution Id.\n3. Select the 'Origins' tab.\n4. Check the origin you want to modify then select Edit.\n5. Change the Origin Protocol Policy to 'https-only.'\n6. Select 'Yes, Edit.'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

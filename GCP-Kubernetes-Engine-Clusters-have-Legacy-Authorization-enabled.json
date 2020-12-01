@@ -1,0 +1,27 @@
+{
+  "policyUpi": "PC-GCP-GKE-148",
+  "policyId": "f57baa2a-6039-4a17-94e8-0be723bcdc75",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes Engine Clusters have Legacy Authorization enabled",
+  "description": "This policy identifies GCP Kubernetes Engine Clusters which have enabled legacy authorizer. The legacy authorizer in Kubernetes Engine grants broad and statically defined permissions to all cluster users. After legacy authorizer setting is disabled, RBAC can limit permissions for authorized users based on need.",
+  "rule.criteria": "9c835b12-e60a-4590-9e5e-5dd959774d71",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = 'legacyAbac.enabled equals true'",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters \n4. From the list of clusters, choose the reported cluster\n5. Click on EDIT button\n6. Set 'Legacy Authorization' to Disabled\n7. Click on Save",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gcloud container clusters update ${resourceName} --project=${account} --zone ${region} --no-enable-legacy-authorization",
+  "remediation.description": "This CLI command requires 'container.clusters.update' permission. Successful execution will disable Legacy Authorization for GCP Kubernetes Engine cluster which helps RBAC to limit permissions for authorized users based on need.",
+  "remediation.impact": "disables Legacy Authorization in GCP Kubernetes Engine cluster",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GKE)",
+    "HIPAA",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev4",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}
