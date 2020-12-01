@@ -7,7 +7,7 @@
   "name": "GCP Kubernetes Engine Clusters have HTTP load balancing disabled",
   "description": "This policy identifies GCP Kubernetes Engine Clusters which have disabled HTTP load balancing. HTTP/HTTPS load balancing provides global load balancing for HTTP/HTTPS requests destined for your instances. Enabling HTTP/HTTPS load balancers will let the Kubernetes Engine to terminate unauthorized HTTP/HTTPS requests and make better context-aware load balancing decisions.",
   "rule.criteria": "f8e1f689-f27a-4df6-b2d8-a9a833bfe848",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = 'addonsConfig.httpLoadBalancing.disabled equals true or addonsConfig.httpLoadBalancing does not exist'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = 'addonsConfig.httpLoadBalancing.disabled equals true'",
   "recommendation": "1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters\n4. From the list of clusters, choose the reported cluster\n5. Click on EDIT button\n6. Set 'HTTP load balancing' to Enabled\n7. Click on Save",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
