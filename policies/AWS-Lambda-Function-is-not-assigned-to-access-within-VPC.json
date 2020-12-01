@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AWS-LMB-377",
+  "policyId": "af1a6f84-e6bd-4ccc-b682-c54838efe839",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda Function is not assigned to access within VPC",
+  "description": "This policy identifies the AWS Lambda functions which do not have access within the VPC. Amazon Lambda functions should have access to VPC-only resources such as AWS Redshift data warehouses, AWS ElastiCache clusters, AWS RDS database instances, and service endpoints that should be only accessible from within a particular Virtual Private Cloud (VPC).",
+  "rule.criteria": "a177ebde-fba1-40b4-ae1e-c2c3374ff4bd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-lambda-list-functions' AND json.rule =  'vpcConfig does not exist or vpcConfig.vpcId is empty'",
+  "recommendation": "1. Sign in to the AWS Console\n2. Go to Lambda\n3. In the navigation pane, select 'Functions'\n4. Choose the reported Lambda function\n5. Click on 'Actions' and select 'View details'\n6. Under 'Network', select the VPC that you want to assign\n7. Assign 2 Subnets and 1 Security group\n8. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-374",
+  "policyId": "eb4dbd09-817c-4ae5-909b-6ac3f488a341",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster not in redundant zones",
+  "description": "Putting resources in different zones in a region provides isolation from many types of infrastructure, hardware, and software failures.\n\nThis policy alerts if your cluster is not located in at least 3 zones.",
+  "rule.criteria": "59408f49-0555-4c87-a582-88aec0e310d4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  zone exists and locations[*] size less than 3",
+  "recommendation": "Add zones to your zonal cluster.\n\n1. Visit the Google Kubernetes Engine menu in GCP Console.\n2. Click the cluster's Edit button, which looks like a pencil.\n3. From the Additional zones section, select the desired zones.\n4. Click Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

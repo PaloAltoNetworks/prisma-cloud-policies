@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALL-ALL-129",
+  "policyId": "7abb5fbc-228b-4419-bf44-3d754c203268",
+  "policyType": "network",
+  "cloudType": "all",
+  "severity": "medium",
+  "name": "RedisWannaMine vulnerable instances with active network traffic",
+  "description": "RedisWannaMine is cryptojacking attack which aims at both database servers and application servers via remote code execution, exploiting an Apache Struts vulnerability. To inject cryptocurrency mining malware, RedWannaMine uses a transmission control protocol (TCP) scanner to check open port 445 of SMB and scans vulnerable Redis server database over port 6379(tcp), so that it can use EternalBlue to spread further.",
+  "rule.criteria": "8374d874-2dfc-4f84-8d1f-66b49a149e8d",
+  "searchModel.query": "network from vpc.flow_record where dest.resource IN ( resource where hostfinding.type IN ( 'Host Vulnerability' ) AND hostfinding.name IN ( 'CVE-2017-12629', 'CVE-2017-9805' ) )and bytes > 0",
+  "recommendation": "1. Login to your cloud environment\n2. Configure the firewall/security group rules for the default Redis server port 6379\n3. Ensure that Redis server instances are not running with vulnerable SMB version (SMB v1) and make sure SMB Port 445 is not open for public access without proper authorisation, unless it's required.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "PIPEDA"
+  ]
+}

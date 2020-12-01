@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-S3-224",
+  "policyId": "98340798-8e9f-4b4e-8c34-b001307fda3a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS S3 Bucket has Global PUT Permissions enabled via bucket policy",
+  "description": " This policy identifies the S3 Bucket(s) which will allow any unauthenticated user to PUT objects into a bucket. These permissions permit anyone, malicious or not, to PUT objects into your S3 bucket if they can guess the namespace. Since the S3 service does not protect the namespace other than with ACLs and Bucket Policy, you risk compromise of critical data by leaving this open.",
+  "rule.criteria": "ea9c1e04-56a1-488a-998d-963168bca1ee",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action contains s3:* or policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action contains s3:Put or policy.Statement[?(@.Action=='*' && @.Effect=='Allow')].Principal.AWS equals * or policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Action equals * or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Action contains s3:* or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Action contains s3:Put\"",
+  "recommendation": "1.Log into your AWS console and select the S3 service.\n2.Choose the reported bucket.\n3.Click Properties in the upper right of the window and expand the 'Permissions' object.\n4.Select 'Edit Bucket Policy' and consider defining what explicit 'Principal' should have the ability to PUT objects in your S3 bucket. You may also want to specifically limit the 'Principal' ability to perform specific PUT functions, without the wild card.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

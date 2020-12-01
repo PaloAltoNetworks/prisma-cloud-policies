@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-RDS-403",
+  "policyId": "dae26f3c-d05a-4499-bdcd-fc5c32e3891f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS DB cluster encryption is disabled",
+  "description": "This policy identifies RDS DB clusters for which encryption is disabled. Amazon Aurora encrypted DB clusters provide an additional layer of data protection by securing your data from unauthorized access to the underlying storage. You can use Amazon Aurora encryption to increase data protection of your applications deployed in the cloud, and to fulfill compliance requirements for data-at-rest encryption.\nNOTE: This policy is applicable only for Aurora DB clusters.\nhttps://docs.aws.amazon.com/cli/latest/reference/rds/describe-db-clusters.html",
+  "rule.criteria": "bf007096-b372-4921-848c-11b29e042f4f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-db-cluster' AND json.rule =  'storageEncrypted is false'",
+  "recommendation": "AWS DB clusters can be encrypted only while creating the database cluster. You can't convert an unencrypted DB cluster to an encrypted one. However, you can restore an unencrypted Aurora DB cluster snapshot to an encrypted Aurora DB cluster. To do this, specify a KMS encryption key when you restore from the unencrypted DB cluster snapshot.\n\nFor AWS RDS,\n1. To create a 'Snapshot' of the unencrypted DB cluster, follow the instruction mentioned in below link:\nRDS Link: https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_CreateSnapshotCluster.html\n\nNOTE: As you can't restore from a DB cluster snapshot to an existing DB cluster; a new DB cluster is created when you restore. Once the Snapshot status is 'Available', delete the unencrypted DB cluster before restoring from the DB cluster Snapshot by following below steps for AWS RDS,\na. Sign to the AWS Management Console and open the Amazon RDS console at https://console.aws.amazon.com/rds/\nb. In the navigation pane, choose 'Databases'.\nc. In the list of DB instances, choose a writer instance for the DB cluster.\nd. Choose 'Actions', and then choose 'Delete'.\n\n2. To restoring the Cluster from a DB Cluster Snapshot, follow the instruction mentioned in below link:\nRDS Link: https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_RestoreFromSnapshot.html\n\nFor AWS Document DB,\n1. To create a 'Snapshot' of the unencrypted DB cluster, follow the instruction mentioned in below link:\nDocument DB Link: https://docs.aws.amazon.com/documentdb/latest/developerguide/backup_restore-create_manual_cluster_snapshot.html\n\nNOTE: As you can't restore from a DB cluster snapshot to an existing DB cluster; a new DB cluster is created when you restore. Once the Snapshot status is 'Available', delete the unencrypted DB cluster before restoring from the DB cluster Snapshot by following below steps for AWS Document DB, \n  a. Sign to the AWS Management Console and open the Amazon DocumentDB console at https://console.aws.amazon.com/docdb/\n  b. In the navigation pane, choose 'Clusters'.\n  c. Select the cluster from the list which needs to be deleted\n  d. Choose 'Actions', and then choose 'Delete'.\n\n2. To restoring the Cluster from a DB Cluster Snapshot, follow the instruction mentioned in below link:\nDocument DB Link: https://docs.aws.amazon.com/documentdb/latest/developerguide/backup_restore-restore_from_snapshot.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

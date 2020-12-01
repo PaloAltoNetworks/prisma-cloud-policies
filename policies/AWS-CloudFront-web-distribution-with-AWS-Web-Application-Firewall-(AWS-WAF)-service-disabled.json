@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AWS-CFR-344",
+  "policyId": "a1152fef-3480-45bf-a7dd-eb4de3ed9943",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudFront web distribution with AWS Web Application Firewall (AWS WAF) service disabled",
+  "description": "This policy identifies Amazon CloudFront web distributions which have the AWS Web Application Firewall (AWS WAF) service disabled. As a best practice, enable the AWS WAF service on CloudFront web distributions to protect against application layer attacks. To block malicious requests to your Cloudfront Content Delivery Network, define the block criteria in the WAF web access control list (web ACL).",
+  "rule.criteria": "6cec2122-f991-4109-99e6-a49f33fc9b9e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = 'webACLId is empty'",
+  "recommendation": "1. Sign in to the AWS console\n2. Go to the CloudFront Distributions Dashboard\n3. Click on the reported web distribution\n4. On 'General' tab, Click on 'Edit' button\n5. On 'Edit Distribution' page, Choose a 'AWS WAF Web ACL' from dropdown.\n6. Click on 'Yes, Edit'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

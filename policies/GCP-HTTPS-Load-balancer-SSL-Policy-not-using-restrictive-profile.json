@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-GCP-LB-387",
+  "policyId": "1d3ca993-bd2c-4df0-8048-6c82de53cf5f",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP HTTPS Load balancer SSL Policy not using restrictive profile",
+  "description": "This policy identifies HTTPS Load balancers which are not using restrictive profile in it's SSL Policy, which controls sets of features used in negotiating SSL with clients. As a best security practice, use RESTRICTED as SSL policy profile as it meets stricter compliance requirements and does not include any out-of-date SSL features.",
+  "rule.criteria": "681a24cf-7a14-4c35-ad43-16c049f3ca63",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-compute-ssl-policies' as X; config from cloud.resource where api.name = 'gcloud-compute-target-https-proxies' as Y; filter \"($.Y.sslPolicy exists and $.X.sslPolicies is not empty) and ($.X.sslPolicies[?(@.profile!='RESTRICTED' && @.profile!='CUSTOM')].selfLink contains $.Y.sslPolicy)\"; show Y;",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Network services (Left Panel)\n3. Select Load balancing\n4. Click on 'advanced menu' hyperlink to view target proxies\n5. Click on 'Target proxies' tab\n6. Click on the reported HTTPS target proxy\n7. Click on the hyperlink under 'URL map'\n8. Click on the 'EDIT' button\n9. Select 'Frontend configuration', Click on HTTPS protocol rule\n10. Select SSL policy which uses the RESTRICTED/CUSTOM profile or if no SSL policy is already present then create a new SSL policy with RESTRICTED as Profile.\nNOTE: If you choose CUSTOM as profile then make sure you are using profile features equally restrictive as the RESTRICTED profile or more than the RESTRICTED profile.\n11. Click on 'Done'\n12. Click on 'Update'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

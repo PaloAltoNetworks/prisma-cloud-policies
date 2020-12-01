@@ -1,0 +1,32 @@
+{
+  "policyUpi": "PC-AWS-CFG-159",
+  "policyId": "ca5c571e-6930-44af-a47b-ebde3ac20ca5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Config Recording is disabled",
+  "description": "AWS Config is a web service that performs configuration management of supported AWS resources within your account and delivers log files to you. AWS config uses configuration recorder to detect changes in your resource configurations and capture these changes as configuration items. It continuously monitors and records your AWS resource configurations and allows you to automate the evaluation of recorded configurations against desired configurations. This policy generates alerts when AWS Config recorder is not enabled.",
+  "rule.criteria": "58d5da42-26f2-466b-8642-c2301d1bf510",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-configservice-describe-configuration-recorders' AND json.rule = 'status.recording is true and status.lastStatus equals SUCCESS and recordingGroup.allSupported is true' as X; count(X) less than 1",
+  "recommendation": "1. Sign in to the AWS Management Console\n2. Select the specific region from the top down, for which the alert is generated\n3. Navigate to service 'Config' from the 'Services' dropdown.\nIf AWS Config set up exists,\na. Go to Settings\nb. Click on 'Turn On' button under 'Recording is Off' section,\nc. provide required information for bucket and role with proper permission\nIf AWS Config set up doesn't exist\na. Click on 'Get Started'\nb. For Step 1, Tick the check box for 'Record all resources supported in this region' under section 'Resource types to record'\nc. Under section 'Amazon S3 bucket', select bucket with permission to Config services\nd. Under section 'AWS Config role', select a role with permission to Config services\ne. Click on 'Next'\nf. For Step 2, Select required rule and click on 'Next' otherwise click on 'Skip'\ng. For Step 3, Review the created 'Settings' and click on 'Confirm'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

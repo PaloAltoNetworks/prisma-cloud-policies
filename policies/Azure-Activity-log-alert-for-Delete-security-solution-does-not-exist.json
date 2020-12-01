@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AZR-MON-495",
+  "policyId": "eeb1b73a-759c-404b-9f53-507601e3d82b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Activity log alert for Delete security solution does not exist",
+  "description": "This policy identifies the Azure accounts in which activity log alert for Delete security solution does not exist. Creating an activity log alert for Delete security solution gives insight into changes to the active security solutions and may reduce the time it takes to detect suspicious activity.",
+  "rule.criteria": "89ed9f97-2b15-4564-a00d-f62a41215f38",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-activity-log-alerts' AND json.rule = \"location equals Global and properties.enabled equals true and properties.condition.allOf[?(@.field=='operationName')].equals equals Microsoft.Security/securitySolutions/delete\" as X; count(X) less than 1",
+  "recommendation": "1. Log in to Azure Portal\n2. Click on Monitor (Left Panel)\n3. Select 'Alerts'\n4. Click on 'New alert rule'\n5. In 'Create rule' page, under the CONDITION section, choose 'Delete Security Solutions (Microsoft.Security/securitySolutions)' and Other fields you can set based on your custom settings.\n6. Click on Create alert rule",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

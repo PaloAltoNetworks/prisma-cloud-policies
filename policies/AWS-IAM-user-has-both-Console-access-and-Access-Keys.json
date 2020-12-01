@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AWS-IAM-47",
+  "policyId": "6a34af3f-21ae-8008-0850-229761d01081",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS IAM user has both Console access and Access Keys",
+  "description": "This policy identifies IAM users who have both Console access and Access Keys. When an IAM user is created, the Administrator can assign either Console access or Access Keys or both. Ideally the Console access should be assigned to Users and Access Keys for system / API applications, but not both to the same IAM user.",
+  "rule.criteria": "6a34af3f-21ae-8008-0850-229761d01081",
+  "searchModel.query": "config from cloud.resource where cloud.type ='aws' and api.name = 'aws-iam-get-credential-report' AND json.rule = 'password_enabled is true and (access_key_1_active is true or access_key_2_active is true)'",
+  "recommendation": "1. Sign in to the AWS console and navigate to the 'IAM' service.\n2. Identify the reported IAM user.\n3. In 'Security credentials' tab check for presence of Access Keys.\n4. Based on the requirement and company policy, either delete the Access Keys or remove the Console access for this IAM user.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "GDPR",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "PIPEDA"
+  ]
+}

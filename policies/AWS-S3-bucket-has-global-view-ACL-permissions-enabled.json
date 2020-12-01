@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AWS-S3-251",
+  "policyId": "43c42760-5283-4bc4-ac43-a80e58c4139f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS S3 bucket has global view ACL permissions enabled",
+  "description": "This policy determines if any S3 bucket(s) has Global View ACL permissions enabled for the All Users group. These permissions allow external resources to see the permission settings associated to the object.",
+  "rule.criteria": "50bb0789-ec44-4b33-b409-43d6c6ea49af",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"acl.grantsAsList[?(@.grantee=='AllUsers')].permission contains ReadAcp or acl.grantsAsList[?(@.grantee=='AllUsers')].permission contains FullControl\"",
+  "recommendation": "1. Go to the AWS console S3 dashboard.\n2. Select your bucket by clicking on the bucket name.\n3. Select the Permissions tab and 'Access Control List.'\n4. Under Public Access, select Everyone.\n5. In the popup window, under Access to this bucket's ACL, uncheck 'Read bucket permissions' and Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

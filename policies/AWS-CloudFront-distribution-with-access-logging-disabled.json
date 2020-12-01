@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AWS-CFR-271",
+  "policyId": "4a719209-0c06-4f42-a33e-9f0107a76fa9",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudFront distribution with access logging disabled",
+  "description": "This policy identifies CloudFront distributions which have access logging disabled. Enabling access log on distributions creates log files that contain detailed information about every user request that CloudFront receives. Access logs are available for web distributions. If you enable logging, you can also specify the Amazon S3 bucket that you want CloudFront to save files in.",
+  "rule.criteria": "81e103d7-6ba6-42d6-ace7-dfdcff88693a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = 'logging.enabled is false and logging.bucket is empty'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to CloudFront Distributions Dashboard\n4. Click on the reported distribution\n5. On 'General' tab, Click on 'Edit' button\n6. On 'Edit Distribution' page, Set 'Logging' to 'On', choose a 'Bucket for Logs' and 'Log Prefix' as desired\n7. Click on 'Yes, Edit'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

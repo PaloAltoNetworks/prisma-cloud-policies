@@ -1,0 +1,28 @@
+{
+  "policyUpi": "PC-AWS-IAM-26",
+  "policyId": "deb8a07d-b5d1-4105-a10b-fc94f8a34854",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Inactive users for more than 30 days",
+  "description": "This policy identifies users who are inactive for more than 30 days. Inactive user accounts are an easy target for attacker because any activity on the account will largely get unnoticed.\n\nNOTE: Exception to this policy is, it is not valid for SSO login users and Root users",
+  "rule.criteria": "619b20cf-7cb5-4e53-a768-be9a85bd58e8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-credential-report' AND json.rule = 'user does not equal <root_account> and _DateTime.ageInDays(user_creation_time) > 30 and (password_last_used equals N/A or password_last_used equals no_information or _DateTime.ageInDays(password_last_used) > 30) and ((access_key_1_last_used_date equals N/A or _DateTime.ageInDays(access_key_1_last_used_date) > 30) and (access_key_2_last_used_date equals N/A or _DateTime.ageInDays(access_key_2_last_used_date) > 30))'",
+  "recommendation": "1.Sign in to AWS console and navigate to IAM.\n2.Identify the user reported and Make sure that the user has legitimate reason to be inactive for such an extended period.\n3. Delete the user account, if the user no longer needs access to the console or no longer exists.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "HITRUST CSF v9.3",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PCI DSS v3.2",
+    "SOC 2"
+  ]
+}

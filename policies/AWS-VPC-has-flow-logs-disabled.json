@@ -1,0 +1,30 @@
+{
+  "policyUpi": "PC-AWS-VPC-25",
+  "policyId": "49f4760d-c951-40e4-bfe1-08acaa17672a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS VPC has flow logs disabled",
+  "description": "This policy identifies VPCs which have flow logs disabled. VPC Flow logs capture information about IP traffic going to and from network interfaces in your VPC. Flow logs are used as a security tool to monitor the traffic that is reaching your instances. Without the flow logs turned on, it is not possible to get any visibility into network traffic.",
+  "rule.criteria": "58dbed8c-b9d5-4059-8891-ab0de8283cdd",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-ec2-describe-flow-logs' as X; config from cloud.resource where api.name = 'aws-ec2-describe-vpcs' as Y; filter 'not($.X.resourceId equals $.Y.vpcId)' ; show Y;",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to VPC Dashboard\n4. Click on 'Your VPCs' and Choose the reported VPC\n5. Click on the 'Flow logs' tab and follow the instructions as in link below to enable Flow Logs for the VPC:\nhttps://aws.amazon.com/blogs/aws/vpc-flow-logs-log-and-view-network-traffic-flows/",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (AWS)",
+    "CIS v1.3.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "SOC 2"
+  ]
+}

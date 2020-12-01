@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-EMR-423",
+  "policyId": "353d0997-a8e7-4b57-8b2c-0772b21ca53f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EMR cluster is not enabled with data encryption at rest",
+  "description": "This policy identifies AWS EMR clusters for which data encryption at rest is not enabled. Encryption of data at rest is required to prevent unauthorized users from accessing the sensitive information available on your  EMR clusters and associated storage systems.",
+  "rule.criteria": "5acfc7c1-17c3-48fa-a6f5-0bed9dd7d8b2",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-emr-describe-cluster' as X; config from cloud.resource where api.name = 'aws-emr-security-configuration' as Y; filter '($.X.status.state does not contain TERMINATING) and ($.X.securityConfiguration equals $.Y.name) and ($.Y.EncryptionConfiguration.EnableAtRestEncryption is false)'; show X;",
+  "recommendation": "1. Login to the AWS Console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'EMR' dashboard from 'Services' dropdown.\n4. Go to 'Security configurations', click 'Create'.\n5. On the Create security configuration window,\n6. In 'Name' box, provide a name for the new EMR security configuration.\n7. For encryption At Rest select the required encryption type ('S3 encryption'/'Local disk encryption'/both) and follow below link for enabling the same.\n8. https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-encryption-enable.html\n\n9. Click on 'Create' button.\n10. On the left menu of EMR dashboard Click 'Clusters'.\n11. Select the EMR cluster for which the alert has been generated and click on the 'Clone' button from the top menu.\n12. In the Cloning popup, choose 'Yes' and Click 'Clone'.\n13. On the Create Cluster page, in the Security Options section, click on 'security configuration'.\n14. From the 'Security configuration' drop down select the name of the security configuration created at step 4 to step 8, click 'Create Cluster'.\n15. Once you the new cluster is set up verify its working and terminate the source cluster in order to stop incurring charges for it.\n16. On the left menu of EMR dashboard Click 'Clusters', from the list of clusters select the source cluster which is alerted.\n17. Click on the 'Terminate' button from the top menu.\n18. On the 'Terminate clusters' pop-up, click 'Terminate'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

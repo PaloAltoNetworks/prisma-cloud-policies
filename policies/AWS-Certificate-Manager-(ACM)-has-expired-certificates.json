@@ -1,0 +1,27 @@
+{
+  "policyUpi": "PC-AWS-ACM-166",
+  "policyId": "d1fae43a-5bb6-429a-945e-fec5e8d9c662",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Certificate Manager (ACM) has expired certificates",
+  "description": "This policy identifies expired certificates which are in AWS Certificate Manager. AWS Certificate Manager (ACM) is the preferred tool to provision, manage, and deploy your server certificates. With ACM you can request a certificate or deploy an existing ACM or external certificate to AWS resources. This policy generates alerts if there are any expired ACM managed certificates. As a best practice, it is recommended to delete expired certificates.",
+  "rule.criteria": "817318e9-27d8-4aba-bdbb-3f30629986da",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-acm-describe-certificate' AND json.rule = '(_DateTime.ageInDays($.notAfter) > -1) and status equals EXPIRED'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Go to Certificate Manager(ACM) service\n4. Choose the reported certificate\n5. Verify that the 'Status' column shows 'Expired' for the reported certificate\n6. Under 'Actions' drop-down click on 'Delete'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "HITRUST CSF v9.3",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

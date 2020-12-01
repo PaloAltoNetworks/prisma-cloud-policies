@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AZR-K8S-393",
+  "policyId": "ac313c08-1f79-4e55-96e4-49c20064bff0",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure AKS cluster Azure CNI networking not enabled",
+  "description": "Azure CNI provides the following features over kubenet networking:\n\n- Every pod in the cluster is assigned an IP address in the virtual network. The pods can directly communicate with other pods in the cluster, and other nodes in the virtual network.\n- Pods in a subnet that have service endpoints enabled can securely connect to Azure services, such as Azure Storage and SQL DB.\n- You can create user-defined routes (UDR) to route traffic from pods to a Network Virtual Appliance.\n- Support for Network Policies securing communication between pods.\n\nThis policy checks your AKS cluster for the Azure CNI network plugin and generates an alert if not found.",
+  "rule.criteria": "bc288480-0d31-4ccc-bc0e-3c4dc185f5a1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kubernetes-cluster' AND json.rule =  properties.networkProfile.networkPlugin does not contain azure",
+  "recommendation": "Create a new AKS cluster with the Azure CNI network plugin enabled.\n\n1. Sign in to the Azure portal.\n2. In the top left-hand corner of the Azure portal, select + Create a resource > Containers > Kubernetes Service.\n3. On the Basics page, configure the following options:\n\n- Project details\n- Cluster details\n- Primary node pool\n\n4. Select Next: Scale.\n5. Fill in your scaling requirements, then at the bottom of the screen, click Next:Authentication.\n6. Fill in your authentication requirements, then at the bottom of the screen, click Next:Networking.\n7. Choose Advanced for your Network configuration.\n8. Click Review + create and then Create when validation completes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-565",
+  "policyId": "f70918b1-7c19-4de6-b851-967bea5648ba",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster node auto-upgrade configuration disabled",
+  "description": "This policy identifies GCP Kubernetes cluster nodes with auto-upgrade configuration disabled. Node auto-upgrades help you keep the nodes in your cluster up to date with the cluster master version when your master is updated on your behalf. When you create a new cluster using Google Cloud Platform Console, node auto-upgrade is enabled by default.\n\nFMI: https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-upgrades",
+  "rule.criteria": "ee11eb8a-a8a1-4703-980c-940057b84f24",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = nodePools[?any(management.autoUpgrade does not exist or management.autoUpgrade is false)] exists",
+  "recommendation": "1. Log in to Google cloud console\n2. Navigate to Google Kubernetes Engine, click on 'Clusters' to get the list\n3. Click on the alerted cluster and go to section 'Node pools'\n4. Click on a node pool to ensure 'Auto-upgrade' is enabled in the 'Management' section\n5. To modify click on the 'Edit' button at the top\n6. To enable the configuration click on the check box against 'Enable auto-upgrade'\n7. Click on 'Save'\n8. Repeat Step 4-7 for each node pool associated with the reported cluster",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

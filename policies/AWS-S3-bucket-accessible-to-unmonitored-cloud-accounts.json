@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AWS-S3-60",
+  "policyId": "ea712527-83e7-7855-0ec9-1610194a9b9b",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket accessible to unmonitored cloud accounts",
+  "description": "This policy identifies those S3 buckets which have either the read/write permission opened up for Cloud Accounts which are NOT part of Cloud Accounts monitored by Prisma Cloud. These accounts with read/write privileges should be reviewed and confirmed that these are valid accounts of your organization (or authorised by your organization) and are not active under Prisma Cloud monitoring.",
+  "rule.criteria": "ea712527-83e7-7855-0ec9-1610194a9b9b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"acl.grants[?(@.grantee.typeIdentifier=='id')].grantee.identifier size > 0 and _AWSCloudAccount.isRedLockMonitored(acl.grants[?(@.grantee.typeIdentifier=='id')].grantee.identifier) is false\"",
+  "recommendation": "1. Log in to the AWS Console and navigate to the 'S3' service\n2. Click on the reported S3 bucket.\n3. Click on the 'Permissions' tab and navigate to the 'Access for Other AWS Accounts' section.\n4. Add the Cloud Accounts with the requisite permission to these S3 buckets.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

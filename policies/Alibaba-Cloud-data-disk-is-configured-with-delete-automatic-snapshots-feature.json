@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALB-ECS-445",
+  "policyId": "22e96a79-12d1-4aa7-a9b6-a24c39732346",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "low",
+  "name": "Alibaba Cloud data disk is configured with delete automatic snapshots feature",
+  "description": "This policy identifies data disks that are configured with delete automatic snapshots feature. Disabling the delete automatic snapshots while releasing disk feature prevents the irreversible data loss from accidental or malicious operations.",
+  "rule.criteria": "c3a78c6c-e890-4a40-9007-e73f15b30ab7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ecs-disk' AND json.rule = 'deleteAutoSnapshot is true'",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, click on 'Disks' which is under 'Storage & Snapshots'\n4. Select the reported disk\n5. Select More and click on Modify Disk Property\n6. On Modify Disk Property popup window, Uncheck 'Delete Automatic Snapshots While Releasing Disk' checkbox\n7. Click on 'OK'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

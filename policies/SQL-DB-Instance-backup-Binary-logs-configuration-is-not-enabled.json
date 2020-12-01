@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-GCP-SQL-84",
+  "policyId": "25f41a54-717e-410c-a2ae-fb293dc2ed6d",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "SQL DB Instance backup Binary logs configuration is not enabled",
+  "description": "Checks to verify that the configuration for automated backup of Binary logs is enabled.\n        Restoring from a backup reverts your instance to its state at the backup's creation time. Enabling automated backups creates backup during the scheduled backup window.",
+  "rule.criteria": "8bdd1d25-660d-4a3d-be5a-c9a96e4b2bb6",
+  "searchModel.query": "config from cloud.resource where api.name='gcloud-sql-instances-list' AND json.rule='$.settings.backupConfiguration.binaryLogEnabled is false and $.databaseVersion contains MYSQL'",
+  "recommendation": "1. Login to GCP Console and from Storage, select SQL.\n        2. Select the identified SQL instance.\n        3. For MySQL, click on 'BACKUPS' tab.\n        4. Click on 'Managed automated backups', enable the option 'Automate backups' and choose a backup window.\n        5. Enable option 'Enable binary backups' and Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "HIPAA",
+    "ISO 27001:2013",
+    "NIST 800-53 Rev4",
+    "PCI DSS v3.2",
+    "SOC 2"
+  ]
+}

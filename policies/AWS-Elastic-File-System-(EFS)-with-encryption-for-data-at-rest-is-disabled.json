@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-EFS-243",
+  "policyId": "a7451ade-75eb-4e3e-b996-c2b0d5fdd329",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic File System (EFS) with encryption for data at rest is disabled",
+  "description": "This policy identifies Elastic File Systems (EFSs) for which encryption for data at rest is disabled. It is highly recommended to implement at-rest encryption in order to prevent unauthorized users from reading sensitive data saved to EFSs.",
+  "rule.criteria": "5eb50d57-7e94-4204-a4e7-3471b3f7e82e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-describe-mount-targets' AND json.rule = 'fileSystemDescription.encrypted is false'",
+  "recommendation": "AWS EFS Encryption of data at rest can only be enabled during file system creation. So to resolve this alert, create a new EFS with encryption enabled, then migrate all required file data from the reported EFS to this newly created EFS and delete reported EFS.\n\nTo create new EFS with encryption enabled, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EFS dashboard\n4. Click on 'File systems' (Left Panel)\n5. Click on 'Create file system' button\n6. On the 'Configure file system access' step, specify EFS details as per your requirements and Click on 'Next Step'\n7. On the 'Configure optional settings' step, Under 'Enable encryption' Choose 'Enable encryption of data at rest' and Select a KMS key from 'Select KMS master key' dropdown list along with other parameters and Click on 'Next Step'\n8. On the 'Review and create' step, Review all your setting and Click on 'Create File System' button\n\nTo delete reported EFS which does not has encryption, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Redshift dashboard\n4. Click on 'File systems' (Left Panel)\n5. Select the reported file system\n6. Click on 'Actions' dropdown\n7. Click on 'Delete file system'\n8. In the 'Permanently delete file system' popup box, To confirm the deletion enter the file system's ID and Click on 'Delete File System'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

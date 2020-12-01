@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AZR-STO-484",
+  "policyId": "8a2315b0-70b9-477b-bd5c-41cb92a7b726",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage account container storing activity logs is publicly accessible",
+  "description": "This policy identifies the Storage account containers containing the activity log export is publicly accessible. Allowing public access to activity log content may aid an adversary in identifying weaknesses in the affected account's use or configuration.",
+  "rule.criteria": "499c23da-b67f-441a-81e3-9fc0fd05ea75",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule= publicContainersList[*] contains insights-operational-logs and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) as X; config from cloud.resource where api.name = 'azure-monitor-log-profiles-list' as Y; filter'$.X.id contains $.Y.properties.storageAccountId'; show X;",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage Accounts'\n3. Select the reported storage account\n4. Under 'Blob service' section, Select 'Containers'\n5. Select the container named as 'insight-operational-logs'\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

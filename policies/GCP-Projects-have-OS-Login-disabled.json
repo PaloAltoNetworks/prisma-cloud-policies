@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-GCP-GCE-208",
+  "policyId": "82dcb04d-0fae-4d38-9692-fc7dabc0e50c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Projects have OS Login disabled",
+  "description": "This policy identifies GCP Projects which have OS Login disabled. Enabling OS Login ensures that SSH keys used to connect to instances are mapped with IAM users. Revoking access to IAM user will revoke all the SSH keys associated with that particular user. It facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs.",
+  "rule.criteria": "84158703-d321-484e-be15-a780c2dfca48",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-project-info' AND json.rule = 'commonInstanceMetadata.items[*].key does not contain enable-oslogin or (commonInstanceMetadata.items[*].key contains enable-oslogin and (commonInstanceMetadata.items[*].value contains false or commonInstanceMetadata.items[*].value contains FALSE))'",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to the Metadata\n4. Click on Edit button\n5. Click on Add item, Add a metadata entry where the key is 'enable-oslogin' and the value is 'TRUE'\n6. Click on Save to apply the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "PIPEDA"
+  ]
+}

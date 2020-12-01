@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-RDS-292",
+  "policyId": "2f33ac46-c909-4dca-8c0d-34fa2633865a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS event subscription disabled for DB security groups",
+  "description": "This policy identifies RDS event subscriptions for which DB security groups event subscription is disabled. You can create an Amazon RDS event notification subscription so that you can be notified when an event occurs for given DB security groups.",
+  "rule.criteria": "5b3c12cf-eef5-42de-afbe-4e80e1dfe600",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-describe-event-subscriptions' AND json.rule = 'sourceType equals db-security-group and ((status does not equal active or enabled is false) or (status equals active and enabled is true and (sourceIdsList is not empty or eventCategoriesList is not empty)))'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Amazon RDS Dashboard\n4. Click on 'Event subscriptions' (Left Panel)\n5. Choose the reported Event subscription\n6. Click on 'Edit'\n7. On 'Edit event subscription' page, Under 'Details' section; Select 'Yes' for 'Enabled' and Make sure you have subscribed your DB to 'All instances' and 'All event categories'\n8. Click on 'Edit'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

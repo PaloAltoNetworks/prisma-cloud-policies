@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-375",
+  "policyId": "fe72c1c2-da18-4add-9a29-cffd48938fc8",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster istioConfig not enabled",
+  "description": "Istio is an open service mesh that provides a uniform way to connect, manage, and secure microservices. It supports managing traffic flows between services, enforcing access policies, and aggregating telemetry data, all without requiring changes to the microservice code.\n\nThis policy checks your cluster for the Istio add-on feature and alerts if it is not enabled.",
+  "rule.criteria": "7682e9a1-c93d-48e3-a62c-ceb9fc25230e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  $.addonsConfig.istioConfig.disabled is true",
+  "recommendation": "Add Istio to your existing cluster.\n\nIf you want to update a cluster with the add-on, you may need to first resize your cluster to ensure that you have enough resources for Istio. As when creating a new cluster, we suggest at least a 4 node cluster with the 2 vCPU machine type.\n\nYour cluster must also be running a supported cluster master version to use the add-on.\n\n1. Go to the Kubernetes clusters page in the GCP Console and select the cluster you want to update.\n2. Select Edit.\n3. Select Add-ons to display possible add-ons, including Istio on GKE.\n4. Select Enabled under Istio.\n5. Select the mTLS security mode you want to use for your cluster from the drop-down.\n6. Click Save to update your cluster.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

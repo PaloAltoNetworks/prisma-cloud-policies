@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALB-RAM-482",
+  "policyId": "ff5a3fae-1955-485a-995d-9f28cd2e03ba",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "low",
+  "name": "Alibaba Cloud RAM policy allows full administrative privileges",
+  "description": "This policy identifies RAM policies with full administrative privileges. RAM policies are the means by which privileges are granted to users, groups or roles. It is recommended to grant the least privilege access like granting only the permissions required to perform a task, instead of allowing full administrative privileges.",
+  "rule.criteria": "fb8b2e94-8422-472d-8ca0-8154d4823d86",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ram-policy' AND json.rule = \"(policy.policyType does not contain System) and (defaultPolicyVersion.policyDocument.Statement[?(@.Resource == '*' && @.Effect== 'Allow')].Action equals *)\"",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Resource Access Management\n3. In the left-side navigation pane, click 'Policies'\n4. Click on the reported RAM policy\n5. Under the 'References' tab, 'Revoke Permission' for all users/roles/groups attached to the policy.\n6. Delete the reported policy\n\nDetermine what users need to do and then craft policies for them that let the users perform only those tasks, instead of allowing full administrative privileges.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

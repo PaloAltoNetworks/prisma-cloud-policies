@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-372",
+  "policyId": "bee0893d-85fb-403f-9ba7-a5269a46d382",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster intra-node visibility disabled",
+  "description": "With Intranode Visibility, all network traffic in your cluster is seen by the Google Cloud Platform network. This means you can see flow logs for all traffic between Pods, including traffic between Pods on the same node. And you can create firewall rules that apply to all traffic between Pods.\n\nThis policy checks your cluster's intra-node visibility feature and generates an alert if it's disabled.",
+  "rule.criteria": "21c101a0-ef0f-46b6-901e-7284abc6258a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  $.networkConfig.enableIntraNodeVisibility does not exist or $.networkConfig.enableIntraNodeVisibility is false",
+  "recommendation": "Upgrade your cluster to use Intranode Visibility.\n\n1. Visit the Google Kubernetes Engine menu in GCP Console.\n2. Click the cluster's Edit button, which looks like a pencil.\n3. Select Enabled under Intranode visibility.\n4. Click Save to modify the cluster.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

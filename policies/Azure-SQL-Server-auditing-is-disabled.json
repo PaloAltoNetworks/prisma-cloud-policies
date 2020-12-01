@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-SQL-331",
+  "policyId": "86eb5c4f-d384-4cb0-b5d8-7dc007bb4804",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure SQL Server auditing is disabled",
+  "description": "Audit logs can help you find suspicious events, unusual activity, and trends to analyze database events. Auditing the SQL Server, at the server-level, enables you to track all new and existing databases on the server.\n\nThis policy identifies SQL servers do not have auditing enabled. As a best practice, enable auditing on each SQL server so that the database are audited, regardless of the database auditing settings.",
+  "rule.criteria": "c216cb36-4c13-4171-9ab3-15244f815664",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule =  \"$.serverBlobAuditingPolicy.properties.retentionDays does not exist or $.serverBlobAuditingPolicy.properties.state equals Disabled\"",
+  "recommendation": "1. Log in to the Azure Portal.\n2. Select 'SQL servers', and select the SQL server instance you want to modify.\n3. Select 'Auditing', and set the status to  'On'.\n4. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AWS-ELB-527",
+  "policyId": "dd7588a1-79f0-4b2b-8139-891eb50f570e",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic Load Balancer v2 (ELBv2) with listener TLS/SSL is not configured",
+  "description": "This policy identifies AWS Elastic Load Balancers v2 (ELBv2) which have non-secure listeners. As Load Balancers will be handling all incoming requests and routing the traffic accordingly. The listeners on the load balancers should always receive traffic over secure channel with a valid SSL certificate configured.",
+  "rule.criteria": "5ca12730-cccc-4f90-aa6c-04ea81644cae",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = '((listeners[*].protocol equals HTTPS or listeners[*].protocol equals TLS) and listeners[*].certificates[*].certificateArn does not exist) or listeners[*].protocol equals HTTP or listeners[*].protocol equals TCP or listeners[*].protocol equals UDP or listeners[*].protocol equals TCP_UDP'",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to EC2 dashboard\n4. Click on 'Load Balancers' (Left Panel)\n5. Select the reported ELB\n6. On the Listeners tab, Click the 'Edit' button under the available listeners\n7. In the Load Balancer Protocol type is application select the listener protocol as 'HTTPS (Secure HTTP)' or If the load balancer type is network, select the listener protocol as TLS\n8. Select appropriate 'Security policy' \n9. In the SSL Certificate column, click 'Change'\n10. On 'Select Certificate' popup dialog, Choose a certificate from ACM or IAM or upload a new certificate based on requirement and Click on 'Save'\n11. Back to the 'Edit listeners' dialog box, review the secure listeners configuration, then click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

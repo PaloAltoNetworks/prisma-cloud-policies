@@ -1,0 +1,22 @@
+{
+  "policyUpi": "PC-AWS-CFR-346",
+  "policyId": "45e37556-3d26-4cdb-8780-5b7fc5f60e01",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudFront web distribution that allow TLS versions 1.0 or lower",
+  "description": "This policy identifies AWS CloudFront web distributions which are configured with TLS versions for HTTPS communication between viewers and CloudFront. As a best practice, use TLSv1.1_2016 or later as the minimum protocol version in your CloudFront distribution security policies.",
+  "rule.criteria": "3eb5afe3-259d-48d0-8437-ec58668be0d3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = 'viewerCertificate.certificateSource does not contain cloudfront and (viewerCertificate.minimumProtocolVersion equals TLSv1 or viewerCertificate.minimumProtocolVersion equals TLSv1_2016)'",
+  "recommendation": "1. Sign in to the AWS console\n2. Navigate to CloudFront Distributions Dashboard\n3. Click on the reported distribution\n4. On 'General' tab, Click on 'Edit' button\n5. On 'Edit Distribution' page, Set 'Security Policy' to TLSv1.1_2016 or later as per your requirement.\n6. Click on 'Yes, Edit'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

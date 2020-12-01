@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-GCP-SQL-530",
+  "policyId": "ae01f28b-cfee-4c1d-b089-0cd0c1151f0d",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP PostgreSQL instance database flag log_connections is disabled",
+  "description": "This policy identifies PostgreSQL type SQL instances for which the log_connections database flag is disabled. PostgreSQL does not log attempted connections by default. Enabling the log_connections setting will create log entries for each attempted connection as well as successful completion of client authentication which can be useful in troubleshooting issues and to determine any unusual connection attempts to the server.",
+  "rule.criteria": "9d730b53-a7c7-4da2-9bd0-0822b9639d0d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"databaseVersion contains POSTGRES and (settings.databaseFlags[?(@.name=='log_connections')] does not exist or settings.databaseFlags[?(@.name=='log_connections')].value equals off)\"",
+  "recommendation": "1. Login to GCP Console\n2. Navigate to SQL\n3. Click on the PostgreSQL instance ID for which you want to enable the database flag from the list\n4. Click on 'Edit'\nNOTE: If the instance is stopped, You need to START instance first to edit the configurations, then Click on EDIT.\n5. Go to the 'Flags' section under 'Configuration options'\n6. To set a flag that has not been set on the instance before, click 'Add item', choose the flag 'log_connections' from the drop-down menu and set the value as 'on'.\n7. If it is already set to 'off' for 'log_connections', from the drop-down menu set the value as 'on'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1.0 (GCP)",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

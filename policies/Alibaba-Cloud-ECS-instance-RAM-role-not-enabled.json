@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALB-ECS-439",
+  "policyId": "ded4e20e-b6c2-4e30-87f3-c99203572952",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "medium",
+  "name": "Alibaba Cloud ECS instance RAM role not enabled",
+  "description": "This policy identifies ECS instances for which the Resource Access Management (RAM) role is not enabled. Alibaba Cloud provides RAM roles to securely access Alibaba Cloud services and resources. As a best practice, create RAM roles and attach the role to manage ECS instance permissions securely instead of distributing or sharing keys or passwords.",
+  "rule.criteria": "c7a51fff-30ee-40c4-91d5-0d5bd27bfe27",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ecs-instance' AND json.rule = 'ramRoleName is empty'",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, click 'Instances'\n4. Select the reported ECS instance\n5. Select More > Instance Settings > Bind/Unbind RAM Role\n6. Select a required RAM Role\nNOTE: If already RAM role is not created create new RAM role and follow the same procedure to attach.\n7. Click on 'OK'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

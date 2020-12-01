@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AWS-S3-322",
+  "policyId": "7b0df373-006a-40d6-9f3d-68e6ea0bdd5d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket not configured with secure data transport policy",
+  "description": "This policy identifies S3 buckets which are not configured with secure data transport policy. AWS S3 buckets should enforce encryption of data over the network using Secure Sockets Layer (SSL). It is recommended to add a bucket policy that explicitly denies (Effect: Deny) all access (Action: s3:*) from anybody who browses (Principal: *) to Amazon S3 objects within an Amazon S3 bucket if they are not accessed through HTTPS (aws:SecureTransport: false).",
+  "rule.criteria": "dd9a332e-673b-44c6-8bd2-e801fdea4a12",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"(((((acl.grants[?(@.grantee=='AllUsers')] size > 0) or policyStatus.isPublic is true) and publicAccessBlockConfiguration does not exist) or ((acl.grants[?(@.grantee=='AllUsers')] size > 0) and publicAccessBlockConfiguration.ignorePublicAcls is false) or (policyStatus.isPublic is true and publicAccessBlockConfiguration.restrictPublicBuckets is false)) and websiteConfiguration does not exist) and ((policy.Statement[*].Condition.Bool.aws:SecureTransport does not exist) or ((policy.Statement[?(@.Principal=='*' || @.Principal.AWS=='*')].Action contains s3: or policy.Statement[?(@.Principal=='*' || @.Principal.AWS=='*')].Action[*] contains s3:) and (policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Condition.Bool.aws:SecureTransport contains false or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Condition.Bool.aws:SecureTransport contains false or policy.Statement[?(@.Principal=='*' && @.Effect=='Allow')].Condition.Bool.aws:SecureTransport contains FALSE or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Allow')].Condition.Bool.aws:SecureTransport contains FALSE or policy.Statement[?(@.Principal=='*' && @.Effect=='Deny')].Condition.Bool.aws:SecureTransport contains true or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Deny')].Condition.Bool.aws:SecureTransport contains true or policy.Statement[?(@.Principal=='*' && @.Effect=='Deny')].Condition.Bool.aws:SecureTransport contains TRUE or policy.Statement[?(@.Principal.AWS=='*' && @.Effect=='Deny')].Condition.Bool.aws:SecureTransport contains TRUE)))\"",
+  "recommendation": "1. Sign into the AWS console\n2. Navigate to Amazon S3 Dashboard\n3. Click on 'Buckets' (Left Panel)\n4. Choose the reported S3 bucket\n5. On 'Permissions' tab, Click on 'Bucket Policy'\n6. Add a bucket policy that explicitly denies (Effect: Deny) all access (Action: s3:) from anybody who browses (Principal: ) to Amazon S3 objects within an Amazon S3 bucket if they are not accessed through HTTPS (aws:SecureTransport: false). Below is the sample policy:\n{\n\t\"Sid\": \"ForceSSLOnlyAccess\",\n\t\"Effect\": \"Deny\",\n\t\"Principal\": \"*\",\n\t\"Action\": \"s3:GetObject\",\n\t\"Resource\": \"arn:aws:s3:::bucket_name/*\",\n\t\"Condition\": {\n\t\t\t\"Bool\": {\n\t\t\t\"aws:SecureTransport\": \"false\"\n\t\t}\n\t}\n}",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.3.0 (AWS)",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AWS-IAM-167",
+  "policyId": "5a63ca23-75be-4fb7-9b52-c5392dce1553",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS IAM has expired SSL/TLS certificates",
+  "description": "This policy identifies expired SSL/TLS certificates. To enable HTTPS connections to your website or application in AWS, you need an SSL/TLS server certificate. You can use ACM or IAM to store and deploy server certificates. Removing expired SSL/TLS certificates eliminates the risk that an invalid certificate will be deployed accidentally to a resource such as AWS Elastic Load Balancer (ELB), which can damage the credibility of the application/website behind the ELB. This policy generates alerts if there are any expired SSL/TLS certificates stored in AWS IAM. As a best practice, it is recommended to delete expired certificates.",
+  "rule.criteria": "5ebc3edf-081a-4400-893f-843243bdff2e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-server-certificates' AND json.rule = '(_DateTime.ageInDays($.expiration) > -1)'",
+  "recommendation": "Removing invalid certificates via AWS Management Console is not currently supported. To delete SSL/TLS certificates stored in IAM via the AWS API use the Command Line Interface (CLI).\n\nRemediation CLI:\n1. Run describe-load-balancers command to make sure that the expired server certificate is not currently used by any active load balancer.\n\taws elb describe-load-balancers --region <COMPUTE_REGION> --load-balancer-names <ELB_NAME> --query 'LoadBalancerDescriptions[*].ListenerDescriptions[*].Listener.SSLCertificateId'\nThis command output will return the Amazon Resource Name (ARN) for the SSL certificate currently used by the selected ELB:\n\t[\n\t\t[\n\t\t\t\"arn:aws:iam::1234567890:server-certificate/MyCertificate\"\n\t\t]\n\t]\n2.  If the load balancer listener using the reported expired certificate is not removed before the certificate, the ELB may continue to use the same certificate and work improperly. To delete the ELB listener that is using the expired SSL certificate, run following command:\n\taws elb delete-load-balancer-listeners --region <COMPUTE_REGION> --load-balancer-name <ELB_NAME> --load-balancer-ports 443\n3. Now that is safe to remove the expired SSL/TLS certificate from AWS IAM, To delete it run:\n\taws iam delete-server-certificate --server-certificate-name <CERTIFICATE_NAME>",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.3.0 (AWS)",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-558",
+  "policyId": "447fc9ef-a871-4e4b-b34c-46d4aad81f51",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Database Migration Service endpoint do not have SSL configured",
+  "description": "This policy identifies Database Migration Service (DMS) endpoints that are not configured with SSL to encrypt connections for source and target endpoints. It is recommended to use SSL connection for source and target endpoints; enforcing SSL connections help protect against 'man in the middle' attacks by encrypting the data stream between endpoint connections.\n\nNOTE: Not all databases use SSL in the same way. An Amazon Redshift endpoint already uses an SSL connection and does not require an SSL connection set up by AWS DMS. So there are some exlcusions included in policy RQL to report only those endpoints which can be configured using DMS SSL feature. \n\nFor more details:\nhttps://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.SSL",
+  "rule.criteria": "61764822-555e-4492-b9d6-0b5210e11ee4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dms-endpoint' AND json.rule = status equals active and (endpointType equals SOURCE and sslMode equals none and engineName is not member of (\"s3\", \"azuredb\")) or (endpointType equals TARGET and sslMode equals none and engineName is not member of (\"dynamodb\", \"kinesis\", \"neptune\", \"redshift\", \"s3\", \"elasticsearch\", \"kafka\"))",
+  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the AWS DMS dashboard\n3. In the navigation pane, choose 'Endpoints'\n4. Select the reported DMS endpoint\n5. Under 'Actions', choose 'Modify'\n6. In the 'Endpoint configuration' section, select the 'Secure Socket Layer (SSL) mode' from the dropdown list select suitable SSL mode according to your requirement other than 'none'.\n7. Click on 'Save'\n\nNOTE: Before modifying the SSL setting, you should be configured with the proper certificate you want to use for SSL connection under the DMS 'Certificate' service.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

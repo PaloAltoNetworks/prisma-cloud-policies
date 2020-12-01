@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AZR-KV-358",
+  "policyId": "63505d05-b9b7-4bf3-b028-f95f8a29bc58",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Key Vault Keys have no expiration date",
+  "description": "This policy identifies Azure Key Vault keys that do not have an expiration date. As a best practice, set an expiration date for each key and rotate your keys regularly.\n\nBefore you activate this policy, ensure that you have added the Prisma Cloud Service Principal to each Key Vault: https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin/connect-your-cloud-platform-to-prisma-cloud/onboard-your-azure-account/set-up-your-azure-account.html\n\nAlternatively, run the following command on the Azure cloud shell:\naz keyvault list | jq '.[].name' | xargs -I {} az keyvault set-policy --name {} --certificate-permissions list listissuers --key-permissions list --secret-permissions list --spn <prismacloud_app_id>",
+  "rule.criteria": "a7332945-6b39-432e-85aa-c3694ebbe694",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' and json.rule =  \"keys[?(@.attributes.exp=='-1')].attributes.enabled contains true\"",
+  "recommendation": "1. Log in to the Azure portal.\n2. Select 'All services' > 'Key vaults'.\n3. Select the Key vault where the key is stored.\n4. Select 'Keys', and select the key that you need to modify.\n5. Select the current version.\n6. Set the expiration date.\n7. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

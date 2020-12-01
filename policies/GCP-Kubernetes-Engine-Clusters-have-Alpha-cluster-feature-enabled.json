@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-GCP-GKE-362",
+  "policyId": "d49d0b8f-790f-412c-b59f-9ccdd0bca8f8",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes Engine Clusters have Alpha cluster feature enabled",
+  "description": "This policy identifies GCP Kubernetes Engine Clusters which have enabled alpha cluster. It is recommended to not use alpha clusters or alpha features for production workloads. Alpha clusters expire after 30 days and do not receive security updates. This cluster will not be covered by the Kubernetes Engine SLA.",
+  "rule.criteria": "7153b3ac-dc68-4f88-a981-db2992b81a80",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule =  'enableKubernetesAlpha is true'",
+  "recommendation": "GCP Kubernetes Engine Clusters alpha feature cannot be disabled once it is created. So to resolve this alert, create a new cluster with the alpha feature disabled, then migrate all required cluster data from the reported cluster to this newly created cluster and delete reported Kubernetes engine cluster.\n\nTo create new Kubernetes engine cluster with the alpha feature disabled, perform the following: \n1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters \n4. Click on CREATE CLUSTER button\n5. Set new cluster parameters as per your requirement and make sure 'Enable Kubernetes alpha features in this cluster' is unchecked.\n6. Click on Save\n\nTo delete reported Kubernetes engine cluster, perform the following:\n1. Login to GCP Portal\n2. Go to Kubernetes Engine (Left Panel)\n3. Select Kubernetes clusters \n4. Click on reported Kubernetes cluster\n5. Click on the DELETE button\n6. On 'Delete a cluster' popup dialog, Click on DELETE to confirm the deletion of the cluster.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1.0 (GKE)",
+    "PIPEDA"
+  ]
+}

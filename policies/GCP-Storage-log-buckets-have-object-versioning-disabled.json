@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-GCP-STO-201",
+  "policyId": "e1984e80-f467-413d-9001-f2ada7e3a377",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Storage log buckets have object versioning disabled",
+  "description": "This policy identifies Storage log buckets which have object versioning disabled. Enabling object versioning on storage log buckets will protect your cloud storage data from being overwritten or accidentally deleted. It is recommended to enable object versioning feature on all storage buckets where sinks are configured.",
+  "rule.criteria": "5c78818c-0fbd-4def-9e67-44c08cad77a8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = '(acl[*].email exists and acl[*].email contains logging) and (versioning.enabled is false or versioning does not exist)'",
+  "recommendation": "Presently Object versioning can be enabled on storage log buckets using command line interface only.\n1. To list all sinks destined to storage buckets:\ngcloud logging sinks list | grep storage.googleapis.com\n2. For every storage bucket listed above, verify that object versioning is Enabled:\ngsutil versioning get gs://<Bucket>\nOutput for command should return Enabled\n3. To enable object versioning on storage log bucket:\ngsutil versioning set on gs://<Bucket>",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gsutil versioning set on gs://${resourceName}",
+  "remediation.description": "This CLI command requires 'storage.admin' permission. Successful execution will enable GCP Storage log buckets 'versioning'.",
+  "remediation.impact": "enables versioning in GCP Storage log buckets",
+  "compliance.standard": [
+    "CIS v1.0.0 (GCP)",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]"
+  ]
+}

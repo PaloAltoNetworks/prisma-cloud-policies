@@ -1,0 +1,32 @@
+{
+  "policyUpi": "PC-AWS-RDS-21",
+  "policyId": "34fa9efb-d18f-41e4-b93f-2f7e5378752c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS instance is not encrypted",
+  "description": "This policy identifies AWS RDS instances which are not encrypted. Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up and manage databases. Amazon allows customers to turn on encryption for RDS which is recommended for compliance and security reasons.",
+  "rule.criteria": "34fa9efb-d18f-41e4-b93f-2f7e5378752c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name='aws-rds-describe-db-instances' AND json.rule='dbiResourceId does not equal null and storageEncrypted is false'",
+  "recommendation": "Amazon RDS instance can only be encrypted at the time of DB instance creation. So to resolve this alert, create a new DB instance with encryption and then migrate all required DB instance data from the reported DB instance to this newly created DB instance.\nTo create RDS DB instance with encryption, follow the instructions mentioned in below reference link based on your Database vendor:\nhttp://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

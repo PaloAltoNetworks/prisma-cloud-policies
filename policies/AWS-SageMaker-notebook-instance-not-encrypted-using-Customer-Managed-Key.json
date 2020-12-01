@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SGM-561",
+  "policyId": "cf7274bc-24ec-443a-8d2e-01835a27f879",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS SageMaker notebook instance not encrypted using Customer Managed Key",
+  "description": "This policy identifies SageMaker notebook instances that are not encrypted using Customer Managed Key. SageMaker notebook instances should be encrypted with Amazon KMS Customer Master Keys (CMKs) instead of AWS managed-keys in order to have more granular control over the data-at-rest encryption/decryption process and meet compliance requirements.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html",
+  "rule.criteria": "0afd7ae2-a3c7-4529-8623-2b88b0e94ce0",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-sagemaker-notebook-instance' AND json.rule = notebookInstanceStatus equals InService and kmsKeyId exists as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' as Y; filter '$.X.kmsKeyId equals $.Y.key.keyArn and $.Y.keyMetadata.keyManager contains AWS'; show X;",
+  "recommendation": "AWS SageMaker notebook instance encryption can not be modified once it is created. You need to create a new notebook instance with encryption using a custom KMS key; migrate all required data from the reported notebook instance to the newly created notebook instance before you delete the reported notebook instance.\n\nTo create a New AWS SageMaker notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and then choose 'Create notebook instance'\n4. On the Create notebook instance page, within the 'Permissions and encryption' section,\nFrom the 'Encryption key - optional' dropdown list, choose a custom KMS key for the new SageMaker notebook instance.\n5. Choose other parameters as per your requirement and click on the 'Create notebook instance' button\n\nTo delete reported notebook instance,\n1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances and Choose the reported notebook instance\n4. Click on the 'Actions' dropdown menu, select the 'Stop' option, and when instance stops, select the 'Delete' option.\n5. Within Delete <notebook-instance-name> dialog box, click the Delete button to confirm the action.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

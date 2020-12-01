@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AWS-IAM-49",
+  "policyId": "e809c246-2ef5-4319-bba9-2c5735d88aa8",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS IAM user has two active Access Keys",
+  "description": "This policy identifies IAM users who have two active Access Keys. Each IAM user can have up to two Access Keys, having two Keys instead of one can lead to increased chances of accidental exposure. So it needs to be ensured that unused Access Keys are deleted.",
+  "rule.criteria": "e809c246-2ef5-4319-bba9-2c5735d88aa8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-credential-report' AND json.rule = 'access_key_1_active is true and access_key_2_active is true'",
+  "recommendation": "1. Sign in to the AWS Console and navigate to the 'IAM' service.\n2. Click on Users in the navigation pane.\n3. For the identified IAM user which has two active Access Keys, based on policies of your company, take appropriate action.\n4. Create another IAM user with the specific objective performed by the 2nd Access Key.\n5. Delete one of the unused Access Keys.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.3.0 (AWS)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

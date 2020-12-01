@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-AWS-EC-216",
+  "policyId": "2e9b2375-cd85-4569-b90b-65cdbb4fd0b6",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS ElastiCache Redis cluster with Redis AUTH feature disabled",
+  "description": "This policy identifies ElastiCache Redis clusters which have Redis AUTH feature disabled. Redis AUTH can improve data security by requiring the user to enter a password before they are granted permission to execute Redis commands on a password protected Redis server.",
+  "rule.criteria": "49dbb5bd-ea99-4d84-9f76-48aba9c92243",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elasticache-describe-replication-groups' AND json.rule = 'authTokenEnabled is false or transitEncryptionEnabled is false or authTokenEnabled does not exist or transitEncryptionEnabled does not exist'",
+  "recommendation": "AWS ElastiCache Redis cluster Redis AUTH password can be set, only at the time of creation of the cluster. So to resolve this alert, create a new cluster with Redis AUTH feature enabled, then migrate all required ElastiCache Redis cluster data from the reported ElastiCache Redis cluster to this newly created cluster and delete the reported ElastiCache Redis cluster.\n\nTo create new ElastiCache Redis cluster with Redis AUTH password set, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on Redis\n5. Click on 'Create' button\n6. On the 'Create your Amazon ElastiCache cluster' page,\na. Select 'Redis' cache engine type.\nb. Enter a name for the new cache cluster\nc. Select Redis engine version from 'Engine version compatibility' dropdown list.\nNote: As of July 2018, In-transit encryption can be enabled only for AWS ElastiCache clusters with Redis engine version 3.2.6 and 4.0.10.\nd. Click on 'Advanced Redis settings' to expand the cluster advanced settings panel\ne. Select 'Encryption in-transit' checkbox to enable encryption\nNote: Redis AUTH can only be enabled when creating clusters where in-transit encryption is enabled.\nf. Select 'Redis AUTH' checkbox to enable to enable AuthToken password\ng. Type password you want enforce on 'Redis AUTH Token' textbox.\nChoosen password should meet 'Passwords must be at least 16 and a maximum of 128 printable characters. At least 16 characters, and maximum 128 characters, restricted to any printable ASCII character except ' ', '\"', '/' and '@' signs' criteria. Set the new Redis cluster other parameters which are same as of reported Redis cluster configuration details.\nNote: The password set at cluster creation cannot be changed.\n7. Click on 'Create' button to launch your new ElastiCache Redis cluster\n\nTo delete reported ElastiCache Redis cluster, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on Redis\n5. Select reported Redis cluster\n6. Click on 'Delete' button\n7. In the 'Delete Cluster' dialog box, if you want back for you cluster select 'Yes' from the 'Create final backup' dropdown menu, provide a name for the cluster backup, then click on 'Delete'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

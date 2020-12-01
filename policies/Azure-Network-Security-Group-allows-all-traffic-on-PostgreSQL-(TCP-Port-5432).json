@@ -1,0 +1,24 @@
+{
+  "policyUpi": "PC-AZR-NWK-275",
+  "policyId": "a0791206-a669-4948-a845-cc735212013c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Network Security Group allows all traffic on PostgreSQL (TCP Port 5432)",
+  "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on PostgreSQL (TCP Port 5432). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict PostgreSQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+  "rule.criteria": "b498a297-ae00-43ee-b767-d458785c7e00",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals *) and (destinationPortRange contains _Port.inRange(5432,5432) or destinationPortRanges[*] contains _Port.inRange(5432,5432) ))] exists",
+  "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "PIPEDA"
+  ]
+}

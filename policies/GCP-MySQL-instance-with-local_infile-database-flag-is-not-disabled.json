@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-SQL-533",
+  "policyId": "558185cd-8704-4709-8bea-e6c692f26d00",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP MySQL instance with local_infile database flag is not disabled",
+  "description": "This policy identifies MySQL instances in which local_infile database flag is not disabled. The local_infile flag controls the server-side LOCAL capability for LOAD DATA statements. Based on the settings in local_infile server refuses or permits local data loading by clients. Disabling the local_infile flag setting, would disable the local data loading by clients that have LOCAL enabled on the client side.",
+  "rule.criteria": "a063c6eb-ae91-4f80-9756-20b070a5733c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"databaseVersion contains MYSQL and (settings.databaseFlags[?(@.name=='local_infile')] does not exist or settings.databaseFlags[?(@.name=='local_infile')].value equals on)\"",
+  "recommendation": "1. Login to GCP Console\n2. Navigate to SQL\n3. Select the MySQL instance for which you want to enable the database flag from the list\n4. Click 'Edit'\nNOTE: If the instance is stopped, You need to START instance first to edit the configurations, then Click on EDIT.\n5. Go to the 'Flags' section under 'Configuration options'\n6. Click 'Add item', choose the flag 'local_infile' from the drop-down menu and set the value to 'Off'\nOR\nIf 'local_infile' database flag is already set to 'On', from the drop-down menu set the value to 'Off'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1.0 (GCP)"
+  ]
+}

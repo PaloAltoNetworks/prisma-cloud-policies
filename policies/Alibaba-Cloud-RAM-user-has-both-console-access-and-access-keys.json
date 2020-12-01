@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALB-RAM-540",
+  "policyId": "bf1c4c31-6039-413f-9253-6ffece6f0645",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "medium",
+  "name": "Alibaba Cloud RAM user has both console access and access keys",
+  "description": "This policy identifies Resource Access Management (RAM) users who have both console access and access keys. When a RAM user is created, the Administrator can assign either console access or access keys or both. As a best practice, it is recommended to assign console access to users and access keys for system / API applications, but not both to the same RAM user.",
+  "rule.criteria": "12171b2e-a8db-4801-8af8-05d0e684de5c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ram-user' AND json.rule =  'accessKeys[*] size > 0 and accessKeys[*].status any equal Active and loginProfile[*] is not empty'",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Resource Access Management\n3. In the left-side navigation pane, click 'Users'\n4. Click on reported user\n5. Based on the requirement and company policy, either delete the access keys or delete the console access for the reported RAM user.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

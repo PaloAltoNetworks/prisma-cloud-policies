@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-ALB-ECS-440",
+  "policyId": "a07312fe-cc3c-46a5-851a-c6a5da3e7886",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "medium",
+  "name": "Alibaba Cloud ECS instance is not using VPC network",
+  "description": "This policy identifies ECS instances which are still using the ECS classic network instead of the VPC network that enables you to leverage enhanced infrastructure security controls.\nNote: If you purchased an ECS instance after 17:00 (UTC+8) on June 14, 2017, you cannot choose the classic network type.",
+  "rule.criteria": "f0df69ef-3c07-4e69-9d9a-ff44f2b68aac",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ecs-instance' AND json.rule = 'instanceNetworkType does not equal vpc or vpcAttributes is empty'",
+  "recommendation": "You can select the VPC network only when you create a new ECS instance. So to fix this alert, create a new ECS instance with VPC network and then migrate all required ECS instance data from the reported ECS instance to this newly created ECS instance.\n\nTo set up the new ECS instance with VPC network, perform the following:\n1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, click 'Instances'\n4. On the Instances list page, click Create Instance.\n5. Complete the Basic Configurations\n6. Click 'Next: Networking', Select a 'Network Type' as 'VPC'. Select the desired VPC and a VSwitch.\n7. Complete the System Configurations, Grouping and Preview the configurations.\n8. Click on 'Create Order'\n\nTo delete reported ECS instance, perform the following:\n1. Log in to Alibaba Cloud Portal\n2. Go to Elastic Compute Service\n3. In the left-side navigation pane, click 'Instances'\n4. Click on the reported ECS instance\n5. Click on 'Stop', It will be auto-released.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

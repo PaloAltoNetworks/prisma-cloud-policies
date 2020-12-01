@@ -1,0 +1,32 @@
+{
+  "policyUpi": "PC-AWS-S3-29",
+  "policyId": "630d3779-d932-4fbf-9cce-6e8d793c6916",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS S3 buckets are accessible to public",
+  "description": "This policy identifies S3 buckets which are publicly accessible. Amazon S3 allows customers to store or retrieve any type of content from anywhere in the web. Often, customers have legitimate reasons to expose the S3 bucket to public, for example, to host website content. However, these buckets often contain highly sensitive enterprise data which if left open to public may result in sensitive data leaks.",
+  "rule.criteria": "67dc23e7-e6db-4efb-b7e8-b4bd7778c891",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name='aws-s3api-get-bucket-acl' AND json.rule = \"((((acl.grants[?(@.grantee=='AllUsers')] size > 0) or policyStatus.isPublic is true) and publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration does not exist) or ((acl.grants[?(@.grantee=='AllUsers')] size > 0) and ((publicAccessBlockConfiguration.ignorePublicAcls is false and accountLevelPublicAccessBlockConfiguration does not exist) or (publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration.ignorePublicAcls is false) or (publicAccessBlockConfiguration.ignorePublicAcls is false and accountLevelPublicAccessBlockConfiguration.ignorePublicAcls is false))) or (policyStatus.isPublic is true and ((publicAccessBlockConfiguration.restrictPublicBuckets is false and accountLevelPublicAccessBlockConfiguration does not exist) or (publicAccessBlockConfiguration does not exist and accountLevelPublicAccessBlockConfiguration.restrictPublicBuckets is false) or (publicAccessBlockConfiguration.restrictPublicBuckets is false and accountLevelPublicAccessBlockConfiguration.restrictPublicBuckets is false)))) and websiteConfiguration does not exist\"",
+  "recommendation": "1. Login to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the 'S3' resource reported in the alert\n4. Click on the 'Permissions'\n5. If Access Control List' is set to 'Public' follow below steps\na. Under 'Access Control List', Click on 'Everyone' and uncheck all items\nb. Click on Save\n6. If 'Bucket Policy' is set to public follow below steps\na. Under 'Bucket Policy', modify the policy to remove public access\nb. Click on Save\nc. If 'Bucket Policy' is not required delete the existing 'Bucket Policy'.\n\nNote: Make sure updating 'Access Control List' or 'Bucket Policy' does not affect S3 bucket data access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-171 Rev1",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

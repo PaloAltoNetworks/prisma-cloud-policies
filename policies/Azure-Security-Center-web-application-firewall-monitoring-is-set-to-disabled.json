@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AZR-PCY-116",
+  "policyId": "ecef5b12-d7f2-4c9c-9198-46b90eaf2770",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Security Center web application firewall monitoring is set to disabled",
+  "description": "This policy identifies the Azure Security Center policies which have web application firewall monitoring is set to disabled. Web application firewall is recommended for any public facing IP instance (VM or Load Balancer) which has an associated Network Security Group with open inbound ports such as 80 and 443.",
+  "rule.criteria": "59b078d7-6552-40de-9dbb-9e8f7c3f5a39",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-policy-assignments' AND json.rule = '((name == SecurityCenterBuiltIn and properties.parameters.webApplicationFirewallMonitoringEffect.value equals Disabled) or (name == SecurityCenterBuiltIn and properties.parameters[*] is empty and properties.displayName does not start with \"ASC Default\"))'",
+  "recommendation": "1. Login to Azure Portal\n2. Go to 'Security Center' (Left Panel)\n3. Click on 'Security Policy' under 'POLICY & COMPLIANCE'\n4. Choose the reported Subscription\n5. On the Security Policy page, under 'Security center default policy' section, Click on 'View effective policy'\n6. Click on 'SecurityCenterBuiltIn'\n7. Select 'Parameters' tab\n8. Set 'The NSGs rules for web applications on IaaS should be hardened' to AuditIfNotExists\n9. If no other changes required then Click on 'Review + save'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az policy assignment create --scope ${azureScope} --name SecurityCenterBuiltIn --policy-set-definition 1f3afdf9-d0c9-4c3d-847f-89da613e70a8 -p '{\"systemUpdatesMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"systemConfigurationsMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"endpointProtectionMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"diskEncryptionMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"networkSecurityGroupsMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"webApplicationFirewallMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"nextGenerationFirewallMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"vulnerabilityAssesmentMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"storageEncryptionMonitoringEffect\":{\"value\":\"Audit\"},\"jitNetworkAccessMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"adaptiveApplicationControlsMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"sqlAuditingMonitoringEffect\":{\"value\":\"AuditIfNotExists\"},\"sqlEncryptionMonitoringEffect\":{\"value\":\"AuditIfNotExists\"}}'",
+  "remediation.description": "This CLI command requires 'Microsoft.Authorization/policyAssignments/*' permission. Successful execution will set system updates, security configuration, endpoint protection, disk encryption, network security groups, web application firewall, next generation firewall, vulnerability assessment, storage encryption, jit network access, adaptive application controls, sql auditing and sql encryption to 'AuditIfNotExists'.",
+  "remediation.impact": "sets system updates, security configuration, endpoint protection, disk encryption, network security groups, web application firewall, next generation firewall, vulnerability assessment, storage encryption, jit network access, adaptive application controls, sql auditing and sql encryption to 'AuditIfNotExists'",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.1 (Azure)",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

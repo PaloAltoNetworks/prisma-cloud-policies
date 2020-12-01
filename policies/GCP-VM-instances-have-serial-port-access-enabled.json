@@ -1,0 +1,23 @@
+{
+  "policyUpi": "PC-GCP-GCE-196",
+  "policyId": "a7e6ca7c-8b47-4556-9a34-d2ab88347b4b",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instances have serial port access enabled",
+  "description": "This policy identifies VM instances which have serial port access enabled. Interacting with a serial port is often referred to as the serial console. The interactive serial console does not support IP-based access restrictions such as IP allowlists. If you enable the interactive serial console on an instance, clients can attempt to connect to that instance from any IP address. So it is recommended to keep interactive serial console support disabled.",
+  "rule.criteria": "85abf9ea-0225-4706-af2c-7e0177ebfd88",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = 'metadata.items[*].key contains serial-port-enable and metadata.items[*].value contains true'",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to VM instances\n4. From the list of VMs, choose the reported VM\n5. Click on Edit\n6. Under Remote access section, Uncheck 'Enable connecting to serial ports'\n7. Click on Save button",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CCPA 2018",
+    "CIS v1.0.0 (GCP)",
+    "CIS v1.1.0 (GCP)",
+    "MITRE ATT&CK [Beta]",
+    "PIPEDA"
+  ]
+}
