@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-569",
+  "policyId": "6fd5eaee-2e6d-419b-b380-2fa1a67feaf3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure App Services Remote debugging is enabled",
+  "description": "This policy identifies Azure App Services which has Remote debugging enabled. Enabling Remote debugging feature opens up inbound ports on App Services. It is recommended to disabled Azure App Services Remote debugging.",
+  "rule.criteria": "1feba014-ed3b-46ed-8a7c-4c03ec1469b7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = config.remoteDebuggingEnabled is true",
+  "recommendation": "1. Log in to the Azure Portal\n2. Select 'App Services' from the left pane\n3. Select the reported App Services\n4. Go to 'Configurations' under 'Settings'\n5. Click on 'General settings'\n6. Select 'Off' for 'Remote debugging' under 'Debugging section\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

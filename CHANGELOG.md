@@ -1,5 +1,26 @@
 # Changelog
 
+## [PCS-20.12.2]
+
+### Added
+
+#### 3 new policies
+
+- Azure Virtual Machine Boot Diagnostics Disabled
+- Azure Virtual Machine scale sets Boot Diagnostics Disabled
+- Azure App Services Remote debugging is enabled
+
+### Changed
+
+#### 5 policies updated
+
+- AWS Elastic File System (EFS) with encryption for data at rest is disabled
+- Azure storage account logging for tables is disabled
+- Azure storage account logging for queues is disabled
+- Alibaba Cloud MFA is disabled for RAM user
+- Alibaba Cloud Security group is overly permissive
+
+
 ## [PCS-20.12.1]
 
 ### Changed
@@ -28,7 +49,6 @@
 - Azure Network Security Group having Inbound rule overly permissive to all traffic on any protocol
 - Azure Network Security Group having Inbound rule overly permissive to all traffic on TCP protocol
 - GCP Kubernetes Engine Clusters have HTTP load balancing disabled
-
 
 #### 2 additional policies mapped to CIS v1.1 (Azure)
 
