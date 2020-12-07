@@ -1,6 +1,6 @@
 # Changelog
 
-## [PCS-20.12.2]
+## PCS-20.12.2 - 2020-12-17
 
 ### Added
 
@@ -21,7 +21,7 @@
 - Alibaba Cloud Security group is overly permissive
 
 
-## [PCS-20.12.1]
+## PCS-20.12.1 - 2020-12-03
 
 ### Changed
 
@@ -56,7 +56,7 @@
 - Azure Network Security Group having Inbound rule overly permissive to all traffic on any protocol
 
 
-## [PCS-20.11.2]
+## PCS-20.11.2 - 2020-11-19
 
 ### Added
 
