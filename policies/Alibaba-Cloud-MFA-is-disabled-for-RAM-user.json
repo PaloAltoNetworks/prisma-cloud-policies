@@ -7,7 +7,7 @@
   "name": "Alibaba Cloud MFA is disabled for RAM user",
   "description": "This policy identifies Resource Access Management (RAM) users for whom Multi Factor Authentication (MFA) is disabled. As a best practice, enable MFA to add an extra layer of protection for increased security of your Alibaba Cloud account settings and resources.",
   "rule.criteria": "e530a50d-1425-4fd7-8342-83dcae65f0d8",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ram-user' AND json.rule = 'loginProfile.mfabindRequired is false'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' AND api.name = 'alibaba-cloud-ram-user' AND json.rule = 'MFADevice is empty'",
   "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Go to Resource Access Management\n3. In the left-side navigation pane, click 'Users'\n4. Select the reported user\n5. In the 'Authentication' tab, Click on 'Modify Logon Settings'\n6. Choose the 'Required' radio button for 'Enable MFA' \n7. Click on 'OK'\n8. Click on 'Close'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
