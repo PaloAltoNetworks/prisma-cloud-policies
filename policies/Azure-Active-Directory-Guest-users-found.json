@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
 }

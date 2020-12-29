@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-STO-571",
+  "policyId": "6ff0fbd8-cc5d-4123-ab41-3b92473e2517",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage account Encryption Customer Managed Keys Disabled",
+  "description": "This policy identifies Azure Storage account which has Encryption with Customer Managed Keys Disabled. By default all data at rest in Azure Storage account is encrypted using Microsoft Managed Keys. It is recommended to use Customer Managed Keys to encrypt data in Azure Storage accounts for better control on Storage account data.",
+  "rule.criteria": "02b53921-7e9e-4e46-951d-550267b395eb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.encryption.keySource equals \"Microsoft.Storage\"",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Storage accounts dashboard and Click on reported storage account\n3. Under the Settings menu, click on Encryption\n4. Select Customer Managed Keys\n- Choose 'Enter key URI' and Enter 'Key URI'\nOR\n- Choose 'Select from Key Vault', Enter 'Key Vault' and 'Encryption Key'\n5. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

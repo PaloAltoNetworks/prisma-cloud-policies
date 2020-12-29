@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-ARM-618",
+  "policyId": "bc47859c-edf2-4485-808b-2b60b3893e4f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Custom Role Administering Resource Locks not assigned",
+  "description": "This policy identifies Azure Custom Role Administering Resource Locks which are not assigned to any user. Resource locking feature helps to prevent resource being modified or deleted unintentional by any user and prevents damage caused by it. It is recommended to create a custom role for Resource Locks and assign to appropriate user.",
+  "rule.criteria": "ff474a38-affb-4434-aa62-4ebf346d234b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-role-assignment' AND json.rule = (properties.roleDefinition.properties.type equals CustomRole and (properties.roleDefinition.properties.permissions[?any((actions[*] equals Microsoft.Authorization/locks/delete and actions[*] equals Microsoft.Authorization/locks/read and actions[*] equals Microsoft.Authorization/locks/write) or actions[*] equals Microsoft.Authorization/locks/*)] exists) and (properties.roleDefinition.properties.permissions[?any(notActions[*] equals Microsoft.Authorization/locks/delete or notActions[*] equals Microsoft.Authorization/locks/read or notActions[*] equals Microsoft.Authorization/locks/write or notActions[*] equals Microsoft.Authorization/locks/*)] does not exist)) as X; count(X) less than 1",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Subscriptions', and select the subscription from the list where you want the custom role\n3. Select 'Access control (IAM)'\n\nIf already custom role has been created for resource locks, then go to step 16\n\n4. Click on 'Add' from top tab and select 'Add custom role'\n5. Enter 'Resource Lock Administrator' in the 'Custom role name' field\n6. Enter 'Can Administer Resource Locks' in the 'Description' field\n7. Select 'Start from scratch' for 'Baseline permissions'\n8. Click 'Next'\n9. Select 'Add permissions' from top 'Permissions' tab\n10. Search for 'Microsoft.Authorization/locks' in the 'Search for a permission' box\n11. Select 'Microsoft.Authorization'\n12. Click on 'Permission' checkbox to select all permissions\n13. Click on 'Add'\n14. Click 'Review+create'\n15. Click 'Create' to create custom role for resource locks\n16. In 'Access control (IAM)' select 'Add role assignment'\n17. Select the custom role created above from 'Role' drop down\n18. Select 'User, group, or service principal' from 'Assign access to' drop down\n19. Search for user to assign the custom role in 'Select' field\n20. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

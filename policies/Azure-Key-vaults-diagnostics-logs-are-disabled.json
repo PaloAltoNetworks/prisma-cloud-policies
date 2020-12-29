@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-KV-615",
+  "policyId": "922d0974-a29b-42f5-91ea-99da087a1718",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Key vaults diagnostics logs are disabled",
+  "description": "This policy identifies Azure Key vaults which has diagnostics logs disabled. Enabling Diagnostic Logs gives visibility into the data plane thus gives organisation ability to detect reconnaissance, authorization attempts or other malicious activity. It is recommended to enable diagnostics logs settings for Azure Key vaults.",
+  "rule.criteria": "3e36c169-f9c6-44a6-9c2e-f60fa40035ad",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' AND json.rule = diagnosticSettings.value[*] size equals 0",
+  "recommendation": "1. Log in to the Azure portal.\n2. Navigate to 'Key vaults', and select the reported key vault from the list\n3. Select 'Diagnostic settings' under 'Monitoring' section\n4. Click on '+Add diagnostic setting'\n5. Specify a 'Diagnostic settings name',\n6. Under 'Category details' section, select the type of 'Log' that you want to enable\n7. Under section 'Destination details',\na. If you select 'Send to Log Analytics', select the 'Subscription' and 'Log Analytics workspace'\nb. If you set 'Archive to storage account', select the 'Subscription', 'Storage account' and set the 'Retention (days)'\nc. If you set 'Stream to an event hub', select the 'Subscription', 'Event hub namespace', 'Event hub name' and set the 'Event hub policy name'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

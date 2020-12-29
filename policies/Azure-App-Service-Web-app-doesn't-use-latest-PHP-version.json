@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CCPA 2018",
     "CIS v1.1 (Azure)",
+    "CIS v1.2.0 (Azure)",
     "MITRE ATT&CK [Beta]",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

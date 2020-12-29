@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-PG-577",
+  "policyId": "492e32db-49f1-495d-90f8-d1f84662d210",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure PostgreSQL Database Server 'Allow access to Azure services' enabled",
+  "description": "This policy identifies Azure PostgreSQL Database Server which has 'Allow access to Azure services' settings enabled. When 'Allow access to Azure services' settings is enabled, PostgreSQL Database server will accept connections from all Azure resources including other subscription resources as well. It is recommended to use firewall rules or VNET rules to allow access from specific network ranges or virtual networks.",
+  "rule.criteria": "dfa7d61c-d608-45a7-b9fd-adecd6da1f25",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = firewallRules.value[*].properties.startIpAddress equals 0.0.0.0 and firewallRules.value[*].properties.endIpAddress equals 0.0.0.0",
+  "recommendation": "1. Login to Azure console\n2. Navigate to 'Azure Database for PostgreSQL servers' dashboard\n3. Select the reported PostgreSQL server\n4. Go to 'Connection security' under 'Settings'\n5. Select 'No' for 'Allow access to Azure services' under 'Firewall rules'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

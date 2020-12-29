@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CCPA 2018",
     "CIS v1.1 (Azure)",
+    "CIS v1.2.0 (Azure)",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "PIPEDA"
   ]
