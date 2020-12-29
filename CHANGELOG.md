@@ -1,5 +1,39 @@
 # Changelog
 
+## PCS-20.1.1 - 2021-01-14
+
+### Added
+
+#### 11 new policies
+
+ - AWS Elastic Load Balancer v2 (ELBv2) SSL negotiation policy configured with weak ciphers
+ - AWS Elastic Load Balancer v2 (ELBv2) with deletion protection feature disabled
+ - AWS IAM role/user with unused CloudTrail delete or full permission
+ - AWS S3 bucket having policy overly permissive to VPC endpoints
+ - Azure App Services FTP deployment is All allowed
+ - Azure Custom Role Administering Resource Locks not assigned
+ - Azure Key vaults diagnostics logs are disabled
+ - Azure PostgreSQL Database Server 'Allow access to Azure services' enabled
+ - Azure Storage account Encryption Customer Managed Keys Disabled
+ - Azure Virtual Machines are not utilising Managed Disks
+ - Azure Virtual machine scale sets are not utilising Managed Disks
+
+#### 1 new compliance standard
+
+ - CIS v1.2.0 (Azure)
+
+### Changed
+
+#### 6 policies updated
+
+ - AWS Default Security Group does not restrict all traffic
+ - AWS EKS cluster security group overly permissive to all traffic
+ - AWS Security Group Inbound rule overly permissive to all traffic on all protocols (-1)
+ - AWS Security Group allows all traffic on ports which are not commonly used
+ - AWS Security Group overly permissive to all traffic
+ - Internet connectivity via TCP over insecure port
+
+
 ## PCS-20.12.2 - 2020-12-17
 
 ### Added
