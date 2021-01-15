@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-CMP-603",
+  "policyId": "3596e236-1c20-4f3f-be6d-a513f0da63e1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Virtual machine scale sets are not utilising Managed Disks",
+  "description": "This policy identifies Azure Virtual machine scale sets which are not utilising Managed Disks. Using Azure Managed disk over traditional BLOB storage based VHD's has more advantage features like Managed disks are by default encrypted, reduces cost over storage accounts and more resilient as Microsoft will manage the disk storage and move around if underlying hardware goes faulty. It is recommended to move BLOB based VHD's to Managed Disks.",
+  "rule.criteria": "3ec883be-a22f-40d3-b295-acf66ffdd4c8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-virtual-machine-scale-set' AND json.rule = properties.virtualMachineProfile.storageProfile.osDisk.vhdContainers exists",
+  "recommendation": "Currently migrating Virtual machine scale sets VHD disks to Azure Managed Disks is not available.\nIt is recommended that all new future scale sets be deployed with managed disks.\n\nFollow steps given in the URL to create new Virtual machine Scale sets,\n\nhttps://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-portal",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

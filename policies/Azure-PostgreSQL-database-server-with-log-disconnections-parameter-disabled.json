@@ -15,6 +15,7 @@
   "remediation.impact": "enables log_disconnections in Azure PostgreSQL database servers",
   "compliance.standard": [
     "CIS v1.1 (Azure)",
+    "CIS v1.2.0 (Azure)",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"

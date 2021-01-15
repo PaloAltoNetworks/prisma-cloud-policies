@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-APP-576",
+  "policyId": "7fa164f0-fb0d-40a1-8293-8192f64eed81",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure App Services FTP deployment is All allowed",
+  "description": "This policy identifies Azure App Services which has FTP deployment setting as All allowed. Attacker could listen to wifi traffic and get the login credentials to a FTP deployments which could be in plain text and get full control of the code base of the app or service. It is highly recommend to use FTPS if FTP deployment for workflow is essential else disable the FTP deployment for Azure App Services.",
+  "rule.criteria": "cd13ceb9-5139-4bf3-b722-0d6be1d36627",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = config.ftpsState equals AllAllowed",
+  "recommendation": "Following recommendation steps are for resources hosted in App Service, Premium and Windows Consumption plans,\n\n1. Log in to the Azure Portal\n2. Select 'App Services' from the left pane\n3. Select the reported App Services\n4. Go to 'Configurations' under 'Settings'\n5. Click on 'General settings'\n6. Select 'FTPS only' or 'Disabled' for 'FTP state' under 'Platform settings'\n7. Click on 'Save'\n\nIf Function App Hosted in Linux using Consumption (Serverless) Plan follow below steps\n\nAzure CLI Command \nFTP Disable - \\\"az functionapp config set --ftps-state Disabled --name MyFunctionApp --resource-group MyResourceGroup\\\"\n\nFTPS only - \\\"az functionapp config set --ftps-state FtpsOnly --name MyFunctionApp --resource-group MyResourceGroup\\\"",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}
