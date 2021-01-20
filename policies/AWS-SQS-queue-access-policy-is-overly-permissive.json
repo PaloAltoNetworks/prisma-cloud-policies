@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SQS-634",
+  "policyId": "bfe88196-dc6b-4c34-bda7-ef4b90942544",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS SQS queue access policy is overly permissive",
+  "description": "This policy identifies Simple Queue Service (SQS) queues that have an overly permissive access policy. It is highly recommended to have the least privileged access policy to protect the SQS queue from data leakage and unauthorized access.\n\nFor more details:\nhttps://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html",
+  "rule.criteria": "909d9fdc-8a80-4757-afbe-d1829939c40c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sqs-get-queue-attributes' AND json.rule = attributes.Policy.Statement[?any(Principal equals * and Effect equals Allow)] exists",
+  "recommendation": "1. Log in to the AWS console\n2. Select the region, from the region drop-down, in which the alert is generated\n3. Navigate to Simple Queue Service (SQS) dashboard\n4. Choose the reported Simple Queue Service (SQS) and choose 'Edit'\n5. Scroll to the 'Access policy' section\n6. Edit the access policy statements in the input box, Make sure the 'Principal' is not set to '*', which makes your SQS queues accessible to any anonymous users.\n7. When you finish configuring the access policy, choose 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

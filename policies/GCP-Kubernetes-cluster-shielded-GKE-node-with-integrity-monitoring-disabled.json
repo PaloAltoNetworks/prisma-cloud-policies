@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-575",
+  "policyId": "d64da692-874d-48fd-9acf-391473ae94c9",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster shielded GKE node with integrity monitoring disabled",
+  "description": "This policy identifies GCP Kubernetes cluster shielded GKE nodes that are not enabled with Integrity Monitoring. Integrity Monitoring provides active alerting for Shielded GKE nodes which allows administrators to respond to integrity failures and prevent compromised nodes from being deployed into the cluster.",
+  "rule.criteria": "39cdd589-3814-4f97-9101-a2204f8721e0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = nodePools[?any(config.shieldedInstanceConfig.enableIntegrityMonitoring does not exist or config.shieldedInstanceConfig.enableIntegrityMonitoring is false)] exists",
+  "recommendation": "Note: Once a Node pool is provisioned, it cannot be updated to enable Integrity monitoring. You must create new Node pools within the cluster with Integrity monitoring enabled. You will also need to migrate workloads from existing non-conforming Node pools to the newly created Node pool, then delete the non-conforming pools.\n\nTo create a node pool with Integrity monitoring enabled follow the below steps,\n\n1. Log in to gcloud console\n2. Navigate to service 'Kubernetes Engine'\n3. Select the alerted cluster and click 'ADD NODE POOL'\n4. Ensure that the 'Enable integrity monitoring' checkbox is checked under the 'Shielded options' in section 'Security'\n5. Click on 'CREATE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-631",
+  "policyId": "cc5a49ce-509c-4779-bb00-e1fc6fc6b10c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Application Load Balancer (ALB) is not using the latest predefined security policy",
+  "description": "This policy identifies Application Load Balancers (ALBs) are not using the latest predefined security policy. A security policy is a combination of protocols and ciphers. The protocol establishes a secure connection between a client and a server and ensures that all data passed between the client and your load balancer is private. A cipher is an encryption algorithm that uses encryption keys to create a coded message. So it is recommended to use the latest predefined security policy which uses only secured protocol and ciphers.\n\nWe recommend using ELBSecurityPolicy-FS-1-2-Res-2020-10 policy if you require Forward Secrecy (FS) and use ELBSecurityPolicy-TLS-1-2-Ext-2018-06 policy to meet compliance and security standards that require disabling certain TLS protocol versions or to support legacy clients that require deprecated ciphers.\n\nFor more details:\nhttps://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies",
+  "rule.criteria": "1ae28671-f3a2-4e16-bf1b-96999e024709",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = type equals application and listeners[?any(protocol equals HTTPS and sslPolicy exists and (sslPolicy does not contain ELBSecurityPolicy-FS-1-2-Res-2020-10 and sslPolicy does not contain ELBSecurityPolicy-TLS-1-2-Ext-2018-06))] exists",
+  "recommendation": "1. Log in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to the EC2 Dashboard, and select 'Load Balancers'\n4. Click on the reported Load Balancer\n5. On the 'Listeners' tab, Choose the 'HTTPS' or 'SSL' rule\n6.Click on 'Edit', Change 'Security policy' to 'ELBSecurityPolicy-FS-1-2-Res-2020-10' policy if you require Forward Secrecy (FS) and use 'ELBSecurityPolicy-TLS-1-2-Ext-2018-06' policy to meet compliance and security standards that require disabling certain TLS protocol versions or to support legacy clients that require deprecated ciphers.\n7. Click on 'Update' to save your changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

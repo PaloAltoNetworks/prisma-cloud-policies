@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-NWK-633",
+  "policyId": "e3b0e339-22bd-4b91-9157-e1e7482334f3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Virtual machine NIC has IP forwarding enabled",
+  "description": "This policy identifies Azure Virtual machine NIC which have IP forwarding enabled. IP forwarding on a virtual machine's NIC allows the machine to receive and forward traffic addressed to other destinations. As a best practice, before you enable IP forwarding in a Virtual Machine NIC, review the configuration with your network security team to ensure that it does not allow an attacker to exploit the set up to route packets through the host and compromise your network.",
+  "rule.criteria": "544264bb-eb95-4142-90b3-f7f41d5ef311",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-nic-list' AND json.rule = ['properties.virtualMachine'].id is not empty and ['properties.enableIPForwarding'] exists and ['properties.enableIPForwarding'] is true",
+  "recommendation": "1.Login to Azure Portal\n2.Click on 'All services' on left Navigation\n3.Click on 'Network interfaces' under 'Networking'\n4.Click on reported resource\n5.Click on 'IP configurations' under Settings\n6.Select 'Disabled' for 'IP forwarding'\n7.Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
