@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable 'Multi-AZ Deployment' for the respective RDS.",
   "remediation.impact": "Enable AWS RDS instance with Multi-Availability Zone",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "Multi-Level Protection Scheme (MLPS) v2.0"
   ]
 }

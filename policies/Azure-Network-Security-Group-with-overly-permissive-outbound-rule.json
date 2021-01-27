@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the outbound rule records allowing all traffic to any source.",
   "remediation.impact": "reject all traffic to any source",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "MITRE ATT&CK [Beta]",
     "Multi-Level Protection Scheme (MLPS) v2.0",

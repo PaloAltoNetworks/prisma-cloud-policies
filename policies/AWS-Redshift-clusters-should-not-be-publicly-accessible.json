@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'redshift:ModifyCluster' permission. Successful execution will disable the publicly accessible configuration of AWS Redshift clusters",
   "remediation.impact": "AWS Redshift clusters to disable the publicly accessible settings",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CSA CCM v3.0.1",
     "GDPR",

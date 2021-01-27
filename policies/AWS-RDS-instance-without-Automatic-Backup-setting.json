@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable the automatic back up settings for RDS instances",
   "remediation.impact": "Configure AWS RDS instance with Automatic Backup setting",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "MITRE ATT&CK [Beta]",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

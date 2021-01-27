@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/{app_name}/config/authsettings/*' permission. Successful execution will enable app service authentication, that can prevent anonymous HTTP requests from reaching the API app, or authenticate those that have tokens before they reach the API app.",
   "remediation.impact": "Sets on App Service Authentication in Azure App Service",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",

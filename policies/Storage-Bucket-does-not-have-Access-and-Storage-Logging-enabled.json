@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.0.0 (GCP)",
     "CSA CCM v3.0.1",

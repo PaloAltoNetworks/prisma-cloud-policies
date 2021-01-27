@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Authorization/policyAssignments/*' permission. Successful execution will set system updates, security configuration, endpoint protection, disk encryption, network security groups, web application firewall, next generation firewall, vulnerability assessment, storage encryption, jit network access, adaptive application controls, sql auditing and sql encryption to 'AuditIfNotExists'.",
   "remediation.impact": "sets system updates, security configuration, endpoint protection, disk encryption, network security groups, web application firewall, next generation firewall, vulnerability assessment, storage encryption, jit network access, adaptive application controls, sql auditing and sql encryption to 'AuditIfNotExists'",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "ISO 27001:2013",

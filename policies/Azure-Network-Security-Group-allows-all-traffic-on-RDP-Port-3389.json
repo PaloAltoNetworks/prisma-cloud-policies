@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing traffic from Internet on port 3389.",
   "remediation.impact": "reject all traffic from Internet on port 3389",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",

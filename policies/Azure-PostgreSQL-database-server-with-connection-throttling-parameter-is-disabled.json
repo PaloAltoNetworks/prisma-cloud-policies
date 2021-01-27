@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable connection_throttling which helps the PostgreSQL database to set the verbosity of logged messages, which in turn generates query and error logs with respect to concurrent connections",
   "remediation.impact": "enables connection_throttling in Azure PostgreSQL database servers",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",
     "NIST 800-53 Rev 5",

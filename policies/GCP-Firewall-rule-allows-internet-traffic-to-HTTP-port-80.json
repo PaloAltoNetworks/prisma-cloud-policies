@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'gcloud.compute.firewall-rules.delete' permission. Successful execution will delete this firewall rule blocking internet traffic to HTTP port (80).",
   "remediation.impact": "delete this firewall rule",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CSA CCM v3.0.1",
     "GDPR",

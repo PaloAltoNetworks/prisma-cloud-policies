@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "aws rds modify-db-instance --region ${region} --db-instance-identifier ${resourceName} --copy-tags-to-snapshot --apply-immediately",
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable 'copy tags to snapshots' for the respective RDS.",
   "remediation.impact": "Enable copy tags to snapshots for the respective RDS",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security"
+  ]
 }

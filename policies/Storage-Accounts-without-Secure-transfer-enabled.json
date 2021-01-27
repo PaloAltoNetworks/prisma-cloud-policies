@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will enable secure transfer for this storage account.",
   "remediation.impact": "enable secure transfer for this storage account",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",

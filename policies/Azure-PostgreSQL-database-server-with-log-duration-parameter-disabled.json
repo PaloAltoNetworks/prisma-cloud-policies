@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable log_duration which helps the PostgreSQL database to log the duration of each completed SQL statement, which in turn generates query and error logs.",
   "remediation.impact": "enables log_duration in Azure PostgreSQL database servers",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",
     "Multi-Level Protection Scheme (MLPS) v2.0",

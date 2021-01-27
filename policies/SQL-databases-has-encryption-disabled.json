@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Sql/servers/databases/transparentDataEncryption/*' permission. Successful execution will enable SQL database encryption.",
   "remediation.impact": "enable SQL database encryption",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",

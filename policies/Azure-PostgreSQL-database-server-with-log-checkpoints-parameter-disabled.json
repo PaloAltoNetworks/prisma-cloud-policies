@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable log_checkpoints which helps the PostgreSQL Database server to log each checkpoint in turn generates query and error logs.",
   "remediation.impact": "enables log_checkpoints in Azure PostgreSQL database servers",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",
     "Multi-Level Protection Scheme (MLPS) v2.0",

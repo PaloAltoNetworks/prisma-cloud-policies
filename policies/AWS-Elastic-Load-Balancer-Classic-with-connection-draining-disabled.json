@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "aws elb modify-load-balancer-attributes --load-balancer-name ${resourceName} --region ${region} --load-balancer-attributes \"{\\\"ConnectionDraining\\\":{\\\"Enabled\\\":true,\\\"Timeout\\\":300}}\"",
   "remediation.description": "This CLI command requires 'elasticloadbalancing:ModifyLoadBalancerAttributes' permission. Successful execution will enable connection draining for the respective ELB.",
   "remediation.impact": "Enable connection draining for the respective ELB",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security"
+  ]
 }

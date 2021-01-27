@@ -28,6 +28,10 @@
 - GCP Kubernetes Engine cluster not using Release Channel for version management
 - GCP Kubernetes Engine cluster workload identity is disabled
 
+#### 1 new compliance standard
+
+ - Australian Prudential Regulation Authority (APRA) Prudential Standard (CPS 234)
+
 ### Changed
 
 #### 6 policies updated

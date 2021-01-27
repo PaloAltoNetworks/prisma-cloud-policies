@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'container.clusters.update' permission. Successful execution will disable Legacy Authorization for GCP Kubernetes Engine cluster which helps RBAC to limit permissions for authorized users based on need.",
   "remediation.impact": "disables Legacy Authorization in GCP Kubernetes Engine cluster",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.0.0 (GCP)",
     "CIS v1.1.0 (GKE)",

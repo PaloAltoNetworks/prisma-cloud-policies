@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'eks:UpdateClusterConfig' permission. Successful execution will enable control plane logging for the respective EKS.",
   "remediation.impact": "Enable control plane logging for the respective EKS",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

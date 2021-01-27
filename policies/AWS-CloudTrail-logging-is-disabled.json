@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'cloudtrail:StartLogging' permission. Successful execution will enable logging for the respective CloudTrail.",
   "remediation.impact": "Enable logging for the respective CloudTrail",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"
   ]
