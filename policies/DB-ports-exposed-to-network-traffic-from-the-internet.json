@@ -4,7 +4,7 @@
   "policyType": "network",
   "cloudType": "all",
   "severity": "medium",
-  "name": "Publicly exposed DB Ports",
+  "name": "DB ports exposed to network traffic from the internet",
   "description": "DB Servers contain sensitive data and should not be exposed to any direct traffic from internet. This policy checks for the network traffic from internet hitting the DB Servers on their default ports. The DB servers monitored on the default ports are : Microsoft SQL Server (1433), Oracle (1521), MySQL (3306), Sybase (5000), Postgresql (5432), CouchDB (5984), Redis (6379, 6380), RethinkDB (8080,28015, 29015), CassandraDB (9042), Memcached (11211), MongoDB (27017), DB2 (50000).",
   "rule.criteria": "25d0c0d7-03c1-4be2-9439-85249c4a9c23",
   "searchModel.query": "network from vpc.flow_record where src.publicnetwork in ('Suspicious IPs','Internet IPs') and dest.port in (1433, 1521, 3306, 5000, 5432, 5984, 6379, 6380, 8080, 9042, 11211, 27017, 28015, 29015, 50000) AND dest.resource IN ( resource where role not in ( 'AWS ELB', 'AWS NAT Gateway' )) AND accepted.bytes > 0",

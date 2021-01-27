@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-604",
+  "policyId": "6b65e730-d5bf-400c-9a08-9721d6ccdf4a",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes Engine cluster not using Release Channel for version management",
+  "description": "This policy identifies GCP Kubernetes Engine clusters that are not using Release Channel for version management. Subscribing to a specific release channel reduces version management complexity. \n\nThe Regular release channel upgrades every few weeks and is for production users who need features not yet offered in the Stable channel. These versions have passed internal validation, but don't have enough historical data to guarantee their stability. Known issues generally have known workarounds.\n\nThe Stable release channel upgrades every few months and is for production users who need stability above all else, and for whom frequent upgrades are too risky. These versions have passed internal validation and have been shown to be stable and reliable in production, based on the observed performance of those clusters.",
+  "rule.criteria": "7456f76f-cef6-40e6-bf60-18bae6fddd8a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = releaseChannel.channel does not exist",
+  "recommendation": "1. Log in to gcloud console\n2. Navigate to service 'Kubernetes Engine'\n3. From the list of available clusters, select the reported cluster\n4. Go to the 'Release channel' configuration\n5. To edit, Click on the 'UPGRADE AVAILABLE' or 'Edit release channel'(Whichever available)\n6. In the 'Edit version' pop-up, select the required release channel(Regular Channel/ Stable Channel/ Rapid Channel) from the 'Release channel' dropdown\n7. Click on 'SAVE CHANGES' or 'CHANGE'.\n\nKnow more on Release Channels here: https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

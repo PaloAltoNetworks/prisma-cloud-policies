@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'elasticloadbalancing:ModifyLoadBalancerAttributes' permission. Successful execution will enable cross-zone load balancing for the respective Elastic Load Balancers.",
   "remediation.impact": "Enable cross-zone load balancing for the respective Elastic Load Balancer",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"

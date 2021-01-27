@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable the minor upgrades of RDS datsbase instance",
   "remediation.impact": "RDS minor upgrades will be enabled",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"
   ]

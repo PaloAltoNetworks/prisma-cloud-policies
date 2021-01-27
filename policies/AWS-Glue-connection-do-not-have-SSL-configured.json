@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-GLU-647",
+  "policyId": "47a93d3d-1a0e-4487-97d9-c602338c607c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Glue connection do not have SSL configured",
+  "description": "This policy identifies the Glue connections that are not configured with SSL to encrypt connections. It is recommended to use an SSL connection with hostname matching is enforced for the DB connection on the client; enforcing SSL connections help protect against 'man in the middle' attacks by encrypting the data stream between connections.",
+  "rule.criteria": "e6b6e20f-a443-4d73-8905-6c1af6c49b89",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-glue-connection' AND json.rule = (connectionType equals KAFKA and connectionProperties.KAFKA_SSL_ENABLED is false) or (connectionType does not equal KAFKA and connectionProperties.JDBC_ENFORCE_SSL is false)",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Navigate to AWS Glue service\n4. Click on 'Connections', Click on the reported Connection\n5. Click on 'Edit'\n6. On the 'Edit connection' page, Select 'Require SSL connection'\n7. Click on 'Next'\n8. Click on 'Finish'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

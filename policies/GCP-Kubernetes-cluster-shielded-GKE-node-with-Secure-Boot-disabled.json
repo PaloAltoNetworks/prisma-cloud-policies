@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-574",
+  "policyId": "9a2b73c4-dfb2-4926-9198-c8524894ab7e",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Kubernetes cluster shielded GKE node with Secure Boot disabled",
+  "description": "This policy identifies GCP Kubernetes cluster shielded GKE nodes with Secure Boot disabled. An attacker may seek to alter boot components to persist malware or rootkits during system initialization. It is recommended to enable Secure Boot for Shielded GKE Nodes to verify the digital signature of node boot components.",
+  "rule.criteria": "f092a573-b0f8-4f02-95bb-85c101e1c005",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = nodePools[?any(config.shieldedInstanceConfig.enableSecureBoot does not exist or config.shieldedInstanceConfig.enableSecureBoot is false)] exists",
+  "recommendation": "Note: Once a Node pool is provisioned, it cannot be updated to enable Secure Boot. You must create new Node pools within the cluster with Secure Boot enabled. You will also need to migrate workloads from existing non-conforming Node pools to the newly created Node pool, then delete the non-conforming pools.\n\nTo create a nodepool with Secure Boot enabled follow the below steps,\n\n1. Log in to gcloud console\n2. Navigate to service 'Kubernetes Engine'\n3. Select the alerted cluster and click 'ADD NODE POOL'\n4. Ensure that the 'Enable secure boot' checkbox is checked under the ‘Shielded options' in section 'Security'\n5. Click on 'CREATE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

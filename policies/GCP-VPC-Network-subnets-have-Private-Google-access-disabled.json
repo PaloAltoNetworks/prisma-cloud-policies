@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.networkAdmin' permission. Successful execution will enable GCP VPC Network subnets 'Private Google access'.",
   "remediation.impact": "enables private-ip-google-access in GCP VPC Network subnets",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.0.0 (GCP)",
     "CSA CCM v3.0.1",
     "ISO 27001:2013",

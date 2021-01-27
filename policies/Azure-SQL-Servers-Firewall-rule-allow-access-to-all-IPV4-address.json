@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SQL-629",
+  "policyId": "d3b3d6ff-5011-49ae-9228-10c6399481b4",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure SQL Servers Firewall rule allow access to all IPV4 address",
+  "description": "This policy identifies Azure SQL Servers which has Firewall rule that allow access to all IPV4 address. Having a firewall rule with start IP being 0.0.0.0 and end IP being 255.255.255.255 would allow access to SQL server from any host on the internet. It is highly recommended not to use this type of firewall rule in any SQL servers.",
+  "rule.criteria": "df1d2aa4-e7bc-4f0b-a5ae-f4ea971e12e5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = firewallRules[?any(startIpAddress equals 0.0.0.0 and endIpAddress equals 255.255.255.255)] exists",
+  "recommendation": "1.Login to Azure Portal\n2.Click on 'All services' on left Navigation\n3.Click on 'SQL servers' under Databases\n4.Click on reported server instance\n5.Click on 'Firewalls and virtual networks' under Settings\n6.Delete the rule which has 'Start IP' as 0.0.0.0 and 'End IP' as 255.255.255.255\n7.Click on Save",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

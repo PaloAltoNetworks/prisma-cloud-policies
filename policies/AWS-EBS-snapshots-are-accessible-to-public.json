@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'ec2:ModifySnapshotAttribute' permission. Successful execution will make this EBS snapshot's access to private. This will ensure that only Owner has full privileges.",
   "remediation.impact": "make this EBS snapshot private",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CSA CCM v3.0.1",
     "GDPR",

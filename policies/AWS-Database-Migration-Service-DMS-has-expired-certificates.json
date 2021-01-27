@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-638",
+  "policyId": "e1539f4f-7c9b-47bb-b3d5-9660f4ed0cda",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Database Migration Service (DMS) has expired certificates",
+  "description": "This policy identifies expired certificates that are in AWS Database Migration Service (DMS). AWS Database Migration Service (DMS) Certificate service is the preferred tool to provision, manage, and deploy your DMS endpoint certificates. As a best practice, it is recommended to delete expired certificates.\n\nFor more details:\nhttps://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.SSL.ManagingCerts",
+  "rule.criteria": "2c85ffbf-cd29-4731-ba1e-728d392c90c8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dms-certificate' AND json.rule = '_DateTime.ageInDays(validToDate) > -1'",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Navigate to 'AWS DMS' service\n4. Click on 'Certificates', Choose the reported certificate\n5. Make sure the reported certificate is already out of date from the 'Valid to' field\n6. Click on 'Delete', to delete the expired certificate.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

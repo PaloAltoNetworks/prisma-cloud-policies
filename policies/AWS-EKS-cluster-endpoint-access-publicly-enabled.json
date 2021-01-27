@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'eks:UpdateClusterConfig' permission. Successful execution will disbale public access for the respective EKS cluster and set private access.",
   "remediation.impact": "Disables EKS cluster public access and set private access",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "MITRE ATT&CK [Beta]",
     "Multi-Level Protection Scheme (MLPS) v2.0",

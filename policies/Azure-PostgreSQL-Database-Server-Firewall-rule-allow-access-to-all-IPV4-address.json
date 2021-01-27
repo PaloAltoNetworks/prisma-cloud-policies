@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-PG-630",
+  "policyId": "49a1369e-e585-402e-9c09-b58c8e1db73c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure PostgreSQL Database Server Firewall rule allow access to all IPV4 address",
+  "description": "This policy identifies Azure PostgreSQL Database Server which has Firewall rule that allow access to all IPV4 address. Having a firewall rule with start IP being 0.0.0.0 and end IP being 255.255.255.255 would allow access to SQL server from any host on the internet. It is highly recommended not to use this type of firewall rule in any PostgreSQL Database Server.",
+  "rule.criteria": "b77b8a44-f8e1-4cce-9a0c-90bec4640392",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = firewallRules.value[?any(properties.startIpAddress equals 0.0.0.0 and properties.endIpAddress equals 255.255.255.255)] exists",
+  "recommendation": "1.Login to Azure Portal\n2.Click on 'All services' on left Navigation\n3.Click on 'Azure Database for PostgreSQL servers' under Databases\n4.Click on reported server instance\n5.Click on 'Connection security' under Settings\n6.Delete the rule which has 'Start IP' as 0.0.0.0 and 'End IP' as 255.255.255.255 under 'Firewall rule name' section\n7.Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

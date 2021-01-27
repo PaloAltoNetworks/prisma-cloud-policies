@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "aws s3api put-public-access-block --bucket ${resourceName} --public-access-block-configuration \"BlockPublicAcls=true,IgnorePublicAcls=true,BlockPublicPolicy=true,RestrictPublicBuckets=true\"",
   "remediation.description": "This CLI command requires 's3:PutBucketPublicAccessBlock' permission. Successful execution enables 'Block public access' setting.\nNote: Make sure updating 'Block public access' setting does not affect S3 bucket data access.",
   "remediation.impact": "Enables 'Block public access' setting for AWS S3 bucket",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security"
+  ]
 }

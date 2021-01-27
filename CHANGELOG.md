@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-20.1.2 - 2021-01-28
+
+### Added
+
+#### 21 new policies
+
+- AWS Application Load Balancer (ALB) is not using the latest predefined security policy
+- AWS Database Migration Service (DMS) has expired certificates
+- AWS EBS snapshot is not encrypted
+- AWS Elastic Load Balancer v2 (ELBv2) load balancer with invalid security groups
+- AWS Glue connection do not have SSL configured
+- AWS Network Load Balancer (NLB) is not using the latest predefined security policy
+- AWS SQS queue access policy is overly permissive
+- Azure PostgreSQL Database Server Firewall rule allow access to all IPV4 address
+- Azure Security Center Defender set to Off for App Service
+- Azure Security Center Defender set to Off for Azure SQL database servers
+- Azure Security Center Defender set to Off for Key Vault
+- Azure Security Center Defender set to Off for Kubernetes
+- Azure Security Center Defender set to Off for Servers
+- Azure Security Center Defender set to Off for Storage
+- Azure SQL Servers Firewall rule allow access to all IPV4 address
+- Azure Virtual machine NIC has IP forwarding enabled
+- GCP GCR Container Vulnerability Scanning is disabled
+- GCP Kubernetes cluster shielded GKE node with integrity monitoring disabled
+- GCP Kubernetes cluster shielded GKE node with Secure Boot disabled
+- GCP Kubernetes Engine cluster not using Release Channel for version management
+- GCP Kubernetes Engine cluster workload identity is disabled
+
+#### 1 new compliance standard
+
+ - Australian Prudential Regulation Authority (APRA) Prudential Standard (CPS 234)
+
+### Changed
+
+#### 6 policies updated
+
+- AWS Application Load Balancer (ALB) listener that allow connection requests over HTTP
+- AWS Elastic Load Balancer v2 (ELBv2) Application Load Balancer (ALB) with access log disabled
+- AWS IAM policy allows full administrative privileges
+- Internet exposed instances
+- Primitive IAM roles should not be used
+- Publicly exposed DB Ports
+
+
 ## PCS-20.1.1 - 2021-01-14
 
 ### Added

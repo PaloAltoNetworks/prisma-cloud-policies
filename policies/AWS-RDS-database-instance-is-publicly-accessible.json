@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will disable the publicly accessible configuration of AWS RDS database instances",
   "remediation.impact": "AWS RDS database instance to disable the public settings",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CSA CCM v3.0.1",
     "GDPR",

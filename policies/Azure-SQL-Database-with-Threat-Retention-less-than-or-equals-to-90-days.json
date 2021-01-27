@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Sql/servers/databases/securityAlertPolicies/*' permission. Successful execution will configure SQL database Threat Retention to 91 days.",
   "remediation.impact": "configure SQL database Threat Retention to 91 days",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CSA CCM v3.0.1",
     "HIPAA",

@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'rds:ModifyEventSubscription' permission. Successful execution will enable event subscription for the respective RDS.",
   "remediation.impact": "Enable event subscription for the respective RDS",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

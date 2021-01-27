@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-645",
+  "policyId": "df15f8be-e55c-4b5b-84a6-910f346d173d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elastic Load Balancer v2 (ELBv2) load balancer with invalid security groups",
+  "description": "This policy identifies Elastic Load Balancer v2 (ELBv2) load balancers that do not have security groups with a valid inbound or outbound rule. A security group with no inbound/outbound rule will deny all incoming/outgoing requests. ELBv2 security groups should have at least one inbound and outbound rule, ELBv2 with no inbound/outbound permissions will deny all traffic incoming/outgoing to/from any resources configured behind that ELBv2; in other words, the ELBv2 is useless without inbound and outbound permissions.",
+  "rule.criteria": "0d6b5c29-471c-45aa-bbaa-f215d7575e7b",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-elbv2-describe-load-balancers' as X; config from cloud.resource where api.name = 'aws-ec2-describe-security-groups' AND json.rule = ipPermissions[*] is empty or ipPermissionsEgress[*] is empty as Y; filter '$.X.securityGroups[*] contains $.Y.groupId'; show X;",
+  "recommendation": "1. Log in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Navigate to EC2 Dashboard\n4. Click on 'Load Balancers', choose the reported load balancer\n5. Click on the 'Description' tab, click on each security group, it will open Security Group properties in a new tab in your browser.\n6. For to check the Inbound rule, Click on the 'Inbound Rules'\n7. If there are no rules, click on 'Edit rules', add an inbound rule according to your ELBv2 functional requirement.\n8. For to check the Outbound rule, Click on the 'Outbound Rules'\n9. If there are no rules, click on 'Edit rules', add an outbound rule according to your ELBv2 functional requirement.\n10. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

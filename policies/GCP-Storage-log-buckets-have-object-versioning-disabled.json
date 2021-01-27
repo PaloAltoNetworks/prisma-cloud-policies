@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'storage.admin' permission. Successful execution will enable GCP Storage log buckets 'versioning'.",
   "remediation.impact": "enables versioning in GCP Storage log buckets",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.0.0 (GCP)",
     "ISO 27001:2013",
     "MITRE ATT&CK [Beta]"

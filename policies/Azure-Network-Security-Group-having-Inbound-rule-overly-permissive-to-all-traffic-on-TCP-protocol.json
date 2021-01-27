@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.Network/networkSecurityGroups/securityRules/*' permission. Successful execution will update the network security group to revoke the inbound rule records allowing all traffic from Internet on TCP protocol.",
   "remediation.impact": "reject all traffic from Internet on TCP protocol",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "MITRE ATT&CK [Beta]",

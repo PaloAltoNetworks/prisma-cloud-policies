@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'ec2:RevokeSecurityGroupIngress' permission. Successful execution will update the security group to revoke the ingress rule records with all protocol open to all traffic either on IPv4 or on IPv6 protocol.",
   "remediation.impact": "Reject inbound traffic on all protocols from all traffic for this security group",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CCPA 2018",
     "MITRE ATT&CK [Beta]",
     "Multi-Level Protection Scheme (MLPS) v2.0",

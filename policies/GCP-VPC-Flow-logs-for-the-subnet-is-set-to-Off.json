@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.securityAdmin' permission. Successful execution will enables GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
   "remediation.impact": "Enables GCP VPC Flow logs for subnets",
   "compliance.standard": [
+    "APRA (CPS 234) Information Security",
     "CIS v1.0.0 (GCP)",
     "CIS v1.1.0 (GCP)",
     "ISO 27001:2013",
