@@ -7,7 +7,7 @@
   "name": "AWS IAM policy allows assume role permission across all services",
   "description": "This policy identifies AWS IAM policy which allows assume role permission across all services. Typically, AssumeRole is used if you have multiple accounts and need to access resources from each account then you can create long term credentials in one account and then use temporary security credentials to access all the other accounts by assuming roles in those accounts.",
   "rule.criteria": "625b4ce5-b8f1-4bdb-8959-7de645095e2b",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-policy-version' AND json.rule =\"Statement[?(@.Action=='sts:AssumeRole')].Principal.Service contains *\"",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any( Action contains sts:AssumeRole and Resource equals * and Condition does not exist)] exists",
   "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'IAM' service.\n3. Identify the reported policy\n4. Change the Service element of the policy document to be more restrictive so that it only allows AssumeRole permission on select services.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",

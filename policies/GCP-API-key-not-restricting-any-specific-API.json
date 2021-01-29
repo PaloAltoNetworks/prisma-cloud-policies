@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-API-663",
+  "policyId": "d042592f-ec12-4091-bb27-62110df801dc",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP API key not restricting any specific API",
+  "description": "This policy identifies GCP API keys that are not restricting any specific APIs. API keys are insecure because they can be viewed publicly, such as from within a browser, or they can be accessed on a device where the key resides. It is recommended to restrict API keys to use (call) only APIs required by an application.",
+  "rule.criteria": "08224ba2-a172-4ab7-ab6c-b940a372fc25",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-api-key' AND json.rule = restrictions.apiTargets does not exist",
+  "recommendation": "1. Log in to google cloud console\n2. Navigate to 'Credentials', Under service 'APIs & Services'\n3. In the section 'API Keys', Click on the reported 'API Key Name'\n4. In the 'Key restrictions' section go to 'API restrictions'.\n5. Select the 'Restrict key' and from the drop-down, choose an API.\n6. Click 'Save'.\nNote: Do not set 'API restrictions' to 'Google Cloud APIs', as this option allows access to all services offered by Google cloud.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

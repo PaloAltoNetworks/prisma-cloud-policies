@@ -1,5 +1,51 @@
 # Changelog
 
+## PCS-20.2.1 - 2021-02-11
+
+### Added
+
+#### 18 new policies
+
+- AWS Classic Load Balancer is in use for internet-facing applications
+- AWS KMS Key policy overly permissive
+- AWS KMS sensitive configuration updates
+- AWS S3 bucket publicly readable
+- AWS S3 bucket publicly writable
+- AWS SageMaker notebook instance with root access enabled
+- Azure Security Center MCAS integration Disabled
+- Azure Security Center WDATP integration Disabled
+- Azure SQL Server ADS Vulnerability Assessment 'Also send email notifications to admins and subscription owners' is disabled
+- Azure SQL Server ADS Vulnerability Assessment 'Send scan reports to' is not configured
+- Azure SQL Server ADS Vulnerability Assessment is disabled
+- Azure SQL Server ADS Vulnerability Assessment Periodic recurring scans is disabled
+- Azure Storage accounts soft delete is disabled
+- GCP API key not restricting any specific API
+- GCP API key not rotating in every 90 days
+- GCP compute engine image not encrypted using customer-managed key
+- GCP GCE Disk snapshot not encrypted with CSEK
+- GCP KMS encryption key not rotating in every 90 days
+
+### Changed
+
+#### 15 policies updated
+
+- AWS IAM policy allows assume role permission across all services
+- GCP Firewall rule allows internet traffic to DNS port (53)
+- GCP Firewall rule allows internet traffic to FTP port (21)
+- GCP Firewall rule allows internet traffic to HTTP port (80)
+- GCP Firewall rule allows internet traffic to Microsoft-DS port (445)
+- GCP Firewall rule allows internet traffic to MongoDB port (27017)
+- GCP Firewall rule allows internet traffic to MySQL DB port (3306)
+- GCP Firewall rule allows internet traffic to NetBIOS-SSN port (139)
+- GCP Firewall rule allows internet traffic to Oracle DB port (1521)
+- GCP Firewall rule allows internet traffic to POP3 port (110)
+- GCP Firewall rule allows internet traffic to PostgreSQL port (5432)
+- GCP Firewall rule allows internet traffic to RDP port (3389)'
+- GCP Firewall rule allows internet traffic to SMTP port (25)
+- GCP Firewall rule allows internet traffic to SSH port (22)
+- GCP Firewall rule allows internet traffic to Telnet port (23)
+
+
 ## PCS-20.1.2 - 2021-01-28
 
 ### Added
