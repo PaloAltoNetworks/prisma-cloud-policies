@@ -1,6 +1,6 @@
 # Changelog
 
-## PCS-20.2.1 - 2021-02-11
+## PCS-21.2.1 - 2021-02-11
 
 ### Added
 
@@ -46,7 +46,7 @@
 - GCP Firewall rule allows internet traffic to Telnet port (23)
 
 
-## PCS-20.1.2 - 2021-01-28
+## PCS-21.1.2 - 2021-01-28
 
 ### Added
 
@@ -90,7 +90,7 @@
 - Publicly exposed DB Ports
 
 
-## PCS-20.1.1 - 2021-01-14
+## PCS-21.1.1 - 2021-01-14
 
 ### Added
 
