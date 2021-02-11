@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SGM-664",
+  "policyId": "4a38048f-b657-4bcc-b926-aba812bdf66e",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS SageMaker notebook instance with root access enabled",
+  "description": "This policy identifies the SageMaker notebook instances which are enabled with root access. Root access means having administrator privileges, users with root access can access and edit all files on the compute instance, including system-critical files. Removing root access prevents notebook users from deleting system-level software, installing new software, and modifying essential environment components.\nNOTE: Lifecycle configurations need root access to be able to set up a notebook instance. Because of this, lifecycle configurations associated with a notebook instance always run with root access even if you disable root access for users.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/nbi-root-access.html",
+  "rule.criteria": "a701f33c-1c37-45d3-a5a2-4ef4126c618a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sagemaker-notebook-instance' AND json.rule = notebookInstanceStatus equals InService and rootAccess equals Enabled and notebookInstanceLifecycleConfigName does not exist",
+  "recommendation": "1. Log in to AWS console\n2. Navigate to the AWS SageMaker dashboard\n3. Choose Notebook instances (Left panel)\n4. Click on the reported SageMaker notebook instance\nNote: To update root access for SageMaker notebook instances; Instances need to be stopped. So stop running instance before editing.\n5. In the 'Notebook instance settings' section, click on 'Edit'\n6. On the Edit notebook instance page, within the 'Permissions and encryption' section,\nFrom the 'Root access - optional' options, select 'Disable - Don't give users root access to the notebook'\n7. Click on the 'Update notebook instance'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

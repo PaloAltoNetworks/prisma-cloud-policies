@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-SC-661",
+  "policyId": "470796d2-3ed6-40a3-b26a-e882afce4090",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Security Center MCAS integration Disabled",
+  "description": "This policy identifies Azure Security Center which has MCAS integration Disabled. Enabling Microsoft Cloud App Security (MCAS) integration setting brings additional layer of protection by using Azure Resource Manager events within Security Center. This helps to detect unusual or potentially harmful operations in the Azure subscription environment using Azure Resource Manager records.",
+  "rule.criteria": "303a5cc7-cedd-4cb6-ae9f-4975c6d38a11",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = settings[?any( name equals MCAS and properties.enabled is false )] exists ",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & Settings'\n4. Click on the Subscription\n5. Choose 'Threat detection'\n6. Enable 'Allow Microsoft Cloud App Security to access my data.' under 'Enable integrations'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}

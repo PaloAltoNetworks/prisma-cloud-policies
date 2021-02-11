@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-648",
+  "policyId": "72859f28-0817-43d2-b249-1a9350e5aa89",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Classic Load Balancer is in use for internet-facing applications",
+  "description": "This policy identifies Classic Load Balancers that are being used for internet-facing HTTP/HTTPS applications. Classic Load Balancer should be used when you have an existing application running in the EC2-Classic network. Application Load Balancers (ALB) is recommended for internet-facing HTTP/HTTPS web applications.\n\nFor more details:\nhttps://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html",
+  "rule.criteria": "8e097c36-2157-44ca-a02a-244acbd748ee",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elb-describe-load-balancers' AND json.rule = description.scheme contains internet-facing",
+  "recommendation": "To create Application Load Balancer (ALB) refer,\nhttps://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-application-load-balancer.html\n\nOnce Application Load Balancer created, you can delete the reported Classic Load Balancer by,\n1. Log in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Navigate to EC2 Dashboard\n4. Click on 'Load Balancers', choose the reported load balancer\n5. Click on the 'Actions' and from the drop-down click on 'Delete'\n6. Click on the 'Yes, Delete'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

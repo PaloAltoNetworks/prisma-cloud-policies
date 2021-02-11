@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-API-654",
+  "policyId": "49ac4ffe-1ad2-4d7e-b296-de025dca2809",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP API key not rotating in every 90 days",
+  "description": "This policy identifies GCP API keys for which the creation date is aged more than 90 days. Google recommends using the standard authentication flow instead of API Keys. However, there are limited cases where API keys are more appropriate. API keys should be rotated to ensure that data cannot be accessed with an old key that might have been lost, cracked, or stolen.",
+  "rule.criteria": "a8fa0dd6-08b7-400a-b98d-336c97c0815e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-api-key' AND json.rule = \"_DateTime.ageInDays(createTime) > 90\"",
+  "recommendation": "1. Log in to google cloud console\n2. Navigate to 'Credentials' under 'APIs & Services'\n3. In the section 'API Keys', Click on the alerted 'API Key Name' \n4. Click on 'REGENERATE KEY' to rotate the API key.\n5. Click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

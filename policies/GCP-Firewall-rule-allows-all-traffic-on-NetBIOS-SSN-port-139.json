@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-GCP-VPC-74",
+  "policyId": "7afdb939-4a9a-45b0-ba3b-f81dec86bc76",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Firewall rule allows all traffic on NetBIOS-SSN port (139)",
+  "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on NetBIOS-SSN port (139). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the NetBIOS-SSN port (139) should be allowed to specific IP addresses.",
+  "rule.criteria": "7afdb939-4a9a-45b0-ba3b-f81dec86bc76",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name='gcloud-compute-firewall-rules-list' AND json.rule= 'sourceRanges[*] contains 0.0.0.0/0 and allowed[?any(ports contains _Port.inRange(139,139) or (ports does not exist and (IPProtocol contains tcp or IPProtocol contains udp)) )] exists'",
+  "recommendation": "If the Firewall rule reported indeed needs to restrict all traffic, follow the instructions below:\n1. Login to GCP Console\n2. Go to 'VPC Network'\n3. Go to the 'Firewall'\n4. Click on the reported Firewall rule\n5. Click on 'EDIT'\n6. Modify Source IP ranges to specific IP\n7. Click on 'SAVE'.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gcloud -q compute --project=${account} firewall-rules delete ${resourceName}",
+  "remediation.description": "This CLI command requires 'gcloud.compute.firewall-rules.delete' permission. Successful execution will delete this firewall rule blocking internet traffic to NetBIOS-SSN port (139).",
+  "remediation.impact": "delete this firewall rule",
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security",
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

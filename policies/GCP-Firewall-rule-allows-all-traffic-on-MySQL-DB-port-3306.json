@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-GCP-VPC-75",
+  "policyId": "1171a9b9-9648-405a-8e03-83e5025e81d3",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Firewall rule allows all traffic on MySQL DB port (3306)",
+  "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on MySQL DB port (3306). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the MySQL DB port (3306) should be allowed to specific IP addresses.",
+  "rule.criteria": "1171a9b9-9648-405a-8e03-83e5025e81d3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name='gcloud-compute-firewall-rules-list' AND json.rule= 'sourceRanges[*] contains 0.0.0.0/0 and allowed[?any(ports contains _Port.inRange(3306,3306) or (ports does not exist and (IPProtocol contains tcp or IPProtocol contains udp)) )] exists'",
+  "recommendation": "If the Firewall rule reported indeed needs to restrict all traffic, follow the instructions below:\n1. Login to GCP Console\n2. Go to 'VPC Network'\n3. Go to the 'Firewall'\n4. Click on the reported Firewall rule\n5. Click on 'EDIT'\n6. Modify Source IP ranges to specific IP\n7. Click on 'SAVE'.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gcloud -q compute --project=${account} firewall-rules delete ${resourceName}",
+  "remediation.description": "This CLI command requires 'gcloud.compute.firewall-rules.delete' permission. Successful execution will delete this firewall rule blocking internet traffic to MySQL DB port (3306).",
+  "remediation.impact": "delete this firewall rule",
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security",
+    "CCPA 2018",
+    "CSA CCM v3.0.1",
+    "GDPR",
+    "HIPAA",
+    "HITRUST CSF v9.3",
+    "ISO 27001:2013",
+    "MITRE ATT&CK [Beta]",
+    "NIST 800-53 Rev4",
+    "NIST CSF",
+    "PCI DSS v3.2",
+    "PIPEDA",
+    "SOC 2"
+  ]
+}

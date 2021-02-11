@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-KMS-659",
+  "policyId": "5d9af3b6-67fe-4fd8-b29c-56a5461ac482",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP KMS encryption key not rotating in every 90 days",
+  "description": "This policy identifies GCP KMS encryption keys that are not rotating every 90 days.  A key is used to protect some corpus of data. A collection of files could be encrypted with the same key and people with decrypt permissions on that key would be able to decrypt those files. It's recommended to make sure the 'rotation period' is set to a specific time to ensure data cannot be accessed through the old key.",
+  "rule.criteria": "13e2e061-226d-4782-8752-2e6647f5e773",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-kms-keyring-list' AND json.rule ='cryptoKeys[*].rotationPeriod does not exist or cryptoKeys[*].rotationPeriod greater than 7776000'",
+  "recommendation": "1. Log in to google cloud console\n2. Under section 'Security', navigate to 'Cryptographic Keys' \n3. From the list of keys, choose the specific key\n4. Click on 'EDIT ROTATION PERIOD'.\n5. On the pop-up window, 'Select a new rotation period' in days which should be less than 90 and then choose 'Starting on' date (date from which the rotation period begins).",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

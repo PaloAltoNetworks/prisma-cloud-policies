@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-646",
+  "policyId": "658f7bb0-11ae-4fd5-a049-22e1aca06219",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP compute engine image not encrypted using customer-managed key",
+  "description": "This policy identifies GCP compute engine images that are not encrypted using customer-managed keys. If you use a customer-managed encryption key, your encryption keys are stored within Cloud KMS. The project that holds your encryption keys can then be independent of the project that contains your buckets, thus allowing for better separation of duties.",
+  "rule.criteria": "25a3faf0-2958-4e58-b426-abdb333dd32e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-image' AND json.rule = imageEncryptionKey.kmsKeyName does not exist",
+  "recommendation": "Note: The image encryption can't be modified once the image is created for a disk. To remediate we have to create a new image for the same disk by replicating all the settings from current image and deleting the old image.\n\nFollow below steps to create a compute image,\n1. Login to google cloud console\n2. Navigate to service 'Compute Engine'\n3. On left menu, go to Section 'Storage' and under that select 'Images'\n4. Click on 'CREATE IMAGE',\n5. replicate all the details from existing image.\n6. Under section 'Encryption', select 'Customer-managed key'\n7. Provide the encryption key by selecting it from the dropdown menu of 'Select a customer-managed key'\n8. Click on 'Create'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

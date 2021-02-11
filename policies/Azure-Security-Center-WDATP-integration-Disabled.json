@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-SC-660",
+  "policyId": "b7a63b07-551a-4813-82f5-f47b8428e0b3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Security Center WDATP integration Disabled",
+  "description": "This policy identifies Azure Security Center which has WDATP integration Disabled. Enabling Windows Defender ATP (WDATP) integration setting brings Endpoint Detection and Response (EDR) capabilities within security center. This helps to detect abnormalities and identify advanced attacks on Windows server endpoints which are monitored by Azure Security Center.",
+  "rule.criteria": "c1fffb8c-225e-41b3-a322-da19980fe593",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = settings[?any( name equals WDATP and properties.enabled is false )] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & Settings'\n4. Click on the Subscription\n5. Choose 'Threat detection'\n6. Enable 'Allow Microsoft Defender for Endpoint to access my data.' under 'Enable integrations'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)"
+  ]
+}
