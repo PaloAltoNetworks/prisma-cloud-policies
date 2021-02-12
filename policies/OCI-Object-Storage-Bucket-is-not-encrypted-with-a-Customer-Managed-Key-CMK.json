@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-OCI-OBJ-607",
+  "policyId": "b28c3bfd-87bc-4a55-8b59-cd42b02028e6",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Object Storage Bucket is not encrypted with a Customer Managed Key (CMK)",
+  "description": "This policy identifies the OCI Object Storage buckets that are not encrypted with a Customer Managed Key (CMK). It is recommended that Object Storage buckets should be encrypted with a Customer Managed Key (CMK), using  Customer Managed Key (CMK), provides an additional level of security on your data by allowing you to manage your own encryption key lifecycle management for the bucket.",
+  "rule.criteria": "f4ef554b-013c-45d7-ac5e-1d6fbb222e0f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-object-storage-bucket' AND json.rule = kmsKeyId is member of (\"null\")",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click Assign next to Encryption Key: Oracle managed key.\n5. Select a Vault from the appropriate compartment\n6. Select a Master Encryption Key\n7. Click Assign",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1.0 (OCI)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-CMP-624",
+  "policyId": "a38a8110-054c-4a3b-af99-5e452e564e54",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Compute Instance has Legacy MetaData service endpoint enabled",
+  "description": "This policy identifies the OCI Compute Instances that are configured with Legacy MetaData service (IMDSv1) endpoints enabled. It is recommended that Compute Instances should be configured with legacy v1 endpoints (Instance Metadata Service v1) being disabled, and use Instance Metadata Service v2 instead following security best practices.",
+  "rule.criteria": "312c2f08-3796-4857-8412-70f0001c5154",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-compute-instance' AND json.rule = instanceOptions.areLegacyImdsEndpointsDisabled is false",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. In the Instance Details section, next to Instance Metadata Service, click Edit.\n5. For the Allowed IMDS version, select the Version 2 only option.\n6. Click Save Changes.\n\nNote : \nIf you disable IMDSv1 on an instance that does not support IMDSv2, you might not be able to connect to the instance when you launch it. To re enable IMDSv1: using the Console, on the Instance Details page, next to Instance Metadata Service, click Edit. Select the Version 1 and version 2 option, save your changes, and then restart the instance. Using the API, use the UpdateInstance operation.\n\nFMI : https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/gettingmetadata.htm#upgrading-v2",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

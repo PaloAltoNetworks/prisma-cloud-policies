@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CDN-673",
+  "policyId": "45940bfa-ea53-4093-91a7-9bf18314fb48",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure CDN Endpoint Custom domains is not configured with HTTPS",
+  "description": "This policy identifies Azure CDN Endpoint Custom domains which has not configured with HTTPS. Enabling HTTPS would allow sensitive data to be delivered securely via TLS/SSL encryption when it is sent across the internet. It is recommended to enable HTTPS in Azure CDN Endpoint Custom domains which will provide additional security and protects your web applications from attacks.",
+  "rule.criteria": "037748a3-155b-4fca-b286-5fa6a4f07dc9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cdn-endpoint' AND json.rule = properties.customDomains[?any( properties.customHttpsProvisioningState does not equal Enabled )] exists",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to 'CDN profiles'\n3. Choose the reported each 'CDN Endpoints' under each 'CDN profiles'\n4. Under 'Settings' section, Click on 'Custom domains'\n5. Select the 'Custom domain' for which you need to enable HTTPS\n6. Under 'Configure' select 'On' for 'Custom domain HTTPS'\n7. Select 'Certificate management type' and 'Minimum TLS version'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

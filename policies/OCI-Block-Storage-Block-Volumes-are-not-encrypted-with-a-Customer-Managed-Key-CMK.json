@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-BST-608",
+  "policyId": "7ef4404e-a110-4dd5-b518-ec79fa3d5e9d",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Block Storage Block Volumes are not encrypted with a Customer Managed Key (CMK)",
+  "description": "This policy identifies the OCI Block Storage Volumes that are not encrypted with a Customer Managed Key (CMK). It is recommended that Block Storage Volumes should be encrypted with a Customer Managed Key (CMK), using  Customer Managed Key (CMK), provides an additional level of security on your data by allowing you to manage your own encryption key lifecycle management for the Block Storage Volume.",
+  "rule.criteria": "aa11e459-5a02-4440-b9a9-2cf9d5002886",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-block-storage-volume' AND json.rule = kmsKeyId is member of (\"null\")",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click Assign next to Encryption Key: Oracle managed key.\n5. Select a Vault from the appropriate compartment\n6. Select a Master Encryption Key\n7. Click Assign",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

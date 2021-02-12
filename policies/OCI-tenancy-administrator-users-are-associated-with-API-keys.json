@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-IAM-587",
+  "policyId": "6db9b686-4d34-4bb4-8821-6f9dd7837f0b",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI tenancy administrator users are associated with API keys",
+  "description": "This policy identifies OCI users who are the members of Administrators group, has API keys associated. It is recommended not to allow OCI users with API keys to have direct tenancy access, to preserve privileged security principle. As a best practice, dissociate the API keys for the OCI Users of Administrators group and use Service-level administrative users with API keys instead.",
+  "rule.criteria": "6fbd4295-16ea-4bf1-8071-8c115b5826d5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-group' as X; config from cloud.resource where api.name = 'oci-iam-user' as Y; filter '($.X.name equals Administrators) and ($.X.groupMembers[*].userId contains $.Y.id) and ($.Y.apiKeys[*] size greater than 0)';show Y;",
+  "recommendation": "1. Login to the OCI Console Page: https://console.ap-mumbai-1.oraclecloud.com/\n2. Select Identity from Services menu.\n3. Select Users from Identity menu.\n4. For each tenancy administrator user who has an API key, select API Keys from the menu in the lower left hand corner.\n5. Delete any associated keys from the API Keys table.\n\nNote : The console URL is region specific, your tenancy might have a different home region and thus console URL.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OBJ-605",
+  "policyId": "9270d89e-b1ef-4949-8190-449ee1c99a0d",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Object Storage bucket is publicly accessible",
+  "description": "This policy identifies the OCI Object Storage buckets that are publicly accessible. Monitoring and alerting on publicly accessible buckets will help in identifying changes to the security posture and thus reduces risk for sensitive data being leaked. It is recommended that no bucket be publicly accessible.",
+  "rule.criteria": "d0f8fe46-e6bf-43e7-91cf-249fe8137e61",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-object-storage-bucket' AND json.rule = publicAccessType does not equal NoPublicAccess",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on the Edit Visibility\n5. Select Visibility as Private\n6. Click Save Changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

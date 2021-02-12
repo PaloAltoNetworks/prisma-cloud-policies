@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-BST-619",
+  "policyId": "142959c0-6cd5-4d66-8bf5-54246de46e28",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Block Storage Block Volume does not have backup enabled",
+  "description": "This policy identifies the OCI Block Storage Volumes that are do not have backup enabled. It is recommended to have block volume backup policies on each block volume that the block volume can be restored during data loss events.",
+  "rule.criteria": "6227c434-d4ce-4e19-b00a-a9f04b6a82a4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-block-storage-volume' AND json.rule = volumeBackupPolicyAssignment[*] size equals 0",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on Edit button\n5. Select the Backup Policy from the Backup Policies section as appropriate\n6. Click Save Changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

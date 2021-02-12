@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-626",
+  "policyId": "713fe300-01ef-4981-a3e5-32cded00372d",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI VCN has no inbound security list",
+  "description": "This policy identifies the OCI Virtual Cloud Networks (VCN) that lack ingress rules configured in their security lists. It is recommended that Virtual Cloud Networks (VCN) security lists are configured with ingress rules which provide stateful and stateless firewall capability to control network access to your instances.",
+  "rule.criteria": "2240342d-a24b-4f92-954f-520003b856a7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-security-list' AND json.rule = ingressSecurityRules[*] size equals 0",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on Ingress rules\n5. Click on Add Ingress Rules (To add ingress rules appropriately in the pop up)\n6. Click on Add Ingress Rules",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OBJ-612",
+  "policyId": "24260955-1b50-410a-b24f-48598b5e041d",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Object Storage Bucket has object Versioning disabled",
+  "description": "This policy identifies the OCI Object Storage buckets that are not configured with a Object Versioning. It is recommended that Object Storage buckets should be configured with Object Versioning to minimize data loss because of inadvertent deletes by an authorized user or malicious deletes.",
+  "rule.criteria": "a4f59200-439d-465d-bc3c-b813f7d1d5a1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-object-storage-bucket' AND json.rule = versioning equals Disabled",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Next to Object Versioning, click Edit.\n5. In the dialog box, Clink Enable Versioing (to enable).",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

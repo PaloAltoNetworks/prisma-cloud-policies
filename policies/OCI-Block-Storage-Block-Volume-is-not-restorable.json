@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-BST-620",
+  "policyId": "f76cce9a-50df-446a-8deb-70187dc09fae",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Block Storage Block Volume is not restorable",
+  "description": "This policy identifies the OCI Block Storage Volumes that are not restorable. It is recommended to have backups on each block volume, that the block volume can be restored during data loss events.",
+  "rule.criteria": "7e6ea47f-3c34-4c44-a4e6-f5095305837e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-block-storage-volume' as X; config from cloud.resource where api.name = 'oci-block-storage-volume-backup' as Y; filter 'not($.X.id equals $.Y.volumeId)'; show X;",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on Block Volume Backups from the Resources pane\n5. Click on Create Block Volume Backup (To create the back up)",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
