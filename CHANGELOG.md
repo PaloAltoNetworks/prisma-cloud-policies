@@ -12,7 +12,6 @@
 
 - Azure CDN Endpoint Custom domains is not configured with HTTPS
 - Azure CDN Endpoint Custom domains using insecure TLS version
-
 - OCI Block Storage Block Volume does not have backup enabled
 - OCI Block Storage Block Volume is not restorable
 - OCI Block Storage Block Volumes are not encrypted with a Customer Managed Key (CMK)
