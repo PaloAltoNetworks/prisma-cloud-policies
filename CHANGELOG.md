@@ -13,46 +13,46 @@
 - Azure CDN Endpoint Custom domains is not configured with HTTPS
 - Azure CDN Endpoint Custom domains using insecure TLS version
 
-- OCI-Block-Storage-Block-Volume-does-not-have-backup-enabled.json
-- OCI-Block-Storage-Block-Volume-is-not-restorable.json
-- OCI-Block-Storage-Block-Volumes-are-not-encrypted-with-a-Customer-Managed-Key-CMK.json
-- OCI-Compute-Instance-boot-volume-has-in-transit-data-encryption-is-disabled.json
-- OCI-Compute-Instance-has-Legacy-MetaData-service-endpoint-enabled.json
-- OCI-Compute-Instance-has-monitoring-disabled.json
-- OCI-Default-Security-List-of-every-VCN-allows-all-traffic-on-SSH-port-22.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-IAM-group-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-IAM-policy-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-Identity-Provider-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-Identity-Provider-Group-IdP-group-mapping-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-network-gateways-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-Network-Security-Groups-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-route-tables-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-security-list-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-user-changes.json
-- OCI-Event-Rule-and-Notification-does-not-exist-for-VCN-changes.json
-- OCI-File-Storage-File-System-access-is-not-restricted-to-root-users.json
-- OCI-File-Storage-File-System-Export-is-publicly-accessible.json
-- OCI-File-Storage-File-Systems-are-not-encrypted-with-a-Customer-Managed-Key-CMK.json
-- OCI-IAM-local-non-federated-user-account-does-not-have-a-valid-and-current-email-address.json
-- OCI-IAM-password-policy-for-local-non-federated-users-does-not-have-a-lowercase-character.json
-- OCI-IAM-password-policy-for-local-non-federated-users-does-not-have-a-number.json
-- OCI-IAM-password-policy-for-local-non-federated-users-does-not-have-a-symbol.json
-- OCI-IAM-password-policy-for-local-non-federated-users-does-not-have-an-uppercase-character.json
-- OCI-IAM-password-policy-for-local-non-federated-users-does-not-have-minimum-14-characters.json
-- OCI-MFA-is-disabled-for-IAM-users.json
-- OCI-Network-Security-Group-allows-all-traffic-on-RDP-port-3389.json
-- OCI-Network-Security-Groups-NSG-has-stateful-security-rules.json
-- OCI-Object-Storage-bucket-does-not-emit-object-events.json
-- OCI-Object-Storage-Bucket-has-object-Versioning-disabled.json
-- OCI-Object-Storage-Bucket-is-not-encrypted-with-a-Customer-Managed-Key-CMK.json
-- OCI-Object-Storage-bucket-is-publicly-accessible.json
-- OCI-security-group-allows-unrestricted-ingress-access-to-port-22.json
-- OCI-Security-List-allows-all-traffic-on-SSH-port-22.json
-- OCI-security-lists-allows-unrestricted-ingress-access-to-port-3389.json
-- OCI-tenancy-administrator-users-are-associated-with-API-keys.json
-- OCI-users-API-keys-have-aged-more-than-90-days-without-being-rotated.json
-- OCI-VCN-has-no-inbound-security-list.json
-- OCI-VCN-Security-list-has-stateful-security-rules.json
+- OCI Block Storage Block Volume does not have backup enabled
+- OCI Block Storage Block Volume is not restorable
+- OCI Block Storage Block Volumes are not encrypted with a Customer Managed Key (CMK)
+- OCI Compute Instance boot volume has in-transit data encryption is disabled
+- OCI Compute Instance has Legacy MetaData service endpoint enabled
+- OCI Compute Instance has monitoring disabled
+- OCI Default Security List of every VCN allows all traffic on SSH port (22)
+- OCI Event Rule and Notification does not exist for IAM group changes
+- OCI Event Rule and Notification does not exist for IAM policy changes
+- OCI Event Rule and Notification does not exist for Identity Provider changes
+- OCI Event Rule and Notification does not exist for Identity Provider Group (IdP) group mapping changes
+- OCI Event Rule and Notification does not exist for network gateways changes
+- OCI Event Rule and Notification does not exist for Network Security Groups changes
+- OCI Event Rule and Notification does not exist for route tables changes
+- OCI Event Rule and Notification does not exist for security list changes
+- OCI Event Rule and Notification does not exist for user changes
+- OCI Event Rule and Notification does not exist for VCN changes
+- OCI File Storage File System access is not restricted to root users
+- OCI File Storage File System Export is publicly accessible
+- OCI File Storage File Systems are not encrypted with a Customer Managed Key (CMK)
+- OCI IAM local (non-federated) user account does not have a valid and current email address
+- OCI IAM password policy for local (non-federated) users does not have a lowercase character
+- OCI IAM password policy for local (non-federated) users does not have a number
+- OCI IAM password policy for local (non-federated) users does not have a symbol
+- OCI IAM password policy for local (non-federated) users does not have an uppercase character
+- OCI IAM password policy for local (non-federated) users does not have minimum 14 characters
+- OCI MFA is disabled for IAM users
+- OCI Network Security Group allows all traffic on RDP port (3389)
+- OCI Network Security Groups (NSG) has stateful security rules
+- OCI Object Storage bucket does not emit object events
+- OCI Object Storage Bucket has object Versioning disabled
+- OCI Object Storage Bucket is not encrypted with a Customer Managed Key (CMK)
+- OCI Object Storage bucket is publicly accessible
+- OCI security group allows unrestricted ingress access to port 22
+- OCI Security List allows all traffic on SSH port (22)
+- OCI security lists allows unrestricted ingress access to port 3389
+- OCI tenancy administrator users are associated with API keys
+- OCI users API keys have aged more than 90 days without being rotated
+- OCI VCN has no inbound security list
+- OCI VCN Security list has stateful security rules
 
 #### 2 new compliance standards
 
