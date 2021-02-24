@@ -49,6 +49,13 @@
 - CIS v1.1.0 (GCP)
 - CIS v1.1.0 (GKE)
 
+### Removed
+
+#### 2 policies deleted
+
+- GCP API key not restricting any specific API
+- GCP API key not rotating in every 90 days
+
 
 ## PCS-21.2.2 - 2021-02-25
 
