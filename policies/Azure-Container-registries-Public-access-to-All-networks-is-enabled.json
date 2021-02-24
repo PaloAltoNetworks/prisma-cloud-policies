@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACR-683",
+  "policyId": "d283949a-7a91-4cc6-883c-944013c38202",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Container registries Public access to All networks is enabled",
+  "description": "This policy identifies Azure Container registries which has Public access to All networks enabled. Azure ACR is used to store Docker container images which might contain sensitive information. It is highly recommended to restrict public access from allow access from Selected networks or make it Private by disabling the Public access.",
+  "rule.criteria": "b16fd635-a38f-4525-a4e0-ae3e01415095",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-container-registry' AND json.rule = ((properties.publicNetworkAccess equals Enabled and properties.networkRuleSet does not exist) or (properties.publicNetworkAccess equals Enabled and properties.networkRuleSet exists and properties.networkRuleSet.defaultAction equals Allow))",
+  "recommendation": "1. Log in to the Azure portal\n2. Select 'All services' > 'Container Registries'\n3. Select the container registry you need to modify\n4. Select 'Networking' under 'Settings'\n5. Click on 'Public access' tab and select 'Selected networks' and provide the IPV4 address for which you want access to ACR or select 'Disabled' to disable Public access\n6. Click on 'Save'\n\nNote: 'Public access' setting can be toggled to 'Selected networks' or 'Disabled' state only with Premium SKU. For Standard and Basic SKU Public access setting cannot be updated and these resource will reamin accesiable to public.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

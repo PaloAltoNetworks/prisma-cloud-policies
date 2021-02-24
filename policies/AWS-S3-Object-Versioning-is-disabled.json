@@ -15,6 +15,7 @@
   "remediation.impact": "Enable Object Versioning for the respective S3",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "MITRE ATT&CK [Beta]"
   ]
 }
