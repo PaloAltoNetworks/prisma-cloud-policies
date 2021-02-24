@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-CMP-611",
+  "policyId": "85e6e5a1-79e8-40ce-8d38-274b05168666",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Compute Instance boot volume has in-transit data encryption is disabled",
+  "description": "This policy identifies the OCI Compute Instances that are configured with disabled in-transit data encryption boot or block volumes. It is recommended that Compute Instance boot or block volumes should be configured with in-transit data encryption to minimize risk for sensitive data being leaked.",
+  "rule.criteria": "6f687219-ea63-4340-ae13-42c2cc744bb1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-compute-instance' AND json.rule = launchOptions.isPvEncryptionInTransitEnabled is false",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click Edit\n5. Click on Show Advanced Options\n6. Select USE IN-TRANSIT ENCRYPTION\n7. Click Save Changes\n\nNote : To update the instance properties, the instance must be rebooted.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

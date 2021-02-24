@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-FIL-621",
+  "policyId": "457bb40e-ba24-468e-bdbd-f47677971761",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI File Storage File System access is not restricted to root users",
+  "description": "This policy identifies the OCI File Storage File Systems that allow unrestricted access to root users. It is recommended that File Storage File Systems should limit root users access by restricting the privileges, to increase the security of File Systems.",
+  "rule.criteria": "e8824f82-dfa1-4c23-90af-ab12e8e9b3ec",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-file-storage-export' AND json.rule = exportOptions[?any( identitySquash equals ROOT and (anonymousGid does not equal 65534 or anonymousUid does not equal 65534))] exists",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on the export path reported in the alert\n5. Click on Edit NFS Export Options\n6. Update the NFS Export Options where Squash is set Root and update Squash UID and Squash GID to 65534",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

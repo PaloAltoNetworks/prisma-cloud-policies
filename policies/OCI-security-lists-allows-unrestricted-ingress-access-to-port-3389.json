@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-NET-589",
+  "policyId": "682880bd-f12b-4a81-90bb-b3d6d05fcd90",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI security lists allows unrestricted ingress access to port 3389",
+  "description": "This policy identifies OCI Security lists that allow unrestricted ingress access to port 3389. It is recommended that no security list allows unrestricted ingress access to port 3389. As a best practice, remove unfettered connectivity to remote console services, such as Remote Desktop Protocol (RDP), to reduce server's exposure to risk.",
+  "rule.criteria": "1b989ce8-51c3-4a2a-9f91-83e1fefd05c4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-security-list' AND json.rule = (ingressSecurityRules[?any((source equals 0.0.0.0/0) and (((*.destinationPortRange.min == 3389 or *.destinationPortRange.max == 3389) or (*.destinationPortRange.min < 3389 and *.destinationPortRange.max > 3389)) or (protocol equals \"all\") or ((tcpOptions does not exist) and (udpOptions does not exist) and (protocol does not equal 1))))] exists)",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.3. Click the resource reported in the alert from the Resources submenu\n4. Under Resources, click Ingress Rules.\n5. If you want to add a rule, click Add Ingress Rules\n6. If you want to delete an existing rule, click the Actions icon (three dots), and then click Remove.\n7. If you wanted to edit an existing rule, click the Actions icon (three dots), and then click Edit.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

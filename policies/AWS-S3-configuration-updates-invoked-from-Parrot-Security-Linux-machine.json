@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-667",
+  "policyId": "2a525056-499b-4105-a7ef-b0e60f6fd91b",
+  "policyType": "audit_event",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 configuration updates invoked from Parrot Security Linux machine",
+  "description": "This policy identifies AWS configuration updates invoked from the Parrot Security Linux machine. S3 Configuration changes such as creating, deleting, or modifying bucket policies are triggered from Parrot Security Linux by S3 API calls using credentials that belong to your AWS account. Parrot Security Linux is a popular penetration testing tool that security professionals use to identify weaknesses in unpatched instances. Attackers might use this tool to find configuration weaknesses and gain unauthorized access to your AWS environment.",
+  "rule.criteria": "4c7a9321-8b50-4cce-9ba6-b10830b09402",
+  "searchModel.query": "event from cloud.audit_logs where cloud.service = 's3.amazonaws.com' AND json.rule = $.userAgent contains 'parrot'",
+  "recommendation": "1. Log in to AWS Console and make sure that the user indeed had the permissions to make the changes to the configuration that were reported.\n2. Make sure that the configuration changes do not put the cloud resources in a vulnerable state.\n3. If the user/entity was not supposed to perform the reported changes, make sure that the policies are modified such that the only user/entity has minimal permissions to perform normal job function.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

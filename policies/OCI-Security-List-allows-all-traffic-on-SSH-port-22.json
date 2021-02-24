@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-NET-588",
+  "policyId": "a19da9e9-3959-446b-bbc8-6980354a028f",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Security List allows all traffic on SSH port (22)",
+  "description": "This policy identifies OCI Security lists that allow unrestricted ingress access to port 22. It is recommended that no security list allows unrestricted ingress access to port 22. As a best practice, remove unfettered connectivity to remote console services, such as Secure Shell (SSH),  to reduce server's exposure to risk.",
+  "rule.criteria": "985693b8-92f2-4246-9beb-000c92a0b897",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-security-list' AND json.rule = (ingressSecurityRules[?any((source equals 0.0.0.0/0) and (((*.destinationPortRange.min == 22 or *.destinationPortRange.max == 22) or (*.destinationPortRange.min < 22 and *.destinationPortRange.max > 22)) or (protocol equals \"all\") or ((tcpOptions does not exist) and (udpOptions does not exist) and (protocol does not equal 1))))] exists)",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.3. Click the resource reported in the alert from the Resources submenu\n4. Under Resources, click Ingress Rules.\n5. If you want to add a rule, click Add Ingress Rules\n6. If you want to delete an existing rule, click the Actions icon (three dots), and then click Remove.\n7. If you wanted to edit an existing rule, click the Actions icon (three dots), and then click Edit.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

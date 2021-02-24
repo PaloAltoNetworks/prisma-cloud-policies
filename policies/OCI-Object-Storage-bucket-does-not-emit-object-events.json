@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-OCI-OBJ-606",
+  "policyId": "14a55666-d997-4a62-8f98-fed0efec0977",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Object Storage bucket does not emit object events",
+  "description": "This policy identifies the OCI Object Storage buckets that are disabled with object events emission. Monitoring and alerting on object events of bucket objects will help in identifying changes bucket objects. It is recommended that buckets should be enabled to emit object events.",
+  "rule.criteria": "ecd0a8f1-d8db-41d3-becb-40d50877cd51",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-object-storage-bucket' AND json.rule = objectEventsEnabled is false",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Next to Emit Object Events, click Edit.\n5. In the dialog box, select  EMIT OBJECT EVENTS (to enable).\n6. Click Save Changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1.0 (OCI)"
+  ]
+}

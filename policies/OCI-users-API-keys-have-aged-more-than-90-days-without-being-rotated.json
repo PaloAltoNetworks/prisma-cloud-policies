@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-IAM-586",
+  "policyId": "99538e8f-bc22-4a10-8c29-0ea1b6d98d59",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI users API keys have aged more than 90 days without being rotated",
+  "description": "This policy identifies all of your IAM API keys which have not been rotated in the past 90 days. It is recommended to verify that they are rotated on a regular basis in order to protect OCI API access directly or via SDKs or OCI CLI.",
+  "rule.criteria": "003e4bc2-9933-4dd7-b3a7-6399bf9d4908",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-user' AND json.rule = '(_DateTime.ageInDays(apiKeys[*].timeCreated) > 90)'",
+  "recommendation": "1. Login to the OCI Console Page: https://console.ap-mumbai-1.oraclecloud.com/\n2. Select Identity from the Services menu.\n3. Select Users from the Identity menu.\n4. Click on an individual user under the Name heading.\n5. Click on API Keys in the lower left hand corner of the page.\n6. Delete any API Keys with a date of 90 days or older under the Created column of the API Key table.\n\nNote : The console URL is region specific, your tenancy might have a different home region and thus console URL.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

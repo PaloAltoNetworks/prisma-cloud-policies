@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-666",
+  "policyId": "905a4fb7-97ed-4e2b-8fe0-7ac3baaab70f",
+  "policyType": "audit_event",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 configuration updates invoked from Kali Linux machine",
+  "description": "This policy identifies AWS configuration updates invoked from the Kali Linux machine. S3 Configuration changes such as creating, deleting, or modifying bucket policies are triggered from Kali Linux by S3 API calls using credentials that belong to your AWS account. Kali Linux is a popular penetration testing tool that security professionals use to identify weaknesses in unpatched instances. Attackers might use this tool to find configuration weaknesses and gain unauthorized access to your AWS environment.",
+  "rule.criteria": "80c9dff1-69d2-42fb-aa34-9209634778e9",
+  "searchModel.query": "event from cloud.audit_logs where cloud.service = 's3.amazonaws.com' AND json.rule = $.userAgent contains 'kali'",
+  "recommendation": "1. Log in to AWS Console and make sure that the user indeed had the permissions to make the changes to the configuration that were reported.\n2. Make sure that the configuration changes do not put the cloud resources in a vulnerable state.\n3. If the user/entity was not supposed to perform the reported changes, make sure that the policies are modified such that the only user/entity has minimal permissions to perform normal job function.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-625",
+  "policyId": "54827b06-7c86-4886-85b6-3d984c6fddf4",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI VCN Security list has stateful security rules",
+  "description": "This policy identifies the OCI Virtual Cloud Networks (VCN) security lists that have stateful ingress rules configured in their security lists. It is recommended that Virtual Cloud Networks (VCN) security lists are configured with stateless ingress rules to slow the impact of a denial-of-service (DoS) attack.",
+  "rule.criteria": "9ea401f6-beff-467a-9344-8668f5553a61",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-security-list' AND json.rule = ingressSecurityRules[?any( isStateless is false )] exists",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click on Ingress rule where Stateless column is set to No\n5. Click on Edit\n6. Select the checkbox STATELESS\n7. Click on Save Changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

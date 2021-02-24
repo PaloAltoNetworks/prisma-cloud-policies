@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-CMP-623",
+  "policyId": "6750266c-3d25-408e-b6a1-18a181f12047",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Compute Instance has monitoring disabled",
+  "description": "This policy identifies the OCI Compute Instances that are configured with Monitoring disabled. It is recommended that Compute Instances should be configured with monitoring is enabled following security best practices.",
+  "rule.criteria": "0cb4bed1-6c33-4ff1-ba28-77ffa843909a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-compute-instance' AND json.rule = agentConfig.isMonitoringDisabled is true",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Under Resources, click Metrics.\n5. Click Enable monitoring. (If monitoring is not enabled (and the instance uses a supported image), then a button is available to enable monitoring.)\n\nFMI : https://docs.cloud.oracle.com/en-us/iaas/Content/Compute/Tasks/enablingmonitoring.htm#ExistingEnabling",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-622",
+  "policyId": "326857e9-ce14-4509-afbb-5125e5235c12",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Network Security Groups (NSG) has stateful security rules",
+  "description": "This policy identifies the OCI Network Security Groups (NSG) security rules that have stateful ingress rules configured. It is recommended that Network Security Groups (NSG) security rules are configured with stateless ingress rules to slow the impact of a denial-of-service (DoS) attack.",
+  "rule.criteria": "30003fac-f601-4a39-a2f9-f86b20c7024c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-nsg' AND json.rule = securityRules[?any( direction equals INGRESS and (isStateless does not exist or isStateless is false) )] exists",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Select the security rule from Security rules pane where Stateless is set to No and Direction set to Ingress\n5. Click on Edit\n6. Select the checkbox STATELESS\n7. Click on Save Changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

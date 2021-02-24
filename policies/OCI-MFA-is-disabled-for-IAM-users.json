@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-IAM-585",
+  "policyId": "4b432cee-b40a-4e45-8e03-34f3052701ec",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI MFA is disabled for IAM users",
+  "description": "This policy identifies Identify Access Management (IAM) users for whom Multi Factor Authentication (MFA) is disabled. As a best practice, enable MFA to add an extra layer of protection for increased security of your OCI user’s identity and complete the sign-in process.",
+  "rule.criteria": "d82b6672-c082-419c-8555-986d7dc82d73",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-user' AND json.rule = 'isMfaActivated is false'",
+  "recommendation": "1. Login to the OCI Console Page: https://console.ap-mumbai-1.oraclecloud.com/\n2. Select Identity from Services menu\n3. Select Users from Identity menu.\n4. Click on each non-complaint user.\n5. Click on Enable Multi-Factor Authentication.\n\nNote : The console URL is region specific, your tenancy might have a different home region and thus console URL.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

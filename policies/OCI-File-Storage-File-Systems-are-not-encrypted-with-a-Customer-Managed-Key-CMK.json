@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-FIL-610",
+  "policyId": "cbc96be0-96a1-4586-8a3d-5dc5a8d74c22",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI File Storage File Systems are not encrypted with a Customer Managed Key (CMK)",
+  "description": "This policy identifies the OCI File Storage File Systems that are not encrypted with a Customer Managed Key (CMK). It is recommended that File Storage File Systems should be encrypted with a Customer Managed Key (CMK), using  Customer Managed Key (CMK), provides an additional level of security on your data by allowing you to manage your own encryption key lifecycle management for the File System",
+  "rule.criteria": "2a1a8225-b3a4-4b9e-a1ba-9e797fb6aca3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-file-storage-file-system' AND json.rule = kmsKeyId is empty",
+  "recommendation": "1. Login to the OCI Console\n2. Type the resource reported in the alert into the Search box at the top of the Console.\n3. Click the resource reported in the alert from the Resources submenu\n4. Click Assign next to Encryption Key: Oracle managed key.\n5. Select a Vault from the appropriate compartment\n6. Select a Master Encryption Key\n7. Click Assign",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

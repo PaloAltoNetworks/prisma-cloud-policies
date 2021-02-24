@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-OCI-IAM-627",
+  "policyId": "0ee37192-55d5-49f2-b763-2fbdc0401f69",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI IAM local (non-federated) user account does not have a valid and current email address",
+  "description": "This policy identifies the OCI Iam local (non-federated) users that do not have valid and current email address configured. It is recommended that OCI Iam local (non-federated) users are configured with valid and current email address to tie the account to identity in your organization. It also allows that user to reset their password if it is forgotten or lost.",
+  "rule.criteria": "ad28de35-ab66-4f36-9f5e-88f4616bd997",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-user' AND json.rule = externalIdentifier contains null and (email does not exist or emailVerified is false)",
+  "recommendation": "1. Login into OCI Console\n2. Select Identity from Services menu\u0003. Select Users from Identity menu.\n4. Click on the local (non-federated) user reported in the alert.\n5. Click on Edit User.\n6. Enter a valid and current email address in the EMAIL text box.\n7. Click Save Changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1.0 (OCI)"
+  ]
+}

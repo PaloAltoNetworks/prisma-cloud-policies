@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-EVT-593",
+  "policyId": "d3411809-ea43-4b1e-96f1-63713b9720ec",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "low",
+  "name": "OCI Event Rule and Notification does not exist for Identity Provider changes",
+  "description": "This policy identifies the OCI compartments which do not have an Event Rule and Notification that gets triggered for Identity Provider changes. Monitoring and alerting on changes to Identity Provider will help in identifying changes to the security posture. It is recommended that an Event Rule and Notification be configured to catch changes made to Identity Provider.\nNOTE: \n1. Event Rules are compartment scoped and will detect events in child compartments, it is recommended to create the Event rule at the root compartment level.\n2. This policy will trigger alert if you have at least one Event Rule and Notification, even if OCI has single or multi compartments.",
+  "rule.criteria": "65790b54-ad1e-46cb-a438-18c22438a458",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-events-rule' AND json.rule = '(isEnabled equals true) and (actions.actions[?any( actionType equals ONS and isEnabled equals true and lifecycleState equals ACTIVE)] exists) and (condition.eventType[*] contains com.oraclecloud.identitycontrolplane.createidentityprovider and condition.eventType[*] contains com.oraclecloud.identitycontrolplane.deleteidentityprovider and condition.eventType[*] contains com.oraclecloud.identitycontrolplane.updateidentityprovider) and actions.actions[*].topicId exists' as X; count(X) less than 1",
+  "recommendation": "1. Login to the OCI Console\n2. Type the Event into the Search box at the top of the Console.\n3. Click the Event Service from the Services submenu\n4. Select the compartment that should host the rule\n5. Click Create Rule\n6. Provide a Display Name and Description\n7. Create a Rule Condition by selecting Identity in the Service Name Drop-down and selecting Identity Provider – Create, Identity Provider - Delete and Identity Provider – Update\n8. In the Actions section select Notifications as Action Type\n9. Select the Compartment that hosts the Topic to be used.\n10. Select the Topic to be used\n11. Optionally add Tags to the Rule\n12. Click Create Rule",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}
