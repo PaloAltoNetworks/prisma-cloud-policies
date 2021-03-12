@@ -14,10 +14,6 @@
 - Azure Function App doesn't use HTTP 2.0
 - Azure Function App doesn't use latest TLS version
 
-#### 1 new framework
-
-- MITRE ATT&CK v8
-
 #### 2 new compliance standards
 
 - Cybersecurity Maturity Model Certification (CMMC) v.1.02
