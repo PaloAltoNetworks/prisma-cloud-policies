@@ -15,6 +15,7 @@
   "remediation.impact": "Enable key rotation for the respective Customer Master Key",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.2.0 (AWS)",
     "CIS v1.3.0 (AWS)",
@@ -23,7 +24,8 @@
     "GDPR",
     "HITRUST CSF v9.3",
     "ISO 27001:2013",
-    "MITRE ATT&CK [Beta]",
+    "MITRE ATT&CK v6.3",
+    "MITRE ATT&CK v8.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",

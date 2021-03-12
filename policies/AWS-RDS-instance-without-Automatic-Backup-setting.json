@@ -15,8 +15,10 @@
   "remediation.impact": "Configure AWS RDS instance with Automatic Backup setting",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
-    "MITRE ATT&CK [Beta]",
+    "MITRE ATT&CK v6.3",
+    "MITRE ATT&CK v8.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"

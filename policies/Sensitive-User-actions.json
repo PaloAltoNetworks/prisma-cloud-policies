@@ -16,7 +16,8 @@
   "compliance.standard": [
     "CSA CCM v3.0.1",
     "ISO 27001:2013",
-    "MITRE ATT&CK [Beta]",
+    "MITRE ATT&CK v6.3",
+    "MITRE ATT&CK v8.2",
     "NIST 800-53 Rev4",
     "PCI DSS v3.2"
   ]

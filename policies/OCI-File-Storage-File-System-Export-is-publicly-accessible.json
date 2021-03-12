@@ -4,7 +4,7 @@
   "policyType": "config",
   "cloudType": "oci",
   "severity": "high",
-  "name": " OCI File Storage File System Export is publicly accessible",
+  "name": "OCI File Storage File System Export is publicly accessible",
   "description": "This policy identifies the OCI File Storage File Systems Exports that are publicly accessible. Monitoring and alerting on publicly accessible file systems exports will help in identifying changes to the security posture and thus reduces risk for sensitive data being leaked. It is recommended that no File System exports be publicly  accessible.\nFMI : https://docs.cloud.oracle.com/en-us/iaas/Content/File/Tasks/exportoptions.htm#scenarios",
   "rule.criteria": "3d1a13e8-32e4-448f-b43d-663b3ab34386",
   "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-file-storage-file-system' as X; config from cloud.resource where api.name = 'oci-file-storage-export' AND json.rule = (exportOptions[?any(source equals 0.0.0.0/0 and requirePrivilegedSourcePort is false and access equals READ_WRITE and identitySquash equals NONE)] exists) as Y; filter '($.X.id equals $.Y.fileSystemId)';show X;",

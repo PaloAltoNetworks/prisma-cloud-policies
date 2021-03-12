@@ -15,6 +15,7 @@
   "remediation.impact": "Enable logging for the respective CloudTrail",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"

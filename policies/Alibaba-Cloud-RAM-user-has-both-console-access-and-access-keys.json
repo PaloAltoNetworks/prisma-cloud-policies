@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "Cybersecurity Maturity Model Certification (CMMC) v.1.02"
+    "Brazilian Data Protection Law (LGPD)",
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "MITRE ATT&CK v8.2"
   ]
 }

@@ -15,6 +15,7 @@
   "remediation.impact": "disables default-action in Azure Storage Account network access",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",

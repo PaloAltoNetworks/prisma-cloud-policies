@@ -15,6 +15,7 @@
   "remediation.impact": "update the Azure monitor log profile retention policy days to 365 days",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CSA CCM v3.0.1",

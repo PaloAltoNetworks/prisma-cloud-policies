@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "NIST 800-53 Rev 5",

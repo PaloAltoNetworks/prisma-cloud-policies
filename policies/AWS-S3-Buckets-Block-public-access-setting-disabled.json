@@ -15,7 +15,9 @@
   "remediation.impact": "Enables 'Block public access' setting for AWS S3 bucket",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CIS v1.3.0 (AWS)",
-    "Cybersecurity Maturity Model Certification (CMMC) v.1.02"
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "MITRE ATT&CK v8.2"
   ]
 }
