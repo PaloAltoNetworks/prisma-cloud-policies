@@ -7,7 +7,7 @@
   "name": "Azure App Service Web app doesn't have a Managed Service Identity",
   "description": "Managed service identity in App Service makes the app more secure by eliminating secrets from the app, such as credentials in the connection strings. When registering with Azure Active Directory in the app service, the app will connect to other Azure services securely without the need of username and passwords.",
   "rule.criteria": "b6caba6b-cdb1-4db5-8045-9d0354a602de",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'identity.type does not exist or identity.type does not equal SystemAssigned or identity.principalId is empty'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind starts with app and (identity.type does not exist or identity.type does not equal SystemAssigned or identity.principalId is empty)'",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to App Services\n3. Click on the reported App\n4. Under Setting section, Click on 'Identity'\n5. Ensure that 'Status' is set to 'On'",
   "remediable": true,
   "remediation.cliScriptTemplate": "az webapp identity assign --resource-group ${resourceGroup} --name ${resourceName}",
@@ -18,6 +18,8 @@
     "CCPA 2018",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",
+    "CIS v1.3.0 (Azure)",
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "PIPEDA"
   ]

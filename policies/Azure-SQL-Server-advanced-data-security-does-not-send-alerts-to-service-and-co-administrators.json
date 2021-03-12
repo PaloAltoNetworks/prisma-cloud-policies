@@ -5,7 +5,7 @@
   "cloudType": "azure",
   "severity": "medium",
   "name": "Azure SQL Server advanced data security does not send alerts to service and co-administrators",
-  "description": "Advanced data security (ADS) provides a set of advanced SQL security capabilities, including vulnerability assessment, threat detection, and data discovery and classification.\n\nThis policy identifies Azure SQL Servers that are not enabled with ADS. As a best practice, enable ADS so that the administrators—service and co-administrator—can receive email alerts when anomalous activities are detected on the SQL Servers.",
+  "description": "Advanced data security (ADS) provides a set of advanced SQL security capabilities, including vulnerability assessment, threat detection, and data discovery and classification.\n\nThis policy identifies Azure SQL Servers that are not enabled with ADS. As a best practice, enable ADS so that the administrators service and co-administrator can receive email alerts when anomalous activities are detected on the SQL Servers.",
   "rule.criteria": "0502ea02-e71d-4c8b-95f5-437d3fd32661",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule =  $.serverSecurityAlertPolicy.properties.state equals Enabled and $.serverSecurityAlertPolicy.properties.emailAccountAdmins is false",
   "recommendation": "1. Log in to the Azure portal.\n2. Select 'SQL servers', to select the SQL server you need to modify.\n3. Select 'Advanced Data Security'.\n4. Ensure that 'Advanced Data Security' status is 'ON'.\n5. Select 'Email service and co-administrators'.\n6. 'Save' your changes.",
@@ -17,6 +17,7 @@
     "APRA (CPS 234) Information Security",
     "CIS v1.1 (Azure)",
     "CIS v1.2.0 (Azure)",
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4"

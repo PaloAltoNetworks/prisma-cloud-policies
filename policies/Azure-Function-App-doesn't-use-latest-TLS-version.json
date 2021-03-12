@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-675",
+  "policyId": "7c24e2c1-3ef1-49bf-aaf4-f1a8e5459186",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Function App doesn't use latest TLS version",
+  "description": "This policy identifies Azure Function App which are not set with latest version of TLS encryption. Azure currently allows the Function App to set TLS versions 1.0, 1.1 and 1.2. It is highly recommended to use the latest TLS 1.2 version for Function App secure connections.",
+  "rule.criteria": "c82a5f89-cd01-4bcf-8fa3-99396a4c848d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and config.minTlsVersion does not equal 1.2'",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'TLS/SSL settings'\n5. In 'Protocol Settings', Set 'Minimum TLS Version' to '1.2'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

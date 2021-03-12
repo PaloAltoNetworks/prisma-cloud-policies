@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-679",
+  "policyId": "55c94d7a-9608-4fa7-bd08-d99c05c2678a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Function App client certificate is disabled",
+  "description": "This policy identifies Azure Function App which are not set with client certificate. Client certificates allow for the app to request a certificate for incoming requests. Only clients that have a valid certificate will be able to reach the app.",
+  "rule.criteria": "60257de1-5ca3-468d-aac0-c522b0e862e1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and properties.clientCertEnabled equals false'",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'Configuration'\n5. Under 'General Settings' tab, In 'Incoming client certificates', Set 'Client certificate mode' to Require\n6. Click on 'Save'\n\nIf Function App Hosted in Linux using Consumption (Serverless) Plan follow below steps\nAzure CLI Command - \\\"az functionapp update --set clientCertEnabled=true --name MyFunctionApp --resource-group MyResourceGroup\\\"",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

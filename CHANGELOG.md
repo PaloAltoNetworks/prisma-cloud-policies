@@ -1,5 +1,62 @@
 # Changelog
 
+## PCS-21.3.1 - 2021-03-10
+
+### Added
+
+#### 7 new policies
+
+- Azure Container registries Public access to All networks is enabled
+- Azure Function App authentication is off
+- Azure Function App client certificate is disabled
+- Azure Function App doesn't have a Managed Service Identity
+- Azure Function App doesn't redirect HTTP to HTTPS
+- Azure Function App doesn't use HTTP 2.0
+- Azure Function App doesn't use latest TLS version
+
+#### 1 new framework
+
+- MITRE ATT&CK v8
+
+#### 2 new compliance standards
+
+- Cybersecurity Maturity Model Certification (CMMC) v.1.02
+- CIS v1.3.0 (Azure)
+
+### Changed
+
+#### 13 policies updated
+
+- AWS Default Security Group does not restrict all traffic
+- AWS RDS database not encrypted using Customer Managed Key
+
+- Azure App Service Web app authentication is off
+- Azure App Service Web app client certificate is disabled
+- Azure App Service Web app doesn't have a Managed Service Identity
+- Azure App Service Web app doesn't redirect HTTP to HTTPS
+- Azure App Service Web app doesn't use HTTP 2.0
+- Azure App Service Web app doesn't use latest TLS version
+- Azure Load Balancer diagnostics logs are disabled
+- Azure SQL Server advanced data security does not send alerts to service and co-administrators
+
+- GCP VM disks not encrypted with Customer-Supplied Encryption Keys (CSEK)
+- GCP VM instances have IP Forwarding enabled
+- GCP VM instances with excessive service account permissions
+
+#### 3 compliance standards updated
+
+- CIS v1.3.0 (AWS)
+- CIS v1.1.0 (GCP)
+- CIS v1.1.0 (GKE)
+
+### Removed
+
+#### 2 policies deleted
+
+- GCP API key not restricting any specific API
+- GCP API key not rotating in every 90 days
+
+
 ## PCS-21.2.2 - 2021-02-25
 
 ### Added

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-676",
+  "policyId": "6865e87f-5045-4319-bc32-b659bde8e3a2",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Function App doesn't use HTTP 2.0",
+  "description": "This policy identifies Azure Function App which doesn't use HTTP 2.0. HTTP 2.0 has additional performance improvements on the head-of-line blocking problem of old HTTP version, header compression, and prioritisation of requests. HTTP 2.0 no longer supports HTTP 1.1's chunked transfer encoding mechanism, as it provides its own, more efficient, mechanisms for data streaming.",
+  "rule.criteria": "3ac6e13f-bee1-48cc-b1a9-33056c1c6654",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and config.http20Enabled equals false'",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'Configuration'\n5. Under 'General Settings' tab, In 'Platform settings', Set 'HTTP version' to '2.0'\n6. Click on 'Save'\n\nIf Function App Hosted in Linux using Consumption (Serverless) Plan follow below steps\nAzure CLI Command - \\\"az functionapp config set --http20-enable true --name MyFunctionApp --resource-group MyResourceGroup\\\"",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
