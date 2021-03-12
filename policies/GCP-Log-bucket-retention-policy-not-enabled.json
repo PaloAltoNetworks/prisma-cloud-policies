@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-LOG-696",
+  "policyId": "ee5fc24b-9fc4-4893-ad3d-982aff77759c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Log bucket retention policy not enabled",
+  "description": "This policy identifies GCP log buckets for which retention policy is not enabled. Enabling retention policies on log buckets will protect logs stored in cloud storage buckets from being overwritten or accidentally deleted. It is recommended to configure a data retention policy for these cloud storage buckets to store the activity logs for forensics and security investigations.",
+  "rule.criteria": "4fa736c6-4209-4d39-bc95-3524ef2c547a",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-logging-sinks-list' AND json.rule = 'destination.bucket exists' as X; config from cloud.resource where api.name = 'gcloud-storage-buckets-list' AND json.rule = (retentionPolicy does not exist ) as Y; filter '($.X.destination.bucket contains $.Y.name)'; show Y;",
+  "recommendation": "1. Log in to google cloud console \n2. Navigate to section 'Browser', Under 'Storage' \n3. Select the alerted log bucket\n4. In tab ''RETENTION', click on '+SET RETENTION POLICY' to set a retention policy\n5. Set a value for 'Retention period' in pop-up 'Set a retention policy'\n6. Click on 'SAVE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

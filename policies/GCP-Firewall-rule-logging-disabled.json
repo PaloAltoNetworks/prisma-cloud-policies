@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-VPC-689",
+  "policyId": "16ae5485-e213-4f20-abcc-bb5affe6083f",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Firewall rule logging disabled",
+  "description": "This policy identifies GCP firewall rules that are not configured with firewall rule logging.  Firewall Rules Logging lets you audit, verify, and analyze the effects of your firewall rules. When you enable logging for a firewall rule, Google Cloud creates an entry called a connection record each time the rule allows or denies traffic. \n\nReference: https://cloud.google.com/vpc/docs/firewall-rules-logging",
+  "rule.criteria": "908515e7-0121-4875-9419-5eebf118f35f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-firewall-rules-list' AND json.rule = logConfig.enable is false",
+  "recommendation": "1. Log in to google cloud console\n2. Navigate to section 'Firewall', Under 'VPC Network'\n3. Select the alerted firewall rule, click on 'EDIT'\n4. Select 'On' for field 'Logs'\n5. Click on 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
