@@ -21,10 +21,9 @@
 
 ### Changed
 
-#### 8 policies updated
+#### 7 policies updated
 
 - AWS Elastic Load Balancer v2 (ELBv2) listener that allow connection requests over HTTP
-- AWS KMS sensitive configuration updates
 - AWS Network ACLs allow ingress traffic to server administration ports
 - DB ports exposed to network traffic from the internet
 - Instance is communicating with ports known to mine Bitcoin
@@ -35,6 +34,12 @@
 #### 1 compliance standard updated
 
 - CIS Azure v1.3.0
+
+### Removed
+
+#### 1 policy deleted
+
+- AWS KMS sensitive configuration updates
 
 
 ## PCS-21.3.1 - 2021-03-10
