@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-KV-692",
+  "policyId": "5238e9c3-3e2e-4d94-b492-261eedc01a2e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Key Vault Purge protection is not enabled",
+  "description": "This policy identifies Azure Key Vault which has Purge protection disabled. Enabling Azure Key Vault Purge protection feature prevents malicious deletion of a key vault which can lead to permanent data loss. It is recommended to enable Purge protection for Azure Key Vault which protects by enforcing a mandatory retention period for soft deleted key vaults.",
+  "rule.criteria": "df4f009d-f049-4e04-bbdf-06d98b1b040f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' AND json.rule = properties.enablePurgeProtection is false",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to 'Key vaults', and select the reported key vault from the list\n3. Under 'Settings' select 'Properties'\n4. For 'Purge protection' click on 'Enable Purge protection (enforce a mandatory retention period for deleted vaults and vault objects)'\n5. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

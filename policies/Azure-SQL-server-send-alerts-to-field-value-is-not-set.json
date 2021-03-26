@@ -20,6 +20,8 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
-    "NIST 800-53 Rev4"
+    "NIST 800-53 Rev4",
+    "NIST SP 800-171 Revision 2",
+    "PCI DSS v3.2.1"
   ]
 }

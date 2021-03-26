@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SNS-671",
+  "policyId": "15492dd6-455b-4487-a910-e3608b2ce9a2",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS SNS topic policy overly permissive for publishing",
+  "description": "This policy identifies AWS SNS topics that have SNS policy overly permissive for publishing. When a message is published, Amazon SNS attempts to deliver the message to the subscribed endpoints. To protect these messages from attackers and unauthorized accesses, permissions should be given to only authorized users.\n\nFor more details:\nhttps://docs.aws.amazon.com/sns/latest/dg/sns-security-best-practices.html#implement-least-privilege-access",
+  "rule.criteria": "8d0484cb-f5b3-4df3-b54f-cb2453190002",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sns-get-topic-attributes' AND json.rule = Policy.Statement[?any(Effect equals Allow and (Principal.AWS equals * or Principal equals *) and (Action contains SNS:Publish or Action contains sns:Publish) and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the 'Simple Notification Service' dashboard\n4. Go to 'Topics', from the left panel\n5. Select the reported SNS topic\n6. Click on the 'Edit' button from the top options bar\n7. On the edit page go to the 'Access Policy - optional' section\n8. Add the restrictive 'Condition' statement to the JSON editor to specify who can publish messages to the topic.\n9. Click on 'Save changes'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

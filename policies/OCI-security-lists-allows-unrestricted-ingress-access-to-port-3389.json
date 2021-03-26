@@ -16,6 +16,8 @@
   "compliance.standard": [
     "CIS v1.0.0 (OCI)",
     "CIS v1.1.0 (OCI)",
-    "MITRE ATT&CK v8.2"
+    "MITRE ATT&CK v8.2",
+    "NIST SP 800-171 Revision 2",
+    "PCI DSS v3.2.1"
   ]
 }

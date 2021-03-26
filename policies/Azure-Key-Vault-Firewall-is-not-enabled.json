@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-KV-690",
+  "policyId": "7fe62a4c-4041-471c-80f5-6a78478a1ebd",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Key Vault Firewall is not enabled",
+  "description": "This policy identifies Azure Key Vault which has Firewall disabled. Enabling Azure Key Vault Firewall feature prevents unauthorised traffic from reaching your key vault. It is recommend to enable Azure Key Vault Firewall which provides additional layer of protection for your secrets.",
+  "rule.criteria": "b761dbf1-d5a9-4e9d-aaf1-93d707a1fbd0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' AND json.rule = properties.networkAcls.ipRules[*].value does not exist",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to 'Key vaults', and select the reported key vault from the list\n3. Under 'Settings' select 'Networking\n4. Click on 'Private endpoint and selected networks' if not checked\n5. Add 'IPv4 address or CIDR' under 'Firewall' \n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
