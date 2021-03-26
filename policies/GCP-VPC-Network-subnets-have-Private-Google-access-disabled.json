@@ -15,6 +15,7 @@
   "remediation.impact": "enables private-ip-google-access in GCP VPC Network subnets",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CIS v1.0.0 (GCP)",
     "CSA CCM v3.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",

@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Brazilian Data Protection Law (LGPD)",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

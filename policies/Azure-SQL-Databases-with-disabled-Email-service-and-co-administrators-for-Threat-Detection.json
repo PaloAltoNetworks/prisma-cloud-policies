@@ -15,6 +15,7 @@
   "remediation.impact": "enable SQL database Threat detection email service and co-administrators",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CSA CCM v3.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "GDPR",

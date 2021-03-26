@@ -16,6 +16,7 @@
   "compliance.standard": [
     "GDPR",
     "HIPAA",
+    "MITRE ATT&CK v8.2",
     "NIST CSF",
     "PCI DSS v3.2",
     "PIPEDA",

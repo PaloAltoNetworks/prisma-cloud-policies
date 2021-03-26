@@ -15,7 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "HIPAA",
-    "MITRE ATT&CK [Beta]",
+    "MITRE ATT&CK v6.3",
+    "MITRE ATT&CK v8.2",
     "NIST CSF",
     "SOC 2"
   ]

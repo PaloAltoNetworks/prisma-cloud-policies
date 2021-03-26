@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "CIS v1.1.0 (OCI)"
+    "CIS v1.1.0 (OCI)",
+    "MITRE ATT&CK v8.2"
   ]
 }

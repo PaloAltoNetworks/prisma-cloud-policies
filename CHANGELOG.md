@@ -1,5 +1,47 @@
 # Changelog
 
+## PCS-21.3.2 - 2021-03-25
+
+### Added
+
+#### 3 new policies
+
+- GCP Firewall rule logging disabled
+- GCP Log bucket retention policy not enabled
+- GCP Log bucket retention policy is not configured using bucket lock
+
+#### 1 new framework
+
+- MITRE ATT&CK v8.2 Cloud Matrix for Enterprise
+
+#### 2 new compliance standards
+
+- Brazilian Data Protection Law (LGPD) 
+- CIS Alibaba Cloud Foundation Benchmark v.1.0.0 
+
+### Changed
+
+#### 7 policies updated
+
+- AWS Elastic Load Balancer v2 (ELBv2) listener that allow connection requests over HTTP
+- AWS Network ACLs allow ingress traffic to server administration ports
+- DB ports exposed to network traffic from the internet
+- Instance is communicating with ports known to mine Bitcoin
+- Instance is communicating with ports known to mine Ethereum
+- Instances exposed to network traffic from the internet
+- OCI File Storage File System Export is publicly accessible
+
+#### 1 compliance standard updated
+
+- CIS Azure v1.3.0
+
+### Removed
+
+#### 1 policy deleted
+
+- AWS KMS sensitive configuration updates
+
+
 ## PCS-21.3.1 - 2021-03-10
 
 ### Added

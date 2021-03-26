@@ -5,10 +5,10 @@
   "cloudType": "all",
   "severity": "high",
   "name": "Instance is communicating with ports known to mine Ethereum",
-  "description": "Identifies traffic on ports 8545 and 30303 from internal workloads to internet IPs that are known to mine Ethereum. Unless this traffic is part of authorized applications and processes, your instances may have been compromised.",
+  "description": "This policy identifies network traffic from internal workloads to the known Ethereum ports 8545 and 30303. Unless this traffic is part of authorized applications and processes, your instances may have been compromised.\n\nNote: This policy alerts AWS and GCP workloads correctly and for Azure, it may trigger alerts for NAT Gateway configured resources also.",
   "rule.criteria": "5b9ef8da-bb08-4735-8821-508e1d785d88",
-  "searchModel.query": "network from vpc.flow_record where dest.port IN (8545,30303) and dest.publicnetwork IN ('Internet IPs' , 'Suspicious IPs' ) and bytes > 0 and src.resource IN ( resource where role not in ( 'AWS NAT Gateway', 'AWS ELB'))",
-  "recommendation": "1. Review the identified instance and investigate the network traffic to make sure there is sufficient volume of egress traffic to indicate a compromise.\n      2. Log in to the host and make sure that there are no processes running that indicate a potential compromise.\n      3. If this instance is not authorized to process or host cryptocurrency related services, terminate the services and change the ACL to block outgoing traffic on port 8545,30303.",
+  "searchModel.query": "network from vpc.flow_record where dest.port IN (8545,30303) and dest.publicnetwork IN ('Internet IPs' , 'Suspicious IPs' ) and src.resource IN ( resource where role not in ( 'AWS NAT Gateway', 'AWS ELB', 'AZURE ELB', 'GCP ELB')) AND accepted.bytes > 0",
+  "recommendation": "1. Log in to the Cloud Console\n2. Review the identified instance and investigate the network traffic to make sure there is sufficient volume of egress traffic to indicate a compromise.\n3. Log in to the host and make sure that there are no processes running that indicate a potential compromise.\n4. If this instance is not authorized to process or host cryptocurrency related services, terminate the services and change the ACL to block outgoing traffic to port 8545,30303.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -16,7 +16,8 @@
   "compliance.standard": [
     "CCPA 2018",
     "HIPAA",
-    "MITRE ATT&CK [Beta]",
+    "MITRE ATT&CK v6.3",
+    "MITRE ATT&CK v8.2",
     "NIST CSF",
     "PIPEDA"
   ]

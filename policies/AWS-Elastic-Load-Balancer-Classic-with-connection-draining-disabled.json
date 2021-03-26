@@ -15,6 +15,7 @@
   "remediation.impact": "Enable connection draining for the respective ELB",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02"
   ]
 }

@@ -15,6 +15,7 @@
   "remediation.impact": "disables Legacy Authorization in GCP Kubernetes Engine cluster",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.0.0 (GCP)",
     "CIS v1.1.0 (GKE)",
