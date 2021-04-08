@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "NIST SP 800-171 Revision 2",
+    "PCI DSS v3.2.1"
+  ]
 }

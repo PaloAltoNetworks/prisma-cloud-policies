@@ -1,5 +1,57 @@
 # Changelog
 
+## PCS-21.4.1 - 2021-04-09
+
+### Added
+
+#### 4 new policies
+
+- AWS SNS topic policy overly permissive for publishing
+- AWS SNS topic policy overly permissive for subscription
+- Azure Key Vault Firewall is not enabled
+- Azure Key Vault Purge protection is not enabled
+
+#### 1 new compliance standard
+
+- NIST SP 800-171 Revision 2
+
+#### 7 policies for the new IAM Security module
+
+- AWS IAM effective permissions are over-privileged (7 days)
+- AWS IAM effective permissions are over-privileged (90 days)
+- AWS cross-account resource access through IAM policies
+- AWS effective permissions granting wildcard resource access
+- AWS entities with risky permissions
+- AWS resources that are publicly accessible through IAM policies
+- Okta user with effective permissions to create AWS IAM users
+
+### Changed
+
+#### 11 policies updated
+
+- AWS IAM policy allows assume role permission across all services
+- Azure Application Gateway does not have the Web application firewall (WAF) enabled
+- GCP Log metric filter and alert does not exist for Audit Configuration Changes
+- GCP Log metric filter and alert does not exist for Cloud Storage IAM permission changes
+- GCP Log metric filter and alert does not exist for IAM custom role changes
+- GCP Log metric filter and alert does not exist for Project Ownership assignments/changes
+- GCP Log metric filter and alert does not exist for SQL instance configuration changes
+- GCP Log metric filter and alert does not exist for VPC Network Firewall rule changes
+- GCP Log metric filter and alert does not exist for VPC network changes
+- GCP Log metric filter and alert does not exist for VPC network route changes
+- Threat Detection on SQL databases is set to Off
+
+#### 1 compliance standard updated
+
+- PCI DSS v3.2.1
+
+### Removed
+
+#### 1 policy deleted
+
+- Azure Security Center web application firewall monitoring is set to disabled
+
+
 ## PCS-21.3.2 - 2021-03-25
 
 ### Added

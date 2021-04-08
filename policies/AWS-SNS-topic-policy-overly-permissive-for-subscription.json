@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SNS-670",
+  "policyId": "f1327669-bf9b-4062-bdc3-be19b9f20ba5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS SNS topic policy overly permissive for subscription",
+  "description": "This policy identifies AWS SNS topics that have SNS policy overly permissive for the subscription. When you subscribe an endpoint to a topic, the endpoint begins to receive messages published to the associated topic. To protect these messages from attackers and unauthorized accesses, permissions should be given to only authorized users.\n\nFor more details:\nhttps://docs.aws.amazon.com/sns/latest/dg/sns-security-best-practices.html#implement-least-privilege-access",
+  "rule.criteria": "b82861da-8e73-4afd-8fc7-527578c0123c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sns-get-topic-attributes' AND json.rule = Policy.Statement[?any(Effect equals Allow and (Principal.AWS equals * or Principal equals *) and (Action contains SNS:Subscribe or Action contains sns:Subscribe or Action contains SNS:Receive or Action contains sns:Receive) and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the 'Simple Notification Service' dashboard\n4. Go to 'Topics', from the left panel\n5. Select the reported SNS topic\n6. Click on the 'Edit' button from the top options bar\n7. On the edit page go to the 'Access Policy - optional' section\n8. Add the restrictive 'Condition' statement to the JSON editor to specify who can subscribe to this topic.\n9. Click on 'Save changes'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
