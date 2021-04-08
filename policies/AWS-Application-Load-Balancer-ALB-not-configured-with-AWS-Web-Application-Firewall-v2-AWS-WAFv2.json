@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-WAF-700",
+  "policyId": "7759063b-44f6-41ab-92fa-950f85f4a357",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Application Load Balancer (ALB) not configured with AWS Web Application Firewall v2 (AWS WAFv2)",
+  "description": "This policy identifies AWS Application Load Balancers (ALBs) that are not configured with AWS Web Application Firewall v2 (AWS WAFv2). As a best practice, configure the AWS WAFv2 service on the application load balancers to protect against application-layer attacks. To block malicious requests to your application load balancers, define the block criteria in the WAFv2 web access control list (web ACL).",
+  "rule.criteria": "44191c88-265d-40ac-af7f-0e78a57d252d",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-waf-v2-web-acl-resource' AND json.rule = resources.applicationLoadBalancer[*] exists as X; config from cloud.resource where api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = scheme equals internet-facing and type equals application as Y; filter 'not($.X.resources.applicationLoadBalancer[*] contains $.Y.loadBalancerArn)'; show Y;",
+  "recommendation": "1. Log in to the AWS console\n2. Make sure your the reported Application Load Balancer requires WAF based on your requirement and Note down the load balancer name.\n3. Navigate to WAF & Shield dashboard\n4. Click on Web ACLs, under AWS WAF section from left panel\n5. If Web ACL is not created; create a new Web ACL and add reported Application Load Balancer to Associated AWS resources.\n6. If you have Web ACL already created; Click on Web ACL and add your reported Application Load Balancer to Associated AWS resources.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

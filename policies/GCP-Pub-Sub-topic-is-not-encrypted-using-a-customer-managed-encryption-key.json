@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-PSB-714",
+  "policyId": "6a49219d-26c4-4ea0-ba1d-1df5c3e8bd5c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Pub/Sub topic is not encrypted using a customer-managed encryption key",
+  "description": "This policy identifies GCP Pub/Sub topics that are not encrypted using a customer-managed encryption key. It is a best practice to use customer-managed KMS Keys to encrypt your Pub/Sub topic. Customer-managed CMKs give you more flexibility, including the ability to create, rotate, disable, define access control for, and audit the encryption keys used to help protect your data.\n\nReference: https://cloud.google.com/pubsub/docs/encryption ",
+  "rule.criteria": "9f01a0d8-01a7-4537-8d64-dc3b967f4a58",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-pubsub-topic' AND json.rule = kmsKeyName does not exist",
+  "recommendation": "Once the Pub/Sub topic is created it is not modifiable. So to remediate you need to create one new topic with encrypted using customer-managed encryption key following below link and then delete the alerted topic.\n\nLink: https://cloud.google.com/pubsub/docs/encryption",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

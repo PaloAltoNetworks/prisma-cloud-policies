@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC2-698",
+  "policyId": "32f75d19-c34d-4ec5-aa8c-675959db3aad",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EC2 instance not configured with Instance Metadata Service v2 (IMDSv2)",
+  "description": "This policy identifies AWS instances that are not configured with Instance Metadata Service v2 (IMDSv2). With IMDSv2, every request is now protected by session authentication. IMDSv2 protects against misconfigured-open website application firewalls, misconfigured-open reverse proxies, unpatched SSRF vulnerabilities, and misconfigured-open layer-3 firewalls and network address translation. It is recommended to use only IMDSv2 for all your EC2 instances.\n\nFor more details:https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html",
+  "rule.criteria": "81c165ce-f66e-441a-8ea0-56a107175ccc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-instances' AND json.rule = state contains running and metadataOptions.httpEndpoint equals enabled and metadataOptions.httpTokens does not contain required",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Refer 'Configure instance metadata options for existing instances' section from follwoing URL\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html\n\nNOTE: Make a precaution before you enforce the use of IMDSv2, as applications or agents that use IMDSv1 for instance metadata access will break.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

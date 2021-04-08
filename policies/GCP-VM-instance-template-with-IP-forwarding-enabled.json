@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-712",
+  "policyId": "68bd1715-36a0-4870-b0d5-96dd719a20e2",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance template with IP forwarding enabled",
+  "description": "This policy identifies VM instance templates that have IP forwarding enabled. IP Forwarding could open unintended and undesirable communication paths and allows VM instances to send and receive packets with the non-matching destination or source IPs. To enable source and destination IP match check, disable the IP Forwarding.",
+  "rule.criteria": "ab053840-53eb-499d-bf22-d58e375c490a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instance-template' AND json.rule = properties.canIpForward is true and (name does not start with \"gke-\" or (name starts with \"gke-\" and properties.disks[*].initializeParams.labels does not exist) )",
+  "recommendation": "GCP VM instance templates are used to create VM instances based on a preexisting configuration. GCP VM instance templates IP forwarding feature cannot be updated. After an instance template is created, the IP forwarding field becomes read-only. So to fix this alert, Create a new VM instance template with IP forwarding disabled, migrate all required data from the reported template to the newly created one, and delete the reported VM instance template.\n\nTo create a new VM Instance template with IP forwarding disabled:\n1. Login to GCP Portal\n2. Go to 'Computer Engine' (Left Panel)\n3. Go to 'Instance templates'\n4. Click on 'CREATE INSTANCE TEMPLATE'\n5. Specify the mandatory parameters as required\n6. Click 'Management, security, disk, networking, sole tenancy'\n7. Click 'Networking'\n8. Click on the specific Network interfaces\n9. Set 'IP forwarding' to 'Off'\n10. Click on 'Create' button\n\nTo Delete VM instance template which has IP forwarding enabled:\n1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to 'Instance templates'\n4. From the list, choose the reported templates\n5. Click on the 'Delete' button",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

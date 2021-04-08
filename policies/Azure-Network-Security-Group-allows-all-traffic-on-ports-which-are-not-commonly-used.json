@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-NWK-699",
+  "policyId": "0c7887a1-0cbe-4e00-bddf-87689fa65cd0",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Network Security Group allows all traffic on ports which are not commonly used",
+  "description": "This policy identifies Azure Network Security Group which allow all traffic on ports which are not commonly used. Ports excluded from this policy are 20, 21, 22, 23, 25, 53, 80, 135, 137, 138, 443, 445, 1433, 1434, 3306, 3389, 4333, 5432, 5500 and 5900. As a best practice, restrict ports solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
+  "rule.criteria": "2e8753e8-96eb-4545-9577-347841d9a370",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any(access equals Allow and direction equals Inbound and (sourceAddressPrefix equals Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and (protocol equals Tcp or protocol equals Udp or protocol equals Icmp or protocol equals *) and (destinationPortRange is not member of (20, 21, 22, 23, 25, 53, 80, 135, 137, 138, 443, 445, 1433, 1434, 3306, 3389, 4333, 5432, 5500, 5900, *) or destinationPortRanges[*] is not member of (20, 21, 22, 23, 25, 53, 80, 135, 137, 138, 443, 445, 1433, 1434, 3306, 3389, 4333, 5432, 5500, 5900, *) ))] exists",
+  "recommendation": "Before making any changes, please check the impact to your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
