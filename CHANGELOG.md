@@ -13,6 +13,11 @@
 - GCP Pub/Sub topic is not encrypted using a customer-managed encryption key
 - GCP VM instance template with IP forwarding enabled
 
+#### 2 new compliance standards
+
+- NIST SP 800-172
+- MPAA Content Protection Best Practices (Motion Picture Association of America Version 4.08)
+
 ### Changed
 
 #### 4 policies updated

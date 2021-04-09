@@ -16,6 +16,7 @@
   "compliance.standard": [
     "MITRE ATT&CK v8.2",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
     "PCI DSS v3.2.1"
   ]
 }
