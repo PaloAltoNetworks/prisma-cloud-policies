@@ -5,10 +5,10 @@
   "cloudType": "azure",
   "severity": "medium",
   "name": "Azure Security Center 'Standard pricing tier' is not selected",
-  "description": "Ensure that standard pricing tier is selected",
+  "description": "This policy identifies Azure Security Center which have Defender setting set to Off. Enabling Azure Defender provides advanced security capabilities like providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center. It is highly recommended to enable Azure Defender for all Azure services.",
   "rule.criteria": "6b6fb5a5-38be-4dfd-bf0c-c417418ae388",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = 'pricings is empty or pricings[*].properties.pricingTier equals Free'",
-  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & Settings'\n4. Click on the Subscription\n5. Choose 'Standard pricing tier'\n6. Click on 'Save'",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & Settings'\n4. Click on the Subscription\n5. Choose 'Azure Defender plans'\n6. Select 'Azure Defender on' if not already enabled\n7. Select 'On' under 'Plan' for all Azure services under 'Azure Defender for'\n8. Click on 'Save'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -20,6 +20,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "ISO 27001:2013",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
     "PCI DSS v3.2.1"
   ]
 }

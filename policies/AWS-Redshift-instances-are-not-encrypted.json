@@ -8,7 +8,7 @@
   "description": "This policy identifies AWS Redshift instances which are not encrypted. These instances should be encrypted for clusters to help protect data at rest which otherwise can result in a data breach.",
   "rule.criteria": "0132bbb2-c733-4c36-9c5d-c58967c7d1a6",
   "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name='aws-redshift-describe-clusters' AND json.rule='encrypted is false'",
-  "recommendation": "AWS redshift instance Encryption of data at rest can only be enabled during file system creation. So to resolve this alert, create a new instance with encryption enabled, then migrate all required file data from the reported Redshift instances to this newly created Redshift instance and delete reported instances.\n1. Sign in to the AWS Admin Console and Access the Redshift service.\n2. Click on the identified Redshift cluster and take a snapshot of it.\n3. Create a new Redshift cluster (now with 'Encryption' set to 'Yes' during creation time) and use the snapshot to populate (restore) the new cluster.\n4. Once the new cluster is populated, delete the older cluster (without encryption).",
+  "recommendation": "To enable encryption on your Redshift cluster follow the steps mentioned in below URL:\nhttps://docs.aws.amazon.com/redshift/latest/mgmt/changing-cluster-encryption.html",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -28,6 +28,7 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PIPEDA",
     "SOC 2"

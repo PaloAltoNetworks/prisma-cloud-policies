@@ -1,5 +1,33 @@
 # Changelog
 
+## PCS-21.4.2 - 2021-04-20
+
+### Added
+
+#### 6 new policies
+
+- AWS Application Load Balancer (ALB) not configured with AWS Web Application Firewall v2 (AWS WAFv2)
+- AWS EC2 instance not configured with Instance Metadata Service v2 (IMDSv2)
+- AWS Security Group allows all traffic on ICMP (Ping) protocol
+- Azure Network Security Group allows all traffic on ports which are not commonly used
+- GCP Pub/Sub topic is not encrypted using a customer-managed encryption key
+- GCP VM instance template with IP forwarding enabled
+
+#### 2 new compliance standards
+
+- NIST SP 800-172
+- MPAA Content Protection Best Practices (Motion Picture Association of America Version 4.08)
+
+### Changed
+
+#### 4 policies updated
+
+- AWS Elastic Load Balancer (ELB) with ACM certificate expiring in 90 days
+- AWS Redshift Cluster not encrypted using Customer Managed Key
+- AWS Redshift instances are not encrypted
+- Azure Security Center 'Standard pricing tier' is not selected
+
+
 ## PCS-21.4.1 - 2021-04-09
 
 ### Added
