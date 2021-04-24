@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-SC-704",
+  "policyId": "1d0fa585-6da6-435f-a306-d36d5833f278",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Security Center Defender set to Off for Container Registries",
+  "description": "This policy identifies Azure Security Center which have Defender setting for Container Registries set to Off. Enabling Azure Defender provides advanced security capabilities like providing threat intelligence, anomaly detection, and behavior analytics in the Azure Security Center. It is highly recommended to enable Azure Defender for Container Registries.",
+  "rule.criteria": "4239afbb-9cc9-45d3-9d96-6b64280b3536",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any( name equals ContainerRegistry and properties.pricingTier does not equal Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Security Center'\n3. Click on 'Pricing & settings'\n4. Click on the Subscription\n5. Choose 'Azure Defender plans'\n6. Select 'Azure Defender on' if not already enabled\n7. Select 'On' under 'Plan' for 'Container registries' under 'Azure Defender for'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.3.0 (Azure)"
+  ]
+}
