@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-715",
+  "policyId": "a8b1af9e-53b3-4b43-91e0-482730ca5ab5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS ECS cluster not configured with active services",
+  "description": "This policy identifies ECS clusters that are not configured with active services. ECS service enables you to run and maintain a specified number of instances of a task definition simultaneously in an Amazon ECS cluster. It is recommended to remove Idle ECS clusters to reduce the container attack surface or create new services for the reported ECS cluster.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs_services.html",
+  "rule.criteria": "d604fbfe-49ae-41ff-9fe8-b8a92d87d0c3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-cluster' AND json.rule = status equals ACTIVE and activeServicesCount equals 0",
+  "recommendation": "To delete the reported idle ECS Cluster follow below mentioned URL:\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/delete_cluster.html\n\nTo create new container services follow below mentioned URL:\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-service.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

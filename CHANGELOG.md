@@ -1,5 +1,28 @@
 # Changelog
 
+## PCS-21.5.1 - 2021-05-05
+
+### Added
+
+#### 6 new policies
+
+- AWS Amazon Machine Image (AMI) infected with mining malware
+- AWS ECS cluster not configured with a registered instance
+- AWS ECS cluster not configured with active services
+- AWS SNS topic is exposed to unauthorized access
+- Azure Security Center Defender set to Off for Container Registries
+- Azure Security Center Defender set to Off for SQL servers on machines
+
+### Changed
+
+#### 4 policies updated
+
+- AWS IAM policy allows assume role permission across all services
+- Azure Load Balancer diagnostics logs are disabled
+- GCP Firewall rules allow inbound traffic from anywhere with no target tags set
+- GCP Projects have OS Login disabled
+
+
 ## PCS-21.4.2 - 2021-04-20
 
 ### Added
