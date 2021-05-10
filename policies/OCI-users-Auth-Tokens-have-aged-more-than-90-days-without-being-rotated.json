@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-IAM-732",
+  "policyId": "49cdb08a-ab81-4311-90cd-26db7ebbf5e4",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI users Auth Tokens have aged more than 90 days without being rotated",
+  "description": "This policy identifies all of your IAM User Auth Tokens which have not been rotated in the past 90 days. It is recommended to verify that they are rotated on a regular basis in order to protect OCI Auth Tokens access directly or via SDKs or OCI CLI.",
+  "rule.criteria": "a1b1de88-723e-4411-a198-21ea67d93661",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-user' AND json.rule = 'authTokens[?any(lifecycleState equals ACTIVE and (_DateTime.ageInDays(timeCreated) > 90))] exists'",
+  "recommendation": "1. Login to the OCI Console\n2. Select Identity & Security from the Services menu.\n3. Select Users from the Identity menu.\n4. Click on an individual user under the Name heading.\n5. Click on Auth Tokens in the lower left-hand corner of the page.\n6. Delete any auth token with a date of 90 days or older under the Created column of the Auth Tokens.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

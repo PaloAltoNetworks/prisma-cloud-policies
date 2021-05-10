@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-MON-707",
+  "policyId": "f922937b-d670-4497-916f-1c7374cdaa4f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Activity log alert for delete policy assignment does not exist",
+  "description": "This policy identifies the Azure accounts in which activity log alert for Delete policy assignment does not exist. Creating an activity log alert for Delete policy assignment gives insight into changes done in azure policy - assignments and may reduce the time it takes to detect unsolicited changes.",
+  "rule.criteria": "05f9dd81-ebae-4612-8662-f00248ad8652",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-activity-log-alerts' AND json.rule = \"location equals Global and properties.scopes[*] does not contain resourceGroups and properties.enabled equals true and properties.condition.allOf[?(@.field=='operationName')].equals equals Microsoft.Authorization/policyAssignments/delete\" as X; count(X) less than 1",
+  "recommendation": "1. Log in to Azure Portal\n2. Click on Monitor (Left Panel)\n3. Select 'Alerts'\n4. Click on 'New alert rule'\n5. In 'Create rule' page, under 'Scope' click on 'Select resource' and select subscription for which you want to create the alert rule and click on 'Done'\n6. And under the 'CONDITION' section, choose 'Delete policy assignment (Microsoft.Authorization/policyAssignments)' and Other fields you can set based on your custom settings.\n7. Click on 'Create alert rule'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.3.0 (Azure)"
+  ]
+}
