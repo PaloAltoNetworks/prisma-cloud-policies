@@ -1,5 +1,48 @@
 # Changelog
 
+## PCS-21.5.2 - 2021-05-20
+
+### Added
+
+#### 8 new policies
+
+- AWS Elastic IP not in use
+- AWS SNS topic not configured with secure data transport policy
+- AWS SNS topic with cross-account access
+- Azure Activity log alert for delete policy assignment does not exist
+- Azure Monitor Diagnostic Setting does not captures appropriate categories
+- Azure Storage account containing VHD OS disk is not encrypted with CMK
+- OCI users Auth Tokens have aged more than 90 days without being rotated
+- OCI users customer secret keys have aged more than 90 days without being rotated
+
+#### 1 new auto-remediation cli
+
+- GCP VM instances have block project-wide SSH keys feature disabled 
+
+### Changed
+
+#### 18 policies updated
+
+- AWS CloudFormation stack configured without SNS topic
+- AWS Customer Master Key (CMK) rotation is not enabled
+- AWS IAM Groups with administrator access permissions
+- AWS SQS server side encryption not enabled
+- GCP SQL database instance is not configured with automated backups
+- GCP VM disks not encrypted with Customer-Supplied Encryption Keys (CSEK)
+- GCP VM instance configured with default service account
+- GCP VM instance using a default service account with full access to all Cloud APIs
+- GCP VM instance with Shielded VM features disabled
+- GCP VM instance with the external IP address
+- GCP VM Instances enabled with Pre-Emptible termination
+- GCP VM instances have block project-wide SSH keys feature disabled
+- GCP VM instances have IP Forwarding enabled
+- GCP VM instances have serial port access enabled
+- GCP VM instances with excessive service account permissions
+- GCP VM Instances without any Custom metadata information
+- GCP VM Instances without any Label information
+- GCP VM instances without metadata, zone or label information
+
+
 ## PCS-21.5.1 - 2021-05-05
 
 ### Added

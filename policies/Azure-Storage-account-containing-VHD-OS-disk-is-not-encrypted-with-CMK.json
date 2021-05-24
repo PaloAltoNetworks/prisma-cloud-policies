@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-STO-729",
+  "policyId": "0cd3b371-0969-48ce-9d61-17b61ce9907c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Storage account containing VHD OS disk is not encrypted with CMK",
+  "description": "This policy identifies Azure Storage account containing VHD OS disk which are not encrypted with CMK. VHD's attached to Virtual Machines are stored in Azure storage. By default Azure Storage account is encrypted using Microsoft Managed Keys. It is recommended to use Customer Managed Keys to encrypt data in Azure Storage accounts for better control on the data.",
+  "rule.criteria": "895356d9-9336-4e13-8998-7068e7526bc9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-vm-list' AND json.rule = ['properties.storageProfile'].osDisk.vhd.uri exists as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.encryption.keySource equals \"Microsoft.Storage\" as Y; filter \"$.['X'].['properties.storageProfile'].['osDisk'].['vhd'].['uri'] contains $.Y.name\"; show Y;",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Storage accounts dashboard and Click on the reported storage account\n3. Under the Settings menu, click on Encryption\n4. Select Customer Managed Keys\n- Choose 'Enter key URI' and Enter 'Key URI'\nOR\n- Choose 'Select from Key Vault', Enter 'Key Vault' and 'Encryption Key'\n5. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.3.0 (Azure)"
+  ]
+}

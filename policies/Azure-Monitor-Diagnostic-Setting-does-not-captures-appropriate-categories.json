@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-MON-713",
+  "policyId": "86d9615f-9e09-4ae5-a9fa-edb6927a8eec",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Monitor Diagnostic Setting does not captures appropriate categories",
+  "description": "This policy identifies Azure Monitor Diagnostic Setting which does not captures appropriate categories. Capturing appropriate diagnostic setting categories allows proper alerting. It is recommended to select Administrative, Alert, Policy, and Security diagnostic setting categories.",
+  "rule.criteria": "2508f3cf-7311-44d8-9b07-1dffa475b54f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-monitor-log-profiles-list' AND json.rule = properties.logs[?any((enabled is true and category equals Administrative))] exists and properties.logs[?any((enabled is true and category equals Alert))] exists and properties.logs[?any((enabled is true and category equals Policy))] exists and properties.logs[?any((enabled is true and category equals Security))] exists as X; count(X) less than 1",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to 'Monitor' and select 'Activity log'\n3. Click on 'Diagnostic settings' in top pane\n4. Select 'Add diagnostic setting' if no 'Diagnostic settings' present\nOR\nClick on 'Edit setting' for the existing 'Diagnostic settings'\n5. Under 'Category details', select 'Administrative', 'Alert', 'Policy', and 'Security' for 'log'\n6. Add 'Destination details' and other required fields\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.3.0 (Azure)"
+  ]
+}

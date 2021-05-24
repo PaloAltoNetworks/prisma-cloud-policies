@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC2-701",
+  "policyId": "fae6c539-55ef-4cfd-a021-d939e8235116",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Elastic IP not in use",
+  "description": "This policy identifies unused Elastic IP (EIP) addresses in your AWS account. Any Elastic IP in your AWS account is adding charges to your monthly bill, although it is not associated with any resources. As a best practice, it is recommended to associate/remove Elastic IPs that are not associated with any resources, it will also help you avoid unexpected charges on your bill.\n\nFor more details:\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating",
+  "rule.criteria": "cb64e10f-6c26-4c79-8e8c-49370f9013e4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-elastic-address' AND json.rule = associationId does not exist",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the VPC dashboard \n4. Go to 'Elastic IPs', from the left panel\n5. Select the reported Elastic IP\n- If Elastic IP is not required; release IP by selecting 'Release Elastic IP address' from the 'Actions' dropdown.\n- If Elastic IP is required; associate IP by selecting 'Associate Elastic IP address' from the 'Actions' dropdown.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
