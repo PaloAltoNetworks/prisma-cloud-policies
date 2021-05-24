@@ -1,5 +1,27 @@
 # Changelog
 
+## PCS-21.6.1 - 2021-06-03
+
+### Added
+
+#### 3 new policies
+
+- AWS IAM configuration updates invoked from Parrot Security Linux machine
+- AWS IAM configuration updates invoked from Pentoo Linux machine
+- AWS IAM configuration updates invoked from Kali Linux machine
+
+#### 1 new compliance standard
+
+- CIS v1.2.0 (GCP)
+
+### Changed
+
+#### 3 policies updated
+
+- AWS Lambda Function is not assigned to access within VPC
+- AWS Elastic Load Balancer (Classic) with access log disabled
+- AWS Lambda Environment Variables not encrypted at-rest using CMK
+
 
 ## PCS-21.5.2 - 2021-05-20
 
