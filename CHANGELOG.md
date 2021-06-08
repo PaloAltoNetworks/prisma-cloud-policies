@@ -1,5 +1,33 @@
 # Changelog
 
+## PCS-21.6.2 - 2021-06-17
+
+### Added
+
+#### 4 new policies
+
+- AWS CloudWatch Log groups not configured with definite retention days
+- AWS ElastiCache Redis cluster encryption not configured with CMK key
+- AWS IAM policy is overly permissive to all traffic via condition clause
+- AWS IAM policy overly permissive to STS services
+
+### Changed
+
+#### 11 policies updated
+
+- AWS EC2 instance allowing public IP in subnets
+- AWS ECS task definition elevated privileges enabled
+- AWS ECS/ Fargate task definition execution IAM Role not found
+- AWS Security Group allows all traffic on ports which are not commonly used
+- Azure Key Vault audit logging is disabled
+- Azure Security Center 'Standard pricing tier' is not selected
+- Azure SQL Server advanced data security is disabled
+- Azure Virtual Network subnet is not configured with a Network Security Group
+- GCP User managed service account keys are not rotated for 90 days
+- Storage Bucket does not have Access and Storage Logging enabled
+- Threat Detection on SQL databases is set to Off
+
+
 ## PCS-21.6.1 - 2021-06-03
 
 ### Added
