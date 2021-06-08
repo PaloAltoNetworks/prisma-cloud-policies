@@ -11,6 +11,10 @@
 - AWS IAM policy is overly permissive to all traffic via condition clause
 - AWS IAM policy overly permissive to STS services
 
+#### 1 new compliance standard
+
+- HITRUST v.9.4.2
+
 ### Changed
 
 #### 11 policies updated

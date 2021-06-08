@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "CIS v1.1 (Azure)",
+    "HITRUST v.9.4.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
