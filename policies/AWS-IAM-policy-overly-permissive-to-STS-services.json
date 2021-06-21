@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-736",
+  "policyId": "861c6df0-9663-42aa-b729-5218fccc9b50",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS IAM policy overly permissive to STS services",
+  "description": "This policy identifies the IAM policies that are overly permissive to STS services. AWS Security Token Service (AWS STS) is a web service that enables you to request temporary credentials for AWS Identity and Access Management (IAM) users or for users that you authenticate (federated users). It is recommended to follow the principle of least privileges ensuring that only restricted STS services for restricted resources.",
+  "rule.criteria": "9f2824c8-c27e-415d-9fba-7510760fd369",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-policy-version' AND json.rule = isAttached is true and document.Statement[?any(Effect equals Allow and Action contains sts:* and Resource equals * and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'IAM' service\n3. Click on the 'Policies' in left hand panel and Click on the reported IAM policy\n4. Under Permissions tab, Change the element of the policy document to be more restrictive so that it only allows restricted STS permissions on selected resources instead of wildcards (sts:* and Resource:*) OR Put condition statement with least privilege access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

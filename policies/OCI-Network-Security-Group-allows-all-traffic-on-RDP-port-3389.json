@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v1.0.0 (OCI)",
     "CIS v1.1.0 (OCI)",
+    "HITRUST v.9.4.2",
     "MITRE ATT&CK v8.2",
     "MPAA Content Protection Best Practices",
     "NIST SP 800-171 Revision 2",

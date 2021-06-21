@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "CCPA 2018",
+    "HITRUST v.9.4.2",
     "MITRE ATT&CK v6.3",
     "MITRE ATT&CK v8.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
