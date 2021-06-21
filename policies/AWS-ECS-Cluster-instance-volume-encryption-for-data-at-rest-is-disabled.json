@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-745",
+  "policyId": "d00b3874-3bca-43df-b835-34cec48c7f0f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS ECS Cluster instance volume encryption for data at rest is disabled",
+  "description": "This policy identifies the ECS Cluster instance volumes for which encryption for data at rest is disabled. Encrypting data at rest reduces unintentional exposure of data and prevents unauthorized users from accessing sensitive data on your AWS ECS clusters. It is recommended to configure encryption for your ECS cluster instance volumes using an encryption key.\n\nNOTE: ECS can be launched using ECS Fargate launch type or EC2 Instance. ECS Fargate launch type pulls images from the Elastic Container Registry, which are transmitted over HTTPS and are automatically encrypted at rest using S3 server-side encryption. So this policy is only applicable to ECS launched using EC2 Instances.",
+  "rule.criteria": "d273c110-0e4b-4ca1-8256-327f6ef28d71",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-ecs-container-instance' AND json.rule = status equals ACTIVE as X; config from cloud.resource where api.name = 'aws-ec2-describe-volumes' AND json.rule = state contains in-use and encrypted is false as Y; filter '$.Y.attachments[*].instanceId contains $.X.ec2InstanceId'; show Y;",
+  "recommendation": "To enable encryption to your ECS Cluster instance volumes, follow below URL:\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html\n\nNOTE: The existing EBS volumes or snapshots cannot be encrypted, but when you copy unencrypted snapshots, or restore unencrypted volumes, the resulting snapshots or volumes are encrypted.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-710",
+  "policyId": "1eb7db29-9561-418e-a038-1344c3c79014",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS IAM policy allows decryption actions on all KMS keys",
+  "description": "This policy identifies IAM policies that allow decryption actions on all KMS keys. Instead of granting permissions for all keys, determine the minimum set of keys that users need to access encrypted data. You should grant to identities only the kms:Decrypt or kms:ReEncryptFrom permissions and only for the keys that are required to perform a task. By adopting the principle of least privilege, you can reduce the risk of unintended disclosure of your data.",
+  "rule.criteria": "03031e98-0ad6-4ce2-a00e-16ddd85b4f22",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any(Effect equals Allow and Resource equals * and (Action contains kms:* or Action contains kms:Decrypt or Action contains kms:ReEncryptFrom) and Condition does not exist)] exists",
+  "recommendation": "To allow a user to encrypt and decrypt with any CMK in a specific AWS account; refer following example:\nhttps://docs.aws.amazon.com/kms/latest/developerguide/customer-managed-policies.html#iam-policy-example-encrypt-decrypt-one-account\n\nTo allow a user to encrypt and decrypt with any CMK in a specific AWS account and Region; refer following example:\nhttps://docs.aws.amazon.com/kms/latest/developerguide/customer-managed-policies.html#iam-policy-example-encrypt-decrypt-one-account-one-region\n\nTo allow a user to encrypt and decrypt with specific CMKs; refer following example:\nhttps://docs.aws.amazon.com/kms/latest/developerguide/customer-managed-policies.html#iam-policy-example-encrypt-decrypt-specific-cmks",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

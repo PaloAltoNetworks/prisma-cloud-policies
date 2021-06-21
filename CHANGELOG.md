@@ -1,5 +1,37 @@
 # Changelog
 
+## PCS-21.6.3 - 2021-07-01
+
+### Added
+
+#### 7 new policies
+
+- AWS CloudWatch Log groups encrypted using default encryption key instead of KMS CMK
+- AWS EC2 instance detailed monitoring disabled
+- AWS ECS Cluster instance volume encryption for data at rest is disabled
+- AWS Elasticsearch domain is not configured with HTTPS
+- AWS IAM policy allows decryption actions on all KMS keys
+- AWS VPC endpoint policy is overly permissive
+- GCP App Engine Identity-Aware Proxy is disabled
+
+### Changed
+
+#### 6 policies updated
+
+- AWS Elasticsearch domain has Dedicated master set to disabled
+- AWS Elasticsearch domain Encryption for data at rest is disabled
+- AWS Elasticsearch domain has Index slow logs set to disabled
+- AWS Elasticsearch domain has Search slow logs set to disabled
+- AWS Elasticsearch domain has Zone Awareness set to disabled
+- AWS Elasticsearch domain publicly accessible
+
+### Removed
+
+#### 1 policy deleted
+
+- AWS ElasticSearch cluster not in a VPC
+
+
 ## PCS-21.6.2 - 2021-06-17
 
 ### Added

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ES-743",
+  "policyId": "0dfd7218-7605-4323-a143-8204ca83faea",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Elasticsearch domain is not configured with HTTPS",
+  "description": "This policy identifies Elasticsearch domains that are not configured with HTTPS. Amazon Elasticsearch domains allow all traffic to be submitted over HTTPS, ensuring all communications between application and domain are encrypted. It is recommended to enable HTTPS so that all communication between the application and all data access goes across an encrypted communication channel to eliminate man-in-the-middle attacks.",
+  "rule.criteria": "10a1868c-c97b-4fd1-8dd3-dc2ac172f2f1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = processing is false and domainEndpointOptions.enforceHTTPS is false",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the Elasticsearch dashboard\n4. Click on reported Elasticsearch domain\n5. Click on 'Actions', from drop-down choose 'Modify encryptions'\n6. In 'Modify encryptions' page, Select 'Require HTTPS for all traffic to the domain'\n7. Click on Submit",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
