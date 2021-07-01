@@ -1,5 +1,44 @@
 # Changelog
 
+## PCS-21.7.2 - 2021-07-29
+
+### Added
+
+#### 1 new policy
+
+ - -to be updated-
+
+### Changed
+
+#### 17 policies updated
+
+- Alibaba Cloud disk automatic snapshot policy is disabled
+- Alibaba Cloud ECS instance release protection is disabled
+- AWS EBS snapshot is not encrypted
+- AWS RDS DB snapshot is encrypted using default KMS key instead of CMK
+- AWS RDS instance is not encrypted
+- AWS RDS instance with copy tags to snapshots disabled
+- AWS RDS retention policy less than 7 days
+- Azure Virtual Machine Boot Diagnostics Disabled
+- Azure Virtual Machine is not assigned to an availability set
+- Azure VM OS disk is encrypted with the default encryption key instead of ADE/CMK
+
+- -to be updated-
+
+### Removed
+
+#### 14 policy deleted
+
+- AWS IAM sensitive activities by User
+- AWS IAM sensitive configuration updates
+- Azure Virtual Machine does not have endpoint protection installed
+- Root user activities
+- Sensitive configuration updates
+- Sensitive network configuration updates in AWS
+
+- -to be updated-
+
+
 ## PCS-21.7.1 - 2021-07-15
 
 ### Added
