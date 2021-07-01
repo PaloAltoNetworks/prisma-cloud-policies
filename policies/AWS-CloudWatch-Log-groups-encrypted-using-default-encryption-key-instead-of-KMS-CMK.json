@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CWT-725",
+  "policyId": "1a2df8bc-9c9f-457a-95be-360f8514b043",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS CloudWatch Log groups encrypted using default encryption key instead of KMS CMK",
+  "description": "This policy identifies CloudWatch Log groups that are encrypted using default encryption key instead of Key Management Service (KMS) Customer Master Key (CMK). As a best practice, use Customer Master Keys (CMK) to encrypt the data in your CloudWatch Log groups and ensure full control over your data.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html",
+  "rule.criteria": "e9823bc1-2798-4d1d-a1b0-52d60d49730b",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-cloudwatch-log-group' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' as Y; filter '($.X.kmsKeyId does not exist) or ($.X.kmsKeyId exists and $.Y.keyMetadata.keyState equals Disabled) and $.X.kmsKeyId equals $.Y.keyMetadata.arn'; show X;",
+  "recommendation": "To associate the CMK to reported log group, follow below mentioned URL:\nhttps://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/encrypt-log-data-kms.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
