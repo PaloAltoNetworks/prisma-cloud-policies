@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v1.0.0 (OCI)",
     "CIS v1.1.0 (OCI)",
+    "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1"

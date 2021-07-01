@@ -1,5 +1,28 @@
 # Changelog
 
+## PCS-21.7.1 - 2021-07-15
+
+### Added
+
+#### 4 new policies
+
+- Azure Active Directory Security Defaults is disabled
+- Azure AD Users can consent to apps accessing company data on their behalf is enabled
+- GCP storage bucket is logging to itself
+- GCP storage bucket is not configured with default Event-Based Hold
+
+### Changed
+
+#### 2 policies updated
+
+- AWS EMR cluster is not enabled with local disk encryption
+- AWS EMR cluster is not enabled with local disk encryption using CMK
+
+#### 1 compliance standard updated
+
+- NIST CSF
+
+
 ## PCS-21.6.3 - 2021-07-01
 
 ### Added

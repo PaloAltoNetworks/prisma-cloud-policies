@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AZR-AD-734",
+  "policyId": "3aa38d7f-0d5e-466a-883b-771dd4c29f05",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Active Directory Security Defaults is disabled",
+  "description": "This policy identifies Azure Active Directory which have Security Defaults configuration disabled. Security Defaults contains preconfigured security settings for common identity-related attacks. This provides a basic level of security-enabled by default. It is recommended to enable this configuration as a security best practice.",
+  "rule.criteria": "aa13a679-544f-466b-b0a0-fd1430fa8696",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-active-directory-enforcement-policy' AND json.rule = isEnabled is false",
+  "recommendation": "1. Login to Azure portal.\n2. Navigate to 'Azure Active Directory'\n3. Select 'Properties' under 'Manage'\n4. Click on 'Manage Security defaults' if not selected\n5. Under 'Enable Security defaults' select 'Yes' for 'Enable Security defaults'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)",
+    "CIS v1.3.0 (Azure)"
+  ]
+}

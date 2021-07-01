@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172"
   ]

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-774",
+  "policyId": "53dd2bfd-1b3c-4b7a-9eea-bad3c148cd15",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP storage bucket is logging to itself",
+  "description": "This policy identifies GCP storage buckets that are sending logs to themselves. When storage buckets use the same bucket to send their access logs, a loop of logs will be created, which is not a security best practice. It is recommended to spin up new and different log buckets for storage bucket logging.",
+  "rule.criteria": "f86eb55e-e113-4248-9471-774d5f0e7f0b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name= 'gcloud-storage-buckets-list' AND json.rule = logging.logBucket equals $.name",
+  "recommendation": "To resolve the alert, a new bucket should be created or an existing bucket other than the alerting bucket itself should be set for logging by following steps in the below-mentioned link.\n\nhttps://cloud.google.com/storage/docs/access-logs#delivery",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
