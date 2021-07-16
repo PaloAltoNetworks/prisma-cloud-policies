@@ -2,6 +2,12 @@
 
 ## PCS-21.7.2 - 2021-07-29
 
+### Added
+
+#### 1 new policy
+
+- AWS EBS volume region with encryption is disabled
+
 ### Changed
 
 #### 18 policies updated
