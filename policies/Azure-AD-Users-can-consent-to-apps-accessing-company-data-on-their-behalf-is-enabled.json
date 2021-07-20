@@ -1,0 +1,21 @@
+{
+  "policyUpi": "PC-AZR-AD-733",
+  "policyId": "84bbc52e-b321-44b7-9c0a-13b34c875f1e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure AD Users can consent to apps accessing company data on their behalf is enabled",
+  "description": "This policy identifies Azure Active Directory which have 'Users can consent to apps accessing company data on their behalf' configuration enabled. User profiles contain private information which could be shared with others without requiring any further consent from the user if this configuration is enabled. It is recommended not to allow users to use their identity outside of the cloud environment.",
+  "rule.criteria": "3cfcd5e9-c03f-4d65-99f7-8c153ac2e0de",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-active-directory-authorization-policy' AND json.rule = permissionGrantPolicyIdsAssignedToDefaultUserRole[*] contains microsoft-user-default-legacy",
+  "recommendation": "1. Login to Azure portal.\n2. Navigate to 'Azure Active Directory'\n3. Select 'Users' under 'Manage'\n4. Go to 'User settings'\n5. Click on 'Manage how end users launch and view their applications' if not selected\n6. Under 'Enterprise applications' select 'No' for 'Users can consent to apps accessing company data on their behalf'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.1 (Azure)",
+    "CIS v1.2.0 (Azure)",
+    "CIS v1.3.0 (Azure)"
+  ]
+}
