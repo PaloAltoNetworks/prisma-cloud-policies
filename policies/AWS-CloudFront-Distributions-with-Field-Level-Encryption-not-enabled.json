@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",

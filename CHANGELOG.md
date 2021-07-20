@@ -8,6 +8,11 @@
 
 - AWS EBS volume region with encryption is disabled
 
+#### 2 new compliance standards
+
+- CSA CCM v.4.0.1
+- CIS v1.4.0 (AWS)
+
 ### Changed
 
 #### 18 policies updated
