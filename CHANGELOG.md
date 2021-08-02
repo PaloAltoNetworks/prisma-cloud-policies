@@ -6,6 +6,39 @@
 
 #### 15 new policies
 
+- AWS ECS IAM policy overly permissive to all traffic
+- AWS S3 bucket policy overly permissive to any principal
+- GCP MySQL instance database flag skip_show_database is not set to on
+- GCP PostgreSQL instance database flag log_duration is not set to on
+- GCP PostgreSQL instance database flag log_error_verbosity is not set to default or stricter
+- GCP PostgreSQL instance database flag log_executor_stats is not set to off
+- GCP PostgreSQL instance database flag log_hostname is not set to off
+- GCP PostgreSQL instance database flag log_parser_stats is not set to off
+- GCP PostgreSQL instance database flag log_planner_stats is not set to off
+- GCP PostgreSQL instance database flag log_statement is not set appropriately
+- GCP PostgreSQL instance database flag log_statement_stats is not set to off
+- GCP SQL server instance database flag external scripts enabled is not set to off
+- GCP SQL server instance database flag remote access is not set to off
+- GCP SQL server instance database flag user connections is not set
+- GCP SQL server instance database flag user options is set
+
+### Changed
+
+#### 2 policies updated
+
+- AWS ECS/Fargate task definition execution IAM Role not found
+- AWS Elastic Load Balancer (ELB) not in use
+
+### Removed
+
+#### 4 policies deleted
+
+- Azure Security Center SQL auditing and threat detection monitoring is set to disabled
+- Azure Security Center SQL encryption monitoring is set to disabled
+- Azure Security Center storage encryption monitoring is set to disabled
+- Azure Security Center vulnerability assessment monitoring is set to disabled
+
+
 ## PCS-21.7.2 - 2021-07-29
 
 ### Added
