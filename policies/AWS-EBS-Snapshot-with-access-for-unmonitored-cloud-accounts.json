@@ -7,7 +7,7 @@
   "name": "AWS EBS Snapshot with access for unmonitored cloud accounts",
   "description": "This policy identifies EBS Snapshot with access for unmonitored cloud accounts.The EBS Snapshots which have either the read / write permission opened up for Cloud Accounts which are NOT part of Cloud Accounts monitored by Prisma Cloud. These accounts with read / write privileges should be reviewed and confirmed that these are valid accounts of your organisation (or authorised by your organisation) and are not active under Prisma Cloud monitoring.",
   "rule.criteria": "861f7435-ffe4-750f-b07f-2a1cb882dbc8",
-  "searchModel.query": "config from cloud.resource where api.name = 'aws-ec2-describe-snapshots' AND json.rule = 'createVolumePermissions[*].userId size != 0 and _AWSCloudAccount.isRedLockMonitored($.createVolumePermissions[*].userId) is false'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-snapshots' AND json.rule = 'snapshot.state equals completed and createVolumePermissions[*].userId size != 0 and _AWSCloudAccount.isRedLockMonitored($.createVolumePermissions[*].userId) is false'",
   "recommendation": "1. Sign in to the AWS console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Access the EC2 service, navigate to 'Snapshots' under 'Elastic Block Store' in left hand menu.\n4. Select the identified 'EBS Snapshot' and select the tab 'Permissions'.\n5. Review and delete the AWS Accounts which should not have read access.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",

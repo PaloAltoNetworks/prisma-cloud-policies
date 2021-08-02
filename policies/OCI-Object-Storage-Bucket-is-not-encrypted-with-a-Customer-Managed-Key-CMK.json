@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS v1.1.0 (OCI)",
+    "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",

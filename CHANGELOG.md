@@ -1,5 +1,63 @@
 # Changelog
 
+## PCS-21.7.2 - 2021-07-29
+
+### Added
+
+#### 1 new policy
+
+- AWS EBS volume region with encryption is disabled
+
+#### 2 new compliance standards
+
+- CSA CCM v.4.0.1
+- CIS v1.4.0 (AWS)
+
+### Changed
+
+#### 18 policies updated
+
+- AWS EBS snapshot is not encrypted
+- AWS EBS Snapshot with access for unmonitored cloud accounts
+- AWS Elastic Load Balancer v2 (ELBv2) listener that allow connection requests over HTTP
+- AWS Elastic Load Balancer v2 (ELBv2) with access log disabled
+- AWS Elastic Load Balancer v2 (ELBv2) with listener TLS/SSL is not configured
+- AWS Network ACLs with Inbound rule to allow All Traffic
+- AWS Network ACLs with Outbound rule to allow All Traffic
+- AWS RDS DB snapshot is encrypted using default KMS key instead of CMK
+- AWS RDS instance is not encrypted
+- AWS RDS instance with copy tags to snapshots disabled
+- AWS RDS instance with Multi-Availability Zone disabled
+- AWS RDS retention policy less than 7 days
+- Azure SQL databases Defender setting is set to Off
+- Azure Virtual Machine Boot Diagnostics Disabled
+- Azure Virtual Machine is not assigned to an availability set
+- Azure VM OS disk is encrypted with the default encryption key instead of ADE/CMK
+- Alibaba Cloud disk automatic snapshot policy is disabled
+- Alibaba Cloud ECS instance release protection is disabled
+
+### Removed
+
+#### 16 policy deleted
+
+- AWS EBS volume not encrypted using Customer Managed Key
+- AWS EBS volumes are not encrypted
+- AWS IAM sensitive activities by User
+- AWS IAM sensitive configuration updates
+- Azure Virtual Machine does not have endpoint protection installed
+- GCP Load balancer sensitive configuration updates
+- GCP VM Instances without any Label information
+- Root user activities
+- Sensitive configuration updates
+- Sensitive IAM updates
+- Sensitive network configuration updates in AWS
+- Sensitive Network configuration updates in GCP
+- Sensitive permission exposed for website configuration updates of S3 Buckets
+- Sensitive SQL instance updates
+- Sensitive Storage configuration updates
+- Sensitive User actions
+
+
 ## PCS-21.7.1 - 2021-07-15
 
 ### Added

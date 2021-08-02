@@ -7,7 +7,7 @@
   "name": "AWS RDS DB snapshot is encrypted using default KMS key instead of CMK",
   "description": "This policy identifies RDS DB(Relational Database Service Database) snapshots which are encrypted using default KMS key instead of CMK (Customer Master Key). As a security best practice CMK should be used instead of default KMS key for encryption to gain the ability to rotate the key according to your own policies, delete the key, and control access to the key via KMS policies and IAM policies.",
   "rule.criteria": "8ac478d8-4788-407e-ad46-6ca6d74bcc14",
-  "searchModel.query": "config from cloud.resource where api.name = 'aws-rds-describe-db-snapshots' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' as Y; filter '(X.snapshot.encrypted is true) and ($.X.snapshot.kmsKeyId equals $.Y.key.keyArn) and ($.Y.keyMetadata.keyManager does not equal CUSTOMER)' ; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-rds-describe-db-snapshots' AND json.rule = snapshot.status equals available and snapshot.encrypted is true as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyManager does not equal CUSTOMER or (keyMetadata.keyManager equals CUSTOMER and keyMetadata.keyState equals Disabled) as Y; filter '$.X.snapshot.kmsKeyId equals $.Y.key.keyArn'; show X;",
   "recommendation": "You can encrypt a copy of an unencrypted snapshot. This way, you can quickly add encryption to a previously unencrypted DB instance.\nFollow below steps to encrypt a copy of an unencrypted snapshot:\n1. Log in to the AWS Console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'RDS' dashboard from 'Services' dropdown.\n4. Click on 'Snapshot' from left menu.\n5. Select the alerted snapshot\n6. From 'Action' dropdown, select 'Copy Snapshot'\n7. In 'Settings' section, from 'Destination Region' select a region,\n8. Provide an identifier for the new snapshot in field 'New DB Snapshot Identifier'\n9.In 'Encryption' section, select 'Enable Encryption'\n10. Select a customer master key for encryption from the dropdown 'Master key'.\n11. Click on 'Copy Snapshot'.\n\nThe source snapshot needs to be removed once the copy is available.\nNote: If you delete a source snapshot before the target snapshot becomes available, the snapshot copy may fail. Verify that the target snapshot has a status of AVAILABLE before you delete a source snapshot.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
+    "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "HITRUST v.9.4.2",
     "NIST 800-53 Rev 5",

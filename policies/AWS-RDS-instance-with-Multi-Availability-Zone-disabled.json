@@ -7,8 +7,8 @@
   "name": "AWS RDS instance with Multi-Availability Zone disabled",
   "description": "This policy identifies RDS instances which have Multi-Availability Zone(Multi-AZ) disabled. When RDS DB instance is enabled with Multi-AZ, RDS automatically creates a primary DB Instance and synchronously replicates the data to a standby instance in a different availability zone. These Multi-AZ deployments will improve primary node reachability by providing read replica in case of network connectivity loss or loss of availability in the primary’s availability zone for read/write operations, so by making them the best fit for production database workloads.",
   "rule.criteria": "f606fe0b-2950-42ce-a3b2-7f100ece5c3a",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-describe-db-instances' AND json.rule = '(engine does not contain aurora and engine does not contain sqlserver and engine does not contain docdb) and (multiAZ is false or multiAZ does not exist)'",
-  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Amazon RDS console\n4. Choose Instances, and then select the reported DB instance\n5. Click on 'Modify'\n6. In 'Instance Specifications' section for the 'Multi-AZ Deployment', select 'Yes'\n7. Click on 'Continue'\n8. On the confirmation page, Review the changes and Click on 'Modify DB Instance' to save your changes.",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-describe-db-instances' AND json.rule = dbinstanceStatus equals available and (engine does not contain aurora and engine does not contain sqlserver and engine does not contain docdb) and (multiAZ is false or multiAZ does not exist)",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to Amazon RDS console\n4. Choose Instances, and then select the reported DB instance\n5. Click on 'Modify'\n6. In 'Availability & durability' section for the 'Multi-AZ Deployment', select 'Create a standby instance'\n7. Click on 'Continue'\n8. Under 'Scheduling of modifications' choose 'When to apply modifications'\n9. On the confirmation page, Review the changes and Click on 'Modify DB Instance' to save your changes.",
   "remediable": true,
   "remediation.cliScriptTemplate": "aws rds modify-db-instance --region ${region} --db-instance-identifier ${resourceName} --region ${region} --multi-az --apply-immediately",
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable 'Multi-AZ Deployment' for the respective RDS.",
@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
+    "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "HITRUST v.9.4.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
