@@ -1,5 +1,11 @@
 # Changelog
 
+## PCS-21.8.1 - 2021-08-12
+
+### Added
+
+#### 15 new policies
+
 ## PCS-21.7.2 - 2021-07-29
 
 ### Added
