@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-SQL-752",
+  "policyId": "40087b14-6b4c-440e-b77c-0d6de2954b2f",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP PostgreSQL instance database flag log_planner_stats is not set to off",
+  "description": "This policy identifies PostgreSQL database instances in which database flag log_planner_stats is not set to off. The PostgreSQL planner/optimizer is responsible to create an optimal execution plan for each query. The log_planner_stats flag controls the inclusion of PostgreSQL planner performance statistics in the PostgreSQL logs for each query. This can be useful for troubleshooting but may increase the number of logs significantly and have performance overhead. It is recommended to set log_planner_stats off.",
+  "rule.criteria": "95268e4e-964b-48ab-99b4-3299071e84a0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"state equals RUNNABLE and databaseVersion contains POSTGRES and (settings.databaseFlags[*].name does not contain log_planner_stats or settings.databaseFlags[?any(name contains log_planner_stats and value contains on)] exists)\"",
+  "recommendation": "1. Log in to GCP console\n2. Navigate SQL Instances page\n3. Click on reported PostgreSQL instance\n4. Click EDIT\n5. If the flag has not been set on the instance, \nUnder 'Customize your instance', click on 'ADD FLAG' in 'Flags' section, choose the flag 'log_planner_stats' from the drop-down menu and set the value as 'off'\nOR\nIf the flag has been set to other than off, Under 'Customize your instance', In 'Flags' section choose the flag 'log_planner_stats' and set the  value as 'off'\n6. Click on 'DONE' and then 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (GCP)"
+  ]
+}

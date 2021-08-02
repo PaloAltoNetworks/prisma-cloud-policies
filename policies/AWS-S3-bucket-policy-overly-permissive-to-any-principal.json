@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-735",
+  "policyId": "8827bbb9-bf4b-4d39-a21d-dcf62037244d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket policy overly permissive to any principal",
+  "description": "This policy identifies the S3 buckets that have a bucket policy overly permissive to any principal. It is recommended to follow the principle of least privileges ensuring that the only restricted entities have permission on S3 operations instead of any anonymous.\n\nFor more details: https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-bucket-user-policy-specifying-principal-intro.html",
+  "rule.criteria": "eecb0c21-2dbe-40f4-8727-fbbaacef69dc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name='aws-s3api-get-bucket-acl' AND json.rule = policy.Statement[?any(Effect equals Allow and Action anyStartWith s3: and (Principal.AWS contains * or Principal equals *) and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS console\n2. Navigate to the S3 dashboard\n3. Choose the reported S3 bucket\n4. In the 'Permissions' tab, click on the 'Bucket Policy'\n5. Update the S3 bucket policy, by removing Principal conatining wildcard(*) to specific accounts, Services or IAM entities. Also restrict S3 action operations to specific instead of using wildcard (*).",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
