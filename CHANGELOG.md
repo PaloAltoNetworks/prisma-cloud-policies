@@ -1,5 +1,41 @@
 # Changelog
 
+## PCS-21.8.2 - 2021-08-26
+
+### Added
+
+#### 5 new policies
+
+- AWS ECS cluster with container insights feature disabled
+- AWS RDS cluster delete protection is disabled
+- AWS RDS cluster not configured with IAM authentication
+- AWS RDS instance delete protection is disabled
+- AWS RDS instance not configured with IAM authentication
+
+#### 8 new auto-remediation cli's
+
+- AWS ECS cluster with container insights feature disabled
+- AWS Lambda functions with tracing not enabled
+- AWS RDS cluster delete protection is disabled
+- AWS RDS cluster not configured with IAM authentication
+- AWS RDS instance delete protection is disabled
+- AWS RDS instance not configured with IAM authentication
+- Azure Storage account container storing activity logs is publicly accessible
+- Azure storage account has a blob container with public access
+
+### Changed
+
+#### 7 policies updated
+
+- AWS IAM role/user with unused CloudTrail delete or full permission
+- AWS Lambda functions with tracing not enabled
+- AWS SNS topic not configured with secure data transport policy
+- Azure disk is unattached and is encrypted with the default encryption key instead of ADE/CMK
+- Azure Storage account container storing activity logs is publicly accessible
+- Azure storage account has a blob container with public access
+- Azure VM data disk is encrypted with the default encryption key instead of ADE/CMK
+
+
 ## PCS-21.8.1 - 2021-08-12
 
 ### Added
