@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-SQL-744",
+  "policyId": "ab9eca02-0f56-4b50-8595-8dc8d5d5c925",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP PostgreSQL instance database flag log_error_verbosity is not set to default or stricter",
+  "description": "This policy identifies PostgreSQL database instances in which database flag log_error_verbosity is not set to default. The flag log_error_verbosity controls the amount of detail written in the server log for each message that is logged. Valid values are TERSE, DEFAULT, and VERBOSE. It is recommended to set log_error_verbosity to default or terse.",
+  "rule.criteria": "3014549e-9726-4b87-b30d-dbe801d4a656",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"state equals RUNNABLE and databaseVersion contains POSTGRES and (settings.databaseFlags[*].name does not contain log_error_verbosity or settings.databaseFlags[?any(name contains log_error_verbosity and value contains verbose)] exists)\"",
+  "recommendation": "1. Log in to GCP console\n2. Navigate SQL Instances page\n3. Click on reported PostgreSQL instance\n4. Click EDIT\n5. If the flag has not been set on the instance, \nUnder 'Customize your instance', click on 'ADD FLAG' in 'Flags' section, choose the flag 'log_error_verbosity' from the drop-down menu and set the value as 'default' or 'terse'\nOR\nIf the flag has been set to other than default or terse, Under 'Customize your instance', In 'Flags' section choose the flag 'log_error_verbosity' and set the value as 'default' or 'terse'\n6. Click on 'DONE' and then 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (GCP)"
+  ]
+}

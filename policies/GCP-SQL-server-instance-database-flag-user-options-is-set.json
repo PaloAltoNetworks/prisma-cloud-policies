@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-SQL-771",
+  "policyId": "7cefd0ab-99b8-4f69-b9f7-55b0db2f0a8f",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP SQL server instance database flag user options is set",
+  "description": "This policy identifies GCP SQL server instances fo which database flag user options is set. The user options option specifies global defaults for all users. A list of default query processing options is established for the duration of a user's work session. A user can override these defaults by using the SET statement. It is recommended that, user options database flag for SQL Server instance should not be configured.",
+  "rule.criteria": "ebc8ff31-fcb0-43bf-a620-6484b1fab968",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = 'state equals RUNNABLE and databaseVersion contains SQLSERVER and settings.databaseFlags[*].name contains \"user options\"'",
+  "recommendation": "1. Log in to the GCP console\n2. Navigate SQL Instances page\n3. Click on the reported SQL server instance\n4. Click on EDIT\n5. If the flag has not been set on the instance, \nUnder 'Customize your instance' section, go to 'Flags and parameters', go to the flag 'user options' and click on delete icon\n6. Click on SAVE \n7. If 'Changes requires restart' pop-up appears, click on 'SAVE AND RESTART'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (GCP)"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-SQL-758",
+  "policyId": "f2f61d99-95dc-4a3c-9684-c6d7370316fc",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP PostgreSQL instance database flag log_duration is not set to on",
+  "description": "This policy identifies PostgreSQL database instances in which database flag log_duration is not set to on. Enabling the log_duration setting causes the duration of each completed statement to be logged. Monitoring the time taken to execute the queries can be crucial in identifying any resource-hogging queries and assessing the performance of the server. Further steps such as load balancing and the use of optimized queries can be taken to ensure the performance and stability of the server. It is recommended to set log_duration as on.",
+  "rule.criteria": "cfcc1ccb-7333-4667-b84c-48949d18264a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"state equals RUNNABLE and databaseVersion contains POSTGRES and (settings.databaseFlags[*].name does not contain log_duration or settings.databaseFlags[?any(name contains log_duration and value contains off)] exists)\"",
+  "recommendation": "1. Log in to GCP console\n2. Navigate SQL Instances page\n3. Click on reported PostgreSQL instance\n4. Click EDIT\n5. If the flag has not been set on the instance, \nUnder 'Customize your instance', click on 'ADD FLAG' in 'Flags' section, choose the flag 'log_duration' from the drop-down menu and set the value as 'on'\nOR\nIf the flag has been set to other than on, Under 'Customize your instance', In 'Flags' section choose the flag 'log_duration' and set the value as 'on'\n6. Click on 'DONE' and then 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (GCP)"
+  ]
+}
