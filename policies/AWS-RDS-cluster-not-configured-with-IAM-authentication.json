@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-RDS-709",
+  "policyId": "252430b3-1996-496c-9257-ad054cd24a5f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS cluster not configured with IAM authentication",
+  "description": "This policy identifies RDS clusters that are not configured with IAM authentication. If you enable IAM authentication you don't need to store user credentials in the database, because authentication is managed externally using IAM. IAM database authentication provides the network traffic to and from database clusters is encrypted using Secure Sockets Layer (SSL), Centrally manage access to your database resources and Profile credentials instead of a password, for greater security.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html",
+  "rule.criteria": "f79f0e00-fcf1-49ef-ab0c-b3db225b086d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-rds-db-cluster' AND json.rule = status contains available and (engine contains postgres or engine contains mysql) and iamdatabaseAuthenticationEnabled is false",
+  "recommendation": "To enable IAM authentication on your RDS cluster follow the below mentioned URL:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.Enabling.html",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws rds modify-db-cluster --db-cluster-identifier ${resourceName} --region ${region} --enable-iam-database-authentication",
+  "remediation.description": "This CLI command requires 'rds:ModifyDBCluster' permission. Successful execution will enable IAM Authentication for the reported AWS RDS cluster.",
+  "remediation.impact": "Enables IAM Authentication setting for AWS RDS cluster",
+  "compliance.standard": ""
+}

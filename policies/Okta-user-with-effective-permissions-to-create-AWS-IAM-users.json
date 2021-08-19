@@ -7,7 +7,7 @@
   "name": "Okta user with effective permissions to create AWS IAM users",
   "description": "This policy identifies Okta users that can create an IAM user. This can possibly lead to a backdoor in the cloud environment. Ensure that Okta users has least privilege access by granting only the permissions required to perform a task, instead of providing excessive permissions ",
   "rule.criteria": "7e64df2b-eeed-4b59-8b2e-55735d528e1a",
-  "searchModel.query": "config from iam where source.idp.service = 'okta' and action.name = 'IAM:CreateUser'",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and source.idp.service = 'okta' and action.name = 'IAM:CreateUser'",
   "recommendation": "1. Log in to the Okta console\n2. Find the role used by the Okta user\n3. Navigate to the IAM service\n4. Click on Roles\n5. Choose the relevant role\n6. Under 'Permissions policies', find the relevant policy according to the alert details and remove the action",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic aws cli commands",

@@ -23,6 +23,11 @@
 - Azure Storage account container storing activity logs is publicly accessible
 - Azure storage account has a blob container with public access
 
+#### 2 new compliance standard
+
+- MAS TRM 2021
+- Risk Management in Technology (RMiT)
+
 ### Changed
 
 #### 7 policies updated
@@ -34,6 +39,10 @@
 - Azure Storage account container storing activity logs is publicly accessible
 - Azure storage account has a blob container with public access
 - Azure VM data disk is encrypted with the default encryption key instead of ADE/CMK
+
+#### 1 framework updated
+
+- MITRE ATT&CK v8.2
 
 
 ## PCS-21.8.1 - 2021-08-12

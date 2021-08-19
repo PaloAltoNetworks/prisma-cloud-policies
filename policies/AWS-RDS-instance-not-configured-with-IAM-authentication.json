@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-RDS-708",
+  "policyId": "6b67753f-156b-4249-bbea-2ff6eeff4542",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS RDS instance not configured with IAM authentication",
+  "description": "This policy identifies RDS instances that are not configured with IAM authentication. If you enable IAM authentication you don't need to store user credentials in the database, because authentication is managed externally using IAM. IAM database authentication provides the network traffic to and from database instances is encrypted using Secure Sockets Layer (SSL), Centrally manage access to your database resources and Profile credentials instead of a password, for greater security.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html\n\nNOTE: IAM database authentication works only with MySQL and PostgreSQL. IAM database authentication is not available on all database engines; please refer https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html#UsingWithRDS.IAMDBAuth.Availability for available versions. ",
+  "rule.criteria": "005ab558-f5e8-49e4-b472-7bad3f70987a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-rds-describe-db-instances' AND json.rule = dbinstanceStatus contains available and dbclusterIdentifier does not exist and (engine contains postgres or engine contains mysql) and engineVersion is not member of (8.0.11, 8.0.13, 8.0.15, 9.6.1, 9.6.2, 9.6.3, 9.6.5, 9.6.6, 9.6.8, 9.6.9, 9.6.10, 10.1, 10.3, 10.4, 10.5) and iamdatabaseAuthenticationEnabled is false",
+  "recommendation": "To enable IAM authentication follow the below mentioned URL:\nhttps://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.Enabling.html",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws rds modify-db-instance --db-instance-identifier ${resourceName} --region ${region} --enable-iam-database-authentication",
+  "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable IAM Authentication for the reported AWS RDS instance.",
+  "remediation.impact": "Enables IAM Authentication setting for AWS RDS instance",
+  "compliance.standard": ""
+}

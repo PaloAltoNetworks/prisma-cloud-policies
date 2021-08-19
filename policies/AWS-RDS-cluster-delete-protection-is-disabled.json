@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC2-702",
+  "policyId": "e058fabb-cc5c-4c19-88ed-b5d599044a92",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS RDS cluster delete protection is disabled",
+  "description": "This policy identifies RDS clusters for which delete protection is disabled. Enabling delete protection for these RDS clusters prevents irreversible data loss resulting from accidental or malicious operations.",
+  "rule.criteria": "e27af8ed-2e01-4daa-84a6-5e3f56d9ba78",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-rds-db-cluster' AND json.rule = status contains available and deletionProtection is false",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the Amazon RDS dashboard \n4. Click on the DB clusters\n5. Select the reported DB cluster\n6. Click on the 'Modify' button\n7. In Modify DB cluster page, In the 'Additional configuration' section, Check the box 'Enable deletion protection' for Deletion protection.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws rds modify-db-cluster --db-cluster-identifier ${resourceName} --region ${region} --deletion-protection",
+  "remediation.description": "This CLI command requires 'rds:ModifyDBCluster' permission. Successful execution will enable deletion protection for the reported AWS RDS cluster.",
+  "remediation.impact": "Enables deletion protection setting for AWS RDS cluster",
+  "compliance.standard": ""
+}
