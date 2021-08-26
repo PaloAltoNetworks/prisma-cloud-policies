@@ -5,7 +5,7 @@
   "cloudType": "aws",
   "severity": "medium",
   "name": "AWS RDS database instance is publicly accessible",
-  "description": "This policy identifies RDS database instances which are publicly accessible.DB instances should not be publicly accessible to protect the integrety of data.Public accessibility of DB instances can be modified by turning on or off the Public accessibility parameter.",
+  "description": "This policy identifies RDS database instances which are publicly accessible. DB instances should not be publicly accessible to protect the integrity of data.Public accessibility of DB instances can be modified by turning on or off the Public accessibility parameter.",
   "rule.criteria": "b3897fb4-5241-403b-8770-69f90cea0f11",
   "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-rds-describe-db-instances' AND json.rule = 'publiclyAccessible is true'",
   "recommendation": "1. Sign into the AWS console.\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to the 'RDS' service.\n4. Select the RDS instance reported in the alert, Click on 'Modify' \n5. Under 'Network and Security', update the value of 'public accessibility' to 'No' and Click on 'Continue'\n6. Select required 'Scheduling of modifications' option and click on 'Modify DB Instance'",
