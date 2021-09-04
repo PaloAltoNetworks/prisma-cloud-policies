@@ -1,5 +1,23 @@
 # Changelog
 
+## PCS-21.9.1 - 2021-09-10
+
+### Added
+
+#### 3 new policies
+
+- Azure Cosmos DB key based authentication is enabled
+- Azure Cosmos DB Virtual network is not configured
+- Azure Cosmos DB Private Endpoint Connection is not configured
+
+### Changed
+
+#### 2 policies updated
+
+- AWS Network Load Balancer (NLB) is not using the latest predefined security policy
+- AWS RDS database instance is publicly accessible
+
+
 ## PCS-21.8.2 - 2021-08-26
 
 ### Added
