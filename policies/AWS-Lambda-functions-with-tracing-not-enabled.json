@@ -5,14 +5,14 @@
   "cloudType": "aws",
   "severity": "medium",
   "name": "AWS Lambda functions with tracing not enabled",
-  "description": "TracingConfig is a property of the AWS::Lambda::Function resource that configures tracing settings for your AWS Lambda (Lambda) function. When enabled, AWS Lambda tracing acitivates AWS X-Ray service that collects information on requests that a specific function performed. It reduces the time and effort for debugging and diagnosing the errors.\n\nThe value can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with 'sampled=1'. If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.",
+  "description": "This policy identifies Lambda functions that are not enabled with tracing. TracingConfig is a property of the AWS::Lambda::Function resource that configures tracing settings for your AWS Lambda (Lambda) function. When enabled, AWS Lambda tracing activates AWS X-Ray service that collects information on requests that a specific function performed. It reduces the time and effort for debugging and diagnosing errors.\n\nThe value can be either PassThrough or Active. If PassThrough, Lambda will only trace the request from an upstream service if it contains a tracing header with 'sampled=1'. If Active, Lambda will respect any tracing header it receives from an upstream service. If no tracing header is received, Lambda will call X-Ray for a tracing decision.",
   "rule.criteria": "5f9e8cd9-e79e-4d72-9b73-6ebb0342a2c7",
   "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-lambda-list-functions' AND json.rule = 'tracingConfig.mode equals PassThrough'",
-  "recommendation": "1. Login to AWS Console\n2. Go to AWS Lambda console\n3. Click on the specific Function from Functions (Left Pane)\n4. Under 'Debugging and error handling' pane, select the check box named as 'Enable active tracing'\n5. Click Save",
-  "remediable": false,
-  "remediation.cliScriptTemplate": "",
-  "remediation.description": "",
-  "remediation.impact": "",
+  "recommendation": "To enable active tracing on reported Lambda function, follow the below-mentioned URL:\nhttps://docs.aws.amazon.com/lambda/latest/dg/services-xray.html#services-xray-daemon",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws lambda update-function-configuration --function-name ${resourceId} --region ${region} --tracing-config Mode=Active",
+  "remediation.description": "This CLI command requires 'lambda:UpdateFunctionConfiguration' permission. Successful execution will enable AWS Lambda functions tracing. NOTE: Tracing mode is part of the version-specific configuration that is locked when you publish a version of your function. You can't change the tracing mode on a published version.",
+  "remediation.impact": "Enables AWS Lambda functions tracing",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
@@ -20,12 +20,14 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "HITRUST CSF v9.3",
     "HITRUST v.9.4.2",
+    "MAS TRM 2021",
     "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "Risk Management in Technology (RMiT)"
   ]
 }

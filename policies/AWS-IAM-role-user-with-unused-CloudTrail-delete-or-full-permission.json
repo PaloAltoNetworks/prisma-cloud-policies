@@ -7,7 +7,7 @@
   "name": "AWS IAM role/user with unused CloudTrail delete or full permission",
   "description": "This policy identifies IAM roles/users that have unused CloudTrail delete permission or CloudTrail full permissions. As a security best practice, it is recommended to grant the least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions to a particular role/user. It helps to reduce the potential improper or unintended access to your critical CloudTrail infrastructure.",
   "rule.criteria": "dfa53590-1e74-45bc-ab47-9e5a32116fe7",
-  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-service-last-accessed-details' AND json.rule = '(arn contains :role or arn contains :user) and serviceLastAccesses[?any(serviceNamespace contains cloudtrail and totalAuthenticatedEntities any equal 0)] exists' as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' AND json.rule = 'document.Statement[?any(Effect equals Allow and (Action[*] contains DeleteTrail or Action contains DeleteTrail or Action contains cloudtrail:* or Action[*] contains cloudtrail:*))] exists' as Y; filter '$.X.arn contains $.Y.entities.policyRoles[*].roleName or $.X.arn contains $.Y.entities.policyUsers[*].userName'; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-service-last-accessed-details' AND json.rule = '(arn contains :role or arn contains :user) and serviceLastAccesses[?any(serviceNamespace contains cloudtrail and totalAuthenticatedEntities any equal 0)] exists' as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' AND json.rule = 'isAttached is true and (document.Statement[?any(Effect equals Allow and (Action[*] contains DeleteTrail or Action contains DeleteTrail or Action contains cloudtrail:* or Action[*] contains cloudtrail:*))] exists)' as Y; filter '($.Y.entities.policyRoles[*].roleName exists and $.X.arn contains $.Y.entities.policyRoles[*].roleName) or ($.Y.entities.policyUsers[*].userName exists and $.X.arn contains $.Y.entities.policyUsers[*].userName)'; show X;",
   "recommendation": "If Roles with unused CloudTrail delete permission,\n1. Log in to AWS console\n2. Navigate IAM service\n3. Click on Roles\n4. Click on reported IAM role\n5. In the Permissions tab, Under the 'Permissions policies' section, Remove the policies which have CloudTrail permissions or Delete role if is not required.\n\nIf Users with unused CloudTrail delete permission,\n1. Log in to AWS console\n2. Navigate IAM service\n3. Click on Users\n4. Click on reported IAM user\n5. In the Permissions tab, Under the 'Permissions policies' section, Remove the policies which have CloudTrail permissions or Delete user if is not required.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -16,9 +16,11 @@
   "compliance.standard": [
     "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
+    "MAS TRM 2021",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "Risk Management in Technology (RMiT)"
   ]
 }

@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MAS TRM 2021",
+    "Risk Management in Technology (RMiT)"
+  ]
 }

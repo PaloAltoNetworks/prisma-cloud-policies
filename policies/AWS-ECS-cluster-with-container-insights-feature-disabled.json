@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-718",
+  "policyId": "ad3524a5-6f8f-4eab-9bd1-2a53850070db",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS ECS cluster with container insights feature disabled",
+  "description": "This policy identifies ECS clusters that are disabled with the container insights feature. Container Insights collects metrics at the cluster, task, and service levels. As a best practice, enable container insights to start collecting the data available through these logs for the reported ECS cluster.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-ECS-cluster.html",
+  "rule.criteria": "577ef22c-f4c5-4a54-8aa0-cc6f58275777",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-cluster' AND json.rule = status equals ACTIVE and settings[?any(name equals containerInsights and value equals disabled)] exists",
+  "recommendation": "To enable container insights feature in your existing ECS cluster follow below mentioned URL:\n\nhttps://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-ECS-cluster.html#deploy-container-insights-ECS-existing",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws ecs update-cluster-settings --cluster ${resourceName} --region ${region} --settings name=containerInsights,value=enabled",
+  "remediation.description": "This CLI command requires 'ecs:UpdateClusterSettings' permission. Successful execution will enable Container Insights for the reported AWS ECS cluster.",
+  "remediation.impact": "Enables Container Insights for the reported AWS ECS cluster",
+  "compliance.standard": ""
+}

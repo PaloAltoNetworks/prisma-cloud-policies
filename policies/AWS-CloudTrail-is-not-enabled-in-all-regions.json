@@ -25,6 +25,7 @@
     "HIPAA",
     "HITRUST CSF v9.3",
     "ISO 27001:2013",
+    "MAS TRM 2021",
     "MITRE ATT&CK v6.3",
     "MITRE ATT&CK v8.2",
     "Multi-Level Protection Scheme (MLPS) v2.0",
@@ -36,6 +37,7 @@
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PIPEDA",
+    "Risk Management in Technology (RMiT)",
     "SOC 2"
   ]
 }

@@ -25,6 +25,7 @@
     "GDPR",
     "HITRUST CSF v9.3",
     "HITRUST v.9.4.2",
+    "MAS TRM 2021",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -32,6 +33,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "Risk Management in Technology (RMiT)",
     "SOC 2"
   ]
 }
