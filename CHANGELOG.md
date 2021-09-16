@@ -6,6 +6,19 @@
 
 #### 1 new policy
 
+### Removed
+
+#### 8 policies deleted
+
+- AWS S3 Bucket has Global DELETE Permissions enabled via bucket policy
+- AWS S3 Bucket has Global GET Permissions enabled via bucket policy
+- AWS S3 Bucket has Global LIST Permissions enabled via bucket policy
+- AWS S3 Bucket has Global PUT Permissions enabled via bucket policy
+- Azure SQL Server advanced data security does not have an email alert recipient
+- Azure SQL Server advanced data security does not send alerts to service and co-administrators
+- Azure SQL server send alerts to field value is not set
+- SQL DB instance backup configuration is not enabled
+
 
 ## PCS-21.9.1 - 2021-09-10
 
