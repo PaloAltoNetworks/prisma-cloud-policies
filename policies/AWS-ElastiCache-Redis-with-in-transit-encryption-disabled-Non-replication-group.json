@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC-779",
+  "policyId": "094e67d5-b9f0-4c73-a23b-a81d09e55a73",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS ElastiCache Redis with in-transit encryption disabled (Non-replication group)",
+  "description": "This policy identifies ElastiCache Redis that are in non-replication groups or individual ElastiCache Redis and have in-transit encryption disabled. It is highly recommended to implement in-transit encryption in order to protect data from unauthorized access as it travels through the network, between clients and cache servers. Enabling data encryption in-transit helps prevent unauthorized users from reading sensitive data between your Redis and their associated cache storage systems.",
+  "rule.criteria": "a67d790e-e721-4b9d-91e3-b2091af0f54b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elasticache-cache-clusters' AND json.rule = transitEncryptionEnabled is false and replicationGroupId does not exist",
+  "recommendation": "AWS ElastiCache Redis in-transit encryption can be set, only at the time of creation. So to resolve this alert, create a new cluster with in-transit encryption enabled, then migrate all required ElastiCache Redis cluster data from the reported ElastiCache Redis cluster to this newly created cluster and delete reported ElastiCache Redis cluster.\n\nTo create new ElastiCache Redis cluster with In-transit encryption set, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on Redis\n5. Click on 'Create' button\n6. On the 'Create your Amazon ElastiCache cluster' page,\na. Select 'Redis' cache engine type.\nb. Enter a name for the new cache cluster\nc. Select Redis engine version from 'Engine version compatibility' dropdown list.\nNote: As of July 2018, In-transit encryption can be enabled only for AWS ElastiCache clusters with Redis engine version 3.2.6 and 4.0.10.\nd. Click on 'Advanced Redis settings' to expand the cluster advanced settings panel\ne. Select 'Encryption in-transit' checkbox to enable encryption along with other necessary parameters\n7. Click on 'Create' button to launch your new ElastiCache Redis cluster\n\nTo delete reported ElastiCache Redis cluster, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on Redis\n5. Select reported Redis cluster\n6. Click on 'Delete' button\n7. In the 'Delete Cluster' dialog box, if you want a backup for your cluster select 'Yes' from the 'Create final backup' dropdown menu, provide a name for the cluster backup, then click on 'Delete'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

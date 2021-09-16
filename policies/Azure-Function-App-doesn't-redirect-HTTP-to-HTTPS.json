@@ -9,9 +9,9 @@
   "rule.criteria": "82d945cb-49c0-4163-89ef-7ac3c194d4cb",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and properties.httpsOnly equals false'",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'TLS/SSL settings'\n5. In 'Protocol Settings', Set 'HTTPS Only' to 'On'",
-  "remediable": false,
-  "remediation.cliScriptTemplate": "",
-  "remediation.description": "",
-  "remediation.impact": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az functionapp update --resource-group ${resourceGroup} --name ${resourceName} --set httpsOnly=true",
+  "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution set on HTTPS-only feature, by which non-secure HTTP requests can be restricted and all HTTP requests will be redirected to the secure HTTPS port.",
+  "remediation.impact": "Redirects all HTTP traffic to HTTPS in Azure Function App",
   "compliance.standard": ""
 }

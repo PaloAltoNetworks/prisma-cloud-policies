@@ -9,9 +9,9 @@
   "rule.criteria": "c82a5f89-cd01-4bcf-8fa3-99396a4c848d",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and config.minTlsVersion does not equal 1.2'",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'TLS/SSL settings'\n5. In 'Protocol Settings', Set 'Minimum TLS Version' to '1.2'",
-  "remediable": false,
-  "remediation.cliScriptTemplate": "",
-  "remediation.description": "",
-  "remediation.impact": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az functionapp config set --resource-group ${resourceGroup} --name ${resourceName} --min-tls-version 1.2",
+  "remediation.description": "This CLI command requires 'Microsoft.Web/sites/config/Write' permission. Successful execution sets web app TLS encryption version to latest TLS version(i.e. TLS 1.2).",
+  "remediation.impact": "Sets latest TLS version in Azure Function App",
   "compliance.standard": ""
 }

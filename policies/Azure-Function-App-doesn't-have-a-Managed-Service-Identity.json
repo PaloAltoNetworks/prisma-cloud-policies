@@ -9,9 +9,9 @@
   "rule.criteria": "0649ae20-3c76-4134-851f-70a7b65c03ec",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and (identity.type does not exist or identity.type does not equal SystemAssigned or identity.principalId is empty)'",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to Function App\n3. Click on the reported Function App\n4. Under Setting section, Click on 'Identity'\n5. Ensure that 'Status' is set to 'On'\n6. Click on 'Save'",
-  "remediable": false,
-  "remediation.cliScriptTemplate": "",
-  "remediation.description": "",
-  "remediation.impact": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az functionapp Identity assign --resource-group ${resourceGroup} --name ${resourceName}",
+  "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution sets managed service identity in Azure Function App, that makes the app more secure by eliminating secrets from the app, such as credentials in the connection strings.",
+  "remediation.impact": "Sets managed service identity in Azure Function App",
   "compliance.standard": ""
 }
