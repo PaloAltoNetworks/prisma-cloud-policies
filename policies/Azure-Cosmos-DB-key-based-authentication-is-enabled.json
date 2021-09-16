@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-COS-784",
+  "policyId": "8fc7b6c0-d6c2-4f29-ad98-d837e7a74ec7",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Cosmos DB key based authentication is enabled",
+  "description": "This policy identifies Cosmos DBs that are enabled with key-based authentication. Disabling key-based metadata write access on Azure Cosmos DB prevents any changes to resources from a client connecting using the account keys. It is recommended to disable this feature for organizations who want higher degrees of control and governance for production environments.\n\nNOTE: Enabling this feature can have an impact on your application. Make sure that you understand the impact before enabling it.\n\nRefer for more details:\nhttps://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control#check-list-before-enabling",
+  "rule.criteria": "ef14d0a6-8ed0-4f7a-9877-15efa3194737",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cosmos-db' AND json.rule = properties.provisioningState equals Succeeded and properties.disableKeyBasedMetadataWriteAccess is false",
+  "recommendation": "Refer to the following URL to disable key-based metadata write access on your Azure Cosmos DB:\nhttps://docs.microsoft.com/en-us/azure/cosmos-db/role-based-access-control#prevent-sdk-changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
