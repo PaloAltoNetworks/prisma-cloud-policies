@@ -1,5 +1,12 @@
 # Changelog
 
+## PCS-21.9.2 - 2021-09-27
+
+### Added
+
+#### 1 new policy
+
+
 ## PCS-21.9.1 - 2021-09-10
 
 ### Added
