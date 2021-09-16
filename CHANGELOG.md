@@ -6,6 +6,30 @@
 
 #### 1 new policy
 
+- AWS ElastiCache Redis with in-transit encryption disabled (Non-replication group)
+
+#### 8 new auto-remediation cli's
+
+- Azure Function App client certificate is disabled
+- Azure Function App doesn't have a Managed Service Identity
+- Azure Function App doesn't redirect HTTP to HTTPS
+- Azure Function App doesn't use HTTP 2.0
+- Azure Function App doesn't use latest TLS version
+- GCP cloud storage bucket with uniform bucket-level access disabled
+- GCP Firewall rule logging disabled
+- GCP Firewall with Inbound rule overly permissive to All Traffic
+
+### Changed
+
+#### 6 policies updated
+
+- AWS CloudTrail is not enabled in all regions
+- AWS ECR repository is exposed to public
+- AWS ElastiCache Redis cluster with in-transit encryption disabled
+- AWS IAM policy allows assume role permission across all services
+- AWS S3 bucket accessible to unmonitored cloud accounts
+- Azure Virtual Network subnet is not configured with a Network Security Group
+
 ### Removed
 
 #### 8 policies deleted
