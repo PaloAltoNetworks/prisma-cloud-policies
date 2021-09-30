@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-21.9.2 - 2021-09-27
+
+### Added
+
+#### 1 new policy
+
+- AWS ElastiCache Redis with in-transit encryption disabled (Non-replication group)
+
+#### 8 new auto-remediation cli's
+
+- Azure Function App client certificate is disabled
+- Azure Function App doesn't have a Managed Service Identity
+- Azure Function App doesn't redirect HTTP to HTTPS
+- Azure Function App doesn't use HTTP 2.0
+- Azure Function App doesn't use latest TLS version
+- GCP cloud storage bucket with uniform bucket-level access disabled
+- GCP Firewall rule logging disabled
+- GCP Firewall with Inbound rule overly permissive to All Traffic
+
+### Changed
+
+#### 6 policies updated
+
+- AWS CloudTrail is not enabled in all regions
+- AWS ECR repository is exposed to public
+- AWS ElastiCache Redis cluster with in-transit encryption disabled
+- AWS IAM policy allows assume role permission across all services
+- AWS S3 bucket accessible to unmonitored cloud accounts
+- Azure Virtual Network subnet is not configured with a Network Security Group
+
+### Removed
+
+#### 8 policies deleted
+
+- AWS S3 Bucket has Global DELETE Permissions enabled via bucket policy
+- AWS S3 Bucket has Global GET Permissions enabled via bucket policy
+- AWS S3 Bucket has Global LIST Permissions enabled via bucket policy
+- AWS S3 Bucket has Global PUT Permissions enabled via bucket policy
+- Azure SQL Server advanced data security does not have an email alert recipient
+- Azure SQL Server advanced data security does not send alerts to service and co-administrators
+- Azure SQL server send alerts to field value is not set
+- SQL DB instance backup configuration is not enabled
+
+
 ## PCS-21.9.1 - 2021-09-10
 
 ### Added

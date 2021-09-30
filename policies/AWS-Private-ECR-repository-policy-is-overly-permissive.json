@@ -1,0 +1,30 @@
+{
+  "policyUpi": "PC-AWS-ECR-434",
+  "policyId": "9f40d30b-97fd-4ec5-827b-f74b50a312b9",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Private ECR repository policy is overly permissive",
+  "description": "This policy identifies AWS Private ECR repositories that have overly permissive registry policies. An ECR(Elastic Container Registry) repository is a collection of Docker images available on the AWS cloud. These images might contain sensitive information which should be restricted to unauthorized users.",
+  "rule.criteria": "8ce95833-8811-4ab6-b475-d8c9a59dbca6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecr-get-repository-policy' AND json.rule = policy.Statement[?any((Principal equals * or Principal.AWS contains *) and Effect equals Allow and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated.\n3. Navigate to 'ECR' dashboard from 'Services' dropdown\n4. Go to 'Repository', from the left panel\n5. Select the repository for which alert is being generated\n6. Select the 'Permissions' option from left menu below 'repositores'\n7. Click on 'Edit policy JSON' to modify the JSON so that Principal is restrictive\n8. After modifications, click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "APRA (CPS 234) Information Security",
+    "Brazilian Data Protection Law (LGPD)",
+    "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "HITRUST v.9.4.2",
+    "MAS TRM 2021",
+    "Multi-Level Protection Scheme (MLPS) v2.0",
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4",
+    "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
+    "PCI DSS v3.2.1",
+    "Risk Management in Technology (RMiT)"
+  ]
+}
