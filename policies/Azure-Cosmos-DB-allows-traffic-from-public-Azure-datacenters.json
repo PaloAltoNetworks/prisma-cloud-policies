@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-COS-792",
+  "policyId": "a9c8a506-e061-45ec-8b37-080bf40c6e47",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Cosmos DB allows traffic from public Azure datacenters",
+  "description": "This policy identifies Cosmos DBs that allow traffic from public Azure datacenters. If you enable this option, the IP address 0.0.0.0 is added to the list of allowed IP addresses. The list of IPs allowed by this option is wide, so it limits the effectiveness of a firewall policy. So it is recommended not to select the ‘Accept connections from within public Azure datacenters’ option for your Cosmos DB. ",
+  "rule.criteria": "d5cbf099-d1e5-4be3-87c6-7637538bf672",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cosmos-db' AND json.rule = properties.provisioningState equals Succeeded and properties.ipRangeFilter is not empty and properties.ipRangeFilter contains 0.0.0.0",
+  "recommendation": "1. Log in to the Azure Portal\n2. Go to Azure Cosmos DB service\n3. Select the reported Azure Cosmos DB account\n4. Click on 'Firewall and virtual networks' under 'Settings'\n5. Unselect 'Accept connections from within public Azure datacenters' option under 'Exceptions'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

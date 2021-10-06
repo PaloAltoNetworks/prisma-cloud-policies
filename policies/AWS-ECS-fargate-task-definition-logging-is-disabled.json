@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AWS-ECS-762",
+  "policyId": "c7edc846-e9eb-4c30-9869-af3604206d19",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS ECS fargate task definition logging is disabled",
+  "description": "This policy identifies ECS fargate task definitions for which logging is disabled. You can configure the containers in your tasks to send log information to CloudWatch Logs to help you get information from running containers and services. If you are using the Fargate launch type for your tasks, this allows you to view the logs from your containers. This policy checks the logging configuration of your task definition and alerts if logging is not enabled.",
+  "rule.criteria": "05de5f61-1257-457c-ac48-9a4f4f91050d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-describe-task-definition' AND json.rule = status equals ACTIVE and containerDefinitions[?any(logConfiguration.logDriver does not exist or logConfiguration.logDriver contains false)] exists",
+  "recommendation": "To create a task definition revision follow steps from the below link,\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/update-task-definition.html \n\nMake sure to create containers with appropriate Log Configurations.\n\nTo resolve the alert, deregister the alerted task definition following the steps from the below link,\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/deregister-task-definition.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "NIST 800-53 Rev 5",
+    "NIST 800-53 Rev4"
+  ]
+}

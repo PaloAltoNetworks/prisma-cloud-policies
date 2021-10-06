@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EMR-788",
+  "policyId": "0bcfdab2-31d8-4dc9-a91c-42c7a7242e01",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EMR Block public access setting disabled",
+  "description": "This policy identifies AWS EMR which has a disabled block public access setting. AWS EMR block public access prevents a cluster in a public subnet from launching when any security group associated with the cluster has a rule that allows inbound traffic from the internet, unless the port has been specified as an exception. It is recommended to enable AWS EMR Block public access in each AWS Region for your AWS account.",
+  "rule.criteria": "ed938bd1-5868-4603-a0d9-ad5ca338276d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-emr-public-access-block' AND json.rule = blockPublicAccessConfiguration.blockPublicSecurityGroupRules is false",
+  "recommendation": "Refer to the following URL to configure AWS EMR Block public access:\nhttps://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-block-public-access.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

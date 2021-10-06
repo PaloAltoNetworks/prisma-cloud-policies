@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACI-796",
+  "policyId": "743e8910-6a4c-466c-8ba2-d9c207a5efe6",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Container Instance environment variable with regular value type",
+  "description": "This policy identifies Azure Container Instances (ACI) in which the environment variables with regular value type instead of the secure values property. Objects with secure values are intended to hold sensitive information like passwords or keys for your application. Using secure values for environment variables is both safer and more flexible than including them in your container's image. So it is recommended to secure the environment variable by specifying the 'secureValue' property instead of the regular 'value' for the variable's type.",
+  "rule.criteria": "e82c581e-41af-46a9-a708-c5a2c3935c02",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-container-instances-container-group' AND json.rule = properties.provisioningState equals Succeeded and properties.containers[*].properties.environmentVariables[*] exists and properties.containers[*].properties.environmentVariables[*].value exists",
+  "recommendation": "Environment variables can only be configured with secure values at the time of container instance creation. It is not possible to modify environment variables once instance is created. Hence, it is suggested to delete an existing container instance having not configured with secure values and create a new container instance having required environment variables configured with secure values.\nNote: Backup or migrate data from the container instance before deleting it.\n\nTo create a container instance with environment variables with secure value property; follow below URL:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-environment-variables#secure-values\n\nTo delete a reported container instance; follow below URL:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart-portal#clean-up-resources",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

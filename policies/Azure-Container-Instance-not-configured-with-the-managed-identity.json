@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACI-794",
+  "policyId": "a9b38d9b-a4df-4f60-bf87-c24d105d2bd9",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Container Instance not configured with the managed identity",
+  "description": "This policy identifies Azure Container Instances (ACI) that are not configured with the managed identity. The managed identity is authenticated with Azure AD, developers don't have to store any credentials in code. So It is recommended to configure managed identity on all your container instances.\n\nFor more details:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity",
+  "rule.criteria": "f5bc9117-ddad-4242-a4cd-62f59cde8375",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-container-instances-container-group' AND json.rule = properties.provisioningState equals Succeeded and (identity.type does not exist or (identity.type exists and identity.type equal ignore case None))",
+  "recommendation": "To enable managed identity on your container instance; follow below URL:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
