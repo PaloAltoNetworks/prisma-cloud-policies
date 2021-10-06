@@ -4,6 +4,23 @@
 
 ### Added
 
+#### 7 new policies
+
+- AWS ECS fargate task definition logging is disabled
+- AWS EMR Block public access setting disabled
+- AWS EMR cluster Master Security Group allows all traffic to port 8088
+- Azure Container Instance environment variable with regular value type
+- Azure Container Instance is not configured with virtual network
+- Azure Container Instance not configured with the managed identity
+- Azure Cosmos DB allows traffic from public Azure datacenters
+
+### Changed
+
+#### 1 policy updated
+
+- Memcached DDoS attack attempted
+
+
 ## PCS-21.9.2 - 2021-09-27
 
 ### Added
