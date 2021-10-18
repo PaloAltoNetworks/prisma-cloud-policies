@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-ALL-ALL-109",
+  "policyId": "c0ff55bf-6686-458e-9426-0a6566ab0f1b",
+  "policyType": "network",
+  "cloudType": "all",
+  "severity": "medium",
+  "name": "Memcached default UDP port is publicly accessible",
+  "description": "This policy identifies Memcached which has a default UDP port publicly accessible. Memcached is a general-purpose distributed memory caching system. It is often used to speed up dynamic database-driven websites by caching data and objects in RAM to reduce the number of times an external data source (such as a database or API) must be read. Memcached having UDP port 11211 public accessible is often vulnerable to DDoS amplification attack. This policy aims at finding such a Memcached which has an UDP port open to the public. It is highly recommended disabling Memcached UDP port.",
+  "rule.criteria": "746183a3-88de-4b8c-a518-2ab2c3dbd249",
+  "searchModel.query": "network from vpc.flow_record where protocol IN ( 'UDP' ) and dest.port = 11211 and bytes > 0 AND source.publicnetwork IN ( 'Internet IPs' , 'Suspicious IPs' , 'AWS IPs', 'Azure IPs', 'GCP IPs' )",
+  "recommendation": "In order to mitigate the memcache DDoS attacks, please ensure the memmcache server is upto-date with latest version 1.5.6 or greater.\n\nFMI : https://github.com/memcached/memcached/wiki/ReleaseNotes156\n\nAs a workaround you can also block/firewall UDP port 11211.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "MITRE ATT&CK v8.2"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACI-795",
+  "policyId": "d480c1d2-06b3-4e53-81c9-a21ed83cb5fc",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Container Instance is not configured with virtual network",
+  "description": "This policy identifies Azure Container Instances (ACI) that are not configured with a virtual network. Making container instances public makes an internet routable network. By deploying container instances into an Azure virtual network, your containers can communicate securely with other resources in the virtual network. So it is recommended to configure all your container instances within a virtual network.\n\nFor more details:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-vnet",
+  "rule.criteria": "9b413f80-4055-4afd-a634-5e45f31c8109",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-container-instances-container-group' AND json.rule = properties.provisioningState equals Succeeded and properties.ipAddress.type exists and properties.ipAddress.type equals Public",
+  "recommendation": "Virtual network can only be configured at the time of container instance creation. Hence, it is suggested to delete an existing container instance having not configured with virtual network and create a new container instance having virtual network configured with secure values.\nNote: Backup or migrate data from the container instance before deleting it.\n\nTo create a Container Instance within a virtual network; follow below URL:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-vnet\n\nTo delete a reported Conatiner instance; follow below URL:\nhttps://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart-portal#clean-up-resources",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

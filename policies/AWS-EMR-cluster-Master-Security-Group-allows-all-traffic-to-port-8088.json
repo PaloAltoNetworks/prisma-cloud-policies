@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EMR-787",
+  "policyId": "4351322d-9efe-4ac5-88e6-9de1bcdf4bb5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS EMR cluster Master Security Group allows all traffic to port 8088",
+  "description": "This policy identifies AWS EMR cluster which has Master Security Group which allows all traffic to port 8088. Exposing port 8088 to all traffic exposes web interfaces of the master node of an EMR Cluster. This configuration is highly susceptible to EMR cluster hijacking attacks. It is highly recommended limiting the access for the EMR cluster attached Master Security Group to your IP only or configure SSH Tunnel.",
+  "rule.criteria": "2859647d-1a90-4153-b9dc-8211817ab3d4",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-emr-describe-cluster' AND json.rule = status.state does not contain TERMINATING as X; config from cloud.resource where api.name= 'aws-ec2-describe-security-groups' AND json.rule = isShared is false and (ipPermissions[?any((ipRanges[*] contains 0.0.0.0/0 or ipv6Ranges[*].cidrIpv6 contains ::/0) and ((toPort == 8088 or fromPort == 8088) or (toPort > 8088 and fromPort < 8088)))] exists) as Y; filter '$.X.ec2InstanceAttributes.emrManagedMasterSecurityGroup equals $.Y.groupId or $.X.ec2InstanceAttributes.additionalMasterSecurityGroups[*] contains $.Y.groupId'; show X;",
+  "recommendation": "Before making any changes, please check the impact to your applications/services.\n\n1. Log in to the AWS Console\n2. Select Clusters in left side pane\n3. Select the EMR Cluster reported in the alert\n4. Select the Security groups for Master link under Security and access\n5. Choose ElasticMapReduce-master from the list \n6. Click on the 'Inbound Rule'\n7. Delete the rule which has 'Source' value as 0.0.0.0/0 or ::/0 and 'Port Range' value as 8088 (or range containing 8088)",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
