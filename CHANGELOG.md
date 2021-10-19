@@ -8,6 +8,13 @@
 
 - AWS OpenSearch Fine-grained access control is disabled
 
+#### 4 new policies for the IAM Security module
+
+- Azure effective permissions granting wildcard resource access
+- Azure entities with risky permissions
+- Azure IAM effective permissions are over-privileged (7 days)
+- Azure IAM effective permissions are over-privileged (90 days)
+
 ### Changed
 
 #### 6 policies updated
@@ -18,6 +25,10 @@
 - GCP Firewall rule allows all traffic on SSH port (22)
 - GCP Firewall rule allows inbound traffic from anywhere with no specific target set
 - GCP Projects have OS Login disabled
+
+#### 1 policy updated for the IAM Security module
+
+- AWS resources that are publicly accessible through IAM policies
 
 
 ## PCS-21.10.1 - 2021-10-11
