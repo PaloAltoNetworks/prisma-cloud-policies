@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "969f13d2-c84a-4c81-bbbb-7640bb83feaf",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure effective permissions granting wildcard resource access",
+  "description": "This policy identifies Azure IAM role definitions that contain '*' at the scope level. Ensure that the Azure role definitions don’t have '*' at the scope level.",
+  "rule.criteria": "969f13d2-c84a-4c81-bbbb-7640bb83feaf",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and dest.cloud.resource.name = '*'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

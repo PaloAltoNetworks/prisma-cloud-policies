@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ES-793",
+  "policyId": "45987be9-259e-4940-ae03-351c68b8d3d8",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS OpenSearch Fine-grained access control is disabled",
+  "description": "This policy identifies AWS OpenSearch which has Fine-grained access control disabled. Fine-grained access control offers additional ways of controlling access to your data on AWS OpenSearch Service. It is highly recommended enabling fine-grained access control to protect the data on your domain.\n\nFor more information, please follow the URL given below,\nhttps://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html",
+  "rule.criteria": "512be9cc-ed41-4e18-a4ba-c5419c07b5e7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = advancedSecurityOptions.enabled is false and advancedSecurityOptions.internalUserDatabaseEnabled is false",
+  "recommendation": "Refer the following URL for configuring Fine-grained access control on your AWS OpenSearch:\nhttps://docs.aws.amazon.com/opensearch-service/latest/developerguide/fgac.html#fgac-forget\n\nNotes: \n1. You can't enable fine-grained access control on existing domains, only new ones. After you enable fine-grained access control, you can't disable it.\n2. Fine-grained access control is supported only from ElasticSearch 6.7 or later. To upgrade older versions of AWS OpenSearch please refer to the URL given below,\nhttps://docs.aws.amazon.com/opensearch-service/latest/developerguide/version-migration.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
