@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-776",
+  "policyId": "4eab897c-f9a8-439d-b3d5-ac48f5d827e7",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function HTTP trigger is not secured",
+  "description": "This policy identifies GCP Cloud Functions for which the HTTP trigger is not secured. When you configure HTTP functions to be triggered only with HTTPS, user requests will be redirected to use the HTTPS protocol, which is more secure. It is recommended to set the 'Require HTTPS' for configuring HTTP triggers while deploying your function.",
+  "rule.criteria": "ff6a26a5-f036-4d3a-a650-d5de1d568bab",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function' AND json.rule = status equals ACTIVE and httpsTrigger.securityLevel does not equal SECURE_ALWAYS",
+  "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service (Left Panel)\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Under section 'Trigger', click on 'EDIT'\n6. Select the checkbox against the field 'Require HTTPS'\n7. Click on 'SAVE'\n8. Click on 'NEXT'\n9. Click on 'DEPLOY'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

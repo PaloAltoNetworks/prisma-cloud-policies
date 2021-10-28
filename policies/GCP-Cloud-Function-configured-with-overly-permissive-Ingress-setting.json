@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-777",
+  "policyId": "02b159ed-59df-4924-8b96-868ea6eacf93",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function configured with overly permissive Ingress setting",
+  "description": "This policy identifies GCP Cloud Functions that are configured with overly permissive Ingress setting. With overly permissive Ingress setting, all inbound requests to the function are allowed, from both the public and resources within the same project. It is recommended to restrict the traffic from the public and other resources, to get better network-based access control and allow traffic from VPC networks in the same project or traffic through the Cloud Load Balancer.",
+  "rule.criteria": "505e6598-f26b-4054-9f9b-62702126622f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function' AND json.rule = status equals ACTIVE and ingressSettings equals ALLOW_ALL",
+  "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service (Left Panel)\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Click on 'Runtime, build, connections and security settings' drop-down to get the detailed view\n6. Click on the 'CONNECTIONS' tab\n7. In 'Ingress settings', select either 'Allow internal traffic only' or 'Allow internal traffic and traffic from Cloud Load Balancing'\n8. Click on 'NEXT'\n9. Click on 'DEPLOY'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

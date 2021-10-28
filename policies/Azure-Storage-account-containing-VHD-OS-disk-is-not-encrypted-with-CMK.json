@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "CIS v1.3.0 (Azure)"
+    "Azure Security Benchmark (v2)",
+    "CIS v1.3.0 (Azure)",
+    "CIS v1.3.1 (Azure)"
   ]
 }

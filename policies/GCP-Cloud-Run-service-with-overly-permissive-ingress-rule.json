@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-CLR-791",
+  "policyId": "8796b72d-1ea4-47d4-8cca-efc34be26c92",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Run service with overly permissive ingress rule",
+  "description": "This policy identifies GCP Cloud Run services configured with overly permissive ingress rules. It is recommended to restrict the traffic from the internet and other resources by allowing traffic to enter through load balancers or internal traffic for better network-based access control.",
+  "rule.criteria": "a5216572-7ba5-498b-8934-f352891838fc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-run-services-list' AND json.rule = \"status.conditions[?any(type equals Ready and status equals True)] exists and status.conditions[?any(type equals RoutesReady and status equals True)] exists and ['metadata'].['annotations'].['run.googleapis.com/ingress'] equals all\"",
+  "recommendation": "1. Login to GCP console\n2. Navigate to service 'Cloud Run'\n3. Click on the alerted service, go to tab 'TRIGGERS'\n4. Under section 'Ingress', select a ingress type other than 'Allow all traffic'\n5. Click on 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
