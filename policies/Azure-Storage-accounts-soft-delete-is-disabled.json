@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v1.2.0 (Azure)",
     "CIS v1.3.0 (Azure)",
+    "CIS v1.3.1 (Azure)",
     "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
     "NIST CSF",

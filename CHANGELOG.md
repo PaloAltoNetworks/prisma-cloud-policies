@@ -1,5 +1,28 @@
 # Changelog
 
+## PCS-21.11.1 - 2021-11-08
+
+### Added
+
+#### 3 new policies
+
+- GCP Cloud Function configured with overly permissive Ingress setting
+- GCP Cloud Function HTTP trigger is not secured
+- GCP Cloud Run service with overly permissive ingress rule
+
+#### 2 new compliance standards
+
+- Azure Security Benchmark (v2)
+- CIS v1.3.1 (Azure)
+
+### Changed
+
+#### 2 policies updated
+
+- AWS access keys not used for more than 90 days
+- AWS Amazon Machine Image (AMI) is publicly accessible
+
+
 ## PCS-21.10.2 - 2021-10-25
 
 ### Added
