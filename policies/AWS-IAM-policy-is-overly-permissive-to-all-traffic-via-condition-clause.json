@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "AWS Well-Architected Framework",
     "MAS TRM 2021",
     "Risk Management in Technology (RMiT)"
   ]

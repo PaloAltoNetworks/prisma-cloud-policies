@@ -16,11 +16,12 @@
   "compliance.standard": [
     "Brazilian Data Protection Law (LGPD)",
     "CIS v1.0.0 (Alibaba Cloud)",
+    "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "HITRUST v.9.4.2",
     "MAS TRM 2021",
+    "MITRE ATT&CK v10.0",
     "MITRE ATT&CK v8.2",
-    "Multi-Level Protection Scheme (MLPS) v2.0",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST SP 800-171 Revision 2",

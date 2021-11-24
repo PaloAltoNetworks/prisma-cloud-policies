@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "gcloud compute firewall-rules update ${resourceName} --project=${account} --enable-logging",
   "remediation.description": "This CLI command requires 'compute.firewalls.update' permission. As pre-requisite to this permission firewall rule needs 'compute.networks.updatePolicy' permission also. Successful execution will enable logging for GCP firewall rules.",
   "remediation.impact": "enable logging for GCP firewall rule",
-  "compliance.standard": []
+  "compliance.standard": [
+    "MITRE ATT&CK v10.0"
+  ]
 }

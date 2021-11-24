@@ -16,6 +16,9 @@
   "compliance.standard": [
     "CIS v1.1.0 (OCI)",
     "CSA CCM v.4.0.1",
+    "ISO/IEC 27002:2013",
+    "ISO/IEC 27017:2015",
+    "MITRE ATT&CK v10.0",
     "MITRE ATT&CK v8.2",
     "MPAA Content Protection Best Practices",
     "NIST CSF",

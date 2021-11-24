@@ -1,5 +1,50 @@
 # Changelog
 
+## PCS-21.12.1 - 2021-12-06
+
+### Added
+
+#### 1 new policy
+
+- GCP Cloud Function not enabled with VPC connector
+
+#### 2 new auto-remediation cli's
+
+- GCP Kubernetes cluster intra-node visibility disabled
+- GCP Kubernetes Engine Clusters have binary authorization disabled
+
+#### 5 new compliance standards
+
+- CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0
+- CyberSecurity Law of the People's Republic of China
+- ISO/IEC 27002:2013
+- ISO/IEC 27017:2015
+- ISO/IEC 27018:2019
+
+#### 2 new frameworks
+
+- AWS Well-Architected Framework
+- MITRE ATT&CK v10.0 Cloud IaaS Matrix for Enterprise
+
+### Changed
+
+#### 9 policies updated
+
+- AWS Elastic File System (EFS) not encrypted using Customer Managed Key
+- AWS S3 CloudTrail bucket for which access logging is disabled
+- Azure SQL database auditing is disabled
+- Azure SQL Database with Auditing Retention less than 90 days
+- Azure Virtual Machine Boot Diagnostics Disabled
+- GCP Kubernetes Engine cluster workload identity is disabled
+- GCP SQL instance configured with overly permissive authorized networks
+- GCP VPC Flow logs for the subnet is set to Off
+- OCI IAM local (non-federated) user account does not have a valid and current email address
+
+#### 1 compliance standard updated
+
+- MLPS 2.0
+
+
 ## PCS-21.11.1 - 2021-11-08
 
 ### Added
