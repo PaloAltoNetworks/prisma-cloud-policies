@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "HITRUST v.9.4.2",
+    "MITRE ATT&CK v10.0",
     "MITRE ATT&CK v8.2",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",

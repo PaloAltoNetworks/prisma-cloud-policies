@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "aws rds modify-db-cluster --db-cluster-identifier ${resourceName} --region ${region} --deletion-protection",
   "remediation.description": "This CLI command requires 'rds:ModifyDBCluster' permission. Successful execution will enable deletion protection for the reported AWS RDS cluster.",
   "remediation.impact": "Enables deletion protection setting for AWS RDS cluster",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MITRE ATT&CK v10.0"
+  ]
 }

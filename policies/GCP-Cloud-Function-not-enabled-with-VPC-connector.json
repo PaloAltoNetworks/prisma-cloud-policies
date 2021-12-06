@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-775",
+  "policyId": "9b78ca0d-75dc-480c-9b86-41330a881acb",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function not enabled with VPC connector",
+  "description": "This policy identifies GCP Cloud Functions that are not configured with a VPC connector. VPC connector helps function to connect to a resource inside a VPC in the same project. Setting up the VPC connector allows you to set up a secure perimeter to guard against data exfiltration and prevent functions from accidentally sending any data to unwanted destinations. It is recommended to configure the GCP Cloud Function with a VPC connector.\n\nNote: For the Cloud Functions function to access the public traffic with Serverless VPC connector, you have to introduce Cloud NAT.\nLink: https://cloud.google.com/functions/docs/networking/network-settings#route-egress-to-vpc",
+  "rule.criteria": "940f7491-eb9a-4471-b05b-329cd99d72ef",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function' AND json.rule = status equals ACTIVE and vpcConnector does not exist",
+  "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service (Left Panel)\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Click on 'Runtime, build, connections and security settings’ drop-down to get the detailed view\n6. Click on the 'CONNECTIONS' tab\n7. Under Section 'Egress settings', select a VPC connector from the dropdown\n8. In case VPC connector is not available, select 'Custom' and\n9. Click on 'Create a Serverless VPC Connector', follow the link to create a Serverless VPC connector: https://cloud.google.com/vpc/docs/configure-serverless-vpc-access\n10. Once the Serverless VPC connector is available, select it from the dropdown\n11. Click on 'NEXT'\n12. Click on 'DEPLOY'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
