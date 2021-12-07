@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-813",
+  "policyId": "90373b17-5925-4ce9-9bb6-fe4cc1ec5bc2",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "[Beta] AWS EC2 instance reachable from untrust internet source on SSH/RDP port (TCP)",
+  "description": "This policy identifies EC2 instances that are reachable from internet on SSH/RDP port. SSH/RDP port exposed to the internet may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit the access to known hosts, services, or specific entities.",
+  "rule.criteria": "13fc4d7b-e34d-4ec5-824b-55dae4937f32",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'Instance' and dest.cloud.type = 'AWS' and effective.action = 'Allowed' and protocol.ports in ( 'tcp/22' , 'tcp/3389' )",
+  "recommendation": "The following steps are recommended to restrict traffic from the Internet:\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement the required changes and make sure no other resources have been impacted due to these changes:\n a) The overly permissive Security Group rules can be made more restrictive.\n b) Move the instance inside a restrictive subnet if the instance does not need to be publicly accessible.\n c) Define a NAT rule to restrict traffic coming from the Internet to the respective instance.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
