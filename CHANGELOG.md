@@ -8,6 +8,14 @@
 
 - GCP Cloud Function not enabled with VPC connector
 
+#### 5 new Limited GA policies using the Cloud Network Analyzer Engine.
+
+- [Beta] AWS EC2 instance reachable from untrust internet source on SSH/RDP port (TCP)
+- [Beta] AWS Redshift managed ENI reachable from untrust internet source
+- [Beta] AWS RDS managed ENI reachable from untrust internet source
+- [Beta] AWS EC2 instance with unrestricted outbound access to internet
+- [Beta] AWS EC2 instances reachable from untrust internet source other than HTTP/HTTPS port
+
 #### 2 new auto-remediation cli's
 
 - GCP Kubernetes cluster intra-node visibility disabled
