@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "5def0968-e071-46bb-a2b8-4a54f66bcf23",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "Okta User with org write access level",
+  "description": "This policy identifies org write access that is defined as risky permissions. Ensure that the Okta Users in your AWS account don't have a risky set of write permissions to minimize security risks.",
+  "rule.criteria": "5def0968-e071-46bb-a2b8-4a54f66bcf23",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('organizations:AcceptHandshake','organizations:AttachPolicy','organizations:CancelHandshake','organizations:CreateAccount','organizations:CreateGovCloudAccount','organizations:CreateOrganization','organizations:CreateOrganizationalUnit','organizations:CreatePolicy','organizations:DeclineHandshake','organizations:DeleteOrganization','organizations:DeleteOrganizationalUnit','organizations:DeletePolicy','organizations:DeregisterDelegatedAdministrator','organizations:DetachPolicy','organizations:DisableAWSServiceAccess','organizations:DisablePolicyType','organizations:EnableAWSServiceAccess','organizations:EnableAllFeatures','organizations:EnablePolicyType','organizations:InviteAccountToOrganization','organizations:LeaveOrganization','organizations:MoveAccount','organizations:RegisterDelegatedAdministrator','organizations:RemoveAccountFromOrganization','organizations:UpdateOrganizationalUnit','organizations:UpdatePolicy') AND source.idp.service = 'Okta'",
+  "recommendation": "Remediation steps:\n1. Login to the Okta console\n2. Find the role used by the Okta user\n3.  Log in to the AWS console\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7.  Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

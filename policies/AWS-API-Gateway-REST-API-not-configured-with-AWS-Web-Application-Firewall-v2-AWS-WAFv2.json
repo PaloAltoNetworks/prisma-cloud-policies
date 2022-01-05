@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-API-824",
+  "policyId": "24408300-0278-42d5-949b-179fb7bd95d6",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS API Gateway REST API not configured with AWS Web Application Firewall v2 (AWS WAFv2)",
+  "description": "This policy identifies AWS API Gateway REST API which is not configured with AWS Web Application Firewall. As a best practice, enable the AWS WAF service on API Gateway REST API to protect against application layer attacks. To block malicious requests to your API Gateway REST API, define the block criteria in the WAF web access control list (web ACL).",
+  "rule.criteria": "c71bb3b7-3fa2-4c1d-8956-c38040ecb129",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-apigateway-get-stages' AND json.rule = webAclArn does not exist or webAclArn does not start with arn:aws:wafv2",
+  "recommendation": "1. Log in to the AWS console\n2. Make sure your the reported API Gateway REST API requires WAF based on your requirement and Note down the API Gateway REST API name\n\nFollow steps given in below URL to associate API Gateway REST API to WAF Web ACL ,\nhttps://docs.aws.amazon.com/waf/latest/developerguide/web-acl-associating-aws-resource.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

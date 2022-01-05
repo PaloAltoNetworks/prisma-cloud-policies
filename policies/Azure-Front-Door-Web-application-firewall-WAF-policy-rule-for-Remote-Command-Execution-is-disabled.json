@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AWF-830",
+  "policyId": "17b5c119-cfce-482b-8c72-ead2bc5e333f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Front Door Web application firewall (WAF) policy rule for Remote Command Execution is disabled",
+  "description": "This policy identifies Azure Front Door Web application firewall (WAF) policies that have the Remote Command Execution rule disabled. It is recommended to define the criteria in the WAF policy with the rule ‘Remote Command Execution (944240)’ under managed rules to help in detecting and mitigating Log4j vulnerability. \n\nFor details:\nhttps://www.microsoft.com/security/blog/2021/12/11/guidance-for-preventing-detecting-and-hunting-for-cve-2021-44228-log4j-2-exploitation/ ",
+  "rule.criteria": "69286a40-1d8c-4f64-a59a-129b38018d58",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-frontdoor-waf-policy' AND json.rule = properties.policySettings.enabledState equals Enabled and properties.managedRules.managedRuleSets is not empty and properties.managedRules.managedRuleSets[*].ruleGroupOverrides[*].rules[?any(action equals Block and ruleId equals 944240 and enabledState equals Disabled)] exists as X; config from cloud.resource where api.name = 'azure-frontdoor' AND json.rule = properties.frontendEndpoints[*].properties.webApplicationFirewallPolicyLink exists and properties.provisioningState equals Succeeded as Y; filter '$.Y.properties.frontendEndpoints[*].properties.webApplicationFirewallPolicyLink.id contains $.X.name'; show X;",
+  "recommendation": "1. Log in to the Azure portal\n2. Select 'All services' > 'Web Application Firewall policies (WAF)'\n3. Click on the reported Web Application Firewall policies (WAF) policy\n4. Click on the 'Managed rules' from the left panel\n5. Search '944240' rule from search bar and Select rule\n6. Click on the 'Enable' to enable rule",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

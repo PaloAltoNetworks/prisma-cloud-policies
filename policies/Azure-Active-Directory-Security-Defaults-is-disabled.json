@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v1.2.0 (Azure)",
     "CIS v1.3.0 (Azure)",
+    "CIS v1.4.0 (Azure)",
     "MITRE ATT&CK v10.0"
   ]
 }

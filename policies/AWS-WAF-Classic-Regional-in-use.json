@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-WAF-826",
+  "policyId": "a1ef6b83-de93-4d84-8573-57c5da61eab7",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS WAF Classic (Regional) in use",
+  "description": "This policy identifies AWS Classic WAF which is in use. As a best practice, create the AWS WAFv2 and configure accordingly to protect against application-layer attacks. The block criteria in the WAFv2 web access control list (web ACL) has more capabilities than the Classic WAF to filter-out malicious traffic.",
+  "rule.criteria": "13bbdc80-1339-4e8b-9e4b-4c206bec307c",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-waf-classic-web-acl-resource' AND json.rule = resources.apiGateway[*] exists or resources.applicationLoadBalancer[*] exists",
+  "recommendation": "To migrate a web ACL from AWS WAF Classic to AWS WAF, follow below URL:\nhttps://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-procedure.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ASY-832",
+  "policyId": "9117b0ea-1f50-43c8-8c52-9e99367f9989",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS AppSync not configured with AWS Web Application Firewall v2 (AWS WAFv2)",
+  "description": "This policy identifies AWS AppSync which is not configured with AWS Web Application Firewall. As a best practice, enable the AWS WAF service on AppSync to protect against application layer attacks. To block malicious requests to your AppSync, define the block criteria in the WAF web access control list (web ACL).",
+  "rule.criteria": "a46b7a76-2660-4136-afd3-9a50f372abf4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-appsync-graphql-api' AND json.rule = wafWebAclArn does not exist",
+  "recommendation": "To configure AppSync with AWS WAF, follow the below URL:\nhttps://docs.aws.amazon.com/appsync/latest/devguide/WAF-Integration.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

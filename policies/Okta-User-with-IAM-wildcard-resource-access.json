@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "2bb7dada-8013-4278-be40-5149c1d3c000",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "Okta User with IAM wildcard resource access",
+  "description": "This policy identifies Okta User with AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
+  "rule.criteria": "2bb7dada-8013-4278-be40-5149c1d3c000",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and dest.cloud.resource.name = '*' AND source.idp.service = 'Okta'",
+  "recommendation": "Remediation steps:\n1. Login to the Okta console\n2. Find the role used by the Okta user\n3.  Log in to the AWS console\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7.  Under ''Permissions policies'', find the relevant policy according to the alert details and narrow down the wildcard permissions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-OCI-IAM-807",
+  "policyId": "68a77a83-c12f-440f-b71c-212fe8e2d2df",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI IAM policy with full administrative privileges across the tenancy to non Administrator",
+  "description": "This policy identifies IAM policies with full administrative privileges across the tenancy to non Administrators. IAM policies are the means by which privileges are granted to users, groups, or services. It is recommended to practice the Principle of least privilege, which limits users' access rights to strictly required to do their jobs.",
+  "rule.criteria": "c2bb7ad9-ce13-4d4e-b072-73a22fd8f0a9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-iam-policy' AND json.rule = lifecycleState equals ACTIVE and (statements[*] contains \"to manage all-resources in tenancy\" or statements[*] contains \"to manage all-resources IN TENANCY\") and name does not contain \"Tenant Admin Policy\"",
+  "recommendation": "1. Log in to OCI console\n2. Go to Identity -> Policies\n3. In the compartment dropdown, choose the root compartment. Open the reported policy to view the policy statement.\n4. Remove policy statement that allows any group other than Administrators or any service access to manage all resources in the tenancy.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.0.0 (OCI)",
+    "CIS v1.1.0 (OCI)"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "bc74108e-3cf1-42ef-8a52-d0119c5f8c97",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "IAM User with IAM wildcard resource access",
+  "description": "This policy identifies IAM User with AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
+  "rule.criteria": "bc74108e-3cf1-42ef-8a52-d0119c5f8c97",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and dest.cloud.resource.name = '*' AND source.cloud.service.name = 'iam' and source.cloud.resource.type = 'user'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the IAM service\n3. Click on Users\n4. Choose the relevant user\n5. Under ''Permissions policies'', find the relevant policy according to the alert details and narrow down the wildcard permissions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
