@@ -103,6 +103,12 @@
 - Azure IAM effective permissions are over-privileged (7 days)
 - Azure entities with risky permissions
 
+### Removed
+
+#### 1 policy deleted
+
+- AWS SNS subscription is not configured with HTTPS
+
 
 ## PCS-21.12.1 - 2021-12-06
 
