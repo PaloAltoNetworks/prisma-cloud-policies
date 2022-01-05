@@ -4,8 +4,9 @@
 
 ### Added
 
-#### 1 new policy
+#### 2 new policies
 
+- Instance affected by Apache Log4j vulnerability is exposed to network traffic from the internet [CVE-2021-44228]
 - GCP Cloud Function not enabled with VPC connector
 
 #### 5 new Limited GA policies using the Cloud Network Analyzer Engine.
