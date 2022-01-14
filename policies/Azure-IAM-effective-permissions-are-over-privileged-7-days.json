@@ -7,7 +7,7 @@
   "name": "Azure IAM effective permissions are over-privileged (7 days)",
   "description": "This policy identifies Azure IAM permissions that are over-privileged. As a security best practice, it is recommended to grant the least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
   "rule.criteria": "0c87cdbd-de14-47c8-b0c8-00703291bd29",
-  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE and action.lastaccess.days > 7",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and action.lastaccess.days > 7",
   "recommendation": "",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic Azure cli commands",

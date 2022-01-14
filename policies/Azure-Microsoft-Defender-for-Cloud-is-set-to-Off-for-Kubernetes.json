@@ -1,0 +1,31 @@
+{
+  "policyUpi": "PC-AZR-SC-643",
+  "policyId": "e949e77b-376b-4d5e-8634-836d0612d259",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Microsoft Defender for Cloud is set to Off for Kubernetes",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has defender setting for Kubernetes is set to Off. Enabling Microsoft Defender for Cloud provides the tools needed to harden your resources, track your security posture, protect against cyberattacks, and streamline security management. It is highly recommended to enable Microsoft Defender for Kubernetes.",
+  "rule.criteria": "e523d833-8877-4b05-aa4c-d7f79175ec05",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any( name equals KubernetesService and properties.pricingTier does not equal Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Select 'Enable all Microsoft Defender for Cloud plans' if not already enabled\n7. On the line in the table for 'Kubernetes' Select 'On' under Plan.\n8. Select 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (Azure)",
+    "CIS v1.3.0 (Azure)",
+    "CIS v1.3.1 (Azure)",
+    "CIS v1.4.0 (Azure)",
+    "CSA CCM v.4.0.1",
+    "HITRUST v.9.4.2",
+    "ISO/IEC 27002:2013",
+    "ISO/IEC 27017:2015",
+    "ISO/IEC 27018:2019",
+    "NIST CSF",
+    "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
+    "PCI DSS v3.2.1"
+  ]
+}

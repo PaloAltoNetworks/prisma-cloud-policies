@@ -8,7 +8,7 @@
   "description": "This policy identifies GCP storage buckets that are not configured with default Event-Based Hold. An event-based hold resets the object's time in the bucket for the purposes of the retention period. This behavior is useful when you want an object to persist in your bucket for a certain length of time after a certain event occurs. It is recommended to enable this feature to protect individual objects from deletion.\n\nReference: https://cloud.google.com/storage/docs/object-holds",
   "rule.criteria": "dcbe4883-244f-4aee-b3f6-23d9bac74939",
   "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = defaultEventBasedHold is false",
-  "recommendation": "1. Login to GCP Portal\n2. Navigate to 'Browser', under section 'Cloud Storage'\n3. Click on the alerted storage bucket\n4. Click on tab 'RETENTION'\n5. Click on the  'DISABLED' button beside 'Default event-based hold option'  to configure it to enabled",
+  "recommendation": "1. Login to GCP Portal\n2. Navigate to section 'Browser', under 'Cloud Storage' (Left Panel)\n3. Click on the alerted storage bucket\n4. Click on tab 'PROTECTION'\n5. Click on the 'DISABLED' button beside 'Default event-based hold option' to configure it to enabled",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CFR-825",
+  "policyId": "93a44fd2-7a87-4a2f-8f9f-8774a865c243",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudFront not configured with AWS Web Application Firewall v2 (AWS WAFv2)",
+  "description": "This policy identifies AWS CloudFront which is not configured with AWS Web Application Firewall v2 (AWS WAFv2). As a best practice, configure the AWS WAFv2 service on the CloudFront to protect against application-layer attacks. To block malicious requests to your CloudFront, define the block criteria in the WAFv2 web access control list (web ACL).",
+  "rule.criteria": "656ae854-bd16-4f3b-9849-a2582403fdab",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-waf-classic-global-web-acl-resource' as X; config from cloud.resource where api.name = 'aws-cloudfront-list-distributions' AND json.rule = webACLId is not empty as Y; filter '$.X.webACL.webACLId equals $.Y.webACLId'; show Y;",
+  "recommendation": "1. Sign in to the AWS console\n2. Go to the CloudFront Distributions Dashboard\n3. Click on the reported web distribution\n4. On 'General' tab, Click on 'Edit' button under 'Settings'\n5. On 'Edit Distribution' page, from 'AWS WAF Web ACL' dropdown select WAFv2 ACL which you want to apply\nNote: In case no WAFv2 ACL found from 'AWS WAF Web ACL' dropdown list, Please follow below URL to create WAFv2 ACL:\nhttps://docs.aws.amazon.com/waf/latest/developerguide/web-acl-creating.html\n6. Click on 'Save changes'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

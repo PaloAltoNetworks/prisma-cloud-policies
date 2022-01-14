@@ -1,5 +1,115 @@
 # Changelog
 
+## PCS-22.1.1 - 2022-01-17
+
+### Added
+
+#### 14 new policies
+
+- AWS ALB attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS API Gateway REST API not configured with AWS Web Application Firewall v2 (AWS WAFv2)
+- AWS API Gateway Rest API attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS AppSync attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS AppSync not configured with AWS Web Application Firewall v2 (AWS WAFv2)
+- AWS CloudFront attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS CloudFront not configured with AWS Web Application Firewall v2 (AWS WAFv2)
+- AWS WAF Classic (Regional) in use
+- Azure Application Gateway Web application firewall (WAF) policy rule for Remote Command Execution is disabled
+- Azure Front Door Web application firewall (WAF) policy rule for Remote Command Execution is disabled
+- Azure Front Door does not have the Azure Web application firewall (WAF) enabled
+- Azure PostgreSQL database server Infrastructure double encryption is disabled
+- GCP Cloud Armor policy not configured with cve-canary rule
+- OCI IAM policy with full administrative privileges across the tenancy to non Administrator
+
+#### 33 new policies for the IAM Security module
+
+- AWS EC2 instance with IAM permissions management access level
+- AWS EC2 instance with IAM write access level
+- AWS EC2 instance with org write access level
+- AWS EC2 with IAM wildcard resource access
+- AWS ECR Repository that is publicly accessible through IAM policies
+- AWS ECS Task Definition with IAM wildcard resource access
+- AWS Elasticbeanstalk Platform with IAM wildcard resource access
+- AWS KMS Key that is publicly accessible through IAM policies
+- AWS Lambda Function that is publicly accessible through IAM policies
+- AWS Lambda Function with IAM permissions management access level
+- AWS Lambda Function with IAM wildcard resource access
+- AWS Lambda Function with IAM write access level
+- AWS Lambda Function with org write access level
+- AWS Lambda Layer Version that is publicly accessible through IAM policies
+- AWS S3 bucket that is publicly accessible through IAM policies
+- AWS SNS Topic that is publicly accessible through IAM policies
+- AWS SQS Queue that is publicly accessible through IAM policies
+- AWS Secret Manager Secret that is publicly accessible through IAM policies
+- Azure AD user with effective permissions to create AWS IAM users
+- ECS Task Definition with IAM permissions management access level
+- ECS Task Definition with IAM write access level
+- ECS Task Definition with org write access level
+- Elasticbeanstalk Platform with IAM permissions management access level
+- Elasticbeanstalk Platform with IAM write access level
+- Elasticbeanstalk Platform with org write access level
+- IAM User with IAM permissions management access level
+- IAM User with IAM wildcard resource access
+- IAM User with IAM write access level
+- IAM User with org write access level
+- Okta User with IAM permissions management access level
+- Okta User with IAM wildcard resource access
+- Okta User with IAM write access level
+- Okta User with org write access level
+
+#### 6 new auto-remediation cli's
+
+- GCP Default Firewall rule is overly permissive (except http and https)
+- GCP Firewall rule allows all traffic on DNS port (53)
+- GCP Firewall rule allows all traffic on FTP port (21)
+- GCP Firewall rule allows all traffic on RDP port (3389)
+- GCP Firewall rule allows all traffic on SSH port (22)
+- GCP Firewall rule allows inbound traffic from anywhere with no specific target set
+
+#### 1 new compliance standard
+
+- CIS v1.4.0 (Azure)
+
+### Changed
+
+#### 22 policies updated
+
+- AWS CloudFront origin protocol policy does not enforce HTTPS-only
+- Azure App Service Web app doesn't use latest Java version
+- Azure Microsoft Defender for Cloud MCAS integration Disabled
+- Azure Microsoft Defender for Cloud WDATP integration Disabled
+- Azure Microsoft Defender for Cloud automatic provisioning of log Analytics agent for Azure VMs is set to Off
+- Azure Microsoft Defender for Cloud email notification for subscription owner is not set
+- Azure Microsoft Defender for Cloud is set to Off for App Service
+- Azure Microsoft Defender for Cloud is set to Off for Azure SQL Databases
+- Azure Microsoft Defender for Cloud is set to Off for Container Registries
+- Azure Microsoft Defender for Cloud is set to Off for Key Vault
+- Azure Microsoft Defender for Cloud is set to Off for Kubernetes
+- Azure Microsoft Defender for Cloud is set to Off for SQL servers on machines
+- Azure Microsoft Defender for Cloud is set to Off for Servers
+- Azure Microsoft Defender for Cloud is set to Off for Storage
+- Azure Microsoft Defender for Cloud security alert email notifications is not set
+- Azure Microsoft Defender for Cloud security contact additional email is not set
+- Azure Network Security Group allows all traffic on ports which are not commonly used
+- Azure SQL database Transparent Data Encryption (TDE) encryption disabled
+- GCP Firewall rule allows all traffic on DNS port (53)
+- GCP Firewall rule allows all traffic on FTP port (21)
+- GCP Kubernetes Engine Cluster Client Certificate is not disabled
+- GCP storage bucket is not configured with default Event-Based Hold
+
+#### 3 policies updated for the IAM Security module
+
+- AWS cross-account resource access through IAM policies
+- Azure IAM effective permissions are over-privileged (7 days)
+- Azure entities with risky permissions
+
+### Removed
+
+#### 1 policy deleted
+
+- AWS SNS subscription is not configured with HTTPS
+
+
 ## PCS-21.12.1 - 2021-12-06
 
 ### Added

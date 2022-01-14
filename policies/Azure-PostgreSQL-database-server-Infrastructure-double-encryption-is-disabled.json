@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-PG-819",
+  "policyId": "c4546c5c-11b3-4252-a1bd-b9ae64bb903d",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure PostgreSQL database server Infrastructure double encryption is disabled",
+  "description": "This policy identifies PostgreSQL database servers in which Infrastructure double encryption is disabled. Infrastructure double encryption adds a second layer of encryption using service-managed keys. It is recommended to enable infrastructure double encryption on PostgreSQL database servers so that encryption can be implemented at the layer closest to the storage device or network wires.\n\nFor more details: \nhttps://docs.microsoft.com/en-us/azure/postgresql/concepts-infrastructure-double-encryption",
+  "rule.criteria": "c044347d-d28b-4999-bb14-f275567a2c83",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = (sku.tier equals GeneralPurpose or sku.tier equals MemoryOptimized) and properties.userVisibleState equals Ready and properties.infrastructureEncryption equals Disabled",
+  "recommendation": "Configuring Infrastructure double encryption for Azure Database for PostgreSQL is only allowed during server create. Once the server is provisioned, you cannot change the storage encryption.\n\nTo create an Azure Database for PostgreSQL server with Infrastructure double encryption, follow below URL:\nhttps://docs.microsoft.com/en-us/azure/postgresql/howto-double-encryption\n\nNOTE: Using Infrastructure double encryption will have performance impact on the Azure Database for PostgreSQL server due to the additional encryption process.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.4.0 (Azure)"
+  ]
+}

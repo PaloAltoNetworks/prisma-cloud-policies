@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AFD-829",
+  "policyId": "5ef0bea5-11c9-497d-9637-4a430368c754",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Front Door does not have the Azure Web application firewall (WAF) enabled",
+  "description": "This policy identifies Azure Front Doors which do not have the Azure Web application firewall (WAF) enabled. As a best practice, configure the Azure WAF service on the Front Doors to protect against application-layer attacks. To block malicious requests to your Front Doors, define the block criteria in the WAF rules. ",
+  "rule.criteria": "79734546-c8e7-45f3-a350-f14ad01fdda6",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-frontdoor' AND json.rule = properties.provisioningState equals Succeeded as X; config from cloud.resource where api.name = 'azure-frontdoor-waf-policy' as Y; filter '$.X.properties.frontendEndpoints[*].properties.webApplicationFirewallPolicyLink.id does not exist or ($.X.properties.frontendEndpoints[*].properties.webApplicationFirewallPolicyLink.id contains $.Y.name and $.Y.properties.policySettings.enabledState equals Disabled)'; show X;",
+  "recommendation": "1. Log in to the Azure portal\n2. Select 'All services' > 'Front Doors'\n3. Click on the reported Front Door\n4. Click on the 'Web application firewall' from the left panel\n5. Select the frontend to attach WAF policy and Click on 'Apply Policy'\n6. In 'Associate a Waf policy' dialog, select appropriate enabled WAF policy from the 'Policy' dropdown.\n7. Click on 'Add' \n8. Click on 'Save' to save your changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

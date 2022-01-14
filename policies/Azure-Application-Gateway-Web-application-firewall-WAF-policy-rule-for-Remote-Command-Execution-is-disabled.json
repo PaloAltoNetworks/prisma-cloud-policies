@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AWF-831",
+  "policyId": "0550cb51-be87-48c6-af1a-2bd1f91b8d91",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Application Gateway Web application firewall (WAF) policy rule for Remote Command Execution is disabled",
+  "description": "This policy identifies Azure Application Gateway Web application firewall (WAF) policies that have the Remote Command Execution rule disabled. It is recommended to define the criteria in the WAF policy with the rule ‘Remote Command Execution (944240)’ under managed rules to help in detecting and mitigating Log4j vulnerability. \n\nFor details:\nhttps://www.microsoft.com/security/blog/2021/12/11/guidance-for-preventing-detecting-and-hunting-for-cve-2021-44228-log4j-2-exploitation/ ",
+  "rule.criteria": "856f4105-7c71-48b1-87ac-e9a8175d2e3e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-application-gateway-waf-policy' AND json.rule = properties.policySettings.state equals Enabled and properties.managedRules.managedRuleSets is not empty and properties.managedRules.managedRuleSets[*].ruleGroupOverrides[*].rules[?any(ruleId equals 944240 and state equals Disabled)] exists and properties.applicationGateways[*] is not empty",
+  "recommendation": "1. Log in to the Azure portal\n2. Select 'All services' > 'Web Application Firewall policies (WAF)'\n3. Click on the reported Web Application Firewall policies (WAF) policy\n4. Click on the 'Managed rules' from the left panel\n5. Search for '944240' in Managed rule sets  and Select rule\n6. Click on the 'Enable' to enable rule\n7. Click on 'Save' to save your changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

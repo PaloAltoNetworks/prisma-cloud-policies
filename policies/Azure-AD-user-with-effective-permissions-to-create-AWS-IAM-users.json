@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "385eee00-d051-41c6-9fb9-3e74c6c21be8",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "Azure AD user with effective permissions to create AWS IAM users",
+  "description": "This policy identifies Azure AD users that can create an AWS IAM user. This can possibly lead to a backdoor in the cloud environment. Ensure that Azure AD users have the least privilege access by granting only the permissions required to perform a task, instead of providing excessive permissions",
+  "rule.criteria": "385eee00-d051-41c6-9fb9-3e74c6c21be8",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and source.idp.service = 'Azure Active Directory' and action.name = 'IAM:CreateUser'",
+  "recommendation": "Remediation steps:\n1. Log in to the Azure AD console\n2. Find the role used by the Azure AD user\n3. Log in to the AWS console\n4. Log in to the AWS console\n5. Navigate to the IAM service\n6. Click on Roles\n7. Choose the relevant role\n8. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the action",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
