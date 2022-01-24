@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "aws rds modify-db-instance --db-instance-identifier ${resourceName} --region ${region} --enable-iam-database-authentication",
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable IAM Authentication for the reported AWS RDS instance.",
   "remediation.impact": "Enables IAM Authentication setting for AWS RDS instance",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "AWS Foundational Security Best Practices standard",
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

@@ -14,9 +14,11 @@
 - GCP API key not restricting any specific API
 - GCP API key not rotating in every 90 days
 
-#### 1 new compliance standard
+#### 3 new compliance standard
 
+- AWS Foundational Security Best Practices standard
 - Azure Security Benchmark (V3)
+- New Zealand Information Security Manual (NZISM v3.4)
 
 ### Changed
 

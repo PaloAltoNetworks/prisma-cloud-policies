@@ -11,8 +11,8 @@
   "recommendation": "1. Login to GCP Portal\n2. Goto VPC Network (on Left Panel)\n3. Select the reported VPC network and then click on the alerted subnet \n4. On 'Subnet details' page, click on 'EDIT'\n5. Set 'Flow Logs' to value 'On'\n6. Click on 'SAVE'.",
   "remediable": true,
   "remediation.cliScriptTemplate": "gcloud compute networks subnets update ${resourceName} --project=${account} --region ${region} --enable-flow-logs",
-  "remediation.description": "This CLI command requires 'compute.securityAdmin' permission. Successful execution will enables GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
-  "remediation.impact": "Enables GCP VPC Flow logs for subnets",
+  "remediation.description": "This CLI command requires 'compute.subnetworks.update' permission. Successful execution will enable GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
+  "remediation.impact": "Enable flow logs for VPC subnets",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",

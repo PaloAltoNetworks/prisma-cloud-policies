@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "aws rds modify-db-cluster --db-cluster-identifier ${resourceName} --region ${region} --enable-iam-database-authentication",
   "remediation.description": "This CLI command requires 'rds:ModifyDBCluster' permission. Successful execution will enable IAM Authentication for the reported AWS RDS cluster.",
   "remediation.impact": "Enables IAM Authentication setting for AWS RDS cluster",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "AWS Foundational Security Best Practices standard",
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

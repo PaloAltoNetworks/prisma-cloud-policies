@@ -14,7 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "AWS Foundational Security Best Practices standard",
     "MAS TRM 2021",
-    "MITRE ATT&CK v10.0"
+    "MITRE ATT&CK v10.0",
+    "New Zealand Information Security Manual (NZISM v3.4)"
   ]
 }

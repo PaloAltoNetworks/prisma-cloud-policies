@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASB-815",
+  "policyId": "5fdb1705-c24f-49d0-ac80-ad435ee6d477",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Service bus namespace configured with overly permissive authorization rules",
+  "description": "This policy identifies Azure Service bus namespaces configured with overly permissive authorization rules. Service Bus clients should not use a namespace level access policy that provides access to all queues and topics in a namespace. It is recommended to follow the least privileged security model, should create access policies at the entity level for queues and topics to provide access to only the specific entity. All authorization rules except RootManageSharedAccessKey should be removed from the Service bus namespace.\n\n",
+  "rule.criteria": "3562876e-1b11-43f0-8b4f-8c088fbf3afb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-service-bus-namespace' AND json.rule = authorizationRules[*] size greater than 1 and authorizationRules[?any(name does not equal RootManageSharedAccessKey and properties.rights contains Manage)] exists",
+  "recommendation": "1. Log in to the Azure Portal\n2. Go to Service Bus\n3. Select the reported Service bus namespace\n4. Click on 'Shared access policies' under 'Settings'\n5. Select and remove all authorization rules except RootManageSharedAccessKey.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -14,6 +14,8 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable deletion protection for the reported AWS RDS instance.",
   "remediation.impact": "Enables deletion protection setting for AWS RDS instance",
   "compliance.standard": [
-    "MITRE ATT&CK v10.0"
+    "AWS Foundational Security Best Practices standard",
+    "MITRE ATT&CK v10.0",
+    "New Zealand Information Security Manual (NZISM v3.4)"
   ]
 }

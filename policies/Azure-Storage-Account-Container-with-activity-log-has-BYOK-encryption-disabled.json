@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Azure Security Benchmark (v2)",
+    "Azure Security Benchmark (v3)",
     "CIS v1.1 (Azure)",
     "CIS v1.3.0 (Azure)",
     "CIS v1.3.1 (Azure)",
