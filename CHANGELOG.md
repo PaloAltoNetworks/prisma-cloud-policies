@@ -22,13 +22,14 @@
 
 ### Changed
 
-#### 5 policies updated
+#### 6 policies updated
 
 - AWS SQS queue access policy is overly permissive
 - Azure Key Vault Key has no expiration date (RBAC Key vault)
 - Azure Key Vault secret has no expiration date (RBAC Key vault)
 - GCP Kubernetes Engine Clusters not configured with private cluster
 - GCP VPC Flow logs for the subnet is set to off
+- AWS cross-account resource access through IAM policies (IAM Security)
 
 ### Removed
 
