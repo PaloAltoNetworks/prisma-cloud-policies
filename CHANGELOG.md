@@ -30,6 +30,12 @@
 - GCP Kubernetes Engine Clusters not configured with private cluster
 - GCP VPC Flow logs for the subnet is set to off
 
+### Removed
+
+#### 1 policy deleted from the IAM Security module
+
+- AWS entities with risky permissions
+
 
 ## PCS-22.1.1 - 2022-01-17
 
