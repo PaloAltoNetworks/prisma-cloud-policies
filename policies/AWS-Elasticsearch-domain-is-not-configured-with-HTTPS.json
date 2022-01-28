@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "AWS Foundational Security Best Practices standard",
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

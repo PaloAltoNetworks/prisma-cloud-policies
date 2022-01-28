@@ -1,5 +1,43 @@
 # Changelog
 
+## PCS-22.1.2 - 2022-01-31
+
+### Added
+
+#### 7 new policies
+
+- AWS RDS Cluster snapshot is accessible to public
+- Azure AD MFA is not enabled for the user
+- Azure Key Vault Key has no expiration date (Non-RBAC Key vault)
+- Azure Key Vault secret has no expiration date (Non-RBAC Key vault)
+- Azure Service bus namespace configured with overly permissive authorization rules
+- GCP API key not restricting any specific API
+- GCP API key not rotating in every 90 days
+
+#### 3 new compliance standard
+
+- AWS Foundational Security Best Practices standard
+- Azure Security Benchmark (V3)
+- New Zealand Information Security Manual (NZISM v3.4)
+
+### Changed
+
+#### 6 policies updated
+
+- AWS SQS queue access policy is overly permissive
+- Azure Key Vault Key has no expiration date (RBAC Key vault)
+- Azure Key Vault secret has no expiration date (RBAC Key vault)
+- GCP Kubernetes Engine Clusters not configured with private cluster
+- GCP VPC Flow logs for the subnet is set to off
+- AWS cross-account resource access through IAM policies (IAM Security)
+
+### Removed
+
+#### 1 policy deleted from the IAM Security module
+
+- AWS entities with risky permissions
+
+
 ## PCS-22.1.1 - 2022-01-17
 
 ### Added
