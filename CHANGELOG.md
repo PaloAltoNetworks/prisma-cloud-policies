@@ -14,6 +14,10 @@
 - Azure Storage Account using insecure TLS version
 - GCP VM instance OS login overrides Project metadata OS login configuration
 
+#### 1 new auto-remediation cli
+
+- GCP VM instance OS login overrides Project metadata OS login configuration
+
 ### Changed
 
 #### 4 policies updated
