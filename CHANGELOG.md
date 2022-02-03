@@ -1,5 +1,12 @@
 # Changelog
 
+## PCS-22.2.1 - 2022-02-14
+
+### Added
+
+#### 7 new policies
+
+
 ## PCS-22.1.2 - 2022-01-31
 
 ### Added
