@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-717",
+  "policyId": "952b25ce-add3-4675-9817-535d2e0973d4",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance OS login overrides Project metadata OS login configuration",
+  "description": "This policy identifies GCP VM instances where OS login configuration is disabled and overriding enabled Project OS login configuration. Enabling OS Login ensures that SSH keys used to connect to instances are mapped with IAM users. Revoking access to IAM user will revoke all the SSH keys associated with that particular user. It facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs. \n\nNote: Enabling OS Login on instances disables metadata-based SSH key configurations on those instances. Disabling OS Login restores SSH keys that you have configured in a project or instance metadata.\n\nReference: https://cloud.google.com/compute/docs/instances/managing-instance-access",
+  "rule.criteria": "cd88ba6d-7e25-4865-871f-d77b4ab93855",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-project-info' AND json.rule = commonInstanceMetadata.items[?any(key contains \"enable-oslogin\" and (value contains \"Yes\" or value contains \"Y\" or value contains \"True\" or value contains \"true\" or value contains \"TRUE\" or value contains \"1\"))] exists as X; config from cloud.resource where api.name = 'gcloud-compute-instances-list' AND json.rule = (metadata.items[?any(key exists and key contains \"enable-oslogin\" and (value contains \"False\" or value contains \"N\" or value contains \"No\" or value contains \"false\" or value contains \"FALSE\" or value contains \"0\"))] exists and name does not start with \"gke-\" and status equals RUNNING) as Y;filter'$.Y.zone contains $.X.name';show Y;",
+  "recommendation": "1. Login to GCP Portal\n2. Go to Computer Engine (Left Panel)\n3. Go to the VM instances\n4. Select the alerted VM instance\n5. Click on the 'EDIT' button\n6. Go to 'Custom metadata'\n7. Remove the metadata entry where the key is 'enable-oslogin' and the value is 'FALSE' or 'false' or 0.(For more information on adding boolean values, refer: https://cloud.google.com/compute/docs/metadata/setting-custom-metadata#boolean)\n8. Click on 'Save' to apply the changes",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gcloud compute instances add-metadata ${resourceName} --project=${account} --zone ${gcpZoneId} --metadata enable-oslogin=TRUE",
+  "remediation.description": "This CLI command requires 'compute.instances.setMetadata' permission. Successful execution will enable OSLogin which facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs.",
+  "remediation.impact": "Enables VM instance OSlogin configuration by updating custom metadata of a VM instance",
+  "compliance.standard": ""
+}

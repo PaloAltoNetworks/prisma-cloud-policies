@@ -3,7 +3,7 @@
   "policyId": "617b9138-584b-4e8e-ad15-7fbabafbed1a",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "low",
   "name": "AWS Security Group allows all traffic on SSH port (22)",
   "description": "This policy identifies Security groups that allow all traffic on SSH port 22. Doing so, may allow a bad actor to brute force their way into the system and potentially get access to the entire network. Review your list of security group rules to ensure that your resources are not exposed. As a best practice, restrict SSH solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "62c42bbc-1764-408f-814c-68d2b392af1f",

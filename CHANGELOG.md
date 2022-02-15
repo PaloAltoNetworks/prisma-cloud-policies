@@ -1,5 +1,100 @@
 # Changelog
 
+## PCS-22.2.1 - 2022-02-14
+
+### Added
+
+#### 7 new policies
+
+- AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) other than HTTP/HTTPS port
+- AWS EC2 instance with unrestricted outbound access to internet
+- AWS RDS managed ENI reachable from any untrust internet source
+- AWS Redshift managed ENI reachable from any untrust internet source
+- Azure MySQL Database Server using insecure TLS version
+- Azure Storage Account using insecure TLS version
+- GCP VM instance OS login overrides Project metadata OS login configuration
+
+#### 1 new auto-remediation cli
+
+- GCP VM instance OS login overrides Project metadata OS login configuration
+
+### Changed
+
+#### 4 policies updated
+
+- AWS Default Security Group does not restrict all traffic
+- AWS EC2 instance with unrestricted outbound access to internet
+- AWS Security Group allows all traffic on RDP port (3389)
+- AWS Security Group allows all traffic on SSH port (22)
+
+### Removed
+
+#### 62 policies deleted
+
+- AWS Certificate Manager (ACM) has unused certificates
+- AWS CloudFormation stack configured without SNS topic
+- AWS CloudFront Distributions with Field-Level Encryption not enabled
+- AWS CloudWatch Log groups encrypted using default encryption key instead of KMS CMK
+- AWS CloudWatch Log groups not configured with definite retention days
+- AWS EBS Volume is unattached
+- AWS EBS snapshot is not encrypted
+- AWS EC2 instance associated with a public IP subnet
+- AWS EC2 instance detailed monitoring disabled
+- AWS EC2 instances with Public IP and associated with Security Groups have Internet Access
+- AWS ECS fargate task definition logging is disabled
+- AWS ECS/Fargate task definition execution IAM Role not found
+- AWS Elastic Load Balancer (Classic) with connection draining disabled
+- AWS Elastic Load Balancer v2 (ELBv2) with deletion protection feature disabled
+- AWS KMS Customer Managed Key not in use
+- AWS Lambda Environment Variables not encrypted at-rest using CMK
+- AWS Lambda Function is not assigned to access within VPC
+- AWS Lambda functions with tracing not enabled
+- AWS Network ACLs allow ingress traffic to server administration ports
+- AWS Network ACLs with Inbound rule to allow All ICMP IPv4
+- AWS Network ACLs with Inbound rule to allow All ICMP IPv6
+- AWS Network ACLs with Inbound rule to allow All Traffic
+- AWS Network ACLs with Outbound rule to allow All ICMP IPv4
+- AWS Network ACLs with Outbound rule to allow All ICMP IPv6
+- AWS Network ACLs with Outbound rule to allow All Traffic
+- AWS RDS DB snapshot is encrypted using default KMS key instead of CMK
+- AWS Redshift clusters should not be publicly accessible
+- AWS SNS topic encrypted using default KMS key instead of CMK
+- AWS SNS topic not configured with secure data transport policy
+- AWS SNS topic with server-side encryption disabled
+- AWS SQS server side encryption not enabled
+- AWS Security Group Inbound rule overly permissive to all traffic on all protocols (-1)
+- AWS Security Group allows all traffic on CIFS port (445)
+- AWS Security Group allows all traffic on DNS port (53)
+- AWS Security Group allows all traffic on FTP port (21)
+- AWS Security Group allows all traffic on FTP-Data port (20)
+- AWS Security Group allows all traffic on ICMP (Ping) protocol
+- AWS Security Group allows all traffic on MSQL port (4333)
+- AWS Security Group allows all traffic on MYSQL port (3306)
+- AWS Security Group allows all traffic on NetBIOS port (137)
+- AWS Security Group allows all traffic on NetBIOS port (138)
+- AWS Security Group allows all traffic on PostgreSQL port (5432)
+- AWS Security Group allows all traffic on SMTP port (25)
+- AWS Security Group allows all traffic on SQL Server port (1433)
+- AWS Security Group allows all traffic on SQL Server port (1434)
+- AWS Security Group allows all traffic on Telnet port (23)
+- AWS Security Group allows all traffic on VNC Listener port (5500)
+- AWS Security Group allows all traffic on VNC Server port (5900)
+- AWS Security Group allows all traffic on Windows RPC port (135)
+- AWS Security Group allows all traffic on ports which are not commonly used
+- AWS Security Group overly permissive to all traffic
+- [Beta] AWS EC2 instance reachable from untrust internet source on SSH/RDP port (TCP)
+- Azure Virtual Machine Boot Diagnostics Disabled
+- Azure Virtual Machine is not assigned to an availability set
+- GCP Firewall rule logging disabled
+- GCP GCE Disk snapshot not encrypted with CSEK
+- GCP Pub/Sub topic is not encrypted using a customer-managed encryption key
+- GCP Storage bucket encrypted using default KMS key instead of a customer-managed key
+- GCP VM instances without metadata, zone or label information
+- GCP compute engine image not encrypted using customer-managed key
+- GCP sink not configured to export all log entries
+- GCP storage bucket is not configured with default Event-Based Hold
+
+
 ## PCS-22.1.2 - 2022-01-31
 
 ### Added

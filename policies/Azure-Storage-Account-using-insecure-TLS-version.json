@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-STO-746",
+  "policyId": "91389569-c060-44e0-9aef-f13dba594f3c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage Account using insecure TLS version",
+  "description": "This policy identifies Azure Storage Account which is using insecure TLS version. Azure Storage Account uses Transport Layer Security (TLS) from communication with client applications. As a best security practice, use newer TLS version as the minimum TLS version for Azure Storage Account. Currently, Azure Storage Account supports TLS 1.2 version which resolves the security gap from its preceding versions.\n\nhttps://docs.microsoft.com/en-us/azure/storage/common/transport-layer-security-configure-minimum-version?tabs=portal",
+  "rule.criteria": "57f1320f-33c3-461b-8e32-7fa873ae1d8e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.supportsHttpsTrafficOnly is true and properties.minimumTlsVersion does not equal TLS1_2",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Storage accounts dashboard and Click on the reported storage account\n3. Under the 'Settings' menu, click on 'Configuration'\n4. Under 'Minimum TLS version' select 'Version 1.2' from the drop down\n5. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.4.0 (Azure)"
+  ]
+}
