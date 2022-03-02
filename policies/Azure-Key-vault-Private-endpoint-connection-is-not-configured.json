@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-KV-809",
+  "policyId": "a03ae1cb-c130-46cb-97ae-02cceab10b07",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Key vault Private endpoint connection is not configured",
+  "description": "This policy identifies Key vaults that are not configured with a private endpoint connection. Azure Key vault private endpoints can be configured using Azure Private Link. Private Link allows users to access an Azure Key vault from within the virtual network or from any peered virtual network. When Private Link is combined with restricted NSG policies, it helps reduce the risk of data exfiltration. It is recommended to configure a Private endpoint connection to Key vaults.\n\nFor more details: \nhttps://docs.microsoft.com/en-us/azure/key-vault/general/private-link-service ",
+  "rule.criteria": "399924f6-d0a7-4ab2-8dc4-d4b557cd01e2",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' AND json.rule = properties.provisioningState equals Succeeded and properties.privateEndpointConnections[*] does not exist",
+  "recommendation": "Refer following URL for configuring Private endpoints on your Key vaults:\nhttps://docs.microsoft.com/en-us/azure/key-vault/general/private-link-service\n\nNOTE: The Key vault associated with private endpoints should not be allowing access from all networks in Firewalls and virtual networks section, make sure the Selected networks are configured with restrictive Virtual networks access. Otherwise the security provided by private endpoints will not be satisfied.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
