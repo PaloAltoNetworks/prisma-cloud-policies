@@ -1,5 +1,30 @@
 # Changelog
 
+## PCS-22.3.1 - 2022-03-14
+
+### Added
+
+#### 3 new policies
+
+- Azure Key vault Private endpoint connection is not configured
+- Azure MariaDB database server not using latest TLS version
+- Azure MariaDB database server with SSL connection disabled
+
+### Changed
+
+#### 4 policies updated
+
+- AWS IAM policy allows full administrative privileges
+- AWS RDS Event subscription All event categories and All instances disabled for DB instance
+- AWS SNS topic with cross-account access
+- GCP Cloud Function HTTP trigger is not secured
+
+#### 2 compliance standard updated
+
+- CIS v1.3.0 (AWS)
+- CIS v1.4.0 (AWS)
+
+
 ## PCS-22.2.1 - 2022-02-14
 
 ### Added

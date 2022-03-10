@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AMD-846",
+  "policyId": "57d0cd4e-e3ce-4ef2-83ec-97f6b5ac24b3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure MariaDB database server with SSL connection disabled",
+  "description": "This policy identifies MariaDB database servers for which SSL enforce status is disabled. Azure Database for MariaDB supports connecting your Azure Database for MariaDB server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between your database server and your client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and your application. It is recommended to enforce SSL for accessing your database server.",
+  "rule.criteria": "221dd55b-2020-4d55-a8d2-b51a74efaa56",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-database-maria-db-server' AND json.rule = properties.userVisibleState equals Ready and properties.sslEnforcement equals Disabled",
+  "recommendation": "To configure SSL connection on an existing Azure Database for MariaDB, follow the below URL:\nhttps://docs.microsoft.com/en-us/azure/mariadb/howto-configure-ssl",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
