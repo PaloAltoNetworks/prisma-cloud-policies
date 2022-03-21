@@ -3,7 +3,7 @@
   "policyId": "4d2615bb-091e-48fd-87b7-77a277d7d2fd",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "SQL servers which do not have Azure Active Directory admin configured",
   "description": "Checks to ensure that SQL servers are configured with Active Directory admin authentication. Azure Active Directory authentication is a mechanism of connecting to Microsoft Azure SQL Database and SQL Data Warehouse by using identities in Azure Active Directory (Azure AD). With Azure AD authentication, you can centrally manage the identities of database users and other Microsoft services in one central location.",
   "rule.criteria": "186ce6b6-15d4-409c-b864-7c62922ef198",
@@ -16,6 +16,7 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Azure Security Benchmark (v2)",
+    "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.1 (Azure)",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASC-845",
+  "policyId": "424a5e77-8997-47d9-b0e0-daaca8b81b01",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Spring Cloud app end-to-end TLS is disabled",
+  "description": "This policy identifies Azure Spring Cloud apps in which end-to-end TLS is disabled. Enabling end-to-end TLS/SSL will secure traffic from ingress controller to apps. After you enable end-to-end TLS and load a cert from the key vault, all communications within Azure Spring Cloud are secured with TLS. As a security best practice, it is recommended to have an end-to-end TLS to secure Spring Cloud apps traffic.",
+  "rule.criteria": "234cc340-0354-499a-b17b-987a3d9fbeb6",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-spring-cloud-service' AND json.rule = properties.powerState equals Running and sku.tier does not equal Basic as X; config from cloud.resource where api.name = 'azure-spring-cloud-app' AND json.rule = properties.provisioningState equals Succeeded and properties.enableEndToEndTLS is false as Y; filter '$.X.name equals $.Y.serviceName'; show Y;",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Azure Spring Cloud dashboard\n3. Choose Azure Spring Cloud service for which Azure Spring Cloud app is reported\n4. Under the 'Settings', click on 'Apps'\n5. Click on reported Azure Spring Cloud app\n6. Under the 'Settings', click on 'Ingress-to-app TLS'\n7. Set 'Yes' to 'Ingress-to-app TLS'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

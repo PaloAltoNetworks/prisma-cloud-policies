@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-API-841",
+  "policyId": "5643cf87-d483-4102-a70e-f57a21a1ccbe",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP API key not restricted to use by specified Hosts and Apps",
+  "description": "This policy identifies GCP API key not restricted to use by specified Hosts and Apps. Unrestricted keys are insecure because they can be viewed publicly, such as from within a browser, or they can be accessed on a device where the key resides. It is recommended to restrict API key usage to trusted hosts, HTTP referrers and apps.",
+  "rule.criteria": "27bc4454-b07c-40be-8609-b696c349d0c8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-api-key' AND json.rule = (restrictions.browserKeyRestrictions does not exist and restrictions.serverKeyRestrictions does not exist and restrictions.androidKeyRestrictions does not exist and restrictions.iosKeyRestrictions does not exist) or (restrictions.browserKeyRestrictions exists and (restrictions.browserKeyRestrictions[?any(allowedReferrers[*] equals \"*\")] exists or restrictions.browserKeyRestrictions[?any(allowedReferrers[*] equals \"*.[TLD]\")] exists or restrictions.browserKeyRestrictions[?any(allowedReferrers[*] equals \"*.[TLD]/*\")] exists)) or (restrictions.serverKeyRestrictions exists and (restrictions.serverKeyRestrictions[?any(allowedIps[*] equals 0.0.0.0)] exists or restrictions.serverKeyRestrictions[?any(allowedIps[*] equals 0.0.0.0/0)] exists or restrictions.serverKeyRestrictions[?any(allowedIps[*] equals ::/0)] exists  or restrictions.serverKeyRestrictions[?any(allowedIps[*] equals ::0)] exists))",
+  "recommendation": "1. Log in to google cloud console\n2. Navigate to 'Credentials', Under service 'APIs & Services' (Left Panel)\n3. In the section 'API Keys', Click on the reported 'API Key Name'\n4. In the 'Key restrictions' section, set the application restrictions to any of HTTP referrers, IP Adresses, Android Apps, iOS Apps.\n5. Click 'SAVE'.\nNote: Do not set 'HTTP referrers' to wild-cards (* or *.[TLD] or *.[TLD]/*). \nDo not set 'IP addresses' restriction to any overly permissive IP (0.0.0.0 or 0.0.0.0/0 or ::0 or ::/0)",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

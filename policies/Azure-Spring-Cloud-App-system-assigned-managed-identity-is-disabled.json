@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASC-844",
+  "policyId": "0434af54-58d5-4932-9810-c72b4d37e788",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Spring Cloud App system-assigned managed identity is disabled",
+  "description": "This policy identifies Azure Spring Cloud apps in which system-assigned managed identity is disabled. System-assigned managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the system-assigned managed identity to your Spring Cloud apps.",
+  "rule.criteria": "c0bbd8c0-f785-4774-b8f6-2a910422aa42",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-spring-cloud-service' AND json.rule = properties.powerState equals Running as X; config from cloud.resource where api.name = 'azure-spring-cloud-app' AND json.rule = properties.provisioningState equals Succeeded and identity does not exist as Y; filter '$.X.name equals $.Y.serviceName'; show Y;",
+  "recommendation": "To enable system-assigned managed identity on an existing Azure Spring Cloud app, follow the below URL:\nhttps://docs.microsoft.com/en-in/azure/spring-cloud/how-to-enable-system-assigned-managed-identity",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

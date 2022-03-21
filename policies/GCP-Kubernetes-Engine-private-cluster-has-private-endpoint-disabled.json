@@ -3,7 +3,7 @@
   "policyId": "1478c66d-2911-4a19-80fb-ddc36ab2a270",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "medium",
   "name": "GCP Kubernetes Engine private cluster has private endpoint disabled",
   "description": "This policy identifies GCP Kubernetes Engine private clusters with private endpoint disabled. A public endpoint might expose the current cluster and Kubernetes API version and an attacker may be able to determine whether it is vulnerable to an attack. Unless required, disabling the public endpoint will help prevent such threats, and require the attacker to be on the master's VPC network to perform any attack on the Kubernetes API. It is recommended to enable the private endpoint and disable public access on Kubernetes clusters.",
   "rule.criteria": "f698d4a8-6ee8-40b4-9cf1-211901b00ca3",
