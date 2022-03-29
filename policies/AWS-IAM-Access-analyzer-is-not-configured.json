@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AWS-ACA-858",
+  "policyId": "e50fe75a-d320-483a-88b9-240caf584236",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS IAM Access analyzer is not configured",
+  "description": "This policy identifies AWS regions in which the IAM Access analyzer is not configured. AWS IAM Access Analyzer helps you identify the resources in your organization and accounts, such as Amazon S3 buckets or IAM roles, that are shared with an external entity and identify unintended access to your resources and data. So it is recommended to configure the Access analyzer in all regions in your account.\n\nNOTE: Access Analyzer analyzes only policies that are applied to resources in the same AWS Region that it's enabled in. To monitor all resources in your AWS environment, you must create an analyzer to enable Access Analyzer in each Region where you're using supported AWS resources.\n\nFor more details:\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html",
+  "rule.criteria": "924a260d-8f64-4b65-bbae-c3cec8c948ba",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-access-analyzer' AND json.rule = status equals ACTIVE as X; config from cloud.resource where api.name = 'aws-region' AND json.rule = optInStatus does not equal not-opted-in as Y; filter '$.X.arn contains $.Y.regionName'; show X; count(X) less than 1",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the IAM dashboard \n4. Go to 'Access analyzer', from the left panel\n5. Click on the 'Create analyzer' button\n6. On the Create analyzer page, enter the parameters as per your requirements.\n7. Click on the 'Create analyzer'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.3.0 (AWS)",
+    "CIS v1.4.0 (AWS)"
+  ]
+}

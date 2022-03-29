@@ -1,5 +1,30 @@
 # Changelog
 
+## PCS-22.3.2 - 2022-03-28
+
+### Added
+
+#### 4 new policies
+
+- AWS IAM Access analyzer is not configured
+- Azure Spring Cloud App system-assigned managed identity is disabled
+- Azure Spring Cloud app end-to-end TLS is disabled
+- GCP API key not restricted to use by specified Hosts and Apps
+
+### Changed
+
+#### 3 policies updated
+
+- AWS RDS instance with copy tags to snapshots disabled 
+- Azure App Service Web app doesn't have a Managed Service Identity
+- Azure Network Watcher Network Security Group (NSG) flow logs are disabled
+
+#### 2 compliance standard updated
+
+- CIS v1.3.0 (AWS)
+- CIS v1.4.0 (AWS)
+
+
 ## PCS-22.3.1 - 2022-03-14
 
 ### Added

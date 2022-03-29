@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "AWS Foundational Security Best Practices standard",
     "AWS Well-Architected Framework",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
