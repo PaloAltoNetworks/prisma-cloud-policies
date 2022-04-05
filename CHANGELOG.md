@@ -1,5 +1,32 @@
 # Changelog
 
+## PCS-22.3.2 - 2022-04-11
+
+### Added
+
+#### 3 new policies
+
+- Azure Microsoft Defender for Cloud set to Off for Containers
+- GCP Firewall rule exposes GKE clusters by allowing all traffic on read-only port (10255)
+- Instance affected by SpringShell vulnerability is exposed to network traffic from the internet
+
+### Changed
+
+#### 4 policies updated
+
+- Azure Security Center Defender plans is set to Off
+- GCP BigQuery dataset is publicly accessible
+- GCP GCR Container Vulnerability Scanning is disabled
+- GCP VM instance with the external IP address
+
+### Removed
+
+#### 2 policies deleted
+
+- Azure Microsoft Defender for Cloud is set to Off for Container Registries
+- Azure Microsoft Defender for Cloud is set to Off for Kubernetes
+
+
 ## PCS-22.3.2 - 2022-03-28
 
 ### Added
