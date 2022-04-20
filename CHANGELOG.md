@@ -1,5 +1,27 @@
 # Changelog
 
+## PCS-22.4.2 - 2022-04-25
+
+### Added
+
+#### 3 new policies
+
+- Azure Service bus namespace configured with overly permissive network access
+- GCP VPC network not configured with DNS policy with logging enabled
+- Instance affected by OMIGOD vulnerability is exposed to network traffic from the internet
+
+#### 1 new auto-remediation cli
+
+- GCP Kubernetes Engine Clusters have Master authorized networks disabled
+
+### Changed
+
+#### 2 policies updated
+
+- AWS API gateway request parameter is not validated
+- GCP Kubernetes Engine Clusters have Master authorized networks disabled
+
+
 ## PCS-22.4.1 - 2022-04-11
 
 ### Added
@@ -9,6 +31,10 @@
 - Azure Microsoft Defender for Cloud set to Off for Containers
 - GCP Firewall rule exposes GKE clusters by allowing all traffic on read-only port (10255)
 - Instance affected by SpringShell vulnerability is exposed to network traffic from the internet
+
+#### 1 new auto-remediation cli
+
+- GCP Firewall rule exposes GKE clusters by allowing all traffic on read-only port (10255)
 
 ### Changed
 

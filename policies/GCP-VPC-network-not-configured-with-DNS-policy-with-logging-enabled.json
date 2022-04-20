@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-GCP-VPC-854",
+  "policyId": "8348b287-44a3-4b52-9db2-2194392a28ba",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VPC network not configured with DNS policy with logging enabled",
+  "description": "This policy identifies the GCP VPC networks which are not configured with DNS policy with logging enabled. Monitoring of Cloud DNS logs provides visibility to DNS names requested by the clients within the VPC. These logs can be monitored for anomalous domain names and evaluated against threat intelligence. It is recommended to enable DNS logging for all the VPC networks.\nNote: For full capture of DNS, firewall must block egress UDP/53 (DNS) and TCP/443 (DNSover HTTPS) to prevent client from using external DNS name server for resolution.",
+  "rule.criteria": "ce3803de-a27d-404c-b086-ba85518fee89",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-list' as X; config from cloud.resource where api.name = 'gcloud-dns-policy' as Y; filter 'not($.Y.networks[*].networkUrl contains $.X.name and $.Y.enableLogging is true)'; show X;",
+  "recommendation": "To add DNS server policy with logging to a VPC network,\n\n1. Login to GCP console\n2. Navigate to service 'VPC network'(Left Panel)\n3. Click on the alerting VPC network\n4. Click on 'EDIT'\n5. Under 'DNS server policy' dropdown, select an available service policy or 'create a new server policy' as required\nLink: https://cloud.google.com/dns/docs/policies#creating \n6. Click on 'SAVE'\nTo enable logging to a DNS policy that is attached to a VPC follow the below reference,\n\n1. Login to GCP console\n2. Navigate to service 'VPC network'(Left Panel)\n3. Click on the alerting VPC network\n4. Click on the attached 'DNS server policy'\n5. Click on 'EDIT POLICY'\n6. Under section 'Logs' select 'On'\n7. Click on 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.2.0 (GCP)"
+  ]
+}
