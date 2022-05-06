@@ -1,5 +1,50 @@
 # Changelog
 
+## PCS-22.5.1 - 2022-05-10
+
+### Added
+
+#### 7 new policies
+
+- AWS Aurora PostgreSQL exposed to local file read vulnerability
+- AWS IAM policy overly permissive to Lambda service
+- AWS Lambda IAM policy overly permissive to all traffic
+- AWS Lambda function communicating with ports known to mine Monero
+- AWS RDS PostgreSQL exposed to local file read vulnerability
+- Azure Recovery Services vault is not configured with managed identity
+- GCP Firewall rule exposes GKE clusters by allowing all traffic on port 10250
+
+#### 1 new auto-remediation cli
+
+- GCP Firewall rule exposes GKE clusters by allowing all traffic on port 10250
+
+### Changed
+
+#### 10 policies updated
+
+
+- AWS EMR cluster is not enabled with local disk encryption using Custom key provider
+- AWS Network Load Balancer (NLB) is not using the latest predefined security policy
+- Azure SQL Databases with disabled Email service and co-administrators for Threat Detection
+- Azure SQL Server ADS Vulnerability Assessment 'Also send email notifications to admins and subscription owners' is disabled
+- Azure SQL Server ADS Vulnerability Assessment 'Send scan reports to' is not configured
+- Azure SQL Server ADS Vulnerability Assessment Periodic recurring scans is disabled
+- Azure SQL Server ADS Vulnerability Assessment is disabled
+- Azure SQL databases Defender setting is set to Off
+- Azure SQL server Defender setting is set to Off
+- GCP User managed service accounts have user managed service account keys
+
+### Removed
+
+#### 5 policies deleted
+
+- Azure SQL Database with Threat Retention less than or equals to 90 days
+- Azure SQL Server threat detection alerts not enabled for all threat types
+- Azure SQL Server threat logs retention is less than 91 days
+- Send alerts on field value on SQL Databases is misconfigured
+- Threat Detection types on SQL databases is misconfigured
+
+
 ## PCS-22.4.2 - 2022-04-25
 
 ### Added
