@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ARS-871",
+  "policyId": "aa72a7b0-65f3-4e15-8b62-fb3b6886f67a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Recovery Services vault is not configured with managed identity",
+  "description": "This policy identifies Recovery Services vaults that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Recovery Services vault.",
+  "rule.criteria": "c48b08f5-9e1d-4af4-abad-6255aa7d0b56",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-recovery-service-vault' AND json.rule = properties.provisioningState equals Succeeded and (identity does not exist or identity.type equal ignore case \"None\")",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Recovery Services vaults dashboard\n3. Click on the reported Recovery Services vault\n4. Under Setting section, Click on 'Identity'\n5. Configure either 'System assigned' or 'User assigned' managed identity based on your requirement.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

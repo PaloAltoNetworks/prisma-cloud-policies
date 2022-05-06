@@ -8,7 +8,7 @@
   "description": "This policy identifies Azure SQL server which have Defender setting set to Off. Azure Defender for SQL provides a new layer of security, which enables customers to detect and respond to potential threats as they occur by providing security alerts on anomalous activities. Users will receive an alert upon suspicious database activities, potential vulnerabilities, SQL injection attacks, as well as anomalous database access patterns. Advanced threat protection alerts provide details of suspicious activity and recommend action on how to investigate and mitigate the threat.",
   "rule.criteria": "d7d19f58-2868-47a1-9ed6-63bf8074770d",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule =  \"$.serverSecurityAlertPolicy.properties.retentionDays does not exist or $.serverSecurityAlertPolicy.properties.state equals Disabled\"",
-  "recommendation": "1. Log in to the Azure Portal.\n2. Go to the reported SQL server\n3. Select 'SQL servers', Click on the SQL server instance you wanted to modify\n4. Click on 'Security Center' under 'Security'\n5. Click on 'Enable Azure Defender for SQL'",
+  "recommendation": "1. Log in to the Azure Portal\n2. Go to the reported SQL server\n3. Select 'SQL servers', Click on the SQL server instance you wanted to modify\n4. Click on 'Microsoft Defender for Cloud' under 'Security'\n5. Click on 'Enable Microsoft Defender for SQL'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",

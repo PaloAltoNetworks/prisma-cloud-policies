@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-VPC-869",
+  "policyId": "0e7ccc72-94cf-4bd4-b736-0fc95c74cbf2",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Firewall rule exposes GKE clusters by allowing all traffic on port 10250",
+  "description": "This policy identifies GCP Firewall rule allowing all traffic on port 10250 which allows GKE full node access. The port 10250 on the kubelet is used by the kube-apiserver (running on hosts labelled as Orchestration Plane) for exec and logs. As per security best practice, port 10250 should not be exposed to the public.",
+  "rule.criteria": "c88e6b00-3e5f-4073-a091-e9be8747cf20",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-firewall-rules-list' AND json.rule = disabled is false and direction equals INGRESS and (sourceRanges[*] equals ::0 or sourceRanges[*] equals 0.0.0.0 or sourceRanges[*] equals 0.0.0.0/0 or sourceRanges[*] equals ::/0 or sourceRanges[*] equals ::) and allowed[?any(ports contains _Port.inRange(10250,10250) or (ports does not exist and (IPProtocol contains tcp or IPProtocol contains udp or IPProtocol contains \"all\")))] exists as X; config from cloud.resource where api.name = 'gcloud-container-describe-clusters' AND json.rule = status equals RUNNING as Y; filter '$.X.network contains $.Y.networkConfig.network' ; show X;",
+  "recommendation": "As port 10250 exposes sensitive information of GKE pod configuration it is recommended to disable this firewall rule. \nOtherwise, remove the overly permissive source IPs following the below steps,\n\n1. Login to GCP Console\n2. Navigate to 'VPC Network'(Left Panel)\n3. Go to the 'Firewall' section (Left Panel)\n4. Click on the reported Firewall rule\n5. Click on 'EDIT'\n6. Modify Source IP ranges to specific IP\n7. Click on 'SAVE'.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "gcloud compute --project=${account} firewall-rules update ${resourceName} --disabled",
+  "remediation.description": "This CLI command requires 'compute.firewalls.update' and 'compute.networks.updatePolicy' permission. Successful execution will disable this firewall rule blocking internet traffic to port 10250.",
+  "remediation.impact": "disable GCP Firewall rule that allows all traffic on port 10250",
+  "compliance.standard": ""
+}
