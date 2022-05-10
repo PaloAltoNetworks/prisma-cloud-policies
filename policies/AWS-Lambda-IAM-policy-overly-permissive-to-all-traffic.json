@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-880",
+  "policyId": "d467be7c-cbc4-4e99-8f4a-9df384da2443",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda IAM policy overly permissive to all traffic",
+  "description": "This policy identifies AWS Lambda IAM policies that are overly permissive to all traffic. It is recommended that the Lambda should be granted access restrictions so that only authorized users and applications have access to the service.\n\nFor more details:\nhttps://docs.aws.amazon.com/lambda/latest/dg/security-iam.html",
+  "rule.criteria": "f5c60654-2645-4de9-9a36-6e6d0eb540dd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-get-policy-version' AND json.rule = isAttached is true and document.Statement[?any((Condition.ForAnyValue:IpAddress.aws:SourceIp contains 0.0.0.0/0 or Condition.IpAddress.aws:SourceIp contains 0.0.0.0/0 or Condition.IpAddress.aws:SourceIp contains ::/0 or Condition.ForAnyValue:IpAddress.aws:SourceIp contains ::/0) and Effect equals Allow and Action anyStartWith lambda:)] exists",
+  "recommendation": "1. Login to AWS console\n2. Goto IAM Services\n3. Click on 'Policies' in left hand panel\n4. Search for the Policy for which the Alert is generated and click on it\n5. Under Permissions tab, click on Edit policy\n6. Under the Visual editor, for each of the 'lambda' Service, click to expand and perform following.\n6.a. Click to expand 'Request conditions'\n6.b. Under the 'Source IP', remove the row with the entry '0.0.0.0/0' or '::/0'. Add condition with restrictive IP ranges.\n7. Click on Review policy and Save changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

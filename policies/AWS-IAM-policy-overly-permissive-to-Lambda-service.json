@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-879",
+  "policyId": "c4f6ac9d-03d5-4bf2-b4ea-bc5c24057628",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS IAM policy overly permissive to Lambda service",
+  "description": "This policy identifies the IAM policies that are overly permissive to Lambda service. AWS provides serverless computational functionality through their Lambda service. Serverless functions allow organizations to run code for applications or backend services without provisioning virtual machines or management servers. It is recommended to follow the principle of least privileges, ensuring that only restricted Lambda services for restricted resources.",
+  "rule.criteria": "a5e1c25d-001f-4489-993b-68d63d71754c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-policy-version' AND json.rule = isAttached is true and document.Statement[?any(Effect equals Allow and (Action equals lambda:* or Action[*] equals lambda:*) and (Resource equals * or Resource[*] equals *) and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'IAM' service\n3. Click on the 'Policies' in left hand panel and Click on the reported IAM policy\n4. Under Permissions tab, Change the element of the policy document to be more restrictive so that it only allows restricted Lambda permissions on selected resources instead of wildcards (Lambda:* and Resource:*) OR Put condition statement with least privilege access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
