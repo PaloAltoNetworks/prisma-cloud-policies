@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASC-837",
+  "policyId": "fd46d0ca-5258-48c6-a5a3-758df622f830",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Spring Cloud service is not configured with virtual network",
+  "description": "This policy identifies Azure Spring Cloud services that are not configured with a virtual network. Spring Cloud configured with a virtual network isolates apps and service runtime from the internet on your corporate network and provides control over inbound and outbound network communications for Azure Spring Cloud. As best security practice, It is recommended to deploy Spring Cloud service in a virtual network.",
+  "rule.criteria": "05128e74-61e1-4e3c-a4e9-83d840efddb1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-spring-cloud-service' AND json.rule = properties.powerState equals Running and sku.tier does not equal Basic and properties.networkProfile.serviceRuntimeSubnetId does not exist",
+  "recommendation": "You can select your Azure virtual network only when you create a new Azure Spring Cloud service instance. You cannot change to use another virtual network after Azure Spring Cloud has been created. \nTo resolve this alert create a new Spring Cloud service configuring virtual network, migrate all data to newly created Spring Cloud service and then delete the reported Spring Cloud service.\n\nTo create a new Spring Cloud service with virtual network, follow the below URL:\nhttps://docs.microsoft.com/en-us/azure/spring-cloud/how-to-deploy-in-azure-virtual-network?tabs=azure-portal \n\nNOTE: Azure Virtual network feature is not available to Basic tier Spring Cloud services.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

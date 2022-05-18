@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-873",
+  "policyId": "6abcb8b7-f34a-4d8d-8228-486f9e284cda",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS IAM Policy permission may cause privilege escalation",
+  "description": "This policy identifies AWS IAM Policy which have permission that may cause privilege escalation. AWS IAM policy having weak permissions could be exploited by an attacker to elevate privileges. It is recommended to follow the principle of least privileges ensuring that AWS IAM policy does not have these sensitive permissions.",
+  "rule.criteria": "3d208afd-8254-4649-861b-34e563fbcb7f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-iam-get-policy-version' AND json.rule = isAttached is true and document.Statement[?any(Effect equals Allow and (Action contains iam:CreatePolicyVersion or Action contains iam:SetDefaultPolicyVersion or Action contains iam:PassRole or Action contains iam:CreateAccessKey or Action contains iam:CreateLoginProfile or Action contains iam:UpdateLoginProfile or Action contains iam:AttachUserPolicy or Action contains iam:AttachGroupPolicy or Action contains iam:AttachRolePolicy or Action contains iam:PutUserPolicy or Action contains iam:PutGroupPolicy or Action contains iam:PutRolePolicy or Action contains iam:AddUserToGroup or Action contains iam:UpdateAssumeRolePolicy or Action contains iam:*))] exists",
+  "recommendation": "Refer to the following URL to remove below listed weak permissions from reported AWS IAM Policies,\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html#remove-policies-console\n\nBelow are the permission which can lead to privilege escalation,\niam:CreatePolicyVersion\niam:SetDefaultPolicyVersion\niam:PassRole\niam:CreateAccessKey\niam:CreateLoginProfile\niam:UpdateLoginProfile\niam:AttachUserPolicy\niam:AttachGroupPolicy\niam:AttachRolePolicy\niam:PutUserPolicy\niam:PutGroupPolicy\niam:PutRolePolicy\niam:AddUserToGroup\niam:UpdateAssumeRolePolicy\niam:*",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
