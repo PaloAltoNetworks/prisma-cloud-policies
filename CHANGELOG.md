@@ -1,5 +1,28 @@
 # Changelog
 
+## PCS-22.5.2 - 2022-05-24
+
+### Added
+
+#### 3 new policies
+
+- AWS IAM Policy permission may cause privilege escalation
+- Azure Spring Cloud service is not configured with virtual network
+- Azure Virtual Desktop session host is not configured with managed identity
+
+#### 2 new auto-remediation cli's
+
+- GCP Firewall rule allows all traffic on HTTP port (80)
+- GCP Firewall rule allows all traffic on Telnet port (23)
+
+### Changed
+
+#### 2 policies updated
+
+- GCP Firewall rule allows all traffic on HTTP port (80)
+- GCP Firewall rule allows all traffic on Telnet port (23)
+
+
 ## PCS-22.5.1 - 2022-05-10
 
 ### Added
@@ -21,7 +44,6 @@
 ### Changed
 
 #### 10 policies updated
-
 
 - AWS EMR cluster is not enabled with local disk encryption using Custom key provider
 - AWS Network Load Balancer (NLB) is not using the latest predefined security policy
