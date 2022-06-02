@@ -1,5 +1,26 @@
 # Changelog
 
+## PCS-22.6.1 - 2022-6-07
+
+### Added
+
+#### 3 new compliance standards
+
+- ACSC Information Security Manual (ISM)
+- Australian Cyber Security Centre (ACSC) Essential Eight
+- Australian Energy Sector Cyber Security Framework (AESCSF)
+
+### Changed
+
+#### 1 policy updated for the IAM Security module
+
+- AWS KMS Key that is publicly accessible through IAM policies
+
+#### 1 compliance standard updated
+
+- New Zealand Information Security Manual (NZISM v3.4)
+
+
 ## PCS-22.5.2 - 2022-05-24
 
 ### Added
