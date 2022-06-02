@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "gcloud compute instances add-metadata ${resourceName} --project=${account} --zone ${gcpZoneId} --metadata enable-oslogin=TRUE",
   "remediation.description": "This CLI command requires 'compute.instances.setMetadata' permission. Successful execution will enable OSLogin which facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs.",
   "remediation.impact": "Enables VM instance OSlogin configuration by updating custom metadata of a VM instance",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

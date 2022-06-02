@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "az functionapp update --resource-group ${resourceGroup} --name ${resourceName} --set clientCertEnabled=true",
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution enables Client certificates, only clients that have a valid certificate will be able to reach the app.",
   "remediation.impact": "Enables client certificate in Azure Function App",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

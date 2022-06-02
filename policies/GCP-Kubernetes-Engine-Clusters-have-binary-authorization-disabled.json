@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'container.clusters.update' permission. Successful execution will enable binary Authorization for GCP Kubernetes Engine cluster which helps ensures only trusted container images are deployed on GKE clusters.",
   "remediation.impact": "enables binary authorization in GCP Kubernetes Engine cluster",
   "compliance.standard": [
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.1.0 (GKE)",

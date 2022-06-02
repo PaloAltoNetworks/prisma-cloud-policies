@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "az functionapp config set --resource-group ${resourceGroup} --name ${resourceName} --min-tls-version 1.2",
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/config/Write' permission. Successful execution sets web app TLS encryption version to latest TLS version(i.e. TLS 1.2).",
   "remediation.impact": "Sets latest TLS version in Azure Function App",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }
