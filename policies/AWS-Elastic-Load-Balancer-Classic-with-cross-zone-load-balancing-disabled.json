@@ -15,6 +15,7 @@
   "remediation.impact": "Enable cross-zone load balancing for the respective Elastic Load Balancer",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CSA CCM v.4.0.1",
     "CyberSecurity Law of the People's Republic of China",

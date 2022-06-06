@@ -14,7 +14,10 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
+    "Australian Cyber Security Centre (ACSC) Essential Eight",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",
@@ -40,6 +43,7 @@
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
+    "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PIPEDA",
     "SOC 2"

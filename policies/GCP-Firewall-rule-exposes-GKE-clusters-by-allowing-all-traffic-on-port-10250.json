@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "gcloud compute --project=${account} firewall-rules update ${resourceName} --disabled",
   "remediation.description": "This CLI command requires 'compute.firewalls.update' and 'compute.networks.updatePolicy' permission. Successful execution will disable this firewall rule blocking internet traffic to port 10250.",
   "remediation.impact": "disable GCP Firewall rule that allows all traffic on port 10250",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

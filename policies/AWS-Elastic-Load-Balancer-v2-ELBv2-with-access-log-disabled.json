@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0",

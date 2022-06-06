@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "az functionapp Identity assign --resource-group ${resourceGroup} --name ${resourceName}",
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution sets managed service identity in Azure Function App, that makes the app more secure by eliminating secrets from the app, such as credentials in the connection strings.",
   "remediation.impact": "Sets managed service identity in Azure Function App",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "New Zealand Information Security Manual (NZISM v3.4)"
+  ]
 }

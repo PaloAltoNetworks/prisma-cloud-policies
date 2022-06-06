@@ -15,6 +15,7 @@
   "remediation.impact": "enable Master authorized network for GCP Kubernetes Engine cluster",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS v1.0.0 (GCP)",
