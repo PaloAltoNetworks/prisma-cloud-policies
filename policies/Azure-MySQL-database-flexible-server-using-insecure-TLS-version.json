@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-MYQ-884",
+  "policyId": "9f9f8908-470d-4999-aed4-a4dbec53633c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure MySQL database flexible server using insecure TLS version",
+  "description": "This policy identifies Azure MySQL database flexible servers which are using insecure TLS version. Enforcing TLS connections between database server and client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and application. As a security best practice, it is recommended to use the latest TLS version for Azure MySQL database flexible server.",
+  "rule.criteria": "51c48dcb-48ad-45b8-bf42-10248daf9a62",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-mysql-flexible-server' AND json.rule = properties.state equal ignore case \"Ready\" and require_secure_transport.value equal ignore case \"ON\" and (tls_version.value does not equal ignore case \"TLSV1.2\" and tls_version.value does not equal ignore case \"TLSV1.3\" and tls_version.value does not equal ignore case \"TLSV1.2,TLSV1.3\" and tls_version.value does not equal ignore case \"TLSV1.3,TLSV1.2\")",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to Azure Database for MySQL flexible servers dashboard\n3. Click on the reported MySQL flexible server\n4. Click on 'Server parameters' under 'Settings'\n5. In the search box, type in 'require_secure_transport' and make sure VALUE is set to 'ON' if it is not already set.\n6. In the search box, type in 'tls_version' and Set VALUE to TLSV1.2 or above for tls_version.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.4.0 (Azure)"
+  ]
+}
