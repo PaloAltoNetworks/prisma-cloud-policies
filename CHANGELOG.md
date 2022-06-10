@@ -4,8 +4,9 @@
 
 ### Added
 
-#### 2 new policies
+#### 3 new policies
 
+- AWS Lambda Function resource-based policy is overly permissive
 - Azure MySQL database flexible server SSL enforcement is disabled
 - Azure MySQL database flexible server using insecure TLS version
 
