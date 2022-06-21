@@ -1,6 +1,58 @@
 # Changelog
 
-## PCS-22.6.1 - 2022-6-07
+## PCS-22.6.2 - 2022-06-21
+
+### Added
+
+#### 3 new policies
+
+- AWS Lambda Function resource-based policy is overly permissive
+- Azure MySQL database flexible server SSL enforcement is disabled
+- Azure MySQL database flexible server using insecure TLS version
+
+#### 2 new auto-remediation cli's
+
+- AWS Certificate Manager (ACM) has certificates with Certificate Transparency Logging disabled
+- Azure MySQL database flexible server SSL enforcement is disabled
+
+### Changed
+
+#### 20 policies updated
+
+- AWS Certificate Manager (ACM) has certificates with Certificate Transparency Logging disabled
+- AWS Customer Master Key (CMK) rotation is not enabled
+- AWS Lambda function communicating with ports known to mine Monero
+- AWS Network Load Balancer (NLB) is not using the latest predefined security policy
+- AWS RDS instance with copy tags to snapshots disabled
+- Azure Application Gateway is configured with SSL policy having TLS version 1.1 or lower
+- GCP Firewall rule allows all traffic on DNS port (53)
+- GCP Firewall rule allows all traffic on FTP port (21)
+- GCP Firewall rule allows all traffic on Microsoft-DS port (445)
+- GCP Firewall rule allows all traffic on MongoDB port (27017)
+- GCP Firewall rule allows all traffic on MySQL DB port (3306)
+- GCP Firewall rule allows all traffic on NetBIOS-SSN port (139)
+- GCP Firewall rule allows all traffic on Oracle DB port (1521)
+- GCP Firewall rule allows all traffic on POP3 port (110)
+- GCP Firewall rule allows all traffic on PostgreSQL port (5432)
+- GCP Firewall rule allows all traffic on RDP port (3389)
+- GCP Firewall rule allows all traffic on SMTP port (25)
+- GCP Firewall rule allows all traffic on SSH port (22)
+- GCP Firewall rule allows inbound traffic from anywhere with no specific target set
+- GCP Firewall with Inbound rule overly permissive to All Traffic
+
+#### 8 policies updated for the IAM Security module
+
+- AWS ECR Repository that is publicly accessible through IAM policies
+- AWS KMS Key that is publicly accessible through IAM policies
+- AWS Lambda Function that is publicly accessible through IAM policies
+- AWS Lambda Layer Version that is publicly accessible through IAM policies
+- AWS S3 bucket that is publicly accessible through IAM policies
+- AWS SNS Topic that is publicly accessible through IAM policies
+- AWS SQS Queue that is publicly accessible through IAM policies
+- AWS Secret Manager Secret that is publicly accessible through IAM policies
+
+
+## PCS-22.6.1 - 2022-06-07
 
 ### Added
 

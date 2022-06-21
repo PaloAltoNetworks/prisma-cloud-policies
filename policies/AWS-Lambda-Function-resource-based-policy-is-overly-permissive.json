@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LMB-885",
+  "policyId": "805cd86b-3e3e-4913-9f12-0b208c657b23",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Lambda Function resource-based policy is overly permissive",
+  "description": "This policy identifies Lambda Functions that have overly permissive resource-based policy. Lambda functions having overly permissive policy could lead to lateral movement in account or privilege being escalated when compromised. It is highly recommended to have the least privileged access policy to protect the Lambda Functions from unauthorized access.\n\nFor more details:\nhttps://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html",
+  "rule.criteria": "dc0d3fb7-4c3e-4930-b68b-931908d36d71",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-lambda-list-functions' AND json.rule = policy.Statement[?any(Effect equals Allow and Principal equals \"*\" and Condition does not exist and (Action equals \"*\" or Action equals lambda:*))] exists",
+  "recommendation": "To modify permission from AWS Lambda Function resource-based policy\n1. Sign in to the AWS console\n2. Select the region, from the region drop-down, for which the alert is generated\n3. Navigate to AWS Lambda Dashboard\n4. Click on the 'Functions' (Left panel)\n5. Select the lambda function on which the alert is generated\n6. Go to Configuration tab\n7. Select Permissions\n8. Scroll to the \\\"Resource-based policy\\\" area\n9. For each policy statement, use fine-grained and restrictive permissions instead of using wildcards (Lambda:* and Resource:*) OR add in appropriate conditions with least privilege access.\n10. Click on \\\"Edit\\\" button to modify the statement\n11. When you finish configuring the statement, choose 'Save'.\n\nTo remove permission from AWS Lambda Function resource-based policy\n1. Sign in to the AWS console\n2. Select the region, from the region drop-down, for which the alert is generated\n3. Navigate to AWS Lambda Dashboard\n4. Click on the 'Functions' (Left panel)\n5. Select the lambda function on which the alert is generated\n6. Go to Configuration tab\n7. Select Permissions\n8. Scroll to the \\\"Resource-based policy\\\" area\n9. For each policy statement, use fine-grained and restrictive permissions instead of using wildcards (Lambda:* and Resource:*) OR add in appropriate conditions with least privilege access.\n10. Click on \\\"Delete\\\" button to modify the statement\n11. In Delete statement dialog box, click on \\\"Delete\\\" button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
