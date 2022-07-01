@@ -1,5 +1,19 @@
 # Changelog
 
+## PCS-22.6.3 - 2022-07-06
+
+### Added
+
+#### 6 new policies
+
+
+
+### Changed
+
+#### 9 policies updated
+
+
+
 ## PCS-22.6.2 - 2022-06-21
 
 ### Added
