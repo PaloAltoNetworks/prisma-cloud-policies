@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-887",
+  "policyId": "b9e2b957-3f3d-459e-99d8-b90b61f57bcf",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda execution role having overly permissive inline policy",
+  "description": "This policy identifies AWS Lambda Function execution role having overly permissive inline policy embedded. Lambda functions having overly permissive policy could lead to lateral movement in account or privilege being escalated when compromised. It is highly recommended to have the least privileged access policy to protect the Lambda Functions from unauthorized access.",
+  "rule.criteria": "19faa134-fda3-4978-af4a-7a383adf54cd",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-lambda-list-functions' as X; config from cloud.resource where api.name = 'aws-iam-list-roles' AND json.rule = inlinePolicies[*].policyDocument.Statement[?any(Effect equals Allow and (Action equals \"*\" or Action contains :* or Action[*] contains :*) and (Resource equals \"*\" or Resource[*] anyStartWith \"*\"))] exists as Y; filter '$.X.role equals $.Y.role.arn'; show Y;",
+  "recommendation": "Refer to the following URL to give fine-grained and restrictive permissions to IAM Role Inline Policy:\nhttps://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html#edit-inline-policy-console",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

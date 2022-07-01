@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SC-883",
+  "policyId": "028a45a7-ad8d-48f3-9012-2417defd324b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Microsoft Defender for Cloud set to Off for DNS",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for DNS set to Off. Enabling Azure Defender provides advanced security capabilities like providing threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Defender for DNS monitors the queries and detects suspicious activities without the need for any additional agents on your resources. It is highly recommended to enable Azure Defender for DNS.",
+  "rule.criteria": "e210f1d9-abce-4387-bc84-36b065ee0b21",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any(name equals Dns and properties.pricingTier does not equal Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Expand 'Select Defender plan by resource type'\n7. Select 'On' status for 'DNS' under the column 'Microsoft Defender for'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
