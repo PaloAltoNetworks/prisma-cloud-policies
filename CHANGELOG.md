@@ -1,5 +1,33 @@
 # Changelog
 
+## PCS-22.6.3 - 2022-07-06
+
+### Added
+
+#### 6 new policies
+
+- AWS DocumentDB Cluster is not enabled with data encryption in transit
+- AWS IAM policy attached to AWS Lambda execution role is overly permissive
+- AWS Lambda execution role having overly permissive inline policy
+- Azure Microsoft Defender for Cloud set to Off for DNS
+- GCP Load Balancer HTTPS proxy permits SSL policies with weak cipher suites
+- GCP Load Balancer SSL proxy permits SSL policies with weak cipher suites
+
+### Changed
+
+#### 9 policies updated
+
+- Azure Microsoft Defender for Cloud JIT network access monitoring is set to disable
+- Azure Microsoft Defender for Cloud adaptive application controls monitoring is set to disabled
+- Azure Microsoft Defender for Cloud disk encryption monitoring is set to disabled
+- Azure Microsoft Defender for Cloud email notification for subscription owner is not set
+- Azure Microsoft Defender for Cloud endpoint protection monitoring is set to disabled
+- Azure Microsoft Defender for Cloud security configurations monitoring is set to disabled
+- Azure Microsoft Defender for Cloud security contact phone number is not set
+- Azure Microsoft Defender for Cloud system updates monitoring is set to disabled
+- GCP HTTPS Load balancer is configured with SSL policy having TLS version 1.1 or lower
+
+
 ## PCS-22.6.2 - 2022-06-21
 
 ### Added
