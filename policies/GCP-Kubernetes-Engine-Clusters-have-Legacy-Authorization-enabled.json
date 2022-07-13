@@ -18,10 +18,13 @@
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.0.0 (GCP)",
     "CIS v1.1.0 (GKE)",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "FFIEC",
     "HIPAA",
     "ISO 27001:2013",
     "ISO/IEC 27002:2013",
@@ -32,6 +35,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "PIPEDA",
     "SOC 2"
   ]

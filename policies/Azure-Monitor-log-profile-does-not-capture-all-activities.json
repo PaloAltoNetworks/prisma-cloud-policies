@@ -16,9 +16,12 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.1 (Azure)",
     "CSA CCM v.4.0.1",
     "CyberSecurity Law of the People's Republic of China",
+    "FFIEC",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",

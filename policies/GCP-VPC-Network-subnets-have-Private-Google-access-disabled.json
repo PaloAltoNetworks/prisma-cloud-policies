@@ -16,6 +16,8 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.0.0 (GCP)",
     "CSA CCM v.4.0.1",
     "CSA CCM v3.0.1",
@@ -29,6 +31,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "SOC 2"
   ]
 }

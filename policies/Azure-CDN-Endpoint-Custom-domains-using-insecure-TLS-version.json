@@ -14,7 +14,10 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CSA CCM v.4.0.1",
+    "FFIEC",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
@@ -22,6 +25,7 @@
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0"
   ]
 }

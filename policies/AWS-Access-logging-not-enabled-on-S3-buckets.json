@@ -16,8 +16,11 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "CCPA 2018",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CSA CCM v3.0.1",
     "CyberSecurity Law of the People's Republic of China",
+    "FFIEC",
     "GDPR",
     "HITRUST CSF v9.3",
     "MAS TRM 2021",
@@ -32,6 +35,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "PIPEDA",
     "Risk Management in Technology (RMiT)",
     "SOC 2"

@@ -7,7 +7,7 @@
   "name": "AWS IAM Groups with administrator access permissions",
   "description": "This policy identifies AWS IAM groups which has administrator access permission set. This would allow all users under this group to have administrative privileges. As a security best practice, it is recommended to grant least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
   "rule.criteria": "d0639c62-72cc-497a-8fb4-2d50dd13dd20",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-groups' as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' as Y; filter \"($.X.inlinePolicies[*].policyDocument.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action any equal *) or ($.X.attachedPolicies[*].policyArn contains $.Y.policyArn and $.Y.document.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action any equal *)\"; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-list-groups' as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any(Effect equals Allow and Action equals * and Resource equals * )] exists as Y; filter \"($.X.inlinePolicies[*].policyDocument.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action any equal * ) or ($.X.attachedPolicies[*].policyArn intersects $.Y.policyArn)\"; show X;",
   "recommendation": "1. Log in to AWS console\n2. Navigate to IAM service\n3. Click on Groups\n4. Click on reported IAM group\n5. Under 'Managed Policies' click on 'Detach Policy' which is having excessive permissions and assign a limited permission policy as required for a particular group\nOR\n6. Under 'Inline Policies' click on 'Edit Policy' or 'Remove Policy' and assign a limited permission as required for a particular group",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -20,8 +20,11 @@
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "FFIEC",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
@@ -31,6 +34,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

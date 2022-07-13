@@ -13,5 +13,9 @@
   "remediation.cliScriptTemplate": "aws rds modify-db-cluster-snapshot-attribute --region ${region} --db-cluster-snapshot-identifier ${resourceId} --attribute-name restore --values-to-remove \"all\"",
   "remediation.description": "This CLI command requires 'rds:ModifyDBClusterSnapshotAttribute' permission. Successful execution will reset this RDS Cluster snapshot ACL (Access Control List) to private. This will ensure that only Owner has full privileges.",
   "remediation.impact": "RDS snapshot share public to private",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "PCI DSS v4.0"
+  ]
 }

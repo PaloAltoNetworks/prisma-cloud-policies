@@ -16,6 +16,8 @@
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.1 (Azure)",
     "CSA CCM v3.0.1",
     "CyberSecurity Law of the People's Republic of China",

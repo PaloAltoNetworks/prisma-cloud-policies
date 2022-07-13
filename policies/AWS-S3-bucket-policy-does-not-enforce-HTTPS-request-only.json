@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-897",
+  "policyId": "cf833c55-0910-445b-b21b-23364871e11b",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket policy does not enforce HTTPS request only",
+  "description": "This policy identifies AWS S3 bucket having a policy that does not enforce only HTTPS requests. Enforcing the S3 bucket to accept only HTTPS requests would prevent potential attackers from eavesdropping on data in-transit or manipulating network traffic using man-in-the-middle or similar attacks. It is highly recommended to explicitly deny access to HTTP requests in S3 bucket policy.",
+  "rule.criteria": "b1584cec-cf43-420b-8c97-8baf747a2c98",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = policy.Statement[?any(Effect equals Deny and Action equals s3:* and (Principal.AWS equals * or Principal equals *) and Condition.Bool.aws:SecureTransport contains false )] does not exist",
+  "recommendation": "1. Log in to the AWS console\n2. Navigate to the S3 dashboard\n3. Choose the reported S3 bucket\n4. In the 'Permissions' tab, Click on 'Edit' under 'Bucket policy'\n5. To update S3 bucket policy to enforce HTTPS request only, follow the below URL:\nhttps://aws.amazon.com/premiumsupport/knowledge-center/s3-bucket-policy-for-config-rule/",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -15,7 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "AWS Well-Architected Framework",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "FFIEC",
     "MAS TRM 2021",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

@@ -15,6 +15,10 @@
   "remediation.impact": "Enables IAM Authentication setting for AWS RDS cluster",
   "compliance.standard": [
     "AWS Foundational Security Best Practices standard",
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "FFIEC",
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0"
   ]
 }

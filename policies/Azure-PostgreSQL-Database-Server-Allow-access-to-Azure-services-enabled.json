@@ -7,7 +7,7 @@
   "name": "Azure PostgreSQL Database Server 'Allow access to Azure services' enabled",
   "description": "This policy identifies Azure PostgreSQL Database Server which has 'Allow access to Azure services' settings enabled. When 'Allow access to Azure services' settings is enabled, PostgreSQL Database server will accept connections from all Azure resources including other subscription resources as well. It is recommended to use firewall rules or VNET rules to allow access from specific network ranges or virtual networks.",
   "rule.criteria": "dfa7d61c-d608-45a7-b9fd-adecd6da1f25",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = firewallRules.value[*].properties.startIpAddress equals 0.0.0.0 and firewallRules.value[*].properties.endIpAddress equals 0.0.0.0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = properties.publicNetworkAccess equal ignore case Enabled and firewallRules.value[*].properties.startIpAddress equals \"0.0.0.0\" and firewallRules.value[*].properties.endIpAddress equals \"0.0.0.0\"",
   "recommendation": "1. Login to Azure console\n2. Navigate to 'Azure Database for PostgreSQL servers' dashboard\n3. Select the reported PostgreSQL server\n4. Go to 'Connection security' under 'Settings'\n5. Select 'No' for 'Allow access to Azure services' under 'Firewall rules'\n6. Click on 'Save'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -20,6 +20,8 @@
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.2.0 (Azure)",
     "CIS v1.3.0 (Azure)",
     "CIS v1.3.1 (Azure)",
@@ -32,6 +34,7 @@
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
   ]
 }

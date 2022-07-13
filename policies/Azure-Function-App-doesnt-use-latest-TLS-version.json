@@ -14,6 +14,10 @@
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/config/Write' permission. Successful execution sets web app TLS encryption version to latest TLS version(i.e. TLS 1.2).",
   "remediation.impact": "Sets latest TLS version in Azure Function App",
   "compliance.standard": [
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "FFIEC",
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0"
   ]
 }

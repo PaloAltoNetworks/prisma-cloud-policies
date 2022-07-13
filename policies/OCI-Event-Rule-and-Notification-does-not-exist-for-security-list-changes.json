@@ -17,6 +17,8 @@
     "ACSC Information Security Manual (ISM)",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.0.0 (OCI)",
     "CIS v1.1.0 (OCI)",
     "CSA CCM v.4.0.1",
@@ -29,6 +31,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
   ]
 }
