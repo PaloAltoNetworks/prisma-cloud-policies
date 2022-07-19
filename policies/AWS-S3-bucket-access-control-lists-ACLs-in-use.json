@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-896",
+  "policyId": "cab6f1a5-f6c5-4caf-bf10-b0f3a29e90ea",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket access control lists (ACLs) in use",
+  "description": "This policy identifies AWS S3 buckets which are using access control lists (ACLs). ACLs are legacy way to control access to S3 buckets. It is recommended to disable bucket ACL and instead use IAM policies or S3 bucket policies to manage access to your S3 buckets.",
+  "rule.criteria": "b8e3f191-9cfb-4707-8a82-cb5f784f7694",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = ownershipControls.rules[*] does not contain BucketOwnerEnforced",
+  "recommendation": "1. Login to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the 'S3' resource reported in the alert\n4. Click on the 'Permissions' tab\n5. Under 'Object Ownership' click 'Edit'\n6. Select 'ACLs disabled (recommended)'\n7. Click on 'Save changes'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws s3api put-bucket-ownership-controls --bucket ${resourceName} --ownership-controls '{\"Rules\":[{\"ObjectOwnership\":\"BucketOwnerEnforced\"}]}'",
+  "remediation.description": "This CLI command requires 's3:PutBucketOwnershipControls' permission. Successful execution will update the ACL OwnershipControls to 'BucketOwnerEnforced' for the S3 bucket",
+  "remediation.impact": "Enables 'BucketOwnerEnforced' ACL setting for AWS S3 bucket",
+  "compliance.standard": ""
+}

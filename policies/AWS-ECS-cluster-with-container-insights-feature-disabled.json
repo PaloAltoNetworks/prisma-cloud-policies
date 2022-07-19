@@ -13,5 +13,10 @@
   "remediation.cliScriptTemplate": "aws ecs update-cluster-settings --cluster ${resourceName} --region ${region} --settings name=containerInsights,value=enabled",
   "remediation.description": "This CLI command requires 'ecs:UpdateClusterSettings' permission. Successful execution will enable Container Insights for the reported AWS ECS cluster.",
   "remediation.impact": "Enables Container Insights for the reported AWS ECS cluster",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "FFIEC",
+    "PCI DSS v4.0"
+  ]
 }

@@ -15,6 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.0.0 (Alibaba Cloud)",
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
@@ -28,6 +30,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

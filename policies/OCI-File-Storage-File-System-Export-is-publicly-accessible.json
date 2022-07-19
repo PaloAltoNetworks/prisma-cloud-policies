@@ -14,10 +14,13 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "HITRUST v.9.4.2",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
   ]
 }

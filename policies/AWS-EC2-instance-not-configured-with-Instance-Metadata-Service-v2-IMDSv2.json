@@ -15,8 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "AWS Foundational Security Best Practices standard",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "MAS TRM 2021",
     "MITRE ATT&CK v10.0",
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0"
   ]
 }

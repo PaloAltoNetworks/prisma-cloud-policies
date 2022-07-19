@@ -20,6 +20,8 @@
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.2.0 (Azure)",
     "CIS v1.3.0 (Azure)",
     "CIS v1.3.1 (Azure)",
@@ -27,6 +29,7 @@
     "CSA CCM v.4.0.1",
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "FFIEC",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
@@ -40,6 +43,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "PIPEDA"
   ]
 }

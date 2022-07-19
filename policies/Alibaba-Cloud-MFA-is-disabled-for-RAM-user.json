@@ -18,10 +18,13 @@
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.0.0 (Alibaba Cloud)",
     "CSA CCM v.4.0.1",
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
+    "FFIEC",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
@@ -34,6 +37,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

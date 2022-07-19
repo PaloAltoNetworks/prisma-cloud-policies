@@ -15,7 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Azure Security Benchmark (v3)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.4.0 (Azure)",
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "FFIEC",
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0"
   ]
 }

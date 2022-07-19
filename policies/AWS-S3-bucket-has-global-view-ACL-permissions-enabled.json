@@ -20,8 +20,11 @@
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CCPA 2018",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CSA CCM v.4.0.1",
     "CyberSecurity Law of the People's Republic of China",
+    "FFIEC",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
@@ -37,6 +40,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "PIPEDA",
     "Risk Management in Technology (RMiT)"
   ]

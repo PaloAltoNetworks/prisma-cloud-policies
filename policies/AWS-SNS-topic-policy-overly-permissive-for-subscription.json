@@ -15,7 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "FFIEC",
     "MAS TRM 2021",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

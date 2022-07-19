@@ -1,5 +1,36 @@
 # Changelog
 
+## PCS-22.7.1 - 2022-07-19
+
+### Added
+
+#### 3 new policies
+
+- AWS Lambda function managed ENI reachable from any untrust internet source
+- AWS S3 bucket policy does not enforce HTTPS request only
+- AWS S3 bucket access control lists (ACLs) in use
+
+#### 4 new compliance standards
+
+- CIS Critical Security Controls V7.1
+- CIS Critical Security Controls V8
+- Federal Financial Institutions Examination Council (FFIEC)
+- Payment Card Industry Data Security Standard (PCI DSS v4.0)
+
+### Changed
+
+#### 8 policies updated
+
+- AWS IAM Groups with administrator access permissions
+- Azure Cosmos DB allows traffic from public Azure datacenters
+- Azure Microsoft Defender for Cloud security alert email notifications is not set
+- Azure Microsoft Defender for Cloud security contact additional email is not set
+- Azure PostgreSQL Database Server 'Allow access to Azure services' enabled
+- Azure PostgreSQL Database Server Firewall rule allow access to all IPV4 address
+- Azure SQL Server allow access to any Azure internal resources
+- Azure SQL Servers Firewall rule allow access to all IPV4 address
+
+
 ## PCS-22.6.3 - 2022-07-06
 
 ### Added

@@ -18,6 +18,8 @@
     "APRA (CPS 234) Information Security",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.2.0 (AWS)",
     "CIS v1.3.0 (AWS)",
     "CIS v1.4.0 (AWS)",
@@ -33,6 +35,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)"
   ]
 }

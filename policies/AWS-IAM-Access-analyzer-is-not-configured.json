@@ -14,7 +14,10 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.3.0 (AWS)",
-    "CIS v1.4.0 (AWS)"
+    "CIS v1.4.0 (AWS)",
+    "PCI DSS v4.0"
   ]
 }

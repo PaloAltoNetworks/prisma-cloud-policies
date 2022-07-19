@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8"
+  ]
 }

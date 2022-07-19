@@ -21,6 +21,8 @@
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v1.2.0 (Azure)",
     "CIS v1.3.0 (Azure)",
     "CIS v1.3.1 (Azure)",
@@ -36,6 +38,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
   ]
 }

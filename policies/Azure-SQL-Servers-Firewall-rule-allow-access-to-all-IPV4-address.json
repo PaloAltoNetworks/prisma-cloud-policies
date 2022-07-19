@@ -7,8 +7,8 @@
   "name": "Azure SQL Servers Firewall rule allow access to all IPV4 address",
   "description": "This policy identifies Azure SQL Servers which has Firewall rule that allow access to all IPV4 address. Having a firewall rule with start IP being 0.0.0.0 and end IP being 255.255.255.255 would allow access to SQL server from any host on the internet. It is highly recommended not to use this type of firewall rule in any SQL servers.",
   "rule.criteria": "df1d2aa4-e7bc-4f0b-a5ae-f4ea971e12e5",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = firewallRules[?any(startIpAddress equals 0.0.0.0 and endIpAddress equals 255.255.255.255)] exists",
-  "recommendation": "1.Login to Azure Portal\n2.Click on 'All services' on left Navigation\n3.Click on 'SQL servers' under Databases\n4.Click on reported server instance\n5.Click on 'Firewalls and virtual networks' under Settings\n6.Delete the rule which has 'Start IP' as 0.0.0.0 and 'End IP' as 255.255.255.255\n7.Click on Save",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.publicNetworkAccess'] equal ignore case Enabled and firewallRules[?any(startIpAddress equals \"0.0.0.0\" and endIpAddress equals \"255.255.255.255\")] exists",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to the 'SQL servers' dashboard\n4. Click on the reported SQL server\n5. Click on 'Networking' under Security\n6. In 'Public access' tab, Under Firewall rules, Delete the rule which has 'Start IP' as 0.0.0.0 and 'End IP' as 255.255.255.255\n7. Click on 'Save'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -17,6 +17,8 @@
     "ACSC Information Security Manual (ISM)",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
@@ -26,6 +28,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
-    "PCI DSS v3.2.1"
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
   ]
 }
