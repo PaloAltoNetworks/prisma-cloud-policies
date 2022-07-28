@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "dc8041dd-f95d-4b77-8b49-9e1f0be184d9",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Compute Engine with IAM write access level",
+  "description": "This policy identifies IAM write permissions that are defined as risky permissions. Ensure that the Compute Engine entities in your GCP account don't have a risky set of write permissions to minimize security risks.",
+  "rule.criteria": "dc8041dd-f95d-4b77-8b49-9e1f0be184d9",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'compute' and action.name in ('accessapproval.requests.approve','accessapproval.requests.dismiss','accessapproval.settings.delete','accessapproval.settings.update','accesscontextmanager.accessLevels.create','accesscontextmanager.accessLevels.delete','accesscontextmanager.accessLevels.replaceAll','accesscontextmanager.accessLevels.update','accesscontextmanager.accessPolicies.create','accesscontextmanager.accessPolicies.delete','accesscontextmanager.accessPolicies.setIamPolicy','accesscontextmanager.accessPolicies.update','accesscontextmanager.gcpUserAccessBindings.create','accesscontextmanager.gcpUserAccessBindings.delete','accesscontextmanager.gcpUserAccessBindings.update','accesscontextmanager.policies.create','accesscontextmanager.policies.delete','accesscontextmanager.policies.setIamPolicy','accesscontextmanager.policies.update','iam.roles.create','iam.roles.delete','iam.roles.undelete', 'iam.roles.update','iam.serviceAccounts.getAccessToken','iam.serviceAccountKeys.create','iam.serviceAccountKeys.delete','iam.serviceAccounts.create','iam.serviceAccounts.delete','iam.serviceAccounts.disable','iam.serviceAccounts.enable','iam.serviceAccounts.setIamPolicy','iam.serviceAccounts.undelete','iam.serviceAccounts.update','iam.serviceAccounts.implicitDelegation','iam.serviceAccounts.signBlob','iam.serviceAccounts.signJwt','iam.serviceAccounts.actAs','compute.backendServices.setIamPolicy','compute.disks.removeResourcePolicies','compute.disks.setIamPolicy','compute.firewallPolicies.setIamPolicy','compute.globalOperations.setIamPolicy','compute.images.setIamPolicy','compute.instanceTemplates.setIamPolicy','compute.instances.removeResourcePolicies','compute.instances.setIamPolicy','compute.instances.setServiceAccount','compute.machineImages.setIamPolicy','compute.maintenancePolicies.setIamPolicy','compute.snapshots.setIamPolicy')",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Compute Engine instance \n3. Find the service account used by the Compute Engine instance\n4. Navigate to the IAM service\n5. Find the binding between the service account used by the Compute Engine instance and the role with risky permissions\n6. Remove the binding\n7. Create a new binding with predefined or custom role without risky permissions, if necessary.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

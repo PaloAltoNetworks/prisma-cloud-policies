@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ed8823bb-d18b-4ad1-beb7-2aa082ad6d92",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP users with 'Editor' role on org level",
+  "description": "This policy identifies GCP basic role 'Editor' on organization level that is defined as risky role. Ensure that the users in your GCP environment don't have a risky 'Editor' role to minimize security risks.",
+  "rule.criteria": "ed8823bb-d18b-4ad1-beb7-2aa082ad6d92",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and grantedby.cloud.policy.name = 'Editor' and grantedby.level.type = 'GCP Organization'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
