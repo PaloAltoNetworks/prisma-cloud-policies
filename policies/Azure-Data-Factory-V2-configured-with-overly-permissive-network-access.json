@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ADF-904",
+  "policyId": "d96a6d5b-0399-45dc-8fac-db55d711710b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Data Factory (V2) configured with overly permissive network access",
+  "description": "This policy identifies Data factories (V2) configured with overly permissive network access. A Data factory managed virtual network along with managed private endpoints protects against data exfiltration. It is recommended to configure the Data factory with a private endpoint; so that the Data factory is accessible only to restricted entities.",
+  "rule.criteria": "c181a29b-b48e-4fd1-ab10-80bd7f930093",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-data-factory-v2' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.publicNetworkAccess equal ignore case Enabled",
+  "recommendation": "1. Login to Azure portal\n2. Navigate to 'Data factories'\n3. Click on the reported Data factory\n4. Select 'Networking' under 'Settings' from left panel \n5. In 'Private endpoint connections' tab, Create a private endpoint as per your requirement.\n6. Once Private endpoint is created; In 'Network access' tab, Select the 'Private endpoint'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

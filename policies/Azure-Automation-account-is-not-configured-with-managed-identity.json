@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AAC-872",
+  "policyId": "76edf731-a606-4409-86a9-6f71209b6681",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Automation account is not configured with managed identity",
+  "description": "This policy identifies Automation accounts that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Automation account.\n",
+  "rule.criteria": "932d9a66-dd82-47ce-a7a7-be5a725f8d0a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-automation-account' AND json.rule = identity does not exist or identity.type equal ignore case \"None\"",
+  "recommendation": "To enable managed identity on an existing Azure Automation account, follow the below URL:\nhttps://docs.microsoft.com/en-us/azure/automation/quickstarts/enable-managed-identity",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

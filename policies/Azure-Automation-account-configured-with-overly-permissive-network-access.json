@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AAC-877",
+  "policyId": "0867c7e0-8f23-40e9-abb9-21403a43b4ab",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Automation account configured with overly permissive network access",
+  "description": "This policy identifies Automation accounts configured with overly permissive network access. It is recommended to configure the Automation account with private endpoints so that the Automation account is accessible only to restricted entities.",
+  "rule.criteria": "d7518237-8ab1-4770-b6e6-6c8d4ca46839",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-automation-account' AND json.rule = properties.publicNetworkAccess does not exist or properties.publicNetworkAccess is true",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Automation Account dashboard \n3. Click on the reported Automation account\n4. Under the 'Account Settings' menu, click on 'Networking'\n5. In 'Public access' tab, select 'Disable' for 'Public network access' \n6. In 'Private access' tab, Create a private endpoint with required parameters \n7. Click on 'Apply'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

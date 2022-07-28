@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-PG-889",
+  "policyId": "0d18dc84-d4fb-4c57-9087-a3c10054beec",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure PostgreSQL database server deny public network access setting is not set",
+  "description": "This policy identifies Azure PostgreSQL database servers that have Deny public network access setting is not set. When 'Deny public network access' is set to yes, only private endpoint connections will be allowed to access this resource. It is highly recommended to set Deny public network access setting to Yes, which would allow PostgreSQL database server to be accessed only through private endpoints.\n\nNote: This feature is available in all Azure regions where Azure Database for PostgreSQL - Single server supports General Purpose and Memory Optimized pricing tiers.",
+  "rule.criteria": "9eee6a8e-18b2-4927-b5c1-87e8701c9487",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-server' AND json.rule = properties.userVisibleState equal ignore case Ready and sku.tier does not equal ignore case Basic and properties.publicNetworkAccess equal ignore case Enabled",
+  "recommendation": "1. Login to Azure portal.\n2. Navigate to 'Azure Database for PostgreSQL servers'\n3. Click on the reported PostgreSQL server instance you want to modify \n4. Select 'Connection security' under 'Settings' from left panel \n5. For 'Deny public network access' ensure 'Deny public network access' is set to 'Yes'\n6. Click on 'Save'\n\nNote: When 'Deny public network access' is set to yes, only private endpoint connections will be allowed to access this resource.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

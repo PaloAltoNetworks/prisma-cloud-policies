@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-798",
+  "policyId": "cb5edef0-8968-48b4-8bc9-6ffa6ed2d816",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS OpenSearch attached security group overly permissive to all traffic",
+  "description": "This policy identifies AWS OpenSearch attached Security group that are overly permissive to all traffic. Security group enforces IP-based access policies to OpenSearch. As a best practice, restrict traffic solely from known static IP addresses or CIDR range.\n",
+  "rule.criteria": "c3c3bcd8-b41f-4349-a748-4322c5e8caf8",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = vpcoptions.securityGroupIds[*] exists as X; config from cloud.resource where api.name = 'aws-ec2-describe-security-groups' AND json.rule = isShared is false and (ipPermissions[*].ipv4Ranges[*].cidrIp equals 0.0.0.0/0 or ipPermissions[*].ipv6Ranges[*].cidrIpv6 equals ::/0) as Y; filter '$.X.vpcoptions.securityGroupIds[*] contains $.Y.groupId'; show Y;",
+  "recommendation": "Before making any changes, please check the impact on your applications/services. If the Security Group reported indeed need to restrict all traffic, follow the instructions below:\n1. Log in to the AWS console\n2. Navigate to the 'VPC' service\n3. Select the 'Security Group' reported in the alert\n4. Click on 'Inbound Rules'\n5. Remove the rule which has the 'Source' value as 0.0.0.0/0 or ::/0",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

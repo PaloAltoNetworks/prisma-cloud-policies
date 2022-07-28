@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-907",
+  "policyId": "740c318e-b1b5-4e48-8488-946e3ffcc3f7",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Classic Load Balancer not configured to span multiple Availability Zones",
+  "description": "This policy identifies AWS Classic Load Balancers that are not configured to span multiple Availability Zones. Classic Load Balancer would not be able to redirect traffic to targets in another Availability Zone if the sole configured Availability Zone becomes unavailable. As best practice, it is recommended to configure Classic Load Balancer to span multiple Availability Zones.\n\n",
+  "rule.criteria": "6cb05eb7-6021-4f05-9f8d-ed3faab5c19e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elb-describe-load-balancers' AND json.rule = description.availabilityZones[*] size less than 2",
+  "recommendation": "To configure AWS Classic Load Balancer to span multiple Availability Zones follow the steps mentioned in below URL:\n\nhttps://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html#add-availability-zone",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
