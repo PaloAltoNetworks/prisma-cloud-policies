@@ -27,27 +27,6 @@
 - CIS v1.2.0 (OCI)
 - CIS v1.3.0 (GCP)
 
-#### 17 new policies for the IAM Security module
-
-- GCP Compute Engine entities with predefined Admin roles
-- GCP Compute Engine with IAM write access level
-- GCP IAM effective permissions are over-privileged (7 days)
-- GCP IAM effective permissions are over-privileged (90 days)
-- GCP resources that are publicly accessible through IAM policies
-- GCP service accounts with 'Editor' role on folder level
-- GCP service accounts with 'Editor' role on org level 
-- GCP service accounts with 'Owner' role on folder level 
-- GCP service accounts with 'Owner' role on org level 
-- GCP service accounts with permissions to deploy new resources
-- GCP User with IAM write access level permissions
-- GCP users with 'Editor' role on folder level 
-- GCP users with 'Editor' role on org level 
-- GCP users with 'Owner' role on folder level 
-- GCP users with 'Owner' role on org level
-- GCP users with permissions to deploy new resources
-- GCP users with Service Account Token Creator role
-
-
 
 ## PCS-22.7.1 HotFix - 2022-07-25
 
