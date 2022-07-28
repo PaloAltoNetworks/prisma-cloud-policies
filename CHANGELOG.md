@@ -1,5 +1,20 @@
 # Changelog
 
+## PCS-22.7.1 HotFix - 2022-07-25
+
+### Added
+
+#### 1 new policy
+
+- GCP KMS Symmetric key not rotating in every 90 days
+
+### Removed
+
+#### 1 policy deleted
+
+- GCP KMS encryption key not rotating in every 90 days
+
+
 ## PCS-22.7.1 - 2022-07-19
 
 ### Added

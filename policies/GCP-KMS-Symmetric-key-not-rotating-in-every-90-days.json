@@ -1,0 +1,29 @@
+{
+  "policyUpi": "PC-GCP-KMS-927",
+  "policyId": "287ab1bc-62f5-4b2c-92a7-43c9ee7c6bb6",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP KMS Symmetric key not rotating in every 90 days",
+  "description": "This policy identifies GCP KMS Symmetric keys that are not rotating every 90 days. A key is used to protect some corpus of data. A collection of files could be encrypted with the same key and people with decrypt permissions on that key would be able to decrypt those files. It's recommended to make sure the 'rotation period' is set to a specific time to ensure data cannot be accessed through the old key.",
+  "rule.criteria": "6e394124-06d4-46fc-991e-4b6102ed74da",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-kms-crypto-keys-list' AND json.rule = purpose equal ignore case \"ENCRYPT_DECRYPT\" and primary.state equals \"ENABLED\" and (rotationPeriod does not exist or rotationPeriod greater than 7776000)",
+  "recommendation": "To configure automatic rotation for GCP KMS Symmetric keys, please refer to the URL given below and configure \"Rotation period\" to less than or equal to 90 days:\nhttps://cloud.google.com/kms/docs/rotating-keys#automatic",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "CSA CCM v.4.0.1",
+    "HITRUST v.9.4.2",
+    "ISO/IEC 27002:2013",
+    "ISO/IEC 27017:2015",
+    "NIST CSF",
+    "NIST SP 800-171 Revision 2",
+    "NIST SP 800-172",
+    "PCI DSS v3.2.1",
+    "PCI DSS v4.0"
+  ]
+}
