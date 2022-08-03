@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-NWK-855",
+  "policyId": "348cbb26-2713-427d-8b9d-8d9d62af48f7",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Virtual network not protected by DDoS Protection Standard",
+  "description": "This policy identifies Virtual networks not protected by DDoS Protection Standard. Distributed denial of service (DDoS) attacks are some of the largest availability and security concerns exhausting an application's resources, making the application unavailable to legitimate users. Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. ",
+  "rule.criteria": "1b6f9132-0cc9-4235-9e4e-c34fc715fa0a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-vnet-list' AND json.rule = ['properties.provisioningState'] equals Succeeded and (['properties.ddosProtectionPlan'].['id'] does not exist or ['properties.enableDdosProtection'] is false)",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Virtual networks dashboard \n3. Click on the reported Virtual network\n4. Under the 'Settings', click on 'DDoS protection'\nNOTE: Before enabling DDoS Protection, If already no DDoS protection plan exist you need to configure one DDoS protection plan for your organization by following below URL instructions:\nhttps://docs.microsoft.com/en-us/azure/ddos-protection/manage-ddos-protection#create-a-ddos-protection-plan\n5. Select 'Enable' for 'DDoS Protection Standard' and choose 'DDoS protection plan' from dropdown or enter DDoS protection plan resource ID.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

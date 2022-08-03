@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-KFH-909",
+  "policyId": "69933f11-1001-4d77-81b5-f2b9ec29408a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Kinesis Firehose with Direct PUT as source has SSE encryption disabled",
+  "description": "This policy identifies Amazon Kinesis Firehose with Direct PUT as source which has Server-side encryption (SSE) encryption disabled. Enabling Server Side Encryption allows you to meet strict regulatory requirements and enhance the security of your data at rest. As a best practice, enable SSE for the Amazon Kinesis Firehose.",
+  "rule.criteria": "abc12a47-98f1-4d12-80ce-5c6e3dfb17e6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-kinesis-firehose-delivery-stream' AND json.rule = deliveryStreamEncryptionConfiguration exists and deliveryStreamEncryptionConfiguration.status equals DISABLED",
+  "recommendation": "1. Sign in to the AWS Console\n2. Go to Amazon Kinesis Service\n3. Click on 'Delivery streams'\n4. Select the reported Kinesis Firehose for the corresponding region\n5. Click on 'Configuration' tab\n6. Under Server-side encryption, Click on Edit\n7. Choose 'Enable server-side encryption for source records in delivery stream'\n8. Under 'Encryption type' select 'Use AWS owned CMK'\n9. Click 'Save changes'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

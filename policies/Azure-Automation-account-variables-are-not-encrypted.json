@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AAC-912",
+  "policyId": "fe857a62-4d04-4429-bd45-e502ccbd5c8d",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Automation account variables are not encrypted",
+  "description": "This policy identifies Automation accounts variables that are not encrypted. Variable assets are values that are available to all runbooks and DSC configurations in your Automation account. When a variable is created, you can specify that it be stored encrypted. Azure Automation stores each encrypted variable securely. It is recommended to enable encryption of Automation account variable assets when storing sensitive data.",
+  "rule.criteria": "9f439679-edfa-482f-8627-bf1d00ebbe7e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-automation-account' AND json.rule = variable[?any(properties.isEncrypted is false)] exists",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to 'Automation Accounts'\n3. Click on the reported Automation Account\n4. Select 'Variables' under 'Shared Resources' from left panel \nNOTE: If you have Automation account variables storing sensitive data that are not already encrypted, then you will need to delete them and recreate them as encrypted variables.\n5. Delete the unencrypted variables and recreate them by setting the option 'Encrypted' as 'Yes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

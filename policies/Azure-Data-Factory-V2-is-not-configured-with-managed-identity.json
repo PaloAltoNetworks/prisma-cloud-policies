@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ADF-902",
+  "policyId": "e4c03c2b-b872-43f1-bfba-62ff056ed84b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Data Factory (V2) is not configured with managed identity",
+  "description": "This policy identifies Data Factories (V2) that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Data Factory.",
+  "rule.criteria": "3e5a7f03-32a7-4c45-883c-81f741c434af",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-data-factory-v2' AND json.rule = properties.provisioningState equal ignore case Succeeded and identity does not exist or identity.type equal ignore case \"None\"",
+  "recommendation": "1. Login to Azure portal.\n2. Navigate to 'Data factories'\n3. Click on the reported Data factory\n4. Select 'Managed identities' under 'Settings' from left panel \n5. Configure either 'System assigned' or 'User assigned' identity\nFor more on Data factories managed identities refer https://docs.microsoft.com/en-gb/azure/data-factory/data-factory-service-identity?tabs=data-factory\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

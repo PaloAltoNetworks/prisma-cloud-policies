@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v7.1",
     "CIS Controls v8",
+    "CIS v1.2.0 (OCI)",
     "CSA CCM v.4.0.1",
     "FFIEC",
     "HITRUST v.9.4.2",

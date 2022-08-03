@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v7.1",
     "CIS Controls v8",
+    "CIS v1.3.0 (GCP)",
     "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",

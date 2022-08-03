@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECR-908",
+  "policyId": "8377061b-355d-4fec-ad91-47f98f6f7912",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS ECR Repository not configured with a lifecycle policy",
+  "description": "This policy identifies AWS ECR Repositories that are not configured with a lifecycle policy. Amazon ECR lifecycle policies enable you to specify the lifecycle management of images in a repository. This helps to automate the cleanup of unused images and the expiration of images based on age or count. As best practice, it is recommended to configure ECR repository with lifecycle policy which helps to avoid unintentionally using outdated images in your repository.\n",
+  "rule.criteria": "94910ecb-934c-497a-ae32-f8874cc20ebb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecr-get-repository-policy' AND json.rule = lifecyclePolicy does not exist",
+  "recommendation": "To configure AWS ECR Repository with a lifecycle policy follow the steps mentioned in below URL:\n\nhttps://docs.aws.amazon.com/AmazonECR/latest/userguide/lpp_creation.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

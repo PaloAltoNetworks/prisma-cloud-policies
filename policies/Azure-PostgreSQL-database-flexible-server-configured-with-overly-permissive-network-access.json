@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-PG-890",
+  "policyId": "cdb612cb-5629-4e0b-a028-8ce69d01104c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure PostgreSQL database flexible server configured with overly permissive network access",
+  "description": "This policy identifies Azure PostgreSQL database flexible servers that are configured with overly permissive network access. It is highly recommended to create PostgreSQL database flexible server with private access to help secure access to server via VNet Integration or with a Firewall rule, you can restrict it further to only a set of IPv4 addresses or IPv4 address ranges.",
+  "rule.criteria": "840a792d-f8a3-4331-b183-3eea67f519b8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-flexible-server' AND json.rule = properties.state equal ignore case Ready and properties.network.publicNetworkAccess equal ignore case Enabled and firewallRules[?any(properties.startIpAddress equals 0.0.0.0 and properties.endIpAddress equals 255.255.255.255)] exists",
+  "recommendation": "If PostgreSQL database flexible server was intended to accesed by authorized public IPs. Restrict IP addresses to known list and make sure IP range '+ Add 0.0.0.0 - 255.255.255.255' is not in Firewall rules. \nTo add or to remove IPs refer below URL:\nhttps://docs.microsoft.com/en-gb/azure/postgresql/flexible-server/how-to-manage-firewall-portal#manage-existing-firewall-rules-through-the-azure-portal\n\nTo create new PostgreSQL database flexible server with Private access (VNet Integration), refer below URL:\nhttps://docs.microsoft.com/en-gb/azure/postgresql/flexible-server/quickstart-create-server-portal\n\nNote: Once PostgreSQL database flexible server is created; You can't change the connectivity method after. For example, if you select Public access (allowed IP addresses) when you create the server, you can't change to Private access (VNet Integration) after the server is created.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

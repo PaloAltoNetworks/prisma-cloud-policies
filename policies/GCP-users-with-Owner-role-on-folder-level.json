@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "b7b80b79-451d-4635-bbe8-236e2808ecef",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP users with 'Owner' role on folder level",
+  "description": "This policy identifies GCP basic role 'Owner' on folder level that is defined as risky role. Ensure that the users in your GCP environment don't have a risky 'Owner' role to minimize security risks.",
+  "rule.criteria": "b7b80b79-451d-4635-bbe8-236e2808ecef",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and grantedby.cloud.policy.name = 'Owner' and grantedby.level.type = 'GCP Folder'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

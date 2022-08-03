@@ -1,5 +1,53 @@
 # Changelog
 
+## PCS-22.7.2 - 2022-08-03
+
+### Added
+
+#### 15 new policies
+
+- AWS Classic Load Balancer not configured to span multiple Availability Zones
+- AWS ECR Repository not configured with a lifecycle policy
+- AWS EKS cluster public endpoint access overly permissive to all traffic
+- AWS Kinesis Firehose with Direct PUT as source has SSE encryption disabled
+- AWS OpenSearch attached security group overly permissive to all traffic
+- AWS OpenSearch node-to-node encryption is disabled
+- AWS Secret Manager Automatic Key Rotation is not enabled
+- Azure Automation account configured with overly permissive network access
+- Azure Automation account is not configured with managed identity
+- Azure Automation account variables are not encrypted
+- Azure Data Factory (V2) configured with overly permissive network access
+- Azure Data Factory (V2) is not configured with managed identity
+- Azure PostgreSQL database flexible server configured with overly permissive network access
+- Azure PostgreSQL database server deny public network access setting is not set
+- Azure Virtual network not protected by DDoS Protection Standard
+
+#### 2 new compliance standards
+
+- CIS v1.2.0 (OCI)
+- CIS v1.3.0 (GCP)
+
+#### 17 new policies for the IAM Security module
+
+- GCP Compute Engine entities with predefined Admin roles
+- GCP Compute Engine with IAM write access level
+- GCP entities with permissions to impersonate a service account in another project
+- GCP IAM effective permissions are over-privileged (7 days)
+- GCP IAM effective permissions are over-privileged (90 days)
+- GCP service accounts with 'Editor' role on folder level
+- GCP service accounts with 'Editor' role on org level 
+- GCP service accounts with 'Owner' role on folder level 
+- GCP service accounts with 'Owner' role on org level 
+- GCP service accounts with permissions to deploy new resources
+- GCP User with IAM write access level permissions
+- GCP users with 'Editor' role on folder level 
+- GCP users with 'Editor' role on org level 
+- GCP users with 'Owner' role on folder level 
+- GCP users with 'Owner' role on org level
+- GCP users with permissions to deploy new resources
+- GCP users with Service Account Token Creator role
+
+
 ## PCS-22.7.1 HotFix - 2022-07-25
 
 ### Added

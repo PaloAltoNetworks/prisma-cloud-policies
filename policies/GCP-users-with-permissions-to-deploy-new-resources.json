@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "4ed4f5d8-aa5a-4bb9-a91f-5684ac80ad57",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP users with permissions to deploy new resources",
+  "description": "A GCP user with this permission can deploy all these types of resources - the full list of resources (https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types)",
+  "rule.criteria": "4ed4f5d8-aa5a-4bb9-a91f-5684ac80ad57",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and action.name = 'deploymentmanager.deployments.create'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

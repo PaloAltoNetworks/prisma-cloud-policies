@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "309d1863-c8c7-4ff1-b7a8-454817c876d9",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP User with IAM write access level permissions",
+  "description": "This policy identifies IAM write permissions that are defined as risky permissions. Ensure that the IAM Users in your GCP account don't have a risky set of write permissions to minimize security risks.",
+  "rule.criteria": "309d1863-c8c7-4ff1-b7a8-454817c876d9",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and action.name in ('accessapproval.requests.approve','accessapproval.requests.dismiss','accessapproval.settings.delete','accessapproval.settings.update','accesscontextmanager.accessLevels.create','accesscontextmanager.accessLevels.delete','accesscontextmanager.accessLevels.replaceAll','accesscontextmanager.accessLevels.update','accesscontextmanager.accessPolicies.create','accesscontextmanager.accessPolicies.delete','accesscontextmanager.accessPolicies.setIamPolicy','accesscontextmanager.accessPolicies.update','accesscontextmanager.gcpUserAccessBindings.create','accesscontextmanager.gcpUserAccessBindings.delete','accesscontextmanager.gcpUserAccessBindings.update','accesscontextmanager.policies.create','accesscontextmanager.policies.delete','accesscontextmanager.policies.setIamPolicy','accesscontextmanager.policies.update','iam.roles.create','iam.roles.delete','iam.roles.undelete', 'iam.roles.update','iam.serviceAccounts.getAccessToken','iam.serviceAccountKeys.create','iam.serviceAccountKeys.delete','iam.serviceAccounts.create','iam.serviceAccounts.delete','iam.serviceAccounts.disable','iam.serviceAccounts.enable','iam.serviceAccounts.setIamPolicy','iam.serviceAccounts.undelete','iam.serviceAccounts.update','iam.serviceAccounts.implicitDelegation','iam.serviceAccounts.signBlob','iam.serviceAccounts.signJwt','iam.serviceAccounts.actAs')",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the IAM service.\n3 Find the binding between the user and the role\n4. Find the role used by the service account.\n6 Remove binding with the role with risky permissions.\n7 Create a new binding with predefined or custom role without risky permissions, if necessary.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
