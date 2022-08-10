@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-NEP-915",
+  "policyId": "fd9b71b1-a601-4c6b-b6f2-a8290ece5680",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Neptune cluster deletion protection is disabled",
+  "description": "This policy identifies AWS Neptune clusters for which deletion protection is disabled. Enabling deletion protection for Neptune clusters prevents irreversible data loss resulting from accidental or malicious operations.",
+  "rule.criteria": "a07cf01a-a77c-4947-ac7f-498e8254b707",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-neptune-db-cluster' AND json.rule = Status contains available and DeletionProtection is false",
+  "recommendation": "1. Sign in to the AWS console\n2. Select the region, from the region drop-down, for which the alert is generated\n3. Navigate to Neptune Dashboard\n4. Select the reported Neptune cluster\n5. Click on 'Modify' from top\n6. Under 'Deletion protection' select 'Enable deletion protection'\n7. Click on 'Continue'\n8. Schedule the modifications and click on 'Modify cluster' \n ",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

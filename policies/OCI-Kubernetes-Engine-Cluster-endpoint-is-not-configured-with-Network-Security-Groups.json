@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OCA-893",
+  "policyId": "b40cbb3f-794e-4031-9d97-3902e4ae0a46",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Kubernetes Engine Cluster endpoint is not configured with Network Security Groups",
+  "description": "This policy identifies Kubernetes Engine Clusters endpoint that are not configured with Network Security Groups. Network security groups give fine-grained control of resources and help in restricting network access to your cluster node pools. It is recommended to restrict access to the Cluster node pools by configuring network security groups.",
+  "rule.criteria": "915bc84b-178d-4640-8ce5-d280c88f0e74",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-containers-artifacts-kubernetes-cluster' AND json.rule = lifecycleState equal ignore case ACTIVE and endpointConfig exists and (endpointConfig.nsgIds does not exist or endpointConfig.nsgIds equal ignore case \"null\" or endpointConfig.nsgIds is empty)",
+  "recommendation": "1. Log in to OCI console\n2. Go to Developer Services -> Kubernetes Clusters (OKE)\n3. Click on the reported Kubernetes Clusters\n4. Click on 'Edit'\n5. On 'Edit cluster' page, Select the restrictive Network Security Group by selecting 'Use network security groups to control traffic' option under 'Kubernetes API server endpoint' section.\nNOTE: Before you update cluster endpoint with Network security group, make sure you have a restrictive Network Security Group already created with only specific traffic ports based on requirement.\n6. Click on 'Save' button",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

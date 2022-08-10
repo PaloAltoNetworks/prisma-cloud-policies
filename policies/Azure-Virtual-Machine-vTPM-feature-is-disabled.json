@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-917",
+  "policyId": "dec308dd-8132-4cdf-a634-8a51972eca25",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual Machine vTPM feature is disabled",
+  "description": "This policy identifies Virtual Machines that have Virtual Trusted Platform Module (vTPM) feature disabled. Virtual Trusted Platform Module (vTPM) provide enhanced security to the guest operating system. It is recommended to enable virtual TPM device on supported virtual machines to facilitate measured Boot and other OS security features that require a TPM.\n\nNOTE: This assessment only applies to trusted launch enabled virtual machines. You can't enable trusted launch on existing virtual machines that were initially created without it. \nTo know more, refer https://docs.microsoft.com/azure/virtual-machines/trusted-launch?WT.mc_id=Portal-Microsoft_Azure_Security",
+  "rule.criteria": "d0b1d826-07a5-4a26-b8d6-855d049f109d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-vm-list' AND json.rule = powerState equal ignore case \"PowerState/running\" and ['properties.securityProfile'].['securityType'] equal ignore case \"TrustedLaunch\" and ['properties.securityProfile'].['uefiSettings'].['vTpmEnabled'] is false",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Virtual machines dashboard\n3. Click on the reported Virtual machine\n4. Select 'Configuration' under 'Settings' from left panel \nNOTE: Enabling vTPM will trigger an immediate SYSTEM REBOOT.\n5. On the 'Configuration' page, check 'vTPM' under 'Security type' section\n6. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

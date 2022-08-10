@@ -6,6 +6,35 @@
 
 #### 13 new policies
 
+- AWS DocumentDB cluster deletion protection is disabled
+- AWS Lambda function URL AuthType set to NONE
+- AWS Neptune Cluster not configured with IAM authentication
+- AWS Neptune cluster deletion protection is disabled
+- AWS Web Application Firewall (AWS WAF) Classic logging is disabled
+- AWS Web Application Firewall v2 (AWS WAFv2) logging is disabled
+- Azure Batch account is not configured with managed identity
+- Azure Service bus namespace not configured with Azure Active Directory (Azure AD) authentication
+- Azure Virtual Machine (Windows) secure boot feature is disabled
+- Azure Virtual Machine vTPM feature is disabled
+- OCI Kubernetes Engine Cluster boot volume is not configured with in-transit data encryption
+- OCI Kubernetes Engine Cluster endpoint is not configured with Network Security Groups
+- OCI Kubernetes Engine Cluster pod security policy not enforced
+
+#### 3 new compliance standards
+
+- Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)
+- HITRUST CSF v.9.6.0
+- New York Department of Financial Services (NYDFS) 23 Codes, Rules and Regulations (Part 500)
+
+### Changed
+
+#### 4 policies updated
+
+- Azure Key Vault Key has no expiration date (Non-RBAC Key vault)
+- Azure Key Vault key has no expiration date (RBAC Key vault)
+- Azure Key Vault secret has no expiration date (Non-RBAC Key vault)
+- Azure Key Vault secret has no expiration date (RBAC Key vault)
+
 
 ## PCS-22.7.2 - 2022-08-03
 

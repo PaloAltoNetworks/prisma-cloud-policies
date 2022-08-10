@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASB-861",
+  "policyId": "a44d5f62-c690-459a-8912-bbad73321d35",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Service bus namespace not configured with Azure Active Directory (Azure AD) authentication",
+  "description": "This policy identifies Service bus namespaces that are not configured with Azure Active Directory (Azure AD) authentication and are enabled with local authentication. Azure AD provides superior security and ease of use over shared access signatures (SAS). With Azure AD, there's no need to store the tokens in your code and risk potential security vulnerabilities. It is recommended to configure the Service bus namespaces with Azure AD authentication so that all actions are strongly authenticated.",
+  "rule.criteria": "f7ca30fc-d990-4fef-b14d-3cc253d95722",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-service-bus-namespace' AND json.rule = properties.status equals \"Active\" and (properties.disableLocalAuth does not exist or properties.disableLocalAuth is false)",
+  "recommendation": "To configured Azure Active Directory (Azure AD) authentication and disable local authentication on existing Service bus, follow below URL instructions:\nhttps://docs.microsoft.com/en-us/azure/service-bus-messaging/disable-local-authentication",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
