@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OCA-900",
+  "policyId": "f5c3b3c2-0993-4915-9d8e-9117423bd271",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Kubernetes Engine Cluster boot volume is not configured with in-transit data encryption",
+  "description": "This policy identifies Kubernetes Engine Clusters that are not configured with in-transit data encryption. Configuring In-transit encryption on clusters boot volumes, encrypts data in transit between the instance, the boot volume, and the block volumes. All the data moving between the instance and the block volume is transferred over an internal and highly secure network. It is recommended that Clusters boot volumes should be configured with in-transit data encryption to minimize risk for sensitive data being leaked. \n\nFor more details:\nhttps://docs.oracle.com/en-us/iaas/Content/Block/Concepts/overview.htm#BlockVolumeEncryption",
+  "rule.criteria": "10ee4aa4-1cb8-42e3-b7d2-fc9a459dc657",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-containers-artifacts-kubernetes-cluster-nodepool' AND json.rule = lifecycleState equal ignore case ACTIVE and (nodeConfigDetails.isPvEncryptionInTransitEnabled equal ignore case \"null\" or nodeConfigDetails.isPvEncryptionInTransitEnabled does not exist)",
+  "recommendation": "1. Log in to OCI console\n2. Go to Developer Services -> Kubernetes Clusters (OKE)\n3. Click on the Kubernetes Clusters you wanted to modify\n4. Click on 'Node pools'\n5. Click on the reported node pool\n6. On the 'Node pool details' page, click on the 'Edit' button.\n7. On the 'Edit node pool' dialog; under 'Boot volume' section, select 'Use in-transit encryption' option\n8. Click on the 'Save Changes' button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-916",
+  "policyId": "f501f01a-59a9-476e-a6de-d8bbe69a1616",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual Machine (Windows) secure boot feature is disabled",
+  "description": "This policy identifies Virtual Machines (Windows) that have secure boot feature disabled. Enabling Secure Boot on supported Windows virtual machines provides mitigation against malicious and unauthorised changes to the boot chain. Secure boot helps protect your VMs against boot kits, rootkits, and kernel-level malware. So it is recommended to enable Secure boot for Azure Windows virtual machines. \n\nNOTE: This assessment only applies to trusted launch enabled Windows virtual machines. You can't enable trusted launch on existing virtual machines that were initially created without it. \nTo know more, refer https://docs.microsoft.com/azure/virtual-machines/trusted-launch?WT.mc_id=Portal-Microsoft_Azure_Security",
+  "rule.criteria": "72ea233a-3c9c-4ff8-a788-302598c0f0cc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-vm-list' AND json.rule = powerState equal ignore case \"PowerState/running\" and ['properties.storageProfile'].['osDisk'].['osType'] contains \"Windows\" and ['properties.securityProfile'].['securityType'] equal ignore case \"TrustedLaunch\" and ['properties.securityProfile'].['uefiSettings'].['secureBootEnabled'] is false",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Virtual machines dashboard\n3. Click on the reported Virtual machine\n4. Select 'Configuration' under 'Settings' from left panel \nNOTE: Enabling Secure Boot will trigger an immediate SYSTEM REBOOT.\n5. On the 'Configuration' page, check 'Secure boot' under 'Security type' section\n6. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

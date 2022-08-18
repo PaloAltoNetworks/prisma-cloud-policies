@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-WAF-749",
+  "policyId": "c291b605-9279-4d7a-b14e-3d69cc13dd35",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Web Application Firewall v2 (AWS WAFv2) logging is disabled",
+  "description": "This policy identifies Web Application Firewall v2s (AWS WAFv2) for which logging is disabled. Enabling WAFv2 logging, logs all web requests inspected by the service which can be used for debugging and additional forensics. The logs will help to understand why certain rules are triggered and why certain web requests are blocked. You can also integrate the logs with any SIEM and log analysis tools for further analysis. It is recommended to enable logging on your Web Application Firewall v2s (WAFv2).\n\nFor details:\nhttps://docs.aws.amazon.com/waf/latest/developerguide/logging.html#logging-management\n\nNOTE: Global (CloudFront) WAFv2 resources are out of scope for this policy.",
+  "rule.criteria": "ab0317ac-661a-4a7d-a28a-53f4fdf6d290",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-waf-v2-web-acl-resource' AND json.rule = '(resources.applicationLoadBalancer[*] exists or resources.apiGateway[*] exists or resources.other[*] exists) and loggingConfiguration.resourceArn does not exist'",
+  "recommendation": "To enable logging on your reported WAFv2s, follow below mentioned URL:\nhttps://docs.aws.amazon.com/waf/latest/developerguide/logging.html#logging-management\n\nNOTE: No additional cost to enable logging on AWS WAFv2 (minus Kinesis Firehose and any storage cost).\nFor Kinesis Firehose or any storage additional charges refer https://aws.amazon.com/cloudwatch/pricing/",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

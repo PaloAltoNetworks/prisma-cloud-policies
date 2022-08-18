@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LMB-925",
+  "policyId": "d80b48e4-f9de-4d75-ac4c-296169303d92",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Lambda function URL AuthType set to NONE",
+  "description": "This policy identifies AWS Lambda functions which have function URL AuthType set to NONE. AuthType determines how Lambda authenticates or authorises requests to your function URL. When AuthType is set to NONE, Lambda doesn't perform any authentication before invoking your function. It is highly recommended to set AuthType to AWS_IAM for Lambda function URL to authenticate via AWS IAM.",
+  "rule.criteria": "92a3fce2-0875-49da-af5c-71c3366100bf",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-lambda-list-functions' AND json.rule = authType equal ignore case NONE",
+  "recommendation": "1. Sign in to the AWS console\n2. Select the region, from the region drop-down, for which the alert is generated\n3. Navigate to AWS Lambda Dashboard\n4. Click on the 'Functions' (Left panel)\n5. Select the lambda function on which the alert is generated\n6. Go to 'Configuration' tab\n7. Select 'Function URL'\n8. Click on 'Edit'\n9. Set 'Auth type' to 'AWS_IAM'\n10. Click on 'Save'\n ",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "aws lambda update-function-url-config --function-name ${resourceId} --region ${region} --auth-type AWS_IAM",
+  "remediation.description": "This CLI command requires 'lambda:UpdateFunctionUrlConfig' permission. Successful execution will set AuthType to AWS_IAM for AWS Lambda function URL.",
+  "remediation.impact": "Set 'AuthType' setting to AWS_IAM for AWS Lambda function URL",
+  "compliance.standard": ""
+}

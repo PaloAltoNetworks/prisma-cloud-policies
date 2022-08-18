@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DOC-914",
+  "policyId": "95cc1059-dc20-4b91-9f05-63af346947b5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS DocumentDB cluster deletion protection is disabled",
+  "description": "This policy identifies AWS DocumentDB clusters for which deletion protection is disabled. Enabling deletion protection for DocumentDB clusters prevents irreversible data loss resulting from accidental or malicious operations.",
+  "rule.criteria": "616544ff-976c-424e-99dd-43bda5dcd29b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-docdb-db-cluster' AND json.rule = Status contains available and DeletionProtection is false",
+  "recommendation": "1. Sign in to the AWS console\n2. Select the region, from the region drop-down, for which the alert is generated\n3. Navigate to Amazon DocumentDB Dashboard\n4. Select the reported DocumentDB cluster\n5. From top right 'Actions' drop down list select 'Enable deletion protection'\n6. Schedule the modifications and click on 'Modify cluster'\n ",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

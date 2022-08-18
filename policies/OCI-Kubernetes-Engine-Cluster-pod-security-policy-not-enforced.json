@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OCA-892",
+  "policyId": "735977ee-e9f0-4d0b-a52a-2c326b73649e",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Kubernetes Engine Cluster pod security policy not enforced",
+  "description": "This policy identifies Kubernetes Engine Clusters that are not enforced with pod security policy. The Pod Security Policy defines a set of conditions that pods must meet to be accepted by the cluster; when a request to create or update a pod does not meet the conditions in the pod security policy, that request is rejected and an error is returned.",
+  "rule.criteria": "845f4efa-8af7-4225-b0e3-3499e73090cd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-containers-artifacts-kubernetes-cluster' AND json.rule = lifecycleState equal ignore case ACTIVE and options.admissionControllerOptions.isPodSecurityPolicyEnabled is false",
+  "recommendation": "To configure Pod Security Policies for Container Engine for Kubernetes, refer below URL:\nhttps://docs.oracle.com/en-us/iaas/Content/ContEng/Tasks/contengusingpspswithoke.htm\n\nNOTE: You must define pod security policies for the pod security policy admission controller to enforce when accepting pods into the cluster. If you do not define pod security polices, the pod security policy admission controller will prevent any pods being created in the cluster.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

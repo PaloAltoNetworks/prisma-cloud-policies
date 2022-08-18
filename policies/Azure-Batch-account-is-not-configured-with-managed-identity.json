@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ABT-911",
+  "policyId": "ee0552eb-431d-44b5-9ff9-08ee7eec8b40",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Batch account is not configured with managed identity",
+  "description": "This policy identifies Batch accounts that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Batch account.",
+  "rule.criteria": "af9979d2-93b1-49b9-bf0a-26194866bfe7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-batch-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and identity does not exist or identity.type equal ignore case \"None\"",
+  "recommendation": "1. Login to Azure portal.\n2. Navigate to 'Batch accounts'\n3. Click on the reported Batch account\n4. Select 'Identity' under 'Settings' from left panel \n5. Configure either 'System assigned' or 'User assigned' identity\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
