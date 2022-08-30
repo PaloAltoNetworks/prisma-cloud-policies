@@ -1,5 +1,27 @@
 # Changelog
 
+## PCS-22.8.2 - 2022-08-31
+
+### Added
+
+#### 1 new compliance standard
+
+- CIS Google Kubernetes Engine (GKE) v1.2.0
+
+### Changed
+
+#### 2 policies updated
+
+- AWS EKS cluster security group overly permissive to all traffic
+- AWS Lambda function managed ENI reachable from any untrust internet source
+
+### Removed
+
+#### 1 policy deleted
+
+- GCP Kubernetes Engine Clusters have pod security policy disabled
+
+
 ## PCS-22.8.1 - 2022-08-17
 
 ### Added
