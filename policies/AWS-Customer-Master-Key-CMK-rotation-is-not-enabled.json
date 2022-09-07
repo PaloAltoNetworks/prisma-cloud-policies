@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'kms:EnableKeyRotation' permission. Successful execution will enable the key rotation for the respective Customer Master Key (CMK).",
   "remediation.impact": "Enable key rotation for the respective Customer Master Key",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",

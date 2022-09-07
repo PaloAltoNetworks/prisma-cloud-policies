@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "New Zealand Information Security Manual (NZISM v3.4)",

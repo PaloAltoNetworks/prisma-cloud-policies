@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'eks:UpdateClusterConfig' permission. Successful execution will enable control plane logging for the respective EKS.",
   "remediation.impact": "Enable control plane logging for the respective EKS",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",

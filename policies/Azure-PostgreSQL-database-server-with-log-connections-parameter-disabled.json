@@ -14,8 +14,8 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable log_connections which helps the PostgreSQL database to log attempted connection to the server, as well as successful completion of client authentication.",
   "remediation.impact": "enables log_connections in Azure PostgreSQL database servers",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",

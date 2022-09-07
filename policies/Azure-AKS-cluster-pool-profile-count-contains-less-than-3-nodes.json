@@ -14,8 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",

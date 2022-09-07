@@ -14,8 +14,8 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforPostgreSQL servers/configuration/*' permission. Successful execution will enable log_retention_days which helps the PostgreSQL database to set number of days a log file is retained, which in turn generates query and error logs. NOTE: Recommended Log retention days value can be in 4-7 inclusive range. This CLI will set log retention days to 4.",
   "remediation.impact": "enables log_retention_days in Azure PostgreSQL database servers",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",

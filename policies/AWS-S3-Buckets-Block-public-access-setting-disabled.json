@@ -14,8 +14,10 @@
   "remediation.description": "This CLI command requires 's3:PutBucketPublicAccessBlock' permission. Successful execution enables 'Block public access' setting.\nNote: Make sure updating 'Block public access' setting does not affect S3 bucket data access.",
   "remediation.impact": "Enables 'Block public access' setting for AWS S3 bucket",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "AWS Foundational Security Best Practices standard",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",

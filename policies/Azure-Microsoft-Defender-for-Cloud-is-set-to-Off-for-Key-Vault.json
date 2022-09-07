@@ -14,7 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
+    "ACSC Information Security Manual (ISM)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "CIS Controls v7.1",

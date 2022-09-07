@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "PCI DSS v4.0"

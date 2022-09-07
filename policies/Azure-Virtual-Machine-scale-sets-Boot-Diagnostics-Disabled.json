@@ -14,8 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CSA CCM v.4.0.1",

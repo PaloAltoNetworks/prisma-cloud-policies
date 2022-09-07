@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'ec2:RevokeSecurityGroupIngress' permission. Successful execution will update the security group to revoke the ingress rule records with port 3389 open to all traffic either on IPv4 or on IPv6 protocol.",
   "remediation.impact": "Deletes the reported Security Group to restrict RDP traffic from all traffic",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "AWS Foundational Security Best Practices standard",
     "Brazilian Data Protection Law (LGPD)",

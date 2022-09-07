@@ -15,7 +15,6 @@
   "remediation.impact": "Enable Object Versioning for the respective S3",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0",
     "CIS Controls v7.1",

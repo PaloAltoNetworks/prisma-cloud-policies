@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-BGQ-929",
+  "policyId": "a79dd0e7-2025-4676-abee-acfd493e32cc",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP BigQuery Dataset not configured with default CMEK",
+  "description": "This policy identifies BigQuery Datasets that are not configured with default CMEK. Setting a Default Customer-managed encryption key (CMEK) for a data set ensures any tables created in the future will use the specified CMEK if none other is provided. It is recommended to configure all BigQuery Datasets with default CMEK.",
+  "rule.criteria": "811400f5-5ea9-4d1b-b706-f3f71f4b1f91",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-bigquery-dataset-list' AND json.rule = defaultEncryptionConfiguration.kmsKeyName does not exist",
+  "recommendation": "To configure default Customer-managed encryption key (CMEK), use following command for \"bq\" utility\nbq update --default_kms_key=<CMEK> <DATASET_ID>\n\nPlease refer to URL mentioned below for more details on the bq update command:\nhttps://cloud.google.com/bigquery/docs/reference/bq-cli-reference#bq_update",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

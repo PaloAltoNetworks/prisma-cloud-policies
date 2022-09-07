@@ -14,9 +14,9 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBInstance' permission. Successful execution will enable 'Multi-AZ Deployment' for the respective RDS.",
   "remediation.impact": "Enable AWS RDS instance with Multi-Availability Zone",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "AWS Foundational Security Best Practices standard",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0",
     "CIS Controls v7.1",

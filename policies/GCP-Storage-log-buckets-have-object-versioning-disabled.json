@@ -15,7 +15,6 @@
   "remediation.impact": "enables versioning in GCP Storage log buckets",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",

@@ -14,8 +14,8 @@
   "remediation.description": "This CLI command requires 'elasticloadbalancing:ModifyLoadBalancerAttributes' permission. Successful execution will enable cross-zone load balancing for the respective Elastic Load Balancers.",
   "remediation.impact": "Enable cross-zone load balancing for the respective Elastic Load Balancer",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",
