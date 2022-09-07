@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "b6b547d3-e4cb-4420-83c2-a67f7a74d5f6",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AD user with the Azure built-in roles of Contributor",
+  "description": "Using the Azure built-in role of Contributor with Azure AD users provides broad permissions sets that can lead to privilege escalation. A few examples are virtual machine lateral movement (like running commands on other VMs), storage account access and configuration access",
+  "rule.criteria": "b6b547d3-e4cb-4420-83c2-a67f7a74d5f6",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND source.cloud.resource.type = 'user' AND grantedby.cloud.policy.type = 'Built-in Role' AND grantedby.cloud.policy.name = 'Contributor'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

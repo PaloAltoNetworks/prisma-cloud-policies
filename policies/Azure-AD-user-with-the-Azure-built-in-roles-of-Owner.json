@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "9370db0b-6b0a-474f-8132-c8cd583a9356",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AD user with the Azure built-in roles of Owner",
+  "description": "Using the Azure built-in role of Owner with Azure AD users provides broad permissions sets that can lead to privilege escalation. A few examples are virtual machine lateral movement (like running commands on other VMs), storage account access and configuration access",
+  "rule.criteria": "9370db0b-6b0a-474f-8132-c8cd583a9356",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND source.cloud.resource.type = 'user' AND grantedby.cloud.policy.type = 'Built-in Role' AND grantedby.cloud.policy.name = 'Owner'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

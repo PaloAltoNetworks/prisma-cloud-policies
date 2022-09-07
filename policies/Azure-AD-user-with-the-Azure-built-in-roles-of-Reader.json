@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "c85c9ae3-89c9-4b5c-ba7f-dc81d0d4b3ff",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure AD user with the Azure built-in roles of Reader",
+  "description": "Using the Azure built-in role of Reader with Azure AD users provides broad permissions sets that can lead to several scenarios of subscription information enumeration",
+  "rule.criteria": "c85c9ae3-89c9-4b5c-ba7f-dc81d0d4b3ff",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND source.cloud.resource.type = 'user' AND grantedby.cloud.policy.type = 'Built-in Role' AND grantedby.cloud.policy.name = 'Reader'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
