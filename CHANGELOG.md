@@ -1,5 +1,52 @@
 # Changelog
 
+## PCS-22.9.1 - 2022-09-13
+
+### Added
+
+#### 6 new policies
+
+- AWS SQS Queue not configured with server side encryption
+- Azure MySQL (PaaS) instance reachable from untrust internet source on TCP port 3306
+- Azure PostgreSQL (PaaS) instance reachable from untrust internet source on TCP port 5432
+- Azure VM instance in running state that is internet reachable with unrestricted access (0.0.0.0/0) other than HTTP/HTTPS port
+- GCP BigQuery Dataset not configured with default CMEK
+- GCP Cloud Function is publicly accessible
+
+#### 11 new policies for the IAM Security module
+
+- Azure AD user with permissions to manage Azure permissions broadly that was not used in the last 90 days
+- Azure AD user with the Azure built-in roles of Contributor
+- Azure AD user with the Azure built-in roles of Owner
+- Azure AD user with the Azure built-in roles of Reader
+- Azure AD users with Key Vault access
+- Azure Managed Identity (user assigned or system assigned) with Key Vault access
+- Azure Managed Identity (user assigned or system assigned) with the Azure built-in roles of Contributor
+- Azure Managed Identity (user assigned or system assigned) with the Azure built-in roles of Owner
+- Azure Managed Identity (user assigned or system assigned) with the Azure built-in roles of Reader
+- Azure Managed Identity with permissions to manage Azure permissions broadly that was unused in the last 90 days
+- Azure Managed Identity with permissions to other subscriptions
+
+### Changed
+
+#### 8 policies updated
+
+- AWS CloudFront web distribution using insecure TLS version
+- AWS ElastiCache Redis with in-transit encryption disabled (Non-replication group)
+- AWS RDS minor upgrades not enabled
+- AWS SNS topic policy overly permissive for publishing
+- Azure Container Instance is not configured with virtual network
+- GCP Kubernetes Engine Clusters have Binary authorization disabled
+- GCP Log bucket retention policy is not configured using bucket lock
+- GCP PostgreSQL instance database flag log_connections is disabled
+
+#### 3 compliance standard updated
+
+- ACSC Information Security Manual (ISM)
+- Australian Cyber Security Centre (ACSC) Essential Eight
+- Australian Energy Sector Cyber Security Framework (AESCSF)
+
+
 ## PCS-22.8.2 - 2022-08-31
 
 ### Added
