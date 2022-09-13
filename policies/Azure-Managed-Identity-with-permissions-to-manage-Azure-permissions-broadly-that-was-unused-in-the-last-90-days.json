@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "1df9a6a1-1f9a-4dbe-a170-19d45ffa95a6",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "critical",
+  "name": "Azure Managed Identity with permissions to manage Azure permissions broadly that was unused in the last 90 days",
+  "description": "Managed identities provide an automatic way for applications to connect to resources that support Azure Active Directory (Azure AD) authentication. Managed identity with the ability to change Azure permissions through role assignments are risky permission that can lead to privilege escalation",
+  "rule.criteria": "1df9a6a1-1f9a-4dbe-a170-19d45ffa95a6",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND grantedby.cloud.entity.type IN ( 'System Assigned', 'User Assigned' ) AND dest.cloud.resource.name = '*' AND action.name STARTS WITH 'Microsoft.Authorization/roleAssignments/' AND action.lastaccess.days > 90",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

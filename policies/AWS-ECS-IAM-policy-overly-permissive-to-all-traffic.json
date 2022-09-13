@@ -14,7 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "AWS Well-Architected Framework",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",

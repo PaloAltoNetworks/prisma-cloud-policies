@@ -14,8 +14,8 @@
   "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will disable default network access rule for Storage Accounts.'.",
   "remediation.impact": "disables default-action in Azure Storage Account network access",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",

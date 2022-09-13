@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.subnetworks.update' permission. Successful execution will enable GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
   "remediation.impact": "Enable flow logs for VPC subnets",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",

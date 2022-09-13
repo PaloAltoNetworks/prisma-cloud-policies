@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.instances.setMetadata' permission. Successful execution will adds metadata 'block-project-ssh-keys' as TRUE to the GCP compute instance metadata section.\nNote: This CLI command won't be able to remediate instance groups",
   "remediation.impact": "adds metadata 'block-project-ssh-keys' to the GCP compute instance",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",

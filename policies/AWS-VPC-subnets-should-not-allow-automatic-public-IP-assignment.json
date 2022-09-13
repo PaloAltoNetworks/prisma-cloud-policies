@@ -14,7 +14,9 @@
   "remediation.description": "This CLI command requires 'ec2:ModifySubnetAttribute' permission. Successful execution will disable automatic public IP assignment for the respective Subnet.",
   "remediation.impact": "Disable automatic public IP assignment for the respective Subnet",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
     "CIS Controls v7.1",

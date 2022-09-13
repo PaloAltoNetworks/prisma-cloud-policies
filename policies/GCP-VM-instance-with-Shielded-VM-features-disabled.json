@@ -15,7 +15,6 @@
   "remediation.impact": "",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS v1.1.0 (GCP)",
     "CIS v1.2.0 (GCP)",

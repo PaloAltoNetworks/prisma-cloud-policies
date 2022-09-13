@@ -14,7 +14,9 @@
   "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/write' permission. Successful execution disables public access in Azure storage account, this disables anonymous/public read access to a container and the blobs within Azure storage account",
   "remediation.impact": "Disables public access in Azure storage account",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
     "Brazilian Data Protection Law (LGPD)",

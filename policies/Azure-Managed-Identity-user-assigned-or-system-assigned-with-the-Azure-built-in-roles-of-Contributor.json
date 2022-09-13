@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "19d9bbe7-81b8-4531-a8d6-c9e29474e18c",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Managed Identity (user assigned or system assigned) with the Azure built-in roles of Contributor",
+  "description": "Managed identities provide an automatic way for applications to connect to resources that support Azure Active Directory (Azure AD) authentication. Using the Azure built-in role of Contributor with managed identities provides broad permissions sets for a non-human identity that can lead to privilege escalation. A few examples are virtual machine lateral movement (like running commands on other VMs), storage account access and configuration access",
+  "rule.criteria": "19d9bbe7-81b8-4531-a8d6-c9e29474e18c",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND grantedby.cloud.entity.type IN ( 'System Assigned', 'User Assigned' ) AND grantedby.cloud.policy.type = 'Built-in Role' AND grantedby.cloud.policy.name = 'Contributor'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

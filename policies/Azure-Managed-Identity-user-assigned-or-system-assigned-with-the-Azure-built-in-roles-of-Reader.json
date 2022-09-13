@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "45dad4ec-29c4-4de4-be24-3043d385e209",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Managed Identity (user assigned or system assigned) with the Azure built-in roles of Reader",
+  "description": "Managed identities provide an automatic way for applications to connect to resources that support Azure Active Directory (Azure AD) authentication. Using the Azure built-in role of Reader with managed identities provides broad permissions sets for a non-human identity that can lead to several scenarios of subscription information enumeration",
+  "rule.criteria": "45dad4ec-29c4-4de4-be24-3043d385e209",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND grantedby.cloud.entity.type IN ( 'System Assigned', 'User Assigned' ) AND grantedby.cloud.policy.type = 'Built-in Role' AND grantedby.cloud.policy.name = 'Reader'",
+  "recommendation": "",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

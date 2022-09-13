@@ -14,8 +14,8 @@
   "remediation.description": "This CLI command requires 'container.clusters.update' permission. Successful execution will enable intra-node visibility for GCP Kubernetes Engine cluster which helps to see flow logs for all traffic between Pods.",
   "remediation.impact": "enables intra-node visibility in GCP Kubernetes Engine cluster",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
-    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",

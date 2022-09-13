@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.firewalls.update' and 'compute.networks.updatePolicy' permission. Successful execution will disable this firewall rule blocking internet traffic to DNS port (53).",
   "remediation.impact": "Disable GCP Firewall rule which allows all traffic on DNS port (53)",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",

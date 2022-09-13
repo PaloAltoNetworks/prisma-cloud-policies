@@ -14,7 +14,10 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBCluster' permission. Successful execution will enable IAM Authentication for the reported AWS RDS cluster.",
   "remediation.impact": "Enables IAM Authentication setting for AWS RDS cluster",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "AWS Foundational Security Best Practices standard",
+    "Australian Cyber Security Centre (ACSC) Essential Eight",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",

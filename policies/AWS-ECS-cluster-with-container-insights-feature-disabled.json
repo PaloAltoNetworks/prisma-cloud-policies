@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'ecs:UpdateClusterSettings' permission. Successful execution will enable Container Insights for the reported AWS ECS cluster.",
   "remediation.impact": "Enables Container Insights for the reported AWS ECS cluster",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",

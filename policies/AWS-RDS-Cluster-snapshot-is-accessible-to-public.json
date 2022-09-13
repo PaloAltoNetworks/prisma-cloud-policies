@@ -14,6 +14,8 @@
   "remediation.description": "This CLI command requires 'rds:ModifyDBClusterSnapshotAttribute' permission. Successful execution will reset this RDS Cluster snapshot ACL (Access Control List) to private. This will ensure that only Owner has full privileges.",
   "remediation.impact": "RDS snapshot share public to private",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
+    "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",
