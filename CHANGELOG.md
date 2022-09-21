@@ -1,5 +1,30 @@
 # Changelog
 
+## PCS-22.9.2 - 2022-09-27
+
+### Added
+
+#### 2 new policies
+
+- GCP Cloud Run service is publicly accessible
+- GCP KMS crypto key is anonymously accessible
+
+#### 1 new compliance standard
+
+- Korea – Information Security Management System (ISMS)
+
+### Changed
+
+#### 6 policies updated
+
+- Azure Function App authentication is off
+- Azure Function App client certificate is disabled
+- Azure Function App doesn't have a Managed Service Identity
+- Azure Function App doesn't redirect HTTP to HTTPS
+- Azure Function App doesn't use HTTP 2.0
+- Azure Function App doesn't use latest TLS version
+
+
 ## PCS-22.9.1 - 2022-09-13
 
 ### Added
