@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-KMS-933",
+  "policyId": "e4c7d880-c590-481c-86cc-8c55245609b0",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP KMS crypto key is anonymously accessible",
+  "description": "This policy identifies GCP KMS crypto keys that are anonymously accessible. Granting permissions to 'allUsers' or 'allAuthenticatedUsers' allows anyone to access the KMS key. As a security best practice, it is recommended not to bind such members to KMS IAM policy.",
+  "rule.criteria": "4b718a26-51ce-47d3-bb0a-1ba56d4a528f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-kms-crypto-keys-list' AND json.rule = ((purpose does not equal ENCRYPT_DECRYPT) or (purpose equals ENCRYPT_DECRYPT and primary.state equals ENABLED)) and iamPolicy.bindings[*].members contains allUsers or iamPolicy.bindings[*].members contains allAuthenticatedUsers",
+  "recommendation": "Granting/revoking access for the KMS key is only supported by CLI. To remediate run the below CLI command. \n\n1. List all the cryptokeys which has overly permissive IAM bindings,\n\ngcloud asset search-all-iam-policies --asset-types=cloudkms.googleapis.com/CryptoKey --query=\"policy:(allUsers OR allAuthenticatedUsers)\" \n\n2. Remove IAM policy binding for a KMS key to remove access to allUsers and allAuthenticatedUsers using the below command.\n\ngcloud kms keys remove-iam-policy-binding [key_name] --keyring='[key_ring_name]' --location='[location]' --member='[allUsers/allAuthenticatedUsers]' --role='[role]'\n\nRefer to the following URL for more information on “remove-iam-policy-binding” command.\nhttps://cloud.google.com/sdk/gcloud/reference/projects/remove-iam-policy-binding",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

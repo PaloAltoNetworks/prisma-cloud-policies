@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-CLR-934",
+  "policyId": "f4ff0156-ce21-42ab-aa20-490c3159ecb9",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Run service is publicly accessible",
+  "description": "This policy identifies GCP Cloud Run services that are publicly accessible. Granting Cloud Run Invoker permission to 'allUsers' or 'allAuthenticatedUsers' allows anyone to access the Cloud Run service over internet. Such access might not be desirable if sensitive data is stored at the location. As security best practice it is recommended to remove public access and assign the least privileges to the GCP Cloud Run service according to requirements.\n\nNote: For public API/website Cloud Run service will permit 'Cloud Run Invoker' to 'allUsers'. \n\nRefer to the following link for common use cases of authentication to the Cloud Run service.\nLink: https://cloud.google.com/run/docs/authenticating/overview ",
+  "rule.criteria": "a7245ab6-cee9-450e-bd24-e87ae0a28ccb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-run-services-list' AND json.rule = status.conditions[?any(type equals Ready and status equals True)] exists and status.conditions[?any(type equals RoutesReady and status equals True)] exists and iamPolicy.bindings[?any(role equals roles/run.invoker and members is member of (allUsers, allAuthenticatedUsers))] exists",
+  "recommendation": "It is recommended to review and add appropriate, but restrictive roles before revoking access.\n\nTo revoke access from 'allusers'/'allAuthenticatedUsers', refer to the following URL:\nhttps://cloud.google.com/run/docs/securing/managing-access#remove-principals",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
