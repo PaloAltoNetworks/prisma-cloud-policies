@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-MON-938",
+  "policyId": "adee3240-2355-4a24-821e-d54141f008b2",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Log metric filter and alert does not exist for VPC network route delete and insert",
+  "description": "This policy identifies GCP accounts which do not have a log metric filter and alert for VPC network route delete and insert events. Monitoring network routes deletion and insertion activities will help in identifying VPC traffic flows through an expected path. It is recommended to create a metric filter and alarm to detect activities related to the deletion and insertion of VPC network routes.",
+  "rule.criteria": "725d2575-428a-4ad3-9a93-74da16753b26",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-logging-metric' as X; config from cloud.resource where api.name = 'gcloud-monitoring-policies-list' as Y; filter '$.Y.conditions[*].metricThresholdFilter contains $.X.name and ( $.X.filter does not contain \"resource.type =\" or $.X.filter does not contain \"resource.type=\" ) and ( $.X.filter does not contain \"resource.type !=\" and $.X.filter does not contain \"resource.type!=\" ) and $.X.filter contains \"gce_route\" and ( $.X.filter contains \"protoPayload.methodName:\" or $.X.filter contains \"protoPayload.methodName :\" ) and ( $.X.filter does not contain \"protoPayload.methodName!:\" and $.X.filter does not contain \"protoPayload.methodName !:\" ) and $.X.filter contains \"compute.routes.delete\" and $.X.filter contains \"compute.routes.insert\"'; show X; count(X) less than 1",
+  "recommendation": "1. Sign in to GCP Console\n2. Navigate to 'Logs-based metrics' under the 'Logging' section.\n3. Click on 'CREATE METRIC'.\n4. Provide 'Metric Type' and 'Details'.\n5. In 'Filter selection', add filter as \nresource.type=\"gce_route\" AND (protoPayload.methodName:\"compute.routes.delete\" OR protoPayload.methodName:\"compute.routes.insert\")\n6. Click on 'CREATE METRIC'.\n7. Under 'User-defined metrics' section, choose the metric you created in step 6 and click on the kebab menu (Vertical 3 dots) on the right side of the metrics\n8. Click on 'Create alert from metric'; it will navigate to 'Create alerting policy' under the section 'Monitoring'.\n9. Add the metric name created above if not auto-filled in the Monitoring filter. Choose an appropriate value for other alert condition parameters as desired. Then Click on 'NEXT'\n10. Configure all alert trigger settings as desired. Then Click on 'NEXT'\n11. Configure notifications as desired and provide an appropriate name for the alert policy. Then Click on 'NEXT'\n12. Click on 'CREATE POLICY'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

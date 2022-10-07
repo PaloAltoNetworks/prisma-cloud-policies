@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC-940",
+  "policyId": "401ea157-b44f-4e26-b017-945b3fc259e1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS ElastiCache Memcached cluster with in-transit encryption disabled",
+  "description": "This policy identifies AWS ElastiCache Memcached clusters that have in-transit encryption disabled. It is highly recommended to implement in-transit encryption in order to protect data from unauthorized access as it travels through the network, between clients and cache servers. Enabling data encryption in-transit helps to prevent unauthorized users from reading sensitive data between your Memcached and their associated cache storage systems.",
+  "rule.criteria": "6de57b6f-7003-4e77-9045-7a677a126baa",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elasticache-cache-clusters' AND json.rule = engine equals memcached and transitEncryptionEnabled is false",
+  "recommendation": "AWS ElastiCache Memcached in-transit encryption can be set, only at the time of creation. So to resolve this alert, create a new cluster with in-transit encryption enabled, then migrate all required ElastiCache Memcached cluster data from the reported ElastiCache Memcached cluster to this newly created cluster and delete reported ElastiCache Memcached cluster.\n\nTo create new ElastiCache Memcached cluster with In-transit encryption set, perform the following:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache\n4. Click on 'Memcached clusters' under 'Resources'\n5. Click on 'Create Memcached clusters' button\n6. On the 'Cluster settings' page,\na. Enter a name for the new cache cluster\nb. Select Memcached engine version from 'Engine version' dropdown list\nNote: As of September 2022,In-transit encryption can be enabled only for AWS ElastiCache clusters with Memcached engine version 1.6.12 or later\nc. Enter the 'Subnet group settings' and click on 'Next'\nd. Under 'Security', Select 'Enable' checkbox under 'Encryption in transit'\ne. Fill in other necessary parameters\n7. Click on 'Create' button to launch your new ElastiCache Memcached cluster\n\nTo delete reported ElastiCache Memcached cluster follow below given URL:\nhttps://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/GettingStarted.DeleteCacheCluster.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

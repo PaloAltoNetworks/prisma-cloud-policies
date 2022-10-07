@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-942",
+  "policyId": "31121be7-b273-49a1-befe-53a3bd0cd801",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure VM OS disk is not configured with any encryption",
+  "description": "This policy identifies VM OS disks that are not configured with any encryption. Azure encrypts OS disks that are not configured with any encryption. Azure offers Server-Side Encryption (SSE) with platform-managed keys [SSE with PMK] by default for managed disks. It is recommended to enable default encryption or you may optionally choose to use a customer-managed key to protect from malicious activity.",
+  "rule.criteria": "5e1188c4-9fc5-493c-b03c-17d6ee984ba9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-disk-list' and json.rule = osType exists and managedBy exists and (encryptionSettings does not exist or encryptionSettings.enabled is false) and encryption.type is not member of (\"EncryptionAtRestWithCustomerKey\",\"EncryptionAtRestWithPlatformAndCustomerKeys\",\"EncryptionAtRestWithPlatformKey\")",
+  "recommendation": "1. Log in to the Azure Portal\n2. Navigate to 'Disks'\n3. Select the reported OS disk you want to modify\n4. Select 'Encryption' under 'Settings'\n5. Select 'Encryption Type' according to your encryption requirement.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
