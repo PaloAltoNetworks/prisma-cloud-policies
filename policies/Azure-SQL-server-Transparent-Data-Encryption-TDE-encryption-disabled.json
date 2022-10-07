@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SQL-941",
+  "policyId": "8e58437c-1363-4d96-951f-490ad22e7a15",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure SQL server Transparent Data Encryption (TDE) encryption disabled",
+  "description": "This policy identifies SQL servers in which Transparent Data Encryption (TDE) is disabled. TDE encryption performs real-time encryption and decryption of the server, related reinforcements, and exchange log records without requiring any changes to the application. It is recommended to have TDE encryption on your SQL servers to protect the server from malicious activity.",
+  "rule.criteria": "83cc4cc9-9082-436d-9db6-895b9b4993da",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.state'] equal ignore case Ready and sqlEncryptionProtectors[*].kind does not exist",
+  "recommendation": "1. Log in to the Azure Portal\n2. Select 'SQL servers'\n3. Select the reported SQL server instance you want to modify\n4. Select 'Transparent data encryption' under 'Security'\n5. Select 'Select a key'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

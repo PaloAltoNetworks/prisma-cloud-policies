@@ -4,25 +4,44 @@
 
 ### Added
 
-#### 2 new policies
+#### 8 new policies
 
+- AWS ElastiCache Memcached cluster with in-transit encryption disabled
+- Azure SQL server Transparent Data Encryption (TDE) encryption disabled
+- Azure VM data disk is not configured with any encryption
+- Azure VM OS disk is not configured with any encryption
 - GCP Cloud Run service is publicly accessible
 - GCP KMS crypto key is anonymously accessible
+- GCP Log metric filter and alert does not exist for VPC network route delete and insert
+- GCP Log metric filter and alert does not exist for VPC network route patch and insert
 
-#### 1 new compliance standard
+#### 7 new compliance standard
 
+- CIS v1.5.0 (AWS) - Level 1
+- CIS v1.5.0 (AWS) - Level 2
+- CIS v1.5.0 (Azure) - Level 1
+- CIS v1.5.0 (Azure) - Level 2
+- Fedramp (Low)
+- Fedramp (Moderate)
 - Korea – Information Security Management System (ISMS)
 
 ### Changed
 
-#### 6 policies updated
+#### 13 policies updated
 
+- Azure App Service Web app client certificate is disable
+- Azure App Service Web app doesn't use latest .Net Core version
+- Azure App Service Web app doesn't use latest PHP version
+- Azure App Service Web app doesn't use latest Python version
 - Azure Function App authentication is off
 - Azure Function App client certificate is disabled
 - Azure Function App doesn't have a Managed Service Identity
 - Azure Function App doesn't redirect HTTP to HTTPS
 - Azure Function App doesn't use HTTP 2.0
 - Azure Function App doesn't use latest TLS version
+- Azure Resource Group does not have a resource lock
+- Azure SQL Server audit log retention is less than 91 days
+- Azure SQL server TDE protector is not encrypted with BYOK (Use your own key)
 
 
 ## PCS-22.9.1 - 2022-09-13
