@@ -5,7 +5,7 @@
   "cloudType": "gcp",
   "severity": "medium",
   "name": "GCP users with 'Owner' role on org level",
-  "description": "This policy identifies GCP basic role 'Owner' on organization level that is defined as risky role. Ensure that the users in your GCP environment don't have a risky 'Owner' role to minimize security risks.",
+  "description": "This policy identifies GCP basic role 'Owner' on organization level that is defined as risky role. Ensure that the service accounts in your GCP environment don't have a risky 'Owner' role to minimize security risks.",
   "rule.criteria": "39462006-ccc1-4f0a-991a-898f3f8906fc",
   "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and grantedby.cloud.policy.name = 'Owner' and grantedby.level.type = 'GCP Organization'",
   "recommendation": "",
@@ -13,5 +13,6 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": "",
+  "labels": "{Prisma_Cloud}"
 }

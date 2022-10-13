@@ -3,7 +3,7 @@
   "policyId": "3cbd881c-2320-4797-88a6-7176d9954941",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "AWS cross-account resource access through IAM policies",
   "description": "This policy identifies the AWS resources which can be accessed from another account (cross-account) through IAM policies. Ensure that the AWS resources provisioned in your AWS account are not accessible from other accounts to avoid sensitive data exposure and minimize security risks. The \"cross-account access granted by the resource-based policy\" and \"IAM role trust relationship\" are supported.",
   "rule.criteria": "3cbd881c-2320-4797-88a6-7176d9954941",
@@ -13,5 +13,6 @@
   "remediation.cliScriptTemplate": "dynamic aws cli commands",
   "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
   "remediation.impact": "limit the relevant permissions of the violating resource",
-  "compliance.standard": ""
+  "compliance.standard": "",
+  "labels": "{Prisma_Cloud}"
 }
