@@ -8,7 +8,7 @@
   "description": "This policy identifies those S3 buckets which have either the read/write permission opened up for Cloud Accounts which are NOT part of Cloud Accounts monitored by Prisma Cloud. These accounts with read/write privileges should be reviewed and confirmed that these are valid accounts of your organization (or authorised by your organization) and are not active under Prisma Cloud monitoring.",
   "rule.criteria": "ea712527-83e7-7855-0ec9-1610194a9b9b",
   "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = \"acl.grants[?(@.grantee.typeIdentifier=='id')].grantee.identifier size > 0 and _AWSCloudAccount.isRedLockMonitored(acl.grants[?(@.grantee.typeIdentifier=='id')].grantee.identifier) is false\"",
-  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the reported S3 bucket\n4. Click on the 'Permissions' tab\n5. Navigate to the 'Access control list (ACL)' section and Click on the 'Edit'\n6. Under 'Access for other AWS accounts', Add the Cloud Accounts with the requisite permission to these S3 buckets.\n7. Click on 'Save changes'",
+  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the reported S3 bucket\n4. Click on the 'Permissions' tab\n5. Navigate to the 'Access control list (ACL)' section and Click on the 'Edit'\n6. Under 'Access for other AWS accounts', Add the Cloud Accounts that are monitored by Prisma Cloud\n7. Click on 'Save changes'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",

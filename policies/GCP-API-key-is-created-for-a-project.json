@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-API-944",
+  "policyId": "80e46dc6-4ebf-4cc0-b29b-6cfc77414577",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP API key is created for a project",
+  "description": "This policy identifies GCP projects where API keys are created. Keys are insecure because they can be viewed publicly, such as from within a browser, or they can be accessed on a device where the key resides. To avoid the security risk in using API keys, it is recommended to use standard authentication flow instead.\n\nNote: There are limited cases where API keys are more appropriate. For example, if there is a mobile application that needs to use the Google Cloud Translation API, but doesn't otherwise need a backend server, API keys are the simplest way to authenticate to that API. If a business requires API keys to be used, then the API keys should be secured using appropriate IAM policies.",
+  "rule.criteria": "78223e67-44b1-4a51-aca7-00e7aa37f015",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-api-key' as X; count(X) greater than 0",
+  "recommendation": "Use of API keys is generally considered as less secure authentication mechanism and should be avoided. A secure authentication mechanism should be used. Follow the below mentioned URL to evaluate an alternate, suitable authentication mechanism:\nhttps://cloud.google.com/endpoints/docs/openapi/authentication-method\n\nTo delete an API Key:\n1. Log in to google cloud console\n2. Navigate to section 'Credentials', under 'APIs & Services'.\n3. To delete API Key, go to 'API Keys' section, click the Actions button (three dots) in front of key name.\n4. Click on ‘Delete API key’ button.\n5. In the 'Delete credential' dialog, click 'DELETE' button.\n\nNote: Deleting API keys might break dependent applications. It is recommended to thoroughly review and evaluate the impact of API key before deletion.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
