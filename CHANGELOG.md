@@ -4,20 +4,10 @@
 
 ### Added
 
-#### 12 new policies
+#### 2 new policies
 
 - GCP API key is created for a project
 - GCP Identity-Aware Proxy (IAP) not enabled for External HTTP(s) Load Balancer
-- Instance affected by Apache Log4j denial of service vulnerability is exposed to network traffic from the internet [CVE-2021-45105]
-- Instance affected by Apache Log4j JDBC Appender remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-44832]
-- Instance affected by Apache Log4j Thread Context Map remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-45046]
-- Instance affected by Argo CD vulnerability is exposed to network traffic from the internet [CVE-2022-24348]
-- Instance affected by Dirty Pipe vulnerability is exposed to network traffic from the internet [CVE-2022-0847]
-- Instance affected by Java Psychic Signatures vulnerability is exposed to network traffic from the internet [CVE-2022-21449]
-- Instance affected by Linux kernel container escape vulnerability is exposed to network traffic from the internet [CVE-2022-0185]
-- Instance affected by Samba vfs_fruit module remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-44142]
-- Instance affected by SMB DCE/RPC remote code execution vulnerability is exposed to network traffic from the internet [CVE-2022-26809]
-- Instance affected by Text2shell RCE vulnerability is exposed to network traffic from the internet [CVE-2022-42889]
 
 ### Changed
 
