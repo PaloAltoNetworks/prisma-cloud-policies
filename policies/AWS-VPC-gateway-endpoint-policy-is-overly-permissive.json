@@ -1,0 +1,25 @@
+{
+  "policyUpi": "PC-AWS-VPC-691",
+  "policyId": "4d0841e4-c65b-47b0-b8df-12c619d91c4c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS VPC gateway endpoint policy is overly permissive",
+  "description": "This policy identifies AWS VPC gateway endpoints that have a VPC endpoint (VPCE) policy that is overly permissive. When the Principal element value is set to '*' within the access policy, the VPC gateway endpoint allows full access to any IAM user or service within the VPC using credentials from any AWS accounts. It is highly recommended to have the least privileged VPCE policy to protect the data leakage and unauthorized access.\n\nFor more details:\nhttps://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html",
+  "rule.criteria": "c5b73b1d-e4b8-4e8f-b76f-3dcc6f36cc76",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-describe-vpc-endpoints' AND json.rule = vpcEndpointType equals Gateway and policyDocument.Statement[?any(Effect equals Allow and (Principal.AWS equals * or Principal equals *) and Action contains * and Condition does not exist)] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the VPC dashboard\n4. Go to 'Endpoints', from the left panel VIRTUAL PRIVATE CLOUD section\n5. Select the reported VPC endpoint\n6. On the 'Actions' drop-down button, click on the 'Manage policy'\n8. On the 'Edit Policy' page, Choose 'Custom' policy\na. Then add policy, without the 'Everyone' grantee (i.e. '*' or 'AWS': '*') from the Principal element value with an AWS account ID (e.g. '123456789'), an AWS account ARN (e.g. 'arn:aws:iam::123456789:root') or an IAM user ARN (e.g. 'arn:aws:iam::123456789:user/vpce-admin').\nb. Add a Condition clause to the policy statement to filter the endpoint access to specific entities.\n9. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "ACSC Information Security Manual (ISM)",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
+    "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",
+    "FFIEC",
+    "HITRUST CSF v.9.6.0",
+    "PCI DSS v4.0"
+  ]
+}

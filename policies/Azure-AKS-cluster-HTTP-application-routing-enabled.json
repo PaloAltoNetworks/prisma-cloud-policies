@@ -8,7 +8,7 @@
   "description": "HTTP application routing configures an Ingress controller in your AKS cluster. As applications are deployed, the solution also creates publicly accessible DNS names for application endpoints. While this makes it easy to access applications that are deployed to your Azure AKS cluster, this add-on is not recommended for production use.\n\nThis policy checks your AKS cluster HTTP application routing add-on setting and alerts if enabled.",
   "rule.criteria": "9d22d97d-8c3b-49fa-921d-d5f6f3b5a494",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kubernetes-cluster' AND json.rule =  properties.addonProfiles.httpapplicationrouting.enabled is true or properties.addonProfiles.httpApplicationRouting.enabled is true",
-  "recommendation": "Disable HTTP application routing for your AKS cluster.\n\n1. Sign in to the Azure portal.\n2. Goto the Kubernetes Service and select your cluster.\n3. Click Networking in the left window pane.\n4. Under Network options, HTTP application routing, select Disabled.\n5. Click Save near the top of the page.",
+  "recommendation": "To disable HTTP application routing for your AKS cluster, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/aks/http-application-routing#remove-http-routing",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
