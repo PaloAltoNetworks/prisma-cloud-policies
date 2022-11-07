@@ -1,5 +1,4 @@
 # Changelog
-
 ## PCS-22.11.1 - 2022-11-07
 
 ### Added
@@ -28,6 +27,18 @@
 - GCP PostgreSQL instance database flag log_statement is not set appropriately
 - GCP Storage Buckets with publicly accessible GCP logs
 - GCP Storage log buckets have object versioning disabled
+
+#### 9 policies updated for the IAM Security module
+
+- AWS EC2 instance with IAM write access leve
+- AWS EC2 instance with IAM permissions management access level
+- AWS IAM effective permissions are over-privileged (90 days)
+- AWS cross-account resource access through IAM policies
+- GCP entities with permissions to impersonate a service account in another project
+- GCP users with 'Owner' role on org level
+- GCP service accounts with 'Owner' role on org level
+- GCP IAM effective permissions are over-privileged (90 days)
+- Azure IAM effective permissions are over-privileged (90 days)
 
 
 ## PCS-22.9.2 - 2022-09-27
