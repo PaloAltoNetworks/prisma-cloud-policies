@@ -32,12 +32,14 @@
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
-    "PIPEDA"
+    "PIPEDA",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

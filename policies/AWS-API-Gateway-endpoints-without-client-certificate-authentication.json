@@ -35,6 +35,7 @@
     "ISO/IEC 27018:2019",
     "MAS TRM 2021",
     "MLPS 2.0",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -43,6 +44,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PIPEDA",
-    "SOC 2"
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

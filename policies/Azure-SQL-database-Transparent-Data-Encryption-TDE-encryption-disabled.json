@@ -38,6 +38,7 @@
     "HIPAA",
     "HITRUST CSF v9.3",
     "ISO 27001:2013",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
@@ -46,6 +47,7 @@
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "PIPEDA",
-    "SOC 2"
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

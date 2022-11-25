@@ -35,6 +35,7 @@
     "MITRE ATT&CK v6.3",
     "MITRE ATT&CK v8.2",
     "MLPS 2.0",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -45,6 +46,7 @@
     "PCI DSS v4.0",
     "PIPEDA",
     "Risk Management in Technology (RMiT)",
-    "SOC 2"
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

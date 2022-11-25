@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MLPS 2.0 (Level 2)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
+  ]
 }
