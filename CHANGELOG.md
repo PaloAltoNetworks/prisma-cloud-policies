@@ -1,4 +1,50 @@
 # Changelog
+
+## PCS-22.12.1 - 2022-12-05
+
+### Added
+
+#### 13 new policies
+
+- Azure Cosmos DB (PaaS) instance reachable from untrust internet source
+- Instance affected by Apache Log4j denial of service vulnerability is exposed to network traffic from the internet [CVE-2021-45105]
+- Instance affected by Apache Log4j JDBC Appender remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-44832]
+- Instance affected by Apache Log4j Thread Context Map remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-45046]
+- Instance affected by Argo CD vulnerability is exposed to network traffic from the internet [CVE-2022-24348]
+- Instance affected by Dirty Pipe vulnerability is exposed to network traffic from the internet [CVE-2022-0847]
+- Instance affected by Java Psychic Signatures vulnerability is exposed to network traffic from the internet [CVE-2022-21449]
+- Instance affected by Linux kernel container escape vulnerability is exposed to network traffic from the internet [CVE-2022-0185]
+- Instance affected by OpenSSL X.509 email address 4-Byte BOF (Spooky SSL) vulnerability is exposed to network traffic from the internet [CVE-2022-3602]
+- Instance affected by Samba vfs_fruit module remote code execution vulnerability is exposed to network traffic from the internet [CVE-2021-44142]
+- Instance affected by SMB DCE/RPC remote code execution vulnerability is exposed to network traffic from the internet [CVE-2022-26809]
+- Instance affected by Spring Cloud Function SpringShell vulnerability is exposed to network traffic from the internet [CVE-2022-22963]
+- Instance affected by Text2shell RCE vulnerability is exposed to network traffic from the internet [CVE-2022-42889]
+
+#### 2 new compliance standards
+
+- Multi-Level Protection Scheme 2.0 (Level 2)
+- Secure Controls Framework (SCF) - 2022.2.1
+
+### Changed
+
+#### 14 policies updated
+
+- AWS Customer Master Key (CMK) rotation is not enabled
+- AWS IAM Roles with Administrator Access Permissions
+- Azure App Service Web app doesn't use latest Java version
+- Azure Network Security Group allows all traffic on Telnet (TCP Port 23)
+- GCP Log metric filter and alert does not exist for Audit Configuration Changes
+- GCP Log metric filter and alert does not exist for Cloud Storage IAM permission changes
+- GCP Log metric filter and alert does not exist for IAM custom role changes
+- GCP Log metric filter and alert does not exist for SQL instance configuration changes
+- GCP Log metric filter and alert does not exist for VPC network changes
+- GCP Log metric filter and alert does not exist for VPC Network Firewall rule changes
+- GCP Log metric filter and alert does not exist for VPC network route changes
+- Instance affected by Apache Log4j vulnerability is exposed to network traffic from the internet [CVE-2021-44228]
+- Instance affected by OMIGOD vulnerability is exposed to network traffic from the internet
+- Instance affected by SpringShell vulnerability is exposed to network traffic from the internet
+
+
 ## PCS-22.11.1 - 2022-11-07
 
 ### Added
