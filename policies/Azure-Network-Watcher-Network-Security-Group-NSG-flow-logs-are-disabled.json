@@ -30,6 +30,7 @@
     "ISO/IEC 27002:2013",
     "ISO/IEC 27017:2015",
     "MITRE ATT&CK v10.0",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -38,6 +39,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
-    "PIPEDA"
+    "PIPEDA",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

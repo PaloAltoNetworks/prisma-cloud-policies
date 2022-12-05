@@ -19,6 +19,8 @@
     "CIS Controls v8",
     "CIS v1.4.0 (Azure)",
     "FFIEC",
-    "PCI DSS v4.0"
+    "MLPS 2.0 (Level 2)",
+    "PCI DSS v4.0",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

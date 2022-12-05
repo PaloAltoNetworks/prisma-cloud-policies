@@ -18,6 +18,8 @@
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "CIS Controls v7.1",
     "CIS Controls v8",
-    "MITRE ATT&CK v10.0"
+    "MITRE ATT&CK v10.0",
+    "MLPS 2.0 (Level 2)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

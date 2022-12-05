@@ -31,6 +31,7 @@
     "ISO/IEC 27018:2019",
     "MITRE ATT&CK v6.3",
     "MITRE ATT&CK v8.2",
+    "MLPS 2.0 (Level 2)",
     "MPAA Content Protection Best Practices",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -39,6 +40,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
-    "PIPEDA"
+    "PIPEDA",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

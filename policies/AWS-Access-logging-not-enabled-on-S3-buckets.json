@@ -20,6 +20,8 @@
     "CCPA 2018",
     "CIS Controls v7.1",
     "CIS Controls v8",
+    "CIS v1.3.0 (AWS)",
+    "CIS v1.4.0 (AWS)",
     "CSA CCM v3.0.1",
     "CyberSecurity Law of the People's Republic of China",
     "FFIEC",
@@ -33,6 +35,7 @@
     "MITRE ATT&CK v6.3",
     "MITRE ATT&CK v8.2",
     "MLPS 2.0",
+    "MLPS 2.0 (Level 2)",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -44,6 +47,7 @@
     "PCI DSS v4.0",
     "PIPEDA",
     "Risk Management in Technology (RMiT)",
-    "SOC 2"
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

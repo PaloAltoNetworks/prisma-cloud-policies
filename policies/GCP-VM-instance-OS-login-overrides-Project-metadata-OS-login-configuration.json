@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.instances.setMetadata' permission. Successful execution will enable OSLogin which facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs.",
   "remediation.impact": "Enables VM instance OSlogin configuration by updating custom metadata of a VM instance",
   "compliance.standard": [
-    "New Zealand Information Security Manual (NZISM v3.4)"
+    "New Zealand Information Security Manual (NZISM v3.4)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

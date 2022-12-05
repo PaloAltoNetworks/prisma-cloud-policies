@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "az mysql flexible-server parameter set --server-name ${resourceName} --resource-group ${resourceGroup} --name require_secure_transport --value ON",
   "remediation.description": "This CLI command requires 'Microsoft.DBforMySQL/flexibleServers/configurations/write' permission. Successful execution will enable SSL connection on your Azure MySQL database flexible server.",
   "remediation.impact": "Enables MySQL database flexible server SSL enforcement",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MLPS 2.0 (Level 2)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
+  ]
 }

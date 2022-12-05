@@ -4,7 +4,7 @@
   "policyType": "config",
   "cloudType": "aws",
   "severity": "medium",
-  "name": "AWS IAM Roles with Administrator Access Permissions ",
+  "name": "AWS IAM Roles with Administrator Access Permissions",
   "description": "This policy identifies AWS IAM roles which has administrator access permission set. This would allow all users who assume this role to have administrative privileges. As a security best practice, it is recommended to grant least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
   "rule.criteria": "9cb0701c-7b6d-4ad6-93a2-2342e3c8e296",
   "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-roles' as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' as Y; filter \"($.X.inlinePolicies[*].policyDocument.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action any equal *) or ($.X.attachedPolicies[*].policyArn contains $.Y.policyArn and $.Y.document.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action any equal *)\"; show X;",
@@ -30,11 +30,13 @@
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
     "MAS TRM 2021",
+    "MLPS 2.0 (Level 2)",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
-    "Risk Management in Technology (RMiT)"
+    "Risk Management in Technology (RMiT)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

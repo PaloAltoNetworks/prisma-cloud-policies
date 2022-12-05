@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "aws lambda update-function-url-config --function-name ${resourceId} --region ${region} --auth-type AWS_IAM",
   "remediation.description": "This CLI command requires 'lambda:UpdateFunctionUrlConfig' permission. Successful execution will set AuthType to AWS_IAM for AWS Lambda function URL.",
   "remediation.impact": "Set 'AuthType' setting to AWS_IAM for AWS Lambda function URL",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MLPS 2.0 (Level 2)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
+  ]
 }

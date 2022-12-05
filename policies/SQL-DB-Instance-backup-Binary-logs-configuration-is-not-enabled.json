@@ -34,6 +34,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
-    "SOC 2"
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

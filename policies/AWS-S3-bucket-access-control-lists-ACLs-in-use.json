@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "aws s3api put-bucket-ownership-controls --bucket ${resourceName} --ownership-controls '{\"Rules\":[{\"ObjectOwnership\":\"BucketOwnerEnforced\"}]}'",
   "remediation.description": "This CLI command requires 's3:PutBucketOwnershipControls' permission. Successful execution will update the ACL OwnershipControls to 'BucketOwnerEnforced' for the S3 bucket",
   "remediation.impact": "Enables 'BucketOwnerEnforced' ACL setting for AWS S3 bucket",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MLPS 2.0 (Level 2)",
+    "Secure Controls Framework (SCF) - 2022.2.1"
+  ]
 }
