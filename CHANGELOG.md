@@ -5,6 +5,34 @@
 
 ### Changed
 
+#### 13 policies updated
+
+- Azure AD Users can consent to apps accessing company data on their behalf is enabled
+- Azure Monitoring log profile is not configured to export activity logs
+- Azure SQL server not configured with Active Directory admin authentication
+- Azure Service bus namespace not configured with Azure Active Directory (Azure AD) authentication
+- Azure Storage Account default network access is set to 'Allow'
+- Azure Virtual Network subnet is not configured with a Network Security Group
+- GCP Bucket containing Operations Suite Logs have bucket logging disabled
+- GCP Kubernetes Engine Clusters have Cloud Logging disabled
+- GCP Kubernetes Engine Clusters have Cloud Monitoring disabled
+- GCP Kubernetes Engine Clusters have Legacy Authorization enabled
+- GCP Kubernetes Engine Clusters not configured with network traffic egress metering
+- GCP Log metric filter and alert does not exist for Project Ownership assignments/changes
+- GCP User managed service accounts have user managed service account keys
+
+### Removed
+
+#### 3 policy deleted
+
+- AWS EC2 instance is not configured with VPC
+- AWS VPC Security group nearing availability limit
+- AWS VPC Subnets nearing availability limit
+
+#### 1 auto-remediation cli removed
+
+- GCP Kubernetes Engine Clusters have Legacy Authorization enabled
+
 
 ## PCS-22.12.1 - 2022-12-05
 
