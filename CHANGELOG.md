@@ -1,6 +1,51 @@
 # Changelog
 
 
+## PCS-23.1.2 - 2023-01-31
+
+### Added
+
+#### 5 new compliance standards
+
+- CIS v1.3.0 (GKE) - Level 1
+- CIS v1.3.0 (GKE) - Level 2
+- CIS v2.0.0 (GCP) Level 1
+- CIS v2.0.0 (GCP) Level 2
+- Sarbanes Oxley Act (SOX)
+
+### Changed
+
+#### 27 policies updated
+
+- AWS ALB attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS API Gateway Rest API attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS AppSync attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS CloudFront attached WAFv2 WebACL is not configured with AMR for Log4j Vulnerability
+- AWS CloudFront viewer protocol policy is not configured with HTTPS
+- Azure Activity log alert for Create or update network security group does not exist
+- Azure Activity log alert for Create or update network security group rule does not exist
+- Azure Activity log alert for Create or update security solution does not exist
+- Azure Activity log alert for Create or update SQL server firewall rule does not exist
+- Azure Activity log alert for Create policy assignment does not exist
+- Azure Activity log alert for Delete network security group does not exist
+- Azure Activity log alert for Delete network security group rule does not exist
+- Azure Activity log alert for delete policy assignment does not exist
+- Azure Activity log alert for Delete security solution does not exist
+- Azure Activity log alert for Delete SQL server firewall rule does not exist
+- Azure Activity log alert for Update security policy does not exist
+- Azure log profile not capturing activity logs for all regions
+- Azure Microsoft Defender for Cloud automatic provisioning of log Analytics agent for Azure VMs is set to Off
+- Azure SQL Server allow access to any Azure internal resources
+- Azure Storage Account 'Trusted Microsoft Services' access not enabled
+- Azure storage account has a blob container with public access
+- Azure storage account logging for queues is disabled
+- Azure Storage account soft delete is disabled
+- Azure Storage Account without Secure transfer enabled
+- Azure Storage accounts soft delete is disabled
+- Azure subscriptions with custom roles are overly permissive
+- OCI MFA is disabled for IAM users
+
+
 ## PCS-23.1.1 - 2023-01-17
 
 ### Changed
