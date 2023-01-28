@@ -4,15 +4,15 @@
   "policyType": "config",
   "cloudType": "azure",
   "severity": "medium",
-  "name": "Azure Storage accounts soft delete is disabled",
-  "description": "This policy identifies Azure Storage accounts which has soft delete disabled. Azure Storage contains important access logs, financial data, personal and other secret informations which if accidentally deleted by an user or application could cause data loss or data unavailability. It is recommended to enable soft delete setting in Azure Storage accounts.",
+  "name": "Azure Storage account soft delete is disabled",
+  "description": "This policy identifies Azure Storage accounts which has soft delete disabled. Azure Storage contains important access logs, financial data, personal and other secret information which is accidentally deleted by a user or application could cause data loss or data unavailability. It is recommended to enable soft delete setting in Azure Storage accounts.",
   "rule.criteria": "854edc33-62b4-46c0-83a1-2774ae9ae4ff",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = deleteRetentionPolicy.blob.enabled is false",
-  "recommendation": "1. Log in to the Azure portal\n2. Select 'Storage Accounts'\n3. Select the storage account you need to modify\n4. Select 'Data protection' under 'Blob service'\n5. Enable 'Turn on soft delete for blobs' under 'Recovery'\n6. Enter number of days you want to retain soft deleted data in'Keep deleted blobs for (in days)' field\n7. Click on 'Save'",
-  "remediable": false,
-  "remediation.cliScriptTemplate": "",
-  "remediation.description": "",
-  "remediation.impact": "",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = deleteRetentionPolicy.blob.enabled is false and (kind does not equal ignore case FileStorage)",
+  "recommendation": "To enable Soft delete on your storage account, follow below URL:\nhttps://learn.microsoft.com/en-gb/azure/storage/blobs/soft-delete-blob-enable?tabs=azure-portal#enable-blob-soft-delete",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az storage account blob-service-properties update --account-name ${resourceName} --resource-group ${resourceGroup} --enable-delete-retention true --delete-retention-days 30",
+  "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/blobServices/write' permission. Successful execution will enable soft delete for blobs on Azure Storage accounts. NOTE: As best practice we are setting delete retention days to 30 days; it can be changed based on customer requirement by cloning the policy.",
+  "remediation.impact": "Enables Azure Storage accounts soft delete",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "Azure Security Benchmark (v3)",
@@ -34,6 +34,7 @@
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }
