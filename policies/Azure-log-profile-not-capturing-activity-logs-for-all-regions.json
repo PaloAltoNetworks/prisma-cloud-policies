@@ -8,7 +8,7 @@
   "description": "This policy identifies Azure log profiles which are not capturing activity logs for all regions. Activity logs are exported from all the Azure supported regions/locations means that logs for potentially unexpected activities occurring in otherwise unused regions are stored and made available for incident response and investigations.",
   "rule.criteria": "1c013801-0035-4b41-9d5d-8b21f41093d6",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-monitor-log-profiles-list' AND json.rule = 'isLegacy is true and properties.isCapturingLogsForAllRegions is false'",
-  "recommendation": "1. List all the azure monitor log profiles using CLI command: 'az monitor log-profiles' list\n2. Identify the reported log profile and delete it using CLI command: 'az monitor log-profiles delete --name <name of log profile>'\n3. To create a new log profile follow the below steps,\n4. Log in to Azure Portal\n5. Go to 'Monitor' from homepage.\n6. Select 'Activity Log' from the left panel\n7. Go to 'Diagnostics settings' from top menu.\n8. Click on the popup 'Looking for the legacy experience? Click here to launch the Export activity log blade'\n9. Select the required 'Subscription'\n10. Click on 'Regions' dropdown and check 'Select all' option.\n11. Select 'Export to a storage account' check box and select a storage account\n12. Click on 'Save' button.",
+  "recommendation": "To update Legacy Log profiles activity logs for all regions, follow below URL:\nhttps://learn.microsoft.com/en-us/azure/azure-monitor/essentials/activity-log?tabs=cli#managing-legacy-log-profiles",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -36,6 +36,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

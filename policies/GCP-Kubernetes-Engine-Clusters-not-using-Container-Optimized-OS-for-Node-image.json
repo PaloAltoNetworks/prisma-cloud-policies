@@ -22,6 +22,7 @@
     "CIS v1.0.0 (GCP)",
     "CIS v1.1.0 (GKE)",
     "CIS v1.2.0 (GKE)",
+    "CIS v1.3.0 (GKE) - Level 2",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "ISO/IEC 27002:2013",
@@ -33,6 +34,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

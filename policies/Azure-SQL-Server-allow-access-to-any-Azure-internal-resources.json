@@ -8,7 +8,7 @@
   "description": "This policy identifies SQL Servers that are configured to allow access to any Azure internal resources. Firewall settings with start IP and end IP both with ‘0.0.0.0’ represents access to all Azure internal network. When this settings is enabled, SQL server will accept connections from all Azure resources including other subscription resources as well. It is recommended to use firewall rules or VNET rules to allow access from specific network ranges or virtual networks.",
   "rule.criteria": "7f47b618-4e96-459e-bfe3-9e6f48fec533",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.publicNetworkAccess'] equal ignore case Enabled and firewallRules[?any(startIpAddress equals \"0.0.0.0\" and endIpAddress equals \"0.0.0.0\")] exists",
-  "recommendation": "1. Log in to Azure Portal\n2. Navigate to the 'SQL servers' dashboard\n4. Click on the reported SQL server\n5. Click on 'Networking' under Security\n6. Select 'Allow Azure services and resources to access this server' under Exceptions\n7. Click on 'Save'",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to the 'SQL servers' dashboard\n3. Click on the reported SQL server\n4. Click on 'Networking' under Security\n5. Unselect 'Allow Azure services and resources to access this server' under Exceptions if selected.\n6. Remove any firewall rule which allows access to 0.0.0.0 in startIpAddress and endIpAddress if any.\n7. Click on 'Save'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -54,6 +54,7 @@
     "PCI DSS v4.0",
     "PIPEDA",
     "SOC 2",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

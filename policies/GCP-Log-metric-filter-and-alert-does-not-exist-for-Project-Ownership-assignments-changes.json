@@ -23,6 +23,7 @@
     "CIS v1.1.0 (GCP)",
     "CIS v1.2.0 (GCP)",
     "CIS v1.3.0 (GCP)",
+    "CIS v2.0.0 (GCP) Level 1",
     "CSA CCM v.4.0.1",
     "Fedramp (Low)",
     "Fedramp (Moderate)",
@@ -39,6 +40,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }
