@@ -7,7 +7,7 @@
   "name": "AWS CloudFront viewer protocol policy is not configured with HTTPS",
   "description": "For web distributions, you can configure CloudFront to require that viewers use HTTPS to request your objects, so connections are encrypted when CloudFront communicates with viewers.",
   "rule.criteria": "2cc26fd5-4a45-427e-a3d6-53d77c1790af",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = (defaultCacheBehavior.viewerProtocolPolicy does not exist) or ((defaultCacheBehavior.viewerProtocolPolicy does not contain \"https-only\") and (defaultCacheBehavior.viewerProtocolPolicy does not contain \"redirect-to-https\"))",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = defaultCacheBehavior.viewerProtocolPolicy contains \"allow-all\" or cacheBehaviors.items[?any( viewerProtocolPolicy contains \"allow-all\" )] exists",
   "recommendation": "Configure CloudFront to require HTTPS between viewers and CloudFront.\n\n1. Go to the AWS console CloudFront dashboard.\n2. Select your distribution Id.\n3. Select the 'Behaviors' tab.\n4. Check the behavior you want to modify then select Edit.\n5. Choose 'HTTPS Only' or 'Redirect HTTP to HTTPS' for Viewer Protocol Policy.\n6. Select 'Yes, Edit.'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -41,6 +41,7 @@
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "Risk Management in Technology (RMiT)",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

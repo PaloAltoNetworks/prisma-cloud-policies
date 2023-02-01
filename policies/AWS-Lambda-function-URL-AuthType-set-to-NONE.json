@@ -15,6 +15,7 @@
   "remediation.impact": "Set 'AuthType' setting to AWS_IAM for AWS Lambda function URL",
   "compliance.standard": [
     "MLPS 2.0 (Level 2)",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

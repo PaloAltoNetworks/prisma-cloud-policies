@@ -5,10 +5,10 @@
   "cloudType": "azure",
   "severity": "medium",
   "name": "Azure subscriptions with custom roles are overly permissive",
-  "description": "This policy identifies azure subscriptions with custom roles are overly permissive. Least privilege access rule should be followed and only necessary privileges should be assigned instead of allowing full administrative access",
+  "description": "This policy identifies azure subscriptions with custom roles are overly permissive. Least privilege access rule should be followed and only necessary privileges should be assigned instead of allowing full administrative access.",
   "rule.criteria": "aa1e6ee8-89aa-46eb-83a2-c2d8bd925117",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-role-definition' AND json.rule = properties.type equals \"CustomRole\" and properties.assignableScopes[*] contains \"/\" and properties.permissions[*].actions[*] starts with \"*\"",
-  "recommendation": "Check the usage of the role identified.\nThrough console we cannot create, update or delete custom role.\nUse below CLI command to delete the role,\n'az role definition delete --name \\\"rolename\\\"'\nNote: Verify impact caused by deleting the role.",
+  "recommendation": "Check the usage of the role identified. Verify impact caused by Updating/deleting the role. Then follow below URL for updating or deleting custom role:\nhttps://learn.microsoft.com/en-us/azure/role-based-access-control/custom-roles-portal#update-a-custom-role",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -44,6 +44,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

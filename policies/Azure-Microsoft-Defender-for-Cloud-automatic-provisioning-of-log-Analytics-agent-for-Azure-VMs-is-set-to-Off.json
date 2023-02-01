@@ -8,7 +8,7 @@
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has automatic provisioning of log Analytics agent for Azure VMs is set to Off. Microsoft Defender for Cloud provisions the Microsoft Monitoring Agent on all existing supported Azure virtual machines and any new ones that are created. The Microsoft Monitoring Agent scans for various security-related configurations and events such as system updates, OS vulnerabilities, endpoint protection, and provides alerts.",
   "rule.criteria": "a885d51a-0b78-4a2f-88ed-3f4bf58616ab",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = 'autoProvisioningSettings[*].name equals default and (autoProvisioningSettings[*].properties.autoProvision equals Off or autoProvisioningSettings[*] does not exist)'",
-  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Auto provisioning'\n6. Set Status 'On' for 'Log Analytics agent for Azure VMs' extension\n7. Select 'Save'",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud' dashboard\n3. Select 'Environment Settings'\n4. Click on the reported subscription name\n5. Select the 'Settings & monitoring'\n6. Set Status 'On' for 'Log Analytics agent/Azure Monitor agent' component\n7. Click on 'Continue'\n8. Click on 'Save'",
   "remediable": true,
   "remediation.cliScriptTemplate": "az security auto-provisioning-setting update --name \"${resourceName}\" --auto-provision \"on\"",
   "remediation.description": "This CLI command requires 'Microsoft.Security/autoProvisioningSettings/*' permission. Successful execution will enable automatic provisioning of monitoring agent.",
@@ -46,6 +46,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PIPEDA",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

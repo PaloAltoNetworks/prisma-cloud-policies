@@ -4,11 +4,11 @@
   "policyType": "config",
   "cloudType": "azure",
   "severity": "medium",
-  "name": "Storage Accounts without Secure transfer enabled",
-  "description": "The secure transfer option enhances the security of your storage account by only allowing requests to the storage account by a secure connection. For example, when calling REST APIs to access your storage accounts, you must connect using HTTPs. Any requests using HTTP will be rejected when 'secure transfer required' is enabled. When you are using the Azure files service, connection without encryption will fail, including scenarios using SMB 2.1, SMB 3.0 without encryption, and some flavors of the Linux SMB client. Because Azure storage doesn’t support HTTPs for custom domain names, this option is not applied when using a custom domain name.",
+  "name": "Azure Storage Account without Secure transfer enabled",
+  "description": "This policy identifies Storage accounts which have Secure transfer feature disabled. The secure transfer option enhances the security of your storage account by only allowing requests to the storage account by a secure connection. When 'secure transfer required' is enabled, REST APIs to access your storage accounts connect using HTTPs any requests using HTTP will be rejected. When you are using the Azure files service, connection without encryption will fail. It is highly recommended to enable secure transfer feature on your storage account.\n\nNOTE: Azure storage doesn't support HTTPs for custom domain names, this option is not applied when using a custom domain name.",
   "rule.criteria": "4a6a7642-06f0-4e51-aa79-a7c06afffdc5",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.supportsHttpsTrafficOnly !exists or properties.supportsHttpsTrafficOnly is false",
-  "recommendation": "1. Login to Azure Portal\n2. Go to Storage Accounts\n3. For each storage account, go to Configuration\n4. Set 'Secure transfer required' to Enabled",
+  "recommendation": "To enable secure transfer feature on your storage account, follow below URL:\nhttps://learn.microsoft.com/en-gb/azure/storage/common/storage-require-secure-transfer#require-secure-transfer-for-an-existing-storage-account",
   "remediable": true,
   "remediation.cliScriptTemplate": "az storage account update --ids ${resourceId} --https-only true",
   "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will enable secure transfer for this storage account.",
@@ -50,6 +50,7 @@
     "PCI DSS v4.0",
     "PIPEDA",
     "SOC 2",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

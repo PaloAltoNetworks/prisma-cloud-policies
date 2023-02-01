@@ -8,7 +8,7 @@
   "description": "Storage Logging records details of requests (read, write, and delete operations) against your Azure queues. The logs include additional information such as:\n- Timing and server latency.\n- Success or failure, and HTTP status code.\n- Authentication details\n\nThis policy identifies Azure storage accounts that do not have logging enabled for queues. As a best practice, enable logging for read, write, and delete request types on queues.",
   "rule.criteria": "e6e24f25-8419-467e-96d1-72f14ba24652",
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = 'sku.tier equals Standard and loggingProperties.queue exists and (loggingProperties.queue.readEnabled is false or loggingProperties.queue.writeEnabled is false or loggingProperties.queue.deleteEnabled is false)'",
-  "recommendation": "1. Log in to the Azure portal.\n2. Select 'Storage Accounts'.\n3. Select the storage account you need to modify.\n4. Select 'Diagnostic Logs (classic)'.\n5. Set the 'status' to 'On'.\n6. Select 'Queue properties' tab.\n7. Enable 'Logging' for the three operations - 'Read', 'Write', 'Delete'.\n8. (Optionally) Select 'Delete data', and specify the number of days for which to retain data.",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Storage Accounts dashboard\n3. Select the storage account you need to modify\n4. Select 'Diagnostic settings (classic)'\n5. Set the 'Status' to 'On'\n6. Under 'Queue properties' tab, Enable Logging for the three operations - 'Read', 'Write', 'Delete'.\n7. (Optionally) Select Delete data, and specify the number of days for which to retain data.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
@@ -49,6 +49,7 @@
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "PIPEDA",
+    "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }
