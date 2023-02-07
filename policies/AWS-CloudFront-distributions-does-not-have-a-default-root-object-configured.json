@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CFR-958",
+  "policyId": "e4475583-1d6b-4efe-8974-1bab376b3817",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CloudFront distributions does not have a default root object configured",
+  "description": "This policy identifies list of CloudFront distributions which does not have default root object configured. If a CloudFront distribution does not have a default root object configured, requests for the root of your distribution pass to your origin server which might return a list of the private contents of your origin. To avoid exposing the contents of your distribution or returning an error it is recommended to specify a default root object.",
+  "rule.criteria": "ad2b6315-66d2-4e1c-9fb8-ec28349aeeee",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudfront-list-distributions' AND json.rule = defaultRootObject is empty",
+  "recommendation": "To configure a default root object for your distribution  follow the steps mentioned in below URL:\nhttps://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DefaultRootObject.html#DefaultRootObjectHowToDefine",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

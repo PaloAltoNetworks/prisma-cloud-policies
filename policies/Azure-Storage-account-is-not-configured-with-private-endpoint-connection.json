@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AZR-STO-962",
+  "policyId": "f32919fb-62a7-498a-83dd-e31e60ceda29",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage account is not configured with private endpoint connection",
+  "description": "This policy identifies Storage accounts that are not configured with a private endpoint connection. Azure Storage account private endpoints can be configured using Azure Private Link. Private Link allows users to access an Azure Storage account from within the virtual network or from any peered virtual network. When Private Link is combined with restricted NSG policies, it helps reduce the risk of data exfiltration. It is recommended to configure Private Endpoint Connection to Storage account.",
+  "rule.criteria": "7c773d6c-3225-4f0b-a020-661c48e414b4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.provisioningState equals Succeeded and networkRuleSet.defaultAction equal ignore case Allow and networkRuleSet.virtualNetworkRules is empty and networkRuleSet.ipRules[*] is empty and properties.privateEndpointConnections[*] is empty",
+  "recommendation": "Refer following URL for configuring Private endpoints on your Storage account:\nhttps://learn.microsoft.com/en-us/azure/private-link/create-private-endpoint-portal?#create-a-private-endpoint",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.5.0 (Azure) - Level 1"
+  ]
+}
