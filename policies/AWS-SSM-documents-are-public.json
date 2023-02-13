@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SSM-959",
+  "policyId": "b7673d43-cf84-4cb9-9e00-60d99365f35f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS SSM documents are public",
+  "description": "This policy identifies list of SSM documents that are public and might allow unintended access. A public SSM document can expose valuable information about your account, resources, and internal processes. It is recommended to only share SSM documents to only few private AWS accounts based on the requirement.",
+  "rule.criteria": "998d0466-d498-4662-b41a-cefaadd94c40",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ssm-document' AND json.rule = accountSharingInfoList[*].accountId equal ignore case \"all\"",
+  "recommendation": "To make an SSM document private follow the steps mentioned in below URL:\n1.Go to the AWS console Systems Manager Dashboard.\n2.If the AWS Systems Manager home page opens first, choose the menu icon to open the navigation pane, and then choose Documents in the navigation pane.\n\n3.In the documents list, choose the document you want to stop sharing, and then choose details. On the Permissions tab, verify that you're the document owner. Only a document owner can stop sharing a document.\n4.Choose Edit.\n5.Select Private option, and enter AWS accountId only with which this document can be shared(leave it blank if not willing to share now). \n6.Choose Save",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

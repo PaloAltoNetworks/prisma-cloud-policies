@@ -1,5 +1,31 @@
 # Changelog
 
+## PCS-23.2.1 - 2023-02-13
+
+### Added
+
+#### 5 new policies
+
+- AWS CloudFront distributions does not have a default root object configured
+- AWS SSM documents are public
+- Azure Microsoft Defender for Cloud set to Off for Resource Manager
+- Azure Storage account is not configured with private endpoint connection
+- GCP SQL server instance database flag 3625 (trace flag) is not set to on
+
+### Changed
+
+#### 9 policies updated
+
+- AWS Certificate Manager (ACM) has invalid or failed certificate
+- AWS CloudTrail trail logs is not integrated with CloudWatch Log
+- AWS ECS Fargate task definition root user found
+- AWS S3 buckets with configurations set to host websites
+- Azure Activity Log retention should not be set to less than 365 days
+- Azure Container Registry does not use a dedicated resource group
+- Azure Storage account container storing activity logs is publicly accessible
+- GCP SQL Instances do not have valid SSL configuration
+- GCP SQL MySQL DB instance point-in-time recovery backup (Binary logs) is not enabled
+
 
 ## PCS-23.1.2 - 2023-02-01
 

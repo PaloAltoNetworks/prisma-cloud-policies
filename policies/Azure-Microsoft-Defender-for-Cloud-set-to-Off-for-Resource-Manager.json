@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SC-963",
+  "policyId": "26ae483e-0df3-4721-833a-c2facfb4d2f2",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Microsoft Defender for Cloud set to Off for Resource Manager",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for Resource Manager (ARM) set to Off. Enabling Azure Defender for ARM provides protection against issues like Suspicious resource management operations, Use of exploitation toolkits, Lateral movement from the Azure management layer to the Azure resources data plane. It is highly recommended to enable Azure Defender for ARM.",
+  "rule.criteria": "12d694e1-955b-4cb7-a1d2-44f13d50bf3c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any(name equal ignore case Arm and properties.pricingTier does not equal ignore case Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Expand 'Select Defender plan' \n7. Select 'On' status for 'Resource Manager' \n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
