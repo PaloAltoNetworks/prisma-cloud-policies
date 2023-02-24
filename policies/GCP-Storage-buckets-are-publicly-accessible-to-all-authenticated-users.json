@@ -11,7 +11,7 @@
   "recommendation": "1. Login to GCP Portal\n2. Go to Storage (Left Panel)\n3. Click Browse\n4. Choose the identified Storage bucket whose ACL needs to be modified\n5. Click on SHOW INFO PANEL button\n6. Check all the ACL groups and make sure that the none of them are set to 'allAuthenticatedUsers'",
   "remediable": true,
   "remediation.cliScriptTemplate": "gsutil iam ch -d allAuthenticatedUsers gs://${resourceName}",
-  "remediation.description": "This CLI command requires 'storage.admin' permission. Successful execution will revoke 'allAuthenticatedUsers' permission access in GCP Storage buckets.",
+  "remediation.description": "This CLI command requires 'storage.buckets.getIamPolicy' and 'storage.buckets.setIamPolicy' permissions. Successful execution will revoke 'allAuthenticatedUsers' permission access in GCP Storage buckets.",
   "remediation.impact": "Revokes all authenticated users permission access in GCP Storage buckets",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",

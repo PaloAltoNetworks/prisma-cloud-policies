@@ -11,8 +11,8 @@
   "recommendation": "1. Login to GCP Portal\n2. Go to VPC network (Left Panel)\n3. Select VPC networks\n2. Click on the name of a reported subnet, The 'Subnet details' page will be displayed\n3. Click on 'EDIT' button\n4. Set 'Private Google access' to 'On'\n5. Click on Save",
   "remediable": true,
   "remediation.cliScriptTemplate": "gcloud compute networks subnets update ${resourceName} --project=${account} --region ${region} --enable-private-ip-google-access",
-  "remediation.description": "This CLI command requires 'compute.networkAdmin' permission. Successful execution will enable GCP VPC Network subnets 'Private Google access'.",
-  "remediation.impact": "enables private-ip-google-access in GCP VPC Network subnets",
+  "remediation.description": "This CLI command requires 'compute.subnetworks.setPrivateIpGoogleAccess', 'compute.subnetworks.setPrivateIpGoogleAccess' and 'compute.subnetworks.update' permissions. Successful execution will enable GCP VPC Network subnets 'Private Google access'.",
+  "remediation.impact": "Enables private-ip-google-access in GCP VPC Network subnets",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",

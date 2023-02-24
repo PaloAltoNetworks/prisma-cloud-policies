@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASF-926",
+  "policyId": "11c073b9-2d09-49f9-9bc0-0d710e7ce1ef",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Service Fabric cluster not configured with cluster protection level security",
+  "description": "This policy identifies Service Fabric clusters that are not configured with cluster protection level security. Service Fabric provides levels of protection for node-to-node communication using a primary cluster certificate. It is recommended to set the protection level to ensure that all node-to-node messages are encrypted and digitally signed.",
+  "rule.criteria": "0829d935-1c76-4f15-99f3-79addd6b7742",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-service-fabric-cluster' AND json.rule = properties.provisioningState equal ignore case Succeeded and ((properties.fabricSettings[*].name does not equal ignore case \"Security\" or properties.fabricSettings[*].parameters[*].name does not equal ignore case \"ClusterProtectionLevel\") or (properties.fabricSettings[?any(name equal ignore case \"Security\" and parameters[?any(name equal ignore case \"ClusterProtectionLevel\" and value equal ignore case \"None\")] exists )] exists))",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to 'Service Fabric cluster'\n3. Click on the reported Service Fabric cluster\n4. Select 'Custom fabric settings' under 'Settings' from left panel \n5. Make sure a fabric settings in 'Security' section exist with 'ClusterProtectionLevel' property is set to 'EncryptAndSign'.\n\nNote: Service Fabric provides three levels of protection (None, Sign and EncryptAndSign) for node-to-node communication using a primary cluster certificate. Set the protection level to ensure that all node-to-node messages are encrypted and digitally signed.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -11,8 +11,8 @@
   "recommendation": "Follow the below mentioned URL to enable object versioning on a bucket:\n\nhttps://cloud.google.com/storage/docs/using-object-versioning#set",
   "remediable": true,
   "remediation.cliScriptTemplate": "gsutil versioning set on gs://${resourceName}",
-  "remediation.description": "This CLI command requires 'storage.admin' permission. Successful execution will enable GCP Storage log buckets 'versioning'.",
-  "remediation.impact": "enables versioning in GCP Storage log buckets",
+  "remediation.description": "This CLI command requires 'storage.buckets.update' permission. Successful execution will enable GCP Storage log buckets 'versioning'.",
+  "remediation.impact": "Enables versioning in GCP Storage log buckets",
   "compliance.standard": [
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
