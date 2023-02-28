@@ -15,6 +15,7 @@
   "remediation.impact": "Enables Container Insights for the reported AWS ECS cluster",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "AWS Foundational Security Best Practices standard",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",

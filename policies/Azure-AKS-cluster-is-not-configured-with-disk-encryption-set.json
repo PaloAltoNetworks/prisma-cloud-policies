@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-K8S-936",
+  "policyId": "2b3fa957-1875-4d35-b4b1-2355f04f6ab1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure AKS cluster is not configured with disk encryption set",
+  "description": "This policy identifies AKS clusters that are not configured with disk encryption set. Azure Key Vault Provider for Secrets Store CSI Driver allows for the integration of an Azure key vault as a secrets store with an Azure Kubernetes Service (AKS) cluster via a CSI volume. It is recommended to enable secret store CSI driver for your Kubernetes clusters.",
+  "rule.criteria": "4b83a6a2-c481-4e62-bc78-b45aa8712816",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kubernetes-cluster' AND json.rule = properties.powerState.code equal ignore case Running and properties.addonProfiles.azureKeyvaultSecretsProvider.enabled is false",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to Kubernetes services dashboard\n3. Click on the reported Kubernetes cluster\n4. Under Setting section, Click on 'Cluster configuration'\n5. Select 'Enable secret store CSI driver'\nNOTE: Once the CSI driver is enabled, Azure will deploy additional pods onto the cluster. You'll still need to configure Azure Key Vault, define secrets to securely fetch, and redeploy the application to use these secrets.\nFor more details: https://azure.github.io/secrets-store-csi-driver-provider-azure/docs/demos/standard-walkthrough/\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

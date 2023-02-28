@@ -1,5 +1,31 @@
 # Changelog
 
+## PCS-23.2.2 - 2023-02-28
+
+### Added
+
+#### 2 new policies
+
+- Azure AKS cluster is not configured with disk encryption set
+- Azure Service Fabric cluster not configured with cluster protection level security
+
+### Changed
+
+#### 7 policies updated
+
+- AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0)
+- AWS Glue connection do not have SSL configured
+- Azure Virtual Network subnet is not configured with a Network Security Group
+- GCP Storage buckets are publicly accessible to all authenticated users
+- GCP Storage buckets are publicly accessible to all users
+- GCP Storage log buckets have object versioning disabled
+- GCP VPC Network subnets have Private Google access disabled
+
+#### 1 compliance standard updated
+
+- AWS Foundational Security Best Practices standard
+
+
 ## PCS-23.2.1 - 2023-02-13
 
 ### Added
