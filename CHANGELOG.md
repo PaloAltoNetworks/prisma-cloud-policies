@@ -1,5 +1,23 @@
 # Changelog
 
+## PCS-23.3.1 - 2023-03-13
+
+### Added
+
+#### 1 new compliance standard
+
+- CSA CCM v.4.0.6 
+
+### Changed
+
+#### 4 policies updated
+
+- GCP HTTPS Load balancer is configured with SSL policy having TLS version 1.1 or lower
+- GCP HTTPS Load balancer SSL Policy not using restrictive profile
+- GCP Load Balancer HTTPS proxy permits SSL policies with weak cipher suites
+- GCP Load Balancer SSL proxy permits SSL policies with weak cipher suites
+
+
 ## PCS-23.2.2 - 2023-02-28
 
 ### Added
