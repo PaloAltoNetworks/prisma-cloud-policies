@@ -1,5 +1,23 @@
 # Changelog
 
+## PCS-23.3.2 - 2023-03-27
+
+### Added
+
+#### 1 new compliance standard
+
+- ISO 27002:2022
+
+### Changed
+
+#### 4 policies updated
+
+- AWS access keys not used for more than 45 days
+- AWS Cloudfront Distribution with S3 have Origin Access set to disabled
+- AWS EKS cluster endpoint access publicly enabled
+- GCP VM disks not encrypted with Customer-Supplied Encryption Keys (CSEK)
+
+
 ## PCS-23.3.1 - 2023-03-13
 
 ### Added
