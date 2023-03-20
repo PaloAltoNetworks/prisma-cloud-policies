@@ -11,8 +11,8 @@
   "recommendation": "Enable private access to the Kubernetes API server so that all communication between your worker nodes and the API server stays within your VPC. Disable public access to your API server so that it's not accessible from the internet.\n\n1. Login to AWS Console\n2. Navigate to the Amazon EKS dashboard\n3. Choose the name of the cluster to display your cluster information\n4. Under Networking, choose 'Manage networking'\n5. Select 'Private' radio button\n6. Click on 'Save changes'",
   "remediable": true,
   "remediation.cliScriptTemplate": "aws eks update-cluster-config --name ${resourceName} --region ${region} --resources-vpc-config endpointPublicAccess=false,endpointPrivateAccess=true",
-  "remediation.description": "This CLI command requires 'eks:UpdateClusterConfig' permission. Successful execution will disbale public access for the respective EKS cluster and set private access.",
-  "remediation.impact": "Disables EKS cluster public access and set private access",
+  "remediation.description": "This CLI command requires 'eks:UpdateClusterConfig' permission. Successful execution will disable public access for the respective EKS cluster and set private access.",
+  "remediation.impact": "Disable automatic public IP assignment for the respective Subnet",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
@@ -28,6 +28,7 @@
     "Fedramp (Moderate)",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2",
+    "ISO 27002:2022",
     "MAS TRM 2021",
     "MITRE ATT&CK v10.0",
     "MITRE ATT&CK v6.3",
