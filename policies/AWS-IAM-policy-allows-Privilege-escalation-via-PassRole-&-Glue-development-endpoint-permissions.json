@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "f0b8cc40-ace4-4c77-823e-4738cd6a3e13",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Glue development endpoint permissions",
+  "description": "With access to the iam:PassRole and glue:CreateDevEndpoint permissions, an adversary can create a new Glue development endpoint and pass in a more privileged role. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "f0b8cc40-ace4-4c77-823e-4738cd6a3e13",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'glue:CreateDevEndpoint', 'glue:GetDevEndpoint') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

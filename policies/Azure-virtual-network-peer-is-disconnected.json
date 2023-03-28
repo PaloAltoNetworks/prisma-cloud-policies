@@ -3,7 +3,7 @@
   "policyId": "3fc7b5fc-9394-4cb7-9baf-aaccfd38e9d1",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure virtual network peer is disconnected",
   "description": "Virtual network peering enables you to connect two Azure virtual networks so that the resources in these networks are directly connected.\n\nThis policy identifies Azure virtual network peers that are disconnected. Typically, the disconnection happens when a peering configuration is deleted on one virtual network, and the other virtual network reports the peering status as disconnected.",
   "rule.criteria": "177fdb75-0481-4349-bcd2-e172779fb63b",

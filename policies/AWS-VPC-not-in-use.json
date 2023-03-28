@@ -3,7 +3,7 @@
   "policyId": "ee7ba0f4-904b-4dfa-9a04-9344b40cba69",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS VPC not in use",
   "description": "This policy identifies VPCs which are not in use. These VPC resources might be unintentionally launched and AWS also imposes a limit to the number of VPCs allowed per region. So it is recommended to either delete or use effectively such VPCs that do not have resources attached to them.",
   "rule.criteria": "d2648b06-0370-442e-be52-961a31c2d309",

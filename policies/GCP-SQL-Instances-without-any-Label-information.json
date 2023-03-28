@@ -3,7 +3,7 @@
   "policyId": "6046a285-ae97-4e07-a63f-11227148f6ba",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP SQL Instances without any Label information",
   "description": "This policy identifies the SQL DB instance which does not have any Labels. Labels can be used for easy identification and searches.",
   "rule.criteria": "9095e24f-c0ac-4bc1-ad04-5a9273c644a2",

@@ -3,7 +3,7 @@
   "policyId": "305caeb2-efb9-4414-91fd-0c5cdeb70714",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "medium",
+  "severity": "low",
   "name": "Alibaba Cloud disk encryption is disabled",
   "description": "This policy identifies disks for which encryption is disabled. As a best practice enable disk encryption to improve data security without making changes to your business or applications. Snapshots created from encrypted disks and new disks created from these snapshots are automatically encrypted.",
   "rule.criteria": "fb2e4b0a-1882-40e2-ab96-12b08491d286",

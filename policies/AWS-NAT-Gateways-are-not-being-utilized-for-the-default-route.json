@@ -3,7 +3,7 @@
   "policyId": "bbfd1fec-c777-4265-a307-fbca4a5912e7",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS NAT Gateways are not being utilized for the default route",
   "description": "This policy identifies Route Tables which have NAT instances for the default route instead of NAT gateways. It is recommended to use NAT gateways as the AWS managed NAT Gateway provides a scalable and resilient method for allowing outbound internet traffic from your private VPC subnets.",
   "rule.criteria": "06db4527-44f4-4618-8d06-998e9fc0c240",

@@ -3,7 +3,7 @@
   "policyId": "682880bd-f12b-4a81-90bb-b3d6d05fcd90",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "informational",
   "name": "OCI security lists allows unrestricted ingress access to port 3389",
   "description": "This policy identifies OCI Security lists that allow unrestricted ingress access to port 3389. It is recommended that no security list allows unrestricted ingress access to port 3389. As a best practice, remove unfettered connectivity to remote console services, such as Remote Desktop Protocol (RDP), to reduce server's exposure to risk.",
   "rule.criteria": "1b989ce8-51c3-4a2a-9f91-83e1fefd05c4",

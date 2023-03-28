@@ -3,7 +3,7 @@
   "policyId": "7363990f-b1fb-42c8-ad4a-fbb06de0310d",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud adaptive application controls monitoring is set to disabled",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) policies which have adaptive application controls monitoring set to disabled. Adaptive Application Controls will make sure that only certain applications can run on your VMs in Microsoft Azure. This will prevent any malicious, unwanted, or unsupported software on the VMs.",
   "rule.criteria": "3bbd79e6-5b80-4a25-b419-d7689d3615bd",

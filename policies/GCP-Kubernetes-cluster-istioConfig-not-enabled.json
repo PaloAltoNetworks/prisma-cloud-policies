@@ -3,7 +3,7 @@
   "policyId": "fe72c1c2-da18-4add-9a29-cffd48938fc8",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Kubernetes cluster istioConfig not enabled",
   "description": "Istio is an open service mesh that provides a uniform way to connect, manage, and secure microservices. It supports managing traffic flows between services, enforcing access policies, and aggregating telemetry data, all without requiring changes to the microservice code.\n\nThis policy checks your cluster for the Istio add-on feature and alerts if it is not enabled.",
   "rule.criteria": "7682e9a1-c93d-48e3-a62c-ceb9fc25230e",

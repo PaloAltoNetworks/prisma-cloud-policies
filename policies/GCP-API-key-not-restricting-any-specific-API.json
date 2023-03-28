@@ -3,7 +3,7 @@
   "policyId": "2e66484c-206b-4f23-a62f-28135c22704b",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP API key not restricting any specific API",
   "description": "This policy identifies GCP API keys that are not restricting any specific APIs. API keys are insecure because they can be viewed publicly, such as from within a browser, or they can be accessed on a device where the key resides. It is recommended to restrict API keys to use (call) only APIs required by an application.",
   "rule.criteria": "08224ba2-a172-4ab7-ab6c-b940a372fc25",

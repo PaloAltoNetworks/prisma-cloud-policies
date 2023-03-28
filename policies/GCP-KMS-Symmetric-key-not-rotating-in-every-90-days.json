@@ -3,7 +3,7 @@
   "policyId": "287ab1bc-62f5-4b2c-92a7-43c9ee7c6bb6",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP KMS Symmetric key not rotating in every 90 days",
   "description": "This policy identifies GCP KMS Symmetric keys that are not rotating every 90 days. A key is used to protect some corpus of data. A collection of files could be encrypted with the same key and people with decrypt permissions on that key would be able to decrypt those files. It's recommended to make sure the 'rotation period' is set to a specific time to ensure data cannot be accessed through the old key.",
   "rule.criteria": "6e394124-06d4-46fc-991e-4b6102ed74da",

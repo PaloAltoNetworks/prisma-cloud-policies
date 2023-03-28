@@ -3,7 +3,7 @@
   "policyId": "348cbb26-2713-427d-8b9d-8d9d62af48f7",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Virtual network not protected by DDoS Protection Standard",
   "description": "This policy identifies Virtual networks not protected by DDoS Protection Standard. Distributed denial of service (DDoS) attacks are some of the largest availability and security concerns exhausting an application's resources, making the application unavailable to legitimate users. Azure DDoS Protection Standard provides enhanced DDoS mitigation features to defend against DDoS attacks. ",
   "rule.criteria": "1b6f9132-0cc9-4235-9e4e-c34fc715fa0a",

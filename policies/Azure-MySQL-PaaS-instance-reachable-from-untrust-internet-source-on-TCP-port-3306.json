@@ -3,7 +3,7 @@
   "policyId": "94af1c1a-f5cb-43ce-91b0-69f069c248bf",
   "policyType": "network",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "high",
   "name": "Azure MySQL (PaaS) instance reachable from untrust internet source on TCP port 3306",
   "description": "This policy identifies Azure MySQL (PaaS) instances that are internet reachable from untrust internet source on TCP port 3306. MySQL (PaaS) instances with untrusted access to the internet may enable bad actors to use brute force on a system to gain unauthorised access to the entire network. As a best practice, restrict traffic from untrusted IP addresses and limit the access to known hosts, services, or specific entities.",
   "rule.criteria": "8514627a-59f7-4961-a156-37e836f0e25d",

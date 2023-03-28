@@ -3,7 +3,7 @@
   "policyId": "792c1e8d-f8aa-4fc5-a036-3d55ccbb27a2",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Identity-Aware Proxy (IAP) not enabled for External HTTP(s) Load Balancer",
   "description": "This policy identifies GCP External HTTP(s) Load Balancers for which Identity-Aware Proxy(IAP) is disabled.  IAP is used to enforce access control policies for applications and resources. It works with signed headers or the App Engine standard environment Users API to secure connections to External HTTP(s) Load Balancers. It is recommended to enable Identity-Aware Proxy for securing the External HTTP(s) Load Balancers.\n\nReference: https://cloud.google.com/iap/docs/concepts-overview",
   "rule.criteria": "da73f5e7-c8ab-4b16-ae99-04717af0123b",

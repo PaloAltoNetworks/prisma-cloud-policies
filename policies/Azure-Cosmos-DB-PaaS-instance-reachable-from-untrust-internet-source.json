@@ -3,7 +3,7 @@
   "policyId": "98076e12-0a77-404c-b743-f5cbc0fe00f5",
   "policyType": "network",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "high",
   "name": "Azure Cosmos DB (PaaS) instance reachable from untrust internet source",
   "description": "This policy identifies Azure Cosmos DB (PaaS) instances that are internet reachable from untrust internet source. Cosmos DB (PaaS) instances with untrusted access to the internet may enable bad actors to use brute force on a system to gain unauthorised access to the entire network. As a best practice, restrict traffic from untrusted IP addresses and limit the access to known hosts, services, or specific entities.",
   "rule.criteria": "edcd4f47-4ec3-4140-9ed0-a2da04eeb848",

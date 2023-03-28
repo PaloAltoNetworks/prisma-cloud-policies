@@ -3,7 +3,7 @@
   "policyId": "1f524c07-3254-45a0-8ad7-03e29242c499",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS RDS instance with copy tags to snapshots disabled",
   "description": "This policy identifies RDS instances that have copy tags to snapshots disabled. Copy tags to snapshots copies all the user-defined tags from the DB instance to snapshots. Copying tags allow you to add metadata and apply access policies to your Amazon RDS resources.\n\nNOTE: Setting Copy tags to snapshots for an Aurora DB instance has no effect on the DB setting. So Aurora DB instances are excluded from policy check.",
   "rule.criteria": "56b18fc7-71e4-4932-aba6-71b9d0c6cf5d",

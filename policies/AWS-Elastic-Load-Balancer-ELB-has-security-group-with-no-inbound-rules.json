@@ -3,7 +3,7 @@
   "policyId": "f2b80edb-79d3-4842-b86a-3bbbcfd95c98",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS Elastic Load Balancer (ELB) has security group with no inbound rules",
   "description": "This policy identifies Elastic Load Balancers (ELB) which have security group with no inbound rules. A security group with no inbound rule will deny all incoming requests. ELB security groups should have at least one inbound rule, ELB with no inbound permissions will deny all traffic incoming to ELB; in other words, the ELB is useless without inbound permissions.",
   "rule.criteria": "30fb1cc3-9161-4e5b-9322-b5692b71f0d5",

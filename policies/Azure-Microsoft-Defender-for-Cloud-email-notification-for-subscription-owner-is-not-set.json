@@ -3,7 +3,7 @@
   "policyId": "fc914428-2c9a-4240-a3a7-769b85187278",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud email notification for subscription owner is not set",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) in which email notification for subscription owners is not set. Enabling security alert emails to subscription owners ensures that they receive security alert emails from Microsoft. This ensures that they are aware of any potential security issues and can mitigate the risk in a timely fashion.",
   "rule.criteria": "acc69a5f-d633-4a07-8697-c1ec2344788e",

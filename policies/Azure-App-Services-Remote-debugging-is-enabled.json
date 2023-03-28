@@ -3,7 +3,7 @@
   "policyId": "6fd5eaee-2e6d-419b-b380-2fa1a67feaf3",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "low",
+  "severity": "medium",
   "name": "Azure App Services Remote debugging is enabled",
   "description": "This policy identifies Azure App Services which has Remote debugging enabled. Enabling Remote debugging feature opens up inbound ports on App Services. It is recommended to disabled Azure App Services Remote debugging.",
   "rule.criteria": "1feba014-ed3b-46ed-8a7c-4c03ec1469b7",

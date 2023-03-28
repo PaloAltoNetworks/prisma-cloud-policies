@@ -3,7 +3,7 @@
   "policyId": "57ed6965-ea15-46dc-9a8a-56140ffffc29",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud system updates monitoring is set to disabled",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) policies which have system updates monitoring set to disabled. It retrieves a daily list of available security and critical updates from Windows Update or Windows Server Update Services. The retrieved list depends on the service that's configured for that virtual machine and recommends that the missing updates be applied. For Linux systems, the policy uses the distro-provided package management system to determine packages that have available updates. It also checks for security and critical updates from Azure Cloud Services virtual machines.",
   "rule.criteria": "e4afab31-dc49-446d-b424-d67c836fd7ce",

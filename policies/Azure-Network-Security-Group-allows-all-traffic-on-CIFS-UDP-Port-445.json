@@ -3,7 +3,7 @@
   "policyId": "bc7929f8-fe70-48ec-8690-4288aa0b98ae",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on CIFS (UDP Port 445)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on Windows SMB UDP port 445. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict DNS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "0f7fb1e1-dc2b-431f-8dad-efdeae05ebcb",

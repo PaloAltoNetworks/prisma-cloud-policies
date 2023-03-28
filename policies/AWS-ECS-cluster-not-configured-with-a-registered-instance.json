@@ -3,7 +3,7 @@
   "policyId": "d657f5f1-6055-44b6-8f7d-15f011e90c18",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS ECS cluster not configured with a registered instance",
   "description": "This policy identifies ECS clusters that are not configured with a registered instance. ECS container instance is an Amazon EC2 instance that is running the Amazon ECS container agent and has been registered into an Amazon ECS cluster. It is recommended to remove Idle ECS clusters to reduce the container attack surface or register a new instance for the reported ECS cluster.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonECS/latest/developerguide/ECS_instances.html ",
   "rule.criteria": "ffaade89-8bb8-4ced-8b75-52ec072b0b7d",

@@ -3,7 +3,7 @@
   "policyId": "8953512c-4b2f-4622-a3c8-fff004bfec66",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud is set to Off for App Service",
   "description": "This policy identifies Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has defender setting for App Service is set to Off. Enabling Microsoft Defender for Cloud provides the tools needed to harden your resources, track your security posture, protect against cyberattacks, and streamline security management. It is highly recommended to enable Microsoft Defender for App Service.",
   "rule.criteria": "11e46b7a-6a7d-4500-aef5-f21b0ee608ad",

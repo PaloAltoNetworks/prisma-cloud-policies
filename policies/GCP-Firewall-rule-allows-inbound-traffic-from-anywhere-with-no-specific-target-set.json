@@ -3,7 +3,7 @@
   "policyId": "f57d5819-0673-4c25-bf43-77cf66e4800d",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Firewall rule allows inbound traffic from anywhere with no specific target set",
   "description": "This policy identifies GCP Firewall rules which allow inbound traffic from anywhere with no target filtering. \n\nThe default target is all instances in the network. The use of target tags or target service accounts allows the rule to apply to select instances. Not using any firewall rule filtering may allow a bad actor to brute force their way into the system and potentially get access to the entire network.",
   "rule.criteria": "ac2aef26-939c-40e9-9aae-2e9be6fd7d0a",

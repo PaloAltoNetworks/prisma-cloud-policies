@@ -3,7 +3,7 @@
   "policyId": "72b422c8-bef1-4842-a6c6-7230bf0b3492",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP VM instances have block project-wide SSH keys feature disabled",
   "description": "This policy identifies VM instances which have block project-wide SSH keys feature disabled. Project-wide SSH keys are stored in Compute/Project-metadata. Project-wide SSH keys can be used to login into all the instances within a project. Using project-wide SSH keys eases the SSH key management but if compromised, poses the security risk which can impact all the instances within a project. It is recommended to use Instance specific SSH keys which can limit the attack surface if the SSH keys are compromised.",
   "rule.criteria": "8ae5d48f-8f65-4844-8f32-c83e1d6626ba",

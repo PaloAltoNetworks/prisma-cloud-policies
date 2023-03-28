@@ -3,7 +3,7 @@
   "policyId": "4351322d-9efe-4ac5-88e6-9de1bcdf4bb5",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "medium",
   "name": "AWS EMR cluster Master Security Group allows all traffic to port 8088",
   "description": "This policy identifies AWS EMR cluster which has Master Security Group which allows all traffic to port 8088. Exposing port 8088 to all traffic exposes web interfaces of the master node of an EMR Cluster. This configuration is highly susceptible to EMR cluster hijacking attacks. It is highly recommended limiting the access for the EMR cluster attached Master Security Group to your IP only or configure SSH Tunnel.",
   "rule.criteria": "2859647d-1a90-4153-b9dc-8211817ab3d4",

@@ -3,7 +3,7 @@
   "policyId": "f7a08c0c-4ffb-46da-a78e-6a02dc2dacac",
   "policyType": "network",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "medium",
   "name": "AWS Lambda function communicating with ports known to mine Monero",
   "description": "This policy identifies AWS Lambda function which are communicating with ports known to mine Monero. AWS Lambda functions when infected with Denonia malware installs a XMRig mining software which is used for mining Monero. It is highly recommended to restrict Lambda function to known hosts or services only.",
   "rule.criteria": "bd91f9fc-3907-4d78-9e7e-2bf176b11323",

@@ -3,7 +3,7 @@
   "policyId": "0f191e4f-ae38-49c4-8660-6a142a3f2721",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure Cosmos DB Virtual network is not configured",
   "description": "This policy identifies Azure Cosmos DBs that are not configured with a Virtual network. Azure Cosmos DB by default is accessible from any source if the request is accompanied by a valid authorization token. By configuring Virtual network only requests originating from those subnets will get a valid response. It is recommended to configure Virtual network to Cosmos DB.",
   "rule.criteria": "81bc5357-be35-4bd7-80e1-6ed14297cfc5",

@@ -3,7 +3,7 @@
   "policyId": "dbdc9748-f0c8-4591-b77f-fce5bb92636b",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP VM Instances enabled with Pre-Emptible termination",
   "description": "Checks to verify if any VM instance is initiated with the flag 'Pre-Emptible termination' set to True. Setting this instance to True implies that this VM instance will shut down within 24 hours or can also be terminated by a Service Engine when high demand is encountered. While this might save costs, it can also lead to unexpected loss of service when the VM instance is terminated.",
   "rule.criteria": "18c893b6-041e-46a8-b52c-748fd77559db",

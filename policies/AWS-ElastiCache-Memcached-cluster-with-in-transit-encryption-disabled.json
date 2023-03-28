@@ -3,7 +3,7 @@
   "policyId": "401ea157-b44f-4e26-b017-945b3fc259e1",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS ElastiCache Memcached cluster with in-transit encryption disabled",
   "description": "This policy identifies AWS ElastiCache Memcached clusters that have in-transit encryption disabled. It is highly recommended to implement in-transit encryption in order to protect data from unauthorized access as it travels through the network, between clients and cache servers. Enabling data encryption in-transit helps to prevent unauthorized users from reading sensitive data between your Memcached and their associated cache storage systems.",
   "rule.criteria": "6de57b6f-7003-4e77-9045-7a677a126baa",

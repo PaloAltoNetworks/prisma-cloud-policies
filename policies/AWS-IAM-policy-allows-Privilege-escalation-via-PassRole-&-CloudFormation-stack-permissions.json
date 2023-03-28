@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "d3212d1c-37fc-4a26-bd82-c9d3022fe648",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & CloudFormation stack permissions",
+  "description": "With access to the iam:PassRole and cloudformation:CreateStack permissions, an adversary can create a new CloudFormation stack and pass a more privileged role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "d3212d1c-37fc-4a26-bd82-c9d3022fe648",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'cloudformation:CreateStack', 'cloudformation:DescribeStacks') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "Do not use wildcards in a policy's statement Resource element with these permissions as it creates risk of Privilege Escalation. If identity requires use of these permissions to pass a role to a cloud formation stack, make sure the policy is scoped to only the resources needed.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

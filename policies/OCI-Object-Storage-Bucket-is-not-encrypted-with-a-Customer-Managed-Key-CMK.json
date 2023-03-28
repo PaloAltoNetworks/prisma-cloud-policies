@@ -3,7 +3,7 @@
   "policyId": "b28c3bfd-87bc-4a55-8b59-cd42b02028e6",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "informational",
   "name": "OCI Object Storage Bucket is not encrypted with a Customer Managed Key (CMK)",
   "description": "This policy identifies the OCI Object Storage buckets that are not encrypted with a Customer Managed Key (CMK). It is recommended that Object Storage buckets should be encrypted with a Customer Managed Key (CMK), using  Customer Managed Key (CMK), provides an additional level of security on your data by allowing you to manage your own encryption key lifecycle management for the bucket.",
   "rule.criteria": "f4ef554b-013c-45d7-ac5e-1d6fbb222e0f",

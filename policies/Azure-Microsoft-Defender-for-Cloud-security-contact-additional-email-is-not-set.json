@@ -3,7 +3,7 @@
   "policyId": "46e24e8c-945c-4048-91f2-800cccf54613",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud security contact additional email is not set",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has not set security contact additional email addresses. Microsoft Defender for Cloud emails the subscription owners whenever a high-severity alert is triggered for their subscription. Providing a security contact email address as an additional email address ensures that the proper people are aware of any potential compromise in order to mitigate the risk in a timely fashion.",
   "rule.criteria": "1de985c8-bacb-4780-9296-d0d7e3b596f6",

@@ -3,7 +3,7 @@
   "policyId": "cdb612cb-5629-4e0b-a028-8ce69d01104c",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "medium",
   "name": "Azure PostgreSQL database flexible server configured with overly permissive network access",
   "description": "This policy identifies Azure PostgreSQL database flexible servers that are configured with overly permissive network access. It is highly recommended to create PostgreSQL database flexible server with private access to help secure access to server via VNet Integration or with a Firewall rule, you can restrict it further to only a set of IPv4 addresses or IPv4 address ranges.",
   "rule.criteria": "840a792d-f8a3-4331-b183-3eea67f519b8",

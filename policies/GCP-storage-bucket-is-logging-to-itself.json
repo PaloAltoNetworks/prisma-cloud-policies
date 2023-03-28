@@ -3,7 +3,7 @@
   "policyId": "53dd2bfd-1b3c-4b7a-9eea-bad3c148cd15",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP storage bucket is logging to itself",
   "description": "This policy identifies GCP storage buckets that are sending logs to themselves. When storage buckets use the same bucket to send their access logs, a loop of logs will be created, which is not a security best practice. It is recommended to spin up new and different log buckets for storage bucket logging.",
   "rule.criteria": "f86eb55e-e113-4248-9471-774d5f0e7f0b",
@@ -21,6 +21,7 @@
     "CSA CCM v.4.0.6",
     "FFIEC",
     "ISO 27002:2022",
+    "ISO/IEC 27001:2022",
     "PCI DSS v4.0",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"

@@ -3,7 +3,7 @@
   "policyId": "cd94c83e-6f84-4a37-a116-13ccba78a615",
   "policyType": "network",
   "cloudType": "all",
-  "severity": "high",
+  "severity": "informational",
   "name": "Internet connectivity via TCP over insecure port",
   "description": "This policy identifies network traffic coming from the internet which is plain text FTP, Telnet, or HTTP. It is recommended to have Security Group/Firewall Rule for the resource that has a more restrictive ACL, which does not permit connection from the internet.\n\nNote: This policy alerts AWS workloads correctly and for Azure and GCP this policy could also trigger alerts for NAT Gateway configured resources.",
   "rule.criteria": "33d85130-385e-405d-a055-b20c2a5fc514",

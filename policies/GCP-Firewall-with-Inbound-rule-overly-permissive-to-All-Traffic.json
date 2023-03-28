@@ -3,7 +3,7 @@
   "policyId": "ff6a9cca-8bc5-4a72-9235-ec7b65c547d5",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "low",
   "name": "GCP Firewall with Inbound rule overly permissive to All Traffic",
   "description": "This policy identifies GCP Firewall rules which allows inbound traffic on all protocols from public internet. Doing so, may allow a bad actor to brute force their way into the system and potentially get access to the entire network.",
   "rule.criteria": "33142dd4-733b-44d1-8320-8ccacf39adf9",

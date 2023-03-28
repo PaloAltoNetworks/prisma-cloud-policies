@@ -3,7 +3,7 @@
   "policyId": "2b857e15-2f76-4d8b-bff9-39f92b8569e1",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "high",
+  "severity": "informational",
   "name": "Alibaba Cloud Security group allow internet traffic to SSH port (22)",
   "description": "This policy identifies Security groups that allow inbound traffic on SSH port (22) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
   "rule.criteria": "78db926f-e459-4378-ba55-492c07cb50fd",

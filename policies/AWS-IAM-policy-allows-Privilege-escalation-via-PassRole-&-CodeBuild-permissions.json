@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "939a2428-4033-44ec-a0da-29e1f3431fa0",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & CodeBuild permissions",
+  "description": "With access to the iam:PassRole, codebuild:CreateProject, codebuild:StartBuild, codebuild:StartBuildBatch permissions, an adversary can create a new CodeBuild project and pass a more privileged existing role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "939a2428-4033-44ec-a0da-29e1f3431fa0",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'codebuild:CreateProject', 'codebuild:StartBuild', 'codebuild:StartBuildBatch') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

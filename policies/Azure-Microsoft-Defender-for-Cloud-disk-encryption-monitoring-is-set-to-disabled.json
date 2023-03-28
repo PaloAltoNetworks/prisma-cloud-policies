@@ -3,7 +3,7 @@
   "policyId": "894e9b34-082b-4c24-ac6f-bdbf44e57ac7",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud disk encryption monitoring is set to disabled",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) policies which have disk encryption monitoring set to disabled. Enabling disk encryption for virtual machines will secure the data by encrypting it. It is recommended to set disk encryption monitoring in Microsoft Defender for Cloud security policy.",
   "rule.criteria": "9580336a-3186-4958-ad6c-752545d128e9",

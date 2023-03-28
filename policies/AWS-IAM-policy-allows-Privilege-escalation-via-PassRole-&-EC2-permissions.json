@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "3ed41ee9-448e-40fc-951a-21d2ed478e45",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & EC2 permissions",
+  "description": "With access to the iam:PassRole and ec2:RunInstances permissions, an adversary can create a new EC2 instance and pass a more privileged role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "3ed41ee9-448e-40fc-951a-21d2ed478e45",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'ec2:RunInstances' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "Do not use wildcards in a policy's statement Resource element with these permissions as it creates risk of Privilege Escalation. If identity requires use of these permissions to pass a role to an EC2 instance, make sure the policy is scoped to only the resources needed. The same granular logic can be applied with EC2 as the following example using lambda function. https://aws.amazon.com/premiumsupport/knowledge-center/granular-access-lambda/",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

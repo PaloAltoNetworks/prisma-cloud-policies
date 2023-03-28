@@ -3,7 +3,7 @@
   "policyId": "cb5edef0-8968-48b4-8bc9-6ffa6ed2d816",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS OpenSearch attached security group overly permissive to all traffic",
   "description": "This policy identifies AWS OpenSearch attached Security group that are overly permissive to all traffic. Security group enforces IP-based access policies to OpenSearch. As a best practice, restrict traffic solely from known static IP addresses or CIDR range.\n",
   "rule.criteria": "c3c3bcd8-b41f-4349-a748-4322c5e8caf8",

@@ -3,7 +3,7 @@
   "policyId": "eea96170-da7c-4258-8ca2-71c3087049a7",
   "policyType": "network",
   "cloudType": "all",
-  "severity": "high",
+  "severity": "low",
   "name": "Instance is communicating with ports known to mine Bitcoin",
   "description": "This policy identifies network traffic from internal workloads to the known Bitcoin ports 8332 and 8333. Unless this traffic is part of authorized applications and processes, your instances may have been compromised.\n\nNote: This policy alerts AWS and GCP workloads correctly and for Azure, it may trigger alerts for NAT Gateway configured resources also.",
   "rule.criteria": "75a1e6f7-ce4d-441e-9cb2-002b634606df",

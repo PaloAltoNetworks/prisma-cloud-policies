@@ -3,7 +3,7 @@
   "policyId": "5dbd0da1-cfa4-4bce-a753-56dade428bd4",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on MySQL (TCP Port 3306)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on MySQL (TCP Port 3306). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict MySQL solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "8c36bb5c-2a53-4c58-97bf-2ccf2f4742fc",

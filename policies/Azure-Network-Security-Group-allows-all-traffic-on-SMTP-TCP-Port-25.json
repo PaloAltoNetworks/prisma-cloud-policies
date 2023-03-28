@@ -3,7 +3,7 @@
   "policyId": "ac851899-1007-48c8-842f-dddb9a38c4ba",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on SMTP (TCP Port 25)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on SMTP (TCP Port 25). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict SMTP solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "63199794-1208-4e6b-aa02-c257f84a6e6b",

@@ -3,7 +3,7 @@
   "policyId": "dc3dd864-cff5-4730-84ac-11e212f2c1ff",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Firewall rule allows all traffic on DNS port (53)",
   "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on DNS port (53). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the DNS port (53) should be allowed to specific IP addresses.",
   "rule.criteria": "dc3dd864-cff5-4730-84ac-11e212f2c1ff",

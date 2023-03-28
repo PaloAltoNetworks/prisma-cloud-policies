@@ -3,7 +3,7 @@
   "policyId": "74a52c45-75ae-404f-abf5-84b5cbd3d22f",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS RDS DB snapshot is not encrypted",
   "description": "This policy identifies AWS RDS DB (Relational Database Service Database) cluster snapshots which are not encrypted. It is highly recommended to implement encryption at rest when you are working with production data that have sensitive information, to protect from unauthorized access.",
   "rule.criteria": "c246e82d-85f0-4ead-b08b-4b7478ce6bcf",

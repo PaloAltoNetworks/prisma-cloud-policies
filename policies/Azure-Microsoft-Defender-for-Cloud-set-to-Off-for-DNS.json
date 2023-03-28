@@ -3,7 +3,7 @@
   "policyId": "028a45a7-ad8d-48f3-9012-2417defd324b",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud set to Off for DNS",
   "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for DNS set to Off. Enabling Azure Defender provides advanced security capabilities like providing threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. Defender for DNS monitors the queries and detects suspicious activities without the need for any additional agents on your resources. It is highly recommended to enable Azure Defender for DNS.",
   "rule.criteria": "e210f1d9-abce-4387-bc84-36b065ee0b21",

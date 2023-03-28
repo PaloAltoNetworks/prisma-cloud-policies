@@ -3,7 +3,7 @@
   "policyId": "2436e2a8-95e6-44b7-a4ce-3f95e1a589e4",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud JIT network access monitoring is set to disabled",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) policies which have JIT network access monitoring set to disabled. Enabling JIT Network Access will enhance the protection of VMs by creating a Just in Time VM. The JIT VM with NSG rule will restrict the availability of access to the ports to connect to the VM for a pre-set time and only after checking the Role Based Access Control permissions of the user. This feature will control the brute force attacks on the VMs.",
   "rule.criteria": "e2829c45-f3ec-4689-bf1f-85448e66171c",

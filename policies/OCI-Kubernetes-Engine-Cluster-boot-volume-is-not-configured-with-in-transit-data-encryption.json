@@ -3,7 +3,7 @@
   "policyId": "f5c3b3c2-0993-4915-9d8e-9117423bd271",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "medium",
+  "severity": "low",
   "name": "OCI Kubernetes Engine Cluster boot volume is not configured with in-transit data encryption",
   "description": "This policy identifies Kubernetes Engine Clusters that are not configured with in-transit data encryption. Configuring In-transit encryption on clusters boot volumes, encrypts data in transit between the instance, the boot volume, and the block volumes. All the data moving between the instance and the block volume is transferred over an internal and highly secure network. It is recommended that Clusters boot volumes should be configured with in-transit data encryption to minimize risk for sensitive data being leaked. \n\nFor more details:\nhttps://docs.oracle.com/en-us/iaas/Content/Block/Concepts/overview.htm#BlockVolumeEncryption",
   "rule.criteria": "10ee4aa4-1cb8-42e3-b7d2-fc9a459dc657",

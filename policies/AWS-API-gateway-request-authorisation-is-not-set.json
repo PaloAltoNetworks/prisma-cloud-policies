@@ -3,7 +3,7 @@
   "policyId": "3bc575db-9c1c-4ae3-aeb1-107989ef6fca",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS API gateway request authorisation is not set",
   "description": "This policy identifies AWS API Gateways of protocol type REST for which the request authorisation is not set. The method request for API gateways takes the client input that is passed to the back end through the integration request. It is recommended to add authorization type to each of the method to add a layer of protection.",
   "rule.criteria": "378d9d08-956f-4c63-b058-0d7784486adc",

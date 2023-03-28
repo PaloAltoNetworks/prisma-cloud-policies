@@ -3,7 +3,7 @@
   "policyId": "9706338d-291b-4937-be1e-752e251ac5a7",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud is set to Off for Key Vault",
   "description": "This policy identifies Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has defender setting for Key Vault is set to Off. Enabling Microsoft Defender for Cloud provides the tools needed to harden your resources, track your security posture, protect against cyberattacks, and streamline security management. It is highly recommended to enable Microsoft Defender for Key Vault.",
   "rule.criteria": "c73d5998-dfa1-4978-a34b-0a48a47c2dce",

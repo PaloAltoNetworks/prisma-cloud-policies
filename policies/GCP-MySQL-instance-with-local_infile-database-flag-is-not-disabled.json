@@ -3,7 +3,7 @@
   "policyId": "558185cd-8704-4709-8bea-e6c692f26d00",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP MySQL instance with local_infile database flag is not disabled",
   "description": "This policy identifies MySQL instances in which local_infile database flag is not disabled. The local_infile flag controls the server-side LOCAL capability for LOAD DATA statements. Based on the settings in local_infile server refuses or permits local data loading by clients. Disabling the local_infile flag setting, would disable the local data loading by clients that have LOCAL enabled on the client side.",
   "rule.criteria": "a063c6eb-ae91-4f80-9756-20b070a5733c",

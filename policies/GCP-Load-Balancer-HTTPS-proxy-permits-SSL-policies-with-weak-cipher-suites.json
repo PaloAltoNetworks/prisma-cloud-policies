@@ -3,7 +3,7 @@
   "policyId": "d97de551-06ce-4248-ac1b-3f0a4d9b35a8",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Load Balancer HTTPS proxy permits SSL policies with weak cipher suites",
   "description": "This policy identifies GCP HTTPS Load Balancers that permit SSL policies with weak cipher suites. GCP default SSL policy uses a minimum TLS version of 1.0 and a Compatible profile, which allows the widest range of insecure cipher suites. \n\nTo prevent usage of insecure features, SSL policies should use at least TLS 1.2 with the MODERN profile; or  the RESTRICTED profile, because it effectively requires clients to use TLS 1.2 regardless of the chosen minimum TLS version; or a CUSTOM profile that does not support any of the following features:\n\nTLS_RSA_WITH_AES_128_GCM_SHA256\nTLS_RSA_WITH_AES_256_GCM_SHA384\nTLS_RSA_WITH_AES_128_CBC_SHA\nTLS_RSA_WITH_AES_256_CBC_SHA\nTLS_RSA_WITH_3DES_EDE_CBC_SHA",
   "rule.criteria": "079a511f-f3ee-4f27-b0f4-a8be55c3f2e7",

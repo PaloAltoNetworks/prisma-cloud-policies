@@ -3,7 +3,7 @@
   "policyId": "6c75753f-628b-44fa-9663-18dc39bc2272",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP App Engine Identity-Aware Proxy is disabled",
   "description": "This policy identifies GCP App Engine applications for which Identity-Aware Proxy(IAP) is disabled.  IAP is used to enforce access control policies for applications and resources. It works with signed headers or the App Engine standard environment Users API to secure your app. It is recommended to enable Identity-Aware Proxy for securing the App engine.\n\nReference: https://cloud.google.com/iap/docs/concepts-overview",
   "rule.criteria": "8a53ac93-3a12-40f6-b2f9-95a451a0977a",

@@ -3,7 +3,7 @@
   "policyId": "7d3a72d0-b99c-4007-ae56-caa379a140bb",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure MySQL database flexible server SSL enforcement is disabled",
   "description": "This policy identifies Azure MySQL database flexible servers for which the SSL enforcement is disabled. SSL connectivity helps to provide a new layer of security, by connecting database server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between database server and client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and application.",
   "rule.criteria": "50ba3795-c6c7-43f2-af00-5162cb1a14f3",

@@ -3,7 +3,7 @@
   "policyId": "f48eda6b-5d66-4d73-a62e-671de3844555",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on FTP-Data (TCP Port 20)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on FTP-Data (TCP Port 20). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict FTP-Data solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "ae2e5e26-4f3b-4bd3-9a8f-93fc2794607c",

@@ -3,7 +3,7 @@
   "policyId": "7ca5af2c-d18d-4004-9ad4-9c1fbfcab218",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS access keys not used for more than 45 days",
   "description": "This policy identifies IAM users for which access keys are not used for more than 45 days. Access keys allow users programmatic access to resources. However, if any access key has not been used in the past 45 days, then that access key needs to be deleted (even though the access key is inactive)",
   "rule.criteria": "29e70fa0-47f7-4812-90bd-ea519e498936",

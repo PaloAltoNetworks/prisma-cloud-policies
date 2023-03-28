@@ -3,7 +3,7 @@
   "policyId": "adee3240-2355-4a24-821e-d54141f008b2",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP Log metric filter and alert does not exist for VPC network route delete and insert",
   "description": "This policy identifies GCP accounts which do not have a log metric filter and alert for VPC network route delete and insert events. Monitoring network routes deletion and insertion activities will help in identifying VPC traffic flows through an expected path. It is recommended to create a metric filter and alarm to detect activities related to the deletion and insertion of VPC network routes.",
   "rule.criteria": "725d2575-428a-4ad3-9a93-74da16753b26",
@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v1.3.0 (GCP)",
+    "CIS v2.0.0 (GCP) Level 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

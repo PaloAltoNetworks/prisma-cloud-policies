@@ -3,7 +3,7 @@
   "policyId": "4cddc286-94b0-427a-8747-7f06b51d4689",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on VNC Server (TCP Port 5900)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on VNC Server (TCP Port 5900). Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict VNC Server solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "ef4acda9-3e9b-4e75-98c5-f0c64363654d",

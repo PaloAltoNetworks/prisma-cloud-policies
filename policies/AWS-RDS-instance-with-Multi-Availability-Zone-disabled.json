@@ -3,7 +3,7 @@
   "policyId": "c5305272-a732-4e8e-8427-6a9701cd2a6f",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS RDS instance with Multi-Availability Zone disabled",
   "description": "This policy identifies RDS instances which have Multi-Availability Zone(Multi-AZ) disabled. When RDS DB instance is enabled with Multi-AZ, RDS automatically creates a primary DB Instance and synchronously replicates the data to a standby instance in a different availability zone. These Multi-AZ deployments will improve primary node reachability by providing read replica in case of network connectivity loss or loss of availability in the primary’s availability zone for read/write operations, so by making them the best fit for production database workloads.",
   "rule.criteria": "f606fe0b-2950-42ce-a3b2-7f100ece5c3a",

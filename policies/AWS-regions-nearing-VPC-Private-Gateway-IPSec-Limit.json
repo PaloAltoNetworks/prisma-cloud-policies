@@ -3,7 +3,7 @@
   "policyId": "7c7ba054-0fda-48da-a20a-1ace72e62d80",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS regions nearing VPC Private Gateway IPSec Limit",
   "description": "This policy identifies if your account is near the private gateway IPSec limitation per VPC per Region. AWS provides a reasonable starting limitation for the maximum number of VPC Private Gateway IPSec connections you can assign in each VPC. If you approach the limit in a particular VPC, this alert indicates that you have nearly exhausted your allocation.",
   "rule.criteria": "9cf16ddc-10fb-4f04-8255-8853f8b53cc9",

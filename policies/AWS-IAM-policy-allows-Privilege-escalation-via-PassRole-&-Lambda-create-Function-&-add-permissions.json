@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "dd52863a-1820-4e5b-890a-8a084477c4a1",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & add permissions",
+  "description": "With access to the iam:PassRole, lambda:AddPermission, and lambda:CreateFunction permissions, an adversary can create a Lambda function with a more privileged existing role. This function could then by updated with lambda:AddPermission to allow another principal in another AWS account the permission to invoke it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "dd52863a-1820-4e5b-890a-8a084477c4a1",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'lambda:AddPermission', 'lambda:CreateFunction') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

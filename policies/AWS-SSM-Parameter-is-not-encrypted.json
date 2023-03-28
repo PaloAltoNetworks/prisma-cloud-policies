@@ -3,7 +3,7 @@
   "policyId": "926b7056-6a39-4885-a806-8e4cf958fced",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS SSM Parameter is not encrypted",
   "description": "This policy identifies the AWS SSM Parameters which are not encrypted. AWS Systems Manager (SSM) parameters that store sensitive data, for example, passwords, database strings, and permit codes are encrypted so as to meet security and compliance prerequisites. An encrypted SSM parameter is any sensitive information that should be kept and referenced in a protected way.",
   "rule.criteria": "22fc52a7-6446-4cf4-b5ac-c1631c52922d",

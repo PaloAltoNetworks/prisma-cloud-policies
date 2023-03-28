@@ -3,7 +3,7 @@
   "policyId": "3784cdfd-dd25-4cf3-b506-ad77033ccc35",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "informational",
   "name": "Azure Network Security Group allows all traffic on NetBIOS (UDP Port 138)",
   "description": "This policy identifies Azure Network Security Groups (NSG) that allow all traffic on NetBIOS UDP port 138. Review your list of NSG rules to ensure that your resources are not exposed. As a best practice, restrict NetBIOS solely to known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "5b2a3e46-799c-4ae7-b918-e4679ade50cb",

@@ -3,7 +3,7 @@
   "policyId": "14356227-d5c6-4151-b885-4f21437f820a",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Log bucket retention policy is not configured using bucket lock",
   "description": "This policy identifies GCP log buckets for which retention policy is not configured using bucket lock. It is recommended to configure the data retention policy for cloud storage buckets using bucket lock to permanently prevent the policy from being reduced or removed in case the system is compromised by an attacker or a malicious insider.\n\nNote: Locking a bucket is an irreversible action. Once you lock a bucket, you cannot remove the retention policy from the bucket or decrease the retention period for the policy.",
   "rule.criteria": "af387221-b6b9-4fa5-a9e5-b4ee665b9e4d",
@@ -21,6 +21,7 @@
     "CIS v2.0.0 (GCP) Level 2",
     "CSA CCM v.4.0.6",
     "ISO 27002:2022",
+    "ISO/IEC 27001:2022",
     "PCI DSS v4.0",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"

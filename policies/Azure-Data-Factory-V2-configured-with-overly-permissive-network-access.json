@@ -3,7 +3,7 @@
   "policyId": "d96a6d5b-0399-45dc-8fac-db55d711710b",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "medium",
   "name": "Azure Data Factory (V2) configured with overly permissive network access",
   "description": "This policy identifies Data factories (V2) configured with overly permissive network access. A Data factory managed virtual network along with managed private endpoints protects against data exfiltration. It is recommended to configure the Data factory with a private endpoint; so that the Data factory is accessible only to restricted entities.",
   "rule.criteria": "c181a29b-b48e-4fd1-ab10-80bd7f930093",

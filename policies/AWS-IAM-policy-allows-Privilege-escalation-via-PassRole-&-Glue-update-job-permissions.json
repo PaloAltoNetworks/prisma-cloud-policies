@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "8b4666f0-aea9-4ca5-a34b-2b6bc661a822",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Glue update job permissions",
+  "description": "With access to the iam:PassRole and glue:UpdateJob permissions, an adversary can update the role and command associated with a Glue job. This would allow an adversary to escalate privileges to a more privileged role.",
+  "rule.criteria": "8b4666f0-aea9-4ca5-a34b-2b6bc661a822",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'glue:UpdateJob' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

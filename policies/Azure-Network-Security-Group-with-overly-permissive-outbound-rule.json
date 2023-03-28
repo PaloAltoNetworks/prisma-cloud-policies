@@ -3,7 +3,7 @@
   "policyId": "22979dcf-b4d4-4a74-bf7f-2fae67adc3a9",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "low",
+  "severity": "informational",
   "name": "Azure Network Security Group with overly permissive outbound rule",
   "description": "This policy identifies NSGs with overly permissive outbound rules allowing outgoing traffic from source type any or source with public IP range. A network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. As a best practice, it is recommended to configure NSGs to restrict traffic to known sources on authorized protocols and ports.",
   "rule.criteria": "f2f5d323-77f0-473c-b29d-458c7d6cca99",

@@ -3,7 +3,7 @@
   "policyId": "3b814978-44a0-4a5b-9736-492d67ee4994",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "low",
   "name": "GCP Default Firewall rule is overly permissive (except http and https)",
   "description": "This policy identifies the Firewall rules that are configured with default firewall rule. The default Firewall rules will apply to all instances by default in the absence of specific custom rules with higher priority. It is a safe practice to not have these rules in the default Firewall.",
   "rule.criteria": "a1d88a90-aede-4678-8e01-6cc08074bcf5",

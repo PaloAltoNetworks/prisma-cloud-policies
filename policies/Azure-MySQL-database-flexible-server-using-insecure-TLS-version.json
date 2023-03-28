@@ -3,7 +3,7 @@
   "policyId": "9f9f8908-470d-4999-aed4-a4dbec53633c",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure MySQL database flexible server using insecure TLS version",
   "description": "This policy identifies Azure MySQL database flexible servers which are using insecure TLS version. Enforcing TLS connections between database server and client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and application. As a security best practice, it is recommended to use the latest TLS version for Azure MySQL database flexible server.",
   "rule.criteria": "51c48dcb-48ad-45b8-bf42-10248daf9a62",

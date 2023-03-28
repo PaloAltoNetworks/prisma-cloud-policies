@@ -3,7 +3,7 @@
   "policyId": "99538e8f-bc22-4a10-8c29-0ea1b6d98d59",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "medium",
   "name": "OCI users API keys have aged more than 90 days without being rotated",
   "description": "This policy identifies all of your IAM API keys which have not been rotated in the past 90 days. It is recommended to verify that they are rotated on a regular basis in order to protect OCI API access directly or via SDKs or OCI CLI.",
   "rule.criteria": "003e4bc2-9933-4dd7-b3a7-6399bf9d4908",

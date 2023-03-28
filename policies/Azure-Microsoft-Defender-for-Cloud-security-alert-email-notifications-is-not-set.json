@@ -3,7 +3,7 @@
   "policyId": "8d78bf42-4e80-4e25-89fa-5f8a7fe8ddb1",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud security alert email notifications is not set",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which have not set security alert email notifications. Enabling security alert emails ensures that security alert emails are received from Microsoft. This ensures that the right people are aware of any potential security issues and are able to mitigate the risk.",
   "rule.criteria": "084973b5-bb39-456c-bfef-6ec42c261c59",

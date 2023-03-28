@@ -3,7 +3,7 @@
   "policyId": "df15f8be-e55c-4b5b-84a6-910f346d173d",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS Elastic Load Balancer v2 (ELBv2) load balancer with invalid security groups",
   "description": "This policy identifies Elastic Load Balancer v2 (ELBv2) load balancers that do not have security groups with a valid inbound or outbound rule. A security group with no inbound/outbound rule will deny all incoming/outgoing requests. ELBv2 security groups should have at least one inbound and outbound rule, ELBv2 with no inbound/outbound permissions will deny all traffic incoming/outgoing to/from any resources configured behind that ELBv2; in other words, the ELBv2 is useless without inbound and outbound permissions.",
   "rule.criteria": "0d6b5c29-471c-45aa-bbaa-f215d7575e7b",

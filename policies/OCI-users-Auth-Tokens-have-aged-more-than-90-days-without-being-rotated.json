@@ -3,7 +3,7 @@
   "policyId": "49cdb08a-ab81-4311-90cd-26db7ebbf5e4",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "medium",
+  "severity": "informational",
   "name": "OCI users Auth Tokens have aged more than 90 days without being rotated",
   "description": "This policy identifies all of your IAM User Auth Tokens which have not been rotated in the past 90 days. It is recommended to verify that they are rotated on a regular basis in order to protect OCI Auth Tokens access directly or via SDKs or OCI CLI.",
   "rule.criteria": "a1b1de88-723e-4411-a198-21ea67d93661",

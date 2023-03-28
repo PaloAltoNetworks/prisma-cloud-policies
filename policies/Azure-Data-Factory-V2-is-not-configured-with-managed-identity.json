@@ -3,7 +3,7 @@
   "policyId": "e4c03c2b-b872-43f1-bfba-62ff056ed84b",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Data Factory (V2) is not configured with managed identity",
   "description": "This policy identifies Data Factories (V2) that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Data Factory.",
   "rule.criteria": "3e5a7f03-32a7-4c45-883c-81f741c434af",

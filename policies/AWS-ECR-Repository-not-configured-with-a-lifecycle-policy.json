@@ -3,7 +3,7 @@
   "policyId": "8377061b-355d-4fec-ad91-47f98f6f7912",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS ECR Repository not configured with a lifecycle policy",
   "description": "This policy identifies AWS ECR Repositories that are not configured with a lifecycle policy. Amazon ECR lifecycle policies enable you to specify the lifecycle management of images in a repository. This helps to automate the cleanup of unused images and the expiration of images based on age or count. As best practice, it is recommended to configure ECR repository with lifecycle policy which helps to avoid unintentionally using outdated images in your repository.\n",
   "rule.criteria": "94910ecb-934c-497a-ae32-f8874cc20ebb",

@@ -3,7 +3,7 @@
   "policyId": "fd46d0ca-5258-48c6-a5a3-758df622f830",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "medium",
   "name": "Azure Spring Cloud service is not configured with virtual network",
   "description": "This policy identifies Azure Spring Cloud services that are not configured with a virtual network. Spring Cloud configured with a virtual network isolates apps and service runtime from the internet on your corporate network and provides control over inbound and outbound network communications for Azure Spring Cloud. As best security practice, It is recommended to deploy Spring Cloud service in a virtual network.",
   "rule.criteria": "05128e74-61e1-4e3c-a4e9-83d840efddb1",

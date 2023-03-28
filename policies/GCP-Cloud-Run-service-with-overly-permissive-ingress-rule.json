@@ -3,7 +3,7 @@
   "policyId": "8796b72d-1ea4-47d4-8cca-efc34be26c92",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Cloud Run service with overly permissive ingress rule",
   "description": "This policy identifies GCP Cloud Run services configured with overly permissive ingress rules. It is recommended to restrict the traffic from the internet and other resources by allowing traffic to enter through load balancers or internal traffic for better network-based access control.",
   "rule.criteria": "a5216572-7ba5-498b-8934-f352891838fc",

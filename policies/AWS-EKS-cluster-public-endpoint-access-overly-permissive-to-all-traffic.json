@@ -3,7 +3,7 @@
   "policyId": "23c2dec8-4eeb-4f32-8960-171f9a266b99",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS EKS cluster public endpoint access overly permissive to all traffic",
   "description": "This policy identifies EKS clusters that have an overly permissive public endpoint accessible to all traffic. When you create a new cluster, Amazon EKS creates an endpoint for the managed Kubernetes API server that you use to communicate with your cluster (using Kubernetes management tools such as kubectl). By default, this API server endpoint accepts all connections from public internet, and access to the API server is secured using a combination of AWS Identity and Access Management (IAM) and native Kubernetes Role Based Access Control (RBAC).\n\nAllowing all traffic to EKS cluster may allow a bad actor to brute force their way into the system and potentially get access to the entire network. As a best practice, restrict traffic solely from known static IP addresses. Limit the access list to include known hosts, services, or specific employees only.",
   "rule.criteria": "68c1a676-8e87-4c3c-a89b-c973453dee89",

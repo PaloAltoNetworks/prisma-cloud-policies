@@ -3,7 +3,7 @@
   "policyId": "84bbc52e-b321-44b7-9c0a-13b34c875f1e",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "low",
+  "severity": "informational",
   "name": "Azure AD Users can consent to apps accessing company data on their behalf is enabled",
   "description": "This policy identifies Azure Active Directory which have 'Users can consent to apps accessing company data on their behalf' configuration enabled. User profiles contain private information which could be shared with others without requiring any further consent from the user if this configuration is enabled. It is recommended not to allow users to use their identity outside of the cloud environment.",
   "rule.criteria": "3cfcd5e9-c03f-4d65-99f7-8c153ac2e0de",

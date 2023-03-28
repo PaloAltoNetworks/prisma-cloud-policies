@@ -3,7 +3,7 @@
   "policyId": "e1322a56-1172-4034-a793-300c062b66d2",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS DynamoDB encrypted using AWS owned CMK instead of AWS managed CMK",
   "description": "This policy identifies the DynamoDB tables that use AWS owned CMK (default ) instead of AWS managed CMK (KMS ) to encrypt data. AWS managed CMK provide additional features such as the ability to view the CMK and key policy, and audit the encryption and decryption of DynamoDB tables.",
   "rule.criteria": "458c6ad0-ed21-4a99-872a-431ef81deb05",

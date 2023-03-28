@@ -3,7 +3,7 @@
   "policyId": "024045e3-dfa3-4109-9d68-e7fcf3c6c4d1",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "informational",
   "name": "GCP Firewall rule allows all traffic on Telnet port (23)",
   "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on Telnet port (23). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the Telnet port (23) should be allowed to specific IP addresses.",
   "rule.criteria": "024045e3-dfa3-4109-9d68-e7fcf3c6c4d1",

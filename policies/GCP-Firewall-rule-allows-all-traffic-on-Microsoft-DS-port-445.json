@@ -3,7 +3,7 @@
   "policyId": "1aa8f0f0-139f-49a2-9c9d-41c71a3c806f",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Firewall rule allows all traffic on Microsoft-DS port (445)",
   "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on Microsoft-DS port (445). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the Microsoft-DS port (445) should be allowed to specific IP addresses.",
   "rule.criteria": "1aa8f0f0-139f-49a2-9c9d-41c71a3c806f",

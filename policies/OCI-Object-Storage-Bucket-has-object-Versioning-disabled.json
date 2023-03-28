@@ -3,7 +3,7 @@
   "policyId": "24260955-1b50-410a-b24f-48598b5e041d",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "low",
   "name": "OCI Object Storage Bucket has object Versioning disabled",
   "description": "This policy identifies the OCI Object Storage buckets that are not configured with a Object Versioning. It is recommended that Object Storage buckets should be configured with Object Versioning to minimize data loss because of inadvertent deletes by an authorized user or malicious deletes.",
   "rule.criteria": "a4f59200-439d-465d-bc3c-b813f7d1d5a1",

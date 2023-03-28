@@ -3,7 +3,7 @@
   "policyId": "8e58437c-1363-4d96-951f-490ad22e7a15",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "low",
   "name": "Azure SQL server Transparent Data Encryption (TDE) encryption disabled",
   "description": "This policy identifies SQL servers in which Transparent Data Encryption (TDE) is disabled. TDE encryption performs real-time encryption and decryption of the server, related reinforcements, and exchange log records without requiring any changes to the application. It is recommended to have TDE encryption on your SQL servers to protect the server from malicious activity.",
   "rule.criteria": "83cc4cc9-9082-436d-9db6-895b9b4993da",

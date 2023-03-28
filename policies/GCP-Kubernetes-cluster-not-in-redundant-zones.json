@@ -3,7 +3,7 @@
   "policyId": "eb4dbd09-817c-4ae5-909b-6ac3f488a341",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Kubernetes cluster not in redundant zones",
   "description": "Putting resources in different zones in a region provides isolation from many types of infrastructure, hardware, and software failures.\n\nThis policy alerts if your cluster is not located in at least 3 zones.",
   "rule.criteria": "59408f49-0555-4c87-a582-88aec0e310d4",

@@ -3,7 +3,7 @@
   "policyId": "e1984e80-f467-413d-9001-f2ada7e3a377",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Storage log buckets have object versioning disabled",
   "description": "This policy identifies Storage log buckets which have object versioning disabled. Enabling object versioning on storage log buckets will protect your cloud storage data from being overwritten or accidentally deleted. It is recommended to enable object versioning feature on all storage buckets where sinks are configured.",
   "rule.criteria": "5c78818c-0fbd-4def-9e67-44c08cad77a8",

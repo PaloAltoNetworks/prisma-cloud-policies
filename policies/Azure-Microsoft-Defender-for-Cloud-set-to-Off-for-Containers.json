@@ -3,7 +3,7 @@
   "policyId": "6841aa18-976c-44cf-a77a-3b10443900ae",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud set to Off for Containers",
   "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for Containers set to Off. Enabling Azure Defender provides advanced security capabilities like providing threat intelligence, anomaly detection, and behavior analytics in the Azure Microsoft Defender for Cloud. It is highly recommended to enable Azure Defender for Containers.",
   "rule.criteria": "b33a7650-cc5d-4923-9ad1-8cfde2ce669c",

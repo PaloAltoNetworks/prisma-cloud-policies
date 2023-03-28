@@ -3,7 +3,7 @@
   "policyId": "d032684c-73ee-4278-8343-3a71a708b1ee",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "high",
+  "severity": "informational",
   "name": "Alibaba Cloud Security group allow internet traffic to VNC Listener port (5500)",
   "description": "This policy identifies Security groups that allow inbound traffic on VNC Listener port (5500) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
   "rule.criteria": "efed98e8-64e8-4dc7-b44e-23a5b92237ec",

@@ -3,7 +3,7 @@
   "policyId": "271423dc-295f-40fb-8743-ec07f58e8761",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS EMR cluster is not enabled with local disk encryption",
   "description": "This policy identifies AWS EMR clusters that are not enabled with local disk encryption. Applications using the local file system on each cluster instance for intermediate data throughout workloads, where data could be spilled to disk when it overflows memory. With Local disk encryption at place, data at rest can be protected.",
   "rule.criteria": "4b0c9ff6-dd18-4a02-9587-a387776a9a63",

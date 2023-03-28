@@ -3,7 +3,7 @@
   "policyId": "d61d46dd-ac60-4765-a77a-75072c553318",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure SQL server TDE protector is not encrypted with BYOK (Use your own key)",
   "description": "This policy identifies Bring Your Own Key(BYOK) support for Transparent Data Encryption(TDE) in SQL server. The data encryption key(DEK) can be protected with an asymmetric key that is stored in the Key Vault which allows user control of TDE encryption keys and restricts who can access them and when.",
   "rule.criteria": "65cb3032-1333-4375-a33b-96177d10debe",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "07488429-a4dd-4720-99bc-90ceff46550a",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & Event source mapping permissions",
+  "description": "With access to the iam:PassRole, lambda:CreateEventSourceMapping, and lambda:CreateFunction permissions, an adversary can create a Lambda function with an existing more privileged role and associating it with a DynamoDB table. Then, when a new record is inserted into the table, the Lambda function will trigger with the privilege of the passed in role. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "07488429-a4dd-4720-99bc-90ceff46550a",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'lambda:CreateEventSourceMapping', 'lambda:CreateFunction') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

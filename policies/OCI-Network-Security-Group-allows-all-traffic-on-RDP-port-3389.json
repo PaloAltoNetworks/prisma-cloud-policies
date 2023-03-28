@@ -3,7 +3,7 @@
   "policyId": "7895af22-b552-4189-b151-0cc4626e2c1a",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "informational",
   "name": "OCI Network Security Group allows all traffic on RDP port (3389)",
   "description": "This policy identifies OCI Security groups that allow unrestricted ingress access to port 3389. It is recommended that no security group allows unrestricted ingress access to port 3389. As a best practice, remove unfettered connectivity to remote console services, such as Remote Desktop Protocol (RDP), to reduce server's exposure to risk.",
   "rule.criteria": "d580dc1c-8cbd-489d-9bbe-43c7ad7aed8f",

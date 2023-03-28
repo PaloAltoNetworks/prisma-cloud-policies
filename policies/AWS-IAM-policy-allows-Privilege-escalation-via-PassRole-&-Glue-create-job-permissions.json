@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "de6c3f8f-6235-4c9f-be5e-93dc842d6066",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Glue create job permissions",
+  "description": "With access to the iam:PassRole and glue:CreateJob permissions, an adversary can create a new Glue job and pass in a more privileged role. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "de6c3f8f-6235-4c9f-be5e-93dc842d6066",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'glue:CreateJob' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

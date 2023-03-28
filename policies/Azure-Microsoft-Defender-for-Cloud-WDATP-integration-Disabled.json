@@ -3,7 +3,7 @@
   "policyId": "b7a63b07-551a-4813-82f5-f47b8428e0b3",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud WDATP integration Disabled",
   "description": "This policy identifies Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has Microsoft Defender for Endpoint (WDATP) integration disabled. Enabling Microsoft Defender for Cloud provides the tools needed to harden your resources, track your security posture, protect against cyberattacks, and streamline security management. It is highly recommended to enable Microsoft Defender for WDATP.",
   "rule.criteria": "c1fffb8c-225e-41b3-a322-da19980fe593",

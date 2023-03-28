@@ -3,7 +3,7 @@
   "policyId": "9b78ca0d-75dc-480c-9b86-41330a881acb",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP Cloud Function not enabled with VPC connector",
   "description": "This policy identifies GCP Cloud Functions that are not configured with a VPC connector. VPC connector helps function to connect to a resource inside a VPC in the same project. Setting up the VPC connector allows you to set up a secure perimeter to guard against data exfiltration and prevent functions from accidentally sending any data to unwanted destinations. It is recommended to configure the GCP Cloud Function with a VPC connector.\n\nNote: For the Cloud Functions function to access the public traffic with Serverless VPC connector, you have to introduce Cloud NAT.\nLink: https://cloud.google.com/functions/docs/networking/network-settings#route-egress-to-vpc",
   "rule.criteria": "940f7491-eb9a-4471-b05b-329cd99d72ef",

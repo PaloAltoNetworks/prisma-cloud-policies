@@ -3,7 +3,7 @@
   "policyId": "ea9d10f0-d8c2-4fde-9541-326a933c48b7",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure Cosmos DB Private Endpoint Connection is not configured",
   "description": "This policy identifies Cosmos DBs that are not configured with a private endpoint connection. Azure Cosmos DB private endpoints can be configured using Azure Private Link. Private Link allows users to access an Azure Cosmos account from within the virtual network or from any peered virtual network. When Private Link is combined with restricted NSG policies, it helps reduce the risk of data exfiltration. It is recommended to configure Private Endpoint Connection to Cosmos DB.",
   "rule.criteria": "bb3cf6db-4693-4650-a85c-b85c42098899",
