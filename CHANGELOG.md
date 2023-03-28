@@ -32,7 +32,7 @@
 
 ### Changed
 
-#### 634 policies updated
+#### 633 policies updated
 
 - Policy Severity updated for 634 system default policies:
 - https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/prisma/prisma-cloud/prerelease/policy-severity-level-changes.csv
