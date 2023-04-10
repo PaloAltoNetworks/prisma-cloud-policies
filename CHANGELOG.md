@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-23.4.1 - 2023-04-10
+
+### Added
+
+#### 19 new policies for the IAM Security module
+
+- AWS IAM policy allows Privilege escalation via Codestar create project and associate team member permissions
+- AWS IAM policy allows Privilege escalation via EC2 describe and SSM list and send command permissions
+- AWS IAM policy allows Privilege escalation via EC2 describe and SSM session permissions
+- AWS IAM policy allows Privilege escalation via EC2 Instance Connect permissions
+- AWS IAM policy allows Privilege escalation via Glue Dev Endpoint permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CloudFormation stack permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CodeBuild permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CodeStar project permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Data Pipeline permissions
+- AWS IAM policy allows Privilege escalation via PassRole & EC2 permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue create job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue development endpoint permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue update job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create & invoke Function permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & add permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & Event source mapping permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create notebook permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create processing job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create training job permissions
+
+#### 1 new compliance standard
+
+- ISO/IEC 27001:2022
+
+### Changed
+
+#### 633 policies updated
+
+- Policy Severity updated for 634 system default policies:
+- https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/prisma/prisma-cloud/prerelease/policy-severity-level-changes.csv
+
+#### 3 compliance standards updated
+
+- CIS v1.2.0 (GCP)
+- CIS v1.3.0 (GCP)
+- CIS v2.0.0 (GCP) Level 2
+
+
 ## PCS-23.3.2 - 2023-03-27
 
 ### Added

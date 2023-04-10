@@ -3,7 +3,7 @@
   "policyId": "3596e236-1c20-4f3f-be6d-a513f0da63e1",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Virtual machine scale sets are not utilising Managed Disks",
   "description": "This policy identifies Azure Virtual machine scale sets which are not utilising Managed Disks. Using Azure Managed disk over traditional BLOB storage based VHD's has more advantage features like Managed disks are by default encrypted, reduces cost over storage accounts and more resilient as Microsoft will manage the disk storage and move around if underlying hardware goes faulty. It is recommended to move BLOB based VHD's to Managed Disks.",
   "rule.criteria": "3ec883be-a22f-40d3-b295-acf66ffdd4c8",

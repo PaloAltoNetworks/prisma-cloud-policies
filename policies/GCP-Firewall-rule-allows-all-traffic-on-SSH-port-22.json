@@ -3,7 +3,7 @@
   "policyId": "49a154e8-6049-4317-bbb5-0c90cb078f94",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "informational",
   "name": "GCP Firewall rule allows all traffic on SSH port (22)",
   "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on SSH port (22). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the SSH port (22) should be allowed to specific IP addresses.",
   "rule.criteria": "49a154e8-6049-4317-bbb5-0c90cb078f94",

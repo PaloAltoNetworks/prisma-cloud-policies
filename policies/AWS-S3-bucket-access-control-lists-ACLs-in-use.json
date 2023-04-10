@@ -3,7 +3,7 @@
   "policyId": "cab6f1a5-f6c5-4caf-bf10-b0f3a29e90ea",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS S3 bucket access control lists (ACLs) in use",
   "description": "This policy identifies AWS S3 buckets which are using access control lists (ACLs). ACLs are legacy way to control access to S3 buckets. It is recommended to disable bucket ACL and instead use IAM policies or S3 bucket policies to manage access to your S3 buckets.",
   "rule.criteria": "b8e3f191-9cfb-4707-8a82-cb5f784f7694",

@@ -3,7 +3,7 @@
   "policyId": "6c5091cc-2da3-42b3-877e-42fd7d9e85d6",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud automatic provisioning of log Analytics agent for Azure VMs is set to Off",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has automatic provisioning of log Analytics agent for Azure VMs is set to Off. Microsoft Defender for Cloud provisions the Microsoft Monitoring Agent on all existing supported Azure virtual machines and any new ones that are created. The Microsoft Monitoring Agent scans for various security-related configurations and events such as system updates, OS vulnerabilities, endpoint protection, and provides alerts.",
   "rule.criteria": "a885d51a-0b78-4a2f-88ed-3f4bf58616ab",

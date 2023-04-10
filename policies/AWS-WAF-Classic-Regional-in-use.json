@@ -3,7 +3,7 @@
   "policyId": "a1ef6b83-de93-4d84-8573-57c5da61eab7",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS WAF Classic (Regional) in use",
   "description": "This policy identifies AWS Classic WAF which is in use. As a best practice, create the AWS WAFv2 and configure accordingly to protect against application-layer attacks. The block criteria in the WAFv2 web access control list (web ACL) has more capabilities than the Classic WAF to filter-out malicious traffic.",
   "rule.criteria": "13bbdc80-1339-4e8b-9e4b-4c206bec307c",

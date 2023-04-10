@@ -3,7 +3,7 @@
   "policyId": "4779ab55-2f4b-48cf-b4a9-828165a73f77",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS KMS Key scheduled for deletion",
   "description": "This policy identifies KMS Keys which are scheduled for deletion. Deleting keys in AWS KMS is destructive and potentially dangerous. It deletes the key material and all metadata associated with it and is irreversible. After a key is deleted, you can no longer decrypt the data that was encrypted under that key, which means that data becomes unrecoverable. You should delete a key only when you are sure that you don't need to use it anymore. If you are not sure, It is recommended that to disable the key instead of deleting it.",
   "rule.criteria": "bbb3d3f9-3caa-47ef-8ac0-d40e7f891312",

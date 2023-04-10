@@ -3,7 +3,7 @@
   "policyId": "bddaae74-c3ad-474d-858f-982fecac5f1b",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS RDS database not encrypted using Customer Managed Key",
   "description": "This policy identifies RDS databases that are encrypted with default KMS keys and not with customer managed keys. As a best practice, use customer managed keys to encrypt the data on your RDS databases and maintain control of your keys and data on sensitive workloads.",
   "rule.criteria": "11633a39-8c89-4a18-92e8-94f507b3e33c",

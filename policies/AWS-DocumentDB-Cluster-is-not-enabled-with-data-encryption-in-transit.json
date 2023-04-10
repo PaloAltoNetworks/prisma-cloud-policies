@@ -3,7 +3,7 @@
   "policyId": "8a1eca79-23af-45b2-bda4-ba6b2f4fa14a",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS DocumentDB Cluster is not enabled with data encryption in transit",
   "description": "This policy identifies Amazon DocumentDB Clusters for which data encryption in transit is disabled. Each DocumentDB Cluster is associated with a Cluster Parameter Group. It is highly recommended to implement in-transit encryption in order to protect data from unauthorized access as it travels through the network, between clients and the cluster.",
   "rule.criteria": "5884383b-5436-48fb-b76f-aa28e7edb4b8",

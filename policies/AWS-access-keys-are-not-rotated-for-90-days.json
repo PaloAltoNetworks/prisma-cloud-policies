@@ -3,7 +3,7 @@
   "policyId": "6ea06abf-bfd3-49f2-9332-9aee02c31d58",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS access keys are not rotated for 90 days",
   "description": "This policy identifies IAM users for which access keys are not rotated for 90 days. Access keys are used to sign API requests to AWS. As a security best practice, it is recommended that all access keys are regularly rotated to make sure that in the event of key compromise, unauthorized users are not able to gain access to your AWS services.",
   "rule.criteria": "6ea06abf-bfd3-49f2-9332-9aee02c31d58",

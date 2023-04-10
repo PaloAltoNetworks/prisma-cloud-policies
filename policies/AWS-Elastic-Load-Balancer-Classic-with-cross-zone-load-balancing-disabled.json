@@ -3,7 +3,7 @@
   "policyId": "551ee7ba-edb6-468e-a018-8774da9b1e85",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS Elastic Load Balancer (Classic) with cross-zone load balancing disabled",
   "description": "This policy identifies Classic Elastic Load Balancers which have cross-zone load balancing disabled. When Cross-zone load balancing enabled, classic load balancer distributes requests evenly across the registered instances in all enabled Availability Zones. Cross-zone load balancing reduces the need to maintain equivalent numbers of instances in each enabled Availability Zone, and improves your application's ability to handle the loss of one or more instances.",
   "rule.criteria": "194dc989-ec4c-426c-826f-d7365d9a59ed",

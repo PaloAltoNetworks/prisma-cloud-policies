@@ -3,7 +3,7 @@
   "policyId": "b7ad863b-d54c-4b43-a157-010199a37cac",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "informational",
   "name": "GCP Firewall rule allows all traffic on MongoDB port (27017)",
   "description": "This policy identifies GCP Firewall rules which allow all inbound traffic on MongoDB port (27017). Allowing access from arbitrary IP addresses to this port increases the attack surface of your network. It is recommended that the MongoDB port (27017) should be allowed to specific IP addresses.",
   "rule.criteria": "b7ad863b-d54c-4b43-a157-010199a37cac",

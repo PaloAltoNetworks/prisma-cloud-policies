@@ -3,7 +3,7 @@
   "policyId": "8fd3611b-3298-483c-a1ec-0df3fc1ded8d",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS Kinesis streams are not encrypted using Server Side Encryption",
   "description": "This Policy identifies the AWS Kinesis streams which are not encrypted using Server Side Encryption. Server Side Encryption is used to encrypt your sensitive data before it is written to the Kinesis stream storage layer and decrypted after it is retrieved from storage.",
   "rule.criteria": "6ceaee38-344c-4249-8cff-eb62a8ee94ed",

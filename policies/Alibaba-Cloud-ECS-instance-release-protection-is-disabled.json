@@ -3,7 +3,7 @@
   "policyId": "a456beac-96d0-4e35-bf91-e821dda2fab9",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "low",
+  "severity": "informational",
   "name": "Alibaba Cloud ECS instance release protection is disabled",
   "description": "This policy identifies ECS instances for which release protection is disabled. Enabling release protection for these ECS instances prevents irreversible data loss resulting from accidental or malicious operations.\nNote: This attribute applies to Pay-As-You-Go instances only. Release protection can only restrict the manual release operation and does not apply for release operation done by Alibaba Cloud.",
   "rule.criteria": "546c1a88-46ff-4824-a781-74fe710b31f8",

@@ -3,7 +3,7 @@
   "policyId": "b40cbb3f-794e-4031-9d97-3902e4ae0a46",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "medium",
+  "severity": "informational",
   "name": "OCI Kubernetes Engine Cluster endpoint is not configured with Network Security Groups",
   "description": "This policy identifies Kubernetes Engine Clusters endpoint that are not configured with Network Security Groups. Network security groups give fine-grained control of resources and help in restricting network access to your cluster node pools. It is recommended to restrict access to the Cluster node pools by configuring network security groups.",
   "rule.criteria": "915bc84b-178d-4640-8ce5-d280c88f0e74",

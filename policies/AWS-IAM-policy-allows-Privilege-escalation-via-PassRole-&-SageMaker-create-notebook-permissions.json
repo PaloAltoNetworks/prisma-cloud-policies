@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "5983d2c5-fd8a-44da-bf89-03519b9e6706",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & SageMaker create notebook permissions",
+  "description": "With access to the iam:PassRole, sagemaker:CreateNotebookInstance, and sagemaker:CreatePresignedNotebookInstanceUrl permissions, an adversary can create a new Jupyter notebook and pass a more privileged existing role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "5983d2c5-fd8a-44da-bf89-03519b9e6706",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'sagemaker:CreateNotebookInstance', 'sagemaker:CreatePresignedNotebookInstanceUrl' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -3,7 +3,7 @@
   "policyId": "f2c2d8e3-4e88-4887-a7af-1d0cfcad0a48",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Lambda nearing availability code storage limit",
   "description": "This policy identifies Lambda nearing availability code storage limit per region. AWS provides a reasonable starting amount of compute and storage resources that you can use to run and store functions. As a best practice, it is recommended to either remove the functions that you no longer in use or reduce the code size of the functions that you do not want to remove. It will also help you avoid unexpected charges on your bill.\nNOTE: As per https://docs.aws.amazon.com/lambda/latest/dg/limits.html. On the date, Lambda account limit per region is 75 GB. This policy will trigger an alert if Lambda account limit per region reached to 90% (i.e. 67500000 KB) of resource availability limit allocated. If you need more Lambda account code storage size per region, You can contact AWS for a service limit increase.",
   "rule.criteria": "59f9703b-bca0-46ae-bd6f-bbe9f83b3a67",

@@ -3,7 +3,7 @@
   "policyId": "5315a853-6a6b-43eb-a771-5906f41130b8",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud endpoint protection monitoring is set to disabled",
   "description": "This policy identifies the Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) policies which have endpoint protection monitoring set to disabled. Enabling endpoint Protection will make sure that any issues or shortcomings in endpoint protection for all Microsoft Windows virtual machines are identified so that they can, in turn, be removed.",
   "rule.criteria": "6f0e6015-1c85-4856-ba23-8eded8b600a2",

@@ -3,7 +3,7 @@
   "policyId": "abcc2be6-edc7-48bd-8ce9-c200c21f0192",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP Log metric filter and alert does not exist for VPC network route patch and insert",
   "description": "This policy identifies GCP accounts which do not have a log metric filter and alert for VPC network route patch and insert events. Monitoring network routes patching and insertion activities will help in identifying VPC traffic flows through an expected path. It is recommended to create a metric filter and alarm to detect activities related to the patch and insertion of VPC network routes.",
   "rule.criteria": "7c7e69c2-0ff3-4b69-91c6-a16a5445606a",
@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v1.2.0 (GCP)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

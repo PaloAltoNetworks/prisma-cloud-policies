@@ -3,7 +3,7 @@
   "policyId": "1fba22e4-061c-4c97-9812-aefa0eca3bcd",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "high",
+  "severity": "informational",
   "name": "Alibaba Cloud Security group allow internet traffic to DNS port (53)",
   "description": "This policy identifies Security groups that allow inbound traffic on DNS port (53) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
   "rule.criteria": "a1a6441d-4df6-4361-977c-a6505df58dd0",

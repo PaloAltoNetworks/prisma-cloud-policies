@@ -3,7 +3,7 @@
   "policyId": "21afee6c-ffd4-4b44-8b46-af4400d19c4b",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP SQL server instance database flag external scripts enabled is not set to off",
   "description": "This policy identifies GCP SQL server instances for which database flag 'external scripts enabled' is not set to off. Feature 'external scripts enabled' enables the execution of scripts with certain remote language extensions. When Advanced Analytics Services is installed, setup can optionally set this property to true. As the External Scripts Enabled feature allows scripts external to SQL such as files located in an R library to be executed, which could adversely affect the security of the system. It is recommended to set external scripts enabled database flag for Cloud SQL SQL Server instance to off.",
   "rule.criteria": "caafb15f-7f45-4915-983a-977187b0c7d8",

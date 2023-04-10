@@ -3,7 +3,7 @@
   "policyId": "f2b4065d-2bde-4a8b-8d63-29b4328cb634",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "medium",
+  "severity": "low",
   "name": "Alibaba Cloud OSS bucket server-side encryption is disabled",
   "description": "This policy identifies Object Storage Service (OSS) buckets which have server-side encryption disabled. As a best practice enable the server-side encryption to improve data security without making changes to your business or applications. OSS encrypts user data when writing the data into the hard disks deployed in the data center and automatically decrypts the data when it is accessed.",
   "rule.criteria": "dbe58741-a074-422b-bdda-ac10e5def229",

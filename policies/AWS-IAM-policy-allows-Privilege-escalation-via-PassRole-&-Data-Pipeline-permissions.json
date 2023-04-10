@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "e579aa99-1226-4e21-8030-b38d0c7f704a",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & Data Pipeline permissions",
+  "description": "With access to the iam:PassRole, datapipeline:ActivatePipeline, datapipeline:CreatePipeline, and datapipeline:PutPipelineDefinition permissions, an adversary can create a new pipeline and pass in a more privileged role. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "e579aa99-1226-4e21-8030-b38d0c7f704a",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'datapipeline:ActivatePipeline', 'datapipeline:CreatePipeline', 'datapipeline:PutPipelineDefinition') AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

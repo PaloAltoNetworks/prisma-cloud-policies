@@ -3,7 +3,7 @@
   "policyId": "7fa164f0-fb0d-40a1-8293-8192f64eed81",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure App Services FTP deployment is All allowed",
   "description": "This policy identifies Azure App Services which has FTP deployment setting as All allowed. Attacker could listen to wifi traffic and get the login credentials to a FTP deployments which could be in plain text and get full control of the code base of the app or service. It is highly recommend to use FTPS if FTP deployment for workflow is essential else disable the FTP deployment for Azure App Services.",
   "rule.criteria": "cd13ceb9-5139-4bf3-b722-0d6be1d36627",

@@ -3,7 +3,7 @@
   "policyId": "6099ef63-9c5e-46d3-9632-db1c7f05e687",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Elastic Load Balancer (ELB) not in use",
   "description": "This policy identifies unused Elastic Load Balancers (ELBs) in your AWS account. Any Elastic Load Balancer in your AWS account is adding charges to your monthly bill, although it is not used by any resources. As a best practice, it is recommended to remove ELBs that are not associated with any instances, it will also help you avoid unexpected charges on your bill.",
   "rule.criteria": "407d411b-f71f-41d9-9483-394086c4185b",

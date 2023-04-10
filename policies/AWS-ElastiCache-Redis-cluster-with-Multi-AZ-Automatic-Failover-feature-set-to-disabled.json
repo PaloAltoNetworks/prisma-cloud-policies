@@ -3,7 +3,7 @@
   "policyId": "99f6fc8c-27a7-4f30-84ef-9a2388e8e938",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS ElastiCache Redis cluster with Multi-AZ Automatic Failover feature set to disabled",
   "description": "This policy identifies ElastiCache Redis clusters which have Multi-AZ Automatic Failover feature set to disabled. It is recommended to enable the Multi-AZ Automatic Failover feature for your Redis Cache cluster, which will improve primary node reachability by providing read replica in case of network connectivity loss or loss of availability in the primary's availability zone for read/write operations.\nNote: Redis cluster Multi-AZ with automatic failover does not support T1 and T2 cache node types and is only available if the cluster has at least one read replica.",
   "rule.criteria": "fb8d5776-0bfa-4349-b1ec-1684f5353707",

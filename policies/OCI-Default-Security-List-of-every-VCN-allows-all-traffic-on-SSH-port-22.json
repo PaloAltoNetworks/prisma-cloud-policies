@@ -3,7 +3,7 @@
   "policyId": "a78e68cd-8d01-43ad-9e97-6bad13537ebc",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "informational",
   "name": "OCI Default Security List of every VCN allows all traffic on SSH port (22)",
   "description": "This policy identifies OCI Default Security lists associated with every VCN that allow unrestricted ingress access to port 22. It is recommended that no security group allows unrestricted ingress access to port 22. As a best practice, remove unfettered connectivity to remote console services, such as Secure Shell (SSH),  to reduce server's exposure to risk.",
   "rule.criteria": "90e0d0c7-ecf9-4382-a9cf-9fc51d9fd739",

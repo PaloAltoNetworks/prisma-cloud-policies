@@ -3,7 +3,7 @@
   "policyId": "1f3ae628-17bf-4d0b-b2d1-a0fbb61bf19c",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Microsoft Defender for Cloud is set to Off for SQL servers on machines",
   "description": "This policy identifies Azure Microsoft Defender for Cloud (previously known as Azure Security Center and Azure Defender) which has defender setting for SQL servers on machines is set to Off. Enabling Microsoft Defender for Cloud provides the tools needed to harden your resources, track your security posture, protect against cyberattacks, and streamline security management. It is highly recommended to enable Microsoft Defender for SQL servers on machines.",
   "rule.criteria": "d0d41a3f-5c0d-4d6e-8559-2d44298a36ed",

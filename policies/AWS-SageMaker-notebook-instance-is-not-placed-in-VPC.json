@@ -3,7 +3,7 @@
   "policyId": "4af86954-7e52-46d6-bf4a-efa0c4ccee41",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS SageMaker notebook instance is not placed in VPC",
   "description": "This policy identifies SageMaker notebook instances that are not placed inside a VPC. It is recommended to place your SageMaker inside VPC so that VPC-only resources able to access your SageMaker data, which cannot be accessed outside a VPC network.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/process-vpc.html",
   "rule.criteria": "e776dc78-2f1a-4b19-b86f-79eeec8c90c0",

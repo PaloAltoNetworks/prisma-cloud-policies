@@ -3,7 +3,7 @@
   "policyId": "08d12f5a-eaef-416b-9597-3e557ffa9161",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP SQL Instances do not have valid SSL configuration",
   "description": "This policy identifies GCP SQL instances that do not have valid SSL configuration with an unexpired SSL certificate. Cloud SQL supports connecting to an instance using the Secure Socket Layer (SSL) protocol. If Cloud SQL Auth proxy is not used for authentication, it is recommended to utilize SSL for connection to SQL Instance, ensuring the security for data in transit.",
   "rule.criteria": "34249a95-438c-4780-a27c-e3d50092c177",

@@ -3,7 +3,7 @@
   "policyId": "31121be7-b273-49a1-befe-53a3bd0cd801",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "low",
   "name": "Azure VM OS disk is not configured with any encryption",
   "description": "This policy identifies VM OS disks that are not configured with any encryption. Azure encrypts OS disks that are not configured with any encryption. Azure offers Server-Side Encryption (SSE) with platform-managed keys [SSE with PMK] by default for managed disks. It is recommended to enable default encryption or you may optionally choose to use a customer-managed key to protect from malicious activity.",
   "rule.criteria": "5e1188c4-9fc5-493c-b03c-17d6ee984ba9",

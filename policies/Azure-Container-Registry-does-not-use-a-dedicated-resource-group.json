@@ -3,7 +3,7 @@
   "policyId": "dba41206-2374-4215-b812-a2fcf811e8e7",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Container Registry does not use a dedicated resource group",
   "description": "Placing your Azure Container Registry (ACR) in a dedicated Azure resource group, allows you to minimize the risk of accidentally deleting the collection of images in the registry when you delete the container instance resource group.\nThis policy identifies ACRs that reside in resource groups that contains non-ACR resources. For more information about ACR best practices, visit https://docs.microsoft.com/en-us/azure/container-registry/container-registry-best-practices",
   "rule.criteria": "c378030b-3441-455f-852c-b21bcb309373",

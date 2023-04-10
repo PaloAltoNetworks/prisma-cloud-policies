@@ -3,7 +3,7 @@
   "policyId": "1a4127c1-6acd-4aca-9010-4eaa776e3ee0",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "low",
+  "severity": "informational",
   "name": "GCP Kubernetes Engine Clusters without any label information",
   "description": "This policy identifies all Kubernetes Engine Clusters which do not have labels. Having a cluster label helps you identify and categorize Kubernetes clusters.",
   "rule.criteria": "689395b5-12d8-47c1-84a9-85881663f3fc",

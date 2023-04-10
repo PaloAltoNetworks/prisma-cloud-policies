@@ -3,7 +3,7 @@
   "policyId": "ab0b23a9-1e97-4991-840b-06e7111f38ee",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS S3 buckets with configurations set to host websites",
   "description": "This policy identifies AWS S3 buckets that are configured to host websites. To host a website on AWS S3 you should configure a bucket as a website. By frequently surveying these S3 buckets, you can ensure that only authorized buckets are enabled to host websites. Make sure to disable static website hosting for unauthorized S3 buckets.",
   "rule.criteria": "3a8f1900-3a6c-46f8-b003-acaf47fd2108",

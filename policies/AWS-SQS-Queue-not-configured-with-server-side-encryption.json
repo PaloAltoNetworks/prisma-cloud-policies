@@ -3,7 +3,7 @@
   "policyId": "72a1d6ff-dd56-4107-afc0-6eda4ce934b8",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS SQS Queue not configured with server side encryption",
   "description": "This policy identifies AWS SQS queues which are not configured with server side encryption. Enabling server side encryption would encrypt all messages that are sent to the queue and the messages are stored in encrypted form. Amazon SQS decrypts a message only when it is sent to an authorised consumer. It is recommended to enable server side encryption for AWS SQS queues in order to protect sensitive data in the event of a data breach or malicious users gaining access to the data.",
   "rule.criteria": "816b8edc-773e-44a9-ad28-f8375ffdfe42",

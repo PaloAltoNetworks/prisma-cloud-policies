@@ -3,7 +3,7 @@
   "policyId": "17004d48-becd-4578-a3d6-f82054bc9239",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Elasticsearch domain has Zone Awareness set to disabled",
   "description": "This policy identifies Elasticsearch domains for which Zone Awareness is disabled in your AWS account. Enabling Zone Awareness (cross-zone replication) increases the availability by distributing your Elasticsearch data nodes across two availability zones available in the same AWS region. It also prevents data loss and minimizes downtime in the event of node or availability zone failure.",
   "rule.criteria": "108d1101-6da1-43b4-96ec-a2f92c3362a3",

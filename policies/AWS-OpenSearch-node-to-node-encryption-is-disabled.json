@@ -3,7 +3,7 @@
   "policyId": "f9ec9514-9a35-46d3-9eac-88c37734fc42",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS OpenSearch node-to-node encryption is disabled",
   "description": "This policy identifies AWS OpenSearch for which none-to-node encryption is disabled. Each OpenSearch domain resides within a dedicated VPC and, by default, traffic within the VPC is unencrypted. Enabling node to node encryption provides additional security layer by making use of TLS encryption for all communications between Amazon OpenSearch Service instances in a cluster.\n\nFor more information, please follow the URL given below,\nhttps://docs.aws.amazon.com/opensearch-service/latest/developerguide/ntn.html",
   "rule.criteria": "2e660a3c-0d65-4d5e-a8dd-42a8fd630a9a",

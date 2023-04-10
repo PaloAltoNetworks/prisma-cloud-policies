@@ -3,7 +3,7 @@
   "policyId": "0867c7e0-8f23-40e9-abb9-21403a43b4ab",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "medium",
   "name": "Azure Automation account configured with overly permissive network access",
   "description": "This policy identifies Automation accounts configured with overly permissive network access. It is recommended to configure the Automation account with private endpoints so that the Automation account is accessible only to restricted entities.",
   "rule.criteria": "d7518237-8ab1-4770-b6e6-6c8d4ca46839",

@@ -3,7 +3,7 @@
   "policyId": "01740791-ebd5-417a-bbfe-e1fdfc322dcc",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Certificate Manager (ACM) contains certificate pending validation",
   "description": "This policy identifies invalid certificates which are in AWS Certificate Manager. When your Amazon ACM certificates are not validated within 72 hours after the request is made, those certificates become invalid and you will have to request new certificates, which could cause interruption to your applications or services. Though AWS Certificate Manager automatically renews certificates issued by the service that is used with other AWS resources. However, the ACM service does not automatically renew certificates that are not currently in use or not associated anymore with other AWS resources. So the renewal process including validation must be done manually before these certificates become invalid.",
   "rule.criteria": "33720377-c258-4e64-b956-1e547548607d",

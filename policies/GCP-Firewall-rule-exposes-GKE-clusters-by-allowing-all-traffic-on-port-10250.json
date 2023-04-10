@@ -3,7 +3,7 @@
   "policyId": "0e7ccc72-94cf-4bd4-b736-0fc95c74cbf2",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Firewall rule exposes GKE clusters by allowing all traffic on port 10250",
   "description": "This policy identifies GCP Firewall rule allowing all traffic on port 10250 which allows GKE full node access. The port 10250 on the kubelet is used by the kube-apiserver (running on hosts labelled as Orchestration Plane) for exec and logs. As per security best practice, port 10250 should not be exposed to the public.",
   "rule.criteria": "c88e6b00-3e5f-4073-a091-e9be8747cf20",

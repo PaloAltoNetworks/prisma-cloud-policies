@@ -3,7 +3,7 @@
   "policyId": "a072bd68-25cd-4245-94e1-fffee0590a50",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS CloudFront web distribution with default SSL certificate",
   "description": "This policy identifies CloudFront web distributions which have a default SSL certificate to access CloudFront content. It is a best practice to use custom SSL Certificate to access CloudFront content. It gives you full control over the content data. custom SSL certificates also allow your users to access your content by using an alternate domain name. You can use a certificate stored in AWS Certificate Manager (ACM) or you can use a certificate stored in IAM.",
   "rule.criteria": "64519df3-368a-4329-a67a-4f2059f8eb5c",

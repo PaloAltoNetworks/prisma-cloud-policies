@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "301daec7-1ea6-4749-8622-825b4e718bc3",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & CodeStar project permissions",
+  "description": "With access to the iam:PassRole and codestar:CreateProject permissions, an adversary can create a new CodeStar project and pass a more privileged role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "301daec7-1ea6-4749-8622-825b4e718bc3",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'codestar:CreateProject' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "When using iam:PassRole with any service it should be scoped to only the resources required to pass the role to minimize risk of privilege escalation. Follow these recommendations:\n\nFor the iam:PassRole policy statement section:\n1- Use the AWS pass to service condition to only the service the role is being passed.\n2- Reduce and if possible eliminate usage of * in the resource section by scoping to a single role\n\nFor the allowed services actions policy statement section:\n3- Reduce and if possible eliminate usage of * in the resource section by scoping to a single resource or small group of resources",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

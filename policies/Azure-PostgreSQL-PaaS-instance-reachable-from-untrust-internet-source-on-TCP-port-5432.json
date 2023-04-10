@@ -3,7 +3,7 @@
   "policyId": "db13bedd-2e2d-4209-b889-3da7b254a2dd",
   "policyType": "network",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "high",
   "name": "Azure PostgreSQL (PaaS) instance reachable from untrust internet source on TCP port 5432",
   "description": "This policy identifies Azure PostgreSQL (PaaS) instances that are internet reachable from untrust internet source on TCP port 5432. PostgreSQL (PaaS) instances with untrusted access to the internet may enable bad actors to use brute force on a system to gain unauthorised access to the entire network. As a best practice, restrict traffic from untrusted IP addresses and limit the access to known hosts, services, or specific entities.",
   "rule.criteria": "5d65da95-985d-449f-961b-535929bfea62",

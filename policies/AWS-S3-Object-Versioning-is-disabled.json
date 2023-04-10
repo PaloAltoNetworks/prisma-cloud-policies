@@ -3,7 +3,7 @@
   "policyId": "89ea62c1-3845-4134-b337-cc82203b8ff9",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS S3 Object Versioning is disabled",
   "description": "This policy identifies the S3 buckets which have Object Versioning disabled. S3 Object Versioning is an important capability in protecting your data within a bucket. Once you enable Object Versioning, you cannot remove it; you can suspend Object Versioning at any time on a bucket if you do not wish for it to persist. It is recommended to enable Object Versioning on S3.",
   "rule.criteria": "8ec3f878-0f5e-4782-b4cd-98018b217be5",

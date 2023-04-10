@@ -3,7 +3,7 @@
   "policyId": "34fa9efb-d18f-41e4-b93f-2f7e5378752c",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS RDS instance is not encrypted",
   "description": "This policy identifies AWS RDS instances which are not encrypted. Amazon Relational Database Service (Amazon RDS) is a web service that makes it easier to set up and manage databases. Amazon allows customers to turn on encryption for RDS which is recommended for compliance and security reasons.",
   "rule.criteria": "34fa9efb-d18f-41e4-b93f-2f7e5378752c",

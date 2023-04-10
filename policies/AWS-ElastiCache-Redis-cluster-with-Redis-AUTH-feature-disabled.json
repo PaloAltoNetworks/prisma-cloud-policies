@@ -3,7 +3,7 @@
   "policyId": "2e9b2375-cd85-4569-b90b-65cdbb4fd0b6",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS ElastiCache Redis cluster with Redis AUTH feature disabled",
   "description": "This policy identifies ElastiCache Redis clusters which have Redis AUTH feature disabled. Redis AUTH can improve data security by requiring the user to enter a password before they are granted permission to execute Redis commands on a password protected Redis server.",
   "rule.criteria": "49dbb5bd-ea99-4d84-9f76-48aba9c92243",

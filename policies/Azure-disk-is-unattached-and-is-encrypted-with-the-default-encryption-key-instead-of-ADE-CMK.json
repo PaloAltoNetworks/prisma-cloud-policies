@@ -3,7 +3,7 @@
   "policyId": "a1f899e5-0ff9-4883-a121-75c68cab532a",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure disk is unattached and is encrypted with the default encryption key instead of ADE/CMK",
   "description": "This policy identifies the disks which are unattached and are encrypted with default encryption instead of ADE/CMK. Azure encrypts disks by default Server-Side Encryption (SSE) with platform-managed keys [SSE with PMK]. It is recommended to use either SSE with Azure Disk Encryption [SSE with PMK+ADE] or Customer Managed Key [SSE with CMK] which improves on platform-managed keys by giving you control of the encryption keys to meet your compliance need.",
   "rule.criteria": "c94f7377-6b09-4c30-8d10-f06775f79928",

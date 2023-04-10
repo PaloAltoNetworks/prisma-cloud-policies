@@ -3,7 +3,7 @@
   "policyId": "ee0552eb-431d-44b5-9ff9-08ee7eec8b40",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Batch account is not configured with managed identity",
   "description": "This policy identifies Batch accounts that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Batch account.",
   "rule.criteria": "af9979d2-93b1-49b9-bf0a-26194866bfe7",

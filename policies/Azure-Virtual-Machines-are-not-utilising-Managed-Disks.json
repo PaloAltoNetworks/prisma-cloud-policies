@@ -3,7 +3,7 @@
   "policyId": "5bb0ad91-f321-452d-9f9c-3efa2752a8be",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "informational",
   "name": "Azure Virtual Machines are not utilising Managed Disks",
   "description": "This policy identifies Azure Virtual Machines which are not utilising Managed Disks. Using Azure Managed disk over traditional BLOB based VHD's has more advantage features like Managed disks are by default encrypted, reduces cost over storage accounts and more resilient as Microsoft will manage the disk storage and move around if underlying hardware goes faulty. It is recommended to move BLOB based VHD's to Managed Disks.",
   "rule.criteria": "c1db69b3-8cb5-46b3-b42a-24d506e7d64c",

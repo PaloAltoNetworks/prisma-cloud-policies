@@ -3,7 +3,7 @@
   "policyId": "b3a1230c-4a9f-4493-bfe4-c388a2e775d4",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "high",
+  "severity": "low",
   "name": "Azure VM data disk is not configured with any encryption",
   "description": "This policy identifies VM data disks that are not configured with any encryption. Azure encrypts data disks that are not configured with any encryption. Azure offers Server-Side Encryption (SSE) with platform-managed keys [SSE with PMK] by default for managed disks. It is recommended to enable default encryption or you may optionally choose to use a customer-managed key to protect from malicious activity.",
   "rule.criteria": "7429c748-6df8-4f6f-8231-8718ce02477b",

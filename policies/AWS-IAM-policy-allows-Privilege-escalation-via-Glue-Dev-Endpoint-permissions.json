@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ad0685b6-49fc-4868-a424-b8bb8c962fd3",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via Glue Dev Endpoint permissions",
+  "description": "With access to the glue:UpdateDevEndpoint permission, an adversary can update the existing SSH key associated with the glue endpoint. This will allow the adversary to SSH into the host and gain access to IAM credentials associated with the role attached to the glue endpoint. Though not required, it may be helpful to have the glue:GetDevEndpoint permission as well, if the existing endpoint cannot be identified via other means.",
+  "rule.criteria": "ad0685b6-49fc-4868-a424-b8bb8c962fd3",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'glue:UpdateDevEndpoint', 'glue:GetDevEndpoint' ) AND dest.cloud.resource.name ENDS WITH '*'",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -3,7 +3,7 @@
   "policyId": "4a37335a-64d6-4582-8dee-7d3969815f6d",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS regions nearing VPC Private Gateway limit",
   "description": "This policy identifies if your account is near the private gateway limitation per VPC per Region. AWS provides a reasonable starting limitation for the maximum number of Virtual private gateways you can assign in each VPC. If you approach the limit in a particular VPC, this alert indicates that you have nearly exhausted your allocation.\nNOTE: As per http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html Virtual private gateway per region limit is 5. This policy will trigger an alert if Virtual private gateway per region reached 80% (i.e. 4) of resource availability limit allocated.",
   "rule.criteria": "d3fb2c69-93c0-4b33-a1c3-121faf243bc5",

@@ -3,7 +3,7 @@
   "policyId": "fccd881f-26d1-485d-a742-3602afe72035",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS API gateway request parameter is not validated",
   "description": "This policy identifies the AWS API gateways for which the request parameters are not validated. When the validation fails, API Gateway fails the request, returns a 400 error response to the caller, and publishes the validation results in CloudWatch Logs. It is recommended to perform basic validation of an API request before proceeding with the integration request to block unvalidated calls to the backend.",
   "rule.criteria": "382a9838-eb65-4d34-a4ad-3f0fd0d795ab",

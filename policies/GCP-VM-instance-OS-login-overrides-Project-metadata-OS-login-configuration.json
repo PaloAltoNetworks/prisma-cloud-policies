@@ -3,7 +3,7 @@
   "policyId": "952b25ce-add3-4675-9817-535d2e0973d4",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "informational",
   "name": "GCP VM instance OS login overrides Project metadata OS login configuration",
   "description": "This policy identifies GCP VM instances where OS login configuration is disabled and overriding enabled Project OS login configuration. Enabling OS Login ensures that SSH keys used to connect to instances are mapped with IAM users. Revoking access to IAM user will revoke all the SSH keys associated with that particular user. It facilitates centralized and automated SSH key pair management which is useful in handling cases like a response to compromised SSH key pairs. \n\nNote: Enabling OS Login on instances disables metadata-based SSH key configurations on those instances. Disabling OS Login restores SSH keys that you have configured in a project or instance metadata.\n\nReference: https://cloud.google.com/compute/docs/instances/managing-instance-access",
   "rule.criteria": "cd88ba6d-7e25-4865-871f-d77b4ab93855",

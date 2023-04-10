@@ -3,7 +3,7 @@
   "policyId": "b0aac456-7422-47fc-9144-9b150bd18a9d",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS Cloudfront Distribution with S3 have Origin Access set to disabled",
   "description": "This policy identifies the AWS CloudFront distributions which are utilizing S3 bucket and have Origin Access Disabled. The origin access identity feature should be enabled for all your AWS CloudFront CDN distributions in order to restrict any direct access to your objects through Amazon S3 URLs.",
   "rule.criteria": "a1340b61-fd2e-4f5b-a3b6-a867040ecf58",

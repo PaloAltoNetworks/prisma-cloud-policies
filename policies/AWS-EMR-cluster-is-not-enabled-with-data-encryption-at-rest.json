@@ -3,7 +3,7 @@
   "policyId": "353d0997-a8e7-4b57-8b2c-0772b21ca53f",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS EMR cluster is not enabled with data encryption at rest",
   "description": "This policy identifies AWS EMR clusters for which data encryption at rest is not enabled. Encryption of data at rest is required to prevent unauthorized users from accessing the sensitive information available on your  EMR clusters and associated storage systems.",
   "rule.criteria": "5acfc7c1-17c3-48fa-a6f5-0bed9dd7d8b2",

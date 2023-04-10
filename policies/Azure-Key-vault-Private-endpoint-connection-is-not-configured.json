@@ -3,7 +3,7 @@
   "policyId": "a03ae1cb-c130-46cb-97ae-02cceab10b07",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure Key vault Private endpoint connection is not configured",
   "description": "This policy identifies Key vaults that are not configured with a private endpoint connection. Azure Key vault private endpoints can be configured using Azure Private Link. Private Link allows users to access an Azure Key vault from within the virtual network or from any peered virtual network. When Private Link is combined with restricted NSG policies, it helps reduce the risk of data exfiltration. It is recommended to configure a Private endpoint connection to Key vaults.\n\nFor more details: \nhttps://docs.microsoft.com/en-us/azure/key-vault/general/private-link-service ",
   "rule.criteria": "399924f6-d0a7-4ab2-8dc4-d4b557cd01e2",

@@ -3,7 +3,7 @@
   "policyId": "7581633b-0db1-4181-83c5-7fcc0347729d",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "informational",
   "name": "AWS ElastiCache Redis cluster encryption not configured with CMK key",
   "description": "This policy identifies ElastiCache Redis clusters that are encrypted using the default KMS key instead of Customer Managed CMK (Customer Master Key) or CMK key used for encryption is disabled. As a security best practice enabled CMK should be used instead of the default KMS key for encryption to gain the ability to rotate the key according to your own policies, delete the key, and control access to the key via KMS policies and IAM policies.\n\nFor details:\nhttps://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/at-rest-encryption.html#using-customer-managed-keys-for-elasticache-security",
   "rule.criteria": "ce6d5fa5-1e04-4241-9fdb-199030c66f7c",

@@ -3,7 +3,7 @@
   "policyId": "f2c2c424-6fc9-4f99-8efb-4cb09810be97",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "low",
   "name": "AWS SageMaker notebook instance not configured with data encryption at rest using KMS key",
   "description": "This policy identifies SageMaker notebook instances that are not configured with data encryption at rest using the AWS managed KMS key. It is recommended to implement encryption at rest in order to protect data from unauthorized entities.\n\nFor more details:\nhttps://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html",
   "rule.criteria": "99872307-ffae-4bc9-8b7b-17597c4054bf",

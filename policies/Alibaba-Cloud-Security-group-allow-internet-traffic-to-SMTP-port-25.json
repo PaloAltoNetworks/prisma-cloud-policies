@@ -3,7 +3,7 @@
   "policyId": "1bbe4c63-a373-49cf-b721-508175c0e815",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "high",
+  "severity": "informational",
   "name": "Alibaba Cloud Security group allow internet traffic to SMTP port (25)",
   "description": "This policy identifies Security groups that allow inbound traffic on SMTP port (25) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
   "rule.criteria": "228cf37d-e255-4a9b-83fa-ca9a415c86b0",

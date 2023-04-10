@@ -3,7 +3,7 @@
   "policyId": "6707ee28-06c8-45a9-8caf-ecc0df8d62d2",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS Neptune Cluster not configured with IAM authentication",
   "description": "This policy identifies AWS Neptune clusters that are not configured with IAM authentication. If you enable IAM authentication you don't need to store user credentials in the database, because authentication is managed externally using IAM. IAM database authentication ensures the network traffic to and from database clusters is encrypted using Secure Sockets Layer (SSL), provides central access management to your database resources and enforces use of profile credentials instead of a password, for greater security.",
   "rule.criteria": "48e2b40e-f487-4e94-ac22-a330a829f877",

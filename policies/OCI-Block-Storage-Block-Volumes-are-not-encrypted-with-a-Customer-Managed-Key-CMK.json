@@ -3,7 +3,7 @@
   "policyId": "7ef4404e-a110-4dd5-b518-ec79fa3d5e9d",
   "policyType": "config",
   "cloudType": "oci",
-  "severity": "high",
+  "severity": "informational",
   "name": "OCI Block Storage Block Volumes are not encrypted with a Customer Managed Key (CMK)",
   "description": "This policy identifies the OCI Block Storage Volumes that are not encrypted with a Customer Managed Key (CMK). It is recommended that Block Storage Volumes should be encrypted with a Customer Managed Key (CMK), using  Customer Managed Key (CMK), provides an additional level of security on your data by allowing you to manage your own encryption key lifecycle management for the Block Storage Volume.",
   "rule.criteria": "aa11e459-5a02-4440-b9a9-2cf9d5002886",

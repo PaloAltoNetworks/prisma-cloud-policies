@@ -3,7 +3,7 @@
   "policyId": "4d0841e4-c65b-47b0-b8df-12c619d91c4c",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "medium",
+  "severity": "low",
   "name": "AWS VPC gateway endpoint policy is overly permissive",
   "description": "This policy identifies AWS VPC gateway endpoints that have a VPC endpoint (VPCE) policy that is overly permissive. When the Principal element value is set to '*' within the access policy, the VPC gateway endpoint allows full access to any IAM user or service within the VPC using credentials from any AWS accounts. It is highly recommended to have the least privileged VPCE policy to protect the data leakage and unauthorized access.\n\nFor more details:\nhttps://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints-access.html",
   "rule.criteria": "c5b73b1d-e4b8-4e8f-b76f-3dcc6f36cc76",
@@ -22,6 +22,7 @@
     "FFIEC",
     "HITRUST CSF v.9.6.0",
     "ISO 27002:2022",
+    "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
     "PCI DSS v4.0",
     "Secure Controls Framework (SCF) - 2022.2.1"

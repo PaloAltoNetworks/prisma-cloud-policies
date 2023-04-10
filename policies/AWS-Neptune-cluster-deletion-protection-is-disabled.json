@@ -3,7 +3,7 @@
   "policyId": "fd9b71b1-a601-4c6b-b6f2-a8290ece5680",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Neptune cluster deletion protection is disabled",
   "description": "This policy identifies AWS Neptune clusters for which deletion protection is disabled. Enabling deletion protection for Neptune clusters prevents irreversible data loss resulting from accidental or malicious operations.",
   "rule.criteria": "a07cf01a-a77c-4947-ac7f-498e8254b707",

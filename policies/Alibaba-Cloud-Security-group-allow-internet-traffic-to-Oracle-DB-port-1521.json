@@ -3,7 +3,7 @@
   "policyId": "c4e86238-2b53-468d-a10c-6a30a0db069f",
   "policyType": "config",
   "cloudType": "alibaba_cloud",
-  "severity": "high",
+  "severity": "informational",
   "name": "Alibaba Cloud Security group allow internet traffic to Oracle DB port (1521)",
   "description": "This policy identifies Security groups that allow inbound traffic on Oracle DB port (1521) from the public internet. As a best practice, restrict security groups to only allow permitted traffic and limit brute force attacks on your network.",
   "rule.criteria": "f83a3b54-8a1f-476a-8bb1-870aa9fd86a3",

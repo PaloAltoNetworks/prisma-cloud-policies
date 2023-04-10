@@ -3,7 +3,7 @@
   "policyId": "e4c7d880-c590-481c-86cc-8c55245609b0",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "high",
+  "severity": "medium",
   "name": "GCP KMS crypto key is anonymously accessible",
   "description": "This policy identifies GCP KMS crypto keys that are anonymously accessible. Granting permissions to 'allUsers' or 'allAuthenticatedUsers' allows anyone to access the KMS key. As a security best practice, it is recommended not to bind such members to KMS IAM policy.",
   "rule.criteria": "4b718a26-51ce-47d3-bb0a-1ba56d4a528f",

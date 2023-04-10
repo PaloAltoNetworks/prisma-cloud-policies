@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "7a034f1e-bf01-4080-b9e1-9f1485b83508",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via Codestar create project and associate team member permissions",
+  "description": "With access to the codestar:CreateProject and codestar:AssociateTeamMember permissions, an adversary can create a new CodeStar project and associate themselves as an Owner of the project. This will attach a new policy to the user that provides access to a number of permissions for AWS services. This is most useful for further enumeration as it gives access to lambda:List*, iam:ListRoles, iam:ListUsers, and more.",
+  "rule.criteria": "7a034f1e-bf01-4080-b9e1-9f1485b83508",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'codestar:CreateProject', 'codestar:AssociateTeamMember' ) AND dest.cloud.resource.name ENDS WITH '*'",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

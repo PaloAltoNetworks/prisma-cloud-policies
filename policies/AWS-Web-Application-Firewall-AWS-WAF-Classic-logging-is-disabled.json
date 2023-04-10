@@ -3,7 +3,7 @@
   "policyId": "4aef2d8d-d2ca-42e8-a0c9-930827a7cadf",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS Web Application Firewall (AWS WAF) Classic logging is disabled",
   "description": "This policy identifies Classic Web Application Firewalls (AWS WAFs) for which logging is disabled. Enabling WAF logging, logs all web requests inspected by the service which can be used for debugging and additional forensics. The logs will help to understand why certain rules are triggered and why certain web requests are blocked. You can also integrate the logs with any SIEM and log analysis tools for further analysis. It is recommended to enable logging on your Classic Web Application Firewalls (WAFs).\n\nFor details:\nhttps://docs.aws.amazon.com/waf/latest/developerguide/classic-logging.html\n\nNOTE: Global (CloudFront) WAF resources are out of scope for this policy.",
   "rule.criteria": "9e69d4bf-cecb-45bf-a7a7-bb1d4d70e3a4",

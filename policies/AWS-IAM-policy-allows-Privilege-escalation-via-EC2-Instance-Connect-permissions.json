@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "a6497b9e-4ee6-439a-8cba-86b0360bbe2f",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via EC2 Instance Connect permissions",
+  "description": "With access to ec2:DescribeInstances, ec2-instance-connect:SendSSHPublicKey, ec2-instance-connect:SendSerialConsoleSSHPublicKey permissions and the instance has a public IP with instance connect enabled, an adversary can have network access to push ssh keys and ssh to the instance. This could allow an adversary to escalate privileges through the EC2 instance.",
+  "rule.criteria": "a6497b9e-4ee6-439a-8cba-86b0360bbe2f",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'ec2:DescribeInstances', 'ec2-instance-connect:SendSSHPublicKey', 'ec2-instance-connect:SendSerialConsoleSSHPublicKey' ) AND dest.cloud.resource.name ENDS WITH '*'",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

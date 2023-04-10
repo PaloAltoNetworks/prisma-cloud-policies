@@ -3,7 +3,7 @@
   "policyId": "d80b48e4-f9de-4d75-ac4c-296169303d92",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "medium",
   "name": "AWS Lambda function URL AuthType set to NONE",
   "description": "This policy identifies AWS Lambda functions which have function URL AuthType set to NONE. AuthType determines how Lambda authenticates or authorises requests to your function URL. When AuthType is set to NONE, Lambda doesn't perform any authentication before invoking your function. It is highly recommended to set AuthType to AWS_IAM for Lambda function URL to authenticate via AWS IAM.",
   "rule.criteria": "92a3fce2-0875-49da-af5c-71c3366100bf",

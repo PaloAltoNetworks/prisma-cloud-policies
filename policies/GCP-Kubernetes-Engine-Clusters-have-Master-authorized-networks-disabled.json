@@ -3,7 +3,7 @@
   "policyId": "e1b70bb4-bb77-4326-93d5-5dd9c5170d3f",
   "policyType": "config",
   "cloudType": "gcp",
-  "severity": "medium",
+  "severity": "low",
   "name": "GCP Kubernetes Engine Clusters have Master authorized networks disabled",
   "description": "This policy identifies Kubernetes Engine Clusters which have disabled Master authorized networks. Enabling Master authorized networks will let the Kubernetes Engine block untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS.",
   "rule.criteria": "1bf2e381-28ab-4354-9f00-920d200be18f",

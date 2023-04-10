@@ -3,7 +3,7 @@
   "policyId": "3aa38d7f-0d5e-466a-883b-771dd4c29f05",
   "policyType": "config",
   "cloudType": "azure",
-  "severity": "medium",
+  "severity": "low",
   "name": "Azure Active Directory Security Defaults is disabled",
   "description": "This policy identifies Azure Active Directory which have Security Defaults configuration disabled. Security Defaults contains preconfigured security settings for common identity-related attacks. This provides a basic level of security-enabled by default. It is recommended to enable this configuration as a security best practice.",
   "rule.criteria": "aa13a679-544f-466b-b0a0-fd1430fa8696",

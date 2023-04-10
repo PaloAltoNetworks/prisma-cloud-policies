@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "4b3891a0-9c6e-4231-9251-08d0b644e3eb",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM policy allows Privilege escalation via PassRole & SageMaker create training job permissions",
+  "description": "With access to the iam:PassRole and sagemaker:CreateTrainingJob permissions, an adversary can start a model training job and pass a more privileged existing role to it. This would allow an adversary to escalate privileges to the more privileged role.",
+  "rule.criteria": "4b3891a0-9c6e-4231-9251-08d0b644e3eb",
+  "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'iam:PassRole', 'sagemaker:CreateTrainingJob' ) AND dest.cloud.resource.name ENDS WITH '*' and grantedby.cloud.policy.condition ('iam:PassedToService') does not exist",
+  "recommendation": "",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

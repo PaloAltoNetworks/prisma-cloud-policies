@@ -3,7 +3,7 @@
   "policyId": "95cc1059-dc20-4b91-9f05-63af346947b5",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "informational",
   "name": "AWS DocumentDB cluster deletion protection is disabled",
   "description": "This policy identifies AWS DocumentDB clusters for which deletion protection is disabled. Enabling deletion protection for DocumentDB clusters prevents irreversible data loss resulting from accidental or malicious operations.",
   "rule.criteria": "616544ff-976c-424e-99dd-43bda5dcd29b",
