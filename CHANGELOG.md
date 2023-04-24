@@ -1,5 +1,24 @@
 # Changelog
 
+# Changelog
+
+## PCS-23.4.2 - 2023-04-24
+
+### Added
+
+#### 9 new policies for the IAM Security module
+
+- AWS EC2 instance with creation of new Group with attach policy permission
+- AWS EC2 instance with creation of new Role with attach policy permission
+- AWS EC2 instance with creation of new User with attach policy permission
+- AWS EC2 instance with data destruction permissions
+- AWS EC2 instance with privilege escalation risk permissions
+- Azure VM instance with data destruction permissions
+- GCP VM instance with data destruction permissions
+- GCP VM instance with permissions to impersonate a service account
+- GCP VM instance with write permissions on deny policies
+
+
 ## PCS-23.4.1 - 2023-04-10
 
 ### Added
@@ -34,7 +53,7 @@
 
 #### 633 policies updated
 
-- Policy Severity updated for 634 system default policies:
+- Policy Severity updated for 633 system default policies:
 - https://docs.paloaltonetworks.com/content/dam/techdocs/en_US/pdf/prisma/prisma-cloud/prerelease/policy-severity-level-changes.csv
 
 #### 3 compliance standards updated

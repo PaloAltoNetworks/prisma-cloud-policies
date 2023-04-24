@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "9cb7793b-f29e-4544-a9ba-451be9c3e3e8",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS EC2 instance with data destruction permissions",
+  "description": "With access to 's3:DeleteBucket', 'rds:DeleteDBCluster', 'rds:DeleteDBInstance', 'rds:DeleteDBSnapshot', 'rds:DeleteDBClusterSnapshot', 'rds:DeleteGlobalCluster', 'ec2:DeleteSnapshot', 'ec2:DeleteVolume' permissions an adversary can destroy sensitive information stored in your cloud resources, making irreversible damage to your organization",
+  "rule.criteria": "9cb7793b-f29e-4544-a9ba-451be9c3e3e8",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ( 's3:DeleteBucket', 'rds:DeleteDBCluster', 'rds:DeleteDBInstance', 'rds:DeleteDBSnapshot', 'rds:DeleteDBClusterSnapshot', 'rds:DeleteGlobalCluster', 'ec2:DeleteSnapshot', 'ec2:DeleteVolume' ) AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n    1. Log in to the AWS console\n    2. Navigate to the EC2 instance\n    3. Find the role used by the EC2 instance\n    4. Navigate to the IAM service\n    5. Click on Roles\n    6. Choose the relevant role\n    7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

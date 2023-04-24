@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "69e15d91-44c9-47de-bdc2-df35001d35ec",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "critical",
+  "name": "AWS EC2 instance with creation of new Role with attach policy permission",
+  "description": "With access to iam:CreateRole', 'iam:AttachRolePolicy' permissions, an adversary can elevate the access of the EC2 instance, expanding the surface of the attack and granting access to cloud resources with sensitive information.",
+  "rule.criteria": "69e15d91-44c9-47de-bdc2-df35001d35ec",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('iam:CreateRole', 'iam:AttachRolePolicy') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n    1. Log in to the AWS console\n    2. Navigate to the EC2 instance\n    3. Find the role used by the EC2 instance\n    4. Navigate to the IAM service\n    5. Click on Roles\n    6. Choose the relevant role\n    7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
