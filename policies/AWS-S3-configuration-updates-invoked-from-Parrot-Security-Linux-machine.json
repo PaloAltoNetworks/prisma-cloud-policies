@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "MITRE ATT&CK v10.0",
+    "MITRE ATT&CK v12",
     "MITRE ATT&CK v8.2"
   ]
 }
