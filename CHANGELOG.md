@@ -1,6 +1,46 @@
 # Changelog
 
-# Changelog
+## PCS-23.5.1 - 2023-05-08
+
+### Added
+
+#### 3 new compliance standards
+
+- CIS v2.0.0 (Azure) Level 1
+- CRI Profile v1.2.1
+- MITRE ATT&CK v12
+
+#### 9 new policies for the IAM Security module
+
+- AWS Lambda Function with data destruction permissions
+- Azure AD users with Key Vault access through Build-in Azure roles
+- Azure Managed Identity (user assigned or system assigned) with Key Vault access through Build-in Azure roles
+- Azure Service Principals with Key Vault access through Build-in Azure roles
+- Azure Service Principals with Key Vault management access
+- Azure VM associated with entities that have risky permissions
+- Azure VM instance associated managed identities with Key Vault management access (data access is not included)
+- Azure VM instance associated managed identity with Azure built-in roles of Contributor/Owner permissions
+- Azure VM instance with Run command or Custom script execution permissions 
+
+### Changed
+
+#### 1 policy updated
+
+- GCP Kubernetes Engine Clusters have Master authorized networks disabled
+
+#### 2 policies updated for the IAM Security module
+
+- Azure AD users with Key Vault management access
+- Azure Managed Identity (user assigned or system assigned) with Key Vault management access
+
+### Removed
+
+#### 3 policies deleted
+
+- GCP Kubernetes cluster istioConfig not enabled
+- GCP Kubernetes Engine Clusters Basic Authentication is set to Enabled
+- GCP Kubernetes Engine Clusters web UI/Dashboard is set to Enabled
+
 
 ## PCS-23.4.2 - 2023-04-24
 

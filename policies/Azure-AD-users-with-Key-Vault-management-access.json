@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "882e73b6-6544-40ae-9993-bb2bfa3ec1d9",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AD users with Key Vault management access",
+  "description": "Providing Key Vault access lets users manage key vaults. The least privilege model should be enforced and unused sensitive permissions should be revoked",
+  "rule.criteria": "882e73b6-6544-40ae-9993-bb2bfa3ec1d9",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' AND source.cloud.resource.type = 'user' AND dest.cloud.service.name = 'Microsoft.KeyVault'",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the user and the role with permissions to Microsoft KeyVault\n6. Remove the assignment\n7. Create a new assignment with built-in or custom role without risky permissions, if necessary",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

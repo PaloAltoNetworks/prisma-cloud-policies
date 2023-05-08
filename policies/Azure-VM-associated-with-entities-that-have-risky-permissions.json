@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "1b4e2641-4315-4f41-a6da-e11ed8cd6990",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure VM associated with entities that have risky permissions",
+  "description": "With access to the risky permissions in the policy an adversary can elevate the access of the VM instance, expanding the surface of the attack and granting access to cloud resources with sensitive information.",
+  "rule.criteria": "1b4e2641-4315-4f41-a6da-e11ed8cd6990",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and action.name in ('Microsoft.AzureActiveDirectory/b2cDirectories/write','Microsoft.ManagedIdentity/userAssignedIdentities/write','Microsoft.ManagedIdentity/userAssignedIdentities/assign/action','Microsoft.KeyVault/vaults/read','Microsoft.KeyVault/vaults/write','Microsoft.KeyVault/vaults/deploy/action','Microsoft.KeyVault/vaults/accessPolicies/write','Microsoft.Authorization/roleDefinitions/write','Microsoft.Authorization/roleAssignments/write','Microsoft.Authorization/policySetDefinitions/write','Microsoft.Authorization/policyExemptions/write','Microsoft.Authorization/policyDefinitions/write','Microsoft.Authorization/policyAssignments/resourceManagementPrivateLinks/privateEndpointConnections/write','Microsoft.Authorization/policyAssignments/resourceManagementPrivateLinks/privateEndpointConnectionProxies/write','Microsoft.Authorization/policyAssignments/resourceManagementPrivateLinks/write','Microsoft.Authorization/policyAssignments/privateLinkAssociations/write','Microsoft.Authorization/policyAssignments/write','Microsoft.Authorization/locks/write','Microsoft.Authorization/denyAssignments/write','Microsoft.Authorization/classicAdministrators/write') AND source.cloud.service.name = 'Microsoft.Compute'",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. Navigate to the “Resources”\n5. FInd the violating VM\n6. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n7. Find the assignment between the VM and the role with permissions to Microsoft KeyVault\n8. Remove the assignment\n9. Create a new assignment with a built-in or custom role without risky permissions, if necessary\n",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
