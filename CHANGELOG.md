@@ -1,5 +1,23 @@
 # Changelog
 
+## PCS-23.5.2 - 2023-05-22
+
+### Added
+
+#### 3 new policies
+
+- Azure SQL Server (PaaS) reachable from any untrust internet source
+- Azure Virtual Machine reachable from any untrust internet source to ports with high risk
+- GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0)
+
+### Changed
+
+#### 2 policies updated
+
+- AWS S3 bucket is not configured with MFA Delete
+- Azure Virtual Machine in running state that is internet reachable with unrestricted access (0.0.0.0/0)
+
+
 ## PCS-23.5.1 - 2023-05-08
 
 ### Added
