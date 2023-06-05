@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1019",
+  "policyId": "2a07903d-9538-42ab-a3cd-80ce68fa9bf7",
+  "policyType": "network",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports",
+  "description": "This policy identifies GCP VM instances that are internet reachable with unrestricted access (0.0.0.0/0) to Admin ports (22 / 3389). VM instances with unrestricted internet access to admin ports may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit access to known hosts, services, or specific entities.",
+  "rule.criteria": "829dce41-2c85-4d07-abf5-171a4c529792",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'GCP' and dest.resource.state = 'Active' and protocol.ports in ( 'tcp/22', 'tcp/3389' )",
+  "recommendation": "The following steps are recommended to restrict VM instance from having unrestricted access from the Internet on Admin ports:\n\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement the required changes and make sure no other resources have been impacted due to these changes:\n    a) The overly permissive VPC firewall rules can be made more restrictive.\n b) Move the instance inside a restrictive subnet if the instance does not need to be publicly accessible.\n c) Remove or disassociate the public IP assigned to the respective instance.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
