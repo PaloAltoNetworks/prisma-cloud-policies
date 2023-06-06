@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "b6d5cdbd-1fa5-45f3-a6a4-f5a053acf5e1",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure VM instance with risky Storage account permissions",
+  "description": "With access to following risky permissions 'Microsoft.Storage/storageAccounts/write', 'Microsoft.Storage/storageAccounts/listKeys/action', 'Microsoft.Storage/storageAccounts/regeneratekey/action', 'Microsoft.Storage/storageAccounts/delete', 'Microsoft.Storage/storageAccounts/ListAccountSas/action' an adversary can destroy sensitive information stored in your cloud resources, making irreversible damage to your organization",
+  "rule.criteria": "b6d5cdbd-1fa5-45f3-a6a4-f5a053acf5e1",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and source.cloud.service.name = 'Microsoft.Compute' and action.name IN ('Microsoft.Storage/storageAccounts/write', 'Microsoft.Storage/storageAccounts/listKeys/action', 'Microsoft.Storage/storageAccounts/regeneratekey/action', 'Microsoft.Storage/storageAccounts/delete' , 'Microsoft.Storage/storageAccounts/ListAccountSas/action')",
+  "recommendation": "Remediation steps:\n    1. Sign in to Azure Management Console\n    2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n    3. Click on the Azure cloud subscription that you want to examine\n    4. Navigate to the 'Resources'\n    5. FInd the violating VM\n    6. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n    7. Find the assignment between the VM and the role with permissions to Microsoft KeyVault\n    8. Remove the assignment\n    9. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

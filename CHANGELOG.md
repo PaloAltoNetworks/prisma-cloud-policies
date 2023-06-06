@@ -1,5 +1,39 @@
 # Changelog
 
+## PCS-23.6.1 - 2023-06-06
+
+### Added
+
+#### 4 new policies
+
+- AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports
+- AWS EC2 instance that is reachable from untrust internet source to ports with high risk
+- Azure Virtual Machine that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports
+- GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports
+
+#### 2 new compliance standards
+
+- CIS v1.4.0 (GKE) - Level 1
+- CIS v1.4.0 (GKE) - Level 2
+
+#### 2 policies for the new IAM Security module
+
+- EC2 with IAM role attached has s3:GetObject permission
+- Azure VM instance with risky Storage account permissions
+
+### Changed
+
+#### 7 policies updated
+
+- AWS S3 bucket policy overly permissive to any principal
+- AWS S3 bucket publicly writable
+- GCP Log metric filter and alert does not exist for Cloud Storage IAM permission changes
+- GCP Log metric filter and alert does not exist for VPC network route changes
+- GCP Log metric filter and alert does not exist for VPC network route delete and insert
+- GCP Log metric filter and alert does not exist for VPC network changes
+- GCP Log metric filter and alert does not exist for VPC network route patch and insert
+
+
 ## PCS-23.5.2 - 2023-05-22
 
 ### Added
