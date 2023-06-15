@@ -3,7 +3,7 @@
   "policyId": "861ce295-6169-4da1-af30-66bd5880b81f",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "AWS Elasticbeanstalk Platform with IAM wildcard resource access",
   "description": "This policy identifies AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
   "rule.criteria": "861ce295-6169-4da1-af30-66bd5880b81f",

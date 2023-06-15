@@ -8,7 +8,7 @@
   "description": "With access to the ec2:DescribeInstances, ssm:listCommands, ssm:listCommandInvocations, ssm:sendCommand permissions, an adversary can execute commands on any instance that supports SSM.  This could allow an adversary to escalate privileges if they find an instance that has a highly privileged IAM role attached to it.",
   "rule.criteria": "e9fb951f-4bbc-4045-87f8-c11af8eb0e46",
   "searchModel.query": "config from iam where action.name CONTAINS ALL ( 'ec2:DescribeInstances', 'ssm:listCommands', 'ssm:listCommandInvocations', 'ssm:sendCommand') AND dest.cloud.resource.name ENDS WITH '*'",
-  "recommendation": "",
+  "recommendation": "\"Do not use wildcards in a policy's statement Resource element with these permissions, as it creates a risk of Privilege Escalation. If identity requires the use of these permissions to pass a role to an EC2 instance, make sure the policy is scoped to only the resources needed. The same granular logic can be applied with EC2 as the following example using the lambda function. https://aws.amazon.com/premiumsupport/knowledge-center/granular-access-lambda/\n\nRemediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions\"",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic aws cli commands",
   "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",

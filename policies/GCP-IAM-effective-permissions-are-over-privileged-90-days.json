@@ -8,11 +8,10 @@
   "description": "This policy identifies GCP IAM permissions that are over-privileged. As a security best practice, it is recommended to grant the least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
   "rule.criteria": "7ee9fbb1-2e0c-47d2-b874-dea733148f04",
   "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and action.lastaccess.days > 90",
-  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the IAM service\n3. Find the binding between the service account or the user and the role with over-privileged permissions\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary.",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the IAM service\n3. Find the binding between the service account or the user and the role with over-privileged permissions\n4. Remove the binding\n5. Create a new binding with predefined or custom role without risky permissions, if necessary.",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic gcp cli commands",
   "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
   "remediation.impact": "limit the relevant permissions of the violating resource",
-  "compliance.standard": "",
-  "labels": "{Prisma_Cloud}"
+  "compliance.standard": ""
 }

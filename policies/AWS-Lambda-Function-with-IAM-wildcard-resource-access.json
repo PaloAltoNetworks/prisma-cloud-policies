@@ -3,7 +3,7 @@
   "policyId": "a06d6016-d256-48cd-9c31-bafcbc593045",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "AWS Lambda Function with IAM wildcard resource access",
   "description": "This policy identifies AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
   "rule.criteria": "a06d6016-d256-48cd-9c31-bafcbc593045",

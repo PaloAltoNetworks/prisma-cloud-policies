@@ -13,6 +13,5 @@
   "remediation.cliScriptTemplate": "dynamic aws cli commands",
   "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
   "remediation.impact": "limit the relevant permissions of the violating resource",
-  "compliance.standard": "",
-  "labels": "{Prisma_Cloud}"
+  "compliance.standard": ""
 }

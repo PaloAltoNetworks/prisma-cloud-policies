@@ -3,7 +3,7 @@
   "policyId": "bc74108e-3cf1-42ef-8a52-d0119c5f8c97",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "IAM User with IAM wildcard resource access",
   "description": "This policy identifies IAM User with AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
   "rule.criteria": "bc74108e-3cf1-42ef-8a52-d0119c5f8c97",
