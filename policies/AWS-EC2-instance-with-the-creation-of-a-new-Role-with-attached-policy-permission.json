@@ -4,7 +4,7 @@
   "policyType": "iam",
   "cloudType": "aws",
   "severity": "critical",
-  "name": "AWS EC2 instance with creation of new Role with attach policy permission",
+  "name": "AWS EC2 instance with the creation of a new Role with attached policy permission",
   "description": "With access to iam:CreateRole', 'iam:AttachRolePolicy' permissions, an adversary can elevate the access of the EC2 instance, expanding the surface of the attack and granting access to cloud resources with sensitive information.",
   "rule.criteria": "69e15d91-44c9-47de-bdc2-df35001d35ec",
   "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('iam:CreateRole', 'iam:AttachRolePolicy') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",

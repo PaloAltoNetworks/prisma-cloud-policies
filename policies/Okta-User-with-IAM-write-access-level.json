@@ -3,7 +3,7 @@
   "policyId": "59a1468f-150e-469b-a099-df1d372fbb92",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "Okta User with IAM write access level",
   "description": "This policy identifies IAM write permissions that are defined as risky permissions. Ensure that the Okta Users in your AWS account don't have a risky set of write permissions to minimize security risks.",
   "rule.criteria": "59a1468f-150e-469b-a099-df1d372fbb92",

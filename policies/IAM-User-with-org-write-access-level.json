@@ -3,7 +3,7 @@
   "policyId": "e9a84ae4-1764-41f5-8565-5c848b3e0e67",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "IAM User with org write access level",
   "description": "This policy identifies org write access that is defined as risky permissions. Ensure that the IAM Users in your AWS account don't have a risky set of write permissions to minimize security risks.",
   "rule.criteria": "e9a84ae4-1764-41f5-8565-5c848b3e0e67",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "70f53d78-89ab-4fb2-b50a-b0c07dad3dc6",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP resources that are publicly accessible through IAM policies",
+  "description": "This policy identifies the GCP resources which are publicly accessible through IAM policies. Ensure that the CGP resources provisioned in your GCP account are not publicly accessible from the Internet to avoid sensitive data exposure and minimize security risks.",
+  "rule.criteria": "70f53d78-89ab-4fb2-b50a-b0c07dad3dc6",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.public = true",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the relevant service \n3. Find role binding with AllUsers or AllAuthenticatedUsers\n4. Update the 'Principal' section of the policy to avoid public access",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

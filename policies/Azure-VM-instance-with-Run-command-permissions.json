@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "2b8e25b0-3067-4128-8b5b-a164966ce50e",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure VM instance with Run command permissions",
+  "description": "With access to 'Microsoft.Compute/virtualMachines/runCommands/write','Microsoft.Compute/virtualMachines/runCommand/action' permissions the attacker can execute scripts on any virtual machine within this subscription.",
+  "rule.criteria": "2b8e25b0-3067-4128-8b5b-a164966ce50e",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and source.cloud.service.name = 'Microsoft.Compute' and action.name IN ('Microsoft.Compute/virtualMachines/runCommands/write','Microsoft.Compute/virtualMachines/runCommand/action')",
+  "recommendation": "Remediation steps:\n    1. Sign in to Azure Management Console\n    2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n    3. Click on the Azure cloud subscription that you want to examine\n    4. Navigate to the “Resources”\n    5. FInd the violating VM\n    6. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n    7. Find the assignment between the VM and the role with risky permissions\n    8. Remove the assignment\n    9. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

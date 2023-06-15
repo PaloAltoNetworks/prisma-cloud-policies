@@ -3,7 +3,7 @@
   "policyId": "5d139fe0-bb9d-4d7e-8748-16ea5b7ded43",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "AWS ECS Task Definition with IAM wildcard resource access",
   "description": "This policy identifies AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
   "rule.criteria": "5d139fe0-bb9d-4d7e-8748-16ea5b7ded43",

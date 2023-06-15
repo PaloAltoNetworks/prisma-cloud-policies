@@ -8,11 +8,10 @@
   "description": "This policy identifies Azure IAM permissions that are over-privileged. As a security best practice, it is recommended to grant the least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
   "rule.criteria": "1de8a24e-7a34-47b6-8de0-bcdfe97f1547",
   "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' and action.lastaccess.days > 90",
-  "recommendation": "",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the azure managed Identity or the user and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with built-in or custom role without risky permissions, if necessary",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic Azure cli commands",
   "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
   "remediation.impact": "limit the relevant permissions of the violating resource",
-  "compliance.standard": "",
-  "labels": "{Prisma_Cloud}"
+  "compliance.standard": ""
 }

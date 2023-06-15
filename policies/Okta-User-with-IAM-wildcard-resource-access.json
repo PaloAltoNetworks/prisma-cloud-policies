@@ -3,7 +3,7 @@
   "policyId": "2bb7dada-8013-4278-be40-5149c1d3c000",
   "policyType": "iam",
   "cloudType": "aws",
-  "severity": "low",
+  "severity": "medium",
   "name": "Okta User with IAM wildcard resource access",
   "description": "This policy identifies Okta User with AWS IAM permissions that contain '*' in the resource section of the policy statement. The policy will identify those '*' only in case using '*' is not mandatory. Ensure that the AWS policies don't have '*' in the resource section of the policy statement.",
   "rule.criteria": "2bb7dada-8013-4278-be40-5149c1d3c000",
