@@ -1,5 +1,20 @@
 # Changelog
 
+## PCS-23.6.2 - 2023-06-22
+
+### Added
+
+#### 1 new policy
+
+- GCP VM instance that is reachable from untrust internet source to ports with high risk
+
+### Changed
+
+#### 1 policy updated
+
+- AWS S3 buckets are accessible to public via ACL
+
+
 ## PCS-23.6.1 - 2023-06-06
 
 ### Added
