@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "7477a38d-d4a4-4a26-b288-d97e1dd110ac",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure VM instance with database management write access permissions",
+  "description": "The policy restricts write access of Azure's VM instances to DB aiming to prevent unauthorized modifications to critical database services hosted on Azure. It enhances security by enforcing granular access control and aligning with the principle of least privilege.",
+  "rule.criteria": "7477a38d-d4a4-4a26-b288-d97e1dd110ac",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' AND source.cloud.type = 'AZURE' AND source.cloud.service.name = 'Microsoft.Compute' AND source.cloud.resource.type = 'VirtualMachines' and action.name IN ('Microsoft.Cache/redisEnterprise/databases/write','Microsoft.DataMigration/databaseMigrations/write','Microsoft.DBforMariaDB/servers/databases/write','Microsoft.DBforMySQL/flexibleServers/databases/write','Microsoft.DBforMySQL/servers/databases/write','Microsoft.DBforPostgreSQL/flexibleServers/databases/write','Microsoft.DBforPostgreSQL/servers/databases/write','Microsoft.DocumentDB/databaseAccounts/write','Microsoft.Sql/managedInstances/databases/write','Microsoft.Sql/servers/databases/write','Microsoft.SqlVirtualMachine/sqlVirtualMachines/write')",
+  "recommendation": "\"Remediation steps:\n1. Sign in to the Azure Management Console.\n2. Navigate to the Azure Subscriptions blade by visiting https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade.\n3. Click on the Azure cloud subscription that you want to examine\n4. Navigate to the “Resources”\n5. Locate the VM instance that is violating the policy.\n6. In the navigation panel, choose \"Access control (IAM)\" and select the \"Role Assignments\" tab to access the role bindings for the selected subscription\n7. Identify the assignment between the VM and the role that grants permissions for database management write access\n8. Remove the assignment associated with the VM and the role with database management write access permissions\n9. If necessary, create a new assignment using a built-in or custom role that does not include risky permissions for database management write access\n\"",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
