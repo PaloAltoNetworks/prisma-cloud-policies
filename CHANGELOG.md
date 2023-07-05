@@ -1,5 +1,34 @@
 # Changelog
 
+## PCS-23.7.1 - 2023-07-10
+
+### Added
+
+#### 2 new policies
+
+- AWS Route53 Hosted Zone having dangling DNS record with subdomain takeover risk
+- Azure SQL on Virtual Machine (Linux) with basic authentication
+
+#### 1 new compliance standard
+
+- Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016
+
+#### 4 new policies for the IAM Security module
+
+- AWS EC2 instance with database management write access permissions
+- AWS S3 bucket with data destruction permissions is publicly accessible through IAM policies
+- Azure VM instance with database management write access permissions
+- GCP VM instance with database management write access permissions
+
+### Changed
+
+#### 3 policies updated
+
+- AWS Application Load Balancer (ALB) is not using the latest predefined security policy
+- AWS EC2 instance that is reachable from untrust internet source to ports with high risk
+- Azure SQL Server ADS Vulnerability Assessment is disabled
+
+
 ## PCS-23.6.2 - 2023-06-22
 
 ### Added
