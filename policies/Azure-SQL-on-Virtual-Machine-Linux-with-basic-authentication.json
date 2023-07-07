@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1029",
+  "policyId": "6c53f32c-eb09-4fa2-be43-be334f2eb808",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure SQL on Virtual Machine (Linux) with basic authentication",
+  "description": "This policy identifies Azure Virtual Machines that are hosted with SQL on them and have basic authentication. \n\nAzure Virtual Machines with basic authentication could allow attackers to brute force and gain access to SQL database hosted on it, which might lead to information leakage. It is recommended to use SSH keys for authentication to avoid brute force attacks on SQL database hosted virtual machines.",
+  "rule.criteria": "187eec1a-b273-413d-90e4-91a3cfe3c71d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-vm-list' AND json.rule = powerState equal ignore case \"PowerState/running\" and ['properties.storageProfile'].['imageReference'].['publisher'] equal ignore case microsoftsqlserver and (['properties.osProfile'].['linuxConfiguration'] exists and ['properties.osProfile'].['linuxConfiguration'].['disablePasswordAuthentication'] is false)",
+  "recommendation": "To configure existing Azure Virtual machine with SSH key authentication, Follow below URL:\nhttps://learn.microsoft.com/en-us/azure/virtual-machines/extensions/vmaccess#update-ssh-key\n\nIf changes are not reflecting you may need to take backup, Create new virtual machine with SSH key based authentication and delete the reported virtual machine.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

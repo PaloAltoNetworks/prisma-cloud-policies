@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ec3f5960-dcbc-4704-ac37-ed1a03ff59b6",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP VM instance with database management write access permissions",
+  "description": "The policy restricts write access of GCP VM instances to DB such as Cloud SQL, Datastore, BigTable etc.(https://gcp.permissions.cloud/iam/gcp), aiming to prevent unauthorized modifications to critical database services hosted on GCP. It enhances security by enforcing granular access control and aligning with the principle of least privilege.",
+  "rule.criteria": "ec3f5960-dcbc-4704-ac37-ed1a03ff59b6",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.type = 'GCP' AND source.cloud.service.name = 'compute' and source.cloud.resource.type = 'Instances' AND action.name IN ('cloudsql.databases.update','cloudsql.instances.update','datastore.databases.update','datastore.entities.update','datastore.indexes.update','spanner.databases.update','spanner.databases.write','spanner.instances.update','bigtable.clusters.update','bigtable.instances.update','bigtable.tables.update','redis.instances.update','memcache.instances.update','datamigration.migrationjobs.update','datamigration.connectionprofiles.update','datamigration.conversionworkspaces.update','alloydb.clusters.update','alloydb.instances.update','gcp.redisenterprise.com-databases.update','gcp.redisenterprise.com-subscriptions.update')",
+  "recommendation": "\"Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Compute Engine instance\n3. Navigate to the IAM service\n4. Find the binding between the service account used by the Compute Engine instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary. Repeat if there is a binding of the service account with another Admin role\"",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
