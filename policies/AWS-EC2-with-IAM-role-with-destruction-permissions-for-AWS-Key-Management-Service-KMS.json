@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "00fa3cda-d42a-42ad-a3eb-001f6a1ca04d",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS EC2 with IAM role with destruction permissions for AWS Key Management Service (KMS)",
+  "description": "Having an AWS EC2 instance with an IAM role that grants the 'secretsmanager:GetSecretValue' and 'kms:Decrypt' actions can be risky. This combination of permissions allows the instance to retrieve sensitive secrets from Secrets Manager and decrypt encrypted data using AWS Key Management Service (KMS). If unauthorized access or compromise occurs, it could lead to unauthorized retrieval of secrets or decryption of sensitive data, potentially compromising the confidentiality and integrity of the system.",
+  "rule.criteria": "00fa3cda-d42a-42ad-a3eb-001f6a1ca04d",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ( 'secretsmanager:GetSecretValue', 'kms:Decrypt' ) AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

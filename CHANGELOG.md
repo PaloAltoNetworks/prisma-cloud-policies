@@ -1,5 +1,51 @@
 # Changelog
 
+## PCS-23.7.2 - 2023-07-17
+
+### Added
+
+#### 1 new compliance standard
+
+- MLPS 2.0 (Level 3)
+
+#### 3 new policies for the IAM Security module
+
+- AWS EC2 with IAM role with destruction permissions for Amazon RDS databases
+- AWS EC2 with IAM role with destruction permissions for AWS Key Management Service (KMS)
+- AWS Lambda with IAM role with destruction permissions for Amazon RDS databases
+
+### Changed
+
+#### 4 policies updated
+
+- AWS Elastic Load Balancer v2 (ELBv2) with listener TLS/SSL is not configured
+- AWS Route53 Hosted Zone having dangling DNS record with subdomain takeover risk associated with AWS S3 Bucket
+- AWS Secret Manager Automatic Key Rotation is not enabled
+- OCI Block Storage Block Volume does not have backup enabled
+
+#### 19 policies updated for the IAM Security module
+
+- AWS IAM policy allows Privilege escalation via Codestar create project and associate team member permissions
+- AWS IAM policy allows Privilege escalation via EC2 describe and SSM list and send command permissions
+- AWS IAM policy allows Privilege escalation via EC2 describe and SSM session permissions
+- AWS IAM policy allows Privilege escalation via EC2 Instance Connect permissions
+- AWS IAM policy allows Privilege escalation via Glue Dev Endpoint permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CloudFormation stack permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CodeBuild permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CodeStar project permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Data Pipeline permissions
+- AWS IAM policy allows Privilege escalation via PassRole & EC2 permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue create job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue development endpoint permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue update job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create & invoke Function permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & add permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & Event source mapping permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create notebook permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create processing job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create training job permissions
+
+
 ## PCS-23.7.1 - 2023-07-10
 
 ### Added
@@ -60,7 +106,7 @@
 - CIS v1.4.0 (GKE) - Level 1
 - CIS v1.4.0 (GKE) - Level 2
 
-#### 2 policies for the new IAM Security module
+#### 2 policies for the IAM Security module
 
 - EC2 with IAM role attached has s3:GetObject permission
 - Azure VM instance with risky Storage account permissions
