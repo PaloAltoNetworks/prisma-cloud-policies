@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AKU-1045",
+  "policyId": "5baf83d2-8762-4269-aebd-5c3663652da0",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Data Explorer cluster double encryption is disabled",
+  "description": "This policy identifies Azure Data Explorer clusters in which double encryption is disabled. Double encryption adds a second layer of encryption using service-managed keys. It is recommended to enable infrastructure double encryption on Data Explorer clusters so that encryption can be implemented at the layer closest to the storage device or network wires.\n\nFor more details: \nhttps://learn.microsoft.com/en-us/azure/data-explorer/cluster-encryption-double",
+  "rule.criteria": "c55bf782-ea80-44f0-becc-7b50df873d8a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kusto-clusters' AND json.rule = properties.state equal ignore case Running and properties.enableDoubleEncryption is false",
+  "recommendation": "Enabling double encryption is only possible during cluster creation. Once infrastructure encryption is enabled on your cluster, you can't disable it.\n\nTo create Azure Data Explorer cluster with double encryption, follow below URL:\nhttps://learn.microsoft.com/en-us/azure/data-explorer/cluster-encryption-double\n\nNOTE: Using Infrastructure double encryption will have performance impact on the Azure Database for PostgreSQL server due to the additional encryption process.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

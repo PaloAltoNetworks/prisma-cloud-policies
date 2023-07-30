@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1040",
+  "policyId": "1f120b65-1350-4f7c-aadb-e9d8b6a52910",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Function app configured with public network access",
+  "description": "This policy identifies Azure Function apps that are configured with public network access. Publicly accessible web apps could allow malicious actors to remotely exploit any vulnerabilities and could. It is recommended to configure the Function apps with private endpoints so that the functions hosted are accessible only to restricted entities.",
+  "rule.criteria": "6106ed75-4236-4183-961f-1a15bc403af7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind starts with functionapp and properties.state equal ignore case running and properties.publicNetworkAccess exists and properties.publicNetworkAccess equal ignore case Enabled and config.ipSecurityRestrictions[?any(action equals Allow and ipAddress equals Any)] exists'",
+  "recommendation": "To restrict App Service access, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -10,7 +10,7 @@
   "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-mysql-flexible-server' AND json.rule = properties.state equal ignore case \"Ready\" and require_secure_transport.value equal ignore case \"OFF\"",
   "recommendation": "To enable MySQL database flexible server SSL connection, refer below URL:\nhttps://docs.microsoft.com/en-us/azure/mysql/flexible-server/how-to-connect-tls-ssl",
   "remediable": true,
-  "remediation.cliScriptTemplate": "az mysql flexible-server parameter set --server-name ${resourceName} --resource-group ${resourceGroup} --name require_secure_transport --value ON",
+  "remediation.cliScriptTemplate": "az mysql flexible-server parameter set --server-name ${resourceName} --resource-group ${resourceGroup} --name require_secure_transport --value ON",
   "remediation.description": "This CLI command requires 'Microsoft.DBforMySQL/flexibleServers/configurations/write' permission. Successful execution will enable SSL connection on your Azure MySQL database flexible server.",
   "remediation.impact": "Enables MySQL database flexible server SSL enforcement",
   "compliance.standard": [

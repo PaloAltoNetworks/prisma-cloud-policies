@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AKU-1046",
+  "policyId": "dcdc7713-2f14-447b-a8ce-9fe991e1a71c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Data Explorer cluster disk encryption is disabled",
+  "description": "This policy identifies Azure Data Explorer clusters in which disk encryption is disabled. Enabling encryption at rest on your cluster provides data protection for stored data. It is recommended to enable disk encryption on Data Explorer clusters.\n\nFor more details: \nhttps://learn.microsoft.com/en-us/azure/data-explorer/cluster-encryption-disk",
+  "rule.criteria": "4894f56b-6d71-40c9-82f9-660266a23439",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kusto-clusters' AND json.rule = properties.state equal ignore case Running and properties.enableDiskEncryption is false",
+  "recommendation": "To configure Disk encryption on existing Data Explorer cluster, follow below URL:\nhttps://learn.microsoft.com/en-us/azure/data-explorer/cluster-encryption-disk",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
