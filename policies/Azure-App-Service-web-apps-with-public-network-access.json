@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1039",
+  "policyId": "9974704e-9864-4c0f-b6b8-7781bbb91d7c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure App Service web apps with public network access",
+  "description": "This policy identifies Azure App Service web apps that are configured with public network access. Publicly accessible web apps could allow malicious actors to remotely exploit if any vulnerabilities and could. It is recommended to configure the App Service web apps with private endpoints so that the web apps hosted are accessible only to restricted entities.",
+  "rule.criteria": "6db58a3a-760a-4cf6-bb3e-b807f6e41bfc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'kind starts with app and properties.state equal ignore case running and properties.publicNetworkAccess exists and properties.publicNetworkAccess equal ignore case Enabled and config.ipSecurityRestrictions[?any(action equals Allow and ipAddress equals Any)] exists'",
+  "recommendation": "To restrict App Service network access, follow below URL:\nhttps://learn.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

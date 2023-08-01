@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v1.3.0 (GCP)",
     "CIS v2.0.0 (GCP) Level 2",
+    "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

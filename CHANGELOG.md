@@ -1,5 +1,34 @@
 # Changelog
 
+## PCS-23.8.1 - 2023-08-02
+
+### Added
+
+#### 5 new policies
+
+- AWS Route53 Hosted Zone having dangling DNS record with subdomain takeover risk associated with AWS Elastic Beanstalk Instance
+- Azure App Service web apps with public network access
+- Azure Data Explorer cluster disk encryption is disabled
+- Azure Data Explorer cluster double encryption is disabled
+- Azure Function app configured with public network access
+
+### Changed
+
+#### 1 policy updated
+
+- GCP VPC Flow logs for the subnet is set to Off
+
+#### 1 auto-remediation cli updated
+
+- Azure MySQL database flexible server SSL enforcement is disabled
+
+#### 3 compliance standards updated
+
+- CIS v2.0.0 (Azure) Level 1
+- CIS v2.0.0 (Azure) Level 2
+- Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016
+
+
 ## PCS-23.7.2 - 2023-07-17
 
 ### Added
