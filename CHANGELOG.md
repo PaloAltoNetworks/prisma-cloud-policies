@@ -22,6 +22,10 @@
 
 - Azure MySQL database flexible server SSL enforcement is disabled
 
+#### 1 policy updated for the IAM Security module
+
+- EC2 with IAM role attached has s3:GetObject and s3:ListBucket permissions
+
 #### 3 compliance standards updated
 
 - CIS v2.0.0 (Azure) Level 1
