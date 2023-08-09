@@ -1,5 +1,37 @@
 # Changelog
 
+## PCS-23.8.2 - 2023-08-16
+
+### Added
+
+#### 9 new policies
+
+- AWS Auto Scaling group launch configuration configured with Instance Metadata Service hop count greater than 1
+- AWS Auto Scaling group launch configuration has public IP address assignment enabled
+- AWS Auto Scaling group launch configuration not configured with Instance Metadata Service v2 (IMDSv2)
+- AWS Lambda function URL having overly permissive cross-origin resource sharing permissions
+- Azure Cache for Redis not configured with data in-transit encryption
+- Azure Database for MariaDB not configured private endpoint
+- Azure Database for MySQL server not configured private endpoint
+- Azure PostgreSQL servers not configured private endpoint
+- Azure SQL Database server not configured private endpoint
+
+#### 2 new compliance standards
+
+- CIS v2.0.0 (AWS) - Level 1
+- CIS v2.0.0 (AWS) - Level 2
+
+### Changed
+
+#### 5 policies updated
+
+- AWS CloudTrail is not enabled with multi trail and not capturing all management events
+- Azure storage account logging (Classic Diagnostic Setting) for blobs is disabled
+- Azure storage account logging (Classic Diagnostic Setting) for queues is disabled
+- Azure storage account logging (Classic Diagnostic Setting) for tables is disabled
+- GCP VM instances have block project-wide SSH keys feature disabled
+
+
 ## PCS-23.8.1 - 2023-08-02
 
 ### Added
