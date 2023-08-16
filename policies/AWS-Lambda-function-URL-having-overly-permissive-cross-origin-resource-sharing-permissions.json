@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LMB-1054",
+  "policyId": "7bf83882-02ad-4f79-803c-ed4588e166cd",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda function URL having overly permissive cross-origin resource sharing permissions",
+  "description": "This policy identifies AWS Lambda functions which have overly permissive cross-origin resource sharing (CORS) permissions. Overly permissive CORS settings (allowing wildcards) can potentially expose the Lambda function to unwarranted requests and cross-site scripting attacks. It is highly recommended to specify the exact domains (in 'allowOrigins') and HTTP methods (in 'allowMethods') that should be allowed to interact with your function to ensure a secure setup.",
+  "rule.criteria": "c7ce78c7-5412-43f0-ae9c-c90410957502",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-lambda-list-functions' AND json.rule = cors exists and cors.allowOrigins[*] contains \"*\" and cors.allowMethods[*] contains \"*\"",
+  "recommendation": "To properly configure CORS permissions, refer the following URL:\nhttps://docs.aws.amazon.com/lambda/latest/dg/API_Cors.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

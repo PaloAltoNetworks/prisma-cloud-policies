@@ -7,7 +7,7 @@
   "name": "EC2 with IAM role attached has s3:GetObject and s3:ListBucket permissions",
   "description": "This policies identifies EC2 instances with access to S3",
   "rule.criteria": "2fc55bb9-022e-4f6f-89b5-59f74f9f300a",
-  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('s3:ListBucket', 's3:GetObject') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('s3:ListBucket', 's3:GetObject') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
   "recommendation": "\"Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions\"",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic aws cli commands",
