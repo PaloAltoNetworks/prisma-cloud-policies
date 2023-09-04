@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-RM-1059",
+  "policyId": "b35d5980-a182-4e46-bdbe-b2b4211b4913",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance has risky basic role assigned",
+  "description": "This policy identifies GCP VM instances configured with the risky basic role. Basic roles are highly permissive roles that existed prior to the introduction of IAM and grant wide access over project to the grantee. To reduce the blast radius and defend against privilege escalations if the VM is compromised, it is recommended to follow the principle of least privilege and avoid use of basic roles.",
+  "rule.criteria": "15dc3fc7-847e-4914-be80-728a76275095",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-projects-get-iam-user' AND json.rule = roles[*] contains \"roles/editor\" or roles[*] contains \"roles/owner\" as X; config from cloud.resource where api.name = 'gcloud-compute-instances-list' AND json.rule = status equals RUNNING and name does not start with \"gke-\" as Y; filter '$.Y.serviceAccounts[*].email contains $.X.user'; show Y;",
+  "recommendation": "It is recommended to the principle of least privilege for granting access.\n\nTo create a new instance with desired service account, please refer to the URL given below:\nhttps://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#using\n\nTo update the assigned service account to VM, please refer to the URL given below:\nhttps://cloud.google.com/compute/docs/access/create-enable-service-accounts-for-instances#changeserviceaccountandscopes\n\nTo update priviledges granted to a service account, please refer to the URL given below:\nhttps://cloud.google.com/iam/docs/granting-changing-revoking-access",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "532ec2dd-ab43-4297-844d-882506306ae8",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS EC2 with write permission on critical configuration for s3",
+  "description": "This Policy identifies the permissions impact Amazon S3 (Simple Storage Service). that control object retention, lifecycle rules, access policies, and versioning. Misuse can affect data integrity, storage costs, access control, and version management.  It is recommended to assign and manage these permissions to trusted individuals to prevent unintended data loss, security risks, or unauthorized access to S3 resources.",
+  "rule.criteria": "532ec2dd-ab43-4297-844d-882506306ae8",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('s3:PutObjectRetention','s3:PutLifecycleConfiguration','s3:PutBucketPolicy','s3:PutBucketVersioning') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

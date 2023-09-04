@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-1059",
+  "policyId": "7947cd09-5ad5-4520-bd95-d9327219bb55",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS ECS services have automatic public IP address assignment enabled",
+  "description": "This policy identifies whether Amazon ECS services are configured to assign public IP addresses automatically. Assigning public IP addresses to ECS services may expose them to the internet. If the services are not adequately secured or have vulnerabilities, they could be susceptible to unauthorized access, DDoS attacks, or other malicious activities. It is recommended that the Amazon ECS environment not have an associated public IP address except for limited edge cases.",
+  "rule.criteria": "2e58c953-9a4e-4e59-bf3a-3ac93f4cd27b",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-ecs-service' AND json.rule = networkConfiguration.awsvpcConfiguration.assignPublicIp exists and networkConfiguration.awsvpcConfiguration.assignPublicIp equal ignore case \"ENABLED\"",
+  "recommendation": "To modify a disable auto-assign public IP for an ECS Service:\n\n1. Use the AWS CLI console or AWS API, as you cannot update network configurations for an ECS Service using the AWS Management Console.\n\n2. Run update-service command in AWS CLI to disable auto-assign public IP for an ECS Service\n aws ecs update-service --cluster <ECS Cluster Name> --service <ECS Service Name> --network-configuration \"awsvpcConfiguration={subnets=[string, string],securityGroups=[string, string],assignPublicIp=DISABLED}\"\nPlease Refer to the below URL:\nhttps://docs.aws.amazon.com/cli/latest/reference/ecs/update-service.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

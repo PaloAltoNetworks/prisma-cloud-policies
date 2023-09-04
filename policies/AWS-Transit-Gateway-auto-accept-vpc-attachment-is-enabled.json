@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-1056",
+  "policyId": "c4f6f70c-3ed7-4c64-aab9-12349674fd36",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Transit Gateway auto accept vpc attachment is enabled",
+  "description": "This policy identifies if Transit Gateways are automatically accepting shared VPC attachments. When this feature is enabled, the Transit Gateway automatically accepts any VPC attachment requests from other AWS accounts without requiring explicit authorization or verification. This can be a security risk, as it may allow unauthorized VPC attachments to connect to the Transit Gateway. As per the best practices for authorization and authentication, it is recommended to turn off the AutoAcceptSharedAttachments feature.",
+  "rule.criteria": "9ea06c8e-f1a9-47e9-9519-2a4604bdeb98",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-vpc-transit-gateway' AND json.rule = isShared is false and options.autoAcceptSharedAttachments exists and options.autoAcceptSharedAttachments equal ignore case \"enable\"",
+  "recommendation": "To modify a transit gateway Auto accept shared attachments:\n\n   1. Open the Amazon VPC console at https://console.aws.amazon.com/vpc/.\n   2. On the navigation pane, choose Transit Gateways.\n   3. Choose the transit gateway to modify.\n   4. Under the ‘Actions' dropdown, choose the ‘Modify transit gateway’ option.\n   5. On the 'Modify transit gateway' page, uncheck the 'Auto accept shared attachments' checkbox under the 'Configure cross-account sharing options' section.\n   6. Click 'Modify transit gateway' to update the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

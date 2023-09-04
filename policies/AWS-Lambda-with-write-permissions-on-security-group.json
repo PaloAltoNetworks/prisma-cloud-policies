@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "f772af58-8a9c-4acb-9d8b-c95ee0f33e10",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda with write permissions on security group",
+  "description": "This Policy identifies aws lambda with permissions control security group access to various AWS services, including RDS, EC2, and Redshift. They enable actions such as creating and deleting security groups, modifying access rules, and associating security groups with load balancers. While granting these permissions can enhance operational flexibility, it is crucial to exercise caution. Mishandling these permissions could lead to unauthorized access, misconfigurations, or potential data breaches.  It is recommended to assign and manage these permissions to trusted individuals to maintain security posture for AWS resources.",
+  "rule.criteria": "f772af58-8a9c-4acb-9d8b-c95ee0f33e10",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('rds:CreateDBSecurityGroup','rds:DeleteDBSecurityGroup','rds:RevokeDBSecurityGroupIngress','ec2:AuthorizeSecurityGroupEgress','ec2:AuthorizeSecurityGroupIngress','ec2:CreateSecurityGroup','ec2:DeleteSecurityGroup','ec2:ModifySecurityGroupRules','ec2:RevokeSecurityGroupEgress','ec2:RevokeSecurityGroupIngress','elasticloadbalancing:ApplySecurityGroupsToLoadBalancer','elasticloadbalancing:SetSecurityGroups','redshift:AuthorizeClusterSecurityGroupIngress','redshift:CreateClusterSecurityGroup','redshift:DeleteClusterSecurityGroup') AND source.cloud.service.name = 'lambda'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
