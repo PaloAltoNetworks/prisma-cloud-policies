@@ -35,9 +35,13 @@
 - Azure App Service Web app doesn't redirect HTTP to HTTPS
 - GCP VM instance configured with default service account
 
-#### 1 policy updated for the IAM Security module
+#### 5 policy updated for the IAM Security module
 
 - AWS S3 bucket with data destruction permissions is publicly accessible through IAM policies
+- Azure AD users with broad Key Vault management access
+- Azure Managed Identity (user assigned or system assigned) with broad Key Vault management access
+- Azure Service Principals with broad Key Vault management access
+- Azure VM instance associated managed identities with Key Vault management access (data access is not included)
 
 
 ## PCS-23.8.2 - 2023-08-16
