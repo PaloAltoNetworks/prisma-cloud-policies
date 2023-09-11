@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-RM-1060",
+  "policyId": "95a9e34b-0274-42b8-89cc-8f3dbb3e0ea8",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function has risky basic role assigned",
+  "description": "This policy identifies GCP Cloud Functions configured with the risky basic role. Basic roles are highly permissive roles that existed prior to the introduction of IAM and grant wide access over project to the grantee. To reduce the blast radius and defend against privilege escalations if the Cloud Function is compromised, it is recommended to follow the principle of least privilege and avoid use of basic roles.",
+  "rule.criteria": "56159411-7796-49a4-8217-14fafc3634a2",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-projects-get-iam-user' AND json.rule = roles[*] contains \"roles/editor\" or roles[*] contains \"roles/owner\" as X; config from cloud.resource where api.name = 'gcloud-cloud-function' as Y; filter '$.Y.serviceAccountEmail equals $.X.user'; show Y;",
+  "recommendation": "It is recommended to the principle of least privilege for granting access.\n\nTo assign desired service account to the cloud funtion, please refer to the URL given below:\nhttps://cloud.google.com/functions/docs/securing/function-identity#individual\n\nTo update priviledges granted to a service account, please refer to the URL given below:\nhttps://cloud.google.com/iam/docs/granting-changing-revoking-access",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

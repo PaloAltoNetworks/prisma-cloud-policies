@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-23.9.1 - 2023-09-11
+
+### Added
+
+#### 7 new policies
+
+- AWS CodeBuild project environment privileged mode is enabled
+- AWS ECS services have automatic public IP address assignment enabled
+- AWS Transit Gateway auto accept vpc attachment is enabled
+- Azure Log analytics linked storage account is not configured with CMK encryption
+- Azure Synapse Workspace vulnerability assessment is disabled
+- GCP Cloud Function has risky basic role assigned
+- GCP VM instance has risky basic role assigned
+
+#### 6 new policies for the IAM Security module
+
+- AWS EC2 machine with defense evasion impact of aws security services permissions
+- AWS EC2 with cloud log tampering permissions
+- AWS EC2 with write permission on critical configuration for s3
+- AWS EC2 with write permissions on security group
+- AWS Lambda with write permission on critical configuration for s3
+- AWS Lambda with write permissions on security group
+
+#### 1 new auto-remediation cli
+
+- AWS EC2 instance not configured with Instance Metadata Service v2 (IMDSv2)
+
+### Changed
+
+#### 3 policies updated
+
+- AWS Elastic Load Balancer v2 (ELBv2) with listener TLS/SSL is not configured
+- Azure App Service Web app doesn't redirect HTTP to HTTPS
+- GCP VM instance configured with default service account
+
+#### 5 policy updated for the IAM Security module
+
+- AWS S3 bucket with data destruction permissions is publicly accessible through IAM policies
+- Azure AD users with broad Key Vault management access
+- Azure Managed Identity (user assigned or system assigned) with broad Key Vault management access
+- Azure Service Principals with broad Key Vault management access
+- Azure VM instance associated managed identities with Key Vault management access (data access is not included)
+
+
 ## PCS-23.8.2 - 2023-08-16
 
 ### Added

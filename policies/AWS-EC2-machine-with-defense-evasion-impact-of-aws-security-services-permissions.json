@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "de1729b0-6b14-4d05-b3e6-c9486740f440",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EC2 machine with defense evasion impact of aws security services permissions",
+  "description": "this policy identifies permissions that have the potential to cause damage if misused within AWS services. They grant the ability to modify, delete, or disable crucial security and monitoring features, leaving AWS resources vulnerable to threats, hindering incident investigations, and compromising compliance and configuration tracking. It is recommended to manage and grant these permissions to trusted individuals to maintain the security and integrity of AWS resources.",
+  "rule.criteria": "de1729b0-6b14-4d05-b3e6-c9486740f440",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('guardduty:UpdateDetector','guardduty:DeleteDetector','guardduty:DeleteMembers','guardduty:UpdateFilter','guardduty:DeleteFilter','shield:DisableApplicationLayerAutomaticResponse','shield:UpdateProtectionGroup','shield:DeleteSubscription','detective:DisassociateMembership','detective:DeleteMembers','inspector:Disable','config:StopConfigurationRecorder','config:DeleteConfigurationRecorder','config:DeleteConfigRule','config:DeleteOrganizationConfigRule','cloudwatch:DisableAlarmActions','cloudwatch:DisableInsightRules') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

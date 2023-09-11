@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1062",
+  "policyId": "2f5e81a5-4e87-45c2-ba15-ed9951727a4b",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Log analytics linked storage account is not configured with CMK encryption",
+  "description": "This policy identifies Azure Log analytics linked Storage accounts which are not encrypted with CMK. By default Azure Storage account is encrypted using Microsoft Managed Keys. It is recommended to use Customer Managed Keys to encrypt data in Azure Storage accounts linked Log analytics for better control on the data.",
+  "rule.criteria": "df5b45cd-a053-4929-b242-a54619ee4c79",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.encryption.keySource does not equal ignore case \"Microsoft.Keyvault\" as X; config from cloud.resource where api.name = 'azure-log-analytics-linked-storage-accounts' AND json.rule = properties.dataSourceType equal ignore case Query as Y; filter '$.X.id contains $.Y.properties.storageAccountIds'; show X;",
+  "recommendation": "To configure encryption using CMK for existing Azure Log analytics linked storage account, follow below URL:\nhttps://learn.microsoft.com/en-us/azure/azure-monitor/logs/private-storage#customer-managed-key-data-encryption",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

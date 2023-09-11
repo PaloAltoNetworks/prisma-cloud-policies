@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-BLD-1057",
+  "policyId": "c2858dc3-d887-436a-80eb-32e2bfd7d0f2",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS CodeBuild project environment privileged mode is enabled",
+  "description": "This policy identifies the CodeBuild projects where the privileged mode is enabled. Privileged mode grants unrestricted access to all devices and runs the Docker daemon inside the container. It is recommended to enable this mode only for building Docker images. It recommended disabling the privileged mode to prevent unintended access to Docker APIs and container hardware, reducing the risk of potential tampering or critical resource deletion.",
+  "rule.criteria": "a773b6a4-69d3-427e-98b6-0ca45290c829",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-code-build-project' AND json.rule = environment.privilegedMode exists and environment.privilegedMode is true",
+  "recommendation": "To disable the Privileged mode for the CodeBuild project:\n\n1. Log in to the AWS Management Console.\n2. In the console, select the specific region from the region drop-down in the top right corner, for which the alert is generated.\n3. Navigate to 'Developer Tools' from the 'Services' dropdown and select the 'CodeBuild'.\n4. In the navigation pane, choose 'Build projects'.\n5. Select the reported Build project and choose Edit, then click ‘Environment'.\n6. On the Edit Environment page, expand the configuration by clicking the 'Override image' button.\n7. Uncheck the checkbox 'Enable this flag if you want to build Docker images or want your builds to get elevated privileges.' under the 'Privileged' section.\n8. When you have finished changing your CodeBuild environment configuration, click ‘Update environment’.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
