@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "801a688a-07ec-4b89-a928-6fd8fbd7bf88",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "EC2 with IAM role attached has iam:PassRole and ec2:Run Instances permissions",
+  "description": "This IAM policy enforces controlled access by permitting only the specified actions (iam:PassRole, ec2:RunInstances) within AWS, specifically for 'instance' resources. By limiting the scope of permissions to this focused context, potential risks and unauthorized activity are mitigated",
+  "rule.criteria": "801a688a-07ec-4b89-a928-6fd8fbd7bf88",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('iam:PassRole','ec2:RunInstances') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance' AND source.cloud.type = 'AWS'",
+  "recommendation": "emediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

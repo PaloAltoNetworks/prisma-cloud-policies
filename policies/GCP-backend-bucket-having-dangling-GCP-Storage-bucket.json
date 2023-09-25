@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1063",
+  "policyId": "254da1e9-9d2b-4f76-9d47-c37481629402",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP backend bucket having dangling GCP Storage bucket",
+  "description": "This policy identifies the GCP backend buckets having dangling GCP Storage bucket.\n\nA GCP backend bucket is usually used by GCP Load Balancers for serving static content. Such setups can also have DNS pointing to the load balancer's IP for easy human access. A GCP backend bucket pointing to a GCP storage bucket that doesn't exist in the same project is a potential risk of bucket takeover as well as at risk of subdomain takeover. An attacker can exploit such a setup by creating a GCP Storage bucket with the same name in their own GCP project, thus receiving all requests redirected to this backend bucket from the load balancer to an attacker-controlled GCP Storage bucket. This attacker-controlled bucket can be used to serve malicious content to perform phishing attacks, spread malware, or engage in other illegal activities.\n\nAs a best practice, it is recommended to review and protect GCP storage buckets bound to a GCP backend bucket from accidental deletion. Delete the GCP backend bucket if it points to a non-existent GCP storage bucket.",
+  "rule.criteria": "121b6286-8fbf-4a5f-90d8-75b3f36b88a5",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-compute-backend-bucket' as X; config from cloud.resource where api.name = 'gcloud-storage-buckets-list' as Y; filter ' not (Y.name intersects X.bucketName) '; show X;",
+  "recommendation": "To mitigate the risk, either delete the GCP backend bucket or create a GCP Storage bucket with the name in your account to which the GCP backend bucket points.\n\n\n# Delete GCP backend bucket\nTo delete a GCP backend bucket, it should be disassociated from all GCL Load balancers first. The following steps might be followed:\n\n1. Identify the backend bucket pointing to a non-existing GCP Storage bucket.\n2. Login to GCP Portal\n3. Go to Network services -> Load Balancing\n4. Click on \"Backends\"\n5. Note the names of load balancers that are using the GCP backend bucket. Names are shown under the \"Load balancer\" column\n6. Click on the \"LOAD BALANCERS\" tab\n7. Click on the load balancer name for each load balancer identified in step 4 and repeat the following steps:\n i. After opening the load balancer page, click on \"EDIT\"\n  ii. Go to Backend configuration\n iii. Under the \"Backend buckets\" section, remove the GCP backend bucket by clicking \"cross\" icon in front of it\n iv. Go to Routing rules. Edit the rules as desired. Remove any rules pointing to the reported backend bucket.\n v. Click Update\n8. Click and switch back to the \"Backends\" tab\n9. Select the GCP backend bucket, the option to delete now should be available.\n10. Click \"Delete\" -> \"DELETE\"\n\n\n# Create a new GCP Storage bucket\nRefer to the following link on how to create a new GCP Storage bucket and create a new bucket with the same name as the one the GCP backend bucket is pointing to:\n\nhttps://cloud.google.com/storage/docs/creating-buckets#create_a_new_bucket",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

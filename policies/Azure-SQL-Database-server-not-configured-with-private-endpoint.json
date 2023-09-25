@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SQL-1043",
+  "policyId": "a3d1d2d3-a0d5-47e5-8c84-cf01139de3f7",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure SQL Database server not configured private endpoint",
+  "description": "This policy identifies Azure SQL database servers that are not configured with private endpoint. Private endpoint connections enforce secure communication by enabling private connectivity to Azure Database for SQL. Configuring a private endpoint enables access to traffic coming from only known networks and prevents access from malicious or unknown IP addresses which includes IP addresses within Azure. It is recommended to create private endpoint for secure communication for your Azure SQL database.",
+  "rule.criteria": "4f145e1b-2994-4cb9-bd50-3be0766a6089",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.state'] equal ignore case Ready and ['sqlServer'].['properties.privateEndpointConnections'] is empty",
+  "recommendation": "1. Login to Azure Portal \n2. Navigate to 'SQL Servers' and select the reported server\n3. Open the Private endpoint settings\n4. Click on Add Private endpoint to create and add a private endpoint\n\nRefer to below link for step by step process:\nhttps://learn.microsoft.com/en-us/azure/private-link/tutorial-private-endpoint-sql-portal",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
