@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "2544873b-2656-474c-b0ee-be161be727fb",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS role having iam:PassRole and lambda:InvokeFunction permissions attached to EC2 instance",
+  "description": "This IAM policy is meticulously designed to address potential vulnerabilities arising from an AWS EC2 instance with specific permissions. The 'iam:PassRole' action, coupled with 'lambda:CreateFunction' and 'lambda:InvokeFunction', holds the potential for adversaries to exploit and escalate privileges. By strategically controlling access to these actions within the 'ec2' service, this policy effectively mitigates the risk of unauthorized creation and manipulation of Lambda functions, safeguarding against potential escalation of privileges and maintaining the integrity of your system.",
+  "rule.criteria": "2544873b-2656-474c-b0ee-be161be727fb",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('iam:PassRole','lambda:CreateFunction', 'lambda:InvokeFunction') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance' AND source.cloud.type = 'AWS'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "10eba7aa-731e-438a-82d1-67089e848e92",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function with permissions over Deployments Manager",
+  "description": "This IAM policy for GCP's 'cloudfunctions' service orchestrates vigilant control over the potent capabilities tied to Deployment Manager. With a keen focus on deploying and updating resources, this policy reinforces a robust defense against unauthorized resource creation and modifications. By weaving together the intricacies of deploymentmanager.deployments.create and deploymentmanager.deployments.update actions, this policy establishes a formidable barrier against potential security risks. Through these measures, the policy ensures heightened protection for your GCP Cloud Function, guarding against the perils of internet exposure, privilege escalation, and lateral movements. This strategic fortification bolsters your cloud infrastructure's resilience and security",
+  "rule.criteria": "10eba7aa-731e-438a-82d1-67089e848e92",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'cloudfunctions' AND action.name IN ('deploymentmanager.deployments.create', 'deploymentmanager.deployments.update')",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Cloud Function\n3. Navigate to the IAM service\n4. Find the binding between the service account used by the function instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary. Repeat if there is a binding of the service account with another Admin role",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

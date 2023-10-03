@@ -1,5 +1,32 @@
 # Changelog
 
+## PCS-23.9.2 - 2023-09-28
+
+### Added
+
+#### 1 new policies
+
+- GCP backend bucket having dangling GCP Storage bucket
+
+#### 2 new auto-remediation cli
+
+- Azure App Services Remote debugging is enabled
+- Azure Cosmos DB key based authentication is enabled
+
+### Changed
+
+#### 8 policies updated
+
+- AWS S3 bucket accessible to unmonitored cloud accounts
+- Azure Cache for Redis not configured with data in-transit encryption
+- Azure Database for MariaDB not configured with private endpoint
+- Azure Database for MySQL server not configured with private endpoint
+- Azure log profile not capturing activity logs for all regions
+- Azure PostgreSQL servers not configured with private endpoint
+- Azure SQL Database server not configured with private endpoint
+- GCP VPC Network subnets have Private Google access disabled
+
+
 ## PCS-23.9.1 - 2023-09-11
 
 ### Added
@@ -14,14 +41,27 @@
 - GCP Cloud Function has risky basic role assigned
 - GCP VM instance has risky basic role assigned
 
-#### 6 new policies for the IAM Security module
+#### 19 new policies for the IAM Security module
 
+- AWS EC2 IAM role with Elastic IP Hijacking permissions
 - AWS EC2 machine with defense evasion impact of aws security services permissions
+- AWS EC2 machine with write access permission to resource-based policies
 - AWS EC2 with cloud log tampering permissions
+- AWS EC2 with IAM role attached has credentials exposure permissions
+- AWS EC2 with IAM role with alter critical configuration for s3 permissions
 - AWS EC2 with write permission on critical configuration for s3
 - AWS EC2 with write permissions on security group
+- AWS IAM policy allows access and decrypt Secrets Manager Secrets permissions
+- AWS Lambda with IAM role attached has credentials exposure permissions
+- AWS Lambda with IAM role with Amazon RDS database SQL query execution permissions
 - AWS Lambda with write permission on critical configuration for s3
 - AWS Lambda with write permissions on security group
+- AWS role having iam:PassRole and lambda:InvokeFunction permissions attached to EC2 instance
+- EC2 with IAM role attached has iam:PassRole and ec2:Run Instances permissions
+- GCP Cloud Function with permissions over Deployments Manager
+- GCP Cloud Function with permissions to disrupt logging
+- GCP VM instance with permissions over Deployments Manager
+- GCP VM instance with permissions to disrupt logging
 
 #### 1 new auto-remediation cli
 

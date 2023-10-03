@@ -7,7 +7,7 @@
   "name": "GCP VPC Network subnets have Private Google access disabled",
   "description": "This policy identifies GCP VPC Network subnets have disabled Private Google access. Private Google access enables virtual machine instances on a subnet to reach Google APIs and services using an internal IP address rather than an external IP address. Internal (private) IP addresses are internal to Google Cloud Platform and are not routable or reachable over the Internet. You can use Private Google access to allow VMs without Internet access to reach Google APIs, services, and properties that are accessible over HTTP/HTTPS.",
   "rule.criteria": "899e01c6-9092-44a8-ae43-1f8a891b01b6",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-subnets-list' AND json.rule =  'privateIpGoogleAccess does not exist or privateIpGoogleAccess is false'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-subnets-list' AND json.rule = purpose is not member of (REGIONAL_MANAGED_PROXY, PRIVATE_SERVICE_CONNECT) and (privateIpGoogleAccess does not exist or privateIpGoogleAccess is false)",
   "recommendation": "1. Login to GCP Portal\n2. Go to VPC network (Left Panel)\n3. Select VPC networks\n2. Click on the name of a reported subnet, The 'Subnet details' page will be displayed\n3. Click on 'EDIT' button\n4. Set 'Private Google access' to 'On'\n5. Click on Save",
   "remediable": true,
   "remediation.cliScriptTemplate": "gcloud compute networks subnets update ${resourceName} --project=${account} --region ${region} --enable-private-ip-google-access",

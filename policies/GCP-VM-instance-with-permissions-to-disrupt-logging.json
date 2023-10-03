@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "99e41266-184c-428b-9b3c-610f17a4d328",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance with permissions to disrupt logging",
+  "description": "This IAM policy exerts meticulous control over crucial actions associated with Google Cloud's 'compute' service, focusing on 'Instances' resources. By thoughtfully overseeing capabilities such as managing logging metrics, buckets, logs, and sinks, this policy effectively bolsters the integrity of your cloud environment. By mitigating the potential for unauthorized alterations, this policy thwarts attempts to evade proper event logging during lateral movement, reinforcing the overall security of your GCP infrastructure",
+  "rule.criteria": "99e41266-184c-428b-9b3c-610f17a4d328",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'compute' and source.cloud.resource.type = 'Instances' AND action.name IN ('logging.logMetrics.delete', 'logging.logMetrics.update', 'logging.buckets.delete', 'logging.buckets.update', 'logging.logs.delete', 'logging.sinks.delete', 'logging.sinks.update')",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Compute Engine instance\n3. Navigate to the IAM service\n4. Find the binding between the service account used by the Compute Engine instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary. Repeat if there is a binding of the service account with another Admin role",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

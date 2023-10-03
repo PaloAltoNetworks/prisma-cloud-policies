@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "de4f6073-4869-4c2e-961c-6fa33eef0b2a",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance with permissions over Deployments Manager",
+  "description": "This IAM policy empowers stringent oversight over pivotal functions within Google Cloud's 'compute' service, exclusively targeting 'Instances' resources. It effectively governs the critical actions involved in managing deployments through Deployment Manager, ensuring a robust defense against unauthorized alterations. By orchestrating deploymentmanager.deployments.create and deploymentmanager.deployments.update capabilities, this policy enforces meticulous control over resource creation and updates, guarding against potential internet exposure, privilege escalation, or lateral movements. This heightened control fortifies the security of your GCP VM instances with heightened vigilance over Deployment Manager functionalities.",
+  "rule.criteria": "de4f6073-4869-4c2e-961c-6fa33eef0b2a",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'compute' and source.cloud.resource.type = 'Instances' AND action.name IN ('deploymentmanager.deployments.create', 'deploymentmanager.deployments.update')",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Compute Engine instance\n3. Navigate to the IAM service\n4. Find the binding between the service account used by the Compute Engine instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary. Repeat if there is a binding of the service account with another Admin role",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

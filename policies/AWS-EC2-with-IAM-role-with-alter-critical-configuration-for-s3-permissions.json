@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "4ee8ce9b-6f74-4ccd-8a5f-abc2e2db0ea7",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS EC2 with IAM role with alter critical configuration for s3 permissions",
+  "description": "This IAM policy instates precise oversight over essential operations within AWS, with a specific focus on 'instance' resources. By thoughtfully managing the capability to influence s3 bucket attributes, such as configuring retention, lifecycle, policy, and versioning settings, this policy plays a crucial role in averting potential hazards. It ensures that unauthorized modifications, which could lead to public exposure or data loss, are effectively mitigated, contributing to the overall resilience of your cloud environment.",
+  "rule.criteria": "4ee8ce9b-6f74-4ccd-8a5f-abc2e2db0ea7",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('s3:PutObjectRetention','s3:PutLifecycleConfiguration','s3:PutBucketPolicy','s3:PutBucketVersioning') AND source.cloud.service.name = 'ec2' AND source.cloud.resource.type = 'instance'",
+  "recommendation": "Remediation steps:\n1. Log in to the AWS console\n2. Navigate to the EC2 instance\n3. Find the role used by the EC2 instance\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

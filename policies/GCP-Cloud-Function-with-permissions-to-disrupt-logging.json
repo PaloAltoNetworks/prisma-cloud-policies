@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "1e3afc03-f3b6-4000-b833-721bf5636d89",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function with permissions to disrupt logging",
+  "description": "This IAM policy maintains vigilant control over pivotal operations within Google Cloud's 'cloudfunctions' service, with a specific focus on ensuring the integrity of event logging. By thoughtfully governing the management of logging metrics, buckets, logs, and sinks within the 'logging' service, this policy serves as a robust safeguard against unauthorized alterations. This fortified control mitigates the potential for unauthorized manipulations, thereby thwarting any attempts to evade proper event logging during lateral movement. The policy contributes to a resilient and secure GCP environment",
+  "rule.criteria": "1e3afc03-f3b6-4000-b833-721bf5636d89",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'cloudfunctions' AND action.name IN ('logging.logMetrics.delete', 'logging.logMetrics.update', 'logging.buckets.delete', 'logging.buckets.update', 'logging.logs.delete', 'logging.sinks.delete', 'logging.sinks.update') AND dest.cloud.service.name = 'logging'",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Cloud Function\n3. Navigate to the IAM service\n4. Find the binding between the service account used by the function instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary. Repeat if there is a binding of the service account with another Admin role",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
