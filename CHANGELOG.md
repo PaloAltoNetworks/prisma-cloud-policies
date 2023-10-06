@@ -1,5 +1,32 @@
 # Changelog
 
+## PCS-23.10.1 - 2023-10-12
+
+### Added
+
+#### 3 new policies
+
+- Azure Storage account configured with Shared Key authorization
+- Azure Storage account not configured with SAS expiration policy
+- Azure Virtual machine configured with public IP and serial console access
+
+### Changed
+
+#### 11 policies updated
+
+- Azure Activity log alert for Create or update network security group does not exist
+- Azure Activity log alert for Create or update network security group rule does not exist
+- Azure Activity log alert for Create or update security solution does not exist
+- Azure Activity log alert for Create or update SQL server firewall rule does not exist
+- Azure Activity log alert for Create policy assignment does not exist
+- Azure Activity log alert for Delete network security group does not exist
+- Azure Activity log alert for Delete network security group rule does not exist
+- Azure Activity log alert for delete policy assignment does not exist
+- Azure Activity log alert for Delete security solution does not exist 
+- Azure Activity log alert for Delete SQL server firewall rule does not exist
+- Azure Activity log alert for Update security policy does not exist
+
+
 ## PCS-23.9.2 - 2023-09-28
 
 ### Added

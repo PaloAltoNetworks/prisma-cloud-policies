@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1072",
+  "policyId": "8527f09d-effd-40b7-a897-14dc1558270a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Storage account not configured with SAS expiration policy",
+  "description": "This policy identifies Azure Storage accounts not configured with SAS expiration policy.\n\nA Shared Access Signature (SAS) expiration policy specifies a recommended interval over which the SAS is valid. SAS expiration policies apply to a service SAS or an account SAS. When a user generates service SAS or an account SAS with a validity interval that is larger than the recommended interval, they'll see a warning. If Azure Storage logging with Azure Monitor is enabled, then an entry is written to the Azure Storage logs. It is recommended that you limit the interval for a SAS in case it is compromised.\n\nFor more details:\nhttps://learn.microsoft.com/en-us/azure/storage/common/sas-expiration-policy",
+  "rule.criteria": "e528afca-40d1-4355-81c8-db07048a814c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name= 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.allowSharedKeyAccess is true and properties.sasPolicy does not exist",
+  "recommendation": "To configure an expiration policy for shared access signatures for the reported Storage account, follow bellow URL:\nhttps://learn.microsoft.com/en-us/azure/storage/common/sas-expiration-policy",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1070",
+  "policyId": "07ab86da-6972-48f9-abf2-3a8ceb74d524",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual machine configured with public IP and serial console access",
+  "description": "This policy identifies Azure Virtual machines with public IP configured with serial console access (via Boot diagnostic setting).\n\nThe Microsoft Azure serial console feature provides access to a text-based console for virtual machines (VMs) running either Linux or Windows. Serial Console connects to the ttyS0 or COM1 serial port of the VM instance, providing access independent of the network or operating system state. Attacker can leverage public IP assigned Serial console enabled virtual machine for remote code execution and privilege escalation. It is recommended to restrict public access to the reported virtual machine and disable/restrict serial console access.\n\nNOTE: Serial Console can be disabled for an individual Virtual machine instance by boot diagnostics only.",
+  "rule.criteria": "c1f40894-1e56-4fdf-a4a8-0ee90a9f022e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name= 'azure-vm-list' AND json.rule = powerState contains \"PowerState/running\" and ['properties.networkProfile'].['networkInterfaces'][*].['publicIpAddressId'] exists and ['properties.diagnosticsProfile'].['bootDiagnostics'].['enabled'] is true",
+  "recommendation": "To disable/restrict serial console access on the reported VM instance, follow bellow URL:\nhttps://learn.microsoft.com/en-us/troubleshoot/azure/virtual-machines/serial-console-enable-disable",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
