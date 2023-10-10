@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1071",
+  "policyId": "f5c4ddc4-52fc-4c52-9a60-5c40b845a683",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Storage account configured with Shared Key authorization",
+  "description": "This policy identifies Azure Storage accounts configured with Shared Key authorization.\n\nAzure Storage accounts authorized with Shared Key authorization via Shared Access Signature (SAS) tokens pose a security risk, as they allow sharing information with external unidentified identities. It is highly recommended to disable Shared Key authorization and Use Azure AD authorization as it provides superior security and ease of use over Shared Key.\n\nFor more details:\nhttps://learn.microsoft.com/en-us/azure/storage/common/shared-key-authorization-prevent",
+  "rule.criteria": "64bd7f84-5afb-48b5-adb0-fbe55dcfec08",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name= 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.allowSharedKeyAccess is true",
+  "recommendation": "To prevent Shared Key authorization for an Azure Storage account, follow bellow URL:\nhttps://learn.microsoft.com/en-us/azure/storage/common/shared-key-authorization-prevent",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
