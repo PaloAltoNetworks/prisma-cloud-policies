@@ -1,5 +1,18 @@
 # Changelog
 
+## PCS-23.10.2 - 2023-10-24
+
+### Changed
+
+#### 1 policy updated
+
+- GCP Kubernetes Engine Clusters have Network policy disabled
+
+#### 1 policy updated for the IAM Security module
+
+- AWS EC2 machine with write access permission to resource-based policies
+
+
 ## PCS-23.10.1 - 2023-10-12
 
 ### Added
