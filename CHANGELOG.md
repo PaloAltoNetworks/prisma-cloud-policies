@@ -1,5 +1,32 @@
 # Changelog
 
+## PCS-23.11.1 - 2023-11-09
+
+### Added
+
+#### 4 new policies
+
+- AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) on ports 80/443
+- Azure Virtual Machine (Linux) does not authenticate using SSH keys
+- Azure Virtual Machine that is internet reachable with unrestricted access (0.0.0.0/0) on ports 80/443
+- GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) on ports 80/443
+
+#### 1 new compliance standard
+
+- Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)
+
+### Changed
+
+#### 1 policy updated
+
+- Azure Application Gateway is configured with SSL policy having TLS version 1.1 or lower
+
+#### 2 policies updated for the IAM Security module
+
+- GCP Compute Engine entities with predefined Admin roles
+- GCP Compute Engine with IAM write access level 
+
+
 ## PCS-23.10.2 - 2023-10-24
 
 ### Changed

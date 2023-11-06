@@ -14,20 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "CIS Controls v7.1",
-    "CIS Controls v8",
     "CIS v1.3.0 (GCP)",
     "CIS v2.0.0 (GCP) Level 1",
-    "CSA CCM v.4.0.1",
     "CSA CCM v.4.0.6",
-    "HITRUST v.9.4.2",
-    "ISO/IEC 27002:2013",
-    "ISO/IEC 27017:2015",
-    "NIST CSF",
-    "NIST SP 800-171 Revision 2",
-    "NIST SP 800-172",
-    "PCI DSS v3.2.1",
-    "PCI DSS v4.0",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

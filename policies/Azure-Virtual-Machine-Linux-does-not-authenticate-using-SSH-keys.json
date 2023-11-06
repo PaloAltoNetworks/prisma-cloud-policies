@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1073",
+  "policyId": "7f59ef1f-0cbe-48cf-8358-05013b6a8a95",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual Machine (Linux) does not authenticate using SSH keys",
+  "description": "This policy identifies Azure Virtual Machines that have basic authentication, not authenticating using SSH keys. Azure Virtual Machines with basic authentication could allow attackers to brute force and gain unauthorized access, which might lead to potential data leaks. It is recommended to use SSH keys for authentication to avoid brute force attacks on virtual machines.",
+  "rule.criteria": "ff4fcb80-03f6-41dd-8bd8-6179fd46b3a4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-vm-list' AND json.rule = powerState equal ignore case \"PowerState/running\" and (['properties.osProfile'].['linuxConfiguration'] exists and ['properties.osProfile'].['linuxConfiguration'].['disablePasswordAuthentication'] is false)",
+  "recommendation": "To configure existing Azure Virtual machine with SSH key authentication, Follow below URL:\nhttps://learn.microsoft.com/en-us/azure/virtual-machines/extensions/vmaccess#update-ssh-key\n\nIf changes are not reflecting you may need to take backup, You may need to create new virtual machine with SSH key based authentication and delete the reported virtual machine.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
