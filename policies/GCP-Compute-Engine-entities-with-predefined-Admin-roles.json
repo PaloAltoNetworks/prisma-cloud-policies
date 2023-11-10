@@ -7,7 +7,7 @@
   "name": "GCP Compute Engine entities with predefined Admin roles",
   "description": "This policy identifies Predefined Admin roles that are defined as risky roles. Ensure that the Compute Engine entities in your GCP account don't have a risky Predefined Admin roles to minimize security risks.",
   "rule.criteria": "86ddf852-f3e7-4580-b323-e9569f1a2ddb",
-  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'compute' and grantedby.cloud.policy.name in ('Compute Admin','Compute Load Balancer Admin')",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.service.name = 'compute' and source.cloud.resource.type = 'Instances' and grantedby.cloud.policy.name in ('Compute Admin','Compute Load Balancer Admin')',
   "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the Compute Engine instance \n3. Navigate to the IAM service\n4. Find the binding between the service account used by the Compute Engine instance and the Admin role\n5. Remove the binding\n6. Create a new binding with predefined or custom role without risky permissions, if necessary\u0007. Repeat if there is a binding of the service account with another Admin role.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",

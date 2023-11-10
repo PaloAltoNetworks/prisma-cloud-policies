@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1075",
+  "policyId": "278e5db6-c6d2-4f73-9734-b1d22a3fd95e",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) on ports 80/443",
+  "description": "This policy identifies AWS EC2 instances that are internet reachable with unrestricted access (0.0.0.0/0) to HTTP/HTTPS ports (80 / 443). EC2 instances with unrestricted access to the internet for HTTP/HTTPS ports may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit access to known hosts, services, or specific entities.",
+  "rule.criteria": "186c4a23-2f93-4b6f-8844-ba9f0006c115",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'AWS' and protocol.ports in ( 'tcp/80' , 'tcp/443' )",
+  "recommendation": "The following steps are recommended to restrict EC2 instance from having unrestricted access from the Internet on HTTP/HTTPS ports:\n\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement the required changes and make sure no other resources have been impacted due to these changes:\n  a) The overly permissive VPC firewall rules can be made more restrictive.\n b) Move the instance inside a restrictive subnet if the instance does not need to be publicly accessible.\n c) Remove or disassociate the public IP assigned to the respective instance.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
