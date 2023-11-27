@@ -4,7 +4,7 @@
 
 ### Added
 
-#### 1 new compliance standard
+#### 2 new compliance standards
 
 - MITRE ATT&CK v13.0 Cloud IaaS for Enterprise
 - MITRE ATT&CK v14.0 Cloud IaaS for Enterprise
