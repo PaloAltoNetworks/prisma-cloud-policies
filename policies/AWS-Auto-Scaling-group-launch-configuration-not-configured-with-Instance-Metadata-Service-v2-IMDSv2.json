@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
+    "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise"
+  ]
 }

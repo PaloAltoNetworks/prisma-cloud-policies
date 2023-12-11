@@ -1,5 +1,36 @@
 # Changelog
 
+## PCS-23.12.1 - 2023-12-04
+
+### Added
+
+#### 2 new compliance standards
+
+- MITRE ATT&CK v13.0 Cloud IaaS for Enterprise
+- MITRE ATT&CK v14.0 Cloud IaaS for Enterprise
+
+### Changed
+
+#### 16 policies updated for the IAM Security module
+
+- AWS IAM policy allows Privilege escalation via PassRole & CodeBuild permissions
+- AWS IAM policy allows Privilege escalation via PassRole & CodeStar project permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Data Pipeline permissions
+- AWS IAM policy allows Privilege escalation via PassRole & EC2 permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue create job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue development endpoint permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Glue update job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create & invoke Function permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & add permissions
+- AWS IAM policy allows Privilege escalation via PassRole & Lambda create Function & Event source mapping permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create notebook permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create processing job permissions
+- AWS IAM policy allows Privilege escalation via PassRole & SageMaker create training job permissions
+- Azure VM instance associated managed identity with Azure built-in roles of Owner permissions
+- GCP Compute Engine entities with predefined Admin roles
+- GCP Compute Engine with IAM write access level
+
+
 ## PCS-23.11.1 - 2023-11-09
 
 ### Added
