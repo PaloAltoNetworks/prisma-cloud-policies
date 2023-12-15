@@ -8,7 +8,7 @@
   "description": "This policy identifies the buckets which are publicly accessible to all users. Enabling public access to Storage buckets enables anybody with a web association to access sensitive information that is critical to business. Access over a whole bucket is controlled by IAM. Access to individual objects within the bucket is controlled by its ACLs.",
   "rule.criteria": "41f7a4b1-cad6-4fbf-b698-1fd11a8869a8",
   "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = 'iam.bindings[*] size greater than 0 and iam.bindings[*].members[*] any equal allUsers'",
-  "recommendation": "1. Login to GCP Portal\n2. Go to Storage (Left Panel)\n3. Click Browse\n4. Choose the identified Storage bucket whose ACL needs to be modified\n5. Click on SHOW INFO PANEL button\n6. Check all the ACL groups and make sure that the none of them are set to 'allUsers'",
+  "recommendation": "1. Login to GCP Portal\n2. In the Navigation menu (Left Panel), Go to Cloud Storage\n3. Click Buckets\n4. Choose the identified Storage bucket whose Permissions or ACLs needs to be modified\n5. Click the Permissions tab\n6. Ensure Bucket access is set to 'Not Public' and the Principles restricted from bucket are 'allUsers'\n7. Review the object level ACLs as applicable",
   "remediable": true,
   "remediation.cliScriptTemplate": "gsutil iam ch -d allUsers gs://${resourceName}",
   "remediation.description": "This CLI command requires 'storage.buckets.getIamPolicy' and 'storage.buckets.setIamPolicy' permissions. Successful execution will revoke 'allUsers' permission access in GCP Storage buckets.",
