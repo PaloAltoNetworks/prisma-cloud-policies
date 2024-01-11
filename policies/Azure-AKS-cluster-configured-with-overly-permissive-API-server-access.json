@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-K8S-935",
+  "policyId": "40bb8745-0b6c-4db4-8793-7b1d5bc9afa7",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure AKS cluster configured with overly permissive API server access",
+  "description": "This policy identifies AKS clusters configured with overly permissive API server access. In Kubernetes, the API server receives requests to perform actions in the cluster such as to create resources or scale the number of nodes. To enhance cluster security and minimize attacks, the API server should only be accessible from a limited set of IP address ranges. These IP ranges allow defined IP address ranges to communicate with the API server. A request made to the API server from an IP address that is not part of these authorized IP ranges is blocked. It is recommended to configure AKS cluster with defined IP address ranges to communicate with the API server.",
+  "rule.criteria": "8d05a24e-e700-41b2-8d9d-56af90e1dcdf",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-kubernetes-cluster' AND json.rule = properties.powerState.code equal ignore case Running and properties.apiServerAccessProfile.enablePrivateCluster is false and (properties.apiServerAccessProfile.authorizedIPRanges does not exist or properties.apiServerAccessProfile.authorizedIPRanges is empty)",
+  "recommendation": "To configure AKS cluster with defined IP address ranges to communicate with the API server; refer below URL:\nhttps://docs.microsoft.com/en-us/azure/aks/api-server-authorized-ip-ranges#update-disable-and-find-authorized-ip-ranges-using-azure-portal",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

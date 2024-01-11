@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-RDS-1078",
+  "policyId": "e7b667cb-53e1-4046-b52c-505b4093ad3f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS RDS database instance encrypted with Customer Managed Key (CMK) is not enabled for regular rotation",
+  "description": "This policy identifies Amazon RDS instances that use Customer Managed Keys (CMKs) for encryption but are not enabled with key rotation. Amazon RDS instance encryption key rotation failure can result in prolonged exposure of sensitive data and potential compliance violations. As a security best practice, it is important to periodically rotate these keys. This ensures that if the keys are compromised, the data in the underlying service remains secure with the new keys.",
+  "rule.criteria": "de4ec1cf-39ee-41fd-8dc5-e2ed80f45c50",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-rds-describe-db-instances' and json.rule = storageEncrypted is true as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyState equals Enabled and keyMetadata.keyManager equals CUSTOMER and keyMetadata.origin equals AWS_KMS and (rotation_status.keyRotationEnabled is false or rotation_status.keyRotationEnabled equals \"null\") as Y; filter '($.X.kmsKeyId equals $.Y.key.keyArn)'; show X;",
+  "recommendation": "The following steps are recommended to enable the automatic rotation of the KMS key used by the RDS instance\n\n1. Log in to the AWS console.\n2. In the console, select the specific region from the region drop-down in the top right corner, for which the alert is generated.\n4. Navigate to the 'RDS' service.\n5. Select the RDS instance reported in the alert, and click on the 'Configuration' tab.\n6. Under the 'Storage' section, click on the KMS key link in 'AWS KMS key'.\n7. Under the 'Key rotation' tab on the navigated KMS key window, enable the 'Automatically rotate this CMK every year' check box.\n8. Click on Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

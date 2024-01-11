@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1080",
+  "policyId": "2c986eeb-e17e-4da4-b185-23ff56396286",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS S3 bucket encrypted with Customer Managed Key (CMK) is not enabled for regular rotation",
+  "description": "This policy identifies Amazon S3 buckets that use Customer Managed Keys (CMKs) for encryption but are not enabled with key rotation. Amazon S3 bucket encryption key rotation failure can result in prolonged exposure of sensitive data and potential compliance violations. As a security best practice, it is important to rotate these keys periodically. This ensures that if the keys are compromised, the data in the underlying service remains secure with the new keys.",
+  "rule.criteria": "75cfa4ba-f05c-4a03-a571-6ebf8a6b8b32",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name= 'aws-s3api-get-bucket-acl' AND json.rule = (sseAlgorithm contains \"aws:kms\" or sseAlgorithm contains \"aws:kms:dsse\") and kmsMasterKeyID exists as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyState equals Enabled and keyMetadata.keyManager equal ignore case CUSTOMER and keyMetadata.origin equals AWS_KMS and (rotation_status.keyRotationEnabled is false or rotation_status.keyRotationEnabled equals \"null\")as Y; filter '$.X.kmsMasterKeyID contains $.Y.key.keyArn'; show X;",
+  "recommendation": "Recommendation:\n\nThe following steps are recommended to enable the automatic rotation of the KMS key used by the S3 bucket\n\n1. Log in to the AWS Console and navigate to the 'S3' service.\n2. Click on the S3 bucket reported in the alert.\n3. Click on the 'Properties' tab.\n4. Under the 'Default encryption' section, click on the KMS key link in 'Encryption key ARN'.\n5. Under the 'Key rotation' tab on the navigated KMS key window, Enable 'Automatically rotate this CMK every year'.\n6. Click on Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
