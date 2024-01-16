@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-848",
+  "policyId": "76b345ae-d738-4485-8cfc-ed0c265ea016",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Machine learning workspace configured with overly permissive network access",
+  "description": "This policy identifies Machine learning workspaces configured with overly permissive network access. Overly permissive public network access allows access to resource through the internet using a public IP address. It is recommended to restrict IP ranges to allow access to your workspace and endpoint from specific public internet IP address ranges and is accessible only to restricted entities.",
+  "rule.criteria": "73f6928e-f03e-42a7-8bbf-348a0c029f63",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.publicNetworkAccess equal ignore case Enabled and (properties.ipAllowlist does not exist or properties.ipAllowlist is empty)",
+  "recommendation": "To restrict internet IP ranges on your existing Machine learning workspace, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link?view=azureml-api-2&tabs=azure-portal#enable-public-access-only-from-internet-ip-ranges-preview",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

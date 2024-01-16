@@ -1,5 +1,37 @@
 # Changelog
 
+## PCS-24.1.1 - 2024-1-16
+
+### Added
+
+#### 7 new policies
+
+- AWS RDS database instance encrypted with Customer Managed Key (CMK) is not enabled for regular rotation
+- AWS S3 bucket encrypted using Customer Managed Key (CMK) with overly permissive policy
+- AWS S3 bucket encrypted with Customer Managed Key (CMK) is not enabled for regular rotation
+- Azure AKS cluster configured with overly permissive API server access
+- Azure Machine learning workspace configured with overly permissive network access
+- Azure Storage account encryption key configured by access policy with privileged operations
+- Azure Storage account encryption key is not rotated regularly
+
+### Changed
+
+#### 4 policies updated
+
+- AWS Elasticsearch domain publicly accessible
+- Azure Key Vault Firewall is not enabled 
+- Azure Storage account is not configured with private endpoint connection
+- GCP VM instance using a default service account with Cloud Platform access scope
+
+### Removed
+
+#### 3 policies deleted
+
+- Azure storage account logging (Classic Diagnostic Setting) for blobs is disabled
+- Azure storage account logging (Classic Diagnostic Setting) for queues is disabled
+- Azure storage account logging (Classic Diagnostic Setting) for tables is disabled
+
+
 ## PCS-23.12.1 - 2023-12-04
 
 ### Added
