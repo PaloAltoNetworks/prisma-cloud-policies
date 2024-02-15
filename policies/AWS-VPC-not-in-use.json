@@ -22,6 +22,7 @@
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2",
     "ISO/IEC 27002:2013",
@@ -34,6 +35,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "RBI Baseline Cyber Security and Resilience Requirements",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
 }

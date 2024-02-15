@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v2.0.0 (Azure) Level 2",
     "MLPS 2.0 (Level 2)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

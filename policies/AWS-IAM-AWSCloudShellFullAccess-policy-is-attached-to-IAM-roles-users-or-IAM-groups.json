@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1091",
+  "policyId": "40d4053e-e053-41fb-b7e9-39eef4456a55",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS IAM AWSCloudShellFullAccess policy is attached to IAM roles, users, or IAM groups",
+  "description": "This policy identifies the AWSCloudShellFullAccess policy attached to IAM roles, users, or IAM groups. AWS CloudShell is a convenient way of running CLI commands against AWS services. The 'AWSCloudShellFullAccess' IAM policy, providing unrestricted CloudShell access, poses a risk of data exfiltration, allowing malicious admins to exploit file upload/download capabilities for unauthorized data transfer. As a security best practice, it is recommended to grant least privilege access like granting only the permissions required to perform a task, instead of providing excessive permissions.",
+  "rule.criteria": "4f1769ad-6497-449e-82cc-479db4e27ef5",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-get-policy-version' AND json.rule = isAttached is true and policyName contains AWSCloudShellFullAccess and (entities.policyRoles[*].roleName exists or entities.policyUsers[*].userName exists or entities.policyGroups[*].groupName exists)",
+  "recommendation": "1. Login to the IAM console at https://console.aws.amazon.com/iam/\n2. In the left pane, select Policies\n3. Search for and select AWSCloudShellFullAccess\n4. On the Entities attached tab, for each item, check the box and select Detach",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

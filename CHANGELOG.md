@@ -1,5 +1,36 @@
 # Changelog
 
+## PCS-24.1.2 - 2024-1-31
+
+### Added
+
+#### 3 new policies
+
+- Azure Cognitive Services account configured with public network access
+- Azure Cognitive Services account is not configured with managed identity
+- Azure Cognitive Services account not configured with private endpoint
+
+#### 2 new compliance standards
+
+- Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)
+- RBI Baseline Cyber Security and Resilience Requirements
+
+### Changed
+
+#### 1 policy updated
+
+- Azure Function App authentication is off
+
+#### 1 policy updated for the IAM Security module
+
+- AWS cross-account resource access through IAM policies
+
+#### 2 compliance standards updated
+
+- CIS v2.0.0 (Azure) Level 1
+- CIS v2.0.0 (Azure) Level 2
+
+
 ## PCS-24.1.1 - 2024-1-16
 
 ### Added

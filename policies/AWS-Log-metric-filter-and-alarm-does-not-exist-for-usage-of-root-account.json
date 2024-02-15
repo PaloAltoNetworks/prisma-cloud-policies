@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CWT-1089",
+  "policyId": "8987cf67-15a1-463b-a3f2-01ac79c4369b",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Log metric filter and alarm does not exist for usage of root account",
+  "description": "This policy identifies the AWS regions that do not have a log metric filter and alarm for usage of a root account. Monitoring for root account logins will provide visibility into the use of a fully privileged account and an opportunity to reduce its use it. Failure to monitor root account logins may result in a lack of visibility into unauthorized use or attempts to access the root account, posing potential security risks to your AWS environment. It is recommended that a metric filter and alarm be established for detecting changes to CloudTrail's configurations.\n\nNOTE: This policy will trigger alert if you have at least one Cloudtrail with the multi trial is enabled, Logs all management events in your account and is not set with specific log metric filter and alarm.",
+  "rule.criteria": "a6793171-a71f-48b4-9f62-09d7c7fe4a2e",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-logs-describe-metric-filters' as X; config from cloud.resource where api.name = 'aws-cloudwatch-describe-alarms' as Y; config from cloud.resource where api.name = 'aws-cloudtrail-describe-trails' as Z; filter '(($.Z.cloudWatchLogsLogGroupArn is not empty and $.Z.cloudWatchLogsLogGroupArn contains $.X.logGroupName and $.Z.isMultiRegionTrail is true and $.Z.includeGlobalServiceEvents is true) and ($.X.filterPattern does not contain \"userIdentity.type!=\" or $.X.filterPattern does not contain \"userIdentity.type !=\") and ($.X.filterPattern contains \"userIdentity.type =\" or $.X.filterPattern contains \"userIdentity.type=\") and ($.X.filterPattern contains \"userIdentity.invokedBy NOT EXISTS\") and ($.X.filterPattern contains \"eventType!=\" or $.X.filterPattern contains \"eventType !=\") and ($.X.filterPattern contains root or $.X.filterPattern contains Root) and ($.X.filterPattern contains AwsServiceEvent) and ($.X.metricTransformations[*] contains $.Y.metricName))'; show X; count(X) less than 1",
+  "recommendation": "1. Sign in to the AWS Console.\n2. Navigate to the CloudWatch dashboard.\n3. Click on 'Log groups' in the 'Logs' section (Left panel)\n4. Select the log group created for your CloudTrail trail event logs (Cloudtrail should be multi-trail enabled with all Management Events captured) and click the Actions Dropdown Button -> Click 'Create Metric Filter' button.\n5. In the 'Define Pattern' page, add the 'Filter pattern' value as\n{ $.userIdentity.type = \"Root\" && $.userIdentity.invokedBy NOT EXISTS && $.eventType != \"AwsServiceEvent\" }\nand Click on 'NEXT'.\n6. In the 'Assign Metric' page, Choose Filter Name, and Metric Details parameter according to your requirement and click on 'Next'.\n7. Under the ‘Review and Create' page, Review details and click 'Create Metric Filter’.\n8. To create an alarm based on a log group-metric filter, Refer to the below link \n    https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_alarm_log_group_metric_filter.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

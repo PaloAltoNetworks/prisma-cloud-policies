@@ -19,6 +19,7 @@
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
+    "CIS v2.0.0 (Azure) Level 1",
     "CSA CCM v.4.0.6",
     "FFIEC",
     "ISO 27002:2022",
@@ -29,6 +30,7 @@
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
     "PCI DSS v4.0",
+    "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
