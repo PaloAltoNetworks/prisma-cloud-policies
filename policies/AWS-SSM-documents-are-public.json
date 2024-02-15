@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016"
   ]
 }

@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)"
+  ]
 }
