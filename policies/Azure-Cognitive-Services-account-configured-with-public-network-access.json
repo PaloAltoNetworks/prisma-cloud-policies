@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACS-1084",
+  "policyId": "65cc30f0-f49c-4d12-a025-8390dc634b08",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Cognitive Services account configured with public network access",
+  "description": "This policy identifies Azure Cognitive Services accounts configured with public network access. Overly permissive public network access allows access to resource through the internet using a public IP address. It is recommended to restrict IP ranges to allow access to your cognitive Services account and endpoint from specific public internet IP address ranges and is accessible only to restricted entities.",
+  "rule.criteria": "30f9ba6b-a3bf-49e9-bada-25d695309b31",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cognitive-services-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.publicNetworkAccess equal ignore case Enabled and (properties.networkAcls.defaultAction does not exist or properties.networkAcls.defaultAction equal ignore case Allow)",
+  "recommendation": "To restirct internet IP ranges on your existing Cognitive Services account, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/ai-services/cognitive-services-virtual-networks?tabs=portal",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

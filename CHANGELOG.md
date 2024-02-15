@@ -1,5 +1,17 @@
 # Changelog
 
+
+## PCS-24.1.2 - 2024-2-20
+
+### Added
+
+#### 3 new policies
+
+- AWS IAM AWSCloudShellFullAccess policy is attached to IAM roles, users, or IAM groups
+- AWS Log metric filter and alarm does not exist for AWS Organization changes
+- AWS Log metric filter and alarm does not exist for usage of root account
+
+
 ## PCS-24.1.2 - 2024-1-31
 
 ### Added

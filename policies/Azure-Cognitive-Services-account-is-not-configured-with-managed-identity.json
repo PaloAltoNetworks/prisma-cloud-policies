@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACS-1087",
+  "policyId": "f5e91b59-9b0f-4c6d-85d8-be5eeadbbdb3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Cognitive Services account is not configured with managed identity",
+  "description": "This policy identifies Azure Cognitive Services accounts that are not configured with managed identity. Managed identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Storing credentials in a code increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials. So as a security best practice, it is recommended to have the managed identity to your Cognitive Services account.",
+  "rule.criteria": "31a53a05-29dd-4681-9d5e-94009e8ce9c6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cognitive-services-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and (identity.type does not exist or identity.type equal ignore case None)",
+  "recommendation": "1. Login to Azure portal\n2. Navigate to 'Azure AI services'\n3. Click on the reported Azure AI service\n4. Select 'Identity' under 'Resource Management' from left panel\n5. Configure either System assigned or User assigned identity\n6. Click on Save",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
