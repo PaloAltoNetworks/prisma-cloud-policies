@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACS-1088",
+  "policyId": "b8c18154-a98f-429a-819f-c12dc41f084e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Cognitive Services account not configured with private endpoint",
+  "description": "This policy identifies Azure Cognitive Services accounts that are not configured with private endpoint. Private endpoints in Azure AI service resources allow clients on a virtual network to securely access data over Azure Private Link. Configuring a private endpoint enables access to traffic coming from only known networks and prevents access from malicious or unknown IP addresses which includes IP addresses within Azure. It is recommended to create private endpoint for secure communication for your Cognitive Services account.",
+  "rule.criteria": "f380a8b0-f784-4273-839a-7fa9b36b02d8",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cognitive-services-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.privateEndpointConnections[*] is empty",
+  "recommendation": "1. Login to Azure portal\n2. Navigate to 'Azure AI services'\n3. Click on the reported Azure AI service\n4. Configure Private endpoint connections under 'Networking' from left panel",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
