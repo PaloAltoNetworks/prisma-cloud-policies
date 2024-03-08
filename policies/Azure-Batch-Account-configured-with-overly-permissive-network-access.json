@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ABT-931",
+  "policyId": "ea27ffec-c8ba-4dbb-95e4-159b5350c94f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Batch Account configured with overly permissive network access",
+  "description": "This policy identifies Batch Accounts configured with overly permissive network access. By default, Batch accounts are accessible from all the networks. With an Account access IP firewall, you can restrict it further to only a set of IPv4 addresses or IPv4 address ranges. With Private access Virtual Networks, the network traffic path is secured on both ends. It is recommended to configure the Batch account with an IP firewall or by Virtual Network, so that the Batch account is accessible only to restricted entities.",
+  "rule.criteria": "5e1ba43e-121a-4e71-b5e6-d8f8091fe7cd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-batch-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.networkProfile.accountAccess.defaultAction equal ignore case Allow and properties.publicNetworkAccess equal ignore case Enabled",
+  "recommendation": "To configure private access private endpoint, follow below URL:\nhttps://docs.microsoft.com/en-gb/azure/batch/private-connectivity#azure-portal\n\nTo disable public network, follow below URL:\nhttps://docs.microsoft.com/en-gb/azure/batch/public-network-access#disable-public-network-access\n\nIf Batch account is intended access from public network, restrict it to specific IP ranges. To allow public network access with specific network rules, follow below URL:\nhttps://docs.microsoft.com/en-gb/azure/batch/public-network-access#access-from-selected-public-networks",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

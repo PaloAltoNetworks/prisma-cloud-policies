@@ -16,6 +16,7 @@
   "compliance.standard": [
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
+    "Risk Management in Technology (RMiT)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]
