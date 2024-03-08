@@ -1,5 +1,35 @@
 # Changelog
 
+## PCS-24.2.2 - 2024-2-29
+
+### Added
+
+#### 9 new policies
+
+- AWS account security contact information is not set
+- AWS Systems Manager EC2 instance having NON_COMPLIANT patch compliance status
+- Azure Batch Account configured with overly permissive network access
+- Azure Cognitive Services account configured with local authentication
+- Azure Machine learning workspace is not configured with private endpoint
+- Azure Microsoft Defender for Cloud set to Off for Cosmos DB
+- Azure Microsoft Defender for Cloud set to Off for Databases
+- Azure Microsoft Defender for Cloud set to Off for Open-Source Relational Databases
+- Azure Storage Account storing Machine Learning workspace high business impact data is publicly accessible
+
+#### 1 new compliance standards
+
+- Risk Management in Technology (RMiT)
+
+### Changed
+
+#### 1 policy updated
+
+- GCP Cloud Armor policy not configured with cve-canary rule
+
+#### 2 compliance standards updated
+
+- CIS v2.0.0 (Azure) Level 2
+- CIS v1.5.0 (Azure) Level 2
 
 ## PCS-24.2.1 - 2024-2-20
 

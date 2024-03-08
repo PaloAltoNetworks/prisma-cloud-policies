@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AZR-SC-1106",
+  "policyId": "0252781c-a551-4304-ad80-b60fadb3e51e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Microsoft Defender for Cloud set to Off for Open-Source Relational Databases",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for Open-Source Relational Databases set to Off. Enabling Azure Defender for cloud provides advanced security capabilities like threat intelligence, anomaly detection, and behaviour analytics. Microsoft Defender for Cloud detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases. It is highly recommended to enable Azure Defender for Open-Source Relational Databases.",
+  "rule.criteria": "9305a6ac-a5d9-4170-8b03-0b0de82dc4b9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any(name equals OpenSourceRelationalDatabases and properties.pricingTier does not equal Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Click 'Select types >' in the row for 'Databases'\n7. Set the radio button next to 'Open-source relational databases' to 'On'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.5.0 (Azure) - Level 2",
+    "CIS v2.0.0 (Azure) Level 2"
+  ]
+}

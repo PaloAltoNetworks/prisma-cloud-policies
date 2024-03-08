@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACS-1096",
+  "policyId": "ff44b578-28d0-4d0f-a747-f4efe4e25e59",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Cognitive Services account configured with local authentication",
+  "description": "This policy identifies Azure Cognitive Services accounts that are configured with local authentication methods instead of AD identities. Local authentication allows users to access the service using a local account and password, rather than an Azure Active Directory (Azure AD) account. Disabling local authentication methods improves security by ensuring that Cognitive Services accounts require Active Directory identities exclusively for authentication. It is recommended to disable local authentication methods on your Cognitive Services account, instead use Azure Active Directory identities.",
+  "rule.criteria": "9f9c1a6b-7138-48ae-a910-00a839b614ef",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-cognitive-services-account' AND json.rule = properties.provisioningState equal ignore case Succeeded and (properties.disableLocalAuth does not exist or properties.disableLocalAuth is false)",
+  "recommendation": "To disable local authentication in Azure AI Services, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/ai-services/disable-local-auth",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1097",
+  "policyId": "a8e6f787-f937-42eb-9f71-ffc4cb17ba8a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine learning workspace is not configured with private endpoint",
+  "description": "This policy identifies Azure Machine learning workspaces that are not configured with private endpoint. Private endpoints in workspace resources allow clients on a virtual network to securely access data over Azure Private Link. Configuring a private endpoint enables access to traffic coming from only known networks and prevents access from malicious or unknown IP addresses which includes IP addresses within Azure. It is recommended to create private endpoint for secure communication for your Machine learning workspaces.",
+  "rule.criteria": "fb6849b4-d54a-4c95-a227-06a5ca1971e7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and (properties.privateEndpointConnections[*] does not exist or properties.privateEndpointConnections[*] is empty or (properties.privateEndpointConnections[*] exists and properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status does not equal ignore case Approved))",
+  "recommendation": "1. Login to Azure portal\n2. Navigate to 'Azure Machine Learning' dashboard\n3. Click on the reported Azure Machine learning workspace\n4. Configure Private endpoint connections under 'Networking' from left panel.\n\nFor information refer:\nhttps://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

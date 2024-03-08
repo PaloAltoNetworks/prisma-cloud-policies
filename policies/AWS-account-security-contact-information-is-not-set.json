@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-AAM-1090",
+  "policyId": "0e61ccc7-ed2d-4a49-8424-18e91da1d44a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS account security contact information is not set",
+  "description": "This policy identifies the AWS account which has not set security contact information. Providing dedicated contact information for security specific, AWS can directly communicate security advisories to the team responsible for handling security-related issues. Failure to specify security contact info in AWS risks missing critical advisories, leading to delayed incident response and increased vulnerability exposure. It is recommended to set security contact information to receive notifications.",
+  "rule.criteria": "d2977c08-ca5c-4347-83cb-cf05d5c9e147",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-account-management-alternate-contact' group by account as X; filter ' AlternateContactType is not member of (\"SECURITY\") ' ;",
+  "recommendation": "Refer to the following link to add or edit the alternate contacts for any AWS account in your organization\n\nhttps://docs.aws.amazon.com/accounts/latest/reference/manage-acct-update-contact-alternate.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

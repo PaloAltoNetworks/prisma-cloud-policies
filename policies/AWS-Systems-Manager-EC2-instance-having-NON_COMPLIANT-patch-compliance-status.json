@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SSM-1102",
+  "policyId": "f2c87a87-bf6d-4c09-8b33-bd0b16f7ad29",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Systems Manager EC2 instance having NON_COMPLIANT patch compliance status",
+  "description": "This policy identifies if the AWS Systems Manager patch compliance status is \"NON_COMPLIANT\" with critical or high severity for managed instances. Instances labeled non-compliant might lack essential patches for security, stability, or meeting standards. Non-compliant instances pose security risks because attackers often target unpatched systems to exploit known weaknesses. As a security best practice, it's recommended to apply any missing patches to the affected instances.",
+  "rule.criteria": "067ae0bd-2316-4204-981c-968f9ad25303",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ssm-resource-compliance-summary' AND json.rule = Status equals \"NON_COMPLIANT\" and ComplianceType contains \"Patch\" and ResourceType contains \"ManagedInstance\" and (NonCompliantSummary.SeveritySummary.CriticalCount greater than 0 or NonCompliantSummary.SeveritySummary.HighCount greater than 0)",
+  "recommendation": "To remediate the non-compliant managed instances please refer to the below URL:\n\nhttps://docs.aws.amazon.com/systems-manager/latest/userguide/patch-manager-compliance-remediation.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

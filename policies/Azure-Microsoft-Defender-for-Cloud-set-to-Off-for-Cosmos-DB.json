@@ -1,0 +1,20 @@
+{
+  "policyUpi": "PC-AZR-SC-1107",
+  "policyId": "538b09ff-4206-45da-9ccd-53a2233257cd",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Microsoft Defender for Cloud set to Off for Cosmos DB",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud which has defender setting for Cosmos DB set to Off. Enabling Azure Defender for the cloud provides advanced security capabilities like threat intelligence, anomaly detection, and behaviour analytics. Microsoft Defender for Azure Cosmos DB detects potential SQL injections, known bad actors based on Microsoft Threat Intelligence, suspicious access patterns, and potential exploitation of your database through compromised identities, or malicious insiders. It is highly recommended to enable Azure Defender for Cosmos DB.",
+  "rule.criteria": "e7fc323e-a760-40b9-bdf9-6665962a32c3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = pricings[?any(name equals CosmosDbs and properties.pricingTier does not equal Standard)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Go to 'Microsoft Defender for Cloud'\n3. Select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Click 'Select types >' in the row for 'Databases'\n7. Set the radio button next to 'Azure Cosmos DB' to 'On'\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "CIS v1.5.0 (Azure) - Level 2",
+    "CIS v2.0.0 (Azure) Level 2"
+  ]
+}
