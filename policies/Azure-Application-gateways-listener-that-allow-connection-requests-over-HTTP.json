@@ -31,6 +31,7 @@
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
     "MLPS 2.0 (Level 2)",
+    "NIST 800-53 Rev 5",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
@@ -39,6 +40,7 @@
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

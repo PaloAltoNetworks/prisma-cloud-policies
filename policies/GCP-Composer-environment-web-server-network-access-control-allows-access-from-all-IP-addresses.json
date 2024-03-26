@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCC-1120",
+  "policyId": "b5109da2-3bd0-44ee-b0bd-27845bdfbb10",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Composer environment web server network access control allows access from all IP addresses",
+  "description": "This policy identifies GCP Composer environments with web server network access control that allows access from all IP addresses.\n\nWeb server network access control defines which IP addresses will have access to the Airflow web server. By default, web server network access control is set to allow all connections from the public internet. Allowing all traffic to the composer environment may allow a bad actor to brute force their way into the system and potentially get access to the entire network.\n\nAs a best practice, restrict traffic solely from known IP addresses and limit access to known hosts, services, or specific entities only.",
+  "rule.criteria": "abc9d635-6d3c-47ee-8c7f-8517c5f51212",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-composer-environment' AND json.rule = state equals \"RUNNING\" and config.webServerNetworkAccessControl.allowedIpRanges[?any( value equals \"0.0.0.0/0\" or value equals \"::0/0\" )] exists ",
+  "recommendation": "To configure web server network access of an existing Cloud Composer 1 and Cloud Composer 2 environments, follow the steps given below:\n1. Login to the GCP console\n2. Navigate to the 'Composer' service (Left Panel)\n3. Click on the alerting composer environment\n4. Click on the 'ENVIRONMENT CONFIGURATION' tab\n5. Under 'Network configuration', click on the 'EDIT' button for the 'Web server access control' setting\n6. Select 'Allow access only from specific IP addresses'\n7. Add the desired IPs and IP ranges to be allowed.\n8. Click the 'Save' button.\n\nTo configure web server network access of a new Cloud Composer 1 environment, please refer to the URLs given below:\nhttps://cloud.google.com/composer/docs/how-to/managing/creating#web-server-access\n\nTo configure web server network access of a new Cloud Composer 2 environment, please refer to the URLs given below:\nhttps://cloud.google.com/composer/docs/composer-2/create-environments#web-server-access\n\nNote: Cloud Composer 1 is nearing the end of support. The creation of new Cloud Composer 1 environments might be restricted. Further, updates to the existing Cloud Composer 1 environment may be restricted. In such cases, it is recommended to migrate to Cloud Composer 2. To migrate to Cloud Composer 2, please refer to the URLs given below and configure web server network access to limit the access for the new environment:\nhttps://cloud.google.com/composer/docs/migrate-composer-2-snapshots-af-2",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

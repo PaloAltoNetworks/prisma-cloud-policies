@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SQL-1109",
+  "policyId": "5926ab5e-f7ae-4e25-8ade-6949c54549b8",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP SQL Instance with public IP address does not have authorized network configured",
+  "description": "This policy identifies GCP Cloud SQL instances with public IP addresses that do not have an authorized network configured.\n\nSQL instance can be connected securely by making use of the Cloud SQL Proxy or by adding the client's public addresses as an authorized network to the SQL instance. If the client application is connecting directly to a Cloud SQL instance on its public IP address, the client's external IP address needs to be added as an Authorized network to allow the secure connection.\n\nIt is recommended to add authorized networks for your SQL instance to minimize the access vector.",
+  "rule.criteria": "425a8c04-e9c6-476f-ae1c-1c9c22a60d8a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = state equals \"RUNNABLE\" and ipAddresses[?any( type equal ignore case \"PRIMARY\" )] exists and settings.ipConfiguration.authorizedNetworks is empty",
+  "recommendation": "If public IP is not needed for the SQL instance, it is recommeded to remove the Public IP from the instance. Any changes to the public IP should be made according to the organization needs and policies.\n\nTo remove the public IP for from a SQL instance, please refer to the URLs given below:\nFor MySQL: https://cloud.google.com/sql/docs/mysql/configure-ip#disable-public\nFor PostgreSQL: https://cloud.google.com/sql/docs/postgres/configure-ip#disable-public\nFor SQL Server: https://cloud.google.com/sql/docs/sqlserver/configure-ip#disable-public\n\nIf it is deemed that instance needs public IP, it is recommended to add restrictive Authorized Networks to limit allowed public connections to the instance.\n\nTo configure authorized networks for a SQL instance, please refer to the URLs given below:\nFor MySQL: https://cloud.google.com/sql/docs/mysql/authorize-networks\nFor PostgreSQL: https://cloud.google.com/sql/docs/postgres/authorize-networks\nFor SQL Server: https://cloud.google.com/sql/docs/sqlserver/authorize-networks",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

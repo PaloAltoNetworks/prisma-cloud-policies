@@ -28,6 +28,7 @@
     "FFIEC",
     "Fedramp (Moderate)",
     "GDPR",
+    "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
     "HITRUST CSF v9.3",
     "ISO 27002:2022",
@@ -58,6 +59,7 @@
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SQL-1099",
+  "policyId": "a94e6dd4-2bc9-4579-89a6-a450dbf989d3",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP PostgreSQL instance database flag cloudsql.enable_pgaudit is not set to on",
+  "description": "This policy identifies PostgreSQL database instances in which database flag cloudsql.enable_pgaudit is not set to on. Enabling the flag cloudsql.enable_pgaudit enables the logging by pgAudit extenstion for the database (if installed). The pgAudit extenstion for PostgreSQL databases provides detailed session and object logging to comply with government, financial, & ISO standards and provides auditing capabilities to mitigate threats by monitoring security events on the instance. Any changes to the database logging configuration should be made in accordance with the organization's logging policy.",
+  "rule.criteria": "cea1610a-c70f-4e0c-ae38-9ec36b82f12f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"databaseVersion contains POSTGRES and (settings.databaseFlags[?(@.name=='cloudsql.enable_pgaudit')] does not exist or settings.databaseFlags[?(@.name=='cloudsql.enable_pgaudit')].value does not equal on)\"",
+  "recommendation": "It is recommended to set the 'cloudsql.enable_pgaudit' flag to 'on' for PostgreSQL database.\n\nTo update the flag of GCP PostgreSQL instance, please refer to the URL given below and set cloudsql.enable_pgaudit flag to on:\nhttps://cloud.google.com/sql/docs/postgres/flags#set_a_database_flag",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1126",
+  "policyId": "7ae69a11-ae24-4883-aba9-b230ba90a5c8",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Cognito service role does not have identity pool verification",
+  "description": "This policy identifies the AWS Cognito service role that does not have identity pool verification.\n\nAWS Cognito is an identity and access management service for web and mobile apps. AWS Cognito service roles define permissions for AWS services accessing resources. The 'aud' claim in a cognito service role is an identity pool token that specifies the intended audience for the token. If the aud claim is not enforced in the cognito service role trust policy, it could potentially allow tokens issued for one audience to be used to access resources intended for a different audience. This oversight increases the risk of unauthorized access, compromising access controls and elevating the potential for data breaches within the AWS environment.\n\nIt is recommended to implement proper validation of the 'aud' claim by adding the 'aud' in the Cognito service role trust policy.",
+  "rule.criteria": "5deb0cae-2b39-4797-ba96-ccb3a3e1b362",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-roles' AND json.rule = role.assumeRolePolicyDocument.Statement[*].Action contains \"sts:AssumeRoleWithWebIdentity\" and role.assumeRolePolicyDocument.Statement[*].Principal.Federated contains \"cognito-identity.amazonaws.com\" and role.assumeRolePolicyDocument.Statement[*].Effect contains \"Allow\" and role.assumeRolePolicyDocument.Statement[*].Condition.StringEquals does not contain \"cognito-identity.amazonaws.com:aud\"",
+  "recommendation": "To mitigate the absence of 'aud' claim validation in service roles associated with Cognito identity pools, follow these steps:\n\n1. Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/.\n2. In the navigation pane of the IAM console, choose 'Roles'.\n3. In the list of roles in account, choose the name of the role that is reported.\n4. Choose the 'Trust relationships' tab, and then choose 'Edit trust policy'.\n5. Edit the trust policy, add a condition to verify that the 'aud' claim matches the expected identity pool.\n6. Click 'Update Policy'.\n\nRefer to the below link to add the required aud validation in service roles\nhttps://docs.aws.amazon.com/cognito/latest/developerguide/role-based-access-control.html#creating-roles-for-role-mapping",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

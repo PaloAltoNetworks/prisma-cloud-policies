@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SNS-1127",
+  "policyId": "490ef980-da4e-40f7-b75f-d43a8e0220c3",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS SNS Topic not encrypted by Customer Managed Key (CMK)",
+  "description": "This policy identifies AWS SNS Topics that are not encrypted by Customer Managed Key (CMK).\n\nAWS SNS Topics are used to send notifications to subscribers and might contain sensitive information. SNS Topics are encrypted by default by a AWS managed key but users can specify CMK to get enhanced security, control over the encryption key and also comply with any regulatory requirements.\n\nAs a security best practice use of CMK to encrypt your SNS Topics is advisable as it gives you full control over the encrypted data.",
+  "rule.criteria": "d2cf5633-848e-499a-92b6-a10e3be376e6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-sns-get-topic-attributes' AND json.rule = KmsMasterKeyId exists and KmsMasterKeyId equal ignore case \"alias/aws/sns\"",
+  "recommendation": "1. Log in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to the Amazon SNS Dashboard\n4. Click on 'Topics'\n5. Click on the reported Topic\n6. Click on 'Edit' button from the console top menu to access the topic configuration settings.\n7. Select the 'Encryption – optional', Ensure that Enable encryption option is selected.\n8. Select the 'AWS KMS key' from the box other than default '(Default) alias/aws/sns' key based on your business requirement.\n9. Choose 'Save changes' to apply the configuration changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -31,6 +31,7 @@
     "Fedramp (Moderate)",
     "GDPR",
     "HIPAA",
+    "HITRUST CSF v.11.2.0",
     "HITRUST CSF v9.3",
     "ISO 27001:2013",
     "MITRE ATT&CK v6.3",
@@ -47,6 +48,7 @@
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-DPC-1100",
+  "policyId": "398aa1d3-0edd-4cf3-b2c3-b861a27be225",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Dataproc Cluster not configured with Customer-Managed Encryption Key (CMEK)",
+  "description": "This policy identifies Dataproc Clusters that are not configured with CMEK. Dataproc cluster and job data are stored on persistent disks associated with the Compute Engine VMs in the cluster as well as in a Cloud Storage staging bucket. As a security best practice use of CMEK to encrypt this data on persistent disk and bucket is advisable and provides more control to the user.",
+  "rule.criteria": "1c6b2db1-66d3-44ee-8b4e-629e46b6bb88",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-dataproc-clusters-list' AND json.rule = config.encryptionConfig.gcePdKmsKeyName does not exist and config.encryptionConfig.kmsKey does not exist",
+  "recommendation": "Currently, it is not possible to update the encryption key for a GCP Dataproc Cluster. It is recommended to create a new cluster with appropriate CMEK and migrate all workloads from the old cluster to the new cluster.\n\nTo configure encryption key for GCP Dataproc Cluster while creation, please refer to the URL given below:\nhttps://cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

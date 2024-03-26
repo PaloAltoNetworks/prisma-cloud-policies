@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-MQ-1115",
+  "policyId": "9f2f330d-b9bd-4154-b768-a03489587584",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS MQ Broker is not encrypted by Customer Managed Key (CMK)",
+  "description": "This policy identifies AWS MQ Brokers that are not encrypted by Customer Managed Key (CMK).\n\nAWS MQ Broker messages might contain sensitive information. AWS MQ Broker messages are encrypted by default by an AWS managed key but users can specify CMK to get enhanced security, control over the encryption key, and also comply with any regulatory requirements.\n\nAs a security best practice use of CMK to encrypt your MQ Broker is advisable as it gives you full control over the encrypted data.",
+  "rule.criteria": "052988c4-ae35-4725-997b-02a888356274",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-mq-broker' AND json.rule = brokerState equal ignore case RUNNING as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyState equal ignore case Enabled and keyMetadata.keyManager does not equal ignore case CUSTOMER as Y; filter '$.X.encryptionOptions.kmsKeyId equals $.Y.keyMetadata.arn or $.X.encryptionOptions.useAwsOwnedKey is true'; show X;",
+  "recommendation": "AWS MQ Broker encryption option can be done only at the creation of MQ broker. You cannot change the encryption options once it has been created. To resolve this alert create a new MQ broker configuring encryption with CMK key, migrate all data to newly created MQ broker and then delete the reported MQ broker.\n\nTo create a new AWS MQ broker encryption with CMK key,\n1. Log in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to the AWS MQ broker Dashboard\n4. Click on 'Create brokers'\n5. Select the broker engine type, deployment mode as per your business requirement\n6. Under 'Configure settings', In Additional settings section choose Encryption option choose 'Customer managed CMKs are created and managed by you in AWS Key Management Service (KMS).' based on your business requirement.\n7. Review and Create the MQ broker.\n\nTo delete reported MQ broker, refer following URL:\nFor ActiveMQ Broker: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/getting-started-activemq.html#delete-broker\nFor RabbitMQ Broker: https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/getting-started-rabbitmq.html#rabbitmq-delete-broker",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

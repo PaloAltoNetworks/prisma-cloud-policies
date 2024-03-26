@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-24.3.2 - 2024-3-28
+
+### Added
+
+#### 22 new policies
+
+- AWS CloudTrail S3 bucket encrypted with Customer Managed Key (CMK) that is scheduled for deletion
+- AWS Cognito service role does not have identity pool verification
+- AWS Cognito service role with wide privileges does not validate authentication
+- AWS Default VPC is being used
+- AWS EKS cluster does not have secrets encryption enabled
+- AWS Elastic Load Balancer v2 (ELBv2) with cross-zone load balancing disabled
+- AWS MQ Broker is not encrypted by Customer Managed Key (CMK)
+- AWS MSK cluster encryption in transit is not enabled
+- AWS RDS database instance not configured with encryption in transit
+- AWS RDS Postgres Cluster does not have query logging enabled
+- AWS Redshift cluster instance with public access setting enabled
+- AWS Redshift cluster with commonly used master username and public access setting enabled
+- AWS SNS Topic not encrypted by Customer Managed Key (CMK)
+- GCP Cloud Run service is using default service account with editor role
+- GCP Composer environment web server network access control allows access from all IP addresses
+- GCP Dataproc Cluster not configured with Customer-Managed Encryption Key (CMEK)
+- GCP GKE cluster node boot disk not encrypted with CMEK
+- GCP PostgreSQL instance database flag cloudsql.enable_pgaudit is not set to on
+- GCP PostgreSQL instance database flag log_min_error_statement is not set
+- GCP SQL Instance with public IP address does not have authorized network configured
+- GCP Vertex AI Workbench user-managed notebook is using default service account with the editor role
+- GCP VM instance serial port output logging is enabled
+
+#### 3 new compliance standards
+
+- HITRUST CSF v.11.2.0
+- NIST 800-53 Rev 5
+- Telecommunications Security Act - TSA
+
+### Changed
+
+#### 3 policies updated
+
+- AWS SQS queue access policy is overly permissive
+- Azure Microsoft Defender for Cloud set to Off for DNS
+- GCP Storage buckets are publicly accessible to all users
+
+
 ## PCS-24.2.2 - 2024-3-05
 
 ### Added
@@ -16,7 +60,7 @@
 - Azure Microsoft Defender for Cloud set to Off for Open-Source Relational Databases
 - Azure Storage Account storing Machine Learning workspace high business impact data is publicly accessible
 
-#### 1 new compliance standards
+#### 1 new compliance standard
 
 - Risk Management in Technology (RMiT)
 

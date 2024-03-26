@@ -23,6 +23,7 @@
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "FFIEC",
+    "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2",
     "ISO 27002:2022",
@@ -32,6 +33,7 @@
     "ISO/IEC 27018:2019",
     "MAS TRM 2021",
     "MLPS 2.0 (Level 2)",
+    "NIST 800-53 Rev 5",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
@@ -40,6 +42,7 @@
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

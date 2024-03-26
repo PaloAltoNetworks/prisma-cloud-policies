@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "NIST 800-53 Rev 5",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016"
   ]
 }

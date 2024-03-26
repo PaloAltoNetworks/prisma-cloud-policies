@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-1121",
+  "policyId": "bd7b49dc-3dbe-4ba6-bc46-3b8160a020c5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Default VPC is being used",
+  "description": "This policy identifies AWS Default VPCs that are being used.\n\nAWS creates a default VPC automatically upon the creation of your AWS account with a default security group and network access control list (NACL). Using AWS default VPC can lead to limited customization and security concerns due to shared resources and potential misconfigurations, hindering scalability and optimal resource management.\n\nAs a best practice, using a custom VPC with specific security and network configuration provides greater flexibility and control over your architecture.",
+  "rule.criteria": "a4a8a4bb-d8f9-4744-ae0b-545059ac484f",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-ec2-describe-vpcs' AND json.rule = default is true and shared is false and state equal ignore case available as X; config from cloud.resource where api.name = 'aws-ec2-describe-network-interfaces' AND json.rule = status equal ignore case in-use as Y; filter '$.X.vpcId equals $.Y.vpcId'; show X;",
+  "recommendation": "It is recommended to remove association with the default VPC and create a new custom VPC configuration based on your security and networking requirements, and associate the resource back to a newly created custom VPC.\n\nTo create a new VPC, follow below URL:\nhttps://docs.aws.amazon.com/vpc/latest/userguide/create-vpc.html\n\nTo remove the default VPC, follow below URL:\nhttps://docs.aws.amazon.com/vpc/latest/userguide/delete-vpc.html\n\nNOTE: Before any modification identify and analyze the potential results of a change in the environment.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

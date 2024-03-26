@@ -25,6 +25,7 @@
     "CIS v1.5.0 (Azure) - Level 1",
     "CIS v2.0.0 (Azure) Level 1",
     "CSA CCM v.4.0.1",
+    "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2",
     "ISO 27002:2022",
     "ISO/IEC 27001:2022",
@@ -36,6 +37,7 @@
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
+    "NIST 800-53 Rev 5",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-172",
@@ -43,6 +45,7 @@
     "PCI DSS v3.2.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

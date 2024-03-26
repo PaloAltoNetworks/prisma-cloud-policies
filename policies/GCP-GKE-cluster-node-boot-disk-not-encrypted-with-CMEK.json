@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GKE-1110",
+  "policyId": "39319143-bae2-4741-adf0-9e1db85f994c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP GKE cluster node boot disk not encrypted with CMEK",
+  "description": "This policy identifies GCP GKE clusters that do not have their node boot disk encrypted with CMEK.\n\nThe GKE node boot disk is the persistent disk that houses the Kubernetes node file system. By default, this disk is encrypted by a GCP managed key but users can specify customer managed encryption key to get enhanced security, control over the encryption key, and also comply with any regulatory requirements.\n\nIt is recommended to use CMEK to encrypt the boot disk of GKE cluster nodes as it gives you full control over the encrypted data.",
+  "rule.criteria": "ab1c9b4d-aa86-4c34-a550-5de4bd30882b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-container-describe-clusters' AND json.rule = status equals \"RUNNING\" and nodePools[?any(config.bootDiskKmsKey does not exist)] exists",
+  "recommendation": "The KMS key used for node boot disk encryption for existing GKE clusters/cluster nodes cannot be changed. \n\nFor standard clusters:\nEither create a new standard cluster with node boot disk encryption using CMEK or add new node pools with disk encryption using CMEK to an existing standard cluster while removing older node pools which do not have node boot disk CMEK configured. To encrypt GKE standard cluster node boot disks using CMEK, please refer to the URLs given below:\nhttps://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek#boot-disks\n\nFor autopilot clusters:\nAutopilot cluster node boot disk encryption cannot be updated for existing autopilot clusters. To create a new autopilot cluster with CMEK protected node boot disk, please refer to the URLs given below:\nhttps://cloud.google.com/kubernetes-engine/docs/how-to/using-cmek#create_a_cluster_with_a_cmek-protected_node_boot_disk",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
