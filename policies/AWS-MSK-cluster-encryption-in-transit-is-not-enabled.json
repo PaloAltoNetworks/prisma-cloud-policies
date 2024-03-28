@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-MSK-1124",
+  "policyId": "33a02806-aa4b-4c6a-b753-3f7de6e6313c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS MSK cluster encryption in transit is not enabled",
+  "description": "This policy identifies AWS Managed Streaming for Apache Kafka clusters having in-transit encryption in a disabled state.\n\nIn-transit encryption secures data while it's being transferred between brokers. Without it, there's a risk of data interception during transit.\n\nIt is recommended to enable in-transit encryption among brokers within the cluster. This ensures that all data exchanged within the cluster is encrypted, effectively protecting it from potential eavesdropping and unauthorized access.",
+  "rule.criteria": "18d55f5a-c4de-4fc1-9346-c95b523f58d0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-msk-cluster' AND json.rule = state equal ignore case active and encryptionInfo.encryptionInTransit.clientBroker contains PLAINTEXT or encryptionInfo.encryptionInTransit.inCluster is false",
+  "recommendation": "To enable in-transit encryption both within the cluster and client broker communication has to be configured with TLS.\n\nTo enable TLS encryption for client-broker communication, follow the below steps:\n1. Sign in to the AWS Management Console and open the Amazon MSK console at https://console.aws.amazon.com/msk/.\n2. On the navigation menu, choose 'Clusters', and select the MSK cluster for which you want to enable or edit in-transit encryption.\n3. Under the 'Actions' dropdown, select 'Edit security settings'. \n4. Under 'Encryption', please uncheck the 'Plaintext' option and make sure the 'TLS encryption' option is selected for  'Between clients and brokers' encryption configuration.\n5. Click on 'Update' to save changes.\n\nEnabling TLS encryption for within-cluster communication involves creating a new cluster. To create a new cluster, please follow the below steps:\n1. Sign in to the AWS Management Console and open the Amazon MSK console at https://console.aws.amazon.com/msk/.\n2. On the navigation menu, choose 'Clusters', then select 'Create cluster'.\n3. Under the 'Create Cluster' page, please configure the cluster as per the requirements.\n4. At Step 3, under 'Encryption', select 'TLS encryption' for the 'Between clients and brokers' checkbox.\n5. Select 'TLS encryption' for the 'Within the cluster' checkbox.\n6. After providing the required configuration in the remaining steps, Under step 5, click on 'Create cluster'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

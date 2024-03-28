@@ -14,8 +14,10 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HITRUST CSF v.11.2.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

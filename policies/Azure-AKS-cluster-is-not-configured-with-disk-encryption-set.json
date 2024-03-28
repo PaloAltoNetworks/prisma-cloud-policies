@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "HITRUST CSF v.11.2.0"
+  ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SQL-1098",
+  "policyId": "353f4707-92ce-4094-86b5-e500689faf3c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP PostgreSQL instance database flag log_min_error_statement is not set",
+  "description": "This policy identifies PostgreSQL database instances in which database flag log_min_error_statement is not set. The log_min_error_statement flag defines the minimum message severity level that are considered as an error statement. Messages for error statements are logged with the SQL statement. Valid values include DEBUG5, DEBUG4, DEBUG3, DEBUG2, DEBUG1, INFO, NOTICE, WARNING, ERROR, LOG, FATAL, and PANIC. Each severity level includes the subsequent levels. log_min_error_statement flag value changes should only be made in accordance with the organization's logging policy. Proper auditing can help in troubleshooting operational problems and also permits forensic analysis.",
+  "rule.criteria": "149663f5-15d9-4445-93f4-6534e2720bc1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = \"databaseVersion contains POSTGRES and settings.databaseFlags[?(@.name=='log_min_error_statement')] does not exist\"",
+  "recommendation": "It is recommended to set the 'log_min_error_statement' flag for PostgreSQL database as per your organization's logging policy.\n\nTo update the databse flag of GCP PostgreSQL instance, please refer to the URL given below and set log_min_error_statement flag as needed:\nhttps://cloud.google.com/sql/docs/postgres/flags#set_a_database_flag",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

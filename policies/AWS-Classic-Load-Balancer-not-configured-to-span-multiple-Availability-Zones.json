@@ -16,6 +16,7 @@
   "compliance.standard": [
     "AWS Foundational Security Best Practices standard",
     "MLPS 2.0 (Level 2)",
+    "NIST 800-53 Rev 5",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

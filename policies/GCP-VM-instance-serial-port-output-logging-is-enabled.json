@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1116",
+  "policyId": "46650641-646e-44a2-beb4-cc97e9aede8e",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP VM instance serial port output logging is enabled",
+  "description": "This policy identifies GCP VM instances that have serial port output logging enabled.\n\nThe serial console feature in the VM instance does not support IP-based access restrictions such as IP allowlists. If you enable the interactive serial console on an instance, clients can attempt to connect to that instance from any IP address. When the serial port output logging feature is enabled, the serial port output is retained even after an instance is stopped or deleted.\n\nIt is recommended to disable serial port access and serial port output logging for all VM instances to avoid leakage of potentially sensitive data.",
+  "rule.criteria": "9db7fc8b-6773-408c-9325-782b7f67e682",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = (status equals RUNNING and name does not start with \"gke-\") and metadata.items[?any(key contains \"serial-port-logging-enable\" and value equals \"true\")] exists",
+  "recommendation": "To disable serial port output logging on existing GCP VM instance, follow the below URL:\nhttps://cloud.google.com/compute/docs/troubleshooting/viewing-serial-port-output#enable-stackdriver",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

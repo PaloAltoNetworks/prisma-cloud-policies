@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "NIST 800-53 Rev 5",
+    "Telecommunications Security Act - TSA"
+  ]
 }

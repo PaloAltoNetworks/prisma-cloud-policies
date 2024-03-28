@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-RED-1122",
+  "policyId": "4482eb7e-513a-4620-922f-16f495fbc4b0",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Redshift cluster with commonly used master username and public access setting enabled",
+  "description": "This policy identifies AWS Redshift clusters configured with commonly used master usernames like 'awsuser', 'administrator', or 'admin', and the public access setting is enabled.\n\nAWS Redshift, a managed data warehousing service typically stores sensitive and critical data. Allowing public access increases the risk of unauthorized access, data breaches, and potential malicious activities. Using standard usernames increases the risk of password brute-force attacks by potential intruders.\n\nAs a recommended security measure, it is advised not to use commonly used usernames and to disable public access for the Redshift cluster.",
+  "rule.criteria": "34c38872-f4ff-474a-bdc1-e813bbf9757a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-redshift-describe-clusters' AND json.rule = publiclyAccessible is true and masterUsername is member of (\"awsuser\",\"administrator\",\"admin\")",
+  "recommendation": "Changing the default master user name for your existing Amazon Redshift clusters requires relaunching those clusters with a different master user name and migrating the existing data to the new clusters.\n\nTo launch the new Redshift database clusters,\n1. Sign in to the AWS Management Console and open the Amazon Redshift console at https://console.aws.amazon.com/redshift/.\n2. On the navigation menu, choose 'Clusters'. The clusters for your account in the current AWS Region are listed. A subset of the properties of each cluster is displayed in columns in the list.\n3. Choose 'Create cluster' to create a cluster.\n4. Follow the instructions on the console page to enter the properties for Cluster configuration.\n5. In the 'Database configuration' section, type a unique (non-default) user name within the 'Master user name' field.\n6. In the 'Additional configurations', Under the 'Network and security' Dropdown, Ensure the checkbox 'Turn on Publicly accessible' in the 'Publicly accessible' section is unchecked.\n7. Fill out the rest of the fields available on this page with the information taken from the existing cluster.\n8. Choose 'Create cluster' to create the cluster. The cluster might take several minutes to be ready to use.\n9. Once the Cluster Status value changes to available and the DB Health status changes to healthy, the new cluster can used to load the existing data from the old cluster.\n10. Once the data migration process is completed and all the data is loaded into the new Redshift cluster and all applications configured to use the new cluster, delete the old cluster.\n\nTo delete the existing cluster, refer to the below link.\nhttps://docs.aws.amazon.com/redshift/latest/mgmt/managing-clusters-console.html#delete-cluster",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-1125",
+  "policyId": "33a49bf7-61f7-40c5-b604-ecd46dfb4094",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Elastic Load Balancer v2 (ELBv2) with cross-zone load balancing disabled",
+  "description": "This policy identifies load balancers that do not have cross-zone load balancing enabled.\n\nCross-zone load balancing evenly distributes incoming traffic across healthy targets in all availability zones. This can help to ensure your application can manage additional traffic and limit the risk of any single availability zone getting overwhelmed and perhaps affecting load balancer performance.\n\nIt is recommended to enable cross-zone load balancing.",
+  "rule.criteria": "451f1e52-5b46-4ef7-8341-6055e3066398",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = ['attributes'].['load_balancing.cross_zone.enabled'] is false",
+  "recommendation": "To enable cross-zone load balancing, please follow the below steps:\n\n1. Log in to the AWS console.\n2. Go to the EC2 Dashboard and select 'Load Balancers'\n3. Click on the reported load balancer. Under the 'Actions' dropdown, select 'Edit load balancer attributes'.\n4. For Gateway load balancers, under 'Availability Zone routing Configuration', enable 'Cross-zone load balancing'.\n5. For Network load balancers, under 'Availability Zone routing Configuration', select the 'Enable cross-zone load balancing' option.\n6. Click on 'Save changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

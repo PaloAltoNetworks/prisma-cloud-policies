@@ -1,0 +1,19 @@
+{
+  "policyUpi": "PC-AWS-RED-1118",
+  "policyId": "f7e5da40-e30e-43d2-81d3-a5f59aa38b21",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Redshift cluster instance with public access setting enabled",
+  "description": "This policy identifies AWS Redshift clusters with public access setting enabled.\n\nAWS Redshift, a managed data warehousing service typically stores sensitive and critical data. Allowing public access increases the risk of unauthorized access, data breaches, and potential malicious activities.\n\nAs a recommended security measure, it is advised to disable public access for the Redshift cluster.",
+  "rule.criteria": "363c26e8-3875-4b4c-a8e2-809f7fc8457f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-redshift-describe-clusters' AND json.rule = publiclyAccessible is true",
+  "recommendation": "To modify the publicly accessible setting of the Redshift cluster,\n1. Sign in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Navigate to the 'Redshift' service.\n4. Click on the checkbox for the identified Redshift cluster name.\n5. In the top menu options, click on 'Actions' and select 'Modify publicly accessible setting' as the option.\n6. Uncheck the checkbox 'Turn on Publicly accessible' in the 'Publicly accessible' section and click on 'Save Changes' button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": [
+    "MLPS 2.0 (Level 3)"
+  ]
+}

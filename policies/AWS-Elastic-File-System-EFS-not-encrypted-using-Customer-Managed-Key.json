@@ -30,6 +30,7 @@
     "Fedramp (Low)",
     "Fedramp (Moderate)",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2",
     "ISO 27002:2022",
@@ -52,6 +53,7 @@
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

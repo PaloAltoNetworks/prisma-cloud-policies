@@ -29,6 +29,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
     "FFIEC",
     "Fedramp (Moderate)",
+    "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
     "HITRUST CSF v9.3",
     "HITRUST v.9.4.2",
@@ -52,6 +53,7 @@
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Telecommunications Security Act - TSA"
   ]
 }

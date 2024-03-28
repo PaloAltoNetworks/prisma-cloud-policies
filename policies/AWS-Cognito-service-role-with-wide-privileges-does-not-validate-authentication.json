@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1123",
+  "policyId": "487d78f9-875c-44e7-ba4a-d1b945f404b4",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Cognito service role with wide privileges does not validate authentication",
+  "description": "This policy identifies the AWS Cognito service role that has wide privileges and does not validate user authentication.\n\nAWS Cognito is an identity and access management service for web and mobile apps. AWS Cognito service roles define permissions for AWS services accessing resources. The 'amr' field in the service role represents how the user was authenticated. if the user was authenticated using any of the supported providers, the 'amr' will contain 'authenticated' and the name of the provider. Not validating the 'amr' field can allow an unauthenticated user (guest access) with a valid token signed by the identity-pool to assume the Cognito role. If this Cognito role has a '*' wildcard in the action and resource, it could lead to lateral movement or unauthorized access.\n\nEnsuring limiting privileges according to business requirements can help in restricting unauthorized access and misuse of resources. It is recommended to limit the Cognito service role used for guest access to not have a '*' wildcard in the action or resource.",
+  "rule.criteria": "d26533cf-1078-48f4-9524-86e0c8555e3d",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-list-roles' AND json.rule = role.assumeRolePolicyDocument.Statement[*].Action contains \"sts:AssumeRoleWithWebIdentity\" and role.assumeRolePolicyDocument.Statement[*].Principal.Federated contains \"cognito-identity.amazonaws.com\" and role.assumeRolePolicyDocument.Statement[*].Effect contains \"Allow\" and role.assumeRolePolicyDocument.Statement[*].Condition contains \"cognito-identity.amazonaws.com:amr\" and role.assumeRolePolicyDocument.Statement[*].Condition contains \"unauthenticated\" as X; config from cloud.resource where api.name = 'aws-iam-get-policy-version' AND json.rule = document.Statement[?any(Effect equals Allow and Action contains :* and Resource equals * )] exists as Y; filter \"($.X.inlinePolicies[*].policyDocument.Statement[?(@.Effect=='Allow' && @.Resource=='*')].Action contains :* ) or ($.X.attachedPolicies[*].policyArn intersects $.Y.policyArn)\"; show X;",
+  "recommendation": "To remove the policy which have excessive permission from the guess access role,\n1. Log in to the AWS console.\n2. Navigate to the IAM service.\n3. Click on Roles.\n4. Click on the reported IAM role.\n5. Under 'Permissions policies' section, remove the policy having excessive permissions and assign a limited permission policy as required for a particular role.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

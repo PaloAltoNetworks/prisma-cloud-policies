@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)"
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "NIST 800-53 Rev 5"
   ]
 }
