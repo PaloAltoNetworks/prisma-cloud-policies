@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SGM-1103",
+  "policyId": "f63b99e7-f844-4873-8292-61c7159f73d1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS SageMaker endpoint data encryption at rest not configured",
+  "description": "This policy identifies AWS SageMaker Endpoints not configured with data encryption at rest.\n\nAWS SageMaker Endpoint configuration defines the resources and settings for deploying machine learning models to SageMaker endpoints. By default, SageMaker Endpoints are not encrypted at rest. Enabling the encryption helps protect the integrity and confidentiality of the data on the storage volume attached to the ML compute instance that hosts the endpoint.\n\nIt is recommended to set encryption at rest to mitigate the risk of unauthorized access and potential data breaches.",
+  "rule.criteria": "30fef5fe-8615-40a8-a1bb-aa8b2eb0f830",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-sagemaker-endpoint-config' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' as Y; config from cloud.resource where api.name = 'aws-sagemaker-endpoint' AND json.rule = endpointStatus does not equal \"Failed\" as Z; filter '($.X.KmsKeyId does not exist or (($.X.KmsKeyId exists and $.Y.keyMetadata.keyState equals Disabled) and $.X.KmsKeyId equals $.Y.keyMetadata.arn)) and ($.X.EndpointConfigName equals $.Z.endpointConfigName)' ; show X;",
+  "recommendation": "To ensure that SageMaker endpoint configuration with data encryption using the KMS key, you must create a new EndpointConfig by cloning the existing endpoint configuration used by the endpoint and update it with the required changes.\n\n1. Sign in to the AWS Management Console.\n2. Go to the SageMaker service dashboard at https://console.aws.amazon.com/sagemaker/.\n3. In the navigation panel, under Inference, choose Endpoint configurations.\n4. Select the SageMaker endpoint that is reported, Click on clone on top right corner.\n5. Give a name to the Endpoint configuration and choose the Encryption key. For AWS Managed Keys, enter a KMS key ARN. For customer-managed keys, choose one from the drop-down.\n6. Click Create endpoint configuration.\n\nTo update the endpoint using the endpoint configuration:\n\n1. Sign in to the AWS Management Console.\n2. Go to the SageMaker service dashboard at https://console.aws.amazon.com/sagemaker/.\n3. In the navigation panel, under Inference, choose Endpoints.\n4. Select the SageMaker endpoint that you want to examine, then click on it to access the resource configuration details under the \"settings\" tab.\n5. Scroll down to Endpoint Configuration Settings and click Change.\n6. choose to \"use an existing endpoint configuration\" and select the Endpoint configuration which is created earlier with encryption key specified.\n7. Click \"Select endpoint configuration\" and click \"Update Endpoint\" for changes to propagate.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

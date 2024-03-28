@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ff06a8d6-a8dc-47de-bf42-d107f702ba4f",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "Publicly Writable Lambda",
+  "description": "Detects Lambda functions configured to allow unauthorized identities to modify the function's code or configuration settings",
+  "rule.criteria": "ff06a8d6-a8dc-47de-bf42-d107f702ba4f",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and source.public = true AND dest.cloud.service.name = 'lambda' AND action.name in ('lambda:DeleteFunctionUrlConfig', 'lambda:UpdateFunctionUrlConfig','lambda:UpdateFunctionCode','lambda:UpdateFunctionConfiguration','lambda:PutFunctionEventInvokeConfig','lambda:UpdateFunctionEventInvokeConfig') and grantedby.cloud.policy.type = 'Resource-based Policy' and dest.cloud.resource.type = 'function' AND grantedby.cloud.policy.condition ( 'lambda:FunctionUrlAuthType' ) != 'AWS_IAM' AND grantedby.cloud.policy.condition ( 'lambda:FunctionArn' ) does not exist AND grantedby.cloud.policy.condition ( 'lambda:Layer' ) does not exist AND grantedby.cloud.policy.condition ( 'lambda:VpcIds' ) does not exist AND grantedby.cloud.policy.condition ( 'lambda:SubnetIds' ) does not exist AND grantedby.cloud.policy.condition ( 'lambda:SecurityGroupIds' ) does not exist",
+  "recommendation": "Remediation steps:\nVia Console:\n1. Log in to your AWS account\n2. Navigate to the Lambda function\n3. Under the 'Configuration' tab, select 'Permissions'\n4. Under 'Resource-based policy statements' edit the resource policy to only allow required parties to modify the function\nVia CLI:\n1. Log into your AWS account\n2. Run 'aws lambda get-policy --function-name <function arn>' in order to get the statement-id for your current resource policy\n3. Run 'aws lambda remove-permission' with the required arguments in order to remove the resource policy\n4. Run 'aws lambda add-permission' to specify a new resource policy only allowing required parties to modify the function",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

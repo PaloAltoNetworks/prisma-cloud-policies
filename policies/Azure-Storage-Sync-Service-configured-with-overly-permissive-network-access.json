@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ASS-850",
+  "policyId": "ddf89efb-979f-412d-8e62-5ffa8d388e2c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Storage Sync Service configured with overly permissive network access",
+  "description": "This policy identifies Storage Sync Services configured with overly permissive network access.\n\nA Storage Sync Service is a management construct that represents registered servers and sync groups. Allowing all traffic to the Sync Service may allow a bad actor to brute force their way into the system and potentially get access to the entire network. With a private endpoint, the network traffic path is secured on both ends and access is restricted to only defined authorized entities.\n\nIt is recommended to configure the Storage Sync Service with private endpoints to minimize the access vector.",
+  "rule.criteria": "3c244889-e2d5-4f56-93cc-4cd135ccce47",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-sync-service' AND json.rule = properties.provisioningState equals Succeeded and properties.incomingTrafficPolicy equals AllowAllTraffic",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Storage Sync Services dashboard \n3. Click on the reported Storage Sync Service\n4. Under the 'Settings' menu, click on 'Network'\n5. Under 'Allow access from' select 'Private endpoints only'\n6. Click on 'Private endpoint' and Create a private endpoint with required parameters \n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

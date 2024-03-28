@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ASG-1138",
+  "policyId": "d4cb69d1-c09d-4b7e-beb0-8c43adad117d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EC2 Auto Scaling Launch Configuration is not using encrypted EBS volumes",
+  "description": "This policy identifies AWS EC2 Auto Scaling Launch Configurations that are not using encrypted EBS volumes.\n\nA launch configuration defines an instance configuration template that an Auto Scaling group uses to launch EC2 instances. Amazon Elastic Block Store (EBS) volumes allow you to create encrypted launch configurations when creating EC2 instances and auto scaling groups. When the entire EBS volume is encrypted, data stored at rest, in-transit, and snapshots are encrypted. This protects the data from unauthorized access.\n\nAs a security best practice for data protection, enable encryption for all EBS volumes at auto scaling launch configuration.",
+  "rule.criteria": "b22e16a9-69a5-4d5b-b59c-4dc34fcd9d57",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-autoscaling-launch-configuration' AND json.rule = blockDeviceMappings[*].ebs exists AND blockDeviceMappings[?any(ebs.encrypted is false)] exists",
+  "recommendation": "Once Auto Scaling Launch Configuration is created you can not modify the encryption for the EBS volumes. To reslove this alert you need copy the reported launch configuration, create new launch template using copied launch configuration data and select the encryption option for EBS vloumes. Later delete the reported launch configuration.\n\nTo create a new launch template,\n1. Log in to AWS console\n2. Navigate to the Amazon EC2 dashboard\n3. Under 'Auto Scaling' section, select the 'Auto Scaling groups'\n4. Click on 'Launch Templates'\n5. On 'Launch Templates' page, click on 'Create launch template'\n6. Create new lauch template by mentioning all data same as reported launch configuration.\n7. Under 'Storage (volumes)', make sure 'Encrypted' set for all EBS volumes you added.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

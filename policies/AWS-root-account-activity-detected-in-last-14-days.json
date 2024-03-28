@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1111",
+  "policyId": "15ef22b5-4eff-4377-ae32-02eaab62d0eb",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS root account activity detected in last 14 days",
+  "description": "This policy identifies if AWS root account activity was detected within the last 14 days.\n\nThe AWS root account user is the primary administrative identity associated with an AWS account, providing complete access to all AWS services and resources. Since the root user has complete access to the account, adopting the principle of least privilege is important to lower the risk of unintentional disclosure of highly privileged credentials and inadvertent alterations. It's also advised to remove the root user access keys and restrict the use of the root user, refraining from using them for routine or administrative duties.\n\nIt is recommended to restrict the use of the AWS root account.",
+  "rule.criteria": "17a1b782-3a39-4b6a-bd14-a10b74c7b795",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-get-credential-report' AND json.rule = 'user equals \"<root_account>\" and ( _DateTime.ageInDays(access_key_1_last_used_date) < 14 or _DateTime.ageInDays(access_key_2_last_used_date) < 14 or _DateTime.ageInDays(password_last_used) < 14 )'",
+  "recommendation": "If any access keys are created for the root account, please delete the keys using the following steps:\n\n1. Sign in to AWS Console as the root user.\n2. Click the root account name and on the top right select  'Security Credentials' from the dropdown.\n3. For each key in 'Access Keys', click on 'X' to delete the keys.\n\nLimiting root user console access as much as feasible is advised.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

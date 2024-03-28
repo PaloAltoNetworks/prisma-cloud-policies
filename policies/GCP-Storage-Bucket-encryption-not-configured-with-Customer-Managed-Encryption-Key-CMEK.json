@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-1132",
+  "policyId": "6e265c5b-4c9c-4190-8a20-1bda582b9292",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Storage Bucket encryption not configured with Customer-Managed Encryption Key (CMEK)",
+  "description": "This policy identifies GCP Storage Buckets that are not configured with a Customer-Managed Encryption key.\n\nGCP Storage Buckets might contain sensitive information. Google Cloud Storage service encrypts all data within the buckets using Google-managed encryption keys by default but users can specify Customer-Managed Keys (CMKs) to get enhanced security, control over the encryption key, and also comply with any regulatory requirements.\n\nAs a security best practice, the use of CMK to encrypt your Storage bucket is advisable as it gives you full control over the encrypted data.",
+  "rule.criteria": "e9e07320-de61-49d1-bb03-caeac41505d5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = encryption.defaultKmsKeyName does not exist",
+  "recommendation": "To update the GCP storage bucket with customer-managed encryption, follow the below steps:\n\n1. Sign in to the Google Cloud Management Console. Navigate to the Cloud Storage Buckets page.\n2. Click on the name of the bucket where you want to enable customer-managed encryption.\n3. Under the 'Configuration' tab, under the 'Protection' section, select the 'Edit encryption type' option.\n4. A 'Edit encryption' dialogue box will appear. Select the 'Customer-managed encryption key' option.\n5. Under the 'Select a customer-managed key' dropdown, select the KMS key to be used for encryption.\n6. Click on 'SAVE'.\n\nNote: Make sure the storage bucket service account has cloudkms.cryptoKeyEncrypterDecrypter permissions to encrypt or decrypt with the selected key.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

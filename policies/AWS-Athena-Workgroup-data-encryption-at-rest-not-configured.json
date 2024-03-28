@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ATN-1130",
+  "policyId": "5405e934-1c52-450a-84d4-0b84c5eb2fa8",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Athena Workgroup data encryption at rest not configured",
+  "description": "This policy identifies AWS Athena workgroups not configured with data encryption at rest.\n\nAWS Athena workgroup enables you to isolate queries for you or your group of users from other queries in the same account, to set the query results location and the encryption configuration. By default, Athena workgroup query run results are not encrypted at rest and client side settings can override the workgroup settings. Encrypting workgroups and preventing overrides from the client side helps in protecting the integrity and confidentiality of the data stored on Athena.\n\nIt is recommended to set encryption at rest and enable 'override client-side settings' to mitigate the risk of unauthorized access and potential data breaches.",
+  "rule.criteria": "62a0db03-89fd-4618-9ae5-895f1009ee7c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-athena-workgroup' AND json.rule = WorkGroup.State equal ignore case enabled and (WorkGroup.Configuration.ResultConfiguration.EncryptionConfiguration does not exist or (WorkGroup.Configuration.EngineVersion.EffectiveEngineVersion contains Athena and WorkGroup.Configuration.EnforceWorkGroupConfiguration is false))",
+  "recommendation": "To enable encryption at rest for the Athena workgroup, follow the below steps:\n\n1. Sign in to the AWS Management Console and open the Amazon Athena console.\n2. Under the navigation bar, click on Workgroups.\n3. Select the alerted workgroup. Click on 'Edit'.\n4. For Athena-based engines, under 'Query result configuration', enable 'Encrypt query results'.\n5. Select 'Encryption type' based on the requirements. Make sure to set 'Minimum encryption'.\n6. Under 'Settings', enable 'Override client-side settings'.\n7. For Apache Spark-based engines, under 'Calculation result settings', enable 'Encrypt query results'.\n8. Select 'Encryption type' based on the requirements.\n9. Click on 'Save changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

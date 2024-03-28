@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-1131",
+  "policyId": "a1497898-ea75-4d3b-b806-b9cae5442771",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS DMS replication instance is publicly accessible",
+  "description": "This policy identifies AWS DMS (Database Migration Service) replication instances with public accessibility enabled.\n\nA DMS replication instance is used to connect and read the source data and prepare it for consumption by the target data store. When AWS DMS replication instances are publicly accessible, it increases the risk of unauthorized access, data breaches, and potentially malicious activities.\n\nIt is recommended to disable the public accessibility of DMS replication instances to decrease the attack surface.",
+  "rule.criteria": "b6085a88-3c26-466d-9039-c225d754c5ae",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dms-replication-instance' AND json.rule = replicationInstanceStatus is not member of ('creating','deleted','deleting') and publiclyAccessible is true",
+  "recommendation": "Public accessibility can be disabled only at the time of creation, please follow the below steps to create a new DMS replication instance:\n\n1. Sign in to the AWS Management Console and navigate to the AWS DMS console.\n2. In the navigation pane, choose 'Replication instances' and then click the 'Create replication instance' button.\n3. Under the 'Connectivity and security' section, Leave the 'Publicly accessible' option unchecked to ensure that the replication instance does not have public IP addresses or DNS names.\n4. Configure other settings based on your requirements.\n5. Click the 'Create replication instance' button to create the replication instance.\n\nTo delete the reported AWS DMS replication instance, Please follow the below steps:\n\n1. Sign in to the AWS Management Console and navigate to the AWS DMS console.\n2. In the navigation pane, choose 'Replication instances' to see a list of your existing replication instances.\n3. Select the replication instance that you want to delete from the list.\n4. After selecting the replication instance, choose 'Actions' and then 'Delete' from the menu.\n5. A confirmation dialog box will appear. Review the details and confirm that you want to delete the replication instance by selecting the 'Delete' button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

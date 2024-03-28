@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "186ff062-c51d-4115-bd4b-918415abaed2",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "Publicly Executable Lambda",
+  "description": "Identifies Lambda functions that can be triggered or executed by unauthorized users.",
+  "rule.criteria": "186ff062-c51d-4115-bd4b-918415abaed2",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' and source.public = true AND dest.cloud.service.name = 'lambda' AND action.name in ('lambda:InvokeFunction', 'lambda:InvokeFunctionUrl') and grantedby.cloud.policy.type = 'Resource-based Policy' and dest.cloud.resource.type = 'function' AND grantedby.cloud.policy.condition ( 'lambda:EventSourceToken' ) does not exist AND grantedby.cloud.policy.condition ( 'lambda:FunctionUrlAuthType' ) != 'AWS_IAM'",
+  "recommendation": "Remediation steps:\nVia Console:\n1. Log in to your AWS account\n2. Navigate to the Lambda function\n3. Under the 'Configuration' tab, select 'Permissions'\n4. Under 'Resource-based policy statements' edit the resource policy to only allow required parties to invoke the function\nVia CLI:\n1. Log into your AWS account\n2. Run 'aws lambda get-policy --function-name <function arn>' in order to get the statement-id for your current resource policy\n3. Run 'aws lambda remove-permission' with the required arguments in order to remove the resource policy\n4. Run 'aws lambda add-permission' to specify a new resource policy only allowing required parties to invoke the function",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
