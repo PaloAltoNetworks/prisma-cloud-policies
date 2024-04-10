@@ -4,7 +4,7 @@
   "policyType": "network",
   "cloudType": "azure",
   "severity": "high",
-  "name": "Azure Virtual Machine that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports",
+  "name": "Azure Virtual Machine that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389",
   "description": "This policy identifies Azure Virtual Machines that are internet reachable with unrestricted access (0.0.0.0/0) to admin ports. Azure VMs with unrestricted internet access to admin ports may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit the access to known hosts, services, or specific entities.",
   "rule.criteria": "0294a7d4-3302-459c-b06c-1be4837079a1",
   "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match'  and dest.resource.type = 'Instance' and dest.cloud.type = 'Azure' and protocol.ports in ('tcp/22', 'tcp/3389')and dest.resource.state = 'Active'",

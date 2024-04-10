@@ -4,7 +4,7 @@
   "policyType": "network",
   "cloudType": "gcp",
   "severity": "high",
-  "name": "GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports",
+  "name": "GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389",
   "description": "This policy identifies GCP VM instances that are internet reachable with unrestricted access (0.0.0.0/0) to Admin ports (22 / 3389). VM instances with unrestricted internet access to admin ports may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit access to known hosts, services, or specific entities.",
   "rule.criteria": "829dce41-2c85-4d07-abf5-171a4c529792",
   "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'GCP' and dest.resource.state = 'Active' and protocol.ports in ( 'tcp/22', 'tcp/3389' )",
