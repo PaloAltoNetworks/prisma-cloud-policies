@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-24.4.1 - 2024-4-11
+
+### Added
+
+#### 10 new policies
+
+- AWS Athena Workgroup data encryption at rest not configured
+- AWS DMS replication instance is publicly accessible
+- AWS EC2 Auto Scaling Launch Configuration is not using encrypted EBS volumes
+- AWS Glue Job not encrypted by Customer Managed Key (CMK)
+- AWS RDS cluster encryption in transit is not configured
+- AWS root account activity detected in last 14 days
+- AWS SageMaker endpoint data encryption at rest not configured
+- AWS Secrets Manager secret not encrypted by Customer Managed Key (CMK)
+- Azure Storage Sync Service configured with overly permissive network acce
+- GCP Storage Bucket encryption not configured with Customer-Managed Encryption Key (CMEK)
+
+#### 2 new policies for the IAM Security module
+
+- Publicly Writable Lambda
+- Publicly Readable Lambda
+
+### Changed
+
+#### 5 policies updated
+
+- AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389
+- AWS MFA is not enabled on Root account
+- AWS S3 bucket encrypted using Customer Managed Key (CMK) with overly permissive policy
+- Azure Virtual Machine that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389
+- GCP VM instance that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389
+
+#### 2 policies updated for the IAM Security module
+
+- AWS cross-account resource access through IAM policies
+- Publicly Executable Lambda
+
+### Removed
+
+#### 1 policy deleted from the IAM Security module
+
+- Azure Managed Identity with permissions to other subscriptions
+
+
 ## PCS-24.3.2 - 2024-3-28
 
 ### Added

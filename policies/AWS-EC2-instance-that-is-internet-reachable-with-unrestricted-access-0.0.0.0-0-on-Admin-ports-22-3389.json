@@ -4,7 +4,7 @@
   "policyType": "network",
   "cloudType": "aws",
   "severity": "high",
-  "name": "AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) to Admin ports",
+  "name": "AWS EC2 instance that is internet reachable with unrestricted access (0.0.0.0/0) on Admin ports 22/3389",
   "description": "This policy identifies AWS EC2 instances that are internet reachable with unrestricted access (0.0.0.0/0) to Admin ports (22 / 3389). EC2 instances with unrestricted access to the internet for admin ports may enable bad actors to use brute force on a system to gain unauthorized access to the entire network. As a best practice, restrict traffic from unknown IP addresses and limit access to known hosts, services, or specific entities.",
   "rule.criteria": "2a69fea0-3867-47f9-a253-af35de0f522e",
   "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'AWS' and dest.resource.state = 'Active' and protocol.ports in ( 'tcp/22', 'tcp/3389' )",
