@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-GD-1139",
+  "policyId": "4c78b025-0101-42d4-8028-3585a62c66f9",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS GuardDuty detector is not enabled",
+  "description": "This policy identifies the AWS GuardDuty detector that is not enabled in specific regions.\n\nGuardDuty identifies potential security threats in the AWS environment by analyzing data collected from various sources. The GuardDuty detector is the entity within the GuardDuty service that does this analysis. Failure to enable GuardDuty increases the risk of undetected threats and vulnerabilities which could lead to compromises in the AWS environment.\n\nIt is recommended to enable GuardDuty detectors in all regions to reduce the risk of security breaches.",
+  "rule.criteria": "2ba509d8-fab8-4585-a89b-2f2ddee1aaf5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-guardduty-detector' AND json.rule = status does not equal ENABLED",
+  "recommendation": "To enable Amazon GuardDuty in the region,\n1. Log in to the AWS console.\n2. In the console, select the specific region from the region drop-down menu located at the top right corner for which the alert has been generated.\n3. Navigate to service 'Amazon Gaurdduty' from the 'Services' Menu.\n4. Choose 'Get Started'.\n5. Choose 'Enable GuardDuty' to enable on a specific region.\n\nTo re-enable Amazon GuardDuty after suspending,\n1. Log in to the AWS console.\n2. In the console, select the specific region from the region drop-down menu located at the top right corner for which the alert has been generated.\n3. Navigate to service 'Amazon Gaurdduty' from the 'Services' Menu.\n4. In the navigation pane, choose 'Settings'.\n5. Choose 'Re-enable GuardDuty' to re-enable on a specific region.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
