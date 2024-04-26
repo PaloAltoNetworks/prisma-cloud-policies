@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DYN-1135",
+  "policyId": "facc5782-011c-4f1c-adea-f38c08962f5c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS DynamoDB table point-in-time recovery (PITR) disabled",
+  "description": "This policy identifies AWS DynamoDB tables that does not have point-in-time recovery (backup) enabled.\n\nAWS DynamoDB enables you to back up your table data continuously by using point-in-time recovery (PITR) with per-second granularity. This helps in protecting your data against accidental write or delete operations.\n\nIt is recommended to enable point-in-time recovery functionality on the DynamoDB table to protect data.",
+  "rule.criteria": "8e50d036-530e-4377-8270-ab315cc7a1a6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dynamodb-describe-table' AND json.rule = tableStatus equal ignore case ACTIVE AND continuousBackupsDescription.pointInTimeRecoveryDescription.pointInTimeRecoveryStatus does not equal ENABLED",
+  "recommendation": "To enable Point-in-Time Recovery (PITR) for a DynamoDB table, you can follow these steps:\n\n1. Sign in to the AWS Management Console.\n2. Navigate to the DynamoDB service.\n3. Click on the 'Tables' in the left navigation pane.\n4. Select the table you want to enable Point-in-Time Recover (PITR) for.\n5. Switch to the 'Backups' tab and click on 'Edit' next to Point-in-time recovery.\n6. Click on the 'Turn on point-in-time recovery' check box and Click on 'Save changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

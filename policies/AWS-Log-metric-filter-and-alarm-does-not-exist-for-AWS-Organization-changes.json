@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CRI Profile v2.0",
     "NIST 800-53 Rev 5",
     "Telecommunications Security Act - TSA"
   ]

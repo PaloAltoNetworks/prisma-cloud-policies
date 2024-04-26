@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-COG-1140",
+  "policyId": "3626a6d9-d55e-48b2-ae4c-2453ab65ff88",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Cognito identity pool allows unauthenticated guest access",
+  "description": "This policy identifies AWS Cognito identity pools that allow unauthenticated guest access.\n\nAWS Cognito identity pools unauthenticated guest access and allows unauthenticated users to assume a role in your AWS account. These unauthenticated users will be granted permissions of the assumed role which may have more privileges than that are intended. This could lead to unauthorized access or data leakage.\n\nIt is recommended to disable unauthenticated guest access for the Cognito identity pools.",
+  "rule.criteria": "58b0f618-1fcf-415c-a72e-b92154e0602d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cognito-identity-pool' AND json.rule = allowUnauthenticatedIdentities is true",
+  "recommendation": "To deactivate guest access in an identity pool,\n1. Log in to AWS console\n2. Navigate to the reported resource region by selecting the region from the dropdown in the top right corner.\n3. Navigate to the Amazon Cognito dashboard\n4. Under 'Identity pools' section, select the reported identity pool\n5. In 'User access' tab, under 'Guest access' section\n6. Click on 'Deactivate' button to deactivate the guest access configured.\n\nNOTE: Before you deactivate unauthenticated guest access, it is must to have at-least one authenticated access configured in your identity pool.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

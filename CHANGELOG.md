@@ -1,5 +1,32 @@
 # Changelog
 
+## PCS-24.4.2 - 2024-4-25
+
+### Added
+
+#### 5 new policies
+
+- AWS Cognito identity pool allows unauthenticated guest access
+- AWS DynamoDB table point-in-time recovery (PITR) disabled
+- AWS Glue Data Catalog not encrypted by Customer Managed Key (CMK)
+- AWS GuardDuty detector is not enabled
+- GCP Service account is publicly accessible
+
+#### 1 new compliance standard
+
+- CRI Profile v2.0
+
+### Changed
+
+#### 5 policies updated
+
+- Alibaba Cloud RAM user has both console access and access keys
+- AWS EBS volume region with encryption is disabled
+- AWS EC2 Instance Scheduled Events
+- AWS EMR cluster is not enabled with data encryption in transit
+- Azure Function app configured with public network access
+
+
 ## PCS-24.4.1 - 2024-4-11
 
 ### Added
