@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DOC-1156",
+  "policyId": "93cb90e8-34c5-4906-bd46-aea61371f54c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS DocumentDB clusters have backup retention period less than 7 days",
+  "description": "This policy identifies Amazon DocumentDB clusters lacking sufficient backup retention tenure.\n\nAmazon DocumentDB clusters are managed database services on AWS, compatible with MongoDB. They handle tasks like provisioning and backup. With features like automated backups and read replicas, they offer a reliable solution for MongoDB workloads in the cloud. The backup retention period denotes the duration for storing automated backups of the DocumentDB cluster. Inadequate retention periods heighten the risk of data loss, compliance issues, and hinder effective recovery in security breaches or system failures.\n\nIt is recommended to ensure a backup retention period of at least 7 days or according to your business and compliance requirement.",
+  "rule.criteria": "4ecc532c-f3ad-45a8-9eaa-e96ac5d4652c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-docdb-db-cluster' AND json.rule = Status equals available and ( BackupRetentionPeriod does not exist or BackupRetentionPeriod less than 7 )",
+  "recommendation": "To modify an Amazon DocumentDB cluster's backup retention period:\n1. Sign in to the AWS Management Console.\n2. In the console, select the specific region from the region dropdown in the top right corner where the alert is generated.\n3. Navigate to the Amazon DocumentDB console by either searching for 'Amazon DocumentDB' in the AWS services search bar or directly accessing the Amazon DocumentDB service.\n4. In the navigation pane, choose 'Clusters' and select the cluster name that is reported.\n5. Click 'Actions' in the right corner, and then select 'Modify' from the drop-down menu.\n6. On the Modify cluster page, under the 'Backup' section, select the desired backup retention period in days from the 'Backup retention period' drop-down menu based on your business or compliance requirements.\n7. Click 'Continue' to review a summary of your changes.\n8. Choose either 'Apply during the next scheduled maintenance window' or 'Apply immediately' based on your scheduling preference for modifications.\n9. Click on 'Modify Cluster' to implement the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

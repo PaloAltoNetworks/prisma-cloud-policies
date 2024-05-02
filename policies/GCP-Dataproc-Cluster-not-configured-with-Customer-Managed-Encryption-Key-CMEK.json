@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS v3.0.0 (GCP) Level 2"
+  ]
 }

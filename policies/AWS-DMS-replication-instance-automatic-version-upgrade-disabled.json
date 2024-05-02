@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-1155",
+  "policyId": "de8ad979-6aa5-460e-b630-c7c79a8a3765",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS DMS replication instance automatic version upgrade disabled",
+  "description": "This policy identifies the AWS DMS(Database Migration Service) replication instances that do not have auto minor version upgrade feature enabled\n\nA replication instance in DMS is a compute resource used to replicate data between a source and target database during the migration or ongoing replication process. Failure to enable automatic minor upgrades can leave your database instances vulnerable to security risks stemming from outdated software.\n\nIt is recommended to enable automatic minor version upgrades on DMS replication instances to receive timely patches and updates, reduce the risk of security vulnerabilities and improve overall performance and stability.",
+  "rule.criteria": "677f11a4-3238-4940-90f2-a5b9ff25fbaa",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dms-replication-instance' AND json.rule = replicationInstanceStatus equals \"available\" and autoMinorVersionUpgrade is false",
+  "recommendation": "To modify an AWS DMS(Database Migration Service) Replication Instance's Automatic version upgrade using the AWS console, follow these steps:\n\n1. Sign in to the AWS Management Console.\n2. In the console, select the specific region from the region dropdown in the top right corner, for which the alert is generated.\n3. Go to the DMS console by either searching for 'DMS' in the AWS services search bar or navigating directly to the DMS service.\n4. From the navigation pane on the left, select 'Replication Instances' under the 'Migrate data' section.\n5. Select the replication instance that is reported and select 'Modify' from the 'Action' dropdown in the right corner.\n6. Under the 'Maintenance' section, choose the 'Yes' option for the 'Automatic version upgrade'.\n7. Under the 'When to apply the modifications' section, choose 'Apply immediately' or 'Apply during the next scheduled maintenance window' according to your business requirements.\n8. Click 'Save' to save the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

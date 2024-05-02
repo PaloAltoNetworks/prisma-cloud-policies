@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DYN-1150",
+  "policyId": "93b2372d-222d-476d-a47d-6c4f9d2a4f67",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS DynamoDB table deletion protection is disabled",
+  "description": "This policy identifies AWS DynamoDB tables with deletion protection disabled.\n\nDynamoDB is a fully managed NoSQL database that provides a highly reliable, scalable, low-latency database solution for applications that require consistent, single-digit millisecond latency at any scale. Deletion protection feature allows authorised administrators to prevent accidental deletion of DynamoDB tables. Enabling deletion protection helps reduce the risk of data loss, maintain data integrity, ensure compliance, and protect DynamoDB tables across different environments.\n\nIt is recommended to enable deletion protection on DynamoDB tables to prevent unintended data loss.",
+  "rule.criteria": "8d2d4878-91e0-4a95-b092-271deb114aff",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-dynamodb-describe-table' AND json.rule = tableStatus equal ignore case ACTIVE and deletionProtectionEnabled is false",
+  "recommendation": "To enable a Dynamodb table with deletion protection, follow these steps:\n\n1. Sign into the AWS console and navigate to the DynamoDB console.\n2. In the navigation pane, under 'Tables', locate the table you want to enable deletion protection for and select it.\n3. In the table details page, under the 'Additional settings' tab, go to the 'Deletion protection' section and click on 'Turn on'.\n4. Under the confirmation screen, click on 'Confirm'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

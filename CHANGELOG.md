@@ -1,5 +1,37 @@
 # Changelog
 
+## PCS-24.5.1 - 2024-5-09
+
+### Added
+
+#### 12 new config policies
+
+- AWS AppSync has field-level logging disabled
+- AWS Certificate Manager (ACM) RSA certificate key length less than 2048
+- AWS DMS replication instance automatic version upgrade disabled
+- AWS DocumentDB clusters have backup retention period less than 7 days
+- AWS DynamoDB table Auto Scaling not enabled (SFDC)
+- AWS DynamoDB table deletion protection is disabled
+- AWS Elastic Beanstalk environment logging not configured
+- AWS Macie is not enabled
+- AWS Network ACL is not in use
+- GCP Cloud Asset Inventory is disabled
+- GCP External Load Balancer logging is disabled
+- GCP VM instance Confidential VM service disabled
+
+#### 2 new compliance standards
+
+- CIS v3.0.0 (GCP) Level 1
+- CIS v3.0.0 (GCP) Level 2
+
+### Changed
+
+#### 2 config policies updated
+
+- AWS Application Load Balancer (ALB) is not using the latest predefined security policy
+- Azure Microsoft Defender for Cloud set to Off for DNS
+
+
 ## PCS-24.4.2 - 2024-4-25
 
 ### Added

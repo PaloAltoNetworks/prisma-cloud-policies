@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1142",
+  "policyId": "24b6bcaa-2cec-4dbf-a22f-5425d77c4240",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP VM instance Confidential VM service disabled",
+  "description": "This policy identifies GCP VM instances that have Confidential VM service disabled.\n\nGCP VM encrypts data at rest and in transit, but the data must be decrypted before processing. Confidential VM service (Confidential Computing) allows GCP VM to keep in-memory data secure by utilizing hardware-based memory encryption. This protects any sensitive data leakage in case the VM is compromised.\n\nIt is recommended to enable Confidential VM service on GCP VMs to enhance the confidentiality and integrity of in-memory data on the VMs.",
+  "rule.criteria": "022ffd8e-61a9-44f1-84c5-7b48dff3eba6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = status equal ignore case \"RUNNING\" and (machineType contains \"machineTypes/n2d-\" or machineType contains \"machineTypes/c2d-\") and (confidentialInstanceConfig.enableConfidentialCompute does not exist or confidentialInstanceConfig.enableConfidentialCompute is false)",
+  "recommendation": "Confidential VM services cannot be enabled for existing VM instances. A new VM should be created to enable confidential VM services on the instance. \n\nTo create a new VM instance with confidential VM services enabled, please refer to the steps below:\n1. Login to the GCP console\n2. Under 'Compute Engine', navigate to the 'VM instances' (Left Panel)\n3. Click on 'Create instance'\n4. In the 'Confidential VM service' section, click Enable.\n5. In the Enable Confidential Computing dialog, review the list of settings updated when you enable the service, and then click 'Enable'.\n6. Review other settings for the VM instance.\n7. Click 'Create'.\n\nNote: For the list of supported VM configurations for confidential VM services, please refer to the URL given below:\nhttps://cloud.google.com/confidential-computing/confidential-vm/docs/supported-configurations",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

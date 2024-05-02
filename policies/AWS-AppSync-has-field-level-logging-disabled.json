@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ASY-1151",
+  "policyId": "53f3d4fd-c735-4eae-bdfa-cedec9126d68",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS AppSync has field-level logging disabled",
+  "description": "This policy identifies an AWS AppSync GraphQL API not configured with field-level logging.\n\nAWS AppSync is a managed GraphQL service that simplifies the development of scalable APIs. \\\"field-level\\\" security offers a fine-grained approach to defining permissions and access control for individual fields within a GraphQL schema. It allows precisely regulate which users or clients can read or modify specific fields in an API. This level of control ensures that sensitive data is protected and that access is restricted only to those with appropriate authorization.\n\nWithout field-level security, control over specific fields within the schema is lost, causing the risk of sensitive data exposure. Additionally, the absence of this feature limits the implementation of fine-grained access control policies based on user roles or contextual information, thereby undermining the overall security of the application.\n\nIt is recommended to enable field-level security to mitigate the risks by enforcing access control at a granular level, ensuring that only authorized users can access or modify specific fields based on your defined policies and requirements.",
+  "rule.criteria": "bffc2f87-93bd-44fe-b73a-be84220fa8eb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-appsync-graphql-api' AND json.rule = logConfig.fieldLogLevel is not member of ('ERROR','ALL')",
+  "recommendation": "To turn on field-level logging on an AWS AppSync GraphQL API,\n\n1. Sign in to the AWS Management Console.\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. In the navigation pane, choose 'AWS AppSync' under the 'Front-end Web & Mobile' section.\n4. On the APIs page, choose the name of a reported GraphQL API.\n5. On your API's homepage, in the navigation pane, choose Settings.\n6. Under Logging, Turn on Enable Logs.\n7. Under Field resolver log level, choose your preferred field-level logging level Error or All according to your business requirements.\n8. Under Create or use an existing role, choose New role to create a new AWS Identity and Access Management (IAM) that allows AWS AppSync to write logs to CloudWatch. Or, choose the Existing role to select the Amazon Resource Name (ARN) of an existing IAM role in your AWS account.\n9. Choose Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
