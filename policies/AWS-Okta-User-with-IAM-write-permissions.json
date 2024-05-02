@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "59a1468f-150e-469b-a099-df1d372fbb92",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "Okta User with IAM write access level",
+  "description": "This policy identifies IAM write permissions that are defined as risky permissions. Ensure that the Okta Users in your AWS account don't have a risky set of write permissions to minimize security risks.",
+  "rule.criteria": "59a1468f-150e-469b-a099-df1d372fbb92",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name IN ('iam:AddClientIDToOpenIDConnectProvider','iam:AddRoleToInstanceProfile','iam:AddUserToGroup','iam:ChangePassword','iam:CreateAccessKey','iam:CreateAccountAlias','iam:CreateGroup','iam:CreateInstanceProfile','iam:CreateLoginProfile','iam:CreateOpenIDConnectProvider','iam:CreateRole','iam:CreateSAMLProvider','iam:CreateServiceLinkedRole','iam:CreateServiceSpecificCredential','iam:CreateUser','iam:CreateVirtualMFADevice','iam:DeactivateMFADevice','iam:DeleteAccessKey','iam:DeleteAccountAlias','iam:DeleteGroup','iam:DeleteInstanceProfile','iam:DeleteLoginProfile','iam:DeleteOpenIDConnectProvider','iam:DeleteRole','iam:DeleteSAMLProvider','iam:DeleteSSHPublicKey','iam:DeleteServerCertificate','iam:DeleteServiceLinkedRole','iam:DeleteServiceSpecificCredential','iam:DeleteSigningCertificate','iam:DeleteUser','iam:DeleteVirtualMFADevice','iam:EnableMFADevice','iam:PassRole','iam:RemoveClientIDFromOpenIDConnectProvider','iam:RemoveRoleFromInstanceProfile','iam:RemoveUserFromGroup','iam:ResetServiceSpecificCredential','iam:ResyncMFADevice','iam:SetSecurityTokenServicePreferences','iam:UpdateAccessKey','iam:UpdateAccountPasswordPolicy','iam:UpdateGroup','iam:UpdateLoginProfile','iam:UpdateOpenIDConnectProviderThumbprint','iam:UpdateRole','iam:UpdateRoleDescription','iam:UpdateSAMLProvider','iam:UpdateSSHPublicKey','iam:UpdateServerCertificate','iam:UpdateServiceSpecificCredential','iam:UpdateSigningCertificate','iam:UpdateUser','iam:UploadSSHPublicKey','iam:UploadServerCertificate','iam:UploadSigningCertificate') AND source.idp.service = 'Okta'",
+  "recommendation": "Remediation steps:\n1. Login to the Okta console\n2. Find the role used by the Okta user\n3. Log in to the AWS console\n4. Navigate to the IAM service\n5. Click on Roles\n6. Choose the relevant role\n7. Under ''Permissions policies'', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
