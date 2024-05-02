@@ -12,6 +12,21 @@
 - AWS GuardDuty detector is not enabled
 - GCP Service account is publicly accessible
 
+#### 11 new policies for the IAM Security module
+
+- AWS Lateral Movement to Data Services Through Redshift Cluster Creation
+- Azure Lateral Movement Through SSH Key Replacement and Managed Identity Exploitation on VM
+- Azure Lateral Movement via VM Command Execution Leveraging Managed Identity
+- Cloud service account with excessive admin privileges
+- GCP Cloud Run Job Public Execution via Default Compute SA Modification
+- GCP Cloud Run with administrative permissions
+- GCP Cloud Run with basic role
+- GCP Lateral Access Expansion by Making Cloud Run Publicly Executable
+- GCP Project-Wide Lateral Movement via SSH Key Modification for VMs
+- Roles with high privileges can be assumed by a service in an external account
+- User account with excessive admin privileges
+
+
 #### 1 new compliance standard
 
 - CRI Profile v2.0

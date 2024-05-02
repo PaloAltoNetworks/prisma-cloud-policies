@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "59f32bc9-5750-4821-b663-0c5b07ba3f85",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Lateral Movement via VM Command Execution Leveraging Managed Identity",
+  "description": "\nUsing this role allows  running commands on any virtual machine in the subscription, with 'Microsoft.Compute/virtualMachines/runCommand/action' an adversary can steal credentials connected to the VM and preform lateral movments from the accessed VM.",
+  "rule.criteria": "59f32bc9-5750-4821-b663-0c5b07ba3f85",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' AND action.name = 'Microsoft.Compute/virtualMachines/runCommand/action' AND grantedby.level.type = 'Azure Subscription' ",
+  "recommendation": "Remediation steps:\n 1. Sign in to Azure Management Console\n 2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n 3. Click on the Azure cloud subscription that you want to examine\n 4. In the navigation panel, choose Access control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n 5. Find the assignment between the azure identity and the role with permissions to Microsoft.Compute\n 6. Remove the assignment or change the permissions of the role\n 7. Create a new assignment with built-in or custom role without risky permissions and/or scoped down to only VMs that this identity requires access to, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
