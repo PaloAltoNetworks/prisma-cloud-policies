@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "0c1f97f6-8740-4561-bae7-d9216fb5e4a0",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Run with basic role",
+  "description": "Identifies Cloud Run instances granted broad access due to highly permissive basic roles attached ('Viewer', 'Editor', 'Owner'). When not otherwise configured, compute instances will use the default compute service account which, given default GCP configurations, is granted the 'Editor' role.",
+  "rule.criteria": "0c1f97f6-8740-4561-bae7-d9216fb5e4a0",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'run' AND grantedby.cloud.policy.name IN ( 'Viewer', 'Editor', 'Owner' )",
+  "recommendation": "Remediation steps:\n1.Log in to your GCP instance.\n2.Navigate to the Cloud Run instance, Revisions tab, Security.\n3.Copy the Service account name, and navigate to IAM.\n4.Under the IAM tab, search for the Service account, and click on the pencil icon to edit it's permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

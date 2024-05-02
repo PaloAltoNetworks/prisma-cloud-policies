@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "1bc93b36-2e15-4d1f-b2b6-23e1a646f4e6",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Run with administrative permissions",
+  "description": "Identifies Cloud Run instances granted administrative permissions, increasing the blast radius in case of a potential comrpomise of the instance.",
+  "rule.criteria": "1bc93b36-2e15-4d1f-b2b6-23e1a646f4e6",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'run' AND action.access.isAdministrative = true",
+  "recommendation": "Remediation steps:\n1.Log in to your GCP instance.\n2.Navigate to the Cloud Run instance, Revisions tab, Security.\n3.Copy the Service account name, and navigate to IAM.\n4.Under the IAM tab, search for the Service account, and click on the pencil icon to edit it's permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

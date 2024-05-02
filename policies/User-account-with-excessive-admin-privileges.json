@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "6d12f443-a0a3-4f2a-97ee-4be065612bd8",
+  "policyType": "iam",
+  "cloudType": "all",
+  "severity": "medium",
+  "name": "User account with excessive admin privileges",
+  "description": "Identifies users which have administrative permissions that have not been used in the last 90 days. Users with administrative permissions are considered a valuable target for adversaries, and as such, it is good practice to limit them as much as possible.",
+  "rule.criteria": "6d12f443-a0a3-4f2a-97ee-4be065612bd8",
+  "searchModel.query": "config from iam where source.cloud.resource.type = 'user' AND action.access.isAdministrative = true AND action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1.Log in to your Cloud instance.\n2.Navigate to the affected user.\n3.Edit the user's permissions following the principle of least privilege.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

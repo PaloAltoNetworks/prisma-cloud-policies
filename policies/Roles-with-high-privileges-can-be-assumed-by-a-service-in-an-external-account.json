@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "d8081638-47d9-4846-88a9-e63157161914",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "Roles with high privileges can be assumed by a service in an external account",
+  "description": "Identifies roles which have administrative permissions and can be assumed by an identity in an external account. This policy relies on the default account group, therefore if the group is changed this policy will not reflect the environment entirely. The default account group is created upon onboarding to Prisma Cloud, and contains all instance-related accounts known to Prisma Cloud. External accounts are considered as such if Prisma are unaware of them in the context of your environment (i.e not part of the onboarded accounts). As we do not have visibility or control over the external entity, giving it the ability to gain administartive permissions in the environment is considered high risk.",
+  "rule.criteria": "d8081638-47d9-4846-88a9-e63157161914",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND grantedby.cloud.entity.type = 'role' AND action.access.isAdministrative = true AND source.cloud.accountgroup != 'Default Account Group'",
+  "recommendation": "Remediation steps:\n1. Log in to your AWS account\n2. Navigate to the affected role, and select the 'Trusted entities' tab.\n3.Select 'Edit trust policy' and remove the entries allowing assumption from external sources.\n4.Ensure the remaining entries are required, and save your changes.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
