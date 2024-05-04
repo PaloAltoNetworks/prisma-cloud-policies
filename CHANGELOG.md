@@ -226,6 +226,27 @@
 - Azure Storage account is not configured with private endpoint connection
 - GCP VM instance using a default service account with Cloud Platform access scope
 
+#### 18 policies updated for the IAM Security module
+
+- AWS EC2 Instance with AWS Organization management permissions
+- AWS EC2 Instance with IAM policy management permissions
+- AWS EC2 Instance with IAM write permissions
+- AWS ECS Task Definition with AWS Organization management permissions
+- AWS ECS Task Definition with IAM policy management permissions
+- AWS ECS Task Definition with IAM write permissions
+- AWS Elastic Beanstalk Platform with AWS Organization management permissions
+- AWS Elastic Beanstalk Platform with IAM policy management permissions
+- AWS Elastic Beanstalk Platform with IAM write permissions
+- AWS IAM User with AWS Organization management permissions
+- AWS IAM User with IAM policy management permissions
+- AWS IAM User with IAM write permissions
+- AWS Lambda Function with AWS Organization management permissions
+- AWS Lambda Function with IAM policy management permissions
+- AWS Lambda Function with IAM write permissions
+- AWS Okta User with AWS Organization management permissions
+- AWS Okta User with IAM policy management permissions
+- AWS Okta User with IAM write permissions
+
 ### Removed
 
 #### 3 policies deleted
