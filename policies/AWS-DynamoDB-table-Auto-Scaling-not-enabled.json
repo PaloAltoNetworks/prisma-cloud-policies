@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DYN-1152",
+  "policyId": "4de147de-8ba0-4aff-a387-30817d9504a3",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS DynamoDB table Auto Scaling not enabled",
+  "description": "This policy identifies AWS DynamoDB tables with auto-scaling disabled.\n\nDynamoDB is a fully managed NoSQL database that provides a highly reliable, scalable, low-latency database solution for applications that require consistent, single-digit millisecond latency at any scale. Auto-scaling functionality allows you to dynamically alter the allocated throughput capacity for your DynamoDB tables based on current traffic patterns. This feature employs the Application Auto Scaling service to automatically boost provisioned read and write capacity to manage unexpected traffic increases and reduce throughput when the workload falls in order to avoid paying for wasted supplied capacity.\n\nIt is recommended to enable auto-scaling for the DynamoDB table to ensure efficient resource utilisation, cost optimisation, improved performance, simplified management, and scalability.",
+  "rule.criteria": "59959d2b-2ea4-4ace-9df3-72076f5eb761",
+  "searchModel.query": "config from cloud.resource where Resource.status = Active AND api.name = 'aws-application-autoscaling-scaling-policy' as Y; config from cloud.resource where api.name = 'aws-dynamodb-describe-table' AND json.rule = tableStatus equal ignore case ACTIVE AND billingModeSummary.billingMode does not equal PAY_PER_REQUEST as X; filter 'not($.Y.ResourceName equals $.X.tableName)'; show X;",
+  "recommendation": "To enable auto-scaling for a DynamoDB table through the AWS Management Console, follow these steps:\n\n1. Sign into the AWS console. Navigate to the DynamoDB console.\n2. In the navigation pane, choose 'Tables'.\n3. Select the table you want to enable auto-scaling for.\n4. Choose the 'Additional settings' tab.\n5. In the 'Read/write capacity' section, choose 'Edit'.\n6. In the 'Capacity mode' section, choose 'Provisioned'.\n7. For 'Table capacity', set 'Auto scaling' to 'On' for read capacity, write capacity, or both.\n8. Set the minimum and maximum capacity units, and the target utilization percentage for read and write capacity.\n9. Choose 'Save changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

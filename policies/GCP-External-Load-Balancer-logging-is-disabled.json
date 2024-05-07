@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1143",
+  "policyId": "b84d0b24-ebc1-42ac-bdf5-7ad58cf74f22",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP External Load Balancer logging is disabled",
+  "description": "This policy identifies GCP External Load Balancers using any of the protocols like HTTP, HTTPS, and HTTP/2 having logging disabled. \n\nGCP external load balancers distribute incoming traffic across multiple instances or services hosted on Google Cloud Platform. Feature \\\"logging\\\" for external load balancers captures and records detailed information about the traffic flowing through the load balancers. This includes data such as incoming requests, responses, errors, latency metrics, and other relevant information.  By enabling logging for external load balancers, you gain visibility into the performance, health, and security of the applications. Logged data comes handy for troubleshooting an incident, monitoring, analysis, and compliance purposes. \n\nIt is recommended to enable logging for all external load balancers.",
+  "rule.criteria": "ab0e7fd6-c748-4e91-9c12-6ebbdcdee66f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-external-backend-service' AND json.rule = backends exists and ( protocol equal ignore case \"HTTP\" or protocol equal ignore case \"HTTPS\" or protocol equal ignore case \"HTTP2\" ) and ( logConfig.enable does not exist or logConfig.enable is false )",
+  "recommendation": "1. Log in to the GCP console.\n2. Navigate to 'Network Services' and select 'Load Balancing' from the left panel.\n3. Click on 'BACKENDS'.\n4. Click on the load balancer link under the 'Load balancer' column for the reported backend service.\n5. On the Load Balancer details page, click on 'EDIT'.\n6. Click on 'Backend configuration', and then click the edit icon next to the reported backend service under the 'Backend services' section.\n7. Under 'Logging', select 'Enable logging' checkbox.\n8. Choose the appropriate Sample rate.\n9. To finish editing the backend service, click 'UPDATE'.\n10. To finish editing the load balancer, click 'UPDATE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

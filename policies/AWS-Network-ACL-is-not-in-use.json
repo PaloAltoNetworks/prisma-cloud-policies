@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-1149",
+  "policyId": "8eaf1a60-fe3f-4931-a8d4-fa8e84982f94",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Network ACL is not in use",
+  "description": "This policy identifies AWS Network ACLs that are not in use. \n\nAWS Network Access Control Lists (NACLs) serve as a firewall mechanism to regulate traffic flow within and outside VPC subnets. A recommended practice is to assign NACLs to specific subnets to effectively manage network traffic. Unassigned NACLs with inadequate rules might inadvertently get linked to subnets, posing a security risk by potentially allowing unauthorized access.\n\nIt is recommended to regularly review and remove unused and inadequate NACLs to improve security, network performance, and resource management.",
+  "rule.criteria": "96e722ed-6d1d-4144-a997-81be0f6d5b18",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-ec2-describe-network-acls' AND json.rule = associations[*] size less than 1",
+  "recommendation": "To attach an AWS Network Access Control List (NACL) to a subnet, follow these steps: \n\n1. Sign into the AWS console and navigate to the Amazon VPC console. \n2. In the navigation pane, choose 'Network ACLs' under the 'Security' section. \n3. Select the NACL that you want to attach to a subnet. \n4. Choose the 'Actions' button, then select 'Edit subnet associations'. \n5. In the 'Edit subnet associations' dialogue box, select the subnet(s) that you want to associate with the NACL. \n6. Choose 'Save' to apply the changes. \n\nTo delete a non-default AWS Network Access Control List (NACL), follow these steps: \n\n1. Sign into the AWS console and navigate to the Amazon VPC console. \n2. In the navigation pane, choose 'Network ACLs' under the 'Security' section. \n3. Select the NACL that you want to delete. \n4. Choose the 'Actions' button, then select 'Delete network ACL'. \n5. Confirm the deletion when prompted.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

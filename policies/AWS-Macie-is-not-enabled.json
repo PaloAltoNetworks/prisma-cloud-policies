@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-AMCIE-1146",
+  "policyId": "04836ceb-a10d-4b55-93ad-4a3f62dcbe75",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Macie is not enabled",
+  "description": "This policy identifies the AWS Macie that is not enabled in specific regions. \n\nAWS Macie is a data security service that automatically discovers, classifies, and protects sensitive data in AWS, enhancing security and compliance posture. Failure to activate AWS Macie increases the risk of potentially missing out on automated detection and protection of sensitive data, leaving your organization more vulnerable to data breaches and compliance violations.\n\nIt is recommended to enable Macie in all regions for comprehensive adherence to security and compliance requirements.",
+  "rule.criteria": "a3b417b0-1f8c-43e6-90fc-a0cd375fe488",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-macie2-session' AND json.rule = status equals \"ENABLED\" as X; count(X) less than 1",
+  "recommendation": "To enable Macie in the specific region,\n\n1. Log in to your AWS Management Console.\n2. By using the AWS Region selector in the upper-right corner of the page, select the Region which is reported.\n3. In the AWS Management Console, search for \"Macie\" in the services search bar or locate it under the \"Security, Identity, & Compliance\" category.\n4. On the Amazon Macie page, choose Get started.\n5. Choose Enable Macie.\n\nTo re-enable macie after suspended in the region,\n\n1. Log in to your AWS Management Console.\n2. By using the AWS Region selector in the upper-right corner of the page, select the Region which is reported.\n3. In the AWS Management Console, search for \"Macie\" in the services search bar or locate it under the \"Security, Identity, & Compliance\" category.\n4. In the Macie dashboard, navigate to the 'settings' section.\n5. Click on the 'Re-enable Macie' button under the 'Suspend Macie' section.\n\nAfter enabling Macie, you can further configure policies, alerts, and other settings according to your organization's security and compliance needs.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SU-1147",
+  "policyId": "e2215750-8d78-402d-9b2c-2a505c93ba52",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Cloud Asset Inventory is disabled",
+  "description": "This policy identifies GCP accounts where GCP Cloud Asset Inventory is disabled.\n\nGCP Cloud Asset Inventory is a metadata inventory service that allows you to view, monitor, and analyze Google Cloud and Anthos assets across projects and services. This data can prove to be crucial in security analysis, resource change tracking, and compliance auditing.\n\nIt is recommended to enable GCP Cloud Asset Inventory for centralized visibility and control over your cloud assets.",
+  "rule.criteria": "80ec781c-b4cb-496d-a269-ea3939da79d9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-services-list' AND json.rule = services[?any( name ends with \"/cloudasset.googleapis.com\" and state equals \"ENABLED\" )] does not exist",
+  "recommendation": "1. Login to the GCP console\n2. Under 'APIs and Services', navigate to the 'API Library' (Left Panel)\n3. Search and select 'Cloud Asset API'\n4. Click 'ENABLE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

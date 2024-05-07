@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ACM-1144",
+  "policyId": "97206f64-3af8-4cb9-b189-1d85a205ee07",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Certificate Manager (ACM) RSA certificate key length less than 2048",
+  "description": "This policy identifies the RSA certificates managed by AWS Certificate Manager with a key length of less than 2048 bits. \n\nAWS Certificate Manager (ACM) is a service for managing SSL/TLS certificates. RSA certificates are cryptographic keys used for securing communications over networks. Shorter key lengths may be susceptible to attacks such as brute force or factorization, where an attacker could potentially decrypt the encrypted data by finding the prime factors of the key.\n\nIt is recommended that the RSA certificates imported on ACM utilise a minimum key length of 2048 bits or greater to ensure a sufficient level of security.",
+  "rule.criteria": "70aab2ba-11c4-4787-b06d-2d6184541fb2",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-acm-describe-certificate' AND json.rule = status equals \"ISSUED\" and keyAlgorithm starts with \"RSA-\" and keyAlgorithm equals RSA-1024",
+  "recommendation": "Note: You can't change the key length after importing a certificate. Instead, you must delete certificates with a key length smaller than 2,048 bits, and then the new RSA certificate should be imported with the desired key length.\n\nTo import the new certificate, Please refer to the below url\nhttps://docs.aws.amazon.com/acm/latest/userguide/import-certificate-api-cli.html#import-certificate-api\n\nTo delete the reported ACM RSA certificate, Please refer to the below url\n\nhttps://docs.aws.amazon.com/acm/latest/userguide/gs-acm-delete.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
