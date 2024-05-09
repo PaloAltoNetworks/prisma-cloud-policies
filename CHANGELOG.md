@@ -10,7 +10,7 @@
 - AWS Certificate Manager (ACM) RSA certificate key length less than 2048
 - AWS DMS replication instance automatic version upgrade disabled
 - AWS DocumentDB clusters have backup retention period less than 7 days
-- AWS DynamoDB table Auto Scaling not enabled (SFDC)
+- AWS DynamoDB table Auto Scaling not enabled
 - AWS DynamoDB table deletion protection is disabled
 - AWS Elastic Beanstalk environment logging not configured
 - AWS Macie is not enabled
