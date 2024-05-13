@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "Risk Management in Technology (RMiT)",

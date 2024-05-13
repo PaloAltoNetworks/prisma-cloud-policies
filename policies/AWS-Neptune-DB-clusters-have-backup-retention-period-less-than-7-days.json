@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-NEP-1165",
+  "policyId": "349233fb-7d41-42b4-8058-90538b2964fb",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Neptune DB clusters have backup retention period less than 7 days",
+  "description": "This policy identifies Amazon Neptune DB clusters lacking sufficient backup retention tenure.\n\nAWS Neptune DB is a fully managed graph database service. The backup retention period denotes the duration for storing automated backups of the Neptune DB clusters. Inadequate retention periods heighten the risk of data loss, and compliance issues, and hinder effective recovery in security breaches or system failures.\n\nIt is recommended to ensure a backup retention period of at least 7 days or according to your business and compliance requirements.",
+  "rule.criteria": "dccd9e6f-c6c0-41d7-a0af-18b6ff1bf227",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-neptune-db-cluster' AND json.rule = Status equals \"available\" and (BackupRetentionPeriod does not exist or BackupRetentionPeriod less than 7)",
+  "recommendation": "To modify an Amazon Neptune DB cluster's backup retention period, perform the following actions:\n\n1. Sign in to the AWS Management Console\n2. Select the region from the dropdown in the top right corner where the alert is generated\n3. In the Navigation Panel on the left, under 'Database', select 'Neptune'\n4. Under ‘Databases', select 'Clusters' and choose the reported cluster name\n5. Click 'Modify' from the top right corner \n6. Under the 'Additional settings' section, Click the 'Show more' dropdown \n7. Select the desired backup retention period in days from the 'Backup retention period' drop-down menu based on your business or compliance requirements \n8. Click 'Next' to review the summary of your changes \n9. Choose either 'Apply during the next scheduled maintenance window' or 'Apply immediately' based on your scheduling preference\n10. Click on 'Submit' to implement the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

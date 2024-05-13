@@ -1,5 +1,38 @@
 # Changelog
 
+## PCS-24.5.2 - 2024-5-23
+
+### Added
+
+#### 9 new config policies
+
+- AWS Application Load Balancer (ALB) is not configured to drop HTTP headers
+- AWS DocumentDB cluster does not publish audit logs to CloudWatch Logs
+- AWS Neptune DB cluster does not publish audit logs to CloudWatch Logs
+- AWS Neptune DB clusters have backup retention period less than 7 days
+- AWS Network Firewall delete protection is disabled
+- AWS OpenSearch domain does not have the latest service software version
+- Azure App Service Environment configured with weak TLS cipher suites
+- Azure App service HTTP logging is disabled
+- Azure Storage account with cross tenant replication enabled
+
+#### 1 new compliance standard
+
+- NIST CSF v2.0
+
+### Changed
+
+#### 3 config policies updated
+
+- Azure App Service Web app authentication is off
+- Azure Storage account encryption key configured by access policy with privileged operations
+- Azure Virtual Network subnet is not configured with a Network Security Group
+
+#### 1 compliance standard updated
+
+- HIPAA
+
+
 ## PCS-24.5.1 - 2024-5-09
 
 ### Added

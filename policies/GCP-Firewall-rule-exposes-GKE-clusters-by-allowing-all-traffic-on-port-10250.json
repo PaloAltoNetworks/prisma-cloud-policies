@@ -15,7 +15,9 @@
   "remediation.impact": "disable GCP Firewall rule that allows all traffic on port 10250",
   "compliance.standard": [
     "CRI Profile v2.0",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
+    "NIST CSF v2.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",

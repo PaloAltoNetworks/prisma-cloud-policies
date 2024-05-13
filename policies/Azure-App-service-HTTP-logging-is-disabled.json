@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1164",
+  "policyId": "18aec02c-ae0e-4e2c-9e6f-72820d1b2909",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure App service HTTP logging is disabled",
+  "description": "This policy identifies Azure App services that have HTTP logging disabled. \n\nBy enabling HTTP logging for your app service, you can collect log information and use it to monitor and troubleshoot your app, as well as identify any potential security issues or threats. This can help to ensure that your app is running smoothly and is secure from potential attacks. \n\nAs best practice, it is recommended to enable HTTP logging on your app service.",
+  "rule.criteria": "84837d91-6b0b-4936-87a6-f6940506a694",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running and config.httpLoggingEnabled exists and config.httpLoggingEnabled is false",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to App Services dashboard\n3. Click on the reported App service\n4. Under the 'Monitoring' menu, click on 'App Service logs'\n5. Under 'Web server logging', select Storage to store logs on blob storage, or File System to store logs on the App Service file system.\n6. In Retention Period (Days), set the number of days the logs should be retained.\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

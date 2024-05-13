@@ -7,7 +7,7 @@
   "name": "Azure Storage account encryption key configured by access policy with privileged operations",
   "description": "This policy identifies Azure Storage accounts which are encrypted by an encryption key configured access policy with privileged operations. Encryption keys should be kept confidential and only accessible to authorized entity with limited operation access. Allowing privileged access to an encryption key also allows to alter/delete the data that is encrypted by it, making the data more easily accessible. It is recommended to have restricted access policies to an encryption key so that only authorized entities can access it with limited operation access. ",
   "rule.criteria": "9f317802-9176-47a4-8c78-be40a2086a04",
-  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.encryption.keySource equal ignore case \"Microsoft.Keyvault\" as X; config from cloud.resource where api.name = 'azure-key-vault-list' and json.rule = properties.accessPolicies[*].permissions exists and (properties.accessPolicies[*].permissions.keys[*] intersects ('Decrypt', 'Encrypt', 'Release', 'Purge', 'all') or properties.accessPolicies[*].permissions.secrets[*] intersects ('Purge', 'all') or properties.accessPolicies[*].permissions.certificates[*] intersects ('Purge', 'all')) as Y; filter '$.Y.properties.vaultUri contains $.X.properties.encryption.keyvaultproperties.keyvaulturi'; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.encryption.keySource equal ignore case \"Microsoft.Keyvault\" as X; config from cloud.resource where api.name = 'azure-key-vault-list' and json.rule = properties.enableRbacAuthorization is false and properties.accessPolicies[*].permissions exists and (properties.accessPolicies[*].permissions.keys[*] intersects ('Decrypt', 'Encrypt', 'Release', 'Purge', 'all') or properties.accessPolicies[*].permissions.secrets[*] intersects ('Purge', 'all') or properties.accessPolicies[*].permissions.certificates[*] intersects ('Purge', 'all'))  as Y; filter '$.Y.properties.vaultUri contains $.X.properties.encryption.keyvaultproperties.keyvaulturi'; show X;",
   "recommendation": "1. Log in to Azure Portal\n2. Navigate to your Storage account and display the Encryption settings\n3. Keep note of the Key vault and Key used\n4. Navigate to the Key Vault resource noted\n5. Select Access policies, select the key noted\n6. Click on Edit and make sure only required permissions are checked instead of Select all and only required operations are selected instead of privileged operations as per business requirement.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -15,7 +15,9 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CRI Profile v2.0",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
+    "NIST CSF v2.0",
     "Telecommunications Security Act - TSA"
   ]
 }

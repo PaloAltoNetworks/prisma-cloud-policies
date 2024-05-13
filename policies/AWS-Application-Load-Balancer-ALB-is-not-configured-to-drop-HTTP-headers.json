@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-1157",
+  "policyId": "79b84113-d47b-412f-9bd0-381cd4a0d50e",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Application Load Balancer (ALB) is not configured to drop HTTP headers",
+  "description": "This policy identifies AWS Application Load Balancers that are not configured to drop HTTP headers.\n\nAWS Application Load Balancers distribute incoming HTTP/HTTPS traffic across multiple targets such as EC2 instances, containers, and Lambda functions, based on routing rules and health checks. By default, ALBs are not configured to drop invalid HTTP header values, which can leave the load balancer vulnerable to HTTP desync attacks. HTTP desync attacks manipulate request headers to exploit inconsistencies between servers, potentially leading to security vulnerabilities and unauthorized access.\n\nIt is recommended to enable this feature, to prevent the load balancer from forwarding requests with invalid HTTP headers to mitigate potential security vulnerabilities.",
+  "rule.criteria": "3963e487-1798-4b86-9f15-c1ccd3aa5db0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = type equals application and ['attributes'].['routing.http.drop_invalid_header_fields.enabled'] is false",
+  "recommendation": "To configure the application load balancer to drop invalid HTTP header fields, perform the following actions:\n\n1. Open the Amazon EC2 console at https://console.aws.amazon.com/ec2/\n2. In the navigation pane, choose 'Load balancers'\n3. Choose the reported Application Load Balancer \n4. From 'Actions', choose 'Edit load balancer attributes' \n5. Enable the 'Drop invalid header fields’ option\n6. Click on 'Save changes'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

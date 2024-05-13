@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ES-1166",
+  "policyId": "d15a0d78-a2c1-46c4-926d-9390174554c1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS OpenSearch domain does not have the latest service software version",
+  "description": "This policy identifies Amazon OpenSearch Service domains that have service software updates available but not installed for the domain.\n\nAmazon OpenSearch Service is a managed solution for deploying, managing, and scaling OpenSearch clusters. Service software updates deliver the most recent platform fixes, enhancements, and features for the environment, ensuring domain security and availability. To minimize service disruption, it's advisable to schedule updates during periods of low domain traffic.\n\nIt is recommended to keep OpenSearch regularly updated to maintain system security, while also accessing the latest features and improvements.",
+  "rule.criteria": "eb6eba68-755f-4ecf-b26a-91d88a4805a9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name= 'aws-es-describe-elasticsearch-domain' AND json.rule = serviceSoftwareOptions.updateAvailable exists and serviceSoftwareOptions.updateAvailable is true",
+  "recommendation": "To request a service software update for an Amazon OpenSearch Service, perform the following actions:\n\n1. Sign in to the AWS Management Console\n2. Select the region from the dropdown in the top right corner where the alert is generated\n3. In the Navigation Panel on the left, under 'Analytics', select 'Amazon OpenSearch Service'\n4. Select the reported domain name\n5. Under 'Actions', under 'Service software update', click on 'Update' and select one of the following options:\n\na. Apply update now - Immediately schedules the action to happen in the current hour if there's capacity available. If capacity isn't available, we provide other available time slots to choose from\n\nb. Schedule it in off-peak window - Only available if the off-peak window is enabled for the domain. Schedules the update to take place during the domain's configured off-peak window. There's no guarantee that the update will happen during the next immediate window. Depending on capacity, it might happen in subsequent days\n\nc. Schedule for specific date and time - Schedules the update to take place at a specific date and time. If the time that you specify is unavailable for capacity reasons, you can select a different time slot\n\n6. Choose 'Confirm'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
