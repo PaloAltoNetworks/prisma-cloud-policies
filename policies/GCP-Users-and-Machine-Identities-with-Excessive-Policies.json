@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "3ba83f42-9cff-47ae-bb54-aee6c873667a",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Users and Machine Identities with Excessive Policies",
+  "description": "This policy identifies GCP roles that contain '*' in Action, and the level of role assignment is Folder or higher.\n\nRoles with '*' in the Action section for a folder or higher scope (like organization) allow users to perform any action on any resource within that scope. This is risky because:\n- Unrestricted Access: Users can bypass security measures and potentially delete critical resources or modify configurations.\n- Accidental Damage: Mistakes can have a significant impact, deleting entire resources or services.\n- Elevated Attack Surface: A compromised account with such a role gives attackers vast control.",
+  "rule.criteria": "3ba83f42-9cff-47ae-bb54-aee6c873667a",
+  "searchModel.query": "config from iam where source.cloud.type = 'GCP' and grantedby.level.type IN ( 'GCP Folder', 'GCP Organization' ) and grantedby.cloud.policy.isexcessive = true",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the IAM service\n3. Find the binding between the service account or the user and the role with over-privileged permissions\n4. Remove the binding\n5. Create a new binding with a predefined or custom role without risky permissions, if necessary.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "5bc1d9da-48a4-4275-9741-0696d0ebc781",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Users and Machine Identities with IAM Data Write permissions are unused for 90 days",
+  "description": "This policy identifies IAM Users with unused Data Write Permissions. Unused IAM users with \"Data Write\" permissions pose a severe security risk, even after 90 days of inactivity. Here's why:\n- Unrestricted Data Modification: Data Write allows users to modify, alter, or even delete critical data stored in AWS services. An attacker with these permissions could wreak havoc, corrupting or stealing sensitive information.\n- Privilege Escalation: Data Write permissions can be used as a stepping stone. Attackers might exploit them to gain further control over your AWS environment and access even more sensitive resources.\n\nImagine handing someone a key to your vault and then forgetting about it. Unused Data Write access is just as dangerous. Here's how to mitigate the risk:\n- Ruthless Review: Ruthlessly identify and disable all unused IAM users with Data Write permissions, regardless of how long they've been inactive.\n- Principle of Least Privilege: Grant Data Write permissions only to specific users or machine identities that absolutely require them, and only for the minimum amount of time necessary.\n-MFA Requirement: Enforce Multi-Factor Authentication (MFA) for all users with Data Write permissions. This significantly reduces the risk of unauthorized access, even if credentials are compromised.",
+  "rule.criteria": "5bc1d9da-48a4-4275-9741-0696d0ebc781",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and action.access.level = 'Data Write' and action.lastaccess.days > 90",
+  "recommendation": "Remediation for a user:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Users\n 4. Choose the relevant user\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions\n ----------------------------------------\n Remediation for a Compute instance/Okta user that assumes a role:\n 1. Log in to the AWS console\n 2. Navigate to the compute service (For example, AWS EC2, AWS Lambda or AWS ECS) or login to the Okta console\n 3. Find the role used by the compute instance/Okta user\n 4. Navigate to the IAM service\n 5. Click on Roles\n 6. Choose the relevant role\n 7. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

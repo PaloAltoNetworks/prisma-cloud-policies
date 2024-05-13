@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "eeaafcc6-0994-461f-a48e-71f91cc0f1ac",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Administrators with IAM permissions are unused for 90 days",
+  "description": "This policy identifies Azure Administrators with Stale Azure RBAC Permissions (Unused for 90 days).\n\nRisk of Unused Azure RBAC Permissions:\nAzure Admins with any level of Azure RBAC permissions (administrative or otherwise) that haven't been used for 90 days pose a security risk because:\nUnsecured Access Point: These accounts act like forgotten open doors. If compromised, attackers can exploit them to gain access to Azure resources and perform unauthorized actions, potentially leading to data breaches or disrupting critical services.\nElevated Attack Potential: Azure RBAC permissions can vary widely, with some granting high-level access to manage subscriptions, virtual machines, or modify security configurations. If compromised, an unused account with such permissions could be devastating.\n\nMitigating the Risk:\nRegular Review and Removal: Proactively identify and remove unused Azure AD users on a regular basis (ideally less than 90 days). Focus on users with any level of Azure RBAC permissions, not just administrative privileges.\nPrinciple of Least Privilege: When creating Azure AD users, assign only the minimum RBAC permissions required for them to perform their specific tasks. Regularly review and adjust permissions as needed.\nMulti-Factor Authentication (MFA): Enforce MFA for all Azure AD users to add an extra layer of security and make it significantly harder for attackers to compromise an account, even if they obtain the credentials.\nAzure AD Privileged Access Management (PAM): Implement Azure AD PAM to restrict access to highly privileged accounts and activities. This can further mitigate the risk associated with unused privileged accounts.\nMonitor for Suspicious Activity: Utilize Azure Monitor to track activity logs, including access attempts for Azure AD users. This vigilance can help detect unusual activity related to unused accounts that might indicate a compromise.",
+  "rule.criteria": "eeaafcc6-0994-461f-a48e-71f91cc0f1ac",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and action.access.isadministrative = true and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access Control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the Azure-managed identity and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

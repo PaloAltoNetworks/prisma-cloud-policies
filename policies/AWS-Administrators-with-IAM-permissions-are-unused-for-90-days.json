@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "888f2731-6748-44a6-bcbc-3718205a7b0e",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Administrators with IAM permissions are unused for 90 days",
+  "description": "This policy identifies AWS IAM Users with Stale IAM Permissions (Unused for 90 days).\n\nRisk of Unused IAM Permissions:\nIAM users with any level of permissions (administrative or otherwise) that haven't been used for 90 days pose a security risk because:\nUnsecured Access Point: These accounts act like forgotten open doors. If compromised, attackers can exploit them to gain access to AWS resources and perform unauthorized actions, potentially leading to data breaches or financial losses.\nElevated Attack Potential: IAM user permissions can vary widely, with some granting high-level access to modify configurations, create new resources, or manage IAM policies. If compromised, an unused account with such permissions could be devastating.\n\nMitigating the Risk:\nRegular Review and Removal: Proactively identify and remove unused IAM users on a regular basis (ideally less than 90 days). Focus on users with any level of permissions, not just administrative privileges.\nPrinciple of Least Privilege: When creating IAM users, assign only the minimum permissions required for them to perform their specific tasks. Regularly review and adjust permissions as needed.\nMulti-Factor Authentication (MFA): Enforce MFA for all IAM users to add an extra layer of security and make it significantly harder for attackers to compromise an account, even if they obtain the credentials.\nIAM User Access Review: Utilize the AWS IAM Access Review feature to automate the process of identifying and flagging unused accounts for review and potential removal.\nMonitor for Suspicious Activity: Utilize CloudTrail to track API calls made within your AWS environment, including those leveraging IAM users. This vigilance can help detect unusual activity related to unused accounts that might indicate a compromise.",
+  "rule.criteria": "888f2731-6748-44a6-bcbc-3718205a7b0e",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and action.access.isadministrative = true and action.lastaccess.days > 90",
+  "recommendation": "Remediation for a user:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Users\n 4. Choose the relevant user\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions\n ----------------------------------------\n Remediation for a Compute instance/Okta user that assumes a role:\n 1. Log in to the AWS console\n 2. Navigate to the compute service (For example, AWS EC2, AWS Lambda or AWS ECS) or login to the Okta console\n 3. Find the role used by the compute instance/Okta user\n 4. Navigate to the IAM service\n 5. Click on Roles\n 6. Choose the relevant role\n 7. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

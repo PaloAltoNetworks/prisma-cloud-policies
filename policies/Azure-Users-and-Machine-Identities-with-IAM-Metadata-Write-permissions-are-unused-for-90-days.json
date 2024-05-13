@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "109e33b5-33ec-4571-9419-edcaa92de3b8",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Users and Machine Identities with IAM Metadata Write permissions are unused for 90 days",
+  "description": "This policy identifies Stale Azure AD Identities with Write Metadata Permissions.\n\nAzure Active Directory (AAD) manages user access in Microsoft Azure. Identities (users or machine identities) with \"Write Metadata\" permissions can modify virtual machine metadata. While powerful, leaving such identities unused for 90 days creates a security risk:\n\nDormant Threat: An attacker might exploit inactive credentials to gain access. Once activated, these permissions allow modifying metadata to potentially steal data or install malware on virtual machines.\nPrivilege Escalation: These permissions could be used to elevate privileges and gain further control within the Azure environment.\nUnused privileged accounts are attractive targets for attackers. To mitigate this risk:\n\nRegular Review: Identify and disable unused Azure AD identities with Write Metadata permissions.\nLeast Privilege: Grant \"Write Metadata\" only when absolutely necessary and for a limited time. Use Azure RBAC (Role-Based Access Control) for granular control.\nMFA Enforcement: Enforce Multi-Factor Authentication (MFA) to add an extra layer of security.",
+  "rule.criteria": "109e33b5-33ec-4571-9419-edcaa92de3b8",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and action.access.level = 'Metadata Write' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access Control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the Azure-managed identity and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

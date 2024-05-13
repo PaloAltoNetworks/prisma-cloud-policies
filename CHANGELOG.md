@@ -16,6 +16,52 @@
 - Azure App service HTTP logging is disabled
 - Azure Storage account with cross tenant replication enabled
 
+#### 43 new policies for the IAM Security module
+
+- AWS Administrators with IAM permissions are unused for 90 days
+- AWS Groups and IAM Roles with Administrative Permissions
+- AWS IAM Groups and Roles with Excessive Policies
+- AWS IAM Groups and Roles with IAM Data Read permissions are unused for 90 days
+- AWS IAM Groups and Roles with IAM Data Write permissions are unused for 90 days
+- AWS IAM Groups and Roles with IAM Metadata Read permissions are unused for 90 days
+- AWS IAM Groups and Roles with IAM Metadata Write permissions are unused for 90 days
+- AWS Users and Machine Identities with Administrative Permissions
+- AWS Users and Machine Identities with Excessive Policies
+- AWS Users and Machine Identities with IAM Data Read permissions are unused for 90 days
+- AWS Users and Machine Identities with IAM Data Write permissions are unused for 90 days
+- AWS Users and Machine Identities with IAM Metadata Read permissions are unused for 90 days
+- AWS Users and Machine Identities with IAM Metadata Write permissions are unused for 90 days
+- Azure AD Groups, Service Principals and Managed Identities with Administrative Permissions
+- Azure AD Groups, Service Principals and Managed Identities with Excessive Policies
+- Azure AD Groups, Service Principals and Managed Identities with IAM Data Read permissions are unused for 90 days
+- Azure AD Groups, Service Principals and Managed Identities with IAM Data Write permissions are unused for 90 days
+- Azure AD Groups, Service Principals and Managed Identities with IAM Metadata Read permissions are unused for 90 days
+- Azure AD Groups, Service Principals and Managed Identities with IAM Metadata Write permissions are unused for 90 days
+- Azure Administrators with IAM permissions are unused for 90 days
+- Azure Users and Machine Identities with Administrative Permissions
+- Azure Users and Machine Identities with Excessive Policies
+- Azure Users and Machine Identities with IAM Data Read permissions are unused for 90 days
+- Azure Users and Machine Identities with IAM Data Write permissions are unused for 90 days
+- Azure Users and Machine Identities with IAM Metadata Read permissions are unused for 90 days
+- Azure Users and Machine Identities with IAM Metadata Write permissions are unused for 90 days
+- GCP Administrators with IAM permissions are unused for 90 days
+- GCP Groups and Service Accounts with Administrative Permissions
+- GCP Groups and Service Accounts with Excessive Policies
+- GCP Groups and Service Accounts with IAM Data Read permissions are unused for 90 days
+- GCP Groups and Service Accounts with IAM Data Write permissions are unused for 90 days
+- GCP Groups and Service Accounts with IAM Metadata Read permissions are unused for 90 days
+- GCP Groups and Service Accounts with IAM Metadata Write permissions are unused for 90 days
+- GCP Users and Machine Identities with Administrative Permissions
+- GCP Users and Machine Identities with Excessive Policies
+- GCP Users and Machine Identities with IAM Data Read permissions are unused for 90 days
+- GCP Users and Machine Identities with IAM Data Write permissions are unused for 90 days
+- GCP Users and Machine Identities with IAM Metadata Read permissions are unused for 90 days
+- GCP Users and Machine Identities with IAM Metadata Write permissions are unused for 90 days
+- Third-party service account can assume a service account with high privileges
+- Third-party service account with a Lateral Movement Through Lambda Edit
+- Third-party service account with a Lateral Movement to Data Services Through Redshift Cluster Creation
+- Third-party Service Account With Lateral Movement Through CloudFormation Stack Creation
+
 #### 1 new compliance standard
 
 - NIST CSF v2.0
@@ -27,6 +73,20 @@
 - Azure App Service Web app authentication is off
 - Azure Storage account encryption key configured by access policy with privileged operations
 - Azure Virtual Network subnet is not configured with a Network Security Group
+
+#### 11 policies updated for the IAM Security module
+
+- GCP entities with permissions to impersonate a service account in another project
+- GCP service accounts with 'Editor' role on folder level
+- GCP service accounts with 'Editor' role on org level
+- GCP service accounts with 'Owner' role on folder level
+- GCP service accounts with 'Owner' role on org level
+- GCP service accounts with permissions to deploy new resources
+- GCP users with 'Editor' role on folder level
+- GCP users with 'Editor' role on org level
+- GCP users with 'Owner' role on org level
+- GCP users with permissions to deploy new resources
+- GCP users with Service Account Token Creator role
 
 #### 1 compliance standard updated
 

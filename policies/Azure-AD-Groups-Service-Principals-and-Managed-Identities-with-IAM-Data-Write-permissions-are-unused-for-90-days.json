@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "262fc907-f281-4bf5-9d63-d29a279a2233",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AD Groups, Service Principals and Managed Identities with IAM Data Write permissions are unused for 90 days",
+  "description": "This policy identifies Azure AD Groups, Service Principals, and Managed Identities with Stale Azure RBAC Data Write Permissions.\n\nRisk of Unused Data Write Permissions:\nUnused Azure AD groups, service principals, and managed identities with Azure RBAC Data Write permissions for 90 days pose a significant security threat because:\nUnsecured Access Point: These identities act like forgotten open doors with high-level access. If compromised, attackers can directly modify or delete sensitive data stored in Azure Blob storage, Azure SQL databases, or other Azure services. This could lead to severe disruption, data breaches, or financial losses.\nElevated Attack Potential: Data Write permissions grant attackers the ability to manipulate core information. They could tamper with databases, alter financial records, or corrupt other critical data, leading to significant consequences.\n\nMitigating the Risk:\nRegular Review and Removal: Proactively identify and remove unused Azure AD groups, service principals, and managed identities with any level of Azure RBAC Data Write permissions (Read or Write) on a regular basis.\nPrinciple of Least Privilege: Always adhere to the principle of least privilege when assigning Azure RBAC permissions. Grant only the minimum level of Data Write access required for an identity to function effectively. Evaluate if alternative methods, like Azure Active Directory Conditional Access or Azure Key Vault access policies, can restrict access to specific data sets or services.\nMonitor for Data Anomalies: Implement Azure Monitor and Azure Sentinel to monitor data access attempts and changes within your Azure services. This vigilance can help detect unusual activity related to unused identities that might indicate a compromise and data tampering.",
+  "rule.criteria": "262fc907-f281-4bf5-9d63-d29a279a2233",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and grantedby.cloud.entity.type NOT IN ('user') and action.access.level = 'Data Write' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n  1. Sign in to Azure Management Console\n  2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n  3. Click on the Azure cloud subscription that you want to examine\n  4. Navigate to the Roles/Groups\n  5. Find the assignment between the role/group and the resources that shouldn't have broad access.\n  6. Remove the assignment\n",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

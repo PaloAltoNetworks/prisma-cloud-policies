@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "de61c156-3a3c-489c-b964-6a2ee8d3e972",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Groups and IAM Roles with Administrative Permissions",
+  "description": "This policy identifies AWS Groups and IAM Roles with Administrative Permissions.\n\nRisk of Administrative Permissions:\nIAM groups and roles with active administrative permissions (elevated permissions) pose a significant security risk because:\nBroad Access Potential: Unlike users with specific credentials, groups and roles can grant administrative access to a wider pool of users, increasing the attack surface. If compromised, attackers can exploit these entities to gain control over a larger number of accounts and resources.\nMisuse by Assigned Users: Even with proper vetting, there's always a risk that users assigned to an administrative group or role might misuse their access unintentionally or through social engineering attacks.\n\nMitigating the Risk:\nPrinciple of Least Privilege: Always adhere to the principle of least privilege when assigning permissions. Grant administrative access only to groups and roles that absolutely require it. Regularly review and adjust permissions to minimize the scope of access.\nMinimize Group and Role Membership: Limit the number of users assigned to groups or roles with administrative permissions. This reduces the potential impact of a compromise and simplifies access management.\nUse Service-Specific Roles: Consider using service-specific roles with limited permissions instead of granting broader administrative access through groups or roles. This approach minimizes the potential damage if a compromise occurs.\nRegular Review and Auditing: Regularly review IAM group and role memberships, especially those with administrative privileges. Conduct periodic security audits to identify potential weaknesses in your IAM configuration.\nMonitor for Suspicious Activity: Utilize CloudTrail to track API calls made within your AWS environment, including those leveraging users associated with administrative groups or roles. This vigilance can help detect unusual activity related to these entities that might indicate a compromise.",
+  "rule.criteria": "de61c156-3a3c-489c-b964-6a2ee8d3e972",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and grantedby.cloud.entity.type NOT IN ('user') AND grantedby.cloud.policy.type != 'Resource-based Policy' and action.access.isadministrative = true",
+  "recommendation": "Remediation for a role/group:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Roles/Groups\n 4. Choose the relevant role/Group\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

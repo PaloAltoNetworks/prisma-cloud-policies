@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "08b6e763-a47d-48e8-bbc4-8182e346a632",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Users and Machine Identities with IAM Data Read permissions are unused for 90 days",
+  "description": "Unused IAM users with seemingly harmless \"Data Read\" permissions can pose a threat after 90 days of inactivity. Here's why:\n\n- Access to Sensitive Data: Data Read allows users to view potentially sensitive information within AWS resources like S3 buckets or databases. An attacker exploiting these credentials could steal this data.\n- Compromised Accounts: Unused accounts are attractive targets. If compromised, attackers could leverage Data Read permissions to gain valuable insights into your data storage and potentially discover more sensitive information.\n- Leaving such access unchecked creates a window of opportunity for attackers. Here's how to mitigate the risk:\n\nRegular Review: Identify and disable unused IAM users with any Data Read permissions. Prioritize those with access to critical data stores.\nLeast Privilege Principle: Assign roles with the minimum permissions required for a user or machine identity to function. Data Read should only be granted if absolutely necessary.\nMFA for Critical Access: Enforce Multi-Factor Authentication (MFA) for users with access to sensitive data. This adds an extra layer of security and makes it harder for attackers to exploit compromised credentials.",
+  "rule.criteria": "08b6e763-a47d-48e8-bbc4-8182e346a632",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and action.access.level = 'Data Read' and action.lastaccess.days > 90",
+  "recommendation": "Remediation for a user:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Users\n 4. Choose the relevant user\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions\n ----------------------------------------\n Remediation for a Compute instance/Okta user that assumes a role:\n 1. Log in to the AWS console\n 2. Navigate to the compute service (For example, AWS EC2, AWS Lambda or AWS ECS) or login to the Okta console\n 3. Find the role used by the compute instance/Okta user\n 4. Navigate to the IAM service\n 5. Click on Roles\n 6. Choose the relevant role\n 7. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

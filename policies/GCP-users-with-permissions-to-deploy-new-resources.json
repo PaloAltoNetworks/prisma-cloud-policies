@@ -8,7 +8,7 @@
   "description": "A GCP user with this permission can deploy all these types of resources - the full list of resources (https://cloud.google.com/deployment-manager/docs/configuration/supported-resource-types)",
   "rule.criteria": "4ed4f5d8-aa5a-4bb9-a91f-5684ac80ad57",
   "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and action.name = 'deploymentmanager.deployments.create'",
-  "recommendation": "",
+  "recommendation": "Remediation steps:\n 1. Log in to the GCP console\n 2. Navigate to the relevant organization/folder/project\n 3. Navigate to the IAM service\n 4. Find the binding between the user  and the role with \"deploy new resources\" permissions\n 5. Remove the binding\n 6. Create a new binding with a privileged predefined or custom role without risky permissions, if necessary.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",

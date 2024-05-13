@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "bb5a2038-4cd0-4946-b5fb-844d46e193a2",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AD Groups, Service Principals and Managed Identities with IAM Data Read permissions are unused for 90 days",
+  "description": "This policy identifies Azure AD Groups, Service Principals, and Managed Identities with Stale Azure RBAC Data Read Permissions.\n\nRisk of Unused Data Read Permissions:\nEven seemingly innocuous permissions like \"Data Read\" in Azure RBAC can be risky if left unused for extended periods. Unused Azure AD groups, service principals, and managed identities with Azure RBAC Data Read permissions for 90 days present a security concern because:\nInformation Gathering Tool: An attacker with access to these identities could use them to gather sensitive details about your Azure environment. This information could include storage account locations, virtual machine types and configurations, or details about Azure services being utilized. Attackers could exploit this knowledge to identify vulnerabilities or plan more targeted attacks.\nPotential Stepping Stone: A compromised unused identity with Data Read permissions could be a stepping stone for attackers. They might leverage this access to discover and exploit further vulnerabilities within your Azure environment, potentially leading to unauthorized access to more sensitive data or systems.\n\nMitigating the Risk:\nRegular Review and Removal: Regularly identify and remove unused Azure AD groups, service principals, and managed identities with any level of Azure RBAC Data Read permissions (Read or Write) on a scheduled basis.\nPrinciple of Least Privilege: Adhere to the principle of least privilege when assigning Azure RBAC permissions. Grant only the minimum level of Data Read access required for an identity to function effectively. Evaluate if alternative methods, like Managed Identity access restrictions or Azure Active Directory Conditional Access, can restrict access to specific resources or services.\nMonitor for Suspicious Activity: Utilize Azure Monitor to track activity logs, including access attempts for Azure AD identities. This vigilance can help detect unusual activity related to unused identities that might indicate a compromise.",
+  "rule.criteria": "bb5a2038-4cd0-4946-b5fb-844d46e193a2",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and grantedby.cloud.entity.type NOT IN ('user') and action.access.level = 'Data Read' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n  1. Sign in to Azure Management Console\n  2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n  3. Click on the Azure cloud subscription that you want to examine\n  4. Navigate to the Roles/Groups\n  5. Find the assignment between the role/group and the resources that shouldn't have broad access.\n  6. Remove the assignment\n",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

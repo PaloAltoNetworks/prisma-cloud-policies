@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "21d3f297-3ea4-4938-9cd9-1d974f7132dd",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Users and Machine Identities with IAM Metadata Read permissions are unused for 90 days",
+  "description": "This policy identifies Unused Azure AD Identities with Metadata Read Permissions.\n\nEven seemingly harmless permissions like \"Metadata Read\" in Azure Active Directory (AAD) can be risky if left unused for 90 days. Here's why:\n\nInformation Gathering: An attacker might use these credentials to gather information about your Azure environment. This information could include details about virtual machines, storage accounts, or other resources. Attackers could use this information to identify vulnerabilities or plan further attacks.\nLateral Movement: If attackers compromise an Azure AD identity with Metadata Read, they could potentially use it to discover other resources within your Azure infrastructure. This could help them move laterally within your environment and gain access to more sensitive data or systems.\nWhile Metadata Read itself doesn't allow direct data manipulation, the information gleaned can be valuable for attackers. Here's how to mitigate the risk:\n\nReview and Removal: Regularly identify and disable unused Azure AD identities with any level of Metadata access (Read or Write).\nPrinciple of Least Privilege: Grant only the minimum permissions required for a user or machine identity to function. Metadata Read might not always be necessary.\nMonitor Activity: Utilize Azure Monitor to track activity logs, including access attempts for Azure AD identities. This can help detect suspicious behavior related to unused accounts.",
+  "rule.criteria": "21d3f297-3ea4-4938-9cd9-1d974f7132dd",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and action.access.level = 'Metadata Read' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access Control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the Azure-managed identity and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

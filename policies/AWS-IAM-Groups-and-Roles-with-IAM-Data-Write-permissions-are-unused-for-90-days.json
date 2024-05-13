@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "039627c3-5375-4865-b7f3-807d1af17965",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM Groups and Roles with IAM Data Write permissions are unused for 90 days",
+  "description": "This policy identifies AWS IAM Groups and Roles with Stale IAM  Data Write Permissions.\n\nRisk of Unused Data Write Permissions:\nIAM groups and roles with Unused IAM Data Write permissions for 90 days pose a significant security threat because:\nUnsecured Access Point: These groups and roles act like forgotten open doors with high-level access. If compromised, attackers can directly modify or delete sensitive data stored in S3 buckets, DynamoDB tables, or other AWS services. This could lead to severe disruption, data breaches, or financial losses.\nElevated Attack Potential: Data Write permissions grant attackers the ability to manipulate core information. They could tamper with databases, alter financial records, or corrupt other critical data, leading to significant consequences.\n\nMitigating the Risk:\nRegular Review and Removal: Proactively identify and remove unused IAM groups and roles with any level of IAM  Data Write permissions (Read or Write) on a regular basis.\nPrinciple of Least Privilege: Always adhere to the principle of least privilege when assigning IAM permissions. Grant only the minimum level of Data Write access required for a group or role to function ly. Evaluate if alternative methods, like IAM conditions or resource-based policies, can restrict access to specific data sets or services.\nMonitor for Data Anomalies: Implement Amazon CloudWatch to monitor data access attempts and changes within your AWS services. This vigilance can help detect unusual activity related to unused groups or roles that might indicate a compromise and data tampering.",
+  "rule.criteria": "039627c3-5375-4865-b7f3-807d1af17965",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and grantedby.cloud.entity.type NOT IN ('user') AND grantedby.cloud.policy.type != 'Resource-based Policy'  and action.access.level = 'Data Write' and action.lastaccess.days > 90",
+  "recommendation": "Remediation for a role/group:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Roles/Groups\n 4. Choose the relevant role/Group\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
