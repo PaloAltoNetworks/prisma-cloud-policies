@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "be5d9c68-4b13-42f1-8d84-b2098afe9f22",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Users and Machine Identities with IAM Metadata Read permissions are unused for 90 days",
+  "description": "This policy identifies IAM Users with unused Metadata Read Permissions. Even \"apparently harmless\" permissions like \"Metadata Read\" in IAM can pose a risk if left unused for 90 days. Here's why:\n- Information Gathering: An attacker might use these credentials to gather information about your cloud environment. This information could be used to identify vulnerabilities or plan further attacks.\n- Lateral Movement: If attackers compromise an IAM user with Metadata Read, they could potentially use it to discover other resources within your AWS infrastructure.\n- While Metadata Read itself doesn't allow direct data manipulation, the information gleaned can be valuable for attackers. Here's how to mitigate the risk:\n\nReview and Remove: Regularly identify and disable unused IAM users with any level of Metadata access (Read or Write).\nLeast Privilege: Grant only the minimum permissions required for a user or machine identity to function. Metadata Read might not always be necessary.\nMonitor Activity: Implement CloudTrail to monitor IAM user activity, including failed access attempts. This can help detect suspicious behavior.",
+  "rule.criteria": "be5d9c68-4b13-42f1-8d84-b2098afe9f22",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and action.access.level = 'Metadata Read' and action.lastaccess.days > 90",
+  "recommendation": "Remediation for a user:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Users\n 4. Choose the relevant user\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions\n ----------------------------------------\n Remediation for a Compute instance/Okta user that assumes a role:\n 1. Log in to the AWS console\n 2. Navigate to the compute service (For example, AWS EC2, AWS Lambda or AWS ECS) or login to the Okta console\n 3. Find the role used by the compute instance/Okta user\n 4. Navigate to the IAM service\n 5. Click on Roles\n 6. Choose the relevant role\n 7. Under 'Permissions policies', find the relevant policy according to the alert details and remove the excessive actions",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -15,8 +15,10 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CRI Profile v2.0",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "NIST 800-53 Rev 5",
+    "NIST CSF v2.0",
     "Telecommunications Security Act - TSA"
   ]
 }

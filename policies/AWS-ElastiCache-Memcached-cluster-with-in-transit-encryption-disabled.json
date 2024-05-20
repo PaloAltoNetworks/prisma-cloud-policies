@@ -16,8 +16,10 @@
   "compliance.standard": [
     "CRI Profile v2.0",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "MLPS 2.0 (Level 2)",
+    "NIST CSF v2.0",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Telecommunications Security Act - TSA"

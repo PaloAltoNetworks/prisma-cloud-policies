@@ -8,7 +8,7 @@
   "description": "This policy identifies GCP basic role 'Editor' on folder level that is defined as risky role. Ensure that the users in your GCP environment don't have a risky 'Editor' role to minimize security risks.",
   "rule.criteria": "542e4d23-c2f9-4f49-b595-2c2b2ebd1d21",
   "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and grantedby.cloud.policy.name = 'Editor' and grantedby.level.type = 'GCP Folder'",
-  "recommendation": "",
+  "recommendation": "Remediation steps:\n 1. Log in to the GCP console\n 2. Navigate to the relevant folder\n 3. Navigate to the IAM service\n 4. Find the binding between the user  and the \"Editor\" role\n 5. Remove the binding\n 6. Create a new binding with a least privileged predefined or custom role, if necessary.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",

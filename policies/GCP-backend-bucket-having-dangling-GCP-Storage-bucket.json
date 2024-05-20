@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CRI Profile v2.0",
-    "HITRUST CSF v.11.2.0"
+    "HITRUST CSF v.11.2.0",
+    "NIST CSF v2.0"
   ]
 }

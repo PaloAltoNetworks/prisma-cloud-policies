@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "5f5c09ac-edb5-41a8-b841-de2ad75c01d6",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Users and Machine Identities with IAM Data Write permissions are unused for 90 days",
+  "description": "This policy identifies Azure AD Identities with Stale Data Write Permissions.\n\nUnused Azure AD identities with \"Data Write\" permissions pose a critical security risk, even after 90 days of inactivity. Here's why:\n\nUnrestricted Data Modification: Data Write allows users or machine identities to modify, alter, or even delete critical data stored in Azure services. An attacker with these permissions could cause significant damage, corrupting or stealing sensitive information.\nPrivilege Escalation: Data Write permissions can be a gateway to further compromise. Attackers might exploit them to gain broader control over your Azure environment and access even more critical resources.\nImagine giving someone a key to your company safe and then forgetting about it. Unused Data Write access is just as dangerous. Here's how to mitigate the risk:\n\nAggressive Review: Proactively identify and disable all unused Azure AD identities with Data Write permissions, regardless of inactivity time.\nLeast Privilege Principle: Grant Data Write permissions only to specific users or machine identities that absolutely require them, and only for the minimum time necessary. Utilize Azure RBAC for granular control.\nMandatory MFA: Enforce Multi-Factor Authentication (MFA) for all identities with Data Write permissions. This significantly reduces the risk of unauthorized access, even if credentials are compromised.",
+  "rule.criteria": "5f5c09ac-edb5-41a8-b841-de2ad75c01d6",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and action.access.level = 'Data Write' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access Control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the Azure-managed identity and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

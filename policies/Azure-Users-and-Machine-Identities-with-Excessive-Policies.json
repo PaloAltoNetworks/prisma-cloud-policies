@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ed4f28ea-4e84-4e55-bf61-249113079da1",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Users and Machine Identities with Excessive Policies",
+  "description": "This policy identifies Azure roles that contain '*' in Action, and the level of role assignment is Subscription or higher for Azure.\n\nRoles with '*' in the Action section for a subscription or higher scope (like management group) allow users to perform any action on any resource within that scope. This is risky because:\n- Unrestricted Access: Users can bypass security measures and potentially delete critical resources or modify configurations.\n- Accidental Damage: Mistakes can have a significant impact, deleting entire resources or services.\n- Elevated Attack Surface: A compromised account with such a role gives attackers vast control.",
+  "rule.criteria": "ed4f28ea-4e84-4e55-bf61-249113079da1",
+  "searchModel.query": "config from iam where source.cloud.type = 'Azure' and grantedby.level.type IN ( 'Azure Management Group' , 'Azure Subscription' ) and grantedby.cloud.policy.isexcessive = true",
+  "recommendation": "Remediation steps:\n1. Sign in to Azure Management Console\n2. Navigate to Azure Subscriptions blade at https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade\n3. Click on the Azure cloud subscription that you want to examine\n4. In the navigation panel, choose Access Control (IAM) and select the Role Assignments tab to access the role bindings available for the selected subscription\n5. Find the assignment between the Azure-managed identity and the role with over-privileged permissions\n6. Remove the assignment\n7. Create a new assignment with a built-in or custom role without risky permissions, if necessary",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

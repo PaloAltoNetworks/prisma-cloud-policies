@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HIPAA",
     "Risk Management in Technology (RMiT)"
   ]
 }

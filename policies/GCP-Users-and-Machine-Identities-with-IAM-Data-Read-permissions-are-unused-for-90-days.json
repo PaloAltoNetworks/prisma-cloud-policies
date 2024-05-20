@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "182ba9c7-26f9-4e48-a8e4-31215ba7befa",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Users and Machine Identities with IAM Data Read permissions are unused for 90 days",
+  "description": "This policy identifies GCP identities with Unused Data Write Permissions.\n\nEven seemingly innocuous permissions like \"Data Read\" in GCP IAM can be risky if left unused for extended periods. Unused GCP users and machine identities with Data Read permissions for 90 days present a security concern because:\nInformation Gathering Tool: An attacker wielding such credentials could use them to gather sensitive details about your GCP environment. This information could include project structures, storage buckets, or virtual machine configurations. Attackers could exploit this knowledge to identify vulnerabilities or plan more targeted attacks.\nPotential Stepping Stone: A compromised unused user with Data Read permissions could be a stepping stone for attackers. They might leverage this access to discover and exploit further vulnerabilities within your GCP project, potentially leading to unauthorized access to more sensitive data or systems.\n\nMitigating the Risk:\nRegular Review and Removal: Regularly identify and remove unused GCP user accounts and machine identities with any level of IAM Data Read permissions (Read or Write) on a scheduled basis.\nPrinciple of Least Privilege: Always adhere to the principle of least privilege. Grant only the minimum level of Data Read access required for a user or machine identity to function ly. Evaluate if alternative methods, like IAM conditions, can restrict access to specific resources or data sets.\nMonitor for Suspicious Activity: Utilize Stackdriver Logging to track activity logs, including access attempts for GCP user accounts and service accounts. This can help detect unusual activity related to unused accounts that might indicate a compromise.\n",
+  "rule.criteria": "182ba9c7-26f9-4e48-a8e4-31215ba7befa",
+  "searchModel.query": "config from iam where source.cloud.type = 'GCP' and action.access.level = 'Data Read' and action.lastaccess.days > 90",
+  "recommendation": "Remediation steps:\n1. Log in to the GCP console\n2. Navigate to the IAM service\n3. Find the binding between the service account or the user and the role with over-privileged permissions\n4. Remove the binding\n5. Create a new binding with a predefined or custom role without risky permissions, if necessary.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

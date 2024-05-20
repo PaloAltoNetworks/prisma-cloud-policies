@@ -16,6 +16,7 @@
   "compliance.standard": [
     "AWS Foundational Security Best Practices standard",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "Korea – Information Security Management System (ISMS)",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",

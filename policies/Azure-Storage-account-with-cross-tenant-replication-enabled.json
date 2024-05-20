@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1171",
+  "policyId": "61ab863b-83ac-40a4-834d-2bc60f116964",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Storage account with cross tenant replication enabled",
+  "description": "This policy identifies Azure Storage accounts that are enabled with cross tenant replication.\n\nAzure Storage account cross tenant replication allows data to be replicated across multiple Azure tenants. Though this feature is beneficial for data availability it also poses a significant security risk if not properly managed. Possible risks include unauthorized access to data, data leaks, and compliance violations. Disabling Cross Tenant Replication reduces the risk of unauthorized data access and prevents the accidental sharing of sensitive information.\n\nAs best practice, it is recommended to disable cross tenant replication on your storage accounts.",
+  "rule.criteria": "7bd3a894-eca7-418b-8819-c38826d2c932",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.allowCrossTenantReplication exists and properties.allowCrossTenantReplication is true",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Storage Account dashboard\n3. Click on the reported Storage Account\n4. Under 'Data management', select 'Object replication'\n5. Select 'Advanced settings'\n6. Uncheck 'Allow cross-tenant replication'\n7. Click on 'OK'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az storage account update --name ${resourceName} --resource-group ${resourceGroup} --allow-cross-tenant-replication false",
+  "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will disable cross tenant replication in Storage Accounts.",
+  "remediation.impact": "Disable cross tenant replication in Azure Storage Account",
+  "compliance.standard": ""
+}

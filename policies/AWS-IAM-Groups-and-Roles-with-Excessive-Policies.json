@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "bb8a13e4-d3d9-4618-925a-0cff3526430e",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS IAM Groups and Roles with Excessive Policies",
+  "description": "This policy identifies AWS IAM policies that contain '*' in the Action or/and Resource section. IAM policies control user permissions in AWS. Using '*' in the Action or Resource section grants very broad permissions. This means a user with such a policy could perform almost any action on any resource, bypassing intended security restrictions. This is risky because it increases the attack surface and potential damage if an attacker gains access to those credentials.\n\nIn simpler terms, a '*' wildcard is like giving someone a master key to your entire AWS cloud. It's best to use specific permissions to minimize risk. ",
+  "rule.criteria": "bb8a13e4-d3d9-4618-925a-0cff3526430e",
+  "searchModel.query": "config from iam where source.cloud.type = 'AWS' and grantedby.cloud.entity.type NOT IN ('user') AND grantedby.cloud.policy.type != 'Resource-based Policy' and grantedby.cloud.policy.isexcessive = true",
+  "recommendation": "Remediation for a role/group:\n 1. Log in to the AWS console\n 2. Navigate to the IAM service\n 3. Click on Roles/Groups\n 4. Choose the relevant role/Group\n 5. Under 'Permissions policies', find the relevant policy according to the alert details and remove the risky actions",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

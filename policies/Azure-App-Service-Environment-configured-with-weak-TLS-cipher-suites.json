@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1172",
+  "policyId": "01684931-0ea8-4e1b-bdd2-8927bc278f5f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure App Service Environment configured with weak TLS cipher suites",
+  "description": "This policy identifies Azure App Service Environments that are configured with weak TLS Cipher suites.\n\nAzure App Service Environments host web applications and APIs in a dedicated and isolated environment. When these environments are configured with weak TLS Cipher suites, they can expose sensitive data to potential security risks. Weak cipher suites may allow attackers to intercept and decrypt communication between clients and the App Service Environment, leading to unauthorized access, data breaches, and potential compliance violations. The recommended cipher suites are TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 and TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256.\n\nAs best practice, it is recommended to avoid using weak TLS Cipher suites to enhance security and protect sensitive data.",
+  "rule.criteria": "34b6032c-d707-4064-9f60-948e82d27d19",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service-environment' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.clusterSettings exists and properties.clusterSettings[?any(name equal ignore case FrontEndSSLCipherSuiteOrder)] does not exist",
+  "recommendation": "Refer to the documentation:\nhttps://learn.microsoft.com/en-us/azure/app-service/environment/app-service-app-service-environment-custom-settings",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

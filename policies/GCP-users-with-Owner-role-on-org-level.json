@@ -8,7 +8,7 @@
   "description": "This policy identifies GCP basic role 'Owner' on organization level that is defined as risky role. Ensure that the users in your GCP environment don't have a risky 'Owner' role to minimize security risks.",
   "rule.criteria": "39462006-ccc1-4f0a-991a-898f3f8906fc",
   "searchModel.query": "config from iam where dest.cloud.type = 'GCP' and source.cloud.resource.type = 'user' and grantedby.cloud.policy.name = 'Owner' and grantedby.level.type = 'GCP Organization'",
-  "recommendation": "",
+  "recommendation": "Remediation steps:\n 1. Log in to the GCP console\n 2. Navigate to the relevant organization\n 3. Navigate to the IAM service\n 4. Find the binding between the user  and the \"Owner\" role\n 5. Remove the binding\n 6. Create a new binding with a least privileged predefined or custom role, if necessary.",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
