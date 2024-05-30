@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1167",
+  "policyId": "b63e36e5-576d-48e3-8b92-a325c3e89b73",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Workbench user-managed notebook has vTPM disabled",
+  "description": "This policy identifies GCP Vertex AI Workbench user-managed notebooks that have Virtual Trusted Platform Module (vTPM) feature disabled. \n\nVirtual Trusted Platform Module (vTPM) validates guest VM pre-boot and boot integrity and offers key generation and protection. The vTPM’s root keys and the keys it generates can’t leave the vTPM, thus gaining enhanced protection from compromised operating systems or highly privileged project admins.\n\nIt is recommended to enable virtual TPM device on supported virtual machines to facilitate measured Boot and other OS security features that require a TPM.",
+  "rule.criteria": "e8800ee6-ef2f-4515-a837-6333f86d50b4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-notebook-instance' AND json.rule = state equals \"ACTIVE\" and shieldedInstanceConfig.enableVtpm is false",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service (Left Panel)\n3. Under 'Notebooks', go to 'Workbench'\n4. Open the 'USER-MANAGED NOTEBOOKS' tab\n5. Click on the alerting notebook\n6. Under the 'SYSTEM' tab, in front of 'VM details', click on the 'View in Compute Engine' link\n7. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue.\n8. Once the the VM has been stopped, click on the 'EDIT' button\n9. Under 'Shielded VM', enable 'Turn on vTPM'\n10. Click on 'Save'\n11. Click on 'START/RESUME' from the top menu",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

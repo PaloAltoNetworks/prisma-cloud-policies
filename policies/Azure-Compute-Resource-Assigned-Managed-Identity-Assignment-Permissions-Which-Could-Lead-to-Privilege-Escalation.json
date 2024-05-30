@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "da59c5d9-da55-49bc-a546-e3e09f3d0105",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Compute Resource Assigned Managed Identity Assignment Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to assign managed identities could assign them to themselves, obtaining the additional permissions granted to the managed identity, escalating their privileges within the environment. This would allow them to further enumerate and exploite the environment.",
+  "rule.criteria": "da59c5d9-da55-49bc-a546-e3e09f3d0105",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' AND source.cloud.type = 'AZURE' AND source.cloud.service.name = 'Microsoft.Compute' AND source.cloud.resource.type = 'VirtualMachines' and action.name = 'Microsoft.ManagedIdentity/userAssignedIdentities/assign/action'",
+  "recommendation": "Remediation steps:\n 1. Sign in to Azure Console\n 2.Navigate to the Compute instance, and remove the attached role, or edit it and remove the excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

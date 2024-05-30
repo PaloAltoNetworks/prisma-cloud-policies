@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AAI-853",
+  "policyId": "e9103419-ff7d-4e08-b915-aa17e3252fb0",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Application Insights not configured with Azure Active Directory (Azure AD) authentication",
+  "description": "This policy identifies Application Insights that are not configured with Azure Active Directory (AAD) authentication and are enabled with local authentication.\n\nDisabling local authentication and using AAD-based authentication enhances the security and reliability of the telemetry used to make both critical operational and business decisions.\n\nIt is recommended to configure the Application Insights with Azure Active Directory (AAD) authentication so that all actions are strongly authenticated.",
+  "rule.criteria": "33b463a9-ca53-4521-805c-401a3141a856",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-application-insights-component' AND json.rule = properties.provisioningState equals Succeeded and (properties.DisableLocalAuth does not exist or properties.DisableLocalAuth is false)",
+  "recommendation": "To configure Azure Active Directory (AAD) authentication and disable local authentication on existing Application Insights, follow the below URL instructions:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/app/azure-ad-authentication",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

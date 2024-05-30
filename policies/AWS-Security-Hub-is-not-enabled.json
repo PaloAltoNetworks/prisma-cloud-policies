@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ASHUB-1192",
+  "policyId": "852095a3-3f83-4e9b-a976-bb8dec5d1f39",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Security Hub is not enabled",
+  "description": "This policy identifies the AWS Security Hub that is not enabled in specific regions. \n\nAWS Security Hub is a centralized security management service by Amazon Web Services, providing a comprehensive view of your security posture and automating security checks across AWS accounts. Failure to enable AWS Security Hub in all regions may lead to limited visibility and compromised threat detection across your AWS environment.\n\nIt is recommended to enable AWS Security Hub in all regions for consistent visibility and enhanced threat detection across your AWS environment.",
+  "rule.criteria": "b44541c5-3dbd-4b42-84dc-7e14e29b6abb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-securityhub-hub' AND json.rule = SubscribedAt exists as X; count(X) less than 1",
+  "recommendation": "To enable the AWS Security Hub, perform the following actions:\n\n1. Sign in to the AWS Management Console\n2. Select the specific region from the region drop-down in the top right corner, for which the alert is generated\n3. In the Navigation Panel on the left, Select 'All services' and under 'Security, Identity, & Compliance', select 'Security Hub'\n4. When you open the Security Hub console for the first time, choose 'Go to Security Hub'\n5. On the welcome page, the 'Security standards' section lists the security standards that Security Hub supports\n6. Select the check box for a standard to enable it\n8. Choose 'Enable Security Hub'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

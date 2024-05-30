@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "04a8b74e-e5e3-4534-bc6b-b1bbf26fcc93",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Role With Administrative Permissions Can Be Assumed By All Users",
+  "description": "A globally assumable role with administartive permissions could allow an adversary to assume it (regardless of their original role as the target role is globally assumable) and utilize its administrative permissions to further compromise the environment.",
+  "rule.criteria": "04a8b74e-e5e3-4534-bc6b-b1bbf26fcc93",
+  "searchModel.query": "config from iam where source.public = true AND grantedby.cloud.entity.type='role' and action.access.isAdministrative = true",
+  "recommendation": "Remediation steps:\n 1. Sign in to AWSConsole\n 2. Navigate to the affected role\n 3. Modify the role's trust relationship as per requirements, and remove unnecessary permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

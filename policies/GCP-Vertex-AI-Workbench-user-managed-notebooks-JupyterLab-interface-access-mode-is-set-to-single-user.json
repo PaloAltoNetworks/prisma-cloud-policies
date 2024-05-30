@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1169",
+  "policyId": "15b569e1-66bc-4c52-8c92-3e3326ff1e86",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Vertex AI Workbench user-managed notebook's JupyterLab interface access mode is set to single user",
+  "description": "This policy identifies GCP Vertex AI Workbench user-managed notebooks with JupyterLab interface access mode set to single user.\n\nVertex AI Workbench user-managed notebook can be accessed using the web-based JupyterLab interface. Access mode controls the control access to this interface. Allowing access to only a single user could limit collaboration, increase chances of credential sharing, and hinder security audits and reviews of the resource.\n\nIt is recommended to avoid single user access and make use of the service account access mode for user-managed notebooks.",
+  "rule.criteria": "b4261a97-bff3-4664-b4b7-4431d1ec917e",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-notebook-instance' AND json.rule = state equals \"ACTIVE\" and ( metadata.proxy-mode equals \"mail\" or metadata.proxy-user-mail exists )",
+  "recommendation": "Access mode cannot be changed for existing Vertex AI Workbench user-managed notebooks. A new Vertex AI Workbench user-managed notebook should be created.\n\nTo create a new Vertex AI Workbench user-managed notebook with access mode set to service account, please refer to the steps below:\n1. Login to the GCP console\n2. Under 'Vertex AI', navigate to the 'Workbench' (Left Panel)\n3. Select 'USER-MANAGED NOTEBOOKS' tab\n4. Click 'CREATE NEW'\n5. Click 'ADVANCED OPTIONS'\n6. Configure the instance as required\n7. Go to 'IAM and security' tab\n8. Select 'Service account'\n9. Click 'CREATE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

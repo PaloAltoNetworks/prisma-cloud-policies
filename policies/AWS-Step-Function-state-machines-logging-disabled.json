@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-SFN-1175",
+  "policyId": "e63d8ef3-5a47-4679-8b82-fcabf6c8fbe2",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Step Function state machines logging disabled",
+  "description": "This policy identifies AWS Step Function state machines with logging disabled.\n\nAWS Step Functions uses state machines to define and execute workflows that coordinate the components of distributed applications and microservices. Step Functions logs state machine executions to Amazon CloudWatch Logs for debugging and monitoring purposes.\n\nIt is recommended to enable logging on the Step Function state machine to maintain reliability, availability, and performance.",
+  "rule.criteria": "da73e80c-489f-456a-be5f-9cc2312ba5d3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-step-functions-statemachine' AND json.rule = loggingConfiguration.level does not equal ignore case \"ALL\"",
+  "recommendation": "To enable logging on the Step Function state machine, follow the below steps:\n\n1. Log into the AWS console and navigate to the Step Function dashboard\n2. On the state machine page, select the reported state machine\n3. Click on 'Edit'\n4. Select 'Config' to edit the configuration\n5. Under the 'Config' tab, under the 'Logging' section, set 'Log level' to 'ALL'\n6. Click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

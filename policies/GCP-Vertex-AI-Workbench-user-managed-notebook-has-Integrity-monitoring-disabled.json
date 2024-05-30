@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1170",
+  "policyId": "32863163-9440-4b46-9c61-613cb2a2da5e",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Workbench user-managed notebook has Integrity monitoring disabled",
+  "description": "This policy identifies GCP Vertex AI Workbench user-managed notebooks that have Integrity monitoring disabled.\n\nIntegrity Monitoring continuously monitors the boot integrity, kernel integrity, and persistent data integrity of the underlying VM of the shielded user-managed notebooks. It detects unauthorized modifications or tampering, enhancing security by verifying the trusted state of VM components throughout their lifecycle. It provides active alerting allowing administrators to respond to integrity failures and prevent compromised nodes from being deployed into the cluster.\n\nIt is recommended to enable integrity monitoring for user-managed notebooks to detect and mitigate advanced threats like rootkits and bootkit malware.",
+  "rule.criteria": "2e0650dd-63e5-4e5a-9fb9-1a4cca316fd6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-notebook-instance' AND json.rule = state equals \"ACTIVE\" and shieldedInstanceConfig.enableIntegrityMonitoring is false",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service (Left Panel)\n3. Under 'Notebooks', go to 'Workbench'\n4. Open the 'USER-MANAGED NOTEBOOKS' tab\n5. Click on the alerting notebook\n6. Under the 'SYSTEM' tab, in front of 'VM details', click on the 'View in Compute Engine' link\n7. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue.\n8. Once the the VM has been stopped, click on the 'EDIT' button\n9. Under 'Shielded VM', enable 'Turn on vTPM'\n10. Enable 'Turn on Integrity Monitoring'\n11. Click on 'Save'\n12. Click on 'START/RESUME' from the top menu",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

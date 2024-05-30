@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-WAF-1173",
+  "policyId": "32b4e392-6a64-4977-93f8-7e553603da20",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS WAF Rule Group CloudWatch metrics disabled",
+  "description": "This policy identifies the AWS WAF Rule Group having CloudWatch metrics disabled.\n\nAWS WAF rule groups have CloudWatch metrics that provide information about the number of allowed and blocked web requests, counted requests, and requests that pass through without matching any rule in the rule group. These metrics can be used to monitor and analyse the performance of the web access control list (web ACL) and its associated rules.\n\nIt is recommended to enable CloudWatch metrics for a WAF rule group to help in monitoring and analysis of web requests.",
+  "rule.criteria": "e73c95e7-7d5e-4dc4-a300-eed8ee67f17f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-waf-v2-rule-group' AND json.rule = VisibilityConfig.CloudWatchMetricsEnabled is false or Rules[?any( VisibilityConfig.CloudWatchMetricsEnabled is false)] exists",
+  "recommendation": "To enable RuleGroup with CloudWatch metrics please follow below steps:\n\n1. Run the below command to get the ruleGroup details to be used for update\n    aws wafv2 list-rule-groups --scope {scopeOfRuleGroup}\n2. Get the ruleGroup 'Id' and 'LockToken' values for the ruleGroup to be updated from the output.\n3. Run the below command with name and 'Id' obtained from above output\n     aws wafv2 get-rule-group --name {ruleGroupName} --scope {scopeOfRuleGroup} --id {IdFromAboveOutput}\n4. Get the 'Rules' block output and save it in a file for further reference from above command output\n5. Please update 'CloudWatchMetricsEnabled' field to true for every rule in the file saved from above along with providing a metric name at the 'MetricName' field\n6. Run the below command to enable CloudWatch metrics on the ruleGroup.\n      aws wafv2 update-rule-group \\n       --name {ruleGroupName} \\n       --scope {scopeOfRuleGroup} \\n       --id {ruleGroupId} \\n       --lock-token {tokenFromAboveOutput} \\n       --rules file://{fileFromAboveOutput}\n       --visibility-config SampledRequestsEnabled=true,CloudWatchMetricsEnabled=true,MetricName= \n          {metricNameForRuleGroup)",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

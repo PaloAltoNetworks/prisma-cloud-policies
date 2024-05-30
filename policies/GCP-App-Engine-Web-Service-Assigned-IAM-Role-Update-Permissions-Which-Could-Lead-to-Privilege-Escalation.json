@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "a5d57ed3-55b9-4f4b-91ec-fcb6564f76ef",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP App Engine Web Service Assigned IAM Role Update Permissions Which Could Lead to Privilege Escalation",
+  "description": "An attacker who successfully exploits a vulnerability or misconfiguration in the web service can leverage the permissions associated with the App Engine service. With the ability to retrieve and edit IAM roles could grant themselves additional permissions within the environment, escalating their privileges. This would allow them to further enumerate and exploite the environment.",
+  "rule.criteria": "a5d57ed3-55b9-4f4b-91ec-fcb6564f76ef",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'appengine' AND action.name CONTAINS ALL ( 'iam.roles.update', 'iam.roles.get' )",
+  "recommendation": "Remediation steps:\n 1. Sign in to GCP Console\n 2.Navigate to the App Engine instance, and remove the attached Service Account's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

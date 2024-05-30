@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "cf87131d-0fa0-4f58-b4f1-6a401d89ee9f",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Compute Instance (EC2/Lambda) Assigned Permissions to Run EC2 Instances Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to run EC2 instances with any role would be able to escalate their permissions by attaching a privileged role to the instance. As such, they would obtain the permissions of the role attached to the EC2, allowing further enumeration and exploitation of the environment.",
+  "rule.criteria": "cf87131d-0fa0-4f58-b4f1-6a401d89ee9f",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('iam:PassRole', 'ec2:RunInstances') AND source.cloud.resource.type IN ('instance', 'function')",
+  "recommendation": "Remediation steps:\n 1. Sign in to AWS Console\n 2.Navigate to the EC2 instance or Lambda Function, and either replace the role for a less privileged one, or remove it entirely. If the role is not in use by any other entities, you could simply remove the role's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -15,8 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CCPA 2018",
-    "MITRE ATT&CK v6.3",
-    "MITRE ATT&CK v8.2",
+    "MITRE ATT&CK v6.3 [Deprecated]",
+    "MITRE ATT&CK v8.2 [Deprecated]",
     "NIST CSF",
     "NIST CSF v2.0",
     "PIPEDA"
