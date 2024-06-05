@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-1162",
+  "policyId": "6d75632d-4566-4405-ad77-c9e3e03383fc",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ECS task definition logging configuration disabled",
+  "description": "This policy identifies AWS ECS task definitions that have logging configuration disabled.\n\nAWS ECS logging involves capturing and storing container logs for monitoring, troubleshooting, and analysis purposes within the Amazon ECS environment. Collecting data from task definitions gives visibility, which can aid in debugging processes and determining the source of issues.\n\nIt is recommended to configure logging for an AWS ECS task definition.",
+  "rule.criteria": "c2224f8e-3617-4cbc-b7f1-2ff76d5d2937",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-describe-task-definition' AND json.rule = status equals ACTIVE and containerDefinitions[?any(logConfiguration.logDriver does not exist)] exists",
+  "recommendation": "To enable log configuration for your Amazon ECS task definitions, follow these steps:\n\n1. Sign into the AWS console and navigate to the Amazon ECS console\n2. In the navigation pane, choose 'Task definitions'\n3. Choose the task definition to be updated\n4. Select 'Create new revision', and then click on 'Create new revision'.\n5. On the 'Create new task definition revision' page, select the container with logging configuration disabled\n6. Under the 'Logging' section, enable 'Use log collection'\n7. Select the log driver to be used under the dropdown\n8. At 'awslogs-group', specify the log group that the logdriver sends its log streams to\n9. Specify the remaining configuration as per the requirements\n10. Choose 'Update'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

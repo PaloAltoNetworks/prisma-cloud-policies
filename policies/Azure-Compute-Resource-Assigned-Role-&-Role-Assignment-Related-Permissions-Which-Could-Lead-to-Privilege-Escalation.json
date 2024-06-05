@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "279e08a8-990f-4e7d-8d79-9bffced0d3fa",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Compute Resource Assigned Role & Role Assignment Related Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to edit role assignments or role definitions could grant themselves additional roles, or grant additional permissions to roles they already have access to, escalating their privileges within the environment. This would allow them to further enumerate and exploite the environment.",
+  "rule.criteria": "279e08a8-990f-4e7d-8d79-9bffced0d3fa",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' AND source.cloud.type = 'AZURE' AND source.cloud.service.name = 'Microsoft.Compute' AND source.cloud.resource.type = 'VirtualMachines' and action.name IN ('Microsoft.Authorization/roleAssignments/write', 'Microsoft.Authorization/roleDefinitions/write')",
+  "recommendation": "Remediation steps:\n 1. Sign in to Azure Console\n 2.Navigate to the Compute instance, and remove the attached role, or edit it and remove the excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-MON-1178",
+  "policyId": "f8073341-12da-4544-8b30-1f0248fc562e",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Activity log alert for Create or update public IP address rule does not exist",
+  "description": "This policy identifies the Azure accounts in which activity log alert for Create or update public IP address rule does not exist.\n\nCreating an activity log alert for create or update public IP address rule gives insight into network rule access changes and may reduce the time it takes to detect suspicious activity. By enabling this monitoring, you get alerts whenever any changes are made to public IP address rules.\n\nAs a best practice, it is recommended to have a activity log alert for create or update public IP address rule to enhance network security monitoring and detect suspicious activities.",
+  "rule.criteria": "7eb3f51a-91d2-4650-b6bb-d51c71fb1725",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-activity-log-alerts' AND json.rule = \"location equal ignore case Global and properties.enabled equals true and properties.scopes[*] does not contain resourceGroups and properties.condition.allOf[?(@.field=='operationName')].equals equals Microsoft.Network/publicIPAddresses/write\" as X; count(X) less than 1",
+  "recommendation": "1. Log in to Azure Portal\n2. Click on Monitor (Left Panel)\n3. Select 'Alerts'\n4. Click on Create > Alert rule\n5. In 'Create an alert rule' page, choose the Scope as your Subscription and under the CONDITION section, choose 'Create or Update Public Ip Address (Public Ip Address)' and Other fields you can set based on your custom settings.\n6. Click on Create",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

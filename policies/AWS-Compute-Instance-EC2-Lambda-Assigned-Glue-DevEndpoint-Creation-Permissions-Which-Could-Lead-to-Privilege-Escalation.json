@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "f13c6791-8e1d-4985-9473-8463c2ab3e95",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Compute Instance (EC2/Lambda) Assigned Glue DevEndpoint Creation Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to create a Glue DevEndpoint with any role would be able to escalate their permissions by attaching a privileged role to the endpoint and configuring authentication to the endpoint using a key which they control. As such, they would obtain the ability to perform actions using the permissions of the attached role, allowing further enumeration and exploitation of the environment.",
+  "rule.criteria": "f13c6791-8e1d-4985-9473-8463c2ab3e95",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('iam:PassRole', 'glue:CreateDevEndpoint') AND source.cloud.resource.type IN ('instance', 'function')",
+  "recommendation": "Remediation steps:\n 1. Sign in to AWS Console\n 2.Navigate to the EC2 instance or Lambda Function, and either replace the role for a less privileged one, or remove it entirely. If the role is not in use by any other entities, you could simply remove the role's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

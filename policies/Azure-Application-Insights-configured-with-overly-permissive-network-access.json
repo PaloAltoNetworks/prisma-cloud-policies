@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AAI-849",
+  "policyId": "d7a61b2d-8160-40cd-8f6a-5f8cd98229db",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Application Insights configured with overly permissive network access",
+  "description": "This policy identifies Application Insights configured with overly permissive network access.\n\nVirtual network access configuration in Application Insights allows you to restrict data ingestion and queries coming from  public networks.\n\nIt is recommended to configure the Application Insights with virtual networks access configuration set to restrict, so that the Application Insight is accessible only to restricted Azure Monitor Private Link Scopes.",
+  "rule.criteria": "86ee9a9b-b674-4ed7-994d-6ab99cab11f0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-application-insights-component' AND json.rule = properties.provisioningState equals Succeeded and (properties.publicNetworkAccessForQuery equals Enabled or properties.publicNetworkAccessForIngestion equals Enabled)",
+  "recommendation": "1. Log in to Azure Portal\n2. Go to Application Insights dashboard \n3. Click on the reported Application Insights\n4. Under the 'Configure' menu, click on 'Network Isolation'\n5. Create a Azure Monitor Private Link Scope if it is not already created by referring:\nhttps://docs.microsoft.com/en-us/azure/azure-monitor/logs/private-link-configure#create-an-azure-monitor-private-link-scope\n6. After creating, Under 'Virtual networks access configuration', \nSet 'Accept data ingestion from public networks not connected through a Private Link Scope' to 'No' and \nSet 'Accept queries from public networks not connected through a Private Link Scope' to 'No'\n7. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

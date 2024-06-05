@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "6d3a90cd-8a90-4c98-bd9a-65f00f79d7fd",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Cloud Run Instance Assigned Resource Manager Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to edit IAM Policies at the organization, folder or project levels could grant themselves additional permissions within the environment, escalating their privileges. This would allow them to further enumerate and exploite the environment.",
+  "rule.criteria": "6d3a90cd-8a90-4c98-bd9a-65f00f79d7fd",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.service.name = 'run' AND action.name IN ('resourcemanager.organizations.setIamPolicy', 'resourcemanager.folders.setIamPolicy', 'resourcemanager.projects.setIamPolicy')",
+  "recommendation": "Remediation steps:\n 1. Sign in to GCP Console\n 2.Navigate to the Cloud Run instance, and remove the attached Service Account's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

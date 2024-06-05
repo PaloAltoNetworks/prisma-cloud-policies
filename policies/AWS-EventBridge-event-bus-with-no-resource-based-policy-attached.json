@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-AEB-1174",
+  "policyId": "ec8a9b9b-6706-469e-be0f-f2dd6f0b6f33",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EventBridge event bus with no resource-based policy attached",
+  "description": "This policy identifies AWS EventBridge event buses with no resource-based policy attached.\n\nAWS EventBridge is a serverless event bus service that enables businesses to quickly and easily integrate applications, services, and data across multiple cloud environments. By default, an EventBridge custom event bus lacks a resource-based policy associated with it, which allows principals in the account to access the event bus. \n\nIt is recommended to attach a resource based policy to the event bus to limit access scope to fewer entities.",
+  "rule.criteria": "d2d6e9b9-4c97-4b70-94c4-8864a38bd358",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-events-eventbus' AND json.rule = Policy does not exist",
+  "recommendation": "To attach a resource based policy to the event bus, please follow the below steps:\n\n1. Log into the AWS console and navigate to the EventBridge dashboard\n2. In the left navigation pane, choose 'Event buses'\n3. Select the event bus reported\n4. Under the 'Permissions' tab, click on 'Manage permissions'\n5. Add the resource based policy JSON with permissions to grant on the event bus\n6. Click on 'Update'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

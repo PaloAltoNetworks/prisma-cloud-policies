@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-1163",
+  "policyId": "6c9ffb43-fa72-4e85-9b22-86e4ed272a5f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS EC2 Client VPN endpoints client connection logging disabled",
+  "description": "This policy identifies AWS EC2 client VPN endpoints with client connection logging disabled.\n\nAWS Client VPN endpoints enable remote clients to securely connect to resources in the Virtual Private Cloud (VPC). Connection logs enable you to track user behaviour on the VPN endpoint and gain visibility.\n\nIt is recommended to enable connection logging for AWS EC2 client VPN endpoints.",
+  "rule.criteria": "4b7950e1-1b54-43b0-848d-d1134beebc54",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-client-vpn-endpoint' AND json.rule = status.code equal ignore case available and connectionLogOptions.Enabled is false",
+  "recommendation": "To enable connection logging for a new Client VPN endpoint, follow these steps:\n\n1. Sign into the AWS console and navigate to the Amazon VPC console\n2. In the navigation pane, choose 'Client VPN Endpoints'\n3. Select the 'Client VPN endpoint', choose 'Actions', and then choose 'Modify Client VPN endpoint'\n4. Under 'Connection logging', turn on 'Enable log details on client connections'\n5. For 'CloudWatch Logs log group name', choose the name of the CloudWatch Logs log group\n6. (Optional) For 'CloudWatch Logs log stream name', choose the name of the CloudWatch Logs log stream\n7. Choose 'Modify Client VPN endpoint'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

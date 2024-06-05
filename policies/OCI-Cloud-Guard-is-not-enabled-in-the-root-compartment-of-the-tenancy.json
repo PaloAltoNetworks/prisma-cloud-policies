@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OCG-1195",
+  "policyId": "2b71329c-b1e7-4c2d-989b-72bf38a64970",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "informational",
+  "name": "OCI Cloud Guard is not enabled in the root compartment of the tenancy",
+  "description": "This policy identifies the absence of OCI Cloud Guard enablement in the root compartment of the tenancy.\n\nOCI Cloud Guard is a vital service that detects misconfigured resources and insecure activities within an OCI tenancy. It offers security administrators visibility to identify and resolve these issues promptly. Cloud Guard not only detects but also suggests, assists, or takes corrective actions to mitigate security risks. By enabling Cloud Guard in the root compartment of the tenancy with default configuration, activity detectors, and responders, administrators can proactively monitor and secure their OCI resources against potential security threats.\n\nAs best practice, it is recommended to have Cloud Guard enabled in the root compartment of your tenancy.",
+  "rule.criteria": "316b72ec-7af4-4dfa-a614-5f0ee8f30abc",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-cloudguard-configuration' AND json.rule = status does not equal ignore case ENABLED",
+  "recommendation": "To enable the OCI Cloud Guard setting, refer to the following documentation:\nhttps://docs.oracle.com/en-us/iaas/cloud-guard/using/part-start.htm#cg-access-enable",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "866ca1d4-40cb-4626-afa0-5a438a92019a",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Compute Instance (EC2/Lambda) Assigned Lambda Creation Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to create a Lambda Function with any role and give themselves the permissions to invoke it would be able to escalate their permissions by attaching a privileged role to the function while defining the Lambda's actions. As such, they would obtain the ability to perform actions using the permissions of the attached role, allowing further enumeration and exploitation of the environment.",
+  "rule.criteria": "866ca1d4-40cb-4626-afa0-5a438a92019a",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.name CONTAINS ALL ('iam:PassRole', 'lambda:CreateFunction', 'lambda:AddPermission') AND source.cloud.resource.type IN ('instance', 'function')",
+  "recommendation": "Remediation steps:\n 1. Sign in to AWS Console\n 2.Navigate to the EC2 instance or Lambda Function, and either replace the role for a less privileged one, or remove it entirely. If the role is not in use by any other entities, you could simply remove the role's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

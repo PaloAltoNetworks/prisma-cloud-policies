@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-BST-1196",
+  "policyId": "22a0976f-a418-4484-be96-68086f28faee",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "informational",
+  "name": "OCI boot volume is not encrypted with Customer Managed Key (CMK)",
+  "description": "This policy identifies OCI boot volumes that are not encrypted with a Customer Managed Key (CMK).\n\nEncrypting boot volumes with a CMK enhances data security by providing an additional layer of protection. Effective management of encryption keys is crucial for safeguarding and accessing sensitive data. Customers should review boot volumes encrypted with Oracle service managed keys to determine if they prefer managing keys for specific volumes and implement their own key lifecycle management accordingly.\n\nAs best practice, it is recommended to encrypt OCI boot volumes using a Customer Managed Key (CMK) to strengthen data security measures.",
+  "rule.criteria": "a784e02f-80f2-4a15-8b40-f63d0b53e8ba",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-block-storage-boot-volume' AND json.rule = lifecycleState equal ignore case \"AVAILABLE\" AND kmsKeyId is member of (\"null\")",
+  "recommendation": "1. Log in to the OCI Console.\n2. Switch to the Region of the reported resource from the Region drop-down in top-right corner.\n3. Type the reported boot volume name into the Search box at the top of the Console.\n4. Click on the reported boot volume from the search results.\n5. Next to \"Encryption Key\", click on \"Assign\".\n6. Choose the Vault Compartment, Vault, Master Encryption Key Compartment and Master Encryption Key.\n7. Click Assign.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

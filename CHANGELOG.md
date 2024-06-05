@@ -1,5 +1,99 @@
 # Changelog
 
+## PCS-24.6.1 - 2024-6-09
+
+### Added
+
+#### 23 new config policies
+
+- AWS AppSync GraphQL API is authenticated with API key
+- AWS Aurora MySQL DB cluster does not publish audit logs to CloudWatch Logs
+- AWS EC2 Client VPN endpoints client connection logging disabled
+- AWS ECS task definition logging configuration disabled
+- AWS EventBridge event bus with no resource-based policy attached
+- AWS Network Firewall is not configured with logging configuration
+- AWS Secrets Manager secret not used for more than 90 days
+- AWS Security Hub is not enabled
+- AWS Step Function state machines logging disabled
+- AWS WAF Rule Group CloudWatch metrics disabled
+- Azure Activity log alert for Create or update public IP address rule does not exist
+- Azure Activity log alert for Delete public IP address rule does not exist
+- Azure Application Insights configured with overly permissive network access
+- Azure Application Insights not configured with Azure Active Directory (Azure AD) authentication
+- Azure Log Analytics workspace configured with overly permissive network access
+- Azure storage account infrastructure encryption is disabled
+- GCP Cloud Run service revision is using default service account with editor role
+- GCP Vertex AI Workbench user-managed notebook auto-upgrade is disabled
+- GCP Vertex AI Workbench user-managed notebook has Integrity monitoring disabled
+- GCP Vertex AI Workbench user-managed notebook has vTPM disabled
+- GCP Vertex AI Workbench user-managed notebook’s JupyterLab interface access mode is set to single user
+- OCI boot volume is not encrypted with Customer Managed Key (CMK)
+- OCI Cloud Guard is not enabled in the root compartment of the tenancy
+
+#### 35 new policies for the IAM Security module
+
+- AWS Compute Instance (EC2/Lambda) Assigned CloudFormation Creation Permissions Which Could Lead to Privilege Escalation
+- AWS Compute Instance (EC2/Lambda) Assigned Glue DevEndpoint Creation Permissions Which Could Lead to Privilege Escalation
+- AWS Compute Instance (EC2/Lambda) Assigned IAM Policy Management Permissions Which Could Lead to Privilege Escalation
+- AWS Compute Instance (EC2/Lambda) Assigned Lambda Creation Permissions Which Could Lead to Privilege Escalation
+- AWS Compute Instance (EC2/Lambda) Assigned Permissions to Run EC2 Instances Which Could Lead to Privilege Escalation
+- AWS Role With Administrative Permissions Can Be Assumed By All Users
+- Azure Compute Resource Assigned Managed Identity Assignment Permissions Which Could Lead to Privilege Escalation
+- Azure Compute Resource Assigned Role & Role Assignment Related Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Cloud Function Creation Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Cloud Function IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Cloud Run Creation Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Cloud Run IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Cloud Run Jobs IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned IAM Role Update Permissions Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Permissions to Edit IAM Policy for Service Accounts Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Permissions to Retrieve Service Account Tokens Which Could Lead to Privilege Escalation
+- GCP App Engine Web Service Assigned Resource Manager Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Cloud Function Creation Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Cloud Function IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Cloud Run Creation Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Cloud Run IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Cloud Run Jobs IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned IAM Role Update Permissions Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Permissions to Edit IAM Policy for Service Accounts Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Permissions to Retrieve Service Account Tokens Which Could Lead to Privilege Escalation
+- GCP Cloud Run Instance Assigned Resource Manager Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Cloud Function Creation Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Cloud Function IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Cloud Run Creation Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Cloud Run IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Cloud Run Jobs IAM Policy Edit Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned IAM Role Update Permissions Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Permissions to Edit IAM Policy for Service Accounts Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Permissions to Retrieve Service Account Tokens Which Could Lead to Privilege Escalation
+- GCP Compute Instance (VM/Cloud Function) Assigned Resource Manager Permissions Which Could Lead to Privilege Escalation
+
+#### 4 new compliance standards
+
+- CIS AWS 3.0
+- CIS Azure 2.1
+- CIS GKE 1.5
+- CIS OCI 2.0
+
+### Changed
+
+#### 1 config policy updated
+
+- AWS AppSync has field-level logging disabled
+
+#### 1 policy updated for the IAM Security module
+
+- AWS IAM Groups and Roles with IAM Metadata Write permissions are unused for 90 days
+
+#### 5 legacy versions of compliance standards deprecated
+
+- HITRUST CSF v9.3
+- HITRUST v.9.4.2
+- MITRE ATT&CK v10.0
+- MITRE ATT&CK v6.3
+- MITRE ATT&CK v8.2
+
+
 ## PCS-24.5.2 - 2024-5-23
 
 ### Added

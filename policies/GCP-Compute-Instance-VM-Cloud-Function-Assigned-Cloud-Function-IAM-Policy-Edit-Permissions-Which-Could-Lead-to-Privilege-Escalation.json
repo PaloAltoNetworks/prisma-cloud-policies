@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "14c24888-f3cb-40dc-9a58-a352ee3a2ec6",
+  "policyType": "iam",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP Compute Instance (VM/Cloud Function) Assigned Cloud Function IAM Policy Edit Permissions Which Could Lead to Privilege Escalation",
+  "description": "An adversary able to edit the IAM policy for Cloud Function instances, in conjunction with Service Account impersonation privileges would be able to escalate their permissions by adding edit permissions to an instance, causing it to perform attacker controlled actions using the permissions of an impersonated Service Account. This would allow them to further enumerate and exploite the environment.",
+  "rule.criteria": "14c24888-f3cb-40dc-9a58-a352ee3a2ec6",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND source.cloud.resource.type IN ('Instances', 'functions') AND action.name CONTAINS ALL ( 'cloudfunctions.functions.setIamPolicy', 'iam.serviceAccounts.actAs' )",
+  "recommendation": "Remediation steps:\n 1. Sign in to GCP Console\n 2.Navigate to the VM or Cloud Function instance, and remove the attached Service Account's excessive permissions.",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic gcp cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

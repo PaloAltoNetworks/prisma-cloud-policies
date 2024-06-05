@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-NFL-1181",
+  "policyId": "126f8616-26bd-4601-bed7-0099342c8621",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Network Firewall is not configured with logging configuration",
+  "description": "This policy identifies an AWS Network Firewall where logging is not configured.\n\nAWS Network Firewall manages inbound and outbound traffic for the AWS resources within the AWS environment. Logging configuration for the network firewall involves enabling logging of network traffic, including allowed and denied requests, to provide visibility into network activity. Failure to configure logging results in a lack of visibility into potential security threats, making it difficult to detect and respond to malicious activity effectively and hindering threat detection and compliance.\n\nIt is recommended to enable logging to ensure comprehensive monitoring, threat detection, compliance adherence, and effective incident response.",
+  "rule.criteria": "c18a0d30-ea02-4799-9a4c-be46ba992f0e",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-networkfirewall-firewall' AND json.rule = FirewallStatus.Status equals \"READY\" as X; config from cloud.resource where api.name = 'aws-network-firewall-logging-configuration' AND json.rule = LoggingConfiguration.LogDestinationConfigs[*].LogType does not exist as Y; filter '$.X.Firewall.FirewallArn equal ignore case $.Y.FirewallArn' ; show X;",
+  "recommendation": "To update a firewall's logging configuration through the console, Perform the following actions:\n\n1. Sign in to the AWS Management Console\n2. Select the specific region from the region drop-down in the top right corner, for which the alert is generated\n3. Navigate to the VPC Dashboard\n4. In the navigation pane, Under 'Network Firewall', choose 'Firewalls'\n5. On the Firewalls page, select the reported firewall\n6. In the 'Firewall details' tab, under the 'Logging' section, click on 'Edit'\n5. Select the Log type as needed for your requirement. You can configure logging for alert and flow logs.\n\nAlert – Sends logs for traffic that matches any stateful rule whose action is set to Alert or Drop. For more information about stateful rules and rule groups, see Rule groups in AWS Network Firewall.\n\nFlow – Sends logs for all network traffic that the stateless engine forwards to the stateful rules engine.\n\n6. For each selected log type, choose the destination type, then provide the information for the logging destination that you prepared following the guidance in Firewall logging destinations.\n7. Choose 'Save' to save your changes and return to the firewall's detail page.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
