@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1207",
+  "policyId": "0388b2fe-4eed-4bdb-b470-2bc3a1fc05d1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS S3 bucket used for storing AWS Sagemaker training job output",
+  "description": "This policy identifies the AWS S3 bucket used for storing AWS Sagemaker training job output. \n\nS3 buckets hold the results and artifacts generated from training machine learning models in Sagemaker. Ensuring proper configuration and access control is crucial to maintaining the security and integrity of the training output. Improperly secured S3 buckets used for storing AWS Sagemaker training output can lead to unauthorized access, data breaches, and potential exposure of sensitive model information.\n\nIt is recommended to implement strict access controls, enable encryption, and audit permissions to secure AWS S3 buckets for AWS Sagemaker training job output and ensure compliance.",
+  "rule.criteria": "e928a48c-c734-4d89-895f-24220616c2ef",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' as X; config from cloud.resource where api.name = 'aws-sagemaker-training-job' as Y; filter '$.Y.OutputDataConfig.bucketName equals $.X.bucketName'; show X;",
+  "recommendation": "To protect the S3 buckets utilized by the Sagemaker training job, please refer to the following link for recommended best practices\nhttps://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

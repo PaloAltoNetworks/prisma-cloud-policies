@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-864",
+  "policyId": "f9403616-2bc7-4ce4-b41a-9bdf4feb3f71",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "low",
+  "name": "OCI VCN subnet flow logging is disabled",
+  "description": "This policy identifies Virtual Cloud Network (VCN) subnets that have flow logs disabled.\n\nEnabling VCN flow logs enables you to monitor traffic flowing within your virtual network and can be used to detect anomalous traffic. Without the flow logs turned on, it is not possible to get any visibility into network traffic.\n\nIt is recommended to enable a VCN flow log on each of your VCN subnets.",
+  "rule.criteria": "ab33a3ed-ff38-41f6-860b-e663602fcedc",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-networking-subnet' as X; config from cloud.resource where api.name = 'oci-logging-logs' AND json.rule = lifecycleState equals ACTIVE and isEnabled is true and configuration.source.service contains flowlogs as Y; filter 'not ($.X.id contains $.Y.configuration.source.resource)'; show X;",
+  "recommendation": "To configure VCN flow log for reported subnet, follow below URL:\nhttps://docs.oracle.com/en-us/iaas/Content/Network/Tasks/vcn-flow-logs-enable.htm#vcn-flow-logs-enable",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

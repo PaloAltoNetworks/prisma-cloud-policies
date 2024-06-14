@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1197",
+  "policyId": "6c1f731b-beb5-4779-9fc5-f9e436d190c3",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Storage Account storing Cognitive service diagnostic logs is publicly accessible",
+  "description": "This policy identifies Azure Storage Accounts storing Cognitive service diagnostic logs are publicly accessible.\n\nAzure Storage account stores Cognitive service diagnostic logs which might contain detailed information of platform logs, resource logs, trace logs and metrics. Diagnostic log data may contain sensitive data and helps in identifying potentially malicious activity. The attacker could exploit publicly accessible storage account to get cognitive diagnostic data logs and could breach into the system by leveraging exposed data and propagate across your system.\n\nAs a best security practice, it is recommended to restrict storage account access to only the services as per business requirement.",
+  "rule.criteria": "af7266ac-1506-4251-9294-34c8b2f67ab5",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-cognitive-services-account-diagnostic-settings' AND json.rule = (properties.logs[?any(enabled equal ignore case \"true\")] exists or properties.metrics[?any( enabled equal ignore case \"true\" )] exists) and properties.storageAccountId exists as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist)' as Y; filter '$.X.properties.storageAccountId contains $.Y.id'; show Y;",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage Accounts' dashboard\n3. Select the reported storage account\n4. Under 'Data storage' section, Select 'Containers'\n5. Select the blob container you need to modify\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az resource update --ids ${resourceId} --set properties.allowBlobPublicAccess=false",
+  "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/write' permission. Successful execution disables public access in Azure storage account, this disables anonymous/public read access to a container and the blobs within Azure storage account",
+  "remediation.impact": "Disable anonymous/public access to a container and the blobs within Azure storage account",
+  "compliance.standard": ""
+}

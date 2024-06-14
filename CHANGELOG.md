@@ -1,5 +1,45 @@
 # Changelog
 
+## PCS-24.6.2 - 2024-6-20
+
+### Added
+
+#### 15 new config policies
+
+- AWS ECR private repository tag mutable
+- AWS IAM group not in use
+- AWS Opensearch domain audit logging disabled
+- AWS Opensearch domain Error logging disabled
+- AWS S3 bucket is utilized for AWS Sagemaker training job data
+- AWS S3 bucket used for storing AWS Sagemaker training job output
+- Azure Application Gateway WAF policy is not enabled in prevention mode
+- Azure Key vault used for machine learning workspace secrets storage is not enabled with audit logging
+- Azure Storage Account storing Cognitive service diagnostic logs is publicly accessible
+- GCP Storage Bucket storing GCP Vertex AI pipeline output data
+- GCP Storage Bucket storing GCP Vertex AI training pipeline output model
+- GCP Storage Bucket storing Vertex AI model
+- OCI Oracle Analytics Cloud (OAC) access is not restricted to allowed sources or deployed within a Virtual Cloud Network
+- OCI Oracle Autonomous Database (ADB) access is not restricted to allowed sources or deployed within a Virtual Cloud Network
+- OCI VCN subnet flow logging is disabled
+
+### Changed
+
+#### 6 config policies updated
+
+- Azure Function App client certificate is disabled
+- Azure Function app configured with public network access
+- Azure Function App doesn’t have a Managed Service Identity
+- Azure Function App doesn’t redirect HTTP to HTTPS
+- Azure Function App doesn’t use HTTP 2.0
+- Azure Function App doesn’t use latest TLS version
+
+#### 3 compliance standards updated
+
+- AWS CIS 2.0
+- GCP CIS 2.0
+- ISO/IEC 27001:2022
+
+
 ## PCS-24.6.1 - 2024-6-09
 
 ### Added

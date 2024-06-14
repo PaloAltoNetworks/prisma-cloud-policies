@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1206",
+  "policyId": "e26d4612-a17e-4990-bc50-b9a07ad361f0",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS IAM group not in use",
+  "description": "This policy identifies AWS IAM groups that are not actively in use. \n\nAn AWS IAM group is a collection of IAM users managed together, allowing for unified permission assignment. These groups, if not assigned any users, pose a potential security risk if left unmanaged and can inadvertently grant unauthorized access to AWS services and resources. \n\nIt is recommended to review and remove any unused IAM groups to prevent attaching unauthorized IAM users.",
+  "rule.criteria": "883ccbd6-674c-477b-b5a7-1e909fa61b1f",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-iam-list-groups' as X; config from cloud.resource where api.name = 'aws-iam-list-users' as Y; filter ' not ($.Y.groupList[*] intersects  $.X.groupName)'; show X;",
+  "recommendation": "To delete an IAM user group (console)\n\n1. Sign in to the AWS Management Console\n2. Navigate to the 'Services' menu and, within the 'Security, Identity, & Compliance' category, choose the 'IAM' service to open the IAM console\n3. In the IAM console's navigation pane, select 'User groups' located under the 'Access management' section\n4. In the list of user groups, select the check box next to the name of the reported user group to delete. You can use the search box to filter the list of user group name.\n5. Choose 'Delete' to delete the group\n6. In the confirmation box, If you want to delete user groups, type 'delete' and choose 'Delete'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

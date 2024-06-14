@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'Microsoft.DBforMySQL/flexibleServers/configurations/write' permission. Successful execution will enable SSL connection on your Azure MySQL database flexible server.",
   "remediation.impact": "Enables MySQL database flexible server SSL enforcement",
   "compliance.standard": [
+    "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"

@@ -14,7 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
+    "ISO/IEC 27001:2022",
     "Telecommunications Security Act - TSA"
   ]
 }

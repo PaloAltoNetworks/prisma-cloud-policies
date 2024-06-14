@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ES-1198",
+  "policyId": "402ac861-8538-458d-9f08-415d566d9409",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Opensearch domain Error logging disabled",
+  "description": "This policy identifies AWS Opensearch domains with no error logging configuration.\n\nOpensearch application logs contain information about errors and warnings raised during the operation of the service and can be useful for troubleshooting. Error logs from domains can aid in security assessments, access monitoring, and troubleshooting availability problems.\n\nIt is recommended to enable the AWS Opensearch domain with error logs, which will help in security audits and troubleshooting.",
+  "rule.criteria": "aa2376aa-0d3e-4fc6-9de5-0fb4a67707a2",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = domainProcessingStatus equal ignore case active and (logPublishingOptions does not exist or logPublishingOptions.ES_APPLICATION_LOGS.enabled is false)",
+  "recommendation": "To enable the AWS Opensearch domain with error logs:\n\n1. Sign into the AWS console and navigate to the Opensearch Service Dashboard\n2. In the navigation pane, under 'Managed Clusters', select 'Domains'\n2. Choose the reported Elasticsearch domain\n3. On the Logs tab, select 'Error logs' and choose 'Enable'.\n4. In the 'Set up error logs' section, in the 'Select log group from CloudWatch logs' setting, Create/Use existing CloudWatch Logs log group as per your requirement\n5. In 'Specify CloudWatch access policy', create new/Select an existing policy as per your requirement\n6. Click on 'Enable'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

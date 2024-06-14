@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-1210",
+  "policyId": "5ef12058-fd6c-495b-9260-2a13c0ae9d06",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Storage Bucket storing Vertex AI model",
+  "description": "This policy identifies publicly exposed GCS buckets that are used to store the GCP Vertex AI model.\n\nGCP Vertex AI models (except AutoML Models) are stored in the Storage bucket. Vertex AI model is considered sensitive and confidential intellectual property and its storage location should be checked regularly. The storage location should be as per your organization's security and compliance requirements.\n\nIt is recommended to monitor, identify, and evaluate storage location for GCP Vertex AI model regularly to prevent unauthorized access and AI model thefts.",
+  "rule.criteria": "06296500-a437-4f20-bb90-19f8cee78fe7",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-storage-buckets-list' as X; config from cloud.resource where api.name = 'gcloud-vertex-ai-aiplatform-model' as Y; filter ' $.Y.artifactUri contains $.X.id '; show X;",
+  "recommendation": "Review and validate the Vertex AI models are stored in the right Storage buckets. Move and/or delete the model and other related artifacts if they are found in an unexpected location. Review how the model was uploaded to an unauthorised/unapproved storage bucket.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

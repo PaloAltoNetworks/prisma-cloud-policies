@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CRI Profile v2.0",
     "HIPAA",
+    "ISO/IEC 27001:2022",
     "NIST CSF v2.0"
   ]
 }
