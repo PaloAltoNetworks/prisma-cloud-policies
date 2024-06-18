@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-ODB-1200",
+  "policyId": "29108b5e-f244-4755-a04e-f07ebb084ff7",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Oracle Autonomous Database (ADB) access is not restricted to allowed sources or deployed within a Virtual Cloud Network",
+  "description": "This policy identifies Oracle Autonomous Databases (ADBs) that are not restricted to specific sources or not deployed within a Virtual Cloud Network (VCN). \n\nAutonomous Database automates critical database management tasks, and restricting its access to corporate IP addresses or VCNs is crucial for enhancing security. Deploying Autonomous Databases within a VCN and configuring access control rules ensure that only authorized sources can connect, significantly reducing the risk of unauthorized access. This protection is vital for maintaining the integrity and security of the databases.\n\nAs best practice, it is recommended to have new Autonomous Database instances deployed within a VCN, and existing instances should have access control rules set to restrict connectivity to approved sources.",
+  "rule.criteria": "824f2566-29c2-4953-8bc3-9e9de35db6af",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-database-autonomous-database' AND json.rule = lifecycleState contains AVAILABLE AND whitelistedIps is member of (\"null\") AND privateEndpoint is member of (\"null\")",
+  "recommendation": "To configure the OCI Oracle Autonomous Database (ADB) access, refer to the following documentation:\nhttps://docs.oracle.com/en/cloud/paas/autonomous-database/serverless/adbsb/access-control-rules-autonomous.html#GUID-F0B59281-E545-48B1-BA49-1FD51B65D123",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

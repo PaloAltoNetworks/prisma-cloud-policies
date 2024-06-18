@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "HIPAA",
+    "ISO/IEC 27001:2022",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",

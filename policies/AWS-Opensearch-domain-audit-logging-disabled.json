@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ES-1202",
+  "policyId": "b6016294-3bb4-46f0-b3e9-93f040b8f0b6",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Opensearch domain audit logging disabled",
+  "description": "This policy identifies AWS Opensearch domains with audit logging disabled.\n\nOpensearch audit logs enable you to monitor user activity on your Elasticsearch clusters, such as authentication successes and failures, OpenSearch requests, index updates, and incoming search queries.\n\nIt is recommended to enable audit logging for an Elasticsearch domain to audit activity in the domain.",
+  "rule.criteria": "eeb31ffd-1d61-405f-bbbe-7f6ef15c6fd5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-es-describe-elasticsearch-domain' AND json.rule = domainProcessingStatus equal ignore case active and (logPublishingOptions does not exist or logPublishingOptions.AUDIT_LOGS.enabled is false)",
+  "recommendation": "To enable the AWS Opensearch domain with audit logs:\n\n1. Sign into the AWS console and navigate to the Opensearch Service Dashboard\n2. In the navigation pane, under 'Managed Clusters', select 'Domains'\n2. Choose the reported Elasticsearch domain\n3. On the Logs tab, select 'Audit logs' and choose 'Enable'.\n4. In the 'Set up audit logs' section, in the 'Select log group from CloudWatch logs' setting, Create/Use existing CloudWatch Logs log group as per your requirement\n5. In 'Specify CloudWatch access policy', create new/Select an existing policy as per your requirement\n6. Click on 'Enable'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECR-1199",
+  "policyId": "2a88c923-7478-48a6-8cd0-2467843f70b4",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ECR private repository tag mutable",
+  "description": "This policy identifies AWS ECR private repositories whose tag immutability is not configured.\n\nAWS Elastic Container Registry (ECR) tag immutability ensures that once an image is pushed to a repository with tag immutability enabled, the tag cannot be overwritten or updated. This feature is useful for ensuring the security, integrity, and reliability of container images in production environments. It prevents tags from being overwritten, which can help prevent unauthorised changes to images.\n\nIt is recommended to enable tag immutability on ECR repositories to maintain the integrity and security of the images pushed.",
+  "rule.criteria": "87eefbdf-f923-4df5-aefb-e57de5fb669b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecr-get-repository-policy' AND json.rule = imageTagMutability equal ignore case mutable",
+  "recommendation": "To enable tag immutability for an ECR repository, follow the below steps:\n\n1. Log into the AWS console and navigate to the ECR dashboard.\n2. In the navigation pane, choose 'Repositories' under 'Private registry'.\n3. Select the repository you want to edit and choose 'Edit' from the 'Actions' dropdown.\n4. Make 'Tag immutability' to 'enabled'.\n5. Choose 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

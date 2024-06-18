@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "HIPAA"
+    "HIPAA",
+    "ISO/IEC 27001:2022"
   ]
 }

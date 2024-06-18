@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "HIPAA",
+    "ISO/IEC 27001:2022",
     "Telecommunications Security Act - TSA"
   ]
 }

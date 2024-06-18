@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS v2.0.0 (GCP) Level 1",
+    "ISO/IEC 27001:2022"
+  ]
 }

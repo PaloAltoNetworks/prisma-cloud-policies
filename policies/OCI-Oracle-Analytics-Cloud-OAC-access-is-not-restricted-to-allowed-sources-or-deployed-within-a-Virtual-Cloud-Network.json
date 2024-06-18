@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OA-1201",
+  "policyId": "328443f0-28f0-4b90-8917-9af0fb08e0fc",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Oracle Analytics Cloud (OAC) access is not restricted to allowed sources or deployed within a Virtual Cloud Network",
+  "description": "This policy identifies Oracle Analytics Cloud (OAC) instances that are not restricted to specific sources or not deployed within a Virtual Cloud Network (VCN). \n\nOAC is a scalable service for enterprise analytics, and restricting its access to corporate IP addresses or VCNs enhances security by reducing exposure to unauthorized access. Deploying OAC instances within a VCN and implementing access control rules is essential for protecting sensitive data. This ensures that only authorized sources can connect to OAC, mitigating risks and maintaining data integrity.\n\nAs best practice, it is recommended to have new OAC instances deployed within a VCN, and existing instances should have access control rules configured to allow only approved sources.",
+  "rule.criteria": "4e7bb177-b336-4a95-9853-b90a8f075753",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-analytics-instance' AND json.rule = lifecycleState equal ignore case ACTIVE AND networkEndpointDetails.networkEndpointType equal ignore case PUBLIC AND (networkEndpointDetails.whitelistedServices is empty AND networkEndpointDetails.whitelistedIps is empty AND networkEndpointDetails.whitelistedVcns is empty)",
+  "recommendation": "To configure the OCI Oracle Analytics Cloud (OAC) access, refer to the following documentation:\nhttps://docs.oracle.com/en-us/iaas/analytics-cloud/doc/manage-service-access-and-security.html#ACOCI-GUID-08739F8B-13EC-4194-8EEF-58664F2C1178",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

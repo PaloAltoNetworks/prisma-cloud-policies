@@ -14,9 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
     "CRI Profile v2.0",
     "HIPAA",
+    "ISO/IEC 27001:2022",
     "NIST 800-53 Rev 5",
     "NIST CSF v2.0",
     "Telecommunications Security Act - TSA"

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AWF-1193",
+  "policyId": "87d7bd82-846b-4bda-9faf-bf21af2182ac",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Application Gateway WAF policy is not enabled in prevention mode",
+  "description": "This policy identifies the Azure Application Gateway WAF policies that are not enabled in prevention mode.\n\nAzure Application Gateway WAF policies support Prevention and Detection modes. Detection mode monitors and logs all threat alerts to a log file. Detection mode is useful for testing purposes and configures WAF initially but it does not provide protection. It logs the traffic, but it doesn't take any actions such as allow or deny. Where as, in Prevention mode, WAF analyzes incoming traffic to the application gateway and blocks any requests that are determined to be malicious based on a set of rules.\n\nAs a best security practice, it is recommended to enable Application Gateway WAF policies with Prevention mode to prevent malicious requests from reaching your application and potentially causing damage.",
+  "rule.criteria": "3a4be99e-0c98-4b03-b315-9ada5cf9747f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-application-gateway-waf-policy' AND json.rule = properties.applicationGateways[*].id size greater than 0 and properties.policySettings.state equal ignore case Enabled and properties.policySettings.mode does not equal ignore case Prevention",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to 'Web Application Firewall policies (WAF)' dashboard\n3. Click on the reported WAF policy\n4. In 'Overview' section, Click on 'Switch to prevention mode'.\n\nNOTE: Define managed rule or custom rules properly as per your business requirement prior to transition to Prevention mode. This can help in unexpected blocked traffic.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

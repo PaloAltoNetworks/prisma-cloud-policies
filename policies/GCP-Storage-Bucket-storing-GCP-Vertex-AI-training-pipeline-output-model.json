@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-1211",
+  "policyId": "fa965ef9-5ffc-4423-a005-d45352519e84",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Storage Bucket storing GCP Vertex AI training pipeline output model",
+  "description": "This policy identifies publicly exposed GCS buckets that are used to store the GCP Vertex AI training pipeline output model.\n\nGCP Vertex AI training pipeline output models are stored in the Storage bucket. Vertex AI training pipeline output model is considered sensitive and confidential intellectual property and its storage location should be checked regularly. The storage location should be as per your organization's security and compliance requirements.\n\nIt is recommended to monitor, identify, and evaluate storage location for the GCP Vertex AI training pipeline output model regularly to prevent unauthorized access and AI model thefts.",
+  "rule.criteria": "10929fb7-0051-4b61-b3df-d81cd7d14380",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-storage-buckets-list' as X; config from cloud.resource where api.name = 'gcloud-vertex-ai-aiplatform-training-pipeline' as Y; filter ' $.Y.trainingTaskOutputDirectory contains $.X.id '; show X;",
+  "recommendation": "Review and validate the Vertex AI training pipeline output models are stored in the right Storage buckets. Move and/or delete the model and other related artifacts if they are found in an unexpected location. Review how the Vertex AI training pipeline was configured to output to an unauthorised/unapproved storage bucket.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
