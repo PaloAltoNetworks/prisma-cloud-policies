@@ -208,9 +208,8 @@
 - Azure Storage account encryption key configured by access policy with privileged operations
 - Azure Virtual Network subnet is not configured with a Network Security Group
 
-#### 11 policies updated for the IAM Security module
+#### 10 policies updated for the IAM Security module
 
-- GCP entities with permissions to impersonate a service account in another project
 - GCP service accounts with 'Editor' role on folder level
 - GCP service accounts with 'Editor' role on org level
 - GCP service accounts with 'Owner' role on folder level
