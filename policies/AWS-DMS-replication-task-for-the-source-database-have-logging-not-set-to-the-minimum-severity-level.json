@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-1227",
+  "policyId": "e54f1f3f-4c32-4c6f-974e-71dfd1f0496c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS DMS replication task for the source database have logging not set to the minimum severity level",
+  "description": "This policy identifies AWS DMS replication task where logging is either not enabled or set below the minimum severity level, such as LOGGER_SEVERITY_DEFAULT, for SOURCE_CAPTURE and SOURCE_UNLOAD.\n\nLogging is indispensable in DMS replication for various purposes, including monitoring, troubleshooting, auditing, performance analysis, error detection, recovery, and historical reporting. SOURCE_CAPTURE captures ongoing replication or CDC data from the source database, while SOURCE_UNLOAD unloads data during full load. Logging these tasks is crucial for ensuring data integrity, compliance, and accountability during migration.\n\nIt is recommended to enable logging for AWS DMS replication tasks and set a minimal logging level of DEFAULT for SOURCE_CAPTURE and SOURCE_UNLOAD to ensure that essential messages are logged, facilitating effective monitoring, troubleshooting, and compliance efforts.",
+  "rule.criteria": "2104d0f8-3c2e-4f42-a48c-cd77b0aa64cc",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-dms-replication-task' AND json.rule = ReplicationTaskSettings.Logging.EnableLogging is false or  ReplicationTaskSettings.Logging.LogComponents[?any( Id is member of (\"SOURCE_CAPTURE\",\"SOURCE_UNLOAD\") and Severity is not member of (\"LOGGER_SEVERITY_DEFAULT\",\"LOGGER_SEVERITY_DEBUG\",\"LOGGER_SEVERITY_DETAILED_DEBUG\") )] exists",
+  "recommendation": "To enable logging for  Source capture and  Source Unload DMS replicatation tasks log components during migration:\n\n1. Log in to the AWS Management Console\n2. In the console, select the specific region from the region drop-down in the top right corner, for which the alert is generated\n3. Navigate to 'Migration & Transfer' from the 'Services' dropdown and select 'Database Migration Service'\n4. In the navigation panel, under 'Migrate data', click on 'Database migration tasks'\n5. Select the reported replication task and choose 'Modify' from the 'Actions' dropdown on the right\n6. Under the 'Task settings' section, enable 'Turn on CloudWatch logs' under 'Task logs'\n7. Set the log component severity for both 'Source capture' and 'Source Unload' components to 'Default' or greater according to your business requirements\n8. Click 'Save' to save the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1218",
+  "policyId": "5953af8c-7557-4a4e-ac08-b7679be4e3e9",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Logic app using insecure TLS version",
+  "description": "This policy identifies Azure Logic apps that are using insecure TLS version.\n\nAzure Logic apps configured to use insecure TLS versions are at risk as they may be vulnerable to security threats due to the known vulnerabilities, weaker encryption methods, and support for compromised hash functions. Logic apps using TLS 1.2 or higher will secure communication and protect against potential cyber attacks.\n\nAs a security best practice,  it is recommended to configure Logic apps with TLS 1.2 or higher to ensure secure communication.",
+  "rule.criteria": "6bf2ca99-c09e-4e96-b723-3dfc3f8d2786",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running and kind contains workflowapp and (config.minTlsVersion equals \"1.0\" or config.minTlsVersion equals \"1.1\")",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Logic apps\n3. Click on the reported Logic app\n4. Under 'Setting' section, click on 'Configuration'\n5. Under 'General settings' tab, Set 'Minimum Inbound TLS Version' to '1.2' or higher.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

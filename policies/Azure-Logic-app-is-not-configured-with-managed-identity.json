@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1217",
+  "policyId": "ec03baf8-3358-4adb-9451-42ba86c1260c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Logic app is not configured with managed identity",
+  "description": "This policy identifies Azure Logic apps that are not configured with managed identity.\n\nManaged identity can be used to authenticate to any service that supports Azure AD authentication, without having credentials in your code. Including credentials in code heightens the risk in the event of a security breach and increases the threat surface in case of exploitation and also managed identities eliminate the need for developers to manage credentials.\n\nAs a security best practice, it is recommended to set up managed identity rather than embedding credentials within the code.",
+  "rule.criteria": "36bf6693-00df-4034-998d-48a2002d3048",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running and kind contains workflowapp and (identity.type does not exist or identity.principalId is empty)",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Logic apps\n3. Click on the reported Logic app\n4. Under 'Setting' section, click on 'Identity'\n5. Configure either 'System assigned' or 'User assigned' managed identity based on your requirement.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DMS-1226",
+  "policyId": "cb5f94a1-1af7-4867-bfc2-7bf6b64941f5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS DMS replication task for the target database have logging not set to the minimum severity level",
+  "description": "This policy identifies the DMS replication tasks that are logging isn't enabled or the minimum severity level is less than LOGGER_SEVERITY_DEFAULT for TARGET_APPLY and TARGET_LOAD.\n\nAmazon DMS Logging is crucial in DMS replication for monitoring, troubleshooting, auditing, performance analysis, error detection, recovery, and historical reporting. TARGET_APPLY and TARGET_LOAD must be logged because they manage to apply data and DDL changes, as well as loading data into the target database, crucial for maintaining data integrity during migration. The absence of logging for TARGET_APPLY and TARGET_LOAD components hampers monitoring, compliance, auditing, troubleshooting, and accountability efforts during migration.\n\nIt's recommended to enable logging for AWS DMS replication tasks and set a minimal logging level of DEFAULT for TARGET_APPLY and TARGET_LOAD to ensure that informational messages, warnings, and error messages are written to the logs.",
+  "rule.criteria": "788da4e0-a835-47eb-a846-bb16653f81b1",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-dms-replication-task' AND json.rule = ReplicationTaskSettings.Logging.EnableLogging is false or  ReplicationTaskSettings.Logging.LogComponents[?any( Id is member of (\"TARGET_APPLY\",\"TARGET_LOAD\") and Severity is not member of (\"LOGGER_SEVERITY_DEFAULT\",\"LOGGER_SEVERITY_DEBUG\",\"LOGGER_SEVERITY_DETAILED_DEBUG\") )] exists",
+  "recommendation": "To enable logging for Target Apply and Target Load DMS replication tasks log component during migration:\n\n1. Log in to the AWS Management Console\n2. In the console, select the specific region from the region drop-down in the top right corner, for which the alert is generated\n3. Navigate to 'Migration & Transfer' from the 'Services' dropdown and select 'Database Migration Service'\n4. In the navigation panel, under 'Migrate data', click on 'Database migration tasks'\n5. Select the reported replication task and choose 'Modify' from the 'Actions' dropdown on the right\n6. Under the 'Task settings' section, enable 'Turn on CloudWatch logs' under 'Task logs'\n7. Set the log component severity for both 'Target apply' and 'Target Load' components to 'Default' or greater according to your business requirements\n8. Click 'Save' to save the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

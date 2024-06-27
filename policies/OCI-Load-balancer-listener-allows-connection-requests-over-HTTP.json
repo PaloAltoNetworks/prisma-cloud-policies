@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-818",
+  "policyId": "2d91af05-7014-4f14-b4a3-823ac7d8d94e",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Load balancer listener allows connection requests over HTTP",
+  "description": "This policy identifies Oracle Cloud Infrastructure (OCI) Load Balancer listeners that accept connection requests over HTTP instead of HTTPS or HTTP/2 or TCP protocols.\n\nAccepting connections over HTTP can expose data to potential interception and unauthorized access, as HTTP traffic is transmitted in plaintext. OCI Load balancer allow all traffic to be submitted over HTTPS or HTTP/2 or TCP, ensuring all communications are encrypted. These protocols provide encrypted communication channels, safeguarding sensitive information from eavesdropping, tampering, and man-in-the-middle attacks.\n\nAs a security best practice, it is recommended to configure the listeners to accept connections through HTTPS, HTTP/2, or TCP, thereby enhancing the protection of data in-transit.",
+  "rule.criteria": "15d143d2-8378-4d2d-b6a7-95688c593e67",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-loadbalancer' AND json.rule = lifecycleState equals ACTIVE and listeners.* is not empty and listeners.*.protocol equal ignore case HTTP and ruleSets.*.items[?any(redirectUri.protocol equal ignore case https)] does not exist",
+  "recommendation": "To remediate we have 2 options:\n- Update existing Load balancer listener to redirect HTTP traffic to HTTPS by creating Rule set.\n- Delete existing listener associated and Create new listener protocol other than HTTP.\n\nTo redirect Load balancer HTTP traffic to HTTPS, follow:\n1. Log in to OCI console\n2. Open Networking -> Load Balancers\n3. Click on the reported load balancer to open the details page\n4. From the Resources pane, select 'Rule Sets' and then click on 'Create Rule Set' button\n5. Choose name for Rule set and select 'Specify URL Redirect Rules'\n6. In Redirect to section: Set 'Protocol' to HTTPS and 'Port' to 443; choose other parameters as per your requirement.\n7. Click on 'Create'\n\nTo create new listener with protocol other than HTTP, follow:\n1. Log in to OCI console\n2. Open Networking -> Load Balancers\n3. Click on the reported load balancer to open the details page\n4. From the Resources pane, select 'Listeners' and then click on 'Create Listener' button\n5. In Create Listener dailog, Select other parameters and 'Protocol' other than HTTP as per your requirement.\n7. Click on 'Create'\n\nTo delete existing listener, follow:\nhttps://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managinglisteners_topic-Deleting_Listeners.htm",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
