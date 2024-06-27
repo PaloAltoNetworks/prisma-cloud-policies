@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1212",
+  "policyId": "00cd7228-1641-4a8c-aff8-523501693ab1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Logic app does not redirect HTTP requests to HTTPS",
+  "description": "This policy identifies Azure Logic apps that fail to redirect HTTP traffic to HTTPS.\n\nBy default, Azure Logic app data is accessible through unsecured HTTP traffic. HTTP does not include any encryption and data sent over HTTP is susceptible to interception and eavesdropping. To secure web traffic, use HTTPS which incorporates encryption through SSL/TLS protocols, providing a secure channel over which data can be transmitted safely.\n\nAs a security best practice,  it is recommended to configure HTTP to HTTPS redirection to prevent unauthorized parties from being able to read or modify the data in transit.",
+  "rule.criteria": "2a377921-af8b-4c81-bba8-121f94b9ded4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running and kind contains workflowapp and properties.httpsOnly is false",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Logic apps\n3. Click on the reported Logic app\n4. Under 'Setting' section, click on 'Configuration'\n5. Under 'General settings' tab, Select 'On' radio button for 'HTTPS Only' option.\n6. Click on 'Save'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az logicapp update --resource-group ${resourceGroup} --name ${resourceName} --set httpsOnly=true",
+  "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution set on HTTPS-only feature, by which non-secure HTTP requests can be restricted and all HTTP requests will be redirected to the secure HTTPS port.",
+  "remediation.impact": "Sets HTTPS-only feature on the Azure Logic app",
+  "compliance.standard": ""
+}

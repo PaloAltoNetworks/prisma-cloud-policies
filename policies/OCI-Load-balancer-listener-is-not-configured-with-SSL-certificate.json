@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-817",
+  "policyId": "bea2a8dc-fcbe-46d4-ba4f-f46550e4625c",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Load balancer listener is not configured with SSL certificate",
+  "description": "This policy identifies Load balancers for which the listener is not configured with an SSL certificate.\n\nEnforcing an SSL connection helps prevent unauthorized users from reading sensitive data that is intercepted as it travels through the network, between clients/applications and cache servers.\n\nIt is recommended to implement SSL between the load balancer and your client; so that the load balancer can accept encrypted traffic from a client.",
+  "rule.criteria": "f1c4df7e-4e38-49ee-9214-2931c467cd28",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-loadbalancer' AND json.rule = lifecycleState equals ACTIVE and listeners.* is not empty and listeners.*.sslConfiguration.certificateName is empty and listeners.*.protocol does not equal ignore case HTTP",
+  "recommendation": "To configure SSL to your Load balancer listener follow below URLs details:\nFor adding certificate - https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/create_certificate.htm\n\nFor editing listener - https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managinglisteners_topic-Editing_Listeners.htm",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

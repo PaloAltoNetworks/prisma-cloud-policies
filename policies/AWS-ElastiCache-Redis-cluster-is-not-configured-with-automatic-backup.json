@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC-1216",
+  "policyId": "903c9178-b240-45a1-ae2c-59f998b44918",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ElastiCache Redis cluster is not configured with automatic backup",
+  "description": "This policy identifies Amazon ElastiCache Redis clusters where automatic backup is disabled by checking if SnapshotRetentionLimit is less than 1.\n\nAmazon ElastiCache for Redis clusters can back up their data. Automatic backups in ElastiCache Redis clusters ensure data durability and enable point-in-time recovery, protecting against data loss or corruption. Without backups, data loss from breaches or corruption could be irreversible, compromising data integrity and availability.\n\nIt is recommended to enable automatic backups to adhere to compliance requirements and enhance security measures, ensuring data integrity and resilience against potential threats.",
+  "rule.criteria": "50fcfd4b-25fd-47e8-8ffa-917be4f8cfa3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elasticache-describe-replication-groups' AND json.rule = status equal ignore case \"available\" and snapshotRetentionLimit does not exist or snapshotRetentionLimit < 1",
+  "recommendation": "1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on 'Redis caches' under the 'Resources' section\n5. Select reported Redis cluster\n6. Click on 'Modify' button\n7. In the 'Modify Cluster' dialog box, Under the 'Backup' section \na. Select 'Enable automatic backups'\nb. Select the 'Backup node ID' that is used as the daily backup source for the cluster\nc. Select the 'Backup retention period' number of days according to your buissness requirements for which automated backups are retained before they're automatically deleted\nd. select the 'Backup start time' and 'Backup duration' according to your requirements\n\n8. Click on 'Preview Changes'\n9. Select Yes checkbox under 'Apply Immediately' , to apply the configuration changes immediately. If Apply Immediately is not selected, the changes will be processed during the next maintenance window.\n10. Click on 'Modify'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
