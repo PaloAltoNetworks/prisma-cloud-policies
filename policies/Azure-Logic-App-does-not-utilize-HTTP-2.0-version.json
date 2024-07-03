@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1219",
+  "policyId": "6d2114ab-1ff9-4d73-9385-d3cb6291b0af",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Logic App does not utilize HTTP 2.0 version",
+  "description": "This policy identifies Azure Logic apps that are not utilizing HTTP 2.0 version.\n\nAzure Logic app using HTTP 1.0 for its connection is considered not secure as HTTP 2.0 version has additional performance improvements on the head-of-line blocking problem of old HTTP version, header compression, and prioritisation of requests. HTTP 2.0 no longer supports HTTP 1.1's chunked transfer encoding mechanism, as it provides its own, more efficient, mechanisms for data streaming.\n\nAs a security best practice,  it is recommended to configure HTTP 2.0 version for Logic apps connections.",
+  "rule.criteria": "6cd29a62-215e-44f4-8fbd-d19a1c51a431",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running and kind contains workflowapp and config.http20Enabled is false",
+  "recommendation": "1. Log in to Azure portal\n2. Navigate to Logic apps\n3. Click on the reported Logic app\n4. Under 'Setting' section, click on 'Configuration'\n5. Under 'General settings' tab, Set 'HTTP version' to '2.0'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

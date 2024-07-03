@@ -1,5 +1,44 @@
 # Changelog
 
+## PCS-24.7.1 - 2024-7-08
+
+### Added
+
+#### 14 new config policies
+
+- AWS CodeBuild project environment variables contain plaintext AWS credentials
+- AWS DMS replication task for the source database have logging not set to the minimum severity level
+- AWS DMS replication task for the target database have logging not set to the minimum severity level
+- AWS ElastiCache Redis cluster is not configured with automatic backup
+- AWS Log metric filter and alarm does  not exist for management console sign-in without MFA
+- AWS Log metric filter and alarm does not exist for AWS Security group changes
+- Azure Logic app configured with public network access
+- Azure Logic app does not redirect HTTP requests to HTTPS
+- Azure Logic App does not utilize HTTP 2.0 version
+- Azure Logic app is not configured with managed identity
+- Azure Logic app using insecure TLS version
+- OCI Database system is not configured with Network Security Groups
+- OCI Load balancer listener allows connection requests over HTTP
+- OCI Load balancer listener is not configured with SSL certificate
+
+### Changed
+
+#### 7 policies updated for the IAM Security module
+
+- AWS Lateral Movement to Data Services Through Redshift Cluster Creation
+- Azure Lateral Movement Through SSH Key Replacement and Managed Identity Exploitation on VM
+- Azure Lateral Movement via VM Command Execution Leveraging Managed Identity
+- GCP Cloud Run Job Public Execution via Default Compute SA Modification
+- GCP Lateral Access Expansion by Making Cloud Run Publicly Executable
+- GCP Project-Wide Lateral Movement via SSH Key Modification for VMs
+- Third-party Service Account With Lateral Movement Through CloudFormation Stack Creation
+
+#### 3 compliance standards updated
+
+- CIS v3.0.0 (GCP) Level 1
+- CIS v3.0.0 (GCP) Level 2
+
+
 ## PCS-24.6.2 - 2024-6-20
 
 ### Added

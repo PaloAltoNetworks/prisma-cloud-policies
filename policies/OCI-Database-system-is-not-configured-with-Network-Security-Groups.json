@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-ODB-810",
+  "policyId": "d32b64b7-5562-4dcb-a3f0-48605db3d83f",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Database system is not configured with Network Security Groups",
+  "description": "This policy identifies Oracle Cloud Infrastructure (OCI) Database Systems that are not configured with Network Security Groups (NSGs).\n\nNetwork Security Groups provide granular security controls at the instance level, allowing for more precise management of inbound and outbound traffic to database systems.\n\nIt is recommended to configure database systems with NSGs to enhance their security thereby mitigating the risk of unauthorized access and potential data breaches.",
+  "rule.criteria": "9536596f-139e-46f0-888e-337bb4baed99",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-oracledatabase-bmvm-dbsystem' AND json.rule = 'lifecycleState equals AVAILABLE and nsgIds contains null'",
+  "recommendation": "To manage Network Security Groups for a DB System, follow below URL:\nhttps://docs.oracle.com/en-us/iaas/base-database/doc/manage-network-security-groups-db-system.html\n\nNOTE: Before you update DB Systems with Network security group, make sure you have a restrictive Network Security Group already created with only specific traffic ports based on requirement.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
