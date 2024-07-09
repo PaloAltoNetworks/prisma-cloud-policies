@@ -19,6 +19,7 @@
     "CIS Controls v8",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "DORA",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO/IEC 27001:2022",
@@ -32,6 +33,7 @@
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

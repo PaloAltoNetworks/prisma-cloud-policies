@@ -1,5 +1,49 @@
 # Changelog
 
+## PCS-24.7.2 - 2024-7-18
+
+### Added
+
+#### 16 new config policies
+
+- AWS CloudWatch log groups retention set to less than 365 days
+- AWS CodeBuild project not configured with logging configuration
+- AWS DAX cluster not configured with encryption at rest
+- AWS ECS task definition is not configured with read-only access to container root filesystems
+- AWS Elastic Beanstalk environment managed platform updates are not enabled
+- AWS ElastiCache cluster not using supported engine version
+- AWS ElastiCache Redis cluster automatic version upgrade disabled
+- Azure Active Directory MFA is not enabled for user
+- Azure Machine learning workspace configured with high business impact data have unrestricted network access
+- Google Workspace Super Admin not enrolled with 2-step verification
+- Google Workspace User not enrolled with 2-step verification
+- OCI Autonomous Database not registered in Data Safe
+- OCI Load Balancer not configured with backend set
+- OCI Load Balancer not configured with inbound rules or listeners
+- OCI Network Load Balancer not configured with backend set
+- OCI Network Load Balancer not configured with inbound rules or listeners
+
+#### 4 new compliance standards
+
+- Australian Cyber Security Centre (ACSC) Essential Eight - Level 1
+- Australian Cyber Security Centre (ACSC) Essential Eight - Level 2
+- Australian Cyber Security Centre (ACSC) Essential Eight - Level 3
+- Digital Operational Resilience Act (DORA)
+
+### Changed
+
+#### 2 compliance standards updated
+
+- CIS v3.0.0 (GCP) Level 1
+- SOC 2
+
+### Removed
+
+#### 1 policy deleted
+
+- Azure AD MFA is not enabled for the user
+
+
 ## PCS-24.7.1 - 2024-7-08
 
 ### Added
@@ -33,7 +77,7 @@
 - GCP Project-Wide Lateral Movement via SSH Key Modification for VMs
 - Third-party Service Account With Lateral Movement Through CloudFormation Stack Creation
 
-#### 3 compliance standards updated
+#### 2 compliance standards updated
 
 - CIS v3.0.0 (GCP) Level 1
 - CIS v3.0.0 (GCP) Level 2

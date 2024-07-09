@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC-1234",
+  "policyId": "e99eb781-c473-4b65-8308-3c345b52cb5f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ElastiCache cluster not using supported engine version",
+  "description": "This policy identifies AWS Elastic Redis or Memcache cluster not using the supported engine version.\n\nAWS ElastiCache simplifies deploying, operating, and scaling Redis and Memcached in-memory caches in the cloud. An ElastiCache cluster not using a supported engine version runs on outdated Redis or Memcached versions. These versions may be end-of-life (EOL) or lack current updates and patches from AWS. This exposes the cluster to unpatched vulnerabilities, compliance risks, and potential service instability.\n\nIt is recommended to regularly update your ElastiCache clusters to the latest supported engine versions as recommended by AWS.",
+  "rule.criteria": "d559291a-5cf3-483b-8a65-076fd90542d0",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-elasticache-cache-clusters' as X; config from cloud.resource where api.name = 'aws-cache-engine-versions' as Y; filter 'not( $.X.engine equals $.Y.engine and $.Y.cacheEngineVersionDescription contains $.X.engineVersion)'; show X;",
+  "recommendation": "To Upgrade the AWS ElastiCache cluster perform the following actions:\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to ElastiCache Dashboard\n4. Click on 'Redis caches' under the 'Resources' section\n5. Select reported Redis cluster\n6. Click on 'Modify' button\n7. In the 'Modify Cluster' dialog box, Under the 'Cluster settings' section \n8. Select 'Engine version' from the drop down according to your requirements.\n9. select 'Parameter groups' family that is compatible with the new engine version.\n10. Click on 'Preview Changes'\n11. Select Yes checkbox under 'Apply Immediately' , to apply the configuration changes immediately. If Apply Immediately is not selected, the changes will be processed during the next maintenance window.\n12. Click on 'Modify'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

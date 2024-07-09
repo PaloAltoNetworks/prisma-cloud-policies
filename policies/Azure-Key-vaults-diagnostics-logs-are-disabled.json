@@ -31,6 +31,7 @@
     "CSA CCM v.4.0.1",
     "CSA CCM v.4.0.6",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "DORA",
     "FFIEC",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
@@ -52,6 +53,7 @@
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Telecommunications Security Act - TSA"

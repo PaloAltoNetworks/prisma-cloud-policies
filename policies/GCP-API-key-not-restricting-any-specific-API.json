@@ -17,10 +17,12 @@
     "CIS v1.3.0 (GCP)",
     "CIS v2.0.0 (GCP) Level 2",
     "CIS v3.0.0 (GCP) Level 2",
+    "DORA",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "Risk Management in Technology (RMiT)",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

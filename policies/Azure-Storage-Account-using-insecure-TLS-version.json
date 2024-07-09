@@ -23,6 +23,7 @@
     "CIS v2.1.0 (Azure) Level 1",
     "CRI Profile v1.2.1",
     "CRI Profile v2.0",
+    "DORA",
     "FFIEC",
     "ISO 27002:2022",
     "ISO/IEC 27001:2022",
@@ -30,6 +31,7 @@
     "NIST CSF v2.0",
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

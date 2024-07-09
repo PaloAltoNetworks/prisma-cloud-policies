@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "az storage account update --name ${resourceName} --resource-group ${resourceGroup} --allow-cross-tenant-replication false",
   "remediation.description": "This CLI command requires 'Microsoft.Storage/storageAccounts/*' permission. Successful execution will disable cross tenant replication in Storage Accounts.",
   "remediation.impact": "Disable cross tenant replication in Azure Storage Account",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "SOC 2"
+  ]
 }

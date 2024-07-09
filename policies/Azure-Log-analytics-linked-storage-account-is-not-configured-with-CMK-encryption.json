@@ -14,8 +14,10 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "DORA",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
-    "NIST 800-53 Rev 5"
+    "NIST 800-53 Rev 5",
+    "SOC 2"
   ]
 }

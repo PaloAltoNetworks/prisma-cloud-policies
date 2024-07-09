@@ -16,6 +16,9 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -50,6 +53,7 @@
     "PCI DSS v4.0",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

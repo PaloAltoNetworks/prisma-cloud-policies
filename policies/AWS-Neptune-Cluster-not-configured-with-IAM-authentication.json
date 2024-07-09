@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "DORA",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
@@ -21,6 +22,7 @@
     "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev 5",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

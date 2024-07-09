@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-ODB-1224",
+  "policyId": "eeb677f9-315e-44c4-8b2d-d39878e3d8cb",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Autonomous Database not registered in Data Safe",
+  "description": "This policy identifies Oracle Autonomous Databases that are not registered in Oracle Data Safe.\n\nOracle Data Safe is a fully-integrated cloud service that focuses on the security of your data, providing comprehensive features for protecting sensitive and regulated information in Oracle databases. Through the Security Center, you can access functionalities such as user and security assessments, data discovery, data masking, activity auditing, and alerts.\n\nAs best practice, it is recommended to register the Autonomous Database in Data Safe.",
+  "rule.criteria": "c54baed9-1750-485a-9356-48508f9b3866",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-database-autonomous-database' AND json.rule = lifecycleState equal ignore case AVAILABLE and dataSafeStatus does not equal ignore case REGISTERED",
+  "recommendation": "To configure the OCI Autonomous Database with datasafe, refer to the following documentation:\nhttps://docs.oracle.com/en/cloud/paas/data-safe/admds/register-autonomous-database.html#GUID-19A85842-A81C-4F40-A1EE-13C40EA845F0\nor\nhttps://docs.oracle.com/en-us/iaas/tools/oci-cli/3.43.2/oci_cli_docs/cmdref/db/autonomous-database/data-safe/register.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

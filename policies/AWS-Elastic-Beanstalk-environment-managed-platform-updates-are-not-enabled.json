@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EB-1230",
+  "policyId": "538a77e5-5565-4813-8adc-c074feba466d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Elastic Beanstalk environment managed platform updates are not enabled",
+  "description": "This policy identifies the AWS Elastic Beanstalk Environment where managed platform updates are not enabled.\n\nElastic Beanstalk is a platform as a service (PaaS) product from Amazon Web Services (AWS) that provides automated application deployment and scaling features. Enabling managed platform updates ensures that the latest available platform fixes, updates, and features for the environment are installed. Users must not apply updates manually without automatic updates, risking missed critical updates and potential security vulnerabilities. This can result in high-severity security risks, loss of data, and possible system downtime.\n\nIt is recommended to ensure platform updates are managed automatically is crucial for the overall security and performance of the applications running on the platform.",
+  "rule.criteria": "0ff9780e-0b92-4b4e-849c-e3231468cd22",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-elasticbeanstalk-environment' AND json.rule = status does not equal \"Terminated\" as X; config from cloud.resource where api.name = 'aws-elasticbeanstalk-configuration-settings' AND json.rule = configurationSettings[*].optionSettings[?any( optionName equals \"ManagedActionsEnabled\" and namespace equals \"aws:elasticbeanstalk:managedactions\" and value equals \"false\")] exists as Y; filter ' $.X.environmentName equals $.Y.configurationSettings[*].environmentName and $.X.applicationName equals $.Y.configurationSettings[*].applicationName'; show X;",
+  "recommendation": "To configure managed platform updates for  Elastic Beanstalk environment, perform the following actions\n\n1. Sign in to the AWS console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to 'Elastic Beanstalk' service\n4. In the navigation pane, choose 'Environments', then select the reported environment's name from the list\n5. In the navigation pane, choose Configuration\n6. In the 'Updates, monitoring, and logging' configuration category, choose Edit\n7. Under 'Managed platform updates' section, Enable Managed updates by selecting the 'Activated' checkbox\n8. If managed updates are enabled, select a maintenance window, and then select an 'Update level' according to your business requirements\n9. To save the changes choose 'Apply' at the bottom of the page",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

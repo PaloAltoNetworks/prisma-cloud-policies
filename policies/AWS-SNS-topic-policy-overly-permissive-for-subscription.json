@@ -15,6 +15,9 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "CIS AWS 3 Tier Web Architecture Benchmark v.1.0.0",
     "CIS Controls v7.1",
     "CIS Controls v8",
@@ -36,6 +39,7 @@
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

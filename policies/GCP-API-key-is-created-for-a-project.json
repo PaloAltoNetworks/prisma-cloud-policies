@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v2.0.0 (GCP) Level 2",
     "CIS v3.0.0 (GCP) Level 2",
-    "Risk Management in Technology (RMiT)"
+    "Risk Management in Technology (RMiT)",
+    "SOC 2"
   ]
 }

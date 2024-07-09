@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC-1228",
+  "policyId": "5434adda-c728-44e7-aa45-fb6060b698b4",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ElastiCache Redis cluster automatic version upgrade disabled",
+  "description": "This policy identifies the ElastiCache Redis clusters that do not have the auto minor version upgrade feature enabled.\n\nAn ElastiCache Redis cluster is a fully managed in-memory data store used to cache frequently accessed data, reducing latency and improving application performance. Failure to enable automatic minor upgrades can leave your cache clusters vulnerable to security risks stemming from outdated software.\n\nIt is recommended to enable automatic minor version upgrades on ElastiCache Redis clusters to receive timely patches and updates, reduce the risk of security vulnerabilities, and improve overall performance and stability.",
+  "rule.criteria": "0bf65873-3a3a-4141-af26-dd06dde22bb6",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elasticache-cache-clusters' AND json.rule = engine contains redis and autoMinorVersionUpgrade is false",
+  "recommendation": "1. Sign into the AWS console. Navigate to the ElastiCache Dashboard\n2. Click on 'Redis caches' under the 'Resources' section\n3. Select the reported Redis cluster\n4. Click on the 'Modify' button\n5. In the 'Modify' page, under the 'Maintenance' section\n6. Find the 'Auto upgrade minor versions' setting and click on 'Enable'\n7. Click on 'Preview changes'. Under 'Apply immediately', select 'Yes'\n8. Click on 'Modify'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

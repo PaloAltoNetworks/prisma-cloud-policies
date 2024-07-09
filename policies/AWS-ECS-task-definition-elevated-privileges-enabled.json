@@ -17,6 +17,9 @@
     "ACSC Information Security Manual (ISM)",
     "APRA (CPS 234) Information Security",
     "AWS Foundational Security Best Practices standard",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -59,6 +62,7 @@
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

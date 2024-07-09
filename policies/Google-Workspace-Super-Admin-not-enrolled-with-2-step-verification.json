@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GW-918",
+  "policyId": "7da8875d-2351-4e92-8332-77b2d221eb10",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "Google Workspace Super Admin not enrolled with 2-step verification",
+  "description": "This policy identifies Google Workspace Super Admin that do not have 2-Step Verification enabled. Super Admin accounts have access to all features in the Admin console and Admin API. It is recommended to enable 2-Step Verification for all Super Admins as it provides an additional layer of security in case account credentials are compromised.",
+  "rule.criteria": "9e009f43-1337-41b3-8cae-82de8c095c54",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-domain-users' AND json.rule = isAdmin is true and isEnrolledIn2Sv is false and archived is false and suspended is false",
+  "recommendation": "To enable 2-Step Verification for GCP Workspace Super Admin accounts, follow the steps mentioned in below URL:\nhttps://support.google.com/accounts/answer/185839",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

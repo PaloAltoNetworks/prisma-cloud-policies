@@ -15,6 +15,9 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS v2.0.0 (GCP) Level 1",
-    "ISO/IEC 27001:2022"
+    "CIS v3.0.0 (GCP) Level 1",
+    "DORA",
+    "ISO/IEC 27001:2022",
+    "SOC 2"
   ]
 }

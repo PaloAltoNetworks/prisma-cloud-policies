@@ -15,6 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CIS v1.3.0 (GCP)",
@@ -22,10 +24,12 @@
     "CIS v3.0.0 (GCP) Level 2",
     "CSA CCM v.4.0.6",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "DORA",
     "HITRUST CSF v.11.2.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

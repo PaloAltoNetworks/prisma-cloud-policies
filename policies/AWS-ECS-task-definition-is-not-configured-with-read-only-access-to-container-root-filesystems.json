@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ECS-1231",
+  "policyId": "b7ea61ce-89ad-43b0-8134-45e3b7f537eb",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS ECS task definition is not configured with read-only access to container root filesystems",
+  "description": "This policy identifies the AWS Elastic Container Service (ECS) task definitions with readonlyRootFilesystem parameter set to false or if the parameter does not exist in the container definition within the task definition.\n\nECS root filesystem is the base filesystem that containers run on, providing the necessary environment and isolation for the containerized application.\nIf a containerized application is compromised, it could enable an attacker to alter the root file system of the host machine, thus compromising the entire system or application. This could lead to significant data loss, system crashes, or a broader security breach. \n\nIt is recommended to limit all ECS containers to have read-only access on ECS task definition to limit the potential impact of a compromised container.",
+  "rule.criteria": "3215813a-f857-45b9-b6bc-f2ae2cce8b41",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecs-describe-task-definition' AND json.rule = status equals \"ACTIVE\" AND containerDefinitions[*].readonlyRootFilesystem any false or containerDefinitions[*].readonlyRootFilesystem does not exist",
+  "recommendation": "To limit ECS task definitions to read-only access to root filesystems, perform the following actions:\n\n1. Sign into the AWS console and navigate to the Amazon ECS console\n2. In the navigation pane, choose 'Task definitions'\n3. Choose the task definition that is reported\n4. Select 'Create new revision', and then click on 'Create new revision'\n5. On the 'Create new task definition revision' page, select the container with Read-only root file system disabled\n6. Under the 'Read-only root file system' section, enable 'Read only'\n7. Specify the remaining configuration as per the requirements\n8. Choose 'Create'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

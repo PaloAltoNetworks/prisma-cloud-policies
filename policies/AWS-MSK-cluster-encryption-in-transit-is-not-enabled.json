@@ -15,8 +15,10 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CRI Profile v2.0",
+    "DORA",
     "HIPAA",
     "ISO/IEC 27001:2022",
-    "NIST CSF v2.0"
+    "NIST CSF v2.0",
+    "SOC 2"
   ]
 }
