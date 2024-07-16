@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HIPAA",
     "ISO/IEC 27001:2022",
+    "SOC 2",
     "Telecommunications Security Act - TSA"
   ]
 }

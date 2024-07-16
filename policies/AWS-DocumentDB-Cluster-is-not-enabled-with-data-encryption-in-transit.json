@@ -15,11 +15,13 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CRI Profile v2.0",
+    "DORA",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
     "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
     "NIST CSF v2.0",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Telecommunications Security Act - TSA"

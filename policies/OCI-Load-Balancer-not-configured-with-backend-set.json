@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-1222",
+  "policyId": "4114b490-ee2e-4851-9baf-c91cc62e4970",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "informational",
+  "name": "OCI Load Balancer not configured with backend set",
+  "description": "This policy identifies OCI Load Balancers that have no backend set configured. \n\nA backend set is a crucial component of a Load Balancer, comprising a load balancing policy, a health check policy, and a list of backend servers. Without a backend set, the Load Balancer lacks the necessary configuration to distribute incoming traffic and monitor the health of backend servers. \n\nAs best practice, it is recommended to properly configure the backend set for the Load Balancer to function effectively, distribute incoming data, and maintain the reliability of backend services.",
+  "rule.criteria": "5a046591-c8a2-4ec5-b167-0d2b551a967d",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-networking-loadbalancer' AND json.rule = lifecycleState equal ignore case \"ACTIVE\" and backendSets.*.backends is empty OR backendSets.*.backends equals \"[]\"",
+  "recommendation": "To configure the OCI Load Balancers with backend sets, refer to the following documentation:\nhttps://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingbackendsets_topic-Creating_Backend_Sets.htm#top",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

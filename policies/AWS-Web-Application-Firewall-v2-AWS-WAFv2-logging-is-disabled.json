@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "DORA",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
@@ -22,6 +23,7 @@
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

@@ -16,6 +16,7 @@
   "compliance.standard": [
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
-    "ISO/IEC 27001:2022"
+    "ISO/IEC 27001:2022",
+    "SOC 2"
   ]
 }

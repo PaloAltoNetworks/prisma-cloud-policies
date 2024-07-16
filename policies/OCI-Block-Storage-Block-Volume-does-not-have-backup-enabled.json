@@ -16,9 +16,13 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CRI Profile v2.0",
+    "DORA",
     "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO 27002:2022",
@@ -31,6 +35,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Telecommunications Security Act - TSA"

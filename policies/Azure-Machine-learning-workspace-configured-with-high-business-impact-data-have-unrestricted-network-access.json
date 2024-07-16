@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1085",
+  "policyId": "7e8b0cd4-8f22-46b5-adfe-9bf22773ba54",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Machine learning workspace configured with high business impact data have unrestricted network access",
+  "description": "This policy identifies Azure Machine learning workspaces configured with high business impact data with unrestricted network access. \n\nOverly permissive public network access allows access to resource through the internet using a public IP address and that resource having High Business Impact (HBI) data could lead to sensitive data exposure. \n\nAs a best practice, it is recommended to limit access to your workspace and endpoint to specific public internet IP addresses, ensuring that only authorized entities can access them according to business requirements.",
+  "rule.criteria": "75afcbd3-1a5b-49df-ba2a-8310f5cb3b85",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.publicNetworkAccess equal ignore case Enabled and (properties.ipAllowlist does not exist or properties.ipAllowlist is empty) and properties.hbiWorkspace is true",
+  "recommendation": "To restirct internet IP ranges on your existing Machine learning workspace, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/machine-learning/how-to-configure-private-link?view=azureml-api-2&tabs=azure-portal#enable-public-access-only-from-internet-ip-ranges-preview",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

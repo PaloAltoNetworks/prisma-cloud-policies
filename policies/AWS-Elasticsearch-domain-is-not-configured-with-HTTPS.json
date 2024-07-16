@@ -20,6 +20,7 @@
     "CIS Controls v8",
     "CRI Profile v1.2.1",
     "CRI Profile v2.0",
+    "DORA",
     "FFIEC",
     "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
@@ -30,6 +31,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-DAX-1232",
+  "policyId": "e8980325-125e-4bcd-a0c8-68838ddab811",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS DAX cluster not configured with encryption at rest",
+  "description": "This policy identifies the AWS DAX cluster where encryption at rest is disabled.\n\nAWS DAX cluster encryption at rest provides an additional layer of data protection, helping secure your data from unauthorized access to underlying storage. Without encryption, anyone with access to the storage media could potentially intercept and view the data.\n\nIt is recommended to enable encryption at rest for the AWS DAX cluster.",
+  "rule.criteria": "2e489c95-268e-4cf1-aa98-5ba89635271a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-dax-cluster' AND json.rule = Status equals \"available\" and SSEDescription.Status equals \"DISABLED\"",
+  "recommendation": "To enable DAX encryption at rest while creating the new DynamoDB cluster, perform the following actions:\n\n1. Sign in to the AWS Management Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to 'DynamoDB' service under the 'Database' section in 'Services' menu\n4. In the navigation pane on the left side of the console, under 'DAX', choose 'Clusters'\n5. Choose 'Create cluster'\n6. For Cluster name , and other configurations set according to your reported DAX cluster\n7. On the 'Configure security' panel, In 'Encryption' section, select the checkbox 'Turn on encryption at rest' and Click 'Next'\n8. On the 'Verify advanced settings' set according your reported DAX cluster and click 'Next'\n9. On the 'Review and create' click 'Create cluster'\n\nOnce the new cluster is created, change the cluster endpoint within your DynamoDB application to reference the new resource.\n\nTo delete the existing DAX cluster where encryption not enabled\n\n1.  Sign in to the AWS Management Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated\n3. Go to 'DynamoDB' service under the 'Database' section in 'Services' menu\n4. In the navigation pane on the left side of the console, under 'DAX', choose Clusters\n5. Select the DAX cluster that is reported and required to remove\n6. Click 'Delete' to delete the cluster",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

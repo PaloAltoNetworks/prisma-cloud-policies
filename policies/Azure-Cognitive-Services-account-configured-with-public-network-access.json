@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HIPAA",
     "HITRUST CSF v.11.2.0",
-    "ISO/IEC 27001:2022"
+    "ISO/IEC 27001:2022",
+    "SOC 2"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GW-919",
+  "policyId": "5c58c32f-197f-47b0-9879-494599655e57",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "Google Workspace User not enrolled with 2-step verification",
+  "description": "This policy identifies Google Workspace Users who do not have 2-Step Verification enabled. 2-Step Verification is a simple best practice that adds an extra layer of protection on top of username and password combination. It is recommended to enable 2-Step Verification for all users as it provides increased security for user account settings and resources.",
+  "rule.criteria": "14f6ee3b-ca59-41e2-8151-aca27a26d354",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-domain-users' AND json.rule = isAdmin is false and isEnrolledIn2Sv is false and archived is false and suspended is false",
+  "recommendation": "To enable 2-Step Verification for GCP Workspace User accounts, follow the steps mentioned in below URL:\nhttps://support.google.com/accounts/answer/185839",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

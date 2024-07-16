@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-BLD-1229",
+  "policyId": "8381a9e1-638a-442a-b6ad-423262c608c1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS CodeBuild project not configured with logging configuration",
+  "description": "This policy identifies AWS CodeBuild project environments without a logging configuration.\n\nAWS CodeBuild is a fully managed service for building, testing, and deploying code. Logging is a crucial security feature that allows for future forensic work in the event of a security incident. Correlating abnormalities in CodeBuild projects with threat detections helps boost confidence in their accuracy.\n\nIt is recommended to enable logging configuration on CodeBuild projects for monitoring and troubleshooting purposes.",
+  "rule.criteria": "5699ae73-275f-4d38-bd2f-512da77d4744",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-code-build-project' AND json.rule = not(logsConfig.cloudWatchLogs.status equal ignore case enabled or logsConfig.s3Logs.status equal ignore case enabled)",
+  "recommendation": "1. Sign in to the AWS console. Navigate to the CodeBuild service\n2. In the left navigation pane, select 'Build Projects' under 'Build'\n3. Go to your AWS CodeBuild project\n4. Select the 'Project details' tab, and under the 'Logs' section, select 'Edit'\n5. Under the 'Edit Logs' page, based on the requirement, select either 'CloudWatch logs' or 'S3 logs'\n6. For CloudWatch logging, provide a log group name\n7. For S3 logging, provide the bucket name\n8. Click on 'Update logs'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

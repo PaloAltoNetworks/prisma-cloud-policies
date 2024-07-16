@@ -16,6 +16,9 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
@@ -24,6 +27,7 @@
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "DORA",
     "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO 27002:2022",
@@ -47,6 +51,7 @@
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Telecommunications Security Act - TSA"

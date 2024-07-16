@@ -21,6 +21,7 @@
     "CRI Profile v2.0",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
+    "DORA",
     "FFIEC",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
@@ -42,6 +43,7 @@
     "PCI DSS v4.0",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
+    "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1"
   ]

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CWT-1235",
+  "policyId": "5de329bf-6ea4-4bff-8e55-fb9e00adae7d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS CloudWatch log groups retention set to less than 365 days",
+  "description": "This policy identifies the AWS CloudWatch LogGroups having a retention period set to less than 365 days. \n\nCloudWatch Logs centralize and store logs from AWS services and systems. 1-year retention of the logs aids in compliance with log retention standards. Shorter retention periods can lead to the loss of historical logs needed for audits, forensic analysis, and compliance, increasing the risk of undetected issues or non-compliance.\n\nIt is recommended that AWS CloudWatch log group retention be set to at least 365 days to meet compliance needs and support audits, investigations, and analysis.",
+  "rule.criteria": "c95b15e2-3bad-4c39-a04c-014fb6ef7890",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-cloudwatch-log-group' AND json.rule = retentionInDays exists and retentionInDays less than 365",
+  "recommendation": "To change the log retention setting, perform the following actions:\n\n1. Sign into the AWS console\n2. In the console, select the specific region from region drop down on the top right corner, for which the alert is generated\n3. Navigate to 'CloudWatch Dashboard' by selecting 'CloudWatch' under the 'Management & Governance' in All services\n4. In the navigation pane, choose 'Log groups' under the 'Logs' section\n5. Select the log group that is reported and select 'Edit retention setting(s)' under the 'Actions' drop-down\n6. In 'Retention setting', for 'Expire events after', choose a log retention value either 'Never expire' or the value more than 365 days according to your business requirements\n7. Choose 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

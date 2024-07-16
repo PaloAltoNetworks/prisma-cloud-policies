@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "SOC 2",
     "Telecommunications Security Act - TSA"
   ]
 }

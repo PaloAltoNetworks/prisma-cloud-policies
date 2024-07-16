@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "ISO/IEC 27001:2022"
+    "DORA",
+    "ISO/IEC 27001:2022",
+    "SOC 2"
   ]
 }

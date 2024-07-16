@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-1221",
+  "policyId": "36d76b94-e4c1-41a3-b78f-ddd5f7c64649",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "informational",
+  "name": "OCI Network Load Balancer not configured with inbound rules or listeners",
+  "description": "This policy identifies Network Load Balancers that are not configured with inbound rules or listeners.\n\nA Network Load Balancer's subnet security lists should include ingress rules, and the Network Load Balancer should have at least one listener to handle incoming traffic. Without these configurations, the Network Load Balancer cannot receive and route incoming traffic, rendering it ineffective.\n\nAs best practice, it is recommended to configure Network Load Balancers with proper inbound rules and listeners.",
+  "rule.criteria": "e1ae5c6a-70ac-4aef-87f2-e434816badc4",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-networking-networkloadbalancer' and json.rule = lifecycleState equal ignore case \"ACTIVE\" as X; config from cloud.resource where api.name = 'oci-networking-subnet' and json.rule = lifecycleState equal ignore case \"AVAILABLE\" as Y; config from cloud.resource where api.name = 'oci-networking-security-list' AND json.rule = lifecycleState equal ignore case AVAILABLE as Z; filter 'not ($.X.listeners does not equal \"{}\" and ($.X.subnetId contains $.Y.id and $.Y.securityListIds contains $.Z.id and $.Z.ingressSecurityRules is not empty))'; show X;",
+  "recommendation": "To configure the OCI Network Load Balancers with inbound rules and listeners, refer to the following documentation:\nhttps://docs.cloud.oracle.com/iaas/Content/Security/Reference/configuration_tasks.htm#lb-enable-traffic",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

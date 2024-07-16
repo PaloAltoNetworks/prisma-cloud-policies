@@ -14,8 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
+    "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
-    "ISO/IEC 27001:2022"
+    "ISO/IEC 27001:2022",
+    "SOC 2"
   ]
 }
