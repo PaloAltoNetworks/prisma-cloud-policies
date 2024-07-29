@@ -22,9 +22,17 @@
 
 ### Changed
 
-#### 1 policy updated for the IAM Security module
+#### 9 policies updated for the IAM Security module
 
+- AWS Role With Administrative Permissions Can Be Assumed By All Users
+- AWS Users and Machine Identities with Excessive Policies
+- Cloud service account with excessive admin privileges
+- GCP Cloud Run Job Public Execution via Default Compute SA Modification
+- GCP Cloud Run with administrative permissions
+- GCP Lateral Access Expansion by Making Cloud Run Publicly Executable
 - Roles with high privileges can be assumed by a service in an external account
+- Third-party service account can assume a service account with high privileges
+- User account with excessive admin privileges
 
 #### 2 compliance standards updated
 
