@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-KV-1244",
+  "policyId": "820edcc0-154d-4d80-93a4-a4271ae7fcf8",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Key Vault Role Based Access control is disabled",
+  "description": "This policy identifies Azure Key Vault instances where Role-Based Access Control (RBAC) is not enabled.\n\nWithout RBAC, managing access is less secure and can lead to improper access permissions, increasing the risk of unauthorized access to sensitive data. RBAC provides finer-grained access control, enabling secure and manageable permissions for key vault secrets, keys, and certificates. This allows for detailed permissions and the use of privileged identity management for enhanced security with Just-In-Time (JIT) access management.\n\nAs best practice, it is recommended to enable RBAC for all Azure Key Vaults to ensure secure and manageable access control.",
+  "rule.criteria": "6f49467e-3d57-4c03-a63f-e952002b9d9b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-key-vault-list' AND json.rule = properties.provisioningState equal ignore case Succeeded AND (properties.enableRbacAuthorization does not exist or properties.enableRbacAuthorization is false)",
+  "recommendation": "Note: Setting Azure RBAC permission model invalidates all access policies permissions. It can cause outages when equivalent Azure roles aren’t assigned.\n\n1. Login to the Azure portal\n2. Select ‘All services’ > ‘Key vaults’\n3. Select the reported Key vault\n4. Select ‘Access configuration’ under the ‘Settings’ section\n5. Select ‘Azure role-based access control’ under ‘Permission model’ and click ‘Apply’ at the bottom of the page\n6. Next assign a Role to grant access to the Key vault\n  - Select  ‘Access control (IAM)’ from the left panel\n  - Open the ‘Add role assignment’ pane\n  - Select the appropriate role under ‘Role’ (e.g., ‘Key Vault Contributor’)\n  - Assign the role to a user, group, or application by searching for the name or ID under ‘Select members’\n  - Click 'Review + Assign' to apply the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

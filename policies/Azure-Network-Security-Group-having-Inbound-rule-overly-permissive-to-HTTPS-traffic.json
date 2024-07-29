@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-NWK-1246",
+  "policyId": "0df1ee1f-c302-4826-ab09-bfa974e21543",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Network Security Group having Inbound rule overly permissive to HTTP(S) traffic",
+  "description": "This policy identifies Network Security Groups (NSGs) that have inbound rules allowing overly permissive access to HTTP or HTTPS traffic.\n\nA network security group contains a list of security rules that allow or deny inbound or outbound network traffic based on source or destination IP address, port, and protocol. Overly permissive inbound rules for HTTP(S) traffic increase the risk of unauthorized access and potential attacks on your network resources. This can lead to data breaches, exposure of sensitive information, and other security incidents.\n\nAs a best practice, it is recommended to configure NSGs to restrict HTTP(S) traffic to only necessary and trusted IP addresses.",
+  "rule.criteria": "50afdea0-5b38-4903-90fe-b019ee3b8309",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name= 'azure-network-nsg-list' AND json.rule = securityRules[?any((sourceAddressPrefix equal ignore case Internet or sourceAddressPrefix equals * or sourceAddressPrefix equals 0.0.0.0/0 or sourceAddressPrefix equals ::/0) and access equal ignore case Allow and direction equal ignore case Inbound and ((protocol equal ignore case Tcp and (destinationPortRange contains * or destinationPortRange contains _Port.inRange(80,80) or destinationPortRange contains _Port.inRange(443,443) or destinationPortRanges any equal * or destinationPortRanges[*] contains _Port.inRange(80,80) or destinationPortRanges contains _Port.inRange(443,443) )) or (protocol contains * and (destinationPortRange contains _Port.inRange(80,80) or destinationPortRange contains _Port.inRange(443,443) or destinationPortRanges[*] contains _Port.inRange(80,80) or destinationPortRanges contains _Port.inRange(443,443) ))) )] exists",
+  "recommendation": "Before making any changes, please check the impact on your applications/services. Evaluate whether you want to edit the rule and limit access to specific users, hosts, and services only, deny access, or delete the rule completely.\n\n1. Log in to the Azure Portal.\n2. Select 'All services'.\n3. Select 'Network security groups', under NETWORKING.\n4. Select the Network security group you need to modify.\n5. Select 'Inbound security rules' under Settings.\n6. Select the rule you need to modify, and edit it to allow specific IP addresses and Port ranges OR set the 'Action' to 'Deny' OR 'Delete' the rule based on your requirement.\n7. 'Save' your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

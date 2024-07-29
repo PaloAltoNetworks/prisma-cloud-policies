@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-MSK-1238",
+  "policyId": "a01a150a-64bb-4e1e-9f2e-3f4b29c61215",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS MSK clusters not configured with enhanced monitoring",
+  "description": "This policy identifies MSK clusters that are not configured with enhanced monitoring.\n\nAmazon MSK is a fully managed Apache Kafka service on AWS that handles the provisioning, setup, and maintenance of Kafka clusters. Amazon MSK's PER_TOPIC_PER_BROKER monitoring level provides granular insights into the audit, performance and resource utilization of individual topics and brokers, enabling you to identify and optimize bottlenecks in your Kafka cluster.\n\nIt is recommended to enable at least PER_TOPIC_PER_BROKER monitoring on the MSK cluster to get enhanced monitoring capabilities.",
+  "rule.criteria": "11e91f14-f998-446d-a04d-255c8776208c",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-msk-cluster' AND json.rule = state equal ignore case active and enhancedMonitoring is member of (DEFAULT, PER_BROKER)",
+  "recommendation": "To configure MSK clusters with enhanced monitoring:\n\n1. Sign in to the AWS console. Navigate to the Amazon MSK console.\n2. In the navigation pane, choose 'Clusters'. Then, select the reported cluster.\n3. For 'Action', select 'Edit monitoring'.\n4. Select either 'Enhanced partition-level monitoring' or  'Enhanced topic-level monitoring' option.\n5. Choose 'Save changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

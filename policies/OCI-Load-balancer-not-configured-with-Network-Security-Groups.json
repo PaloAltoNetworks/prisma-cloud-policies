@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-811",
+  "policyId": "041142be-4484-46dd-83d5-c48395b5caf8",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Load balancer not configured with Network Security Groups",
+  "description": "This policy identifies Load balancers that are not configured with Network Security Groups.\n\nWithout Network Security Groups, load balancers may be exposed to unwanted traffic, increasing the risk of security breaches and unauthorized access. NSGs allow administrators to define security rules that specify the types of traffic allowed to flow in and out of the load balancer, enhancing overall network security.\n\nAs a best practice, it is recommended to restrict access to the load balancer by configuring network security groups.",
+  "rule.criteria": "d4f5d1af-f600-492c-b4a9-9688d42388eb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-loadbalancer' AND json.rule = lifecycleState equals ACTIVE and networkSecurityGroupIds[*] does not exist",
+  "recommendation": "1. Log in to OCI console\n2. Go to Networking -> Load Balancers\n3. Click on the reported load balancer\nNOTE: Before you update load balancer with Network security group, make sure you have a restrictive Network Security Group already created with only specific traffic ports based on requirements. \n4. On the 'Load Balancer Details' page, click on the 'Edit' button next to 'Network Security Groups' to make the changes.\n5. On the 'Edit Network Security Groups' dialog, select the restrictive Network Security Group and click on the 'Save Changes' button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

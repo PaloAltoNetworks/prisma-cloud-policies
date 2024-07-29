@@ -1,5 +1,37 @@
 # Changelog
 
+## PCS-24.7.3 - 2024-7-31
+
+### Added
+
+#### 13 new config policies
+
+- AWS Elastic Load Balancer v2 (ELBv2) with deletion protection disabled
+- AWS MSK clusters not configured with enhanced monitoring
+- AWS Network ACLs allow ingress traffic on Admin ports 22/3389
+- AWS Route53 public Hosted Zone query logging is not enabled
+- Azure Key Vault Role Based Access control is disabled
+- Azure Microsoft Defender for IoT Hub not enabled
+- Azure Network Security Group having Inbound rule overly permissive to HTTP(S) traffic
+- Azure subscription permission for Microsoft Entra tenant is set to ‘Allow everyone’
+- OCI API Gateway is not configured with Network Security Groups
+- OCI Data Catalog configured with overly permissive network access
+- OCI Function Application is not configured with Network Security Groups
+- OCI Load balancer backend set not configured with SSL certificate
+- OCI Load balancer not configured with Network Security Groups
+
+### Changed
+
+#### 1 policy updated for the IAM Security module
+
+- Roles with high privileges can be assumed by a service in an external account
+
+#### 2 compliance standards updated
+
+- CIS v2.0.0 (GCP) Level 1
+- CIS v3.0.0 (GCP) Level 2
+
+
 ## PCS-24.7.2 - 2024-7-18
 
 ### Added

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OAM-899",
+  "policyId": "64cdc79b-077c-4481-a93e-30dcebf9b90b",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI API Gateway is not configured with Network Security Groups",
+  "description": "This policy identifies API Gateways that are not configured with Network Security Groups.\n\nNetwork security groups give fine-grained control of resources and help in restricting network access to your Private API Gateway with specific ports or with specific IP address range.\n\nAs best practice, it is recommended to restrict access to the API Gateway by configuring network security groups.",
+  "rule.criteria": "03eeeb80-4884-46d9-8b7d-28faa94b8eb2",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-apimanagement-apigateway' AND json.rule = lifecycleState equal ignore case ACTIVE and (networkSecurityGroupIds[*] is empty or networkSecurityGroupIds[*] does not exist)",
+  "recommendation": "1. Log in to OCI console\n2. Go to Developer Services -> API Management -> Gateways\n3. Click on the reported Gateway\n4. Click on the 'Edit' button\nNOTE: Before you update API gateway with Network security group, make sure you have a restrictive Network Security Group already created with only specific traffic ports or with specific IP address range based on requirement.\n5. On the 'Edit gateway' dialog, select the 'Enable network security groups' and select the restrictive Network Security Group \n6. Click on the 'Save Changes' button.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-VPC-1236",
+  "policyId": "ef2ff694-4467-4db0-8224-ccbcab070aad",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Network ACLs allow ingress traffic on Admin ports 22/3389",
+  "description": "This policy identifies the AWS Network Access Control List (NACL) which has a rule to allow ingress traffic to server administration ports.\n\nAWS NACL provides filtering of ingress and egress network traffic to AWS resources. Allowing ingress traffic on admin ports 22 (SSH) and 3389 (RDP) via AWS Network ACLs increases the vulnerability of EC2 instances and other network resources to unauthorized access and cyberattacks.\n\nIt is recommended that no NACL allows unrestricted ingress access to server administration ports, such as SSH port 22 and RDP port 3389.\n\nNOTE: This policy may report NACLs, which include the deny policy in the rule set. Make sure while remediating the rule set does not consist of the Allow and Deny rule set together; which leads to overlap on each ruleset.",
+  "rule.criteria": "50b677f4-4f8f-459d-80d1-1d694662597a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-network-acls' AND json.rule = \"entries[?any(egress equals false and ((protocol equals 6 and ((portRange.to equals 22 or portRange.to equals 3389 or portRange.from equals 22 or portRange.from equals 3389) or (portRange.to > 22 and portRange.from < 22) or (portRange.to > 3389 and portRange.from < 3389))) or protocol equals -1) and (cidrBlock equals 0.0.0.0/0 or ipv6CidrBlock equals ::/0) and ruleAction equals allow)] exists\"",
+  "recommendation": "To update the AWS Network Access Control List perform the following actions:\n1. Sign into the AWS console and navigate to the Amazon VPC console. \n2. In the navigation pane, choose 'Network ACLs' under the 'Security' section.\n3. Select the reported Network ACL\n4. Click on 'Actions' and select 'Edit inbound rules'\n5. Click on Delete towards the right of rule which has source '0.0.0.0/0' or '::/0' and shows 'ALLOW and 'Port Range' which includes port 22 or 3389 or 'Port Range' shows 'ALL'\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-ODC-905",
+  "policyId": "7e453ac3-32b3-4862-b720-8ca5d616b5a5",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "high",
+  "name": "OCI Data Catalog configured with overly permissive network access",
+  "description": "This policy identifies Data Catalogs configured with overly permissive network access.\n\nThe OCI Data Catalog service provides a centralized repository to manage and govern data assets, including their metadata. When network access settings are too permissive, it can expose sensitive metadata to unauthorized users or malicious actors, potentially leading to data breaches and compliance issues.\n\nAs a best practice, it is recommended to configure the Data catalog with private endpoints; so that the Data catalog is accessible only to restricted entities.",
+  "rule.criteria": "f2ad9d4e-c8bf-40a6-b203-2a8fb39cdf53",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-datacatalog-catalogs' AND json.rule = lifecycleState equal ignore case ACTIVE and (attachedCatalogPrivateEndpoints is empty or attachedCatalogPrivateEndpoints does not exist)",
+  "recommendation": "To configure private endpoint to your Data catalog, follow the below URL:\nhttps://docs.oracle.com/en-us/iaas/data-catalog/using/private-network.htm",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
