@@ -7,7 +7,7 @@
   "name": "GCP Cloud Run Job Public Execution via Default Compute SA Modification",
   "description": "Entities with run.jobs.setIamPolicy permission can modify IAM policies to grant rights (e.g. run.jobs.create, run.jobs.run ) over Cloud Jobs, enabling the execution of malicious jobs,that can lead to privilege escalation and lateral movement within cloud environments.",
   "rule.criteria": "7d0fb1b6-a64b-4ac8-90b8-42cfd737c258",
-  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND action.name = 'run.jobs.setIamPolicy' AND grantedby.level.type = 'GCP Project' ",
+  "searchModel.query": "config from iam where dest.cloud.type = 'GCP' AND action.name contains all('run.jobs.setIamPolicy', 'iam.serviceAccounts.actAs') AND grantedby.cloud.policy.type != 'GCP Basic Role' ",
   "recommendation": "Remediation steps:\n 1. Log in to the GCP console\n 2. Navigate to the IAM service.\n 3 Find the binding between the user and the role\n 4. Find the role used by the service account.\n 6 Remove binding with the role with risky permissions.\n 7 Create a new binding with predefined or custom role without risky permissions, if necessary.",
   "remediable": true,
   "remediation.cliScriptTemplate": "dynamic gcp cli commands",

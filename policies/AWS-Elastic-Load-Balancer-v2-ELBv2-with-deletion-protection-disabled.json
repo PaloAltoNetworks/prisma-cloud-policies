@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ELB-1239",
+  "policyId": "1c82c94d-2df0-4e28-8a3f-2e8d0eb804d5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Elastic Load Balancer v2 (ELBv2) with deletion protection disabled",
+  "description": "This policy identifies Elastic Load Balancers v2 (ELBv2), which are configured with the deletion protection feature disabled.\n\nAWS Elastic Load Balancer automatically distributes incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses, to improve the availability and fault tolerance of applications. To prevent your load balancer from being deleted accidentally, you can enable deletion protection.\n\nIt is recommended to enable deletion protection on AWS Elastic load balancers to protect them from being deleted accidentally.",
+  "rule.criteria": "c101285b-761e-4691-b4ce-cf673079996b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-elbv2-describe-load-balancers' AND json.rule = ['attributes'].['deletion_protection.enabled'] contains false",
+  "recommendation": "To enable deletion protection on load balancer:\n\n1. Log in to the AWS console. Navigate to EC2 dashboard\n2. Select 'Load Balancers'\n3. Click on the reported Load Balancer\n4. On the 'Attributes' tab, choose 'Edit'\n5. On the Edit load balancer attributes page, select 'Enable' for 'Delete Protection'\n6. Click on 'Save' to save your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

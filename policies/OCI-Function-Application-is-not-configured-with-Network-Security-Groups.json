@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OFS-898",
+  "policyId": "1a8fee4e-c723-4c94-a5c6-02741c4bf1af",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Function Application is not configured with Network Security Groups",
+  "description": "This policy identifies Function Applications that are not configured with Network Security Groups. \n\nOCI Function Applications allow you to execute code in response to events without provisioning or managing infrastructure. When these function applications are not configured with NSGs, they are more vulnerable to unauthorized access and potential security breaches. NSGs help isolate and protect your functions by ensuring that only trusted sources can communicate with them.\n\nAs a best practice, it is recommended to restrict access to the application traffic by configuring network security groups.",
+  "rule.criteria": "c765dc39-819e-42d1-9e60-a4de6af0c68d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-functions-applications' AND json.rule = lifecycleState equal ignore case ACTIVE and (networkSecurityGroupIds does not exist or networkSecurityGroupIds[*] is empty)",
+  "recommendation": "To configure Network Security Group for your function application, refer below URL:\nhttps://docs.oracle.com/en-us/iaas/Content/Functions/Tasks/functionsusingnsgs.htm\nNOTE: Before you update Function Application with Network security group, make sure you have a restrictive Network Security Group already created with only specific traffic ports based on requirement.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
