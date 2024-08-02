@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-R53-1237",
+  "policyId": "e51b9170-5913-4249-aa14-197a776ee28a",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Route53 public Hosted Zone query logging is not enabled",
+  "description": "This policy identifies the AWS Route53 public hosted zones DNS query logging is not enabled.\n\nEnabling DNS query logging for an AWS Route 53 hosted zone enhances DNS security and compliance by providing visibility into DNS queries. When enabled, Route 53 sends these log files to Amazon CloudWatch Logs. Disabling DNS query logging for AWS Route 53 limits visibility into DNS traffic, hampering anomaly detection, compliance efforts, and effective incident response.\n\nIt is recommended to enable logging for all public hosted zones to enhance the visibility and compliance requirements.",
+  "rule.criteria": "d628b515-4f32-4cb5-9e60-8a7609e9a3c4",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-route53-list-hosted-zones' AND json.rule = hostedZone.config.privateZone is false as X; config from cloud.resource where api.name = 'aws-route53-query-logging-config' as Y; filter ' not ($.X.hostedZone.id equals $.Y.HostedZoneId) ' ; show X;",
+  "recommendation": "To configure logging for DNS queries for the Hosted zone, perform the following actions:\n\n1. Sign in to the AWS Management Console and open the Route 53 console\n2. In the navigation pane, choose 'Hosted zones'\n3. Choose the hosted zone that is reported\n4. In the Hosted zone details pane, choose 'Configure query logging'\n5. Choose an existing log group or create a new log group from the 'Log group' section drop-down\n6. Choose 'Permissions - optional' to see a table that shows whether the resource policy matches the CloudWatch log group,  and whether Route 53 has permission to publish logs to CloudWatch\n7. Choose 'Create'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AIH-1245",
+  "policyId": "f0928166-9f42-4f0b-9710-352fa3f06df1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Microsoft Defender for IoT Hub not enabled",
+  "description": "This policy identifies Azure IoT Hubs without Microsoft Defender for IoT enabled.\n\nAzure IoT Hub is a managed service that acts as a central message hub for communication between IoT applications and IoT devices. Without Microsoft Defender for IoT enabled, IoT devices and hubs are more vulnerable to security threats. This increases the risk of unauthorized access, data breaches, and compromised IoT devices, which can lead to operational and security challenges.\n\nAs best practice, it is recommended to enable Microsoft Defender for IoT on your Azure IoT Hub. This enhances the security posture of your IoT solutions by providing continuous monitoring, threat detection, and automated response capabilities to protect against cyber threats.",
+  "rule.criteria": "4b284c35-1b07-4482-a32f-c27d07cc1336",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-devices-iot-hub-resource' AND json.rule = properties.provisioningState equal ignore case \"Succeeded\" as X; config from cloud.resource where api.name = 'azure-iot-security-solutions' AND json.rule = properties.status equal ignore case \"Enabled\" as Y; filter 'not $.Y.properties.iotHubs contains $.X.id'; show X;",
+  "recommendation": "To enable Microsoft Defender for IoT on Azure IoT Hub follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/defender-for-iot/device-builders/quickstart-onboard-iot-hub#enable-defender-for-iot-on-an-existing-iot-hub",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

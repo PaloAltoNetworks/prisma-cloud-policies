@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-816",
+  "policyId": "fc776b17-3f00-4f5c-b2df-a44ec380a38a",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Load balancer backend set not configured with SSL certificate",
+  "description": "This policy identifies Load balancers for which the backend set is not configured with an SSL certificate.\n\nWithout an SSL certificate, data transferred between the load balancer and backend servers is not encrypted, making it vulnerable to interception and attacks. Proper SSL configuration ensures data integrity and privacy, protecting sensitive information from unauthorized access.\n\nAs a best practice, it is recommended to implement SSL between the load balancer and your backend servers so that traffic between the load balancer and the backend servers is encrypted.",
+  "rule.criteria": "1a9ea229-26d1-4ea6-8efd-b2441da83cab",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-networking-loadbalancer' AND json.rule = lifecycleState equals ACTIVE and backendSets.* is not empty and backendSets.*.sslConfiguration.certificateName is empty",
+  "recommendation": "To configure SSL to your Load balancer backend set follow below URLs details:\nFor adding certificate - https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingcertificates.htm#configuringSSLhandling\nFor editing backend set - https://docs.oracle.com/en-us/iaas/Content/Balance/Tasks/managingbackendsets.htm#UpdateBackendSet",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
