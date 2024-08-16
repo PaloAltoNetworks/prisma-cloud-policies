@@ -4,14 +4,16 @@
   "policyType": "config",
   "cloudType": "gcp",
   "severity": "medium",
-  "name": "Google Workspace User not enrolled with 2-step verification",
-  "description": "This policy identifies Google Workspace Users who do not have 2-Step Verification enabled. 2-Step Verification is a simple best practice that adds an extra layer of protection on top of username and password combination. It is recommended to enable 2-Step Verification for all users as it provides increased security for user account settings and resources.",
+  "name": "GCP Google Workspace User not enrolled with 2-step verification",
+  "description": "This policy identifies Google Workspace Users who do not have 2-Step Verification enabled. \n\nEnabling 2-Step Verification for Google Workspace users significantly enhances account security by adding an additional layer of authentication beyond just passwords. This reduces the risk of unauthorized access, protects sensitive data, and ensures compliance with security best practices. Implementing this measure strengthens overall organizational security and helps safeguard against potential cyber threats.\n\nIt is recommended to enable 2-Step Verification for all users as it provides increased security for user account settings and resources.",
   "rule.criteria": "14f6ee3b-ca59-41e2-8151-aca27a26d354",
   "searchModel.query": "config from cloud.resource where api.name = 'gcloud-domain-users' AND json.rule = isAdmin is false and isEnrolledIn2Sv is false and archived is false and suspended is false",
-  "recommendation": "To enable 2-Step Verification for GCP Workspace User accounts, follow the steps mentioned in below URL:\nhttps://support.google.com/accounts/answer/185839",
+  "recommendation": "Workspace users should be allowed to turn on 2-Step verification (2SV) before enabling 2SV. Follow the steps mentioned below to allow users to turn on 2SV.\n1. Sign in to Workspace Admin Console with an administrator account. \n2. Go to Menu then 'Security' > 'Authentication' > '2-step verification'.\n3. Check the 'Allow users to turn on 2-Step Verification' box.\n4. Select 'Enforcement' as per need.\n5. Click Save.\n\nFor more details, please refer to below URL:\nhttps://support.google.com/a/answer/9176657\n\n\nTo enable 2-Step Verification for GCP Workspace User accounts, follow the steps below.\n1. Open your Google Account.\n2. In the navigation panel, select 'Security'.\n3. Under 'How you sign in to Google', select '2-Step Verification' > 'Get started'.\n4. Follow the on-screen steps.\n\nFor more details, please refer to below URL:\nhttps://support.google.com/accounts/answer/185839",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS Controls v8.1"
+  ]
 }
