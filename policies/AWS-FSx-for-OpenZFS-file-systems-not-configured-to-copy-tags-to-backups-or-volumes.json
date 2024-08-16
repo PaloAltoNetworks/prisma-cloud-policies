@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-FSX-1258",
+  "policyId": "52395ee4-14cb-475d-a26e-f6926fcfddad",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS FSx for OpenZFS file systems not configured to copy tags to backups or volumes",
+  "description": "This policy identifies the AWS FSx for OpenZFS file system is configured to copy tags to backups or volumes.\n\nAWS FSx for OpenZFS is a managed service for deploying and scaling OpenZFS file systems on AWS. Tags make resource identification and management easier, ensuring consistent security policies across file systems. Without copying tags to backups and volumes in AWS FSx for OpenZFS, enforcing consistent access control and tracking sensitive data in these resources becomes challenging.\n\nIt is recommended to configure an FSx for the OpenZFS file system to copy tags to backups and volumes.",
+  "rule.criteria": "d931f2d9-5c6e-4b8b-815a-445bc14c493a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-fsx-file-system' AND json.rule = FileSystemType equals \"OPENZFS\" and Lifecycle equals \"AVAILABLE\" and (OpenZFSConfiguration.CopyTagsToBackups is false or OpenZFSConfiguration.CopyTagsToVolumes is false )",
+  "recommendation": "To configure an  AWS FSx for OpenZFS file system to copy tags to backups and volumes, perform following actions:\n\n1. Sign in to your AWS account and Open the Amazon FSx console.\n2. In the left navigation pane, choose 'File systems', and then choose the FSx for OpenZFS file system that is reported.\n3. For 'Actions', choose 'Update tags preferences'. The Update tags preferences dialog box displays.\n4. For 'Copy tags to backups', select 'Enabled' to copy tags from the file system to any backup thats taken.\n5. For 'Copy tags to volumes', select 'Enabled' to copy tags from the file system to any volume that you create.\n6. Choose Update to update the file system with your changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

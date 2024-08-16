@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-1250",
+  "policyId": "1871c476-bbb5-42cc-ab59-6d8c1c130422",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Cloud Function with overly permissive network ingress settings",
+  "description": "This policy identifies GCP Cloud Functions that have overly permissive network ingress settings. This includes both Cloud Functions v1 and Cloud Functions v2.\n\nIngress settings control whether resources outside of your Google Cloud project or VPC Service Controls perimeter can invoke a function.  With overly permissive ingress setting, all inbound requests to invoke function are allowed, both from the public and from resources within the same project. Restrictive network ingress settings for cloud functions in GCP minimize the risk of unauthorized access and attacks by limiting inbound traffic to trusted sources. This approach enhances security, prevents malicious activities, and ensures only legitimate traffic reaches your applications.\n\nIt is recommended to restrict the public traffic and allow traffic from VPC networks in the same project or traffic through the Cloud Load Balancer.",
+  "rule.criteria": "79332d39-fe6b-4980-8580-4101ce1ff4d5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function-v2' AND json.rule = state equals ACTIVE and serviceConfig.ingressSettings equals ALLOW_ALL",
+  "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Click on 'Runtime, build, connections and security settings' drop-down to get the detailed view\n6. Click on the 'CONNECTIONS' tab\n7. In 'Ingress settings', select either 'Allow internal traffic only' or 'Allow internal traffic and traffic from Cloud Load Balancing'\n8. Click on 'NEXT'\n9. Click on 'DEPLOY'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

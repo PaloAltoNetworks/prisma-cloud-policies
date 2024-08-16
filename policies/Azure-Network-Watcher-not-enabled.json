@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-NWW-1253",
+  "policyId": "924841db-c2df-400b-9bf5-47479e18d03c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Network Watcher not enabled",
+  "description": "This policy identifies Azure subscription regions where Network Watcher is not enabled.\n\nAzure Network Watcher provides tools to monitor, diagnose, view metrics, and enable or disable logs for resources in an Azure virtual network. Without Network Watcher enabled, you lose critical capabilities to monitor and diagnose network issues, making it difficult to identify and resolve performance bottlenecks, network security rules, and connectivity issues.\n\nAs a best practice, it is recommended to enable Azure Network Watcher for your region to leverage its monitoring and diagnostic capabilities.",
+  "rule.criteria": "4a4a5f57-9ce9-4e82-9d3a-4f82fca95d7d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-network-watcher-list' AND json.rule = provisioningState equals Succeeded as X; count(X) less than 1",
+  "recommendation": "Note: Enabling Network Watcher will incur costs. There are additional costs per transaction to run and store network data. For high-\nvolume networks these charges will add up quickly.\n\nTo enable Network Watcher, follow the below URL:\nhttps://learn.microsoft.com/en-us/azure/network-watcher/network-watcher-create?tabs=portal#enable-network-watcher-for-your-region",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

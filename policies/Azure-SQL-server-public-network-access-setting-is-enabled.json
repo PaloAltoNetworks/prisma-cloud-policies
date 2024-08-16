@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SQL-764",
+  "policyId": "7099ffe0-3c9e-4fdf-9d70-1149f0740509",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure SQL server public network access setting is enabled",
+  "description": "This policy identifies Azure SQL servers which have public network access setting enabled.\n\nPublicly accessible SQL servers are vulnerable to external threats with risk of unauthorized access or may remotely exploit any vulnerabilities.\n\nIt is recommended to configure the SQL servers with IP-based strict server-level firewall rules or virtual-network rules or private endpoints so that servers are accessible only to restricted entities.",
+  "rule.criteria": "4c919d9d-9439-41c6-952c-edd7b6ac3829",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.state'] equal ignore case Ready and ['sqlServer'].['properties.publicNetworkAccess'] equal ignore case Enabled and ['sqlServer'].['properties.privateEndpointConnections'] is empty and firewallRules[*] is empty",
+  "recommendation": "To configure IP-based strict server-level firewall rules on your SQL server, follow below URL:\nhttps://learn.microsoft.com/en-gb/azure/azure-sql/database/firewall-create-server-level-portal-quickstart\n\nTo configure virtual-network rules on your SQL server, follow below URL:\nhttps://learn.microsoft.com/en-gb/azure/azure-sql/database/vnet-service-endpoint-rule-overview\n\nTo configure private endpoints on your SQL server, follow below URL:\nhttps://learn.microsoft.com/en-gb/azure/azure-sql/database/private-endpoint-overview\n\nNOTE: These settings take effect immediately after they're applied. You might experience connection loss if you don't meet the requirements for each setting.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

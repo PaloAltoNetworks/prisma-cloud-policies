@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SQL-754",
+  "policyId": "b65c4ddf-6ece-4fd5-8ffc-3ce85343fc40",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure SQL server using insecure TLS version",
+  "description": "This policy identifies Azure SQL servers which use insecure TLS version.\n\nEnforcing TLS connections between database server and client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and application.\n\nAs a security best practice, it is recommended to use the latest TLS version for Azure SQL server.",
+  "rule.criteria": "72f2c9e3-cbbd-4643-8978-e8319e5087b1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-sql-server-list' AND json.rule = ['sqlServer'].['properties.state'] equal ignore case \"Ready\" and (['sqlServer'].['properties.minimalTlsVersion'] equal ignore case \"None\" or ['sqlServer'].['properties.minimalTlsVersion'] equals \"1.0\" or ['sqlServer'].['properties.minimalTlsVersion'] equals \"1.1\")",
+  "recommendation": "1. Log in to the Azure Portal\n2. Select 'SQL servers'\n3. Click on the reported SQL server instance you wanted to modify\n4. Navigate to Security -> Networking -> Connectivity\n5. Under 'Encryption in transit' section, Set 'Minimum TLS Version' to 'TLS 1.2' or higher.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

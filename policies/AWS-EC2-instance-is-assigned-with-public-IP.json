@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EC2-1256",
+  "policyId": "f42e2e3c-cb67-4771-a1b5-53759c5736ee",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EC2 instance is assigned with public IP",
+  "description": "This policy identifies the AWS EC2 instance having a public IP address assigned.\n\nAWS EC2 instances with public IPs are virtual servers hosted in the Amazon Web Services (AWS) cloud that can be accessed over the internet. Public IPs increase an EC2 instance's attack surface, necessitating robust security configurations to prevent unauthorized access and attacks.\n\nIt is recommended to use private IPv4 addresses for communication between EC2 instances and disassociate the public IP address from an instance or disable auto-assign public IP addresses in the subnet.",
+  "rule.criteria": "f0cfbbfb-e79f-4290-8832-7c72e102ebec",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ec2-describe-instances' AND json.rule = networkInterfaces[*].association.publicIp exists",
+  "recommendation": "In a default VPC, instances get a public IP address. In a non-default VPC, the subnet configuration determines this.\n\nYou can't manually change an automatically-assigned public IP. To control public IP assignment:\n\nTo unassign the IP addresses associated with a network interface, follow the instructions here: \n\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#managing-network-interface-ip-addresses\n\nNote: If you specify an existing network interface for eth0 (the primary network interface), you can't change its public IP address settings using the auto-assign public IP feature; the subnet settings will take precedence.\n\nModify the subnet's public IP addressing attribute by following these actions: \n\n https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#subnet-public-ip\n\nIf you are using an Elastic IP, the instance is internet-reachable. To disassociate an Elastic IP, follow these actions: \n\nhttps://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#using-instance-addressing-eips-associating-different",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "az logicapp update --resource-group ${resourceGroup} --name ${resourceName} --set httpsOnly=true",
   "remediation.description": "This CLI command requires 'Microsoft.Web/sites/Write' permission. Successful execution set on HTTPS-only feature, by which non-secure HTTP requests can be restricted and all HTTP requests will be redirected to the secure HTTPS port.",
   "remediation.impact": "Sets HTTPS-only feature on the Azure Logic app",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS Controls v8.1"
+  ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-1248",
+  "policyId": "a2cd9b75-6749-4291-9564-ab90561ac58a",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function is publicly accessible by allUsers or allAuthenticatedUsers",
+  "description": "This policy identifies GCP Cloud Functions that are publicly accessible by allUsers or allAuthenticatedUsers. This includes both Cloud Functions v1 and Cloud Functions v2.\n\nGranting permissions to 'allusers' or 'allAuthenticatedUsers' on any resource in GCP makes the resource public. Public access over cloud functions can lead to unauthorized invocations of the function or leakage of sensitive information such as the function's source code. \n\nFollowing the least privileged access policy, it is recommended to grant access restrictively and avoid granting permissions to allUsers or allAuthenticatedUsers unless absolutely needed.",
+  "rule.criteria": "3e3d770f-fe77-482b-86a4-a41ef2764bb1",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function-v2' AND json.rule = state equals ACTIVE and iamPolicy.bindings[?any(members[*] is member of (\"allAuthenticatedUsers\",\"allUsers\"))] exists",
+  "recommendation": "It is recommended to review and add appropriate, but restrictive roles before revoking access.\n\nTo revoke access from 'allusers'/'allAuthenticatedUsers', follow the below mentioned steps:\n1. Login to the GCP console\n2. Navigate to service 'Cloud Functions'\n4. Select the required cloud function\n5. Click on 'PERMISSIONS' button\n6. Filter for 'allUsers'\n7. Click on the 'Remove principal' button (bin icon)\n8. Select 'Remove allUsers from all roles on this resource. They may still have access via inherited roles.'\n9. Click 'Remove'\n10. Repeat steps 6-9 for 'allAuthenticatedUsers'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1242",
+  "policyId": "9430eb76-ac5b-44fe-9cef-0d8610f91266",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS RDS instance with network path from the untrust internet source",
+  "description": "This policy identifies AWS RDS instances with network path from untrusted internet source.\n\nAWS RDS is AWS managed service for running relational databases in the cloud. Allowing an AWS RDS instance to be reachable from any untrusted internet source increases the risk of unauthorized access and potential security breaches due to expanded attack surface.\n\nIt is recommended to restrict traffic from untrusted IP addresses and limit the access to known hosts, services, or specific entities for the RDS Database instances.\n\nNOTE: Prisma Cloud Trusted IP List allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "105a5c77-777d-4a7f-9b21-0ccd15f27011",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'PaaS' and dest.cloud.type = 'AWS' and dest.paas.service.type = 'AWS RDS'",
+  "recommendation": "Restrict access to the AWS RDS Instance by configuring Security group rules.\n\n1. Sign in to the AWS Console\n2. Navigate to the RDS Dashboard\n3. In the 'Databases' section, Select the reported RDS instance you want to restrict public access\n4. Click on the RDS instance to open its details\n5. Go to the 'Connectivity & security' tab\n6. For each security group listed under the 'Security group rules' section:\n    6a. Select the security group and Click 'Edit inbound rules'\n    6b. Review and update inbound rules to add the IP addresses from Trusted IP Addresses that allow unrestricted access (0.0.0.0/0) or any untrusted IP ranges, ensuring that such CIDR ranges no longer exist.\n  6c. Click 'Save rules' to apply the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-PG-759",
+  "policyId": "1a7df747-1dac-4db7-b1c3-4d37c1e71a67",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure PostgreSQL flexible server secure transport parameter is disabled",
+  "description": "This policy identifies PostgreSQL flexible servers for which secure transport (SSL connectivity) parameter is disabled.\n\nSecure transport (SSL connectivity) helps to provide a new layer of security, by connecting server to client applications using Secure Sockets Layer (SSL). Enforcing SSL connections between server and client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and application.\n\nAs a security best practice, it is recommended to enable secure transport parameter for Azure PostgreSQL flexible server.",
+  "rule.criteria": "d2cb3ada-3e83-465d-8c8e-9d7f6db46998",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-postgresql-flexible-server' AND json.rule = properties.state equal ignore case Ready and require_secure_transport.value does not equal ignore case on",
+  "recommendation": "1. Log in to the Azure Portal\n2. Navigate to 'Azure Database for PostgreSQL flexible server'\n3. Click on the reported PostgreSQL flexible server\n4. Navigate to Settings -> Server parameters\n5. Search for parameter 'require_secure_transport' and set VALUE to 'ON' and You can also set min TLS version by setting 'ssl_min_protocol_version' server parameter as per your business requirement.\n6. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

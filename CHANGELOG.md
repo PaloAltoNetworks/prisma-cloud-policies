@@ -1,5 +1,81 @@
 # Changelog
 
+## PCS-24.8.1 - 2024-8-19
+
+### Added
+
+#### 18 new config policies
+
+- AWS EC2 instance is assigned with public IP
+- AWS FSx for OpenZFS file systems not configured to copy tags to backups or volumes
+- AWS Private CA root certificate authority is enabled
+- AWS RDS instance with network path from the untrust internet source
+- AWS Redshift cluster with network path from the untrust internet source
+- AWS Secrets Manager secret not configured to rotate within 90 days
+- Azure Machine Learning compute instance not running latest OS Image Version
+- Azure Microsoft Entra ID users can consent to apps accessing company data on their behalf not set to verified publishers
+- Azure Network Watcher not enabled
+- Azure PostgreSQL flexible server secure transport parameter is disabled
+- Azure SQL server public network access setting is enabled
+- Azure SQL server using insecure TLS version
+- GCP Cloud Function is granted a basic role
+- GCP Cloud Function is publicly accessible by allUsers or allAuthenticatedUsers
+- GCP Cloud Function not enabled with VPC connector for network egress
+- GCP Cloud Function v1 is using unsecured HTTP trigger
+- GCP Cloud Function with overly permissive network ingress settings
+- OCI Object Storage Bucket write level logging is disabled
+
+#### 5 new policies for the IAM Security module
+
+- Cloud Service account with high privileges is inactive for 90 days and is assigned to a resource
+- Service Account with Cross Cloud Administrative Access
+- Third-Party Service Account with High Privileges at the Folder or Organization Level
+- User account with high privileges and MFA disabled
+- User with Administrative Permissions Has Active Access Keys Which Are Unused Over 90 Days
+
+#### 1 new compliance standard
+
+- CIS Critical Security Controls v8.1
+
+### Changed
+
+#### 21 config policies updated
+
+- AWS EC2 instance with network path from the internet (0.0.0.0/0)
+- AWS EC2 instance with network path from the internet (0.0.0.0/0) on Admin ports
+- AWS EC2 instance with network path from the internet (0.0.0.0/0) on ports 80/443
+- AWS EC2 instance with network path from the untrust internet source on ports with high risk
+- AWS EC2 instance with network path to the internet (0.0.0.0/0)
+- Azure Cosmos DB (PaaS) instance with network path from the untrust internet source
+- Azure MySQL (PaaS) instance with network path from the untrust internet source on TCP port 3306
+- Azure PostgreSQL (PaaS) instance with network path from the untrust internet source on TCP port 5432
+- Azure SQL Server (PaaS) with network path from the untrust internet source
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0)
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0) on Admin ports
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0) on ports 80/443
+- Azure Virtual Machine with network path from the untrust internet source on ports with high risk
+- GCP GKE unsupported Master node version
+- GCP GKE unsupported node version
+- GCP Google Workspace Super Admin not enrolled with 2-step verification
+- GCP Google Workspace User not enrolled with 2-step verification
+- GCP VM instance with network path from the internet (0.0.0.0/0)
+- GCP VM instance with network path from the internet (0.0.0.0/0) on Admin ports
+- GCP VM instance with network path from the internet (0.0.0.0/0) on ports 80/443
+- GCP VM instance with network path from the untrust internet source on ports with high risk
+
+#### 9 policies updated for the IAM Security module
+
+- AWS ECR Repository is Publicly Accessible Through Resource-Based Policies
+- AWS KMS Key is Publicly Accessible Through Resource-Based Policies
+- AWS Lambda Layer Version is Publicly Accessible Through Resource-Based Policies
+- AWS S3 bucket is Publicly Accessible Through Resource-Based Policies
+- AWS S3 Bucket with Data Destruction Permissions is Publicly Accessible Through Resource-Based Policies
+- AWS Secret Manager Secret is Publicly Accessible Through Resource-Based Policies
+- AWS SNS Topic is Publicly Accessible Through Resource-Based Policies
+- AWS SQS Queue is Publicly Accessible Through Resource-Based Policies
+- Third-party service account can assume a service account with high privileges
+
+
 ## PCS-24.7.3 - 2024-7-31
 
 ### Added
