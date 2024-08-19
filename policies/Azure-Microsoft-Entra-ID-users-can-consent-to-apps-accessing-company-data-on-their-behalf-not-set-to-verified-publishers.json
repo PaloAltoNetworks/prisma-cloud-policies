@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AD-1255",
+  "policyId": "1576f52e-fff7-4fcc-9cb8-d21234a56a67",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Microsoft Entra ID users can consent to apps accessing company data on their behalf not set to verified publishers",
+  "description": "This policy identifies instances in the Microsoft Entra ID configuration where users in your Azure Microsoft Entra ID (formerly Azure Active Directory) can consent to applications accessing company data on their behalf, even if the applications are not from verified publishers.\n\nAllowing unverified applications to access company data increases the likelihood of data breaches and unauthorized access, which could lead to the exposure of confidential information. Using unverified applications can lead to non-compliance with data protection regulations and undermine trust in the organization's data handling practices.\n\nAs a best practice, it is recommended to configure the user consent settings to restrict access only to applications from verified publishers.",
+  "rule.criteria": "3cb8f309-267f-4755-a869-aebbbd168ed4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-active-directory-authorization-policy' AND json.rule = defaultUserRolePermissions.permissionGrantPoliciesAssigned[*] does not contain \"ManagePermissionGrantsForSelf.microsoft-user-default-low\"",
+  "recommendation": "1. Log in to Azure Portal and search for 'Microsoft Entra ID'\n2. Select 'Microsoft Entra ID'\n3. Select 'Enterprise Applications'\n4. Select 'Consent and permissions'\n5. Select 'User consent settings'\n6. Under User consent for applications, select 'Allow user consent for apps from verified publishers, for selected permissions (Recommended)'\n7. Select Save",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

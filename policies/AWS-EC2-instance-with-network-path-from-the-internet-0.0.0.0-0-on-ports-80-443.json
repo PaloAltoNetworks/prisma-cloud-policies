@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1075",
+  "policyId": "278e5db6-c6d2-4f73-9734-b1d22a3fd95e",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EC2 instance with network path from the internet (0.0.0.0/0) on ports 80/443",
+  "description": "This policy identifies AWS EC2 instances with network path from the internet (0.0.0.0/0) on ports 80/443.\n\nAWS EC2 instances with network path from the internet increases the risk of unauthorized access, cyber attacks, and data breaches, as it may provide a larger attack surface for malicious actors. Such instances are especially prone to brute force or vulnerability exploits. Port 80 and 443 are frequently targeted ports and utilized for HTTP and HTTPS protocols, making them susceptible to attacks like cross-site scripting, SQL injections, cross-site request forgeries, and DDoS attacks.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit the access from known hosts, services, or specific entities.",
+  "rule.criteria": "186c4a23-2f93-4b6f-8844-ba9f0006c115",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'AWS' and protocol.ports in ( 'tcp/80' , 'tcp/443' )",
+  "recommendation": "Restrict Internet exposure of reported EC2 instances based on your business requirements by modifying security group rules to the trusted IP address\n\n1. Sign in to the AWS Console\n2. Navigate to EC2 Dashboard\n3. Identify the reported EC2 instances that you want to restrict public access\n4. Go to the 'Security' tab\n5. For each security group listed under the 'Security group' section\n6. Select 'Edit inbound rules'\n7. Update inbound rules that allow unrestricted access (0.0.0.0/0) such that the CIDR range 0.0.0.0/0 does not exist\n8. Click 'Save rules' to apply the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

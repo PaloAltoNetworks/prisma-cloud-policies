@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-1251",
+  "policyId": "0bedaabf-e652-4db9-8b8d-24e5270e5a07",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Cloud Function not enabled with VPC connector for network egress",
+  "description": "This policy identifies GCP Cloud Functions that are not enabled with a VPC connector for network egress. This includes both Cloud Functions v1 and Cloud Functions v2.\n\nUsing a VPC connector for network egress in GCP Cloud Functions is crucial to prevent security risks such as data interception and unauthorized access. This practice strengthens security by allowing safe communication with private resources, enhancing traffic monitoring, reducing the risk of data leaks, and ensuring compliance with security policies.\n\nNote: For a Cloud Function to access public traffic using Serverless VPC Connector, Cloud NAT might be needed.\nLink: https://cloud.google.com/functions/docs/networking/network-settings#route-egress-to-vpc\n\nIt is recommended to configure GCP Cloud Functions with a VPC connector.",
+  "rule.criteria": "4d5f08df-15eb-4085-9717-af3ebcdd58eb",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function-v2' AND json.rule = state equals ACTIVE and serviceConfig.vpcConnector does not exist",
+  "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Click on 'Runtime, build, connections and security settings’ drop-down to get the detailed view\n6. Click on the 'CONNECTIONS' tab\n7. Under Section 'Egress settings', select a VPC connector from the dropdown\n8. In case VPC connector is not available, either select 'Custom' and provide the name of the VPC Connector manually or click on 'Create a Serverless VPC Connector' and follow the link to create a Serverless VPC connector: https://cloud.google.com/vpc/docs/configure-serverless-vpc-access\n9. Once the Serverless VPC connector is available, select it from the dropdown\n10. Select 'Route only requests to private IPs through the VPC connector' or 'Route all traffic through the VPC connector' as per your organization's policies.\n10. Click on 'NEXT'\n11. Click on 'DEPLOY'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

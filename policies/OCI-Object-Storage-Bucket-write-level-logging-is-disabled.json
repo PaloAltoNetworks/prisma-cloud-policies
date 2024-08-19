@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-OBJ-865",
+  "policyId": "d3130160-7f9d-40b8-b186-75b0b3d4c74d",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "low",
+  "name": "OCI Object Storage Bucket write level logging is disabled",
+  "description": "This policy identifies Object Storage buckets that have write-level logging disabled.\n\nEnabling write-level logging for Object Storage provides more visibility into changes to objects in your buckets. Without write-level logging, there is no record of changes made to the bucket. This lack of visibility can lead to undetected data breaches, unauthorized changes, and compliance violations.\n\nAs a best practice, it is recommended to enable write-level logging on Object Storage buckets.",
+  "rule.criteria": "6b39bbf5-45e6-4c13-9576-e41055ca791d",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-object-storage-bucket' as X; config from cloud.resource where api.name = 'oci-logging-logs' as Y; filter 'not ($.X.name contains $.Y.configuration.source.resource and $.Y.configuration.source.service contains objectstorage and $.Y.configuration.source.category contains write and $.Y.lifecycleState equal ignore case ACTIVE )'; show X;",
+  "recommendation": "First, if a log group for holding these logs has not already been created, create a log group by the following steps:\n\n1. Login to the OCI Console\n2. Go to the Log Groups page\n3. Click the 'Create Log Group' button in the middle of the screen\n4. Select the relevant compartment to place these logs\n5. Type a name for the log group in the 'Name' box.\n6. Add an optional description in the 'Description' box\n7. Click the 'Create' button in the lower left hand corner\n\nSecond, enable Object Storage write log logging for reported bucket by the following steps:\n1. Login to the OCI Console\n2. Go to the Logs page\n3. Click the 'Enable Service Log' button in the middle of the screen\n4. Select the relevant resource compartment\n5. Select ‘Object Storage’ from the Service drop-down menu \n6. Select the reported bucket from the ‘Resource’ drop-down menu \n7. Select ‘Write Access Events’ from the ‘Log Category’ drop-down menu \n8. Type a name for your Object Storage write log in the ‘Log Name’ drop-down menu \n9. Click the ‘Enable Log’ button in the lower left hand corner",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -16,6 +16,7 @@
   "compliance.standard": [
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
+    "CIS Controls v8.1",
     "CIS v1.3.0 (GCP)",
     "CIS v2.0.0 (GCP) Level 1",
     "CIS v3.0.0 (GCP) Level 1",

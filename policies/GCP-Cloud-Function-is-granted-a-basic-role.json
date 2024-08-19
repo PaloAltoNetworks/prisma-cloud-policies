@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-FUN-1247",
+  "policyId": "6b743d5e-684a-4753-a02b-fc6b209d3882",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Cloud Function is granted a basic role",
+  "description": "This policy identifies GCP Cloud Functions that are granted a basic role. This includes both Cloud Functions v1 and Cloud Functions v2.\n\nBasic roles are highly permissive roles that existed before the introduction of IAM and grant wide access over project to the grantee. The use of basic roles for granting permissions increases the blast radius and could help to escalate privilege further in case the Cloud Function is compromised.\n\nFollowing the principle of least privilege, it is recommended to avoid the use of basic roles.",
+  "rule.criteria": "d6dc8346-0a64-42e6-a31c-0618689f1acb",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-projects-get-iam-user' AND json.rule = roles[*] contains \"roles/viewer\" or roles[*] contains \"roles/editor\" or roles[*] contains \"roles/owner\" as X; config from cloud.resource where api.name = 'gcloud-cloud-function-v2' as Y; filter '$.Y.serviceConfig.serviceAccountEmail equals $.X.user'; show Y;",
+  "recommendation": "It is recommended to follow the principle of least privilege for granting access.\n\nTo update privileges granted to a service account, please refer to the steps below: \n1. Log in to the GCP console\n2. Navigate to the Cloud Functions\n3. Click on the cloud function for which alert is generated\n4. Go to 'DETAILS' tab\n5. Note the service account mentioned attached to the cloud function\n6. Navigate to the IAM & ADMIN\n7. Go to IAM tab\n8. Go to 'VIEW BY PRINCIPALS' tab\n9. Find the previously noted service account and click on 'Edit principal' button (pencil icon)\n10. Remove any binding to any basic role (roles/viewer or roles/editor or roles/owner)\n11. Click 'SAVE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

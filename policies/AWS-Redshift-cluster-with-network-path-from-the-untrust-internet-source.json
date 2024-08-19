@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1241",
+  "policyId": "f979490a-f9a1-4b07-9cfa-f0ccb81748a4",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Redshift cluster with network path from the untrust internet source",
+  "description": "This policy identifies the AWS Redshift clusters with network path from the untrusted internet source.\n\nRedshift clusters are AWS cloud-based data warehouses designed for data analysis and querying of large datasets. Allowing an AWS Redshift cluster to be reachable from any untrusted internet source increases the risk of unauthorized access and potential security breaches due to expanded attack surface.\n\nIt is recommended to restrict traffic from untrusted IP addresses and limit the access to known hosts, services, or specific entities for the Redshift clusters.\n\nNOTE: Prisma Cloud Trusted IP List allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "aff96326-bc0b-4099-8ab0-610568ce7b13",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'PaaS' and dest.cloud.type = 'AWS' and dest.paas.service.type = 'AWS Redshift'",
+  "recommendation": "Restrict access to the AWS Redshift cluster by configuring Security group rules\n\n1. Sign in to the AWS Console.\n2. Navigate to the Redshift Dashboard.\n3. In the 'Clusters' section, find the Redshift cluster you want to restrict public access to.\n4. Click on the cluster to open its details.\n5. Go to the 'Properties' tab.\n6. In the 'Network and security settings' section, identify the VPC security groups associated with the cluster under the 'VPC security group' section\n7. For each security group listed:\n    6a. Click 'Edit inbound rules.'\n    6b. Review and update inbound rules to add the IP addresses from Trusted IP Addresses and remove any that allow unrestricted access (0.0.0.0/0) or any untrusted IP ranges, ensuring that such CIDR ranges no longer exist.\n  6c. Click 'Save rules' to apply the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

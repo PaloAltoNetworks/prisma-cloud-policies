@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-804",
+  "policyId": "6c561dd0-e24b-4afe-b1fd-78808a45956d",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EC2 instance with network path to the internet (0.0.0.0/0)",
+  "description": "This policy identifies AWS EC2 instances with network path to the internet (0.0.0.0/0).\n\nAWS EC2 instances with network path to the internet increases the risk of cyber attacks, crypto mining and data breaches which can be used by malicious actors. Such instances are especially prone to data exfiltration or mining exploits.\n\nAs a best practice, restrict traffic to unknown IP addresses and limit the access to known hosts, services, or specific entities.",
+  "rule.criteria": "53aea291-327e-4ded-8035-d5b4354272ac",
+  "searchModel.query": "config from network where source.resource.type = 'Instance' and source.cloud.type = 'AWS' and dest.network = '0.0.0.0/0' and address.match.criteria = 'full_match'",
+  "recommendation": "Restrict EC2 instances with network path to the internet based on your business requirements by modifying security group rules to the trusted IP address\n\n1. Sign in to the AWS Console\n2. Navigate to EC2 Dashboard\n3. Identify the reported EC2 instances that you want to restrict public access\n4. Go to the 'Security' tab\n5. For each security group listed under the 'Security group' section\n6. Select 'Edit outbound rules'\n7. Update outbound rules that allow unrestricted access (0.0.0.0/0) such that the CIDR range 0.0.0.0/0 does not exist\n8. Click 'Save rules' to apply the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

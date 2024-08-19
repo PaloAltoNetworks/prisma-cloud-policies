@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "b9b7bb65-5bb0-46b4-92b6-5bb298e045b5",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "User with Administrative Permissions Has Active Access Keys Which Are Unused Over 90 Days",
+  "description": "Identifies user accounts with administrative permissions for which active access keys exist and have not been used in at least 90 days. \\nAccess keys are long-term credentials which allow AWS IAM users programmatic access to resources.\\nWhen the user in question possesses administrative permissions, and their access keys are active but not in use, they can potentially be found by an adversary, granting them administrative permissions.",
+  "rule.criteria": "b9b7bb65-5bb0-46b4-92b6-5bb298e045b5",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.access.isAdministrative = true AND source.cloud.accesskey.lastused.days > 90 AND source.cloud.accesskey.activekeys > 0",
+  "recommendation": "How to investigate?\n1. Sign in to the Cloud Console\n2. Browse to the IAM service and search for the affected user\n3. Examine the user's permissions as well as their role within your organization and determine whether the principle of least privilege is followed\nFor remediation, use the following remediation steps:\nIf access is still required, remove the user's access keys and transition them to AWS's temporary security credentials approach. If any access is deemed unnecessary, remove permissions to minimize the user's access, or remove the user altogether. ",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

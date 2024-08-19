@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1017",
+  "policyId": "45a983c8-0527-4a6d-a62b-c6e2bf48590f",
+  "policyType": "network",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Virtual Machine with network path from the internet (0.0.0.0/0) on Admin ports",
+  "description": "This policy identifies Azure Virtual Machines with network path from the internet (0.0.0.0/0) on Admin ports.\n\nAzure Virtual Machines with network path from the internet increases the risk of unauthorized access, cyber attacks, and data breaches, as it may provide a larger attack surface for malicious actors. Such instances are especially prone to brute force or vulnerability exploits. Admin ports can increase opportunities for malicious activities such as hacking, Man-In-The-Middle attacks (MITM), and brute-force attacks\n\nAs a best practice, restrict traffic from unknown IP addresses and limit the access from known hosts, services, or specific entities.",
+  "rule.criteria": "0294a7d4-3302-459c-b06c-1be4837079a1",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match'  and dest.resource.type = 'Instance' and dest.cloud.type = 'Azure' and protocol.ports in ('tcp/22', 'tcp/3389')and dest.resource.state = 'Active'",
+  "recommendation": "Restrict network path from the internet to reported Virtual machines based on your business requirement by modifying Network security group rules to the trusted IP address.\n\nTo modify Network security group rules,\n1. Sign in to Azure Portal\n2. Select 'All services'\n3. Select 'Virtual Machines' under Compute\n4. Identify the Virtual machine that you want to restrict access to Internet\n4. Under 'Settings' click on 'Networking'\n5. In 'Inbound port rules' section, select the rule that allow Internet access (0.0.0.0/0) to the trusted IP address.  \nRefer following link for detailed steps to modify Network security group rules,\nhttps://learn.microsoft.com/en-us/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#change-a-security-rule\n\nNOTE: When modifying Network security group rules, make sure that you don't lock yourself out of the instances. Always have a rule that allows you to access them for management purposes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

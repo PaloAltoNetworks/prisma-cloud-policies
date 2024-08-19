@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1011",
+  "policyId": "e7f7bfbc-0c7f-4a1e-9cb3-270ab5b6c180",
+  "policyType": "network",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP VM instance with network path from the untrust internet source on ports with high risk",
+  "description": "This policy identifies GCP VM instances with network path from the untrust internet source on ports with high risk.\n\nGCP VM instances with network path from the untrust internet source on ports with high risk increases the risk of unauthorized access, cyber attacks, and data breaches, as it may provide a larger attack surface for malicious actors. Such instances are especially prone to brute force or vulnerability exploits.\n\nAs a best practice, it is recommended to allow access from Trusted IP list and limit the access from known hosts, services, or specific entities.\n\nNOTE: Prisma Cloud Trusted IP List allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "7b564a5a-f441-433f-adbf-8ada84b34c9a",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'Instance' and dest.cloud.type = 'GCP' and dest.resource.state = 'Active' and protocol.ports in ( 'tcp/20:21', 'tcp/23', 'tcp/25', 'tcp/110', 'tcp/135', 'tcp/143', 'tcp/445', 'tcp/1433:1434', 'tcp/3000', 'tcp/3306', 'tcp/4333', 'tcp/5000', 'tcp/5432', 'tcp/5500', 'tcp/5601', 'tcp/8080', 'tcp/8088', 'tcp/8888', 'tcp/9200', 'tcp/9300' )",
+  "recommendation": "Restrict access to GCP VM instance by modifying VPC Firewall rules\n1. Login to the GCP Console\n2. Go to 'VM instance'\n3. Identify the VM instance that you want to restrict Internet access\n4. Update the VPC firewall rules to allow IP addresses from Trusted IP Addresses.\nRefer to the following links for detailed steps to modify VPC firewall rules,\n- To list VPC firewall rules for a network interface of a VM instance\nhttps://cloud.google.com/firewall/docs/using-firewalls#listing-rules-vm\n- To Update VPC firewall rules\nhttps://cloud.google.com/firewall/docs/using-firewalls#updating_firewall_rules\n\nNOTE: When modifying Network security group rules, ensure that you don't lock yourself out of the instances. Always have a rule that allows you to access them for management purposes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

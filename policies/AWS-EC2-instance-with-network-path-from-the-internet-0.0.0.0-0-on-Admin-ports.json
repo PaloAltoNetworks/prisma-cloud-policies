@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1020",
+  "policyId": "229d957a-d47b-41ea-8fb2-4f65a9cdcd1b",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS EC2 instance with network path from the internet (0.0.0.0/0) on Admin ports",
+  "description": "This policy identifies AWS EC2 instances with network path from the internet (0.0.0.0/0) on ports 22/3389.\n\nAWS EC2 instances with network path from the internet increases the risk of unauthorized access, cyber attacks, and data breaches, as it may provide a larger attack surface for malicious actors. Such instances are especially prone to brute force or vulnerability exploits. Port 22 and 2289 are frequently targeted ports and utilized for remote access using SSH and RDP protocols respectively, making them susceptible to attacks like brute force and vulnerability exposure/exploitation.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit the access from known hosts, services, or specific entities.",
+  "rule.criteria": "2a69fea0-3867-47f9-a253-af35de0f522e",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'AWS' and dest.resource.state = 'Active' and protocol.ports in ( 'tcp/22', 'tcp/3389' )",
+  "recommendation": "Restrict Internet exposure of reported EC2 instances based on your business requirements by modifying security group rules to the trusted IP address\n\n1. Sign in to the AWS Console\n2. Navigate to EC2 Dashboard\n3. Identify the reported EC2 instances that you want to restrict public access\n4. Go to the 'Security' tab\n5. For each security group listed under the 'Security group' section\n6. Select 'Edit inbound rules'\n7. Update inbound rules that allow unrestricted access (0.0.0.0/0) such that the CIDR range 0.0.0.0/0 does not exist\n8. Click 'Save rules' to apply the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

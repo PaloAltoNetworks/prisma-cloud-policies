@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-922",
+  "policyId": "94af1c1a-f5cb-43ce-91b0-69f069c248bf",
+  "policyType": "network",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure MySQL (PaaS) instance with network path from the untrust internet source on TCP port 3306",
+  "description": "This policy identifies Azure MySQL (PaaS) instance with network path from the untrust internet source on TCP port 3306.\n\nAzure MySQL (PaaS) instance with network path from the untrust internet source on TCP port 3306 may enable bad actors to use brute force or exploit a vulnerability on a system to gain unauthorized access. Further database vulnerabilities or weaknesses could potentially be exploited to compromise the integrity, availability, or confidentiality of the data stored.\n\nAs a best practice, it is recommended to allow access from Trusted IP list and limit the access from known hosts, services, or specific entities.\n\nNOTE: Prisma Cloud Trusted IP List allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "8514627a-59f7-4961-a156-37e836f0e25d",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'PaaS' and dest.cloud.type = 'AZURE' and dest.paas.service.type in ( 'MicrosoftDBforMySQLFlexibleServers', 'MicrosoftDBforMySQLServers' ) and protocol.ports = 'tcp/3306'",
+  "recommendation": "Restrict access to Azure MySQL server instance from untrusted internet sources by configuring firewall rules\n1. Sign in to the Azure Portal using your Azure account credentials\n2. Navigate to the Azure MySQL Server Dashboard\n3. Identify the reported Azure MySQL Server instance that you want to restrict from untrusted internet sources\n4. Navigate to the 'Networking' section\n6. Under the 'Firewall rules' section, add the IP addresses from Trusted IP Addresses\n7. Click 'Save' to apply the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1010",
+  "policyId": "92cd237f-ccd7-4d60-aeb7-33c95b9f056a",
+  "policyType": "network",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP VM instance with network path from the internet (0.0.0.0/0)",
+  "description": "This policy identifies GCP VM instances with network path from the internet (0.0.0.0/0).\n\nGCP VM instances with network path from the internet increases the risk of unauthorized access, cyber attacks, and data breaches, as it may provide a larger attack surface for malicious actors. Such instances are especially prone to brute force or vulnerability exploits.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit the access from known hosts, services, or specific entities.",
+  "rule.criteria": "77bff382-c425-496a-b0de-6e21d8556549",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'Instance' and dest.cloud.type = 'GCP' and dest.resource.state = 'Active'",
+  "recommendation": "Restrict access to GCP VM instance by modifying VPC Firewall rules\n1. Login to the GCP Console\n2. Go to 'VM instance'\n3. Identify the VM instance that you want to restrict Internet access\n4. Update the VPC firewall rule that allows Internet access (0.0.0.0/0) to a trusted IP address\nRefer to the following links for detailed steps to modify VPC firewall rules,\n- To list VPC firewall rules for a network interface of a VM instance\nhttps://cloud.google.com/firewall/docs/using-firewalls#listing-rules-vm\n- To Update VPC firewall rules\nhttps://cloud.google.com/firewall/docs/using-firewalls#updating_firewall_rules\n\nNOTE: When modifying Network security group rules, ensure that you don't lock yourself out of the instances. Always have a rule that allows you to access them for management purposes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

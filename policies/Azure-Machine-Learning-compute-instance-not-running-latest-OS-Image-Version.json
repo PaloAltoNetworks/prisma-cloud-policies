@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1254",
+  "policyId": "ef818e3b-5eb4-4066-9393-aefe4eff34f6",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine Learning compute instance not running latest OS Image Version",
+  "description": "This policy identifies Azure Machine Learning compute instances not running on the latest available image version.\n\nRunning compute instances on outdated image versions increases security risks. Without the latest security patches and updates, these instances are more vulnerable to attacks, which can compromise machine learning models and data.\n\nAs a best practice, it is recommended to recreate or update Azure Machine Learning compute instances to the latest image version, ensuring they have the most recent security patches and updates.",
+  "rule.criteria": "7a7faf2f-1351-4686-8235-99b62c68b6ad",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-compute' AND json.rule = properties.provisioningState equal ignore case \"Succeeded\" and properties.properties.state equal ignore case \"Running\" and properties.properties.osImageMetadata.isLatestOsImageVersion is false",
+  "recommendation": "To ensure your Azure Machine Learning compute instances are running the latest available image version, follow these remediation steps:\n\n1. Recreate the Compute Instance. This will ensure it is provisioned with the latest VM image, including all recent updates and security patches.\n- Steps:\n  1. Backup Important Data:\n     - Store notebooks in the `User files` directory to persist them.\n     - Mount data to persist files.\n  2. Re-create the Instance:\n     - Delete the existing compute instance.\n     - Provision a new compute instance with latest OS image version.\n  3. Restore Data:\n     - Restore notebooks and mounted data to the newly created instance.\n\nNote: This will result in the loss of data and customizations stored on the instance's OS and temporary disks.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

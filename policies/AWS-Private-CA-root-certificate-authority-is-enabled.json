@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-PCA-1257",
+  "policyId": "a811518d-edbc-4965-bcbd-8586a3a00b17",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Private CA root certificate authority is enabled",
+  "description": "This policy identifies enabled AWS Private CA root certificate authorities.\n\nAWS Private CA enables creating a root CA to issue private certificates for securing internal resources like servers, applications, users, devices, and containers. The root CA should be disabled for daily tasks to minimize risk, as it should only issue certificates for intermediate CAs, allowing it to remain secure while intermediate CAs handle the issuance of end-entity certificates.\n\nIt is recommended to disable the AWS Private CA root certificate authority to secure.",
+  "rule.criteria": "5e380ed5-a8a2-409e-8e18-429e4caf0638",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-acm-pca-certificate-authority' AND json.rule = Type equal ignore case ROOT and Status equal ignore case active",
+  "recommendation": "To update the status of the Private CA root certificate authority:\n\n1. Sign in to your AWS account and open the AWS Private CA console\n2. On the 'Private certificate authorities' page, choose the reported private CA\n3. On the 'Actions' menu, choose 'Disable' to disable the private CA.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

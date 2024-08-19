@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-924",
+  "policyId": "db13bedd-2e2d-4209-b889-3da7b254a2dd",
+  "policyType": "network",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure PostgreSQL (PaaS) instance with network path from the untrust internet source on TCP port 5432",
+  "description": "This policy identifies Azure PostgreSQL (PaaS) instance with network path from the untrust internet source on TCP port 5432.\n\nAzure PostgreSQL (PaaS) instance with network path from the untrust internet source on TCP port 5432 may enable bad actors to use brute force or exploit a vulnerability on a system to gain unauthorized access. Further database vulnerabilities or weaknesses could potentially be exploited to compromise the integrity, availability, or confidentiality of the data stored.\n\nAs a best practice, it is recommended to allow access from Trusted IP list and limit the access from known hosts, services, or specific entities.\n\nNOTE: Prisma Cloud Trusted IP List allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "5d65da95-985d-449f-961b-535929bfea62",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'PaaS' and dest.cloud.type = 'AZURE' and dest.paas.service.type in ( 'MicrosoftDBforPostgreSQLFlexibleServers', 'MicrosoftDBforPostgreSQLServers' ) and protocol.ports = 'tcp/5432'",
+  "recommendation": "Restrict access to Azure PostgreSQL server instance from untrusted internet sources by configuring firewall rules\n1. Sign in to the Azure Portal using your Azure account credentials\n2. Navigate to the Azure PostgreSQL Server Dashboard\n3. Identify the reported Azure PostgreSQL Server instance that you want to restrict from untrusted internet sources\n4. Navigate to the 'Networking' section\n6. Under the 'Firewall rules' section, add the IP addresses from Trusted IP Addresses\n7. Click 'Save' to apply the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
