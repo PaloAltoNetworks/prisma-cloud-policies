@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "DORA",
+    "GDPR",
     "HIPAA",
     "ISO/IEC 27001:2022",
     "SOC 2"

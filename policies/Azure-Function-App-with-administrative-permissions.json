@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "ac30988f-dd17-42d7-9853-c744e6cec342",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Function App with administrative permissions",
+  "description": "Identifies Function App instances granted administrative permissions, increasing the blast radius in case of a potential comrpomise of the function.",
+  "rule.criteria": "ac30988f-dd17-42d7-9853-c744e6cec342",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AZURE' AND action.access.isAdministrative = true and source.cloud.service.name = 'microsoft.web' ",
+  "recommendation": "How to investigate?\n1. In the Prisma Cloud Console, under the \"Alerts\" tab, select the \"Asset Name\", the \"View JSON{}\"\n2. Scroll down to the \"data\" field, and under \"identity\" make note of the managed identity type and principalId listed\n3. Still in the Prisma Cloud Console, select 'Investigate'\n4. Paste the following query into the investigation prompt, replacing the placeholder with the id of the managed identity you obtained in the previous steps: config from iam where dest.cloud.type = 'AWS' AND grantedby.cloud.entity.id ='<principalId>'\n5. In the results, under \"Granted By Policy\", you will see the roles attached to the managed identity\nOnce examining the roles and determining which permissions are unnecessary and can be removed based on the Function App's intended use, sign in to your Azure tenant. In order to remove any unnecessary permissions , use the following remediation steps:\nNavigate to the Entra ID service, and search for the id retrieved earlier. Remove the relevant role for a less privileged one sufficient for the Function App's intended purpose",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

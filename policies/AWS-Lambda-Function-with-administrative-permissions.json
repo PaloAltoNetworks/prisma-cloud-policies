@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "fa6d2f2f-d5dc-44c3-b540-6f9bbd8d0eb2",
+  "policyType": "iam",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Lambda Function with administrative permissions",
+  "description": "Identifies Lambda Functions granted administrative permissions, increasing the blast radius in case of a potential comrpomise of the function.",
+  "rule.criteria": "fa6d2f2f-d5dc-44c3-b540-6f9bbd8d0eb2",
+  "searchModel.query": "config from iam where dest.cloud.type = 'AWS' AND action.access.isAdministrative = true AND source.cloud.service.name = 'lambda' ",
+  "recommendation": "How to investigate?\n1. In the Prisma Cloud Console, under the \"Alerts\" tab, select the \"Asset Name\", the \"View JSON{}\"\n2. Scroll down to the \"data\" field, and under \"role\" make note of the role listed\n3. Still in the Prisma Cloud Console, select 'Investigate'\n4. Paste the following query into the investigation prompt, replacing the placeholder with the name of the role you obtained in the previous steps: config from iam where dest.cloud.type = 'AWS' AND grantedby.cloud.entity.name ='<role name>'\n5. In the results, under \"Granted By Policy\", you will see the policies attached to the service account\nOnce examining the policies and determining which permissions are unnecessary and can be removed based on the Lambda Function's intended use, sign in to your AWS account. In order to remove any unnecessary permissions , use the following remediation steps:\nNavigate to the IAM service, and search for the role. Remove the relevant policy for a less privileged one sufficient for the Function's intended purpose\n Note: Before editing the role's permissions, make sure no other entities are using it. If they are, an alternative approach is to create a different role with suitable permissions and attach it to the Lambda instead of the existing role",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic aws cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

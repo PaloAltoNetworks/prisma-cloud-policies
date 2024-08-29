@@ -37,6 +37,7 @@
     "FFIEC",
     "Fedramp (Moderate)",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "GDPR",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
     "HITRUST CSF v.9.6.0",
@@ -52,6 +53,7 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "PCI DSS v3.2.1",
@@ -60,6 +62,7 @@
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

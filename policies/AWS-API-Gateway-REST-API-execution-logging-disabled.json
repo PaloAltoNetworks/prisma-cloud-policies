@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-API-1262",
+  "policyId": "b5d59925-89c7-41b7-8c90-452bd429bb5f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS API Gateway REST API execution logging disabled",
+  "description": "This policy identifies AWS API Gateway REST API's that have disabled execution logging in their stages.\n\nAWS API Gateway REST API is a service for creating and managing RESTful APIs integrated with backend services like Lambda and HTTP endpoints. Execution logs log all the API activity logs to CloudWatch, which helps in incident response, security and compliance, troubleshooting, and monitoring.\n\nIt is recommended to enable logging on the API Gateway REST API to track API activity.",
+  "rule.criteria": "e34952fe-5756-4cb0-95b8-fbf7bf76466f",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-apigateway-get-stages' AND json.rule = methodSettings.[*].loggingLevel does not exist or methodSettings.[*].loggingLevel equal ignore case off as X; config from cloud.resource where api.name = 'aws-apigateway-get-rest-apis' as Y; filter ' $.X.restApi equal ignore case $.Y.id '; show Y;",
+  "recommendation": "To enable execution logging on API Gateway Rest API, follow the below steps:\n\n1. Sign in to the AWS console. Navigate to the API Gateway dashboard\n2. Under the navigation page, select the 'APIs'\n3. Select the REST API reported; under the navigation page, select 'Stages'\n4. Select a stage and click on 'Edit' under the 'Logs and tracing' section\n5. Under the 'Edit logs and tracing' page, select a value other than 'Off' under the 'CloudWatch logs' dropdown.\n6. Click on 'Save'.\n7. Repeat this process for all the stages of the reported REST API.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

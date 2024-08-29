@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HIPAA",
     "ISO/IEC 27001:2022",
+    "NIST SP 800-171 Revision 3",
     "SOC 2"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AD-1260",
+  "policyId": "4358cedc-99e7-400c-beed-51719ee8d6f1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Guest User Invite not restricted to users with specific admin role",
+  "description": "This policy identifies instances in the Microsoft Entra ID configuration where guest user invitations are not restricted to specific administrative roles.\n\nAllowing anyone in the organization, including guests and non-admins, to invite guest users can lead to unauthorized access and potential data breaches. This unrestricted access poses a significant security risk.\n\nAs a best practice, it is recommended to configure guest user invites to specific admin roles. This will ensure that only authorized personnel can invite guests, maintaining tighter control over access to cloud resources.",
+  "rule.criteria": "90b422b3-fc5c-43fe-9e9e-1bd0d376148d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-active-directory-authorization-policy' AND json.rule = not (allowInvitesFrom equal ignore case adminsAndGuestInviters OR allowInvitesFrom equal ignore case none)",
+  "recommendation": "1. Log in to Azure Portal and search for 'Microsoft Entra ID'\n2. Select 'Microsoft Entra ID'\n3. Under 'Manage' select 'External Identities'\n4. Select 'External collaboration settings'\n5. Under 'Guest invite settings' section, select 'Only users assigned to specific admin roles can invite guest users'\n6. Select 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

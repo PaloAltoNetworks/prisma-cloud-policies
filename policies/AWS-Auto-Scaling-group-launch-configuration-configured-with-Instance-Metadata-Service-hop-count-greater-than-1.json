@@ -16,6 +16,7 @@
   "compliance.standard": [
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
-    "NIST 800-53 Rev 5"
+    "NIST 800-53 Rev 5",
+    "NIST SP 800-171 Revision 3"
   ]
 }

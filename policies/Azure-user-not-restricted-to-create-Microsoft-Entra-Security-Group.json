@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AD-1261",
+  "policyId": "0db64971-f542-4473-884b-b0523e6b807a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure user not restricted to create Microsoft Entra Security Group",
+  "description": "This policy identifies instances in the Microsoft Entra ID configuration where security group creation is not restricted to administrators only.\n\nWhen the ability to create security groups is enabled, all users in the directory can create new groups and add members to them. Unless there is a specific business need for this broad access, it is best to limit the creation of security groups to administrators only.\n\nAs a best practice, it is recommended to restrict the ability to create Microsoft Entra Security Groups to administrators only.",
+  "rule.criteria": "38f1f7ad-ac2b-46f5-a9e0-6308ae3e4575",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-active-directory-authorization-policy' AND json.rule = defaultUserRolePermissions.allowedToCreateSecurityGroups is true ",
+  "recommendation": "1. Log in to Azure Portal and search for 'Microsoft Entra ID'\n2. Select 'Microsoft Entra ID'\n3. Under 'Manage' select 'Groups'\n4. Under 'Settings' select 'General'\n5. Under 'Security Groups' section, set 'Users can create security groups in Azure portals, API or PowerShell' to No\n6. Select 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

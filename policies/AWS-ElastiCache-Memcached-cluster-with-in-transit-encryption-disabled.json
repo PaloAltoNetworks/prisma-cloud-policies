@@ -22,8 +22,11 @@
     "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
     "NIST CSF v2.0",
+    "NIST SP 800-171 Revision 3",
+    "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

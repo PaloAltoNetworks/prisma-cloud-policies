@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "DORA",
+    "GDPR",
     "SOC 2"
   ]
 }

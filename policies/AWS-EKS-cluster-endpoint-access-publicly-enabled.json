@@ -46,6 +46,7 @@
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
@@ -55,6 +56,7 @@
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

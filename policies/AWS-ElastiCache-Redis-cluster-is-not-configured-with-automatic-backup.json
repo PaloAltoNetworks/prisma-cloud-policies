@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
-    "DORA"
+    "DORA",
+    "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

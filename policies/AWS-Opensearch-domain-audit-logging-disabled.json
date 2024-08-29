@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v8.1",
     "DORA",
+    "GDPR",
     "SOC 2"
   ]
 }

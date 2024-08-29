@@ -1,5 +1,55 @@
 # Changelog
 
+## PCS-24.8.2 - 2024-9-01
+
+### Added
+
+#### 11 new config policies
+
+- AWS API Gateway REST API execution logging disabled
+- AWS S3 access point Block public access setting disabled
+- AWS S3 bucket with cross-account access
+- AWS Secrets Manager secret configured with automatic rotation not rotated as scheduled
+- Azure Database for MySQL flexible server firewall rule allow access to all IPv4 address
+- Azure Database for MySQL flexible server public network access setting is enabled
+- Azure Event Hub Instance not defined with authorization rule
+- Azure Event Hub Namespace having authorization rules except RootManageSharedAccessKey
+- Azure Guest User Invite not restricted to users with specific admin role
+- Azure Machine learning compute instance configured with public IP
+- Azure user not restricted to create Microsoft Entra Security Group
+
+#### 7 new policies for the IAM Security module
+
+- AWS Lambda Function with administrative permissions
+- Azure Function App with administrative permissions
+- Cloud Service account is inactive for 90 days
+- Cloud Service account with Data Read Permissions is inactive for 90 days
+- Cloud Service account with Data Write Permissions is inactive for 90 days
+- Cloud Service account with Metadata Read Permissions is inactive for 90 days
+- Cloud Service account with Metadata Write Permissions is inactive for 90 days
+
+#### 3 new compliance standards
+
+- NIST SP 800-171 Revision 3
+- SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)
+- Secure Controls Framework (SCF) - 2024.2
+
+### Changed
+
+#### 2 config policies updated
+
+- AWS EBS volume region with encryption is disabled
+- AWS SageMaker endpoint data encryption at rest not configured with CMK
+
+#### 5 compliance standards updated
+
+- CIS AWS 2.0 - Level 1 & Level 2
+- CIS AWS 3.0 - Level 1 & Level 2
+- CIS Azure 2.0 - Level 1 & Level 2
+- CIS Azure 2.1 - Level 1 & Level 2
+- GDPR
+
+
 ## PCS-24.8.1 - 2024-8-19
 
 ### Added
