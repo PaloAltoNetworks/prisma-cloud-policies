@@ -18,6 +18,16 @@
 - Azure Machine learning compute instance configured with public IP
 - Azure user not restricted to create Microsoft Entra Security Group
 
+#### 7 new policies for the IAM Security module
+
+- AWS Lambda Function with administrative permissions
+- Azure Function App with administrative permissions
+- Cloud Service account is inactive for 90 days
+- Cloud Service account with Data Read Permissions is inactive for 90 days
+- Cloud Service account with Data Write Permissions is inactive for 90 days
+- Cloud Service account with Metadata Read Permissions is inactive for 90 days
+- Cloud Service account with Metadata Write Permissions is inactive for 90 days
+
 #### 3 new compliance standards
 
 - NIST SP 800-171 Revision 3
