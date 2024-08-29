@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1263",
+  "policyId": "b1b718d8-e62e-497d-80f2-2baa66a4f8bd",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 access point Block public access setting disabled",
+  "description": "This policy identifies AWS S3 access points with the block public access setting disabled.\n\nAWS S3 Access Point simplifies managing data access by creating unique access control policies for specific applications or users within a S3 bucket. The Amazon S3 Block Public Access feature manages access at the account, bucket, and access point levels. Each level's settings can be configured independently but cannot override more restrictive settings at higher levels. Instead, access point settings complement those at the account and bucket levels.\n\nIt is recommended to enable the Block public access setting on a S3 access point unless intended for public exposure.",
+  "rule.criteria": "2071f402-60ac-4a97-9e74-0bf95081baf7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3-access-point' AND json.rule = networkOrigin equal ignore case internet and (publicAccessBlockConfiguration does not exist or (publicAccessBlockConfiguration.blockPublicAcls is false and publicAccessBlockConfiguration.ignorePublicAcls is false and publicAccessBlockConfiguration.blockPublicPolicy is false and publicAccessBlockConfiguration.restrictPublicBuckets is false))",
+  "recommendation": "Block public access setting can be enabled at creation time only:\n\n1. Sign in to the AWS Management Console and navigate to the Amazon S3 dashboard\n2. In the left navigation pane, choose 'Access Points'\n3. On the Access Points page, choose 'Create access point'\n4. In the Access point name field, enter the name of the access point\n5. Under 'Block Public Access settings for this Access Point', make sure to select 'Block all public access'\n6. Click on 'Create access point'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

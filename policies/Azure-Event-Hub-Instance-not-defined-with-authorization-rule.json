@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-EVH-1264",
+  "policyId": "c7880add-1202-45f0-98e6-dd98a65ef98a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Event Hub Instance not defined with authorization rule",
+  "description": "This policy identifies Azure Event Hub Instances that are not defined with authorization rules.\n\nIf the Azure Event Hub Instance authorization rule is not defined, there is a heightened risk of unauthorized access to the event hub data and resources. This could potentially lead to unauthorized data retrieval, tampering, or disruption of the event hub operations. Defining proper authorization rules helps mitigate these risks by controlling and restricting access to the event hub resources.\n\nAs a best practice, it is recommended to define the least privilege security model access policies at Event Hub Instance.",
+  "rule.criteria": "a3a69677-af87-4b8f-9497-a70e2eb54373",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-event-hub-namespace' AND json.rule = properties.disableLocalAuth is false as X; config from cloud.resource where api.name = 'azure-event-hub' AND json.rule = properties.status equal ignore case ACTIVE and authorizationRules[*] is empty as Y; filter '$.Y.id contains $.X.name'; show Y;",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Event Hubs'\n3. Select the Event Hubs Namespace from the list which has the reported Event Hub instance.\n4. Click on 'Event Hubs' under 'Entities' section\n5. Click on the reported Event Hub instance\n6. Select 'Shared access policies' under 'Settings' section\n7. Click on '+Add'\n8. Enter 'Policy name' and the required access\n9. Click on 'Create'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

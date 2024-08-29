@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "GDPR",
     "HIPAA",
     "SOC 2"
   ]

@@ -25,6 +25,7 @@
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Fedramp (Moderate)",
+    "GDPR",
     "HIPAA",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2 [Deprecated]",
@@ -40,12 +41,14 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

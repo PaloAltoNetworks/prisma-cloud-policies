@@ -35,6 +35,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "FFIEC",
     "Fedramp (Moderate)",
+    "GDPR",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO 27002:2022",
     "ISO/IEC 27001:2022",
@@ -46,10 +47,12 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
-    "Secure Controls Framework (SCF) - 2022.2.1"
+    "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

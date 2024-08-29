@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-EVH-1265",
+  "policyId": "1926e46b-1ebf-4e7c-a202-aa3883731197",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Event Hub Namespace having authorization rules except RootManageSharedAccessKey",
+  "description": "This policy identifies Azure Event Hub Namespaces which have authorization rules except RootManageSharedAccessKey.\n\nHaving Azure Event Hub namespace authorization rules other than 'RootManageSharedAccessKey' could provide access to all queues and topics under the namespace which pose a risk if these additional rules are not properly managed or secured.\n\nAs best practice, it is recommended to remove Event Hub namespace authorization rules other than RootManageSharedAccessKey and create access policies at the entity level, which provide access to only that specific entity for queues and topics.",
+  "rule.criteria": "67695e82-c014-46dd-bdb2-2084e60d5b51",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-event-hub-namespace' AND json.rule = authorizationRules[*].name exists and authorizationRules[?any(name does not equal RootManageSharedAccessKey)] exists",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Event Hubs' dashboard\n3. Select the reported Event Hubs Namespace\n4. Select 'Shared access policies' under 'Settings' section\n5. Delete all other Shared access policy rules except 'RootManageSharedAccessKey'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

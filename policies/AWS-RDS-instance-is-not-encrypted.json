@@ -23,6 +23,8 @@
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CIS Controls v8.1",
+    "CIS v2.0.0 (AWS) - Level 1",
+    "CIS v3.0.0 (AWS) Level 1",
     "CSA CCM v3.0.1",
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
@@ -48,6 +50,7 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "NYDFS 23 CRR-NY 500.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
@@ -59,6 +62,7 @@
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

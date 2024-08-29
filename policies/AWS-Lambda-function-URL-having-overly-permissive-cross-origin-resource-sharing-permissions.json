@@ -17,6 +17,8 @@
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
     "ISO/IEC 27001:2022",
-    "SOC 2"
+    "NIST SP 800-171 Revision 3",
+    "SOC 2",
+    "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

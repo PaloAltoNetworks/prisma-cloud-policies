@@ -24,6 +24,9 @@
     "ISO/IEC 27001:2022",
     "NIST 800-53 Rev 5",
     "NIST CSF v2.0",
+    "NIST SP 800-171 Revision 3",
+    "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

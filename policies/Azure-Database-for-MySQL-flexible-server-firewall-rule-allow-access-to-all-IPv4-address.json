@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-MYQ-772",
+  "policyId": "5e6b9fac-589e-4c3d-9bac-d92191bdcb32",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Database for MySQL flexible server firewall rule allow access to all IPv4 address",
+  "description": "This policy identifies Azure Database for MySQL flexible servers which have firewall rule allowing access to all IPV4 address.\n\nMySQL server having a firewall rule with start IP being 0.0.0.0 and end IP being 255.255.255.255 (i.e. all IPv4 addresses) would allow access to server from any host on the internet. Allowing access to all IPv4 addresses expands the potential attack surface and exposes the MySQL server to increased threats.\n\nAs a best security practice, it is recommended to configure the MySQL servers with restricted IP-based server-level firewall rules so that servers are accessible only to restricted entities.",
+  "rule.criteria": "f0fa2439-14c9-4c84-9bb3-0699fe9d0914",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-mysql-flexible-server' AND json.rule = properties.state equal ignore case Ready and properties.network.publicNetworkAccess equal ignore case Enabled and firewallRules[?any(properties.startIpAddress equals 0.0.0.0 and properties.endIpAddress equals 255.255.255.255)] exists",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to Azure Database for MySQL flexible servers dashboard\n3. Click on reported MySQL server\n4. Under 'Settings', click on 'Networking'.\n5. Under 'Firewall rules' section, delete the rule which has 'Start IP' as 0.0.0.0 and 'End IP' as 255.255.255.255. Add specific IPs as per your business requirement.\n6. Click on 'Save'\n\nNOTE: These settings take effect immediately after they're applied. You might experience connection loss if you don't meet the requirements for each setting.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

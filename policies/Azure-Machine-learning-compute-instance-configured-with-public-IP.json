@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1259",
+  "policyId": "68bace49-3764-4b89-bf26-493510ecbbd6",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine learning compute instance configured with public IP",
+  "description": "This policy identifies Azure Machine Learning compute instances which are configured with public IP.\n\nConfiguring an Azure Machine Learning compute instance with a public IP exposes it to significant security risks, including unauthorized access and cyber-attacks. This setup increases the likelihood of data breaches, where sensitive information and intellectual property could be accessed by unauthorized individuals, leading to potential data leakage and loss.\n\nAs a best practice, it is recommended not to configure Azure Machine Learning instances with public IP.",
+  "rule.criteria": "38945f6f-394d-4547-a8b4-e8cf3f5c5b8f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-compute' AND json.rule = properties.provisioningState equal ignore case Succeeded AND properties.properties.connectivityEndpoints.publicIpAddress exists AND properties.properties.connectivityEndpoints.publicIpAddress does not equal ignore case \"null\"",
+  "recommendation": "Disabling a public IP address on an existing Azure Machine Learning compute instance without deleting and recreating it is not supported. The recommended approach to secure your compute instance is to set it up without a public IP from the beginning.\n\nTo create a new compute instance with no public IP:\n1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the Azure Machine Learning Workspace that the reported compute instance is associated with\n4. On the 'Overview' page, click the 'Studio web URL' link to log in to Azure ML Studio\n5. A new tab will open for Azure ML Studio\n6. In the left panel, under 'Manage' section, click on the 'Compute'\n7. Click 'New' to create a new compute instance\n8. In the 'Security' tab, under the 'Virtual network' section, enable the 'Enable virtual network' option to disable the public IP\n9. Select 'Review + Create' to create the compute instance",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

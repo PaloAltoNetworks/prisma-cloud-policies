@@ -35,6 +35,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",
     "FFIEC",
     "Fedramp (Moderate)",
+    "GDPR",
     "HIPAA",
     "HITRUST CSF v.9.6.0",
     "HITRUST v.9.4.2 [Deprecated]",
@@ -59,15 +60,18 @@
     "NIST CSF",
     "NIST CSF v2.0",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
+    "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

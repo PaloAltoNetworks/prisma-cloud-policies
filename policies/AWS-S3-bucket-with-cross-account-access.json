@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1274",
+  "policyId": "e11a9695-5534-4b95-bf30-a0ba22ba045d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket with cross-account access",
+  "description": "This policy identifies the AWS S3 bucket policy allows one or more of the actions (s3:DeleteBucketPolicy, s3:PutBucketAcl, s3:PutBucketPolicy, s3:PutEncryptionConfiguration, s3:PutObjectAcl) for a principal in another AWS account.\n\nAn S3 bucket policy that defines permissions and conditions for accessing an Amazon S3 bucket and its objects. Granting permissions like s3:DeleteBucketPolicy, s3:PutBucketAcl, s3:PutBucketPolicy, s3:PutEncryptionConfiguration, and s3:PutObjectAcl to other AWS accounts can lead to unauthorized access and potential data breaches.\n\nIt is recommended to review and remove permissions from the S3 bucket policy by deleting statements that grant access to restricted actions for other AWS accounts.",
+  "rule.criteria": "5bdd77c2-4823-4d0d-90bf-ab080e2784d5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-s3api-get-bucket-acl' AND json.rule = policy.Statement[?any(Effect equals Allow and (Principal.AWS does not equal * and Principal does not equal * and Principal.AWS contains arn and Principal.AWS does not contain $.accountId) and (Action contains \"s3:Put*\" or Action contains \"s3:Delete*\" or Action equals \"*\" or Action contains \"s3:*\" or Action is member of ('s3:DeleteBucketPolicy','s3:PutBucketAcl','s3:PutBucketPolicy','s3:PutEncryptionConfiguration','s3:PutObjectAcl') ))] exists",
+  "recommendation": "1. Login to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the 'S3' resource reported in the alert\n4. Choose Permissions, and then choose Bucket Policy.\n5. In the Bucket policy editor text box, do one of the following:\n 5a. Remove the statements that grant access to denied actions to other AWS accounts\n   or\n    5b. Remove the permitted denied actions from the statements\n6. Choose Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

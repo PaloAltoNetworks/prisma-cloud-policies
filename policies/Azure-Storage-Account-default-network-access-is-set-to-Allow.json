@@ -38,6 +38,7 @@
     "CyberSecurity Law of the People's Republic of China",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Fedramp (Moderate)",
+    "GDPR",
     "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO/IEC 27002:2013",
@@ -52,11 +53,13 @@
     "NIST 800-53 Rev4",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
+    "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Secure Controls Framework (SCF) - 2022.2.1",
+    "Secure Controls Framework (SCF) - 2024.2",
     "Telecommunications Security Act - TSA"
   ]
 }

@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS v2.0.0 (GCP) Level 2",
     "CIS v3.0.0 (GCP) Level 2",
+    "GDPR",
     "ISO/IEC 27001:2022"
   ]
 }
