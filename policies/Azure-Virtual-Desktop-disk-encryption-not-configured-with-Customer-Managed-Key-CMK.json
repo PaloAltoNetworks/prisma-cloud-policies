@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1277",
+  "policyId": "aae4701f-e646-4299-828a-0294a8de9586",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual Desktop disk encryption not configured with Customer Managed Key (CMK)",
+  "description": "This policy identifies Azure Virtual Desktop environments where disk encryption is not configured using a Customer Managed Key (CMK). \n\nDisk encryption is crucial for protecting data in Azure Virtual Desktop environments. By default, disks may be encrypted with Microsoft-managed keys, which might not meet specific security requirements. Using Customer Managed Keys (CMKs) offers better control over encryption, allowing organizations to manage key rotation, access, and revocation, thereby enhancing data security and compliance.\n\nAs a best practice, it is recommended to configure disk encryption for Azure Virtual Desktop with a Customer Managed Key (CMK).",
+  "rule.criteria": "78a6f755-a7f2-48df-8924-920fb3c651f1",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-vm-list' AND json.rule = ['Extensions'].['Microsoft.PowerShell.DSC'].['settings'].['properties'].['hostPoolName'] exists and powerState contains running as X; config from cloud.resource where api.name = 'azure-disk-list' AND json.rule = provisioningState equal ignore case Succeeded and (encryption.type does not contain \"EncryptionAtRestWithCustomerKey\" or encryption.diskEncryptionSetId does not exist) as Y; filter ' $.X.id equal ignore case $.Y.managedBy '; show Y;",
+  "recommendation": "Note: To enable disk encryption on any disks attached to a VM, you must first stop the VM.\n\n1. Log in to Azure Portal and search for 'Disks'.\n2. Select 'Disks'.\n4. Select the reported disk.\n5. Under 'Settings' select 'Encryption'.\n6. For 'Key management', select 'Customer-managed key' from drop-down list.\n6. For the disk encryption set, select an existing one. If none are available, create a new disk encryption set.\n7. Click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

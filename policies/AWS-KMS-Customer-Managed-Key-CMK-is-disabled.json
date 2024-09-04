@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-KMS-1279",
+  "policyId": "969e16f3-7889-4e67-b1d4-952f32a9e385",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS KMS Customer Managed Key (CMK) is disabled",
+  "description": "This policy identifies the AWS KMS Customer Managed Key (CMK) that is disabled.\n\nEnsuring that your Amazon Key Management Service (AWS KMS) key is enabled is important because it determines whether the key can be used to perform cryptographic operations.  If an AWS KMS Key is disabled, any operations dependent on that key, such as encryption or decryption of data, will fail. This can lead to application downtime, data access issues, and potential data loss if not addressed promptly.\n\nIt is recommended to enable the AWS KMS Customer Managed Key (CMK) if it is used in the application, to restore cryptographic operations and ensure your applications and services can access encrypted data.",
+  "rule.criteria": "c4a7a1ad-0e32-4dea-9ed7-284bdba72429",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.enabled is false",
+  "recommendation": "To enable the AWS KMS customer managed keys.\n\n1. Sign in to the AWS Management Console and open the AWS Key Management Service (AWS KMS) console at https://console.aws.amazon.com/kms.\n2. To change the AWS Region that the reported resource is presented in, use the Region selector in the upper-right corner of the page.\n3. In the navigation pane, choose 'Customer-managed keys'.\n4. Select the reported CMK and click on the dropdown 'Key Actions'.\n5. Choose the 'Enable' option.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

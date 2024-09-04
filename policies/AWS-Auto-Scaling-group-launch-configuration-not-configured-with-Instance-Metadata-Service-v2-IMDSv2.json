@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "NIST 800-53 Rev 5",
