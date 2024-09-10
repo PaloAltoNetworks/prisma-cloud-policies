@@ -1,5 +1,36 @@
 # Changelog
 
+## PCS-24.9.1 - 2024-9-16
+
+### Added
+
+#### 11 new config policies
+
+- AWS IAM user is not a member of any IAM group
+- AWS KMS Customer Managed Key (CMK) is disabled
+- Azure Application Gateway listener not secured with SSL profile
+- Azure Cognitive Services account hosted with OpenAI is not configured with data loss prevention
+- Azure Storage account diagnostic setting for blob is disabled
+- Azure Storage account diagnostic setting for file is disabled
+- Azure Storage account diagnostic setting for queue is disabled
+- Azure Storage account diagnostic setting for table is disabled
+- Azure Virtual Desktop disk encryption not configured with Customer Managed Key (CMK)
+- Azure Virtual Desktop workspace diagnostic log is disabled
+- Azure Virtual Machine not protected with Azure Backup
+
+### Changed
+
+#### 3 config policies updated
+
+- AWS SageMaker endpoint data encryption at rest not configured with CMK
+- Azure App Service Web app doesn’t use latest TLS version
+- Azure Key Vault Firewall is not enabled
+
+#### 1 compliance standard updated
+
+- Framework for Adoption of Cloud Services by SEBI Regulated Entities
+
+
 ## PCS-24.8.2 - 2024-9-01
 
 ### Added

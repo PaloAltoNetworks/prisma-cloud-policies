@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v8.1",
     "DORA",
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "GDPR",
     "SOC 2"
   ]

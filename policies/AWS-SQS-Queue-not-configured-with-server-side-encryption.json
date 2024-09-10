@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "DORA",
+    "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "GDPR",
     "HIPAA",
     "ISO/IEC 27001:2022",

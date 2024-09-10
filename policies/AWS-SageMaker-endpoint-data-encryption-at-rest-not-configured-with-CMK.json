@@ -3,7 +3,7 @@
   "policyId": "f63b99e7-f844-4873-8292-61c7159f73d1",
   "policyType": "config",
   "cloudType": "aws",
-  "severity": "high",
+  "severity": "informational",
   "name": "AWS SageMaker endpoint data encryption at rest not configured with CMK",
   "description": "This policy identifies AWS SageMaker Endpoints not configured with data encryption at rest.\n\nAWS SageMaker Endpoint configuration defines the resources and settings for deploying machine learning models to SageMaker endpoints. By default, SageMaker encryption uses transient keys if a KMS key is not specified, which does not provide the control and management benefits of AWS Customer Managed KMS Key. Enabling the encryption helps protect the integrity and confidentiality of the data on the storage volume attached to the ML compute instance that hosts the endpoint.\n\nIt is recommended to set encryption at rest to mitigate the risk of unauthorized access and potential data breaches.",
   "rule.criteria": "30fef5fe-8615-40a8-a1bb-aa8b2eb0f830",

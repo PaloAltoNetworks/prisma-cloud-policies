@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1284",
+  "policyId": "e2a3d4ae-c945-49ee-b629-78f20def6520",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Storage account diagnostic setting for table is disabled",
+  "description": "This policy identifies Azure Storage account tables that have diagnostic logging disabled.\n\nBy enabling diagnostic settings, you can capture various types of activities and events occurring within these storage account tables. These logs provide valuable insights into the operations, performance, and security of the storage account tables.\n\nAs a best practice, it is recommended to enable diagnostic logs on all storage account tables.",
+  "rule.criteria": "4f6beda3-b112-4015-ad25-1ccc818a5eac",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded as X; config from cloud.resource where api.name = 'azure-storage-account-table-diagnostic-settings' AND json.rule = properties.logs[*].enabled all true as Y; filter 'not($.X.name equal ignore case $.Y.StorageAccountName)'; show X;",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to the Storage Accounts dashboard\n3. Click on the reported Storage account\n4. Under the 'Monitoring' menu, click on 'Diagnostic settings'\n5. Select the table resource\n6. Under 'Diagnostic settings', click on 'Add diagnostic setting'\n7. At the top, enter the 'Diagnostic setting name'\n8. Under 'Logs', select all the checkboxes under 'Categories'\n9. Under 'Destination details', select the destination for logging\n10. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

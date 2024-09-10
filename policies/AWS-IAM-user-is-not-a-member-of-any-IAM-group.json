@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-IAM-1280",
+  "policyId": "44069bb1-0884-4cee-887f-40732c4e7b4e",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS IAM user is not a member of any IAM group",
+  "description": "This policy identifies an AWS IAM user as not being a member of any IAM group.\n\nIt is generally a best practice to assign IAM users to at least one IAM group. If the IAM users are not in a group, it complicates permission management and auditing, increasing the risk of privilege mismanagement and security oversights. It also leads to higher operational overhead and potential non-compliance with security best practices.\n\nIt is recommended to ensure all IAM users are part of at least one IAM group according to your business requirement to simplify permission management, enforce consistent security policies, and reduce the risk of privilege mismanagement.",
+  "rule.criteria": "24e85db6-055c-4536-8886-7defaea8160b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-iam-list-users' AND json.rule = groupList is empty",
+  "recommendation": "To add a user to an IAM user group (console)\n\n1. Sign in to the AWS Management Console and open the IAM console at https://console.aws.amazon.com/iam/\n2. In the navigation pane, choose 'Users' under the 'Access management' section and then choose the name of the user that is reported\n3. Choose the 'Groups' tab and then choose 'Add user to groups'. \n4. Select the check box next to the groups under 'Group Name' according to your requirements.\n5. Choose 'Add user to group(s)'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

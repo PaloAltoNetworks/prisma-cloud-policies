@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AVD-1276",
+  "policyId": "eefe6708-a57e-4703-bb02-add1191e4466",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Virtual Desktop workspace diagnostic log is disabled",
+  "description": "This policy identifies Azure Virtual Desktop workspaces where diagnostic logs are not enabled.\n\nDiagnostic logs are vital for monitoring and troubleshooting Azure Virtual Desktop, which offers virtual desktops and remote app services. They help detect and resolve issues, optimize performance, and meet security and compliance standards. Without these logs, it’s difficult to track activities and detect anomalies, potentially jeopardizing security and efficiency.\n\nAs a best practice, it is recommended to enable diagnostic logs for Azure Virtual Desktop workspaces.",
+  "rule.criteria": "87f39972-8dc0-4b3d-a540-f9b73a687210",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-virtual-desktop-workspace' AND json.rule = diagnostic-settings[?none( properties.logs[?any( enabled is true )] exists )] exists",
+  "recommendation": "1. Log in to Azure Portal and search for 'Azure Virtual Desktop'\n2. Select 'Azure Virtual Desktop'\n3. Under 'Manage' select 'Workspaces'\n4. Select the reported Workspace\n5. Under 'Monitoring' select 'Diagnostic settings'\n6. Under Diagnostic settings tab. Click on '+ Add diagnostic setting' to create a new Diagnostic Setting\n7. Specify a 'Diagnostic settings name'\n8. Under section 'Categories', select the type of log that you want to enable\n9. Under section 'Destination details'\n  a. If you select 'Send to Log Analytics', select the 'Subscription' and 'Log Analytics workspace'\n  b. If you set 'Archive to storage account', select the 'Subscription' and 'Storage account'\n  c. If you set 'Stream to an event hub', select the 'Subscription', 'Event hub namespace', 'Event hub name' and set the 'Event hub policy name'\n10. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

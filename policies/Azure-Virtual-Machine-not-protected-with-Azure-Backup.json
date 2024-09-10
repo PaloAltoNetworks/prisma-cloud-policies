@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1278",
+  "policyId": "db33dfab-90da-4e41-a13b-30c52ba1c187",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Virtual Machine not protected with Azure Backup",
+  "description": "This policy identifies Azure Virtual Machines that are not protected by Azure Backup.\n\nWithout Azure Backup, VMs are at risk of data loss due to accidental deletion, corruption, or ransomware attacks. Unprotected VMs may also not comply with organizational data retention policies and regulatory requirements.\n\nAs a best practice, it is recommended to configure Azure Backup for all VMs to ensure data protection and enable recovery options in case of unexpected failures or incidents.",
+  "rule.criteria": "b312bd01-fc58-43a3-aa37-d67fe3bd01eb",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-recovery-service-backup-protected-item' AND json.rule = properties.workloadType equal ignore case VM as X; config from cloud.resource where api.name = 'azure-vm-list' AND json.rule = powerState contains running as Y; filter 'not $.Y.id equal ignore case $.X.properties.virtualMachineId'; show Y;",
+  "recommendation": "1. Log in to Azure Portal and search for 'Virtual machines'.\n2. Select 'Virtual machines'.\n3. Select the reported Virtual machine.\n4. Under 'Backup + disaster recovery' select 'Backup'.\n5. In the 'Backup' pane, select a 'Recovery Services vault'. If no vault exists, click 'Create new' to make a new vault.\n6. Choose the appropriate 'Policy sub type'. It's recommended to select 'Enhanced'.\n7. Next, select or create a 'Backup Policy' that defines when backups will run and how long they will be kept.\n8. From the 'Disks' dropdown, check all the disks you want to back up. Also, check the 'Include future disks' box to ensure new disks are automatically included.\n9. Click 'Enable Backup'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AGW-1275",
+  "policyId": "9df8bcf5-7b46-47b4-b98f-09e0fcbd6f40",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Application Gateway listener not secured with SSL profile",
+  "description": "This policy identifies Azure Application Gateway listeners that are not secured with an SSL profile.\n\nAn SSL profile provides a secure channel by encrypting the data transferred between the client and the application gateway. Without SSL profiles, the data transferred is vulnerable to interception, posing security risks. This could lead to potential data breaches and compromise sensitive information.\n\nAs a security best practice, it is recommended to secure all Application Gateway listeners with SSL profiles. This ensures data confidentiality and integrity by encrypting traffic.",
+  "rule.criteria": "8df8b748-4b2c-474a-9462-a6f32d4a51f0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-application-gateway' AND json.rule = ['properties.provisioningState'] equal ignore case Succeeded AND ['properties.httpListeners'][*].['properties.provisioningState'] equal ignore case Succeeded AND ['properties.httpListeners'][*].['properties.protocol'] equal ignore case Https AND ['properties.httpListeners'][*].['properties.sslProfile'].['id'] does not exist",
+  "recommendation": "1. Log in to Azure Portal and search for 'Application gateways'.\n2. Select 'Application gateways'.\n3. Click on reported Application gateway.\n4. Under 'Settings' select 'Listeners' from the left-side menu.\n5. Select the HTTPS listener.\n6. Check the 'Enable SSL Profile' box.\n7. Select the SSL profile you created (e.g., applicationGatewaySSLProfile) from the dropdown. If no profile exists, you'll need to create one first.\n8. Finish configuring the listener as needed.\n9. Click 'Add' to save the listener with the SSL profile.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
