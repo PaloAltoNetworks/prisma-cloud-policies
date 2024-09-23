@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1289",
+  "policyId": "3ae1c090-9b1b-4b6b-ad86-8432bacdd4ca",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS S3 bucket is utilized for AWS Bedrock Custom model training data",
+  "description": "This policy identifies the AWS S3 bucket utilized for AWS Bedrock Custom model training job data.\n\nS3 buckets store the datasets required for training Custom models in AWS Bedrock. Proper configuration and access control are essential to ensure the security and integrity of the training data. Improperly configured S3 buckets used for AWS Bedrock Custom model training data can lead to unauthorized access, data breaches, and potential loss of sensitive information.\n\nIt is recommended to implement strict access controls, enable encryption, and audit permissions to secure AWS S3 buckets for AWS Bedrock Custom model training data and ensure compliance.\n\nNOTE: This policy is designed to identify the S3 buckets utilized for training custom models in AWS Bedrock. It does not signify any detected misconfiguration or security risk.",
+  "rule.criteria": "10e82d6f-a9e6-4de3-9d05-c47551482bfc",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' as X; config from cloud.resource where api.name = 'aws-bedrock-custom-model' as Y; filter ' $.Y.trainingDataConfig.bucketName equals $.X.bucketName'; show X;",
+  "recommendation": "To protect the S3 buckets utilized by the AWS Bedrock Custom model training job data, please refer to the following link for recommended best practices\nhttps://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

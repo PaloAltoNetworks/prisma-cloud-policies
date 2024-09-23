@@ -16,6 +16,8 @@
   "compliance.standard": [
     "CIS v2.0.0 (Azure) Level 1",
     "CIS v2.1.0 (Azure) Level 1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 1",
+    "TX-RAMP Level 2"
   ]
 }

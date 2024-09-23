@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1266",
+  "policyId": "f4875042-9413-4a61-9ee8-0b6fbea9ff10",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP VM instance with Shielded VM Secure Boot disabled",
+  "description": "This policy identifies GCP VM instances that have Shielded VM Secure Boot disabled.\n\nSecure Boot is a security feature that ensures only trusted, digitally signed software runs during the boot process of a computer. Enabling it helps protect against malware and unauthorized software by verifying the integrity of the bootloader and operating system. Without Secure Boot, systems are vulnerable to rootkits, bootkits, and other malicious code that can compromise the system from the start, making it difficult to detect and remove such threats.\n\nIt is recommended to enable Shielded VM secure boot for GCP VM instances.",
+  "rule.criteria": "5be388f7-73af-4f44-a2d8-5b43d1dbcc74",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = status equals RUNNING and name does not start with \"gke-\" and (shieldedInstanceConfig does not exist or shieldedInstanceConfig.enableSecureBoot is false )",
+  "recommendation": "1. Log in to GCP console\n2. Navigate to 'Compute Engine' and then 'VM instances'\n3. Click on the reported VM name\n4. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue\n5. Once the the VM has been stopped, click on the 'EDIT' button\n6. Under 'Shielded VM', enable 'Turn on Secure Boot'\n7. Click on 'Save'\n8. Click on 'START/RESUME' from the top menu.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

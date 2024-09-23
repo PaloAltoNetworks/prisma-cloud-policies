@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1290",
+  "policyId": "b4489a87-5369-43f5-8aa4-291244e697f5",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS S3 bucket used for storing AWS Bedrock Custom model training artifacts",
+  "description": "This policy identifies the AWS S3 bucket used for storing AWS Bedrock Custom model training job output. \n\nS3 buckets hold the results and artifacts generated from training models in AWS Bedrock. Ensuring proper configuration and access control is crucial to maintaining the security and integrity of the training output. Improperly secured S3 buckets used for storing AWS Bedrock training output can lead to unauthorized access and potential exposure of model information.\n\nIt is recommended to implement strict access controls, enable encryption, and audit permissions to secure AWS S3 buckets for AWS Bedrock training job output and ensure compliance.\n\nNOTE: This policy is designed to identify the S3 buckets utilized for storing results and storing artifacts generated from training custom models in AWS Bedrock. It does not signify any detected misconfiguration or security risk.",
+  "rule.criteria": "d32e315b-e88e-436d-a58e-0b6970e94d77",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' as X; config from cloud.resource where api.name = 'aws-bedrock-custom-model' as Y; filter ' $.Y.outputDataConfig.bucketName equals $.X.bucketName'; show X;",
+  "recommendation": "To protect the S3 buckets utilized by the AWS Bedrock Custom model training results data, please refer to the following link for recommended best practices\nhttps://docs.aws.amazon.com/AmazonS3/latest/userguide/security-best-practices.html",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

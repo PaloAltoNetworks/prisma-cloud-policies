@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "HIPAA",
+    "NYDFS 23 CRR-NY 500.0",
     "SOC 2"
   ]
 }

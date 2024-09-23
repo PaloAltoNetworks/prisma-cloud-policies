@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1267",
+  "policyId": "bb8035c0-c0ac-4771-bb06-e5962993fb0a",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP OS Image is publicly accessible",
+  "description": "This policy identifies GCP OS Images that are publicly accessible.\n\nCustom GCP OS images are user-created operating system images tailored to specific needs and configurations. Making these images public can expose sensitive data, proprietary software, and security vulnerabilities. This can lead to unauthorized access, data breaches, and system exploitation, compromising your infrastructure's security and integrity.\n\nIt is recommended to keep OS images private unless required for organizational needs.",
+  "rule.criteria": "af9af69f-02fb-43d2-9931-9ab2b498448f",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-image' AND json.rule = iamPolicy.bindings[?any( members contains \"allAuthenticatedUsers\" )] exists",
+  "recommendation": "It is recommended to review and add appropriate, but restrictive roles before revoking access.\n\nTo revoke access from 'allAuthenticatedUsers', follow the below mentioned steps:\n1. Login to the GCP console\n2. Navigate to 'Compute Engine' and then 'Images'\n4. Select the reported image using the check box\n5. Click on the 'PERMISSIONS' tab in the right bar\n6. Filter for 'allAuthenticatedUsers'\n7. Click on the 'Remove principal' button (bin icon)\n8. Select 'Remove allAuthenticatedUsers from all roles on this resource. They may still have access via inherited roles.'\n9. Click 'Remove'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

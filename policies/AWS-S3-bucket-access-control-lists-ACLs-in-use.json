@@ -15,6 +15,8 @@
   "remediation.impact": "Enables 'BucketOwnerEnforced' ACL setting for AWS S3 bucket",
   "compliance.standard": [
     "AWS Foundational Security Best Practices standard",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
     "MLPS 2.0 (Level 2)",

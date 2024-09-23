@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-1271",
+  "policyId": "6ae4f34e-480f-4697-b675-2c25bd900a1d",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Storage bucket using a disabled CMEK",
+  "description": "This policy identifies GCP Storage buckets that are using a disabled CMEK.\n\nCMEK (Customer-Managed Encryption Keys) for GCP buckets allows you to use your own encryption keys to secure data stored in Google Cloud Storage. If a CMEK defined for a GCP bucket is disabled, the data in that bucket becomes inaccessible, as the encryption keys are no longer available to decrypt the data. This can lead to data loss and operational disruption. If not properly managed, CMEK can also introduce risks such as accidental key deletion or mismanagement, which could compromise data availability and security.\n\nIt is recommended to review the state of CMEK and enable it to keep the data in the bucket accessible.",
+  "rule.criteria": "be3fac0a-48f6-4f52-86dc-96ef8ac8a730",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-kms-crypto-keys-list' AND json.rule = primary.state does not equal \"ENABLED\" as X; config from cloud.resource where api.name = 'gcloud-storage-buckets-list' as Y; filter ' $.X.name equals $.Y.encryption.defaultKmsKeyName'; show Y;",
+  "recommendation": "1. Log in to GCP console\n2. Navigate Cloud Storage Buckets page\n3. Click on the reported bucket\n4. Go to 'Configuration' tab\n5. Under 'Default encryption key', click on the key name\n6. Select the appropriate key version\n7. Click 'ENABLE'and then click 'ENABLE' in the pop up",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

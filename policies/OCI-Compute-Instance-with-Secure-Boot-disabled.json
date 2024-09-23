@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-CMP-1287",
+  "policyId": "e701e165-1861-413c-a8d7-fd2a6a8db84c",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "low",
+  "name": "OCI Compute Instance with Secure Boot disabled",
+  "description": "This policy identifies OCI compute instances in which Secure Boot is disabled.\n\nSecure Boot serves as a security standard ensuring that a machine exclusively boots using Original Equipment Manufacturer (OEM) trusted software. Without the activation of Secure Boot, a compute instance becomes susceptible to booting unauthorized or malicious software, posing a threat to the integrity and security of the instance. Consequently, this vulnerability can lead to unauthorized access, data breaches, or other malicious activities within the instance.\n\nAs a security best practice, enabling Secure Boot on all compute instances is strongly recommended to guarantee the exclusive execution of trusted software during the boot process.",
+  "rule.criteria": "16486f55-85d0-47f2-9c83-ff5d4af8a5f3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'oci' AND api.name = 'oci-compute-instance' AND json.rule = lifecycleState equal ignore case running AND (platformConfig does not exist OR platformConfig equal ignore case \"null\" OR platformConfig.isSecureBootEnabled is false)",
+  "recommendation": "Note: Secure Boot can only be enabled during resource creation. To fix this, you must terminate the reported instance and create a new one with Secure Boot enabled.\n\n1. Log in to the OCI Console.\n2. Switch to the Region of the reported resource from the Region drop-down in top-right corner.\n3. Type the reported compute instance name into the Search box at the top of the Console.\n4. Click on the reported compute instance from the search results.\n5. Click 'Terminate' to terminate the instance (decide whether to permanently delete the instance's attached boot volume).\n6. To recreate the compute instance with Secure Boot enabled, navigate to the instance creation page.\n7. Click 'Create Instance'.\n8. In the 'Image and Shape' section, select an Image and Shape that support Shielded Instance configuration, indicated by the shield icon.\n9. In the 'Security' section, click 'Edit'.\n10. Enable 'Shielded Instance', then activate the 'Secure Boot' toggle.\n11. Complete the remaining details as required.\n12. Click 'Create'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

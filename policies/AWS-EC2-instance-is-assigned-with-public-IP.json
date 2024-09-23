@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "NYDFS 23 CRR-NY 500.0",
+    "TX-RAMP Level 2"
+  ]
 }

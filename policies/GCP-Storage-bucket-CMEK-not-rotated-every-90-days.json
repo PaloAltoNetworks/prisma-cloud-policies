@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-KMS-1272",
+  "policyId": "a2a94798-c7ff-49bd-ab8f-94b6dc1feaa4",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Storage bucket CMEK not rotated every 90 days",
+  "description": "This policy identifies GCP Storage bucket with CMEK that are not rotated every 90 days\n\nA CMEK (Customer-Managed Encryption Key), which is configured for a GCP bucket becomes vulnerable over time due to prolonged use. Without regular rotation, the key is at greater risk of being compromised, which could lead to unauthorized access to the encrypted data in the bucket. This can undermine the security of your data and increase the chances of a breach if the key is exposed or exploited.\n\nIt is recommended to configure rotation less than 90 days for CMEKs used for GCP buckets.",
+  "rule.criteria": "cc9b01d0-8fdc-4a51-91a7-f6d885d8e522",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-kms-crypto-keys-list' AND json.rule = primary.state equals \"ENABLED\" and (rotationPeriod does not exist or rotationPeriod greater than 7776000) as X; config from cloud.resource where api.name = 'gcloud-storage-buckets-list' as Y; filter ' $.X.name equals $.Y.encryption.defaultKmsKeyName'; show Y;",
+  "recommendation": "1. Log in to GCP console\n2. Navigate Cloud Storage Buckets page\n3. Click on the reported bucket\n4. Go to 'Configuration' tab\n5. Under 'Default encryption key', click on the key name\n6. Click on 'EDIT ROTATION PERIOD'\n7. Select 90 days or less for 'Rotation period' dropdown\n8. Click 'SAVE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

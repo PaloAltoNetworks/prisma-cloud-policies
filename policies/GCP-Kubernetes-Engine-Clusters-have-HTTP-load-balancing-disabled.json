@@ -42,6 +42,7 @@
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
+    "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
     "PIPEDA",
@@ -49,6 +50,7 @@
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 2"
   ]
 }
