@@ -23,10 +23,13 @@
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
+    "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 1",
+    "TX-RAMP Level 2"
   ]
 }

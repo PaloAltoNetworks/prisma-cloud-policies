@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1270",
+  "policyId": "5273263a-16fc-4ee5-bd1b-06e8629fa5e0",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP VM instance is assigned with public IP",
+  "description": "This policy identifies GCP VM instances that are assigned a public IP.\n\nUsing a public IP with a GCP VM exposes it directly to the internet, increasing the risk of unauthorized access and attacks. This makes the VM vulnerable to threats such as brute force attempts, DDoS attacks, and other malicious activities. To mitigate these risks, it's safer to use private IPs and secure access methods like VPNs or load balancers.\n\nIt is recommended to avoid assigning public IPs to VM instances.",
+  "rule.criteria": "13bee07e-f035-4f20-b6ad-bfc1cdc4929a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-instances-list' AND json.rule = name does not start with \"gke-\" and (networkInterfaces[*].accessConfigs exists or networkInterfaces.ipv6AccessConfigs exists)",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to 'Compute Engine' and then 'VM instances'\n3. Click on the reported VM instance\n4. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue\n5. Once the the VM has been stopped, click on the 'EDIT' button\n6. Under 'Network interfaces', expand the network interface with the public external IP assigned\n7. Select 'None' under 'External IPv4 address' as per your organizational needs\n10. Click on 'Save'\n11. Click on 'START/RESUME' from the top menu",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -16,6 +16,8 @@
   "compliance.standard": [
     "GDPR",
     "HIPAA",
-    "SOC 2"
+    "SOC 2",
+    "TX-RAMP Level 1",
+    "TX-RAMP Level 2"
   ]
 }

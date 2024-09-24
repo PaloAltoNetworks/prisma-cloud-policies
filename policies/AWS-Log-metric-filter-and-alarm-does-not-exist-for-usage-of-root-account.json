@@ -16,6 +16,8 @@
   "compliance.standard": [
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
+    "CIS Controls v7.1",
+    "CIS Controls v8",
     "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
     "CRI Profile v2.0",
@@ -25,8 +27,10 @@
     "NIST 800-53 Rev 5",
     "NIST CSF v2.0",
     "NIST SP 800-171 Revision 3",
+    "NYDFS 23 CRR-NY 500.0",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 2",
     "Telecommunications Security Act - TSA"
   ]
 }

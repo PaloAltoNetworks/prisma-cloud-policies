@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ABED-1288",
+  "policyId": "34842045-a8a5-481b-9a36-a956c19555d7",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Bedrock Custom model encrypted with Customer Managed Key (CMK) is not enabled for regular rotation",
+  "description": "This policy identifies AWS Bedrock Custom model encrypted with Customer Managed Key (CMK) is not enabled for regular rotation.\n\nAWS KMS (Key Management Service) allows customers to create master keys to encrypt the Custom model. Not enabling regular rotation for AWS Bedrock custom model key rotation failure can result in potential compliance violations.\n\nAs a security best practice, it is important to rotate the keys periodically so that if the keys are compromised, the data in the underlying service is still secure with the new keys.",
+  "rule.criteria": "3a8f189c-dd9a-49e9-9bd2-1d49cffefec8",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-bedrock-custom-model' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyState equals Enabled and keyMetadata.keyManager equal ignore case CUSTOMER and keyMetadata.origin equals AWS_KMS and (rotation_status.keyRotationEnabled is false or rotation_status.keyRotationEnabled equals \"null\") as Y; filter '$.X.modelKmsKeyArn equals $.Y.key.keyArn'; show X;",
+  "recommendation": "The following steps are recommended to enable the automatic rotation of the KMS key used by the AWS Bedrock Custom model\n\n1. Sign in to the AWS Management Console and open the Amazon Bedrock console at https://console.aws.amazon.com/bedrock/.\n2. From the left navigation pane, choose 'Custom models' under 'Foundation models'.\n3. In the 'Models' tab, select the model that is reported.\n4. Under the 'Custom model encryption KMS key' section, click on the KMS key id link.\n 5. Under the 'Key rotation' tab on the navigated KMS key window, click on Edit and enable the Key rotation option under the 'Automatic key rotation' section.\n6. Provide the rotation period as per your business and compliance requirements in the 'Rotation period (in days)' section.\n7. Click on Save.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

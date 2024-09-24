@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-DNS-1286",
+  "policyId": "4fb392da-719b-4061-b413-722a5eb902d4",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Azure Storage account blob",
+  "description": "This policy identifies DNS records within an Azure DNS zone that point to Azure Storage Account blobs that no longer exist.\n\nA dangling DNS attack happens when a DNS record points to a cloud resource that has been deleted or is inactive, making the subdomain vulnerable to takeover. An attacker can exploit this by creating a new resource with the same name and taking control of the subdomain to serve malicious content. This allows attackers to host harmful content under your subdomain, which could lead to phishing attacks, data breaches, and damage to your reputation. The risk arises because the DNS record still references a non-existent resource, which unauthorized individuals can re-associate with their own resources.\n\nAs a security best practice, it is recommended to routinely audit DNS zones and remove or update DNS records pointing to non-existing Azure Storage Account blobs.",
+  "rule.criteria": "5370349b-9e06-4455-aaf9-98f0702a54ba",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-dns-recordsets' AND json.rule = type contains CNAME and properties.CNAMERecord.cname contains \"web.core.windows.net\" as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.primaryEndpoints.web exists as Y; filter 'not ($.Y.properties.primaryEndpoints.web contains $.X.properties.CNAMERecord.cname) '; show X;",
+  "recommendation": "1. Log in to the Azure Portal and search for 'DNS zones'\n2. Select 'DNS zones' from the search results\n3. Select the DNS zone associated with the reported DNS record\n4. On the left-hand menu, under 'DNS Management,' select 'Recordsets'\n5. Locate and select the reported DNS record\n6. Update or remove the DNS Record if no longer necessary",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

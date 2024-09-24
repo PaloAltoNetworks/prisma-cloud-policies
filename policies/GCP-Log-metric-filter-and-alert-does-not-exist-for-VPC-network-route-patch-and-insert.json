@@ -22,12 +22,15 @@
     "ISO/IEC 27001:2022",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
+    "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 1",
+    "TX-RAMP Level 2",
     "Telecommunications Security Act - TSA"
   ]
 }

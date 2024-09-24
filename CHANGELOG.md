@@ -1,5 +1,43 @@
 # Changelog
 
+#### PCS-24.9.2 - 2024-9-26
+
+### Added
+
+#### 11 new config policies
+
+- AWS Bedrock Custom model encrypted with Customer Managed Key (CMK) is not enabled for regular rotation
+- AWS S3 bucket is utilized for AWS Bedrock Custom model training data
+- AWS S3 bucket used for storing AWS Bedrock Custom model training artifacts
+- Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Azure Storage account blob
+- Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Web App Service
+- GCP OS Image is publicly accessible
+- GCP Storage bucket CMEK not rotated every 90 days
+- GCP Storage bucket using a disabled CMEK
+- GCP VM instance is assigned with public IP
+- GCP VM instance with Shielded VM Secure Boot disabled
+- OCI Compute Instance with Secure Boot disabled
+
+#### 2 new compliance standard
+
+- TX-RAMP Level 1
+- TX-RAMP Level 2
+
+### Changed
+
+#### 3 config policies updated
+
+- GCP GKE unsupported Master node version
+- GCP GKE unsupported node version
+- GCP User managed service account keys are not rotated for 90 days
+
+#### 3 compliance standard updated
+
+- NYDFS 23 CRR-NY 500.0
+- CIS Controls v7.1
+- CIS Controls v8.0
+
+
 ## PCS-24.9.1 - 2024-9-16
 
 ### Added

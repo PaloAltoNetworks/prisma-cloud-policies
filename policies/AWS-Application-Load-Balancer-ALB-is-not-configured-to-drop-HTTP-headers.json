@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v8.1",
     "DORA",
-    "SOC 2"
+    "SOC 2",
+    "TX-RAMP Level 2"
   ]
 }

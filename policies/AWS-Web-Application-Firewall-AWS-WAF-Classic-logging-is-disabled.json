@@ -26,11 +26,14 @@
     "MLPS 2.0 (Level 2)",
     "NIST 800-53 Rev 5",
     "NIST SP 800-171 Revision 3",
+    "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
+    "TX-RAMP Level 1",
+    "TX-RAMP Level 2",
     "Telecommunications Security Act - TSA"
   ]
 }

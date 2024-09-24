@@ -16,6 +16,7 @@
   "compliance.standard": [
     "DORA",
     "ISO/IEC 27001:2022",
-    "SOC 2"
+    "SOC 2",
+    "TX-RAMP Level 2"
   ]
 }
