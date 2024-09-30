@@ -12,11 +12,12 @@
 - Azure Machine Learning compute instance with local authentication enabled
 - Azure Machine Learning workspace not encrypted with Customer Managed Key (CMK)
 - Azure Machine Learning workspace not enforced with Managed Virtual Network Isolation
+- GCP public-facing (external) global load balancer using HTTP protocol
+- GCP public-facing (external) regional load balancer using HTTP protocol
+- GCP Storage Buckets with publicly accessible GCP logs
 - GCP Vertex AI Workbench Instance has Integrity monitoring disabled
 - GCP Vertex AI Workbench Instance has vTPM disabled
 - GCP Vertex AI Workbench Instance is using default service account with the editor role
-- GCP public-facing (external) global load balancer using HTTP protocol
-- GCP public-facing (external) regional load balancer using HTTP protocol
 
 #### 6 new compliance standards
 
