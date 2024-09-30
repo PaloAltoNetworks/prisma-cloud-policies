@@ -16,6 +16,7 @@
   "compliance.standard": [
     "GDPR",
     "HIPAA",
+    "ITSG-33",
     "SOC 2"
   ]
 }

@@ -15,6 +15,7 @@
   "remediation.impact": "Enables MySQL database flexible server SSL enforcement",
   "compliance.standard": [
     "DORA",
+    "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
     "NYDFS 23 CRR-NY 500.0",

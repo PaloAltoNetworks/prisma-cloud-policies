@@ -16,7 +16,10 @@
   "compliance.standard": [
     "CIS Controls v8.1",
     "GDPR",
+    "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "SOC 2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2"

@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HITRUST CSF v.11.2.0",
+    "ITSG-33",
     "NYDFS 23 CRR-NY 500.0",
     "TX-RAMP Level 2"
   ]

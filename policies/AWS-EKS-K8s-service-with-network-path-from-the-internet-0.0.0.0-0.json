@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1094",
+  "policyId": "613f9585-be6b-43ed-ab2a-e89b7d6c036b",
+  "policyType": "network",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS EKS K8s service with network path from the internet (0.0.0.0/0)",
+  "description": "This policy identifies AWS EKS K8s services with network path from the internet (0.0.0.0/0).\n\nContainer services exposed to the internet increases the risk of unauthorized access, cyber attacks, and data breaches, as they present a larger attack surface for malicious actors. These services are particularly vulnerable to brute force attacks and exploitation of known vulnerabilities.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit access to trusted hosts, services, or specific entities.",
+  "rule.criteria": "5da50323-01a4-4f1a-9ccf-733813838e37",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'K8s Service' and dest.cloud.type = 'AWS' and effective.action = 'Allow'",
+  "recommendation": "The following steps are recommended to restrict AWS K8s service from having unrestricted access from the Internet:\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement the required changes and make sure no other resources have been impacted due to these changes:\n a) The overly permissive security group rules can be made more restrictive.\n b) Move the container/app service inside a restrictive subnet if it does not need to be publicly accessible.\n c) Control access to service by specifying allowed IP addresses or ranges in the service configuration.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

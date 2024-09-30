@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1296",
+  "policyId": "3dc779f5-d61a-4ac7-a6fe-5eb16953f910",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Machine Learning workspace not encrypted with Customer Managed Key (CMK)",
+  "description": "This policy identifies Azure Machine Learning workspaces that are not encrypted with a Customer Managed Key (CMK).\n\nAzure handles encryption using platform-managed keys by default, but customer-managed keys (CMKs) provide greater control and help meet specific security and compliance requirements. Without CMKs, organizations may not have full control over key management and rotation, increasing the risk of compliance issues and unauthorized data access. Configuring the workspace to use CMKs enhances security by allowing organizations to manage key access and rotation, ensuring stronger protection and compliance for sensitive data.\n\nAs a security best practice, it is recommended to configure the workspace to use Customer Managed Keys (CMKs).",
+  "rule.criteria": "80ccee79-a53e-4445-9b7f-d102e44beef3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and (properties.encryption.status does not exist or properties.encryption.status equal ignore case disabled)",
+  "recommendation": "Note: Once a Azure Machine Learning workspace is deployed, you can't switch from Microsoft-managed keys to customer-managed keys. You'll need to delete and recreate the workspace with customer-managed keys enabled.\n\n1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the reported Azure Machine Learning workspace\n4. Delete the workspace and then recreate it, ensuring you enable 'Encrypt data using a customer-managed key' under the 'Encryption' tab",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

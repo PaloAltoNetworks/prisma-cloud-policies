@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EMR-1298",
+  "policyId": "4e31737b-5f01-4afc-85d4-80f44a26f4ec",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS EMR Studio using the shadow resource bucket for workspace storage",
+  "description": "This policy identifies that the AWS EMR Studio using the bucket for workspace storage is not managed from the current account. This could potentially be using the shadow resource bucket for workspace storage.\n\nAWS EMR enables data processing and analysis using big data frameworks like Hadoop, Spark, and Hive. To create an EMR Studio, the EMR service automatically generates an S3 bucket. This S3 bucket follows the naming pattern 'aws-emr-studio-{Account-ID}-{Region}'. An attacker can create an unclaimed bucket with this predictable name and wait for the victim to deploy a new EMR Studio in a new region. This can result in multiple attacks, including cross-site scripting (XSS) when the user opens the compromised notebook in EMR Studio.\n\nIt is recommended to verify the expected bucket owner and update the AWS EMR storage location and enforce the aws: ResourceAccount condition in the policy of the service role used by the AWS EMR to check that the AWS account ID of the S3 bucket used by AWS EMR Studio according to your business requirements.",
+  "rule.criteria": "20ef3761-6c1f-40bb-af5d-fea69c20fa89",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-emr-studio' AND json.rule = DefaultS3Location exists and DefaultS3Location contains \"aws-emr-studio-\" as X; config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' AND json.rule = bucketName contains \"aws-emr-studio-\" as Y; filter 'not ($.X.BucketName equals $.Y.bucketName)' ; show X;",
+  "recommendation": "To update an EMR Studio with the new workspace storage, Follow the below actions:\n\n1. Sign in to the AWS Management Console\n2. Move the required script to a new S3 bucket as per your requirements.\n3. Open the Amazon EMR console at https://console.aws.amazon.com/emr.\n4. Under EMR Studio on the left navigation, choose Studios.\n5. Select the reported studio from the Studios list and Click the 'Edit' button on the right corner to edit the Studio details.\n6. Verify that the 'Workspace storage' is authorized and managed according to your business requirements. \n7. On the Edit studio page, Update 'Workspace storage' by selecting 'Browse S3', and select the 'Encrypt Workspace files with your own AWS KMS key' as per your organisation's requirements.\n8. Click 'Save Changes'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -14,6 +14,8 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2"

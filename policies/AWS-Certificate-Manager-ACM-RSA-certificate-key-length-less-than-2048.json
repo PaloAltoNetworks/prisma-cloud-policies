@@ -14,9 +14,12 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CSA CCM v4.0.12",
     "DORA",
     "GDPR",
     "ISO/IEC 27001:2022",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "SOC 2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2"

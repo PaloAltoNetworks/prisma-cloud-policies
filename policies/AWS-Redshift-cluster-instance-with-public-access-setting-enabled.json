@@ -14,8 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
+    "ITSG-33",
     "MLPS 2.0 (Level 3)",
+    "Microsoft Cloud Security Benchmark v1",
     "NYDFS 23 CRR-NY 500.0",
     "SOC 2",
     "TX-RAMP Level 2"

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1294",
+  "policyId": "a4ba9749-82c7-4d7b-ba37-e0ba77bb8b1a",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine Learning compute instance not configured inside virtual network",
+  "description": "This policy identifies Azure Machine Learning compute instances that are not configured within a virtual network.\n\nAzure Machine Learning compute instances outside a Virtual Network are exposed to external threats, as they may be publicly accessible. Placing the instance within a Virtual Network improves security by limiting access to trusted virtual machines and services within the same network. This ensures secure communication and blocks unauthorized public access.\n\nAs a security best practice, it is recommended to deploy the Azure Machine Learning compute instances inside a virtual network.",
+  "rule.criteria": "46159688-71db-4e96-b7af-d15a403bc2da",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-machine-learning-compute' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.properties.subnet.id does not exist",
+  "recommendation": "Note: Configuring an existing Azure Machine Learning compute instance inside a Virtual Network without deleting and recreating it is not supported. To ensure security, it is recommended to set up the compute instance within a Virtual Network from the start.\n\nTo create a new compute instance inside a Virtual Network:\n1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the Azure Machine Learning Workspace that the reported compute instance is associated with\n4. On the 'Overview' page, click the 'Studio web URL' link to log in to Azure ML Studio\n5. A new tab will open for Azure ML Studio\n6. In the left panel, under 'Manage' section, click on the 'Compute'\n7. Click 'New' to create a new compute instance\n8. In the 'Security' tab, under the 'Virtual network' section, enable the 'Enable virtual network' to configure it within a Virtual network\n9. Select 'Review + Create' to create the compute instance",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
