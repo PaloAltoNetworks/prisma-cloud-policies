@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1297",
+  "policyId": "51ffe18c-0932-4573-aabd-eed0b271a13f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine Learning workspace not enforced with Managed Virtual Network Isolation",
+  "description": "This policy identifies Azure Machine Learning workspaces that are not enforced with Managed Virtual Network Isolation.\n\nManaged Virtual Network Isolation ensures that the workspace and its resources are accessible only within a secure virtual network. Without enforcing this isolation, the environment becomes vulnerable to security risks like external threats, data leaks, and non-compliance. If not properly isolated, the workspace may be exposed to public networks, increasing the chances of unauthorized access and data breaches.\n\nAs a security best practice, it is recommended to configure Azure Machine Learning workspaces with Managed Virtual Network Isolation. This will restrict network access to the workspace and ensure that it can only be accessed from authorized networks.",
+  "rule.criteria": "829744b8-dc58-432d-8763-7e65d0357a64",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and (properties.managedNetwork.isolationMode equal ignore case Disabled OR properties.managedNetwork.isolationMode does not exist)",
+  "recommendation": "Note: To update an existing Azure Machine Learning workspace to use a managed virtual network, you first need to delete all its compute resources, including compute instances, compute clusters, and managed online endpoints.\n\n1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the reported Azure Machine Learning Workspace\n4. Under 'Settings' go to 'Networking' section\n5. At the top, select the 'Workspace managed outbound access' tab\n6. Choose either 'Allow Internet Outbound' or 'Allow Only Approved Outbound' based on your needs\n7. Configure the workspace outbound rules according to your requirements\n8. Click on 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

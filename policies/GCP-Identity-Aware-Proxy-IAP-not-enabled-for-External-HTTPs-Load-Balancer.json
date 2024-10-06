@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ISO/IEC 27001:2022",
+    "Microsoft Cloud Security Benchmark v1",
     "Risk Management in Technology (RMiT)",
     "TX-RAMP Level 2"
   ]

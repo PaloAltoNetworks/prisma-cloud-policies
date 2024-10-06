@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-GLU-1299",
+  "policyId": "c7c6a60f-66f5-4961-8dc2-df4be4edad6d",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS Glue Job using the shadow resource bucket for script location",
+  "description": "This policy identifies that the AWS Glue Job using the bucket for script location is not managed from the current location. This could potentially be using the shadow resource bucket for script location.\n\nA shadow resource bucket is an unauthorized S3 bucket posing security risks. AWS Glue is a service utilized to automate the extraction, transformation, and loading (ETL) processes, streamlining data preparation for analytics and machine learning. When a job is created using the Visual ETL tool, Glue automatically creates an S3 bucket with a predictable name pattern 'aws-glue-assets-accountid-region'. An attacker could create the S3 bucket in any region before the victim uses Glue ETL, causing the victims Glue service to write files to the attacker-controlled bucket. This vulnerability allows an attacker to inject any code into the Glue job of the victim, resulting in remote code execution (RCE).\n\nIt is recommended to verify the expected bucket owner and update the AWS Glue jobs script location and enforce the aws:ResourceAccount condition in the policy of the AWS Glue Job to check that the AWS account ID of the S3 bucket used by AWS Glue Job according to your business requirements.",
+  "rule.criteria": "b7caa6d9-b507-4c7b-a96a-aac6ba60a34d",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-glue-job' AND json.rule = Command.BucketName exists and Command.BucketName contains \"aws-glue-assets-\" as X; config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' AND json.rule = bucketName contains \"aws-glue-assets-\" as Y; filter 'not ($.X.Command.BucketName equals $.Y.bucketName)' ; show X;",
+  "recommendation": "To update the script location for an AWS Glue Job:\n\n1. Sign in to the AWS Management Console and open the AWS Glue Studio console at https://console.aws.amazon.com/gluestudio/.\n2. In the navigation pane, choose 'ETL jobs'.\n3. Select the desired AWS Glue Job and choose 'Edit Job' from the 'Actions' drop-down.\n4. In the 'Job Details' window, under 'Advanced properties', verify that the 'Script path' and 'Script filename' are authorized and managed according to your business requirements.\n5. Move the required script to a new S3 bucket as per your requirements.\n6. In the AWS Glue Studio console, go to the 'Job details' tab and update the 'Script filename' and 'Script path' parameters to reflect the new S3 location.\n7. Choose 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

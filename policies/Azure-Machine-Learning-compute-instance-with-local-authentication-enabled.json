@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1295",
+  "policyId": "b3a4acdc-2665-45f6-afd5-90e173fbb39c",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine Learning compute instance with local authentication enabled",
+  "description": "This policy identifies Azure Machine Learning compute instances that are using local authentication.\n\nDisabling local authentication improves security by mandating the use of Microsoft Entra ID for authentication. Local authentication can lead to security risks and unauthorized access. Using Microsoft Entra ID ensures a more secure and compliant authentication process.\n\nAs a security best practice, it is recommended to disable local authentication and use Microsoft Entra ID for authentication.",
+  "rule.criteria": "c3c4e49e-8652-46be-92f3-1fd4afdf8c06",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-machine-learning-compute' AND json.rule = properties.properties.state equal ignore case running and (properties.computeType equal ignore case ComputeInstance or properties.computeType equal ignore case AmlCompute ) and properties.disableLocalAuth is false",
+  "recommendation": "Note: Disabling local authentication on an existing Azure Machine Learning compute instance without deleting and recreating it is not supported. The recommended approach to secure your compute instance is to set it up without local authentication from the beginning.\n\nTo create a new compute instance without local authentication:\n1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the Azure Machine Learning Workspace that the reported compute instance is associated with\n4. On the 'Overview' page, click the 'Studio web URL' link to log in to Azure ML Studio\n5. A new tab will open for Azure ML Studio\n6. In the left panel, under 'Manage' section, click on the 'Compute'\n7. Click 'New' to create a new compute instance\n8. In the 'Security' tab, under the 'Enable SSH access' section, leave the option disabled to turn off local authentication\n9. Select 'Review + Create' to create the compute instance",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

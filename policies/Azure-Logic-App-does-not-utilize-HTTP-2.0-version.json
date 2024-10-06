@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "HITRUST CSF v.11.2.0",
     "NIST SP 800-171 Revision 3",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 2"

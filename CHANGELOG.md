@@ -1,5 +1,41 @@
 # Changelog
 
+## PCS-24.10.1 - 2024-9-30
+
+### Added
+
+#### 11 new config policies
+
+- AWS EMR Studio using the shadow resource bucket for workspace storage
+- AWS Glue Job using the shadow resource bucket for script location
+- Azure Machine Learning compute instance not configured inside virtual network
+- Azure Machine Learning compute instance with local authentication enabled
+- Azure Machine Learning workspace not encrypted with Customer Managed Key (CMK)
+- Azure Machine Learning workspace not enforced with Managed Virtual Network Isolation
+- GCP public-facing (external) global load balancer using HTTP protocol
+- GCP public-facing (external) regional load balancer using HTTP protocol
+- GCP Storage Buckets with publicly accessible GCP logs
+- GCP Vertex AI Workbench Instance has Integrity monitoring disabled
+- GCP Vertex AI Workbench Instance has vTPM disabled
+- GCP Vertex AI Workbench Instance is using default service account with the editor role
+
+#### 6 new compliance standards
+
+- CIS v2.0.0 (Azure) Level 2
+- CIS v2.1.0 (Azure) Level 2
+- CSA CCM v4.0.12
+- HITRUST CSF v.11.2.0
+- ITSG-33
+- Microsoft Cloud Security Benchmark v1
+
+### Changed
+
+#### 2 config policies updated
+
+- Azure Storage Account without Secure transfer enabled
+- GCP Cloud Function v1 is using unsecured HTTP trigger
+
+
 #### PCS-24.9.2 - 2024-9-26
 
 ### Added

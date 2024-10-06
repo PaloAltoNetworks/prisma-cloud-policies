@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1292",
+  "policyId": "cf792c72-ddbd-4b74-b0be-16d54a2df838",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Workbench Instance has vTPM disabled",
+  "description": "This policy identifies GCP Vertex AI Workbench Instances that have the Virtual Trusted Platform Module (vTPM) feature disabled.\n\nThe Virtual Trusted Platform Module (vTPM) validates the guest VM's pre-boot and boot integrity and provides key generation and protection. The root keys of the vTPM, as well as the keys it generates, cannot leave the vTPM, thereby offering enhanced protection against compromised operating systems or highly privileged project administrators.\n\nIt is recommended to enable the virtual TPM device on GCP Vertex AI Workbench Instances to support measured boot and other OS security features that require a TPM.",
+  "rule.criteria": "d540b022-6ac2-43e7-834e-0885600b1d99",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-workbench-instance' AND json.rule = state equals \"ACTIVE\" AND shieldedInstanceConfig.enableVtpm is false",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'Notebooks', go to 'Workbench'\n4. Under 'INSTANCES' tab, select 'VIEW' as 'INSTANCES'\n5. Click on the alerting instance\n6. Under the 'SYSTEM' tab, in front of 'VM details', click on the 'View in Compute Engine' link\n7. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue.\n8. Once the the VM has been stopped, click on the 'EDIT' button\n9. Under 'Shielded VM', enable 'Turn on vTPM'\n10. Click on 'Save'\n11. Click on 'START/RESUME' from the top menu",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

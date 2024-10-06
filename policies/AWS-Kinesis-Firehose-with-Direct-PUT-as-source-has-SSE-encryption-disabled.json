@@ -14,11 +14,13 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CSA CCM v4.0.12",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
     "MLPS 2.0 (Level 2)",
+    "Microsoft Cloud Security Benchmark v1",
     "NYDFS 23 CRR-NY 500.0",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",

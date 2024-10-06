@@ -15,6 +15,10 @@
   "remediation.impact": "Sets HTTPS-only feature on the Azure Logic app",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "CSA CCM v4.0.12",
+    "HITRUST CSF v.11.2.0",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "NIST SP 800-171 Revision 3",
     "NYDFS 23 CRR-NY 500.0",
     "TX-RAMP Level 2"

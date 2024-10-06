@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS v2.0.0 (AWS) - Level 2",
-    "CIS v3.0.0 (AWS) Level 2"
+    "CIS v3.0.0 (AWS) Level 2",
+    "Microsoft Cloud Security Benchmark v1"
   ]
 }

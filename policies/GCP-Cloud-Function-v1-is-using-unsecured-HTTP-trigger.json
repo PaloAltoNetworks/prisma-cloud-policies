@@ -7,13 +7,16 @@
   "name": "GCP Cloud Function v1 is using unsecured HTTP trigger",
   "description": "This policy identifies GCP Cloud Functions v1 that are using unsecured HTTP trigger.\n\nUsing HTTP triggers for cloud functions poses significant security risks, including vulnerability to interception, tampering, and various attacks like man-in-the-middle. Conversely, HTTPS triggers provide encrypted communication, safeguarding sensitive data and ensuring confidentiality. HTTPS also supports authentication mechanisms, enhancing overall security and trust.\n\nIt is recommended to enable 'Require HTTPS' for HTTP triggers for all cloud functions v1.",
   "rule.criteria": "2c9d0cf9-0e73-4715-b483-cbb94238f1a1",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function-v2' AND json.rule = state equals ACTIVE and environment equals GEN_1 and serviceConfig.securityLevel does not equal SECURE_ALWAYS",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-function-v2' AND json.rule = state equals \"ACTIVE\" AND environment equals \"GEN_1\" AND serviceConfig.securityLevel exists AND serviceConfig.securityLevel does not equal \"SECURE_ALWAYS\"",
   "recommendation": "1. Login to GCP console\n2. Navigate to 'Cloud Functions' service\n3. Click on the alerting function\n4. Click on 'EDIT'\n5. Under section 'Trigger', click on 'EDIT' for HTTP trigger\n6. Select the checkbox against the field 'Require HTTPS'\n7. Click on 'SAVE'\n8. Click on 'NEXT'\n9. Click on 'DEPLOY'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HITRUST CSF v.11.2.0",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "NYDFS 23 CRR-NY 500.0",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2"

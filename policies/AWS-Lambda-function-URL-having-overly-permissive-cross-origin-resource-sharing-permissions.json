@@ -16,6 +16,7 @@
   "compliance.standard": [
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "HIPAA",
+    "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
     "NIST SP 800-171 Revision 3",
     "SOC 2",

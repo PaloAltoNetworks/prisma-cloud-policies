@@ -15,6 +15,9 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
+    "HITRUST CSF v.11.2.0",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "SOC 2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",

@@ -15,7 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "CSA CCM v4.0.12",
     "DORA",
+    "HITRUST CSF v.11.2.0",
+    "ITSG-33",
+    "Microsoft Cloud Security Benchmark v1",
     "NYDFS 23 CRR-NY 500.0",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
