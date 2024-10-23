@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-BGQ-1317",
+  "policyId": "b4da93e8-6362-45c4-bd72-ed9021c193de",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP BigQuery Table not encrypted with CMEK",
+  "description": "This policy identifies GCP BigQuery tables that are not encrypted with Customer Managed Encryption Keys (CMEK).\n\nCMEK for BigQuery tables provides control over the encryption of data at rest. Encrypting BigQuery tables with CMEK enhances security by giving you full control over encryption keys. This ensures data protection, especially for sensitive models and predictions. CMEK allows key rotation and revocation, aligning with compliance requirements and offering better data privacy management.\n\nIt is recommended to use CMEK for BigQuery table encryption.",
+  "rule.criteria": "3a79c786-3999-4bac-b004-c527e42a840d",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-bigquery-table' AND json.rule = encryptionConfiguration.kmsKeyName does not exist",
+  "recommendation": "To configure a Customer-managed encryption key (CMEK) for BigQuery Table, use following command for \"bq\" utility\nbq cp -f --destination_kms_key <CMEK> <DATASET_ID.TABLE_ID DATASET_ID.TABLE_ID>\n\nPlease refer to URL mentioned below for more details on how to change table from default encryption to CMEK encryption:\nhttps://cloud.google.com/bigquery/docs/customer-managed-encryption#change_to_kms\n\nPlease refer to URL mentioned below for more details on the bq update command:\nhttps://cloud.google.com/bigquery/docs/reference/bq-cli-reference#bq_cp",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

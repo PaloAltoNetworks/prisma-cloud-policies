@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-OCI-NET-866",
+  "policyId": "569e33b7-aacc-465e-a092-0598fae46d57",
+  "policyType": "config",
+  "cloudType": "oci",
+  "severity": "medium",
+  "name": "OCI Load balancer not configured with Web application firewall (WAF)",
+  "description": "This policy identifies OCI Load balancers that are not configured with a Web application firewall (WAF).\n\nA Web Application Firewall (WAF) helps protect web applications by filtering and monitoring HTTP traffic between a web application and the Internet. Without WAF, load balancers are vulnerable to various web-based attacks, including SQL injection, cross-site scripting (XSS), and other common exploits. This can lead to unauthorized access, data breaches, and other security incidents.\n\nAs a best practice, it is recommended to configure Web Application Firewall (WAF) for OCI Load Balancers to enhance security.",
+  "rule.criteria": "0054c9d5-8d5e-4479-9891-f660427234fd",
+  "searchModel.query": "config from cloud.resource where api.name = 'oci-networking-loadbalancer' AND json.rule = listeners.*.protocol equals HTTP and lifecycleState equals ACTIVE and isPrivate is false as X; config from cloud.resource where api.name = 'oci-loadbalancer-waf' AND json.rule = lifecycleState equal ignore case ACTIVE and (webAppFirewallPolicyId exists and webAppFirewallPolicyId does not equal \"null\") as Y; filter 'not ($.X.id equals $.Y.loadBalancerId) '; show X;",
+  "recommendation": "To configure an OCI Load Balancer with a Web Application Firewall (WAF), refer to the following documentation:\nhttps://docs.oracle.com/en/learn/oci-waf-flex-lbaas/index.html#introduction",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
