@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-ABED-1312",
+  "policyId": "a531ce58-18f2-439b-863f-601c3ac7f7c4",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Bedrock agent is not associated with Bedrock guardrails",
+  "description": "This policy identifies the AWS Bedrock agent that is not associated with Bedrock guardrails\n\nAmazon Bedrock Guardrails provides governance and compliance controls for generative AI applications, ensuring safe and responsible model use. Associating Guardrails with the Bedrock agent is useful for implementing governance and compliance controls in generative AI applications. Not linking Guardrails to the Bedrock agent raises the risk of non-compliance and harmful AI application outputs.\n\nIt is recommended that AWS Bedrock agents be associated with Bedrock guardrails to implement safeguards and prevent unwanted behavior from model responses or user messages.",
+  "rule.criteria": "4a122e5c-6bc6-4e4f-a757-fb9bcb3c9cc4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-bedrock-agent' AND json.rule = agentStatus is not member of ( \"DELETING\",\"FAILED\") and guardrailConfiguration.guardrailIdentifier does not exist",
+  "recommendation": "To associate the aws bedrock agent with the bedrock guardrail, perform the following actions:\n\n1. Log in to the AWS console. and Navigate to Amazon Bedrock console available at https://console.aws.amazon.com/bedrock/.\n2. In the navigation panel, under 'Builder tools', select 'Agents'.\n3. In the Agents, Click on the agent that is reported.\n4. Click on the 'Edit in Agent Builder' button on the right corner.\n5. In the Agent builder window, Under the 'Guardrail details' section click 'Edit' and select the name and version of the Amazon Bedrock guardrail created previously or click on the link to Create a new guardtrail.\n6. Choose 'Save and exit' to attach the selected guardrail to your Amazon Bedrock agent.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

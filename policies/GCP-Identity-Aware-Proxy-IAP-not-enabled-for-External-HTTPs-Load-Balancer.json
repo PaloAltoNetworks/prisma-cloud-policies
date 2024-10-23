@@ -16,6 +16,7 @@
   "compliance.standard": [
     "ISO/IEC 27001:2022",
     "Microsoft Cloud Security Benchmark v1",
+    "NIST 800-53 Rev 5",
     "Risk Management in Technology (RMiT)",
     "TX-RAMP Level 2"
   ]

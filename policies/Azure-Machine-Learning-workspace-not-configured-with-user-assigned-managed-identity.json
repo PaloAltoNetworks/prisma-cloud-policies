@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1306",
+  "policyId": "b25c6490-4a5f-4589-92d4-15a0e86ef87f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Machine Learning workspace not configured with user-assigned managed identity",
+  "description": "This policy identifies Azure Machine Learning workspaces that are not configured with a user-assigned managed identity.\n\nBy default, Azure Machine Learning workspaces use system-assigned managed identities to access resources like Azure Container Registry, Key Vault, Storage, and Application Insights. However, user-assigned managed identities offer better control over the identity's lifecycle and consistent access management across multiple resources. Since system-assigned identities are tied to the workspace and deleted if the workspace is removed, using a user-assigned identity allows access management independently, enhancing security and compliance.\n\nAs a security best practice, it is recommended to configure the Azure Machine Learning workspace with a user-assigned managed identity.",
+  "rule.criteria": "ac62a964-b850-48e7-89b8-972fa8a36ac3",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-machine-learning-workspace' AND json.rule = properties.provisioningState equal ignore case Succeeded and identity.type does not contain UserAssigned",
+  "recommendation": "Method 1: Updating an Existing Workspace\n1. Once an Azure Machine Learning workspace is created with a System-Managed Identity, you cannot change it to use only a User-Assigned Managed Identity. You can update the workspace to use both System-Managed and User-Assigned Managed Identities.\n2. For detailed instructions on how to configure this, visit the following URL: https://learn.microsoft.com/en-us/azure/machine-learning/how-to-identity-based-service-authentication?view=azureml-api-2&tabs=cli#add-a-user-assigned-managed-identity-to-a-workspace-in-addition-to-a-system-assigned-identity\n\nor\n\nMethod 2: Deleting the Existing Workspace and Creating a New Workspace\n1. To use only a User-Assigned Managed Identity, delete the existing workspace.  \n2. Create a new Azure Machine Learning workspace. During the setup, select 'User Assigned Identity' under the 'Identity' tab to ensure it exclusively uses a User-Assigned Managed Identity from the start.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
