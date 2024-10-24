@@ -25,6 +25,11 @@
 - GCP Vertex AI Workbench Instance has root access enabled
 - OCI Load balancer not configured with Web application firewall (WAF)
 
+#### 2 new policies for the IAM Security module
+
+- System/User-assigned managed identity with critical Entra ID permissions
+- VM/Serverless can impersonate an Entra ID application with read access to Microsoft 365 files/Outlook mail
+
 #### 2 new compliance standards
 
 - Insurance Regulatory And Development Authority Of India
@@ -40,6 +45,12 @@
 - Azure Logic app configured with public network access
 - Azure Machine learning compute instance configured with public IP
 - GCP SQL Instances do not have valid SSL configuration
+
+#### 3 compliance standards updated
+
+- CIS v2.0.0 (OCI) - Level 1
+- CIS v2.0.0 (OCI) - Level 2
+- NIST 800-53 Rev 5
 
 
 ## PCS-24.10.1 - 2024-9-30
