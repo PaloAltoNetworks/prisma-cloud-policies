@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CSA CCM v4.0.12",
+    "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1"
   ]
 }

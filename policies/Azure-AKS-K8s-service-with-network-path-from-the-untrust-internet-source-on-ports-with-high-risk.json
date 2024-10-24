@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1304",
+  "policyId": "203b8af8-5f2e-4c83-85be-8715aa9cadad",
+  "policyType": "network",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AKS K8s service with network path from the untrust internet source on ports with high risk",
+  "description": "This policy identifies Azure AKS Kubernetes services with network paths from untrusted internet sources on ports with high risk.\n\nAzure AKS Kubernetes services exposed to untrusted internet sources on ports with high-risk ports increase the risk of unauthorized access, cyber-attacks, and data breaches, as they may provide a larger attack surface for malicious actors. These container services are particularly vulnerable to brute-force attacks and exploits targeting known vulnerabilities.\n\nAs a best practice, it is recommended to allow access from the Trusted IP list and limit  access from known hosts, services, or specific entities.\n\nNOTE: Prisma Cloud’s Trusted IP List feature allows administrators to specify a list of IP addresses that are considered trusted or safe.",
+  "rule.criteria": "4fb67cd1-de2f-4df6-a3a4-9b6fa672c21e",
+  "searchModel.query": "config from network where source.network = UNTRUST_INTERNET and dest.resource.type = 'K8s Service' and dest.cloud.type = 'Azure' and protocol.ports in ( 'tcp/20:21', 'tcp/23', 'tcp/25', 'tcp/110', 'tcp/135', 'tcp/143', 'tcp/445', 'tcp/1433:1434', 'tcp/3000', 'tcp/3306', 'tcp/4333', 'tcp/5000', 'tcp/5432', 'tcp/5500', 'tcp/5601', 'tcp/8080', 'tcp/8088', 'tcp/8888', 'tcp/9200', 'tcp/9300' )",
+  "recommendation": "The following steps are recommended to restrict container service from having unrestricted access from the Internet:\nVisit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\nIdentify the network component on which restrictive rules can be implemented.\nImplement either of the following required changes and make sure no other resources have been impacted due to these changes:\n a) Create Kubernetes Network Policies to control traffic to and from your pods.\n b) Restrict inbound traffic to specific IP ranges for the Loadbalancer on container service.\n c) Move the container/app inside a restrictive subnet if it does not need to be publicly accessible.\n d) Remove or disassociate the public IP assigned to the respective container service.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

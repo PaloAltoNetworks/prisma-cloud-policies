@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SC-1313",
+  "policyId": "bcbef6e6-ee17-414c-af80-b05f2f470f66",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Microsoft Defender for Cloud set to Off for Agentless scanning for machines",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud where the Agentless scanning for machines is set to Off.\n\nAgentless scanning uses disk snapshots to detect installed software, vulnerabilities, and plain text secrets without needing agents on each machine. When disabled, your environment risks exposure to software vulnerabilities and unauthorized software, diminishing visibility into security issues. Enabling Agentless scanning improves security by identifying vulnerabilities and sensitive data with minimal performance impact, streamlining management and ensuring strong threat detection and compliance.\n\nAs a security best practice, it is recommended to enable Agentless scanning for machines in Azure Microsoft Defender for Cloud.",
+  "rule.criteria": "bf60b138-29ae-4fb9-b21f-c9deda3f9552",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = not (pricings[?any(properties.extensions[?any(name equal ignore case AgentlessVmScanning AND isEnabled is true)] exists AND properties.pricingTier equal ignore case Standard )] exists)",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Microsoft Defender for Cloud'\n3. Under 'Management', select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Click on 'Settings & monitoring' at the top\n7. In the table, find 'Agentless scanning for machines' and select 'On' under Plan\n8. Click 'Continue' in the top left\n9. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

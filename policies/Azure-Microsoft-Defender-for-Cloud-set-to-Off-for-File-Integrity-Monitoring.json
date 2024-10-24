@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-SC-1314",
+  "policyId": "fdde6a0e-bef2-47cb-9086-9bebb589d151",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Microsoft Defender for Cloud set to Off for File Integrity Monitoring",
+  "description": "This policy identifies Azure Microsoft Defender for Cloud where the File Integrity Monitoring is set to Off.\n\nFile Integrity Monitoring tracks critical system files in Windows and Linux for unauthorized changes, helping to identify potential attacks. Disabling File Integrity Monitoring leaves your system vulnerable to unnoticed alterations, increasing the risk of data breaches or system failures. Enabling FIM enhances security by alerting you to suspicious changes, allowing for proactive threat detection and prevention of unauthorized modifications to system files.\n\nAs a security best practice, it is recommended to enable File Integrity Monitoring in Azure Microsoft Defender for Cloud.",
+  "rule.criteria": "80025ae3-9f59-447c-a895-e7f866bdc923",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-security-center-settings' AND json.rule = not (pricings[?any(properties.extensions[?any(name equal ignore case FileIntegrityMonitoring AND isEnabled is true)] exists AND properties.pricingTier equal ignore case Standard )] exists)",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Microsoft Defender for Cloud'\n3. Under 'Management', select 'Environment Settings'\n4. Click on the subscription name\n5. Select the 'Defender plans'\n6. Click on 'Settings & monitoring' at the top\n7. In the table, find 'File Integrity Monitoring' and select 'On' under Plan\n8. Click 'Continue' in the top left\n9. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVAIP-1308",
+  "policyId": "48cb241d-5863-425c-aa44-a526824b44fa",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Endpoint not encrypted with CMEK",
+  "description": "This policy identifies GCP Vertex AI Endpoints that are not encrypted with CMEK.\n\nCustomer Managed Encryption Keys (CMEK) for a Vertex AI Endpoint provide control over the encryption of data at rest. Encrypting GCP Vertex AI Endpoints with CMEK enhances security by giving you full control over encryption keys. This ensures data protection, especially for sensitive models and predictions. CMEK allows key rotation and revocation, aligning with compliance requirements and offering better data privacy management.\n\nIt is recommended to use CMEK for Vertex AI Endpoint encryption.",
+  "rule.criteria": "1d5fd945-fd09-46c2-9da5-affc9f3a129a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-aiplatform-endpoint' AND json.rule = encryptionSpec.kmsKeyName does not exist",
+  "recommendation": "GCP Vertex AI Endpoint encryption cannot be changed after creation. To make use of CMEK a new Endpoint can be created.\n\nTo create a new Vertex AI Endpoint, please follow the steps below:\n1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'DEPLOY AND USE', go to 'Online prediction'\n4. Select 'ENDPOINTS' tab\n5. Click 'CREATE'\n6. Configure the endpoint name and access as required\n7. Click on 'ADVANCED OPTIONS', and then select 'Cloud KMS key'\n8. Select the appropriate 'Key type' and then select the required CMEK\n9. Click 'CONTINUE'\n10. Configure the Model settings as required, click 'CONTINUE'\n11. Configure the Model monitoring as required, click 'CONTINUE'\n12. Click 'CREATE'\n\nTo delete an existing Vertex AI Endpoint, please follow the steps below:\n\n1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'DEPLOY AND USE', go to 'Online prediction'\n4. Select 'ENDPOINTS' tab\n5. Click on the alerting endpoint\n6. Click on 'View More' bottom (three dots) for any model from the list.\n7. Click 'Undeploy model from endpoint'\n8. In the Undeploy model from endpoint dialog, click 'Undeploy'\n9. Repeat step 6-8 for all models listed\n10. Go back to 'Online prediction' page\n11. Select the alerting endpoint checkbox\n12. Click 'DELETE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

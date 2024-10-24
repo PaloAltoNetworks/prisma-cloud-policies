@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HIPAA",
     "ITSG-33",
+    "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",

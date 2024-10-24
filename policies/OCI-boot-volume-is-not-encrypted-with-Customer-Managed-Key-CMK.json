@@ -14,11 +14,13 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v2.0.0 (OCI) - Level 2",
     "CSA CCM v4.0.12",
     "DORA",
     "GDPR",
     "HITRUST CSF v.11.2.0",
     "Microsoft Cloud Security Benchmark v1",
+    "NIST 800-53 Rev 5",
     "NYDFS 23 CRR-NY 500.0",
     "SOC 2",
     "TX-RAMP Level 1"

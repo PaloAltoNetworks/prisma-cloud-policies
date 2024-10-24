@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1316",
+  "policyId": "fa6e9e09-d02e-418a-a573-baed692391ed",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure VM disk configured with public network access",
+  "description": "This policy identifies Azure Virtual Machine disks that are configured with public network access.\n\nAllowing public access to Azure Virtual Machine disk resources increases the risk of unauthorized access and potential security breaches. Public network access exposes sensitive data to external threats, which attackers could exploit to compromise VM disks. Disabling public access and using Azure Private Link reduces exposure, ensuring only trusted networks have access and enhancing the security of your Azure environment by minimizing the risk of data leaks and breaches.\n\nAs a security best practice, it is recommended to disable public network access for Azure Virtual Machine disks.",
+  "rule.criteria": "6a3ba52c-1a0e-4359-aba5-e417ca280270",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-disk-list' AND json.rule = publicNetworkAccess equal ignore case Enabled and networkAccessPolicy equal ignore case AllowAll and managedBy contains virtualMachines",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Disks'\n3. Click on the reported disk\n4. Under 'Settings', go to 'Networking'\n5. Ensure that Network access is NOT set to 'Enable public access from all networks'\n6. Click 'Save'",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az disk update --name ${resourceName} --resource-group ${resourceGroup} --public-network-access Disabled --network-access-policy DenyAll",
+  "remediation.description": "This CLI command requires 'Microsoft.Compute/disks/write' permission. Successful execution will disable public network access and sets the network access policy to DenyAll for the specified disk, blocking external access. \nNote: As a security best practice, we are disabling public and private access to the disk. However, you can choose between the following options based on your security requirements:\n- Disable public access and enable private access\n- Disable public and private access",
+  "remediation.impact": "Disable public network access for Azure Virtual Machine disk",
+  "compliance.standard": ""
+}

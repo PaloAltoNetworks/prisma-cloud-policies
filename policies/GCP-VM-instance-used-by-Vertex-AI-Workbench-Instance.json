@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCE-1310",
+  "policyId": "aef43315-4055-4ca4-a7ca-dd246d3bdde3",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP VM instance used by Vertex AI Workbench Instance",
+  "description": "This policy identifies GCP VM instances used by Vertex AI Workbench.\n\nVertex AI Workbench relies on GCP Compute Engine VM instances for backend processing. The selection of the appropriate VM instance type, size, and configuration directly impacts the performance and security of the Workbench. Proper configuration of these VM instances is critical to ensuring the security of the associated Vertex AI environment.\n\nIt is recommended to regularly identify and assess the VM instances supporting Vertex AI Workbench to maintain a strong security posture and ensure compliance with best practices.",
+  "rule.criteria": "c58eae8e-82b6-4289-9a05-6c1c3c1f4baa",
+  "searchModel.query": "config from cloud.resource where api.name = 'gcloud-compute-instances-list' AND json.rule = status equals \"RUNNING\" as X; config from cloud.resource where api.name = 'gcloud-vertex-ai-workbench-instance' as Y; filter ' $.Y.labels.resource-name equals $.X.labels.resource-name '; show X;",
+  "recommendation": "Review and validate the GCP VM instances used by Vertex AI Workbench Instances. Verify the VM instance is configured as per organizational needs.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -15,6 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ITSG-33",
+    "Insurance Regulatory And Development Authority Of India",
+    "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "NYDFS 23 CRR-NY 500.0",
     "SOC 2",
     "Secure Controls Framework (SCF) - 2024.2",

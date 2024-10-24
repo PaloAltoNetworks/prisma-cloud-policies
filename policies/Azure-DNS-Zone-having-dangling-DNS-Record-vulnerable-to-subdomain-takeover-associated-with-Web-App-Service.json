@@ -7,13 +7,14 @@
   "name": "Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Web App Service",
   "description": "This policy identifies DNS records within an Azure DNS zone that point to Azure Web App Services that no longer exist.\n\nA dangling DNS attack happens when a DNS record points to a cloud resource that has been deleted or is inactive, making the subdomain vulnerable to takeover. An attacker can exploit this by creating a new resource with the same name and taking control of the subdomain to serve malicious content. This allows attackers to host harmful content under your subdomain, which could lead to phishing attacks, data breaches, and damage to your reputation. The risk arises because the DNS record still references a non-existent resource, which unauthorized individuals can re-associate with their own resources.\n\nAs a security best practice, it is recommended to routinely audit DNS zones and remove or update DNS records pointing to non-existing Web App Services.",
   "rule.criteria": "39e7ec57-727a-467e-b5d7-d0d20e28e2b7",
-  "searchModel.query": "config from cloud.resource where api.name = 'azure-dns-recordsets' AND json.rule = type contains CNAME and properties.CNAMERecord.cname contains \"azurewebsites.net\" as X; config from cloud.resource where api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running as Y;  filter 'not ($.Y.properties.hostNames contains $.X.properties.CNAMERecord.cname) '; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-dns-recordsets' AND json.rule = type contains CNAME and properties.CNAMERecord.cname contains \"azurewebsites.net\" as X; config from cloud.resource where api.name = 'azure-app-service' as Y; filter 'not ($.Y.properties.hostNames contains $.X.properties.CNAMERecord.cname) '; show X;",
   "recommendation": "1. Log in to the Azure Portal and search for 'DNS zones'\n2. Select 'DNS zones' from the search results\n3. Select the DNS zone associated with the reported DNS record\n4. On the left-hand menu, under 'DNS Management,' select 'Recordsets'\n5. Locate and select the reported DNS record\n6. Update or remove the DNS Record if no longer necessary",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
-    "Microsoft Cloud Security Benchmark v1"
+    "Microsoft Cloud Security Benchmark v1",
+    "NIST 800-53 Rev 5"
   ]
 }

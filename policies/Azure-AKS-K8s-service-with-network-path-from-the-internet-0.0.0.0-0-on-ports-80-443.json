@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1301",
+  "policyId": "a194411a-7d3f-48fa-999d-02313f69d252",
+  "policyType": "network",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure AKS K8s service with network path from the internet (0.0.0.0/0) on ports 80/443",
+  "description": "This policy identifies Azure AKS K8s services that have network paths open to the internet (0.0.0.0/0) on ports 80 or 443.\n\nExposing container services to the internet increases the risk of unauthorized access, cyber attacks, and data breaches by expanding the attack surface for malicious actors. Services open on ports 80 and 443, which are used for HTTP and HTTPS protocols, are particularly vulnerable to attacks such as brute force attempts, vulnerability exploits, cross-site scripting (XSS), SQL injections, cross-site request forgeries (CSRF), and DDoS attacks.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit access to trusted hosts, services, or specific entities.",
+  "rule.criteria": "6ebe462f-7006-4647-8ae9-6baa350b9614",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'K8s Service' and dest.cloud.type = 'AZURE' and protocol.ports in ( 'tcp/80' , 'tcp/443' )",
+  "recommendation": "The following steps are recommended to restrict container service from having unrestricted access from the Internet:\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement either of the following required changes and make sure no other resources have been impacted due to these changes:\n a) Create Kubernetes Network Policies to control traffic to and from your pods.\n b) Restrict inbound traffic to specific IP ranges for the Loadbalancer on container service.\n c) Move the container/app inside a restrictive subnet if it does not need to be publicly accessible.\n d) Remove or disassociate the public IP assigned to the respective container service.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

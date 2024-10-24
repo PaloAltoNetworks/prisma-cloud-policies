@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "2b4d84a2-ba18-4d89-843e-9c3a4ab5006b",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "System/User-assigned managed identity with critical Entra ID permissions",
+  "description": "This policy detects Azure system-assigned and user-assigned managed identities that are granted critical Graph API permissions or assigned roles containing high-privilege Entra ID permissions. These permissions, such as the ability to create or modify critical resources, may lead to potential privilege escalation or data exfiltration risks.",
+  "rule.criteria": "2b4d84a2-ba18-4d89-843e-9c3a4ab5006b",
+  "searchModel.query": "config from iam where source.cloud.type = 'AZURE' AND source.cloud.resource.type IN ('System Assigned','User Assigned' ) and action.name in ('Application.ReadWrite.All','Directory.ReadWrite.All','microsoft.directory/applications/owners/update','microsoft.directory/applications/credentials/update','RoleManagement.ReadWrite.Directory','microsoft.directory/groups.security/owners/update','microsoft.directory/groups.security.assignedMembership/members/update','microsoft.directory/groups.security/members/update','microsoft.directory/groups.unified/owners/update','microsoft.directory/groups.unified.assignedMembership/members/update','microsoft.directory/groups.unified/members/update','microsoft.directory/groupsAssignableToRoles/allProperties/update','User.ReadWrite.All','microsoft.directory/users/password/update','AppRoleAssignment.ReadWrite.All','microsoft.directory/servicePrincipals/appRoleAssignedTo/update','microsoft.directory/groups/members/update','microsoft.directory/groups/owners/update','Mail.ReadWrite','Files.ReadWrite.All','Sites.ReadWrite.All','Sites.FullControl.All')",
+  "recommendation": "How to remediate?\nClick on the Source.\nOn the right, click on View JSON.\nFrom the JSON, extract the \"id\" property under the \"data\" property.\nLog in to the Azure Portal.\nNavigate to Enterprise Applications, and find the matching Enterprise Application by pasting the \"id\" from the previous step.\nClick on the Enterprise Application.\nFor Entra ID permissions:\nGo to Manage.\nGo to Roles and administrators.\nRevoke the relevant role that grants the \"microsoft.directory/applications/credentials/update\" or \"microsoft.directory/applications/owners/update\" action.\nFor Graph API permissions:\nGo to Security.\nGo to Permissions.\nOn this page, you will see the violating permission matching the \"action\" column from the investigation.\nClick on the three dots (...) then select \"Revoke Permission\".",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}
