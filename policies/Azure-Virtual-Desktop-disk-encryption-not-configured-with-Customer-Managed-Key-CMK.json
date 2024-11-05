@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CSA CCM v4.0.12",
     "HITRUST CSF v.11.2.0",
-    "Microsoft Cloud Security Benchmark v1"
+    "Microsoft Cloud Security Benchmark v1",
+    "NIST 800-53 Rev 5"
   ]
 }

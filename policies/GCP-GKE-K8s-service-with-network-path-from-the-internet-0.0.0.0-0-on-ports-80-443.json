@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALL-ALL-1302",
+  "policyId": "eaa68a6c-3fc2-4db7-ab21-aaae613f8b28",
+  "policyType": "network",
+  "cloudType": "gcp",
+  "severity": "high",
+  "name": "GCP GKE K8s service with network path from the internet (0.0.0.0/0) on ports 80/443",
+  "description": "This policy identifies GCP GKE Kubernetes services that have network paths open to the internet (0.0.0.0/0) on ports 80 or 443.\n\nExposing container services to the internet increases the risk of unauthorized access, cyber attacks, and data breaches by expanding the attack surface for malicious actors. Services open on ports 80 and 443, which are used for HTTP and HTTPS protocols, are particularly vulnerable to attacks such as brute force attempts, vulnerability exploits, cross-site scripting (XSS), SQL injections, cross-site request forgeries (CSRF), and DDoS attacks.\n\nAs a best practice, restrict traffic from unknown IP addresses and limit access to trusted hosts, services, or specific entities.",
+  "rule.criteria": "c7838fab-5f3c-46a6-b160-663577a0c5cf",
+  "searchModel.query": "config from network where source.network = '0.0.0.0/0' and address.match.criteria = 'full_match' and dest.resource.type = 'K8s Service' and dest.cloud.type = 'GCP' and protocol.ports in ( 'tcp/80' , 'tcp/443' )",
+  "recommendation": "The following steps are recommended to restrict GKE K8s service from having unrestricted access from the Internet:\n1. Visit the Network path Analysis from Source to Destination and review the network path components that allow internet access.\n2. Identify the network component on which restrictive rules can be implemented.\n3. Implement the necessary changes and ensure no other resources have been impacted due to these changes:\na) The overly permissive firewall rules can be made more restrictive.\nb) Move the container/application inside a restrictive subnet if public accessibility is not required.\nc) Remove or disassociate the public IP assigned to the respective container.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

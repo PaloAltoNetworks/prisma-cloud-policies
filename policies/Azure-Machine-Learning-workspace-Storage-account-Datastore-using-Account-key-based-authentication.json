@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AML-1307",
+  "policyId": "dabf9de7-d2ec-4d5e-96d8-ebf8a5879c69",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Machine Learning workspace Storage account Datastore using Account key based authentication",
+  "description": "This policy identifies Azure Machine Learning workspace datastores that use storage account keys for authentication.\n\nAccount key-based authentication is a security risk because it grants full, unrestricted access to the storage account, including the ability to read, write, and delete all data. If compromised, attackers can control all data in the account. This method lacks permission granularity and time limits, increasing the risk of exposing sensitive information. Using SAS tokens provides more granular control, allowing you to limit access to specific resources and set time-bound access, which enhances security and reduces risks in production environments.\n\nAs a security best practice, it is recommended to use SAS tokens for authenticating Azure Machine Learning datastores.",
+  "rule.criteria": "2e0b6293-9293-41ce-959e-4005521caf26",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-machine-learning-datastores' AND json.rule = (properties.datastoreType equal ignore case AzureFile or properties.datastoreType equal ignore case AzureBlob) and properties.credentials.credentialsType equal ignore case AccountKey",
+  "recommendation": "1. Log in to Azure Portal and search for 'Azure Machine Learning'\n2. Select 'Azure Machine Learning'\n3. Select the Azure Machine Learning Workspace that the reported Datastore is associated with\n4. On the 'Overview' page, click the 'Studio web URL' link to log in to Azure ML Studio\n5. A new tab will open for Azure ML Studio\n6. In the left panel, under 'Assets' section, click on the 'Data'\n7. Select the 'Datastores' tab at the top\n8. Click on the reported Datastore\n9. Click on the 'Update authentication' tab at the top\n9. A side panel will appear on the right, configure the 'Authentication type' as 'SAS token' and enter the token value\n10. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

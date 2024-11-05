@@ -7,7 +7,7 @@
   "name": "Azure Logic app configured with public network access",
   "description": "This policy identifies Azure Logic apps that are configured with public network access.\n\nExposing Logic Apps directly to the public internet increases the attack surface, making them more susceptible to unauthorized access, security threats, and potential breaches. By limiting Logic Apps to private network access, they are securely managed and less prone to external vulnerabilities.\n\nAs a security best practice, it is recommended to configure private network access or restrict the public exposure only to the required entities instead of wide ranges.",
   "rule.criteria": "e7ad2ee1-050a-458d-bf04-0569fec3d855",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'properties.state equal ignore case running and kind contains workflowapp and ((properties.publicNetworkAccess exists and properties.publicNetworkAccess equal ignore case Enabled) or (properties.publicNetworkAccess does not exist)) and config.ipSecurityRestrictions[?any((action equals Allow and ipAddress equals Any) or (action equals Allow and ipAddress equals 0.0.0.0/0))] exists'",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-app-service' AND json.rule = 'properties.state equal ignore case running and kind contains workflowapp and ((properties.publicNetworkAccess exists and properties.publicNetworkAccess equal ignore case Enabled) or (properties.publicNetworkAccess does not exist and (properties.privateLinkIdentifiers does not exist or properties.privateLinkIdentifiers is empty))) and config.ipSecurityRestrictions[?any((action equals Allow and ipAddress equals Any) or (action equals Allow and ipAddress equals 0.0.0.0/0))] exists'",
   "recommendation": "1. Log in to Azure portal\n2. Navigate to Logic apps\n3. Click on the reported Logic app\n4. Under 'Setting' section, click on 'Networking'\n5. On the 'Networking' page, under 'Inbound traffic configuration' section, select the 'Public network access' setting.\n6. On the 'Access Restrictions' page, review the list of access restriction rules that are defined for your app and avoid providing access to all networks.\n7. Click on 'Save'",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HITRUST CSF v.11.2.0",
     "ITSG-33",
+    "Insurance Regulatory And Development Authority Of India",
     "Microsoft Cloud Security Benchmark v1",
     "NIST SP 800-171 Revision 3",
     "NYDFS 23 CRR-NY 500.0",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "",
+  "policyId": "6273d57a-19f1-49c4-b81e-7f9fd36dae6d",
+  "policyType": "iam",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "VM/Serverless can impersonate an Entra ID application with read access to Microsoft 365 files/Outlook mail",
+  "description": "This policy identifies Azure virtual machines or serverless services with a managed identity attached that can impersonate an App Registration using the 'Create Credentials' or 'Change Ownership' features. These App Registrations, accessed via the managed identity, are granted Graph API permissions allowing read access to Microsoft 365 files or Outlook mail.",
+  "rule.criteria": "6273d57a-19f1-49c4-b81e-7f9fd36dae6d",
+  "searchModel.query": "config from iam where source.cloud.type = 'AZURE' AND source.cloud.resource.type in ('virtualMachines','sites','virtualMachineScaleSets/virtualMachines')  and grantedby.cloud.entity.type = 'App Registration'  and grantedby.cloud.policy.type = 'Microsoft Graph' and action.name in ('Files.Read.All', 'Files.ReadWrite.All','Sites.Read.All','Sites.ReadWrite.All','Sites.FullControl.All','Sites.Selected','Mail.ReadWrite','Mail.Read')",
+  "recommendation": "How to remediate?\nClick on the Source.\nOn the right, click on View JSON.\nFrom the JSON, extract all the principalId under the \"identity\" property.\nIf more than one principalId exists, repeat the following steps (5-13) for each system-assigned and user-assigned principalId.\nLog in to the Azure Portal.\nNavigate to Enterprise Applications, and find the matching Enterprise Application by pasting the principalId from the previous step.\nClick on the Enterprise Application.\nGo to Manage.\nGo to Roles and administrators.\nRevoke the relevant role that grants the \"microsoft.directory/applications/credentials/update\" or \"microsoft.directory/applications/owners/update\" action.\nGo to Security.\nGo to Permissions.\nRevoke the Graph API permission that grants \"Application.ReadWrite.All\" or \"Directory.ReadWrite.All\".\n",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "dynamic Azure cli commands",
+  "remediation.description": "List of CLI commands are generated dynamically based on the violating resource. Successful execution will limit the relevant permissions of the violating resource.",
+  "remediation.impact": "limit the relevant permissions of the violating resource",
+  "compliance.standard": ""
+}

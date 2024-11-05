@@ -1,5 +1,58 @@
 # Changelog
 
+## PCS-24.11.1 - 2024-10-23
+
+### Added
+
+#### 18 new config policies
+
+- AWS Bedrock agent is not associated with Bedrock guardrails
+- AWS EKS K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- AWS EKS K8s service with network path from the untrust internet source on ports with high risk
+- Azure AKS K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- Azure AKS K8s service with network path from the untrust internet source on ports with high risk
+- Azure Machine Learning workspace Storage account Datastore using Account key based authentication
+- Azure Machine Learning workspace not configured with user-assigned managed identity
+- Azure Microsoft Defender for Cloud set to Off for Agentless container vulnerability assessment
+- Azure Microsoft Defender for Cloud set to Off for Agentless scanning for machines
+- Azure Microsoft Defender for Cloud set to Off for File Integrity Monitoring
+- Azure VM disk configured with public network access
+- GCP BigQuery Table not encrypted with CMEK
+- GCP GKE K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- GCP GKE K8s service with network path from the untrust internet source on ports with high risk
+- GCP VM instance used by Vertex AI Workbench Instance
+- GCP Vertex AI Endpoint not encrypted with CMEK
+- GCP Vertex AI Workbench Instance has root access enabled
+- OCI Load balancer not configured with Web application firewall (WAF)
+
+#### 2 new policies for the IAM Security module
+
+- System/User-assigned managed identity with critical Entra ID permissions
+- VM/Serverless can impersonate an Entra ID application with read access to Microsoft 365 files/Outlook mail
+
+#### 2 new compliance standards
+
+- Insurance Regulatory And Development Authority Of India
+- MITRE ATT&CK v15.1 Cloud IaaS for Enterprise
+
+### Changed
+
+#### 6 config policies updated
+
+- AWS KMS Key policy overly permissive
+- AWS MFA not enabled for IAM users
+- Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Web App Service
+- Azure Logic app configured with public network access
+- Azure Machine learning compute instance configured with public IP
+- GCP SQL Instances do not have valid SSL configuration
+
+#### 3 compliance standards updated
+
+- CIS v2.0.0 (OCI) - Level 1
+- CIS v2.0.0 (OCI) - Level 2
+- NIST 800-53 Rev 5
+
+
 ## PCS-24.10.1 - 2024-9-30
 
 ### Added

@@ -16,6 +16,7 @@
   "compliance.standard": [
     "ITSG-33",
     "Microsoft Cloud Security Benchmark v1",
+    "NIST 800-53 Rev 5",
     "NYDFS 23 CRR-NY 500.0",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2"
