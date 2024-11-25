@@ -1,5 +1,63 @@
 # Changelog
 
+## PCS-24.12.1 - 2024-11-25
+
+### Added
+
+#### 24 new config policies
+
+- AWS CloudWatch Log groups not encrypted by Customer Managed Key (CMK)
+- AWS ECR private repository with cross-account access
+- AWS EMR cluster is not enabled with termination protection
+- AWS FSX Windows filesystem is not configured with file access auditing
+- AWS Lightsail Instance does not restrict traffic on admin ports
+- AWS MSK cluster public access is enabled
+- AWS Route53 Domain transfer lock is not enabled
+- AWS Security Group allows all traffic on CIFS port (445)
+- Alibaba Cloud OSS bucket logging not enabled
+- Alibaba Cloud VPC flow log not enabled
+- Azure App Service basic authentication enabled
+- Azure Microsoft Entra ID account lockout duration less than 60 seconds
+- Azure Microsoft Entra ID account lockout threshold greater than 10
+- Azure disk data access authentication mode not enabled
+- GCP Cloud Run function is using default service account with editor role
+- GCP SQL Instance not encrypted with CMEK
+- GCP SQL database instance deletion protection is disabled
+- GCP Secrets Manager secret has no expiration date
+- GCP Secrets Manager secret not encrypted with CMEK
+- GCP Spanner Database drop protection disabled
+- GCP Spanner Databases not encrypted with CMEK
+- GCP Vertex AI Workbench Instance JupyterLab interface access mode set to single user
+- GCP Vertex AI Workbench Instance auto-upgrade is disabled
+- GCP Vertex AI Workbench Instance has Secure Boot disabled
+
+#### 2 new compliance standards
+
+- ACSC Information Security Manual (ISM) (Latest)
+- PCI DSS v4.0.1
+
+### Changed
+
+#### 6 config policies updated
+
+- AWS EMR cluster is not enabled with local disk encryption
+- AWS EMR cluster is not enabled with local disk encryption using Custom key provider
+- GCP GKE unsupported Master node version
+- GCP GKE unsupported node version
+- GCP PostgreSQL instance database flag log_hostname is not set to off
+- GCP VM instance with the external IP address
+
+#### 4 compliance standards updated
+
+- MLPS 2.0
+- MLPS 2.0 (Level 2)
+- MLPS 2.0 (Level 3)
+- Microsoft Cloud Security Benchmark v1
+
+#### 1 config policy deleted
+
+- GCP VM instance is assigned with public IP
+
 ## PCS-24.11.1 - 2024-10-23
 
 ### Added

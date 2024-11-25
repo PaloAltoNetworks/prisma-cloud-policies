@@ -15,6 +15,7 @@
   "remediation.impact": "Sets latest HTTP version in Azure Function App",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CIS Controls v8.1",

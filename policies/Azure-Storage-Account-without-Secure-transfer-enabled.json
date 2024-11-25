@@ -15,6 +15,7 @@
   "remediation.impact": "enable secure transfer for this storage account",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
@@ -56,7 +57,9 @@
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v6.3 [Deprecated]",
     "MITRE ATT&CK v8.2 [Deprecated]",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
+    "MLPS 2.0 (Level 3)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",

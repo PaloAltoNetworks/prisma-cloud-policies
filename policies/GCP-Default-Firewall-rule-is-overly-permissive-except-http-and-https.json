@@ -15,6 +15,7 @@
   "remediation.impact": "Disable GCP Default Firewall rule which is overly permissive (except http and https)",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -35,6 +36,7 @@
     "ISO/IEC 27001:2022",
     "MITRE ATT&CK v6.3 [Deprecated]",
     "MITRE ATT&CK v8.2 [Deprecated]",
+    "MLPS 2.0",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -46,6 +48,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",

@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CIS Controls v8.1",
@@ -36,6 +37,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "SOC 2",

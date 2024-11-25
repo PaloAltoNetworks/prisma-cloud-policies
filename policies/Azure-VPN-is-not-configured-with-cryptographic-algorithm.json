@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -38,7 +39,9 @@
     "ISO/IEC 27018:2019",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v6.3 [Deprecated]",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
+    "MLPS 2.0 (Level 3)",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",

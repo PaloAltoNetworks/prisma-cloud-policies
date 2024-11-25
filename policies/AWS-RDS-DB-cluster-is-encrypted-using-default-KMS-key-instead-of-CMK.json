@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
@@ -43,6 +44,7 @@
     "ISO/IEC 27018:2019",
     "MAS TRM 2021",
     "MLPS 2.0 (Level 2)",
+    "MLPS 2.0 (Level 3)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -54,6 +56,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",

@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS v2.0.0 (AWS) - Level 2",
     "CIS v3.0.0 (AWS) Level 2",
     "CSA CCM v4.0.12",

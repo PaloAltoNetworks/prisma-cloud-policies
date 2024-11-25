@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CSA CCM v4.0.12",
     "DORA",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
@@ -31,6 +32,7 @@
     "NIST 800-53 Rev 5",
     "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
+    "PCI DSS v4.0.1",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",

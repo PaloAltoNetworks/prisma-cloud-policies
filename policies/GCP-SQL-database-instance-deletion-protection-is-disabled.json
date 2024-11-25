@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SQL-1333",
+  "policyId": "40441d9a-23df-46bf-bc31-d212110cf756",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP SQL database instance deletion protection is disabled",
+  "description": "This policy identifies GCP SQL database instances that have deletion protection disabled.\n\nEnabling instance deletion protection on GCP SQL databases is crucial for preventing accidental data loss, especially in production environments where an unintended deletion could disrupt services and impact business continuity. Deletion protection adds an extra safeguard, requiring intentional action to disable the setting before deletion, helping teams avoid costly downtime and ensuring the availability of essential data.\n\nIt is recommended to enable deletion protection on GCP SQL database instances to prevent accidental deletion.",
+  "rule.criteria": "8ec0f8b3-2e51-4155-a2b5-8cef59e8b76a",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-sql-instances-list' AND json.rule = state equals \"RUNNABLE\" and deletionProtectionEnabled is false",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'SQL' service\n3. Click on the name of the SQL instance on which alert is generated\n4. Click 'EDIT' at top\n5. Expand 'Data Protection'\n6. Check 'Enable deletion protection'\n7. Click 'Save' at bottom",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

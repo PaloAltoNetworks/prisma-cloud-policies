@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AD-1322",
+  "policyId": "dfbfddd4-7287-48f0-b16a-020ac2b90e76",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Microsoft Entra ID account lockout threshold greater than 10",
+  "description": "This policy identifies if the account lockout threshold for Microsoft Entra ID (formerly Azure AD) accounts is configured to allow more than 10 failed login attempts before the account is locked out.\n\nA high lockout threshold (greater than 10) increases the risk of brute-force or password spray attacks, where attackers can attempt multiple passwords over time without triggering account lockouts, leaving accounts vulnerable to unauthorized access. Setting the lockout threshold to a reasonable value (e.g., less than or equal to 10) balances usability and security by limiting the number of login attempts before an account is locked, reducing exposure to attacks while preventing frequent unnecessary lockouts for legitimate users.\n\nAs a security best practice, it is recommended to configure the account lockout threshold to less than or equal to 10.",
+  "rule.criteria": "e24089b4-d38b-48d4-a16a-e0deb60227a9",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-active-directory-group-settings' and json.rule = values[?any( name equals LockoutThreshold and (value greater than 10 or value does not exist))] exists",
+  "recommendation": "1. Log in to Azure Portal and search for 'Microsoft Entra ID'\n2. Select 'Microsoft Entra ID'\n3. Under Manage, select Security\n4. Under Manage, select Authentication methods\n5. Under Manage, select Password protection\n6. Set the 'Lockout threshold' to 10 or fewer\n7. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

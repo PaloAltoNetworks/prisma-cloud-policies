@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
     "CIS Controls v7.1",

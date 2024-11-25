@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1328",
+  "policyId": "e2903f3d-c727-4d2c-8305-628cbaa5481b",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Workbench Instance has Secure Boot disabled",
+  "description": "This policy identifies GCP Vertex AI Workbench instances with Secure Boot disabled.\n\nSecure Boot is a security feature that ensures only trusted, digitally signed software runs during the boot process, protecting against advanced threats such as rootkits and bootkits. By verifying the integrity of the bootloader and operating system, Secure Boot prevents unauthorized software from compromising the system at startup. Without Secure Boot, instances are vulnerable to persistent malware and unauthorized code that could compromise the system deeply.\n\nIt is recommended to enable Secure Boot for Vertex AI Workbench instances.",
+  "rule.criteria": "bb66003d-8d68-4144-86cd-8386fa86832d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-workbench-instance' AND json.rule = state equals \"ACTIVE\" AND shieldedInstanceConfig.enableSecureBoot is false",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'Notebooks', go to 'Workbench'\n4. Under 'INSTANCES' tab, select 'VIEW' as 'INSTANCES'\n5. Click on the alerting instance\n6. Under the 'SYSTEM' tab, in front of 'VM details', click on the 'View in Compute Engine' link\n7. Stop the VM by clicking on the 'STOP' button. Click the 'STOP' button on the confirmation dialogue.\n8. Once the the VM has been stopped, click on the 'EDIT' button\n9. Under 'Shielded VM', enable 'Turn on Secure Boot'\n10. Click on 'Save'\n11. Click on 'START/RESUME' from the top menu",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

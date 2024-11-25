@@ -15,6 +15,7 @@
   "remediation.impact": "Enables private-ip-google-access in GCP VPC Network subnets",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
@@ -39,6 +40,7 @@
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",

@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CSA CCM v4.0.12",
     "Microsoft Cloud Security Benchmark v1",
-    "NIST 800-53 Rev 5"
+    "NIST 800-53 Rev 5",
+    "PCI DSS v4.0.1"
   ]
 }

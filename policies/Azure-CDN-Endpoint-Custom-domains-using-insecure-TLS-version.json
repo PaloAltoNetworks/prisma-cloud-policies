@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v7.1",
     "CIS Controls v8",
     "CIS Controls v8.1",
@@ -41,6 +42,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",

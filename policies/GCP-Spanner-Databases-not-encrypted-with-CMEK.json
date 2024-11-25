@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCS-1319",
+  "policyId": "8f4dcb9b-5a0c-43ad-b323-1de833542647",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Spanner Databases not encrypted with CMEK",
+  "description": "This policy identifies GCP Spanner databases that are not encrypted with a Customer-Managed Encryption Key (CMEK).\n\nGoogle Cloud Spanner is a scalable, globally distributed, and strongly consistent database service. By using CMEK with Spanner, you retain complete control over the encryption keys protecting your sensitive data, ensuring that only authorized users with access to these keys can decrypt and access the information. Without CMEK, data is encrypted with Google-managed keys, which may not provide the level of control required for handling sensitive data in certain industries.\n\nIt is recommended to encrypt Spanner database data using a Customer-Managed Encryption Key (CMEK).",
+  "rule.criteria": "1d7c6dec-d759-4258-b9a9-da07bd391466",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-cloud-spanner-database' AND json.rule = state equal ignore case ready AND encryptionConfig.kmsKeyNames does not exist",
+  "recommendation": "Encryption configuration can only be updated during spanner database creation. Follow the below steps to create a new spanner database with a customer-managed encryption key:\n\n1. Sign in to the Google Cloud Management Console. Navigate to the Cloud Spanner page\n2. Under instances, select the instance under which the reported database exists\n3. Under databases, select the 'CREATE DATABASE' option\n4. Under the create database page, under the 'SHOW ENCRYPTION OPTIONS' section, select 'Cloud KMS Key'\n5. Select the KMS key you prefer\n6. Click on 'CREATE'.\n\nNote: It is recommended to migrate data from an old database to a new database created.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -14,11 +14,13 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "HITRUST CSF v.11.2.0",
     "Insurance Regulatory And Development Authority Of India",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
+    "PCI DSS v4.0.1",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",

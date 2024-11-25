@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
@@ -47,7 +48,9 @@
     "ISO/IEC 27018:2019",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
+    "MLPS 2.0 (Level 3)",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
