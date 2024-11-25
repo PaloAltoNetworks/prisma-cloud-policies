@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-R53-1327",
+  "policyId": "8c3705dc-004a-4c68-b6e6-b04affc0e6de",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Route53 Domain transfer lock is not enabled",
+  "description": "This policy identifies the AWS Route53 domain, which is not enabled with transfer lock.\n\nRoute 53 Domain Transfer Lock is a security feature that prevents unauthorised domain transfers by locking the domain at the registrar level. The feature sets the \"clientTransferProhibited\" flag, which is a registry setting enabled by the registrar to force all transfer requests to be rejected automatically. If Route 53 Domain Transfer Lock is disabled, your domain is vulnerable to unauthorized transfers, which can lead to service disruptions, data breaches, reputational damage, and financial loss. \n\nIt is recommended to enable Route 53 Domain Transfer Lock to prevent unauthorized domain transfers and protect your domain from potential security threats and disruptions.",
+  "rule.criteria": "22867f21-6ad5-451f-aea6-fa1dd98cfcd7",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-route53-domain' AND json.rule = statusList[*] does not contain \"clientTransferProhibited\"",
+  "recommendation": "To lock a domain to prevent unauthorized transfer to another registrar, perform the following actions:\n\n1. Sign in to the AWS Management Console and open the Route 53 console at https://console.aws.amazon.com/route53/.\n2. In the navigation pane, choose 'Registered Domains'.\n3. Choose the name of the domain that is reported.\n4. On the 'Details' section, in the 'Actions' dropdown, choose 'Turn on transfer lock' to turn the transfer lock on.\n5. You can navigate to the 'Requests' page to see the progress of your request.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
@@ -31,6 +32,7 @@
     "MAS TRM 2021",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
+    "MLPS 2.0 (Level 3)",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-171 Revision 3",

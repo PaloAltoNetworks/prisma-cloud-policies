@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Brazilian Data Protection Law (LGPD)",
     "CIS Controls v7.1",
     "CIS Controls v8",
@@ -39,6 +40,7 @@
     "Insurance Regulatory And Development Authority Of India",
     "MAS TRM 2021",
     "MITRE ATT&CK v8.2 [Deprecated]",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
     "MPAA Content Protection Best Practices",
     "Microsoft Cloud Security Benchmark v1",
@@ -53,6 +55,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",

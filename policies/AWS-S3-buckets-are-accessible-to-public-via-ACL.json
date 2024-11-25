@@ -15,6 +15,7 @@
   "remediation.impact": "Disable public access to AWS S3 bucket",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "AWS Well-Architected Framework",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",

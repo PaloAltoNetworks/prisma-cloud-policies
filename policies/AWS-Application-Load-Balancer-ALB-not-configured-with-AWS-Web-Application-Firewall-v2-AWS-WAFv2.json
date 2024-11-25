@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
@@ -32,6 +33,7 @@
     "NIST CSF v2.0",
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Sarbanes Oxley Act (SOX)",

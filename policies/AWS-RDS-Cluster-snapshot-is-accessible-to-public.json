@@ -15,6 +15,7 @@
   "remediation.impact": "RDS snapshot share public to private",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "CIS Controls v7.1",
     "CIS Controls v8",
@@ -36,6 +37,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",

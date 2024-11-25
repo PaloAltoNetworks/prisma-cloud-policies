@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-SQL-1321",
+  "policyId": "5e54f9a6-2be6-4f47-afc9-4aabacde055c",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP SQL Instance not encrypted with CMEK",
+  "description": "This policy identifies GCP SQL Instances that are not encrypted with Customer Managed Encryption Keys (CMEK).\n\nUsing CMEK for SQL Instances provides greater control over data at rest encryption by allowing key rotation and revocation, which enhances security and helps meet compliance requirements. Encrypting SQL Instances with CMEK ensures better data privacy management.\n\nIt is recommended to use CMEK for SQL Instance encryption.",
+  "rule.criteria": "66796d2e-2dda-42dd-87ed-38dabeba54f5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' and api.name = 'gcloud-sql-instances-list' AND json.rule = state equals \"RUNNABLE\" and diskEncryptionConfiguration.kmsKeyName does not exist",
+  "recommendation": "GCP SQL Instance encryption cannot be changed after creation. To make use of CMEK a new SQL Instance can be created.\n\nTo create a new SQL Instance with CMEK, please follow the steps below:\n1. Login to the GCP console\n2. Navigate to the 'SQL' service\n3. Click 'CREATE INSTANCE'\n4. Select the database engine\n5. Under 'Customize your instance', expand 'SHOW CONFIGURATION OPTIONS'\n6. Expand 'STORAGE'\n7. Expand 'ADVANCED ENCRYPTION OPTIONS'\n8. Select 'Cloud KMS key'\n9. Select the appropriate 'Key type' and then select the required CMEK\n10. Configure the rest of the SQL instance as required\n11. Click 'CREATE INSTANCE' at the bottom of the page",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

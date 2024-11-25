@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
     "CSA CCM v4.0.12",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
@@ -25,6 +26,7 @@
     "MLPS 2.0 (Level 2)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
+    "PCI DSS v4.0.1",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",

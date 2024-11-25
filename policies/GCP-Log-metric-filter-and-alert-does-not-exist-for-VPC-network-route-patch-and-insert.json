@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
     "CIS v1.2.0 (GCP)",
     "DORA",

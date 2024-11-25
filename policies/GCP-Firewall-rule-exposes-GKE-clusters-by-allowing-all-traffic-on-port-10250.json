@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'compute.firewalls.update' and 'compute.networks.updatePolicy' permission. Successful execution will disable this firewall rule blocking internet traffic to port 10250.",
   "remediation.impact": "disable GCP Firewall rule that allows all traffic on port 10250",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
     "CRI Profile v2.0",
     "GDPR",
@@ -26,6 +27,7 @@
     "NIST 800-53 Rev 5",
     "NIST CSF v2.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
+    "PCI DSS v4.0.1",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",

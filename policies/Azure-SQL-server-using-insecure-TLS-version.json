@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "Microsoft Cloud Security Benchmark v1",
+    "PCI DSS v4.0.1",
     "TX-RAMP Level 1"
   ]
 }

@@ -15,6 +15,7 @@
   "remediation.impact": "disables default-action in Azure Storage Account network access",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
@@ -52,6 +53,7 @@
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
@@ -62,6 +64,7 @@
     "NIST SP 800-172",
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Secure Controls Framework (SCF) - 2022.2.1",

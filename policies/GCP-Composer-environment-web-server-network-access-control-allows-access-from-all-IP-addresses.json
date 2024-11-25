@@ -14,7 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Insurance Regulatory And Development Authority Of India",
-    "Microsoft Cloud Security Benchmark v1"
+    "Microsoft Cloud Security Benchmark v1",
+    "PCI DSS v4.0.1"
   ]
 }

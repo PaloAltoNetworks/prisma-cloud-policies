@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -35,6 +36,7 @@
     "ISO/IEC 27018:2019",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",

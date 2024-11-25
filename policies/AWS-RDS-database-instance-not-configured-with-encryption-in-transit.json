@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CRI Profile v2.0",
     "CSA CCM v4.0.12",
     "DORA",
@@ -26,6 +27,7 @@
     "NIST CSF v2.0",
     "NIST SP 800-171 Revision 3",
     "NYDFS 23 CRR-NY 500.0",
+    "PCI DSS v4.0.1",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "SOC 2"
   ]

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1331",
+  "policyId": "5621b0d5-83b7-4913-825e-f170ff99dc31",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Vertex AI Workbench Instance JupyterLab interface access mode set to single user",
+  "description": "This policy identifies GCP Vertex AI Workbench Instances with JupyterLab interface access mode set to single user.\n\nVertex AI Workbench Instance can be accessed using the web-based JupyterLab interface. Access mode controls the control access to this interface. Allowing access to only a single user could limit collaboration, increase chances of credential sharing, and hinder security audits and reviews of the resource.\n\nIt is recommended to avoid single user access and make use of the service account access mode for workbench instances.",
+  "rule.criteria": "c8c8391d-8ad2-461d-b9ee-8cee468f2758",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-workbench-instance' AND json.rule = state equals \"ACTIVE\" and ( gceSetup.metadata.proxy-mode equals \"mail\" or gceSetup.metadata.proxy-user-mail exists )",
+  "recommendation": "Access mode cannot be changed for existing Vertex AI Workbench Instances. A new Vertex AI Workbench instance should be created.\n\nTo create a new Vertex AI Workbench instance with access mode set to service account, please refer to the steps below:\n1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'Notebooks', go to 'Workbench'\n4. Select 'INSTANCES' tab\n5. Click 'CREATE NEW'\n6. Click 'ADVANCED OPTIONS'\n7. Configure the instance as required\n8. Go to 'IAM and security' tab\n9. Select 'Service account'\n10. Click 'CREATE'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

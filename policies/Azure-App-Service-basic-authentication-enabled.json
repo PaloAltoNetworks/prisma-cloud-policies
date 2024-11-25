@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1325",
+  "policyId": "91cfe92a-0341-40f7-8380-cc88f8a6eac8",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure App Service basic authentication enabled",
+  "description": "This policy identifies Azure App Services which have basic authentication enabled.\n\nBasic Authentication allows local identity management for App Services without using a centralized identity provider like Azure Entra ID, posing a security risk by creating isolated identity systems that lack centralized control and are vulnerable to credential compromise and unauthorized access. Disabling Basic Authentication and integrating with a centralized solution like Azure Entra ID enhances security with stronger authentication, improved access management, and reduced attack risks.\n\nAs a security best practice, it is recommended to disable basic authentication for Azure App Services.",
+  "rule.criteria": "53efbbcd-8f34-4b2e-a320-174776ed9db3",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-app-service-basic-publishing-credentials-policies' AND json.rule = properties.allow is true as X; config from cloud.resource where api.name = 'azure-app-service' AND json.rule = properties.state equal ignore case Running as Y; filter '$.X.id contains $.Y.id'; show Y;",
+  "recommendation": "1. Log in to the Azure portal\n2. Navigate to App Services\n3. Click on the reported App Service\n4. Under 'Settings' section, Click on 'Configuration'\n5. Under the 'General settings' tab, scroll down to locate the two Basic Auth settings:\n   - Set the 'SCM Basic Auth Publishing Credentials' radio button to Off\n   - Set the 'FTP Basic Auth Publishing Credentials' radio button to Off\n6. At the top, click on 'Save'\n7. Click 'Continue' to save the changes",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

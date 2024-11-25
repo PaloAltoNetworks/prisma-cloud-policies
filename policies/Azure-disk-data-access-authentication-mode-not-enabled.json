@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-CMP-1324",
+  "policyId": "94ba0577-6d7c-4df3-95e8-489c9ed5db14",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure disk data access authentication mode not enabled",
+  "description": "This policy identifies if the Data Access Authentication Mode for Azure disks is disabled. This mode is crucial for controlling how users upload or export Virtual Machine Disks by requiring an Azure Entra ID role to authorize such operations.\n\nWithout enabling this mode, users can create SAS tokens to export disks without stringent identity-based restrictions. This increases the risk of unauthorized disk access or data exposure, especially in environments handling sensitive data. Enabling the Data Access Authentication Mode ensures that only users with the appropriate Data Operator for Managed Disk role in Azure Entra ID can export or manage disks. This enhances data security by preventing unauthorized disk exports and restricting access to secure download URLs.\n\nAs a security best practice, it is recommended to enable data access authentication mode for Azure disks.",
+  "rule.criteria": "135b0029-9660-4923-b85f-a85dc3672927",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-disk-list' AND json.rule = dataAccessAuthMode does not equal ignore case AzureActiveDirectory and managedBy contains virtualMachines and provisioningState equal ignore case Succeeded",
+  "recommendation": "Note: To enable data access authentication mode on disks attached to a VM, you must first stop the VM and detach the disk.\n\n1. Log in to Azure Portal and search for 'Disks'\n2. Select 'Disks'\n3. Select the reported disk\n4. Under 'Settings' select 'Disk Export'\n5. Check the 'Enable data access authentication mode' under 'Data access authentication mode'\n6. Click on 'Save'\n7. Re-attach the disk to the virtual machine, and restart it",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az disk update --name ${resourceName} --resource-group ${resourceGroup} --data-access-auth-mode AzureActiveDirectory",
+  "remediation.description": "This CLI command requires 'Microsoft.Compute/disks/write' permission. Successful execution will update an existing Azure managed disk's settings to enable Azure Active Directory (Azure AD) authentication for data access.\n\nNote: Ensure that disk is detached from its associated Virtual Machine before proceeding.",
+  "remediation.impact": "Enable data access authentication mode for Azure Virtual Machine disk",
+  "compliance.standard": ""
+}

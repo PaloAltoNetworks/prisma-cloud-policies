@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-FSX-1334",
+  "policyId": "dc7a56e7-aaec-4bb0-a2a0-56d34fd75f8f",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS FSX Windows filesystem is not configured with file access auditing",
+  "description": "This policy identifies the AWS FSX Windows filesystem that lacks configuration for FileAccessAuditLogLevel and FileShareAccessAuditLogLevel.\n\nAmazon FSx for Windows File Server offers the capability to audit user access to files, folders, and file shares. The settings for FileAccessAuditLogLevel and FileShareAccessAuditLogLevel can be adjusted to record successful access attempts, failed attempts, both, or none, based on your auditing needs. Failing to configure these audit logs may result in unrecognized unauthorized access and potential non-compliance with security standards.\n\nIt is advisable to set up logging for both file and folder access as well as file share access in alignment with your business needs. This ensures thorough logging, enhances visibility and accountability, supports compliance, and facilitates effective monitoring and incident response.",
+  "rule.criteria": "2ca63f7a-1bfb-4e1e-b7ad-9f0caff3f22b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-fsx-file-system' AND json.rule = FileSystemType equals \"WINDOWS\" and ( WindowsConfiguration.AuditLogConfiguration.FileAccessAuditLogLevel equals \"DISABLED\" AND  WindowsConfiguration.AuditLogConfiguration.FileShareAccessAuditLogLevel equals \"DISABLED\")",
+  "recommendation": "To change the file access auditing configuration, Perform the following actions:\n\n1. Sign into the AWS console and Open the Amazon FSx console at https://console.aws.amazon.com/fsx/\n2. Navigate to 'File systems', and choose the Windows file system that is reported\n3. Choose the 'Administration' tab\n4. On the 'File Access Auditing' panel, choose 'Manage'\n5. On the 'Manage file access auditing settings dialog', change the desired settings\n   5a. For 'Log access to files and folders', select the 'Log successful attempts' and/or 'Log failed attempts'\n   \n   or\n\n   5b. For 'Log access to file shares', select the 'Log successful attempts' and/or 'Log failed attempts'\n6. For 'Choose an audit event log destination', choose 'CloudWatch Logs' or 'Kinesis Data Firehose'. Then choose an existing log or delivery stream or create a new one\n7. Choose 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

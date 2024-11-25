@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-AD-1323",
+  "policyId": "249c17dc-63de-492c-a9c3-7731fca15b12",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "high",
+  "name": "Azure Microsoft Entra ID account lockout duration less than 60 seconds",
+  "description": "This policy identifies if the account lockout duration for Microsoft Entra ID (formerly Azure AD) accounts is configured to be less than 60 seconds. The lockout duration determines how long the account remains locked after exceeding the lockout threshold.\n\nA lockout duration of less than 60 seconds increases the risk of brute-force or password spray attacks. Malicious actors can exploit a short lockout period to attempt multiple logins more frequently, increasing the likelihood of gaining unauthorized access. Configuring the lockout duration to be at least 60 seconds helps reduce the frequency of repeated login attempts during a brute-force attack, improving protection against such attacks while ensuring a reasonable delay for legitimate users after exceeding the threshold.\n\nAs a security best practice, it is recommended to configure the account lockout duration to greater than or equal to 60 seconds.",
+  "rule.criteria": "84d0a999-2007-4190-8c16-beae038b5885",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-active-directory-group-settings' and json.rule = values[?any(name equals LockoutDurationInSeconds and (value less than 60 or value does not exist))] exists",
+  "recommendation": "1. Log in to Azure Portal and search for 'Microsoft Entra ID'\n2. Select 'Microsoft Entra ID'\n3. Under Manage, select Security\n4. Under Manage, select Authentication methods\n5. Under Manage, select Password protection\n6. Set the 'Lockout duration in seconds' to 60 or higher\n7. Click 'Save'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

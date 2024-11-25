@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "AWS Well-Architected Framework",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
@@ -65,6 +66,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "SOC 2",

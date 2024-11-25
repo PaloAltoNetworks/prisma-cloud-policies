@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GVA-1332",
+  "policyId": "2d01c87e-5729-49fa-bfd2-65243e39c750",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Vertex AI Workbench Instance auto-upgrade is disabled",
+  "description": "This policy identifies GCP Vertex AI Workbench Instances that have auto-upgrade disabled.\n\nAuto-upgrading Google Cloud Vertex environments ensures timely security updates, bug fixes, and compatibility with APIs and libraries. It reduces security risks associated with outdated software, enhances stability, and enables access to new features and optimizations.\n\nIt is recommended to enable auto-upgrade to minimize maintenance overhead and mitigate security risks.",
+  "rule.criteria": "671e4a69-469c-4b99-8f70-4b35b5110e60",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-vertex-ai-workbench-instance' AND json.rule = gceSetup.metadata.notebook-upgrade-schedule does not exist",
+  "recommendation": "1. Login to the GCP console\n2. Navigate to the 'Vertex AI' service\n3. In side panel, under 'Notebooks', go to 'Workbench'\n4. Select 'INSTANCES' tab\n5. Click on the reported notebook\n6. Go to 'SYSTEM' tab\n7. Enable 'Environment auto-upgrade'\n8. Configure upgrade schedule as required\n9. Click 'SUBMIT'",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

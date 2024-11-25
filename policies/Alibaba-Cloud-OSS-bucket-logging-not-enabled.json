@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALB-OSS-1337",
+  "policyId": "da426a37-d689-4d72-8362-7596f8576a0f",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "informational",
+  "name": "Alibaba Cloud OSS bucket logging not enabled",
+  "description": "This policy identifies Alibaba Cloud Object Storage Service (OSS) buckets that do not have logging enabled.\n\nEnabling logging for OSS buckets helps capture access and operation events, which are critical for security monitoring, troubleshooting, and auditing. Without logging, you lack visibility into who accesses and interacts with your bucket, potentially missing unauthorized access or suspicious behaviour.\n\nAs a security best practice, it is recommended to enable logging for OSS buckets.",
+  "rule.criteria": "bc02a432-ed0d-42ff-b932-991071386fb0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' and api.name = 'alibaba-cloud-oss-bucket-info' AND json.rule = bucket.logging.targetBucket does not exist",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Navigate to Object Storage Service\n3. In the bucket-list pane, click on a reported OSS bucket\n4. Under Log, click configure\n5. Configure bucket logging\n6. Click the Enabled checkbox\n7. Select Target Bucket from list\n8. Enter a Target Prefix\n9. Click Save",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
