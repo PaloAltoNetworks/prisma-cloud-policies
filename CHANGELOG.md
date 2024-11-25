@@ -58,6 +58,7 @@
 
 - GCP VM instance is assigned with public IP
 
+
 ## PCS-24.11.1 - 2024-10-23
 
 ### Added
