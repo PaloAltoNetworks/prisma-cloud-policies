@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LS-1344",
+  "policyId": "a5ce0931-ad3f-48e2-8efc-90f78176a243",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS ECR private repository with cross-account access",
+  "description": "This policy identifies AWS ECR private repository that are configured with cross-account access. \n\nAn ECR repository is a storage location within Amazon Elastic Container Registry (ECR) where Docker container images are stored and managed. Granting cross-account access to an ECR repository risks unauthorized access and data exposure, requiring strict policy controls and monitoring.\n\nIt is recommended to implement strict access controls and allow only trusted entities to access to an ECR repository to mitigate security risks.",
+  "rule.criteria": "f8716c71-acef-4483-8d63-d0d01a3ae47c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-ecr-get-repository-policy' AND json.rule = policy.Statement[?any(Effect equals Allow and (Principal.AWS does not equal * and Principal does not equal * and Principal.AWS contains arn and Principal.AWS does not contain $.registryId))] exists",
+  "recommendation": "To restrict the access to AWS ECR private repository policy, perform the following actions:\n \n1. Log in to the AWS Console\n2. In the console, select the specific region from the region drop-down on the top right corner, for which the alert is generated.\n3. Navigate to the 'ECR' dashboard from the 'Services' dropdown\n4. In the navigation pane, choose 'Repositories'\n5. On the Repositories page, Select the repository for which the alert is being generated\n6. From the repository image list view, in the navigation pane, choose 'Permissions' from 'Actions' dropdown, and Edit.\n7. On the Edit permissions page, Click on 'Edit policy JSON' to modify the JSON so that Principal is restrictive\n7a. Remove the statements that grant access to actions to other AWS accounts\n    or\n    7b. Remove the permitted actions from the statements\n8. After modifications, click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

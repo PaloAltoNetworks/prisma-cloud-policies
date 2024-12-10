@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-GCS-1320",
+  "policyId": "6e358244-f073-4e92-8938-423710980f94",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Spanner Database drop protection disabled",
+  "description": "This policy identifies GCP Spanner Databases with drop protection disabled.\n\nGoogle Cloud Spanner is a scalable, globally distributed, and strongly consistent database service. The Spanner database drop protection feature prevents accidental deletion of databases and configurations. Without drop protection enabled, a user error or malicious action could lead to irreversible data loss and service disruption for all applications relying on that Spanner instance.\n\nIt is recommended to enable drop protection on spanner database to prevent from accidental deletion.",
+  "rule.criteria": "ff46b631-1249-4f97-aa7c-7f2be306fe2d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' and api.name = 'gcloud-cloud-spanner-database' AND json.rule = state equal ignore case ready AND enableDropProtection does not exist",
+  "recommendation": "To enable drop protection on a cloud spanner database, use the below CLI command:\n\ngcloud spanner databases update <DATABASE_ID> --instance=<INSTANCE_ID> --enable-drop-protection\n\nPlease refer to the URL mentioned below for more details on how to enable drop protection:\nhttps://cloud.google.com/spanner/docs/prevent-database-deletion#enable\n\nPlease refer to the URL mentioned below for more details on the cloud spanner update command:\nhttps://cloud.google.com/sdk/gcloud/reference/spanner/databases/update",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

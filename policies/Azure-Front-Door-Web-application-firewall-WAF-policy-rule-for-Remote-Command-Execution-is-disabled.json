@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
@@ -39,6 +40,7 @@
     "NIST SP 800-171 Revision 3",
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Sarbanes Oxley Act (SOX)",

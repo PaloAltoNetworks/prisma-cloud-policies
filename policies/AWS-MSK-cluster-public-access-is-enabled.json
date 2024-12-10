@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-MSK-1342",
+  "policyId": "eb2ce8e2-8883-49a2-a1d3-fb16f8d041f2",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS MSK cluster public access is enabled",
+  "description": "This policy identifies the Amazon Managed Streaming for Apache Kafka (Amazon MSK) Cluster is configured with public access enabled.\n\nAmazon MSK provides the capability to enable public access to the brokers of MSK clusters. When the AWS MSK Cluster is configured for public access, there is a potential risk of data being exposed to the public.\n\nTo mitigate the risk of unauthorized access and to adhere to compliance requirements, it is advisable to disable public access on the AWS MSK cluster.",
+  "rule.criteria": "6c3588a3-db05-48ee-8de2-45856ede82cd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-msk-cluster' AND json.rule = brokerNodeGroupInfo.connectivityInfo.publicAccess.type does not equal \"DISABLED\"",
+  "recommendation": "1. Sign in to the AWS Management Console, and open the Amazon MSK console at https://console.aws.amazon.com/msk/home.\n2. In the Navigation panel, select 'Clusters' under the 'MSK Clusters' section.\n3. Click on the cluster that is reported.\n4. Choose the 'Properties' tab.\n5. In the 'Network settings' section, click on the 'Edit' dropdown.\n6. Choose 'Edit public access'.\n7. In the 'Edit public access' dialog, uncheck the 'Public access' checkbox to disable public access.\n8. Click 'Save changes' to apply the changes.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

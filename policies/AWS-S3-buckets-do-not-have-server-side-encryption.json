@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "AWS Foundational Security Best Practices standard",
     "AWS Well-Architected Framework",
@@ -66,6 +67,7 @@
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Risk Management in Technology (RMiT)",

@@ -15,6 +15,7 @@
   "remediation.impact": "Disables remote debugging on azure app service apps",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "CIS Controls v7.1",
     "CIS Controls v8",

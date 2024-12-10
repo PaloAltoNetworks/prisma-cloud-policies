@@ -15,6 +15,7 @@
   "remediation.impact": "sets system updates, security configuration, endpoint protection, disk encryption, network security groups, web application firewall, next generation firewall, vulnerability assessment, storage encryption, jit network access, adaptive application controls, sql auditing and sql encryption to 'AuditIfNotExists'",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Australian Cyber Security Centre (ACSC) Essential Eight",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
@@ -58,6 +59,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",

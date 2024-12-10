@@ -15,6 +15,7 @@
   "remediation.impact": "reject all traffic from Internet on port 3389",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Azure Security Benchmark (v2)",
     "Azure Security Benchmark (v3)",
@@ -50,6 +51,7 @@
     "Insurance Regulatory And Development Authority Of India",
     "MITRE ATT&CK v6.3 [Deprecated]",
     "MITRE ATT&CK v8.2 [Deprecated]",
+    "MLPS 2.0",
     "MLPS 2.0 (Level 2)",
     "MPAA Content Protection Best Practices",
     "Microsoft Cloud Security Benchmark v1",
@@ -62,6 +64,7 @@
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
     "PCI DSS v4.0",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "RBI Baseline Cyber Security and Resilience Requirements",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",

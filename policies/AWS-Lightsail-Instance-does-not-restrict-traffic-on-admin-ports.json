@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LS-1330",
+  "policyId": "e88c9f0d-7f44-4f99-a006-cbcb14692386",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Lightsail Instance does not restrict traffic on admin ports",
+  "description": "This policy identifies the AWS Lightsail instance having network rule with unrestricted access (\"0.0.0.0/0\" or \"::/0\") on port 22 or 3389.\n\nThe firewall in Amazon Lightsail manages inbound traffic permitted to connect to your instance via its public IP address, controlling access to specific IPs and ports. Leaving administrative ports open to unrestricted access increases the risk of unauthorized access, such as brute-force attacks, which can compromise the instance and expose sensitive data.\n\nIt is recommended to limit access to specific IP addresses in the firewall rules to reduce unauthorized access attempts.",
+  "rule.criteria": "2de70af9-6f49-45d2-93db-5ba0742665ad",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-lightsail-instance' AND json.rule = state.name contains \"running\" and networking.ports[?any( accessDirection equals inbound and (cidrs contains \"0.0.0.0/0\" or ipv6Cidrs contains \"::/0\") and (((toPort == 22 or fromPort == 22) or (toPort > 22 and fromPort < 22)) or ((toPort == 3389 or fromPort == 3389) or (toPort > 3389 and fromPort < 3389))))] exists",
+  "recommendation": "To restrict the traffic on the AWS Lighsail instance firewall rule to known IP/CIDR range, perform the following actions:\n\n1. Sign in to the Lightsail console https://lightsail.aws.amazon.com/.\n2. In the left navigation pane, choose Instances.\n3. Choose the reported instance.\n4. Choose the Networking tab on your instance's management page.\n5. Click on the Edit icon on the rule contains the unrestricted access (\"0.0.0.0/0\" or \"::/0\") on port 22 or 3389 under the 'IPv4 Firewall' section or 'IPv6 firewall'\n6a. Click on 'Restrict to IP address' to update Source IP address to the Trusted CIDR range\nor \n6b. Remove the rule which has 'Source' value as 0.0.0.0/0 or ::/0 and 'Port Range' value as 22 or 3389 or (range containing 3389 or 22) by clicking delete icon.\n\nNote: Before making any changes, please check the impact on your applications/services.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

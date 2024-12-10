@@ -14,6 +14,7 @@
   "remediation.description": "This CLI command requires 'container.clusters.update' permission. Successful execution will enable Master authorized network for GCP Kubernetes Engine cluster by blocking untrusted non-GCP source IPs from accessing the Kubernetes master through HTTPS.",
   "remediation.impact": "enable Master authorized network for GCP Kubernetes Engine cluster",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Brazilian Data Protection Law (LGPD)",
     "CCPA 2018",
@@ -41,6 +42,7 @@
     "NIST SP 800-171 Revision 3",
     "NIST SP 800-172",
     "PCI DSS v3.2.1",
+    "PCI DSS v4.0.1",
     "PIPEDA",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",

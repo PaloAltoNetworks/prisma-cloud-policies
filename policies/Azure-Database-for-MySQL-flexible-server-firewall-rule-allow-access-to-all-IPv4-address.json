@@ -13,5 +13,7 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "PCI DSS v4.0.1"
+  ]
 }

@@ -15,6 +15,7 @@
   "remediation.impact": "Disables public access in Azure storage account",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM)",
+    "ACSC Information Security Manual (ISM) (Latest)",
     "APRA (CPS 234) Information Security",
     "Australian Energy Sector Cyber Security Framework (AESCSF)",
     "Azure Security Benchmark (v2)",

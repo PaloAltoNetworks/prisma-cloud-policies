@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",

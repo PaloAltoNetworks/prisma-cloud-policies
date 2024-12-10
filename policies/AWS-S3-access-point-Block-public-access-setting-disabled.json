@@ -16,6 +16,7 @@
   "compliance.standard": [
     "HITRUST CSF v.11.2.0",
     "Microsoft Cloud Security Benchmark v1",
+    "PCI DSS v4.0.1",
     "TX-RAMP Level 2"
   ]
 }

@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
     "CSA CCM v4.0.12",
     "GDPR",
@@ -21,6 +22,7 @@
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
     "NIST SP 800-171 Revision 3",
+    "PCI DSS v4.0.1",
     "SOC 2"
   ]
 }

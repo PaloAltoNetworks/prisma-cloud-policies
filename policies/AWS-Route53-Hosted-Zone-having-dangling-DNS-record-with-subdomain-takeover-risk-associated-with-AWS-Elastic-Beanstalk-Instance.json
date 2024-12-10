@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 1",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 2",
     "Australian Cyber Security Centre (ACSC) Essential Eight - Level 3",
@@ -24,6 +25,7 @@
     "ITSG-33",
     "Microsoft Cloud Security Benchmark v1",
     "NIST CSF v2.0",
+    "PCI DSS v4.0.1",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 2"

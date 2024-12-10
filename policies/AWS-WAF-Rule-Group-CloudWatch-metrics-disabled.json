@@ -14,9 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "ACSC Information Security Manual (ISM) (Latest)",
     "CSA CCM v4.0.12",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
+    "PCI DSS v4.0.1",
     "Secure Controls Framework (SCF) - 2024.2"
   ]
 }

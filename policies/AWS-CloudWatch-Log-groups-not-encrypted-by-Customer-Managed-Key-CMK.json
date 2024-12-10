@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CWT-1343",
+  "policyId": "4992e44c-587f-4549-916c-af956bc7a870",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS CloudWatch Log groups not encrypted by Customer Managed Key (CMK)",
+  "description": "This policy identifies AWS CloudWatch Log groups that are encrypted using the default KMS key instead of CMK (Customer Managed Key) or using a CMK that is disabled.\n\nA CloudWatch Log Group is a collection of log streams that share the same retention, monitoring, and access control settings. Encrypting with a Customer Managed Key (CMK) provides additional control over key rotation, management, and access policies compared to the default encryption.\n\nAs a security best practice, using CMK to encrypt your CloudWatch Log Groups is advisable as it gives you full control over the encrypted data.",
+  "rule.criteria": "2cf6f00d-6d6a-45f9-b117-492a5ac85631",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-cloudwatch-log-group' as X; config from cloud.resource where api.name = 'aws-kms-get-key-rotation-status' AND json.rule = keyMetadata.keyManager does not equal CUSTOMER or (keyMetadata.keyManager equals CUSTOMER and keyMetadata.keyState equals Disabled) as Y; filter '($.X.kmsKeyId does not exist ) or ($.X.kmsKeyId exists and $.X.kmsKeyId equals $.Y.keyMetadata.arn)'; show X;",
+  "recommendation": "To change the encryption key for a AWS CloudWatch Log groups:\n\nUse the associate-kms-key command as follows:\n\naws logs associate-kms-key --log-group-name <Loggroup name that is reported> --kms-key-id <KMS CMK KEY ARN>\n\nNote: When using customer-managed CMKs to encrypt AWS CloudWatch Log groups, Ensure authorized entities have access to the key and its associated operations.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-ALB-VPC-1336",
+  "policyId": "3a1e1da3-5177-42e6-9305-2a2b599a27da",
+  "policyType": "config",
+  "cloudType": "alibaba_cloud",
+  "severity": "informational",
+  "name": "Alibaba Cloud VPC flow log not enabled",
+  "description": "This policy identifies Virtual Private Clouds (VPCs) where flow logs are not enabled.\n\nVPC flow logs capture information about the traffic entering and exiting network interfaces in the VPC. Without VPC flow logs, there’s limited visibility into network traffic, making it challenging to detect and investigate suspicious activities, potential data breaches, or security policy violations. Enabling VPC flow logs enhances network monitoring, improves threat detection, and supports compliance requirements.\n\nAs a security best practice, it is recommended to enable VPC flow logs.",
+  "rule.criteria": "c7f2ec70-7d8b-4f04-9592-e850789633fc",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'alibaba_cloud' and api.name = 'alibaba-cloud-vpc' AND json.rule = vpcFlowLogs[*].flowLogId does not exist and status equal ignore case Available",
+  "recommendation": "1. Log in to Alibaba Cloud Portal\n2. Navigate to VPC console\n3. Under 'O&M and Monitoring', click on 'Flow Log'\n4. Create and configure a new flow log for the reported VPC, specifying the required traffic filters and log storage destination\n5. Enable and save the configuration",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

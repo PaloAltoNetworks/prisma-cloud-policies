@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-EMR-1335",
+  "policyId": "16088014-d3a8-4dcb-aaeb-0b58029e676c",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS EMR cluster is not enabled with termination protection",
+  "description": "This policy identifies the AWS EMR Cluster that is not enabled with termination protection.\n\nTermination protection serves as a safeguard against unintentional termination of your clusters. When this feature is enabled, any efforts to terminate the cluster via the AWS Management Console, CLI, or API will be prevented unless the protection is deliberately disabled beforehand. This feature is particularly beneficial for long-running or essential clusters, as accidental termination could lead to data loss or considerable downtime.\n\nIt is advisable to activate termination protection on AWS EMR clusters to prevent accidental terminations.",
+  "rule.criteria": "3c2d43c7-82d8-4af0-a9a8-db58698f7cbd",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name = 'aws-emr-describe-cluster' AND json.rule = status.state does not contain TERMINATING and terminationProtected is false",
+  "recommendation": "To turn termination protection on for the AWS EMR cluster with the console, Perform the following actions:\n\n1. Sign in to the AWS Management Console, and open the Amazon EMR console at https://console.aws.amazon.com/emr\n2. Under EMR on EC2 in the left navigation pane, choose 'Clusters'\n3. Click on the cluster that is reported\n4. On the 'Properties' tab on the cluster details page, Under 'Cluster termination and node replacement' section click 'Edit'\n5. Select to use 'Termination protection' check box to turn the feature on or off\n6. Select 'Save changes' to confirm",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
