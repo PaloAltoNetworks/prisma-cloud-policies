@@ -16,9 +16,11 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
+    "CIS v3.0.0 (Azure) Level 2",
     "CSA CCM v4.0.12",
     "DORA",
     "GDPR",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",
     "ITSG-33",
@@ -29,6 +31,7 @@
     "NYDFS 23 CRR-NY 500.0",
     "SOC 2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

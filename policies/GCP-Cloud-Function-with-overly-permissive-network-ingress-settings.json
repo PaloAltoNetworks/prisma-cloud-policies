@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
+    "HIPAA",
     "Insurance Regulatory And Development Authority Of India",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",

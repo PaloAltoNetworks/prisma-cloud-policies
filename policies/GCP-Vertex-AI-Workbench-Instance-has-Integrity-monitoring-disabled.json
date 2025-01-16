@@ -16,6 +16,7 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "NIST 800-53 Rev 5",
-    "PCI DSS v4.0.1"
+    "PCI DSS v4.0.1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

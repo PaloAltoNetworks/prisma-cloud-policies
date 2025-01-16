@@ -7,7 +7,7 @@
   "name": "Azure Storage Account storing Cognitive service diagnostic logs is publicly accessible",
   "description": "This policy identifies Azure Storage Accounts storing Cognitive service diagnostic logs are publicly accessible.\n\nAzure Storage account stores Cognitive service diagnostic logs which might contain detailed information of platform logs, resource logs, trace logs and metrics. Diagnostic log data may contain sensitive data and helps in identifying potentially malicious activity. The attacker could exploit publicly accessible storage account to get cognitive diagnostic data logs and could breach into the system by leveraging exposed data and propagate across your system.\n\nAs a best security practice, it is recommended to restrict storage account access to only the services as per business requirement.",
   "rule.criteria": "af7266ac-1506-4251-9294-34c8b2f67ab5",
-  "searchModel.query": "config from cloud.resource where api.name = 'azure-cognitive-services-account-diagnostic-settings' AND json.rule = (properties.logs[?any(enabled equal ignore case \"true\")] exists or properties.metrics[?any( enabled equal ignore case \"true\" )] exists) and properties.storageAccountId exists as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist)' as Y; filter '$.X.properties.storageAccountId contains $.Y.id'; show Y;",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-cognitive-services-account-diagnostic-settings' AND json.rule = (properties.logs[?any(enabled equal ignore case \"true\")] exists or properties.metrics[?any( enabled equal ignore case \"true\" )] exists) and properties.storageAccountId exists as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) and properties.publicNetworkAccess equal ignore case Enabled and networkRuleSet.virtualNetworkRules is empty and (properties.privateEndpointConnections is empty or properties.privateEndpointConnections does not exist)' as Y; filter '$.X.properties.storageAccountId contains $.Y.id'; show Y;",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage Accounts' dashboard\n3. Select the reported storage account\n4. Under 'Data storage' section, Select 'Containers'\n5. Select the blob container you need to modify\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
   "remediable": true,
   "remediation.cliScriptTemplate": "az resource update --ids ${resourceId} --set properties.allowBlobPublicAccess=false",
@@ -16,6 +16,7 @@
   "compliance.standard": [
     "CIS Controls v8.1",
     "CSA CCM v4.0.12",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
@@ -26,6 +27,7 @@
     "SOC 2",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -48,6 +48,8 @@
     "MLPS 2.0 (Level 2)",
     "MLPS 2.0 (Level 3)",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC - Cyber Essentials",
+    "NCSC Cloud Security Principles",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -67,6 +69,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

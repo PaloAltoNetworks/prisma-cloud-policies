@@ -7,7 +7,7 @@
   "name": "Azure Storage account container storing activity logs is publicly accessible",
   "description": "This policy identifies the Storage account containers containing the activity log export is publicly accessible. Allowing public access to activity log content may aid an adversary in identifying weaknesses in the affected account's use or configuration.",
   "rule.criteria": "499c23da-b67f-441a-81e3-9fc0fd05ea75",
-  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule= publicContainersList[*] contains insights-operational-logs and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) as X; config from cloud.resource where api.name = 'azure-monitor-log-profiles-list' as Y; filter'$.X.id contains $.Y.properties.storageAccountId'; show X;",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule= 'publicContainersList[*] contains insights-operational-logs and (totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) and properties.publicNetworkAccess equal ignore case Enabled and networkRuleSet.virtualNetworkRules is empty and (properties.privateEndpointConnections is empty or properties.privateEndpointConnections does not exist))' as X; config from cloud.resource where api.name = 'azure-monitor-log-profiles-list' as Y; filter '$.X.id contains $.Y.properties.storageAccountId'; show X;",
   "recommendation": "1. Log in to the Azure portal\n2. Navigate to 'Storage accounts'\n3. Select the reported storage account\n4. Under 'Data storage' section, Select 'Containers'\n5. Select the container named as 'insight-operational-logs'\n6. Click on 'Change access level'\n7. Set 'Public access level' to 'Private (no anonymous access)'\n8. Click on 'OK'",
   "remediable": true,
   "remediation.cliScriptTemplate": "az resource update --ids ${resourceId} --set properties.allowBlobPublicAccess=false",
@@ -70,6 +70,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

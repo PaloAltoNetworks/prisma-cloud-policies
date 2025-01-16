@@ -15,10 +15,12 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "NIST 800-53 Rev 5",
     "NIST SP 800-171 Revision 3",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACR-1356",
+  "policyId": "6f2333b3-d2f2-440d-b694-4ecef6f926d1",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Container Registry with repository scoped access token enabled",
+  "description": "This policy identifies Azure Container Registries having repository scoped access tokens enabled.\n\nDisable repository-scoped access tokens for your registry to prevent access via tokens. Enhancing security involves disabling local authentication methods, including admin user, repository-scoped access tokens, and anonymous pull. This ensures that container registries rely solely on Microsoft Entra ID identities for authentication.\n\nAs a security best practice, it is recommended to disable repository scoped access token for Azure Container Registries.",
+  "rule.criteria": "11a7cf07-29d5-44bc-b009-da1a91b00cd0",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-container-registry' AND json.rule = properties.provisioningState equal ignore case Succeeded and tokens[?any( properties.status contains enabled )] exists",
+  "recommendation": "1. Log in to your Azure portal \n2. Navigate to 'Container registries' \n3. Select the reported Container Registry \n4. Under 'Repository permissions' select 'Tokens'\n5. Click on the active token and make it inactive by unchecking the 'Active status'\n6. Click on 'Save'\n7. Repeat step 5 & 6 for all the active tokens",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

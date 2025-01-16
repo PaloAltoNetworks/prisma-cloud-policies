@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACR-1353",
+  "policyId": "b9d74b6c-1fc2-4890-bdd0-6f0e3ed7db35",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Container Registry with ARM audience token authentication enabled",
+  "description": "This policy identifies Azure Container Registries that permit ARM audience tokens for authentication.\n\nWhen ARM audience tokens are enabled, they allow authentication intended for broader Azure services, which could introduce potential security risks. Disabling ARM audience tokens ensures that only ACR-specific tokens are valid, enhancing security by limiting authentication exclusively to Azure Container Registry audience tokens.\n\nAs a security best practice, it is recommended to disable ARM audience tokens for Azure Container Registries.",
+  "rule.criteria": "174428c5-b6fa-49fc-87cb-f9af04d5b55d",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-container-registry' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.policies.azureADAuthenticationAsArmPolicy.status contains enabled",
+  "recommendation": "To disable ARM audience tokens for Azure Container Registries, refer to the following link:\nhttps://learn.microsoft.com/en-us/azure/container-registry/container-registry-disable-authentication-as-arm#assign-a-built-in-policy-definition-to-disable-arm-audience-token-authentication---azure-portal",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az acr config authentication-as-arm update -r ${resourceName} --resource-group ${resourceGroup} --status disabled",
+  "remediation.description": "This CLI command requires 'Microsoft.ContainerRegistry/registries/write' permission. Successful execution disables Azure Active Directory ARM audience tokens for authentication in your Azure Container Registry (ACR).",
+  "remediation.impact": "Azure Container Registry with ARM audience token authentication enabled",
+  "compliance.standard": ""
+}

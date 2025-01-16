@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-STO-1354",
+  "policyId": "102365c6-d199-430d-9727-6d673a9e06db",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "medium",
+  "name": "GCP Storage bucket with object versioning disabled",
+  "description": "This policy identifies GCP Storage buckets that have object versioning disabled. \n\nObject versioning is a method of keeping multiple variants of an object in the same storage bucket. Enabling object versioning on storage log buckets will protect your cloud storage data from being overwritten or accidentally deleted.\n\nIt is recommended to enable the object versioning feature on all storage buckets.",
+  "rule.criteria": "39e908bc-e15a-49d0-8ee5-c5fb91adb88c",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-storage-buckets-list' AND json.rule = versioning.enabled is false or versioning does not exist",
+  "recommendation": "1. Log in to the GCP console\n2. Navigate to the Cloud Storage Buckets page. Select 'Buckets' from the left panel\n3. Click on the reported bucket\n4. Go to the 'Protection' tab\n5. Under the 'Object versioning' section, select 'OBJECT VERSIONING OFF'\n6. In the 'Turn on object versioning' dialog, select the 'Add recommended lifecycle rules to manage version costs' checkbox if required.\n7. Click on 'CONFIRM'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

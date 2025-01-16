@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
+    "HIPAA",
     "ISO/IEC 27001:2022",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",

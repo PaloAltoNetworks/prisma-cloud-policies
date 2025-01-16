@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACR-1358",
+  "policyId": "9ede1b22-acc1-4f79-8a69-6a8f63dd270d",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "medium",
+  "name": "Azure Container Registry with exports enabled",
+  "description": "This policy identifies Azure Container Registries with exports enabled.\n\nAzure Container Registries with exports enabled allows data in the registry to be moved out using commands like acr import or acr transfer. Export functionality can expose registry data, increasing the risk of unauthorized data movement. Disabling exports ensures that data in a registry is accessed only via the dataplane (e.g., docker pull) and cannot be moved out using other methods.\n\nAs a security best practice, it is recommended to disable export configuration for Azure Container Registries.",
+  "rule.criteria": "91415843-d808-4c11-97cf-c66414c628b5",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-container-registry' AND json.rule = properties.provisioningState equal ignore case Succeeded and (properties.policies.exportPolicy.status contains enabled or properties.publicNetworkAccess contains enabled)",
+  "recommendation": "Note: To remediate the alert, ensure the registry is on the Premium service tier, disable public network access to turn off exports (supported only for managed registries in Premium SKU), and use the provided az command as this setting cannot be changed through the UI.\n\nCLI command: az acr update --name ${registryName} --allow-exports false --public-network-enabled false",
+  "remediable": true,
+  "remediation.cliScriptTemplate": "az acr update --name ${resourceName} --allow-exports false --public-network-enabled false",
+  "remediation.description": "This CLI command requires 'Microsoft.ContainerRegistry/registries/write' permission. Successful execution disables the exports and public network access for the specified Azure Container Registry.",
+  "remediation.impact": "Disable export configuration for Azure Container Registry",
+  "compliance.standard": ""
+}

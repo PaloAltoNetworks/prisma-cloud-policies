@@ -37,6 +37,7 @@
     "ISO/IEC 27017:2015",
     "ISO/IEC 27018:2019",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST CSF",
     "NIST CSF v2.0",
     "NIST SP 800-171 Revision 2",
@@ -48,6 +49,7 @@
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

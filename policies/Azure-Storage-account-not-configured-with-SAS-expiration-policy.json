@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "CIS v3.0.0 (Azure) Level 1",
     "CSA CCM v4.0.12",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",

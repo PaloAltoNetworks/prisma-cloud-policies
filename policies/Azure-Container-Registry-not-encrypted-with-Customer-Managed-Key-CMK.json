@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-ACR-1357",
+  "policyId": "b29512d4-1ad0-4866-986d-881d45e22ad8",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "low",
+  "name": "Azure Container Registry not encrypted with Customer Managed Key (CMK)",
+  "description": "This policy identifies Azure Container Registries that are not encrypted with Customer-Managed Keys (CMK).\n\nBy default, Azure Container Registry encrypts data at rest with Microsoft-managed keys. However, for enhanced control, regulatory compliance, and improved security, customer-managed keys enable organizations to encrypt Azure Container Registry data using Azure Key Vault keys that they create, own, and manage. Using CMK ensures that the encryption process aligns with organizational policies, allowing complete control over key lifecycle management, including rotation, access management, and retirement.\n\nAs a security best practice, it is recommended to encrypt Azure Container Registries with Customer-Managed Keys (CMK).",
+  "rule.criteria": "6bec1976-0b88-4f15-9810-03df8d98815d",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' and api.name = 'azure-container-registry' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.encryption.status equal ignore case disabled",
+  "recommendation": "Note: CMK can only be enabled during the creation of a new Container Registry. Ensure the registry is on the Premium service tier, as CMK is only supported at this level.\n\n1. Create a new Container Registry\n2. Navigate to the Encryption tab during the creation process\n3. Select the option to enable Customer-Managed Key\n4. Fill in all other required details to complete the registry setup",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

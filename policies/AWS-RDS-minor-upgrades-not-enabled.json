@@ -30,6 +30,7 @@
     "CIS v1.5.0 (AWS) - Level 1",
     "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
+    "CIS v4.0.0 (AWS) Level 1",
     "CSA CCM v.4.0.1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",
@@ -44,6 +45,7 @@
     "ISO/IEC 27018:2019",
     "MAS TRM 2021",
     "MLPS 2.0 (Level 2)",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -57,6 +59,7 @@
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 1"
+    "TX-RAMP Level 1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

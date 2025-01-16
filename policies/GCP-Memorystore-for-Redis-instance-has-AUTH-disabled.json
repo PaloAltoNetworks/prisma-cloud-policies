@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-MEM-1345",
+  "policyId": "b485b8a5-1a76-42d3-ba14-aa51e9bc5700",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Memorystore for Redis instance has AUTH disabled",
+  "description": "This policy identifies GCP Memorystore for Redis instances having AUTH disabled.\n\nGCP Memorystore for Redis is a fully managed in-memory data store that simplifies Redis deployment and scaling while ensuring high availability and low-latency access. When AUTH is disabled, any client that can reach the Redis instance over the network can freely connect and perform operations without providing any credentials, creating a significant security risk to your data.\n\nIt is recommended to enable authentication (AUTH) on the GCP Memorystore for Redis to ensure only authorized clients can connect.",
+  "rule.criteria": "94081606-6dd2-4f44-b6c9-749516d54851",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-redis-instances-list' AND json.rule = state equal ignore case ready and authEnabled is false",
+  "recommendation": "1. Sign in to the Google Cloud Management Console. Navigate to the 'Memorystore for Redis' page\n2. Under 'Instances', click on the reported instance.\n3. Select 'EDIT' on the top navigation bar\n4. Under 'Edit Redis instance' page, under 'Security', select the 'Enable AUTH' checkbox\n5. Click on 'SAVE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

@@ -28,6 +28,7 @@
     "CIS v1.5.0 (AWS) - Level 1",
     "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
+    "CIS v4.0.0 (AWS) Level 1",
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 1)",
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
@@ -67,6 +68,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -33,6 +33,7 @@
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "MLPS 2.0 (Level 2)",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -46,6 +47,7 @@
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1349",
+  "policyId": "f94abc55-d8d5-4c73-8f35-cc00b3cfb651",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Storage account key expiration policy is not configured",
+  "description": "This policy identifies Azure Storage accounts for which key expiration policy is not configured.\n\nA key expiration policy enables you to set a reminder for the rotation of the account access keys, so that you can monitor your storage accounts for compliance to ensure that the account access keys are rotated regularly.\n\nAs a best practice, it is recommended to set key expiration policy for Azure Storage account keys.",
+  "rule.criteria": "192bfafe-e4d9-4069-8d60-f945db353ecf",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'azure' AND api.name = 'azure-storage-account-list' AND json.rule = properties.provisioningState equal ignore case Succeeded and properties.keyPolicy.keyExpirationPeriodInDays does not exist",
+  "recommendation": "1. Log in to Azure Portal\n2. Navigate to the Storage Accounts dashboard\n3. Click on the reported Storage account\n4. Under the 'Security + networking', select 'Access keys'\n5. Select the 'Set rotation reminder' button. If the Set rotation reminder button is grayed out, you will need to rotate each of your keys manually.\n6. In Set a reminder to rotate access keys, select the 'Enable key rotation reminders' checkbox and set a frequency for the reminder.\n7. Click on 'Save'\n\nNOTE: Before you can create a key expiration policy, you may need to rotate each of your account access keys at least once.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

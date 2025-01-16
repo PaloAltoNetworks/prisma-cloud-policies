@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "az disk update --name ${resourceName} --resource-group ${resourceGroup} --data-access-auth-mode AzureActiveDirectory",
   "remediation.description": "This CLI command requires 'Microsoft.Compute/disks/write' permission. Successful execution will update an existing Azure managed disk's settings to enable Azure Active Directory (Azure AD) authentication for data access.\n\nNote: Ensure that disk is detached from its associated Virtual Machine before proceeding.",
   "remediation.impact": "Enable data access authentication mode for Azure Virtual Machine disk",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS v3.0.0 (Azure) Level 1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
+  ]
 }

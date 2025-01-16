@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
-    "Microsoft Cloud Security Benchmark v1"
+    "Microsoft Cloud Security Benchmark v1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -24,10 +24,12 @@
     "ISO/IEC 27001:2022",
     "ITSG-33",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST CSF v2.0",
     "PCI DSS v4.0.1",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

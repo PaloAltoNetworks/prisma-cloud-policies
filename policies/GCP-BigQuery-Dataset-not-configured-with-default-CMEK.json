@@ -17,10 +17,12 @@
     "CIS v2.0.0 (GCP) Level 2",
     "CIS v3.0.0 (GCP) Level 2",
     "HIPAA",
+    "NCSC Cloud Security Principles",
     "NYDFS 23 CRR-NY 500.0",
     "Risk Management in Technology (RMiT)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

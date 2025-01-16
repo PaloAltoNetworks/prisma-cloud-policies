@@ -15,6 +15,7 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CSA CCM v4.0.12",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",

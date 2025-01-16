@@ -38,6 +38,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.1.02",
     "DORA",
     "GDPR",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO 27002:2022",
@@ -68,6 +69,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

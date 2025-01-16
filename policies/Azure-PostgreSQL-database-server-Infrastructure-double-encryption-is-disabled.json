@@ -24,6 +24,7 @@
     "CIS v1.5.0 (Azure) - Level 1",
     "CIS v2.0.0 (Azure) Level 1",
     "CIS v2.1.0 (Azure) Level 1",
+    "CIS v3.0.0 (Azure) Level 1",
     "CRI Profile v1.2.1",
     "CRI Profile v2.0",
     "CSA CCM v.4.0.6",
@@ -50,6 +51,7 @@
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

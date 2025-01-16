@@ -16,7 +16,9 @@
   "compliance.standard": [
     "CIS v2.0.0 (Azure) Level 2",
     "CIS v2.1.0 (Azure) Level 2",
+    "CIS v3.0.0 (Azure) Level 2",
     "CSA CCM v4.0.12",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",

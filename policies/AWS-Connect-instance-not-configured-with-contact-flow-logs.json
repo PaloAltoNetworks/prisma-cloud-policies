@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-CON-1359",
+  "policyId": "4d861a34-2a70-4b55-8a71-38102078a238",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS Connect instance not configured with contact flow logs",
+  "description": "This policy identifies the Amazon Connect instance configured with CONTACTFLOW_LOGS set to false.\n\nIn Amazon Connect, Enabling CONTACTFLOW_LOGS in Amazon Connect is crucial as it allows real-time logging of contact flow executions to CloudWatch. This helps debug, monitor, and optimize customer interactions by tracking steps, conditions, and errors.\n\nIt is recommended to enable CONTACTFLOW_LOGS to enhance monitoring and ensure adherence to security policies and regulations.",
+  "rule.criteria": "ed6965d9-f7c1-47a1-934d-22de84bdca67",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-connect-instance' AND json.rule = InstanceStatus equals \"ACTIVE\" and attributes[?any( AttributeType equals \"CONTACTFLOW_LOGS\" and Value equals \"false\" )] exists",
+  "recommendation": "To enable logging for AWS Connect instance, perform the following actions:\n1. Sign into AWS console and Open the Amazon Connect console at https://console.aws.amazon.com/connect/.\n2. On the instances page, choose the instance alias that is reported.\n3. In the navigation pane, choose 'Flows'.\n4. Navigate to the Flow logs section and select 'Enable Flow logs' and choose 'Save'.\nNote: Logs are generated only for flows that include a 'Set logging behavior block' with logging set to enabled.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

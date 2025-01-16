@@ -32,6 +32,7 @@
     "CIS v1.5.0 (Azure) - Level 2",
     "CIS v2.0.0 (Azure) Level 2",
     "CIS v2.1.0 (Azure) Level 2",
+    "CIS v3.0.0 (Azure) Level 2",
     "CSA CCM v.4.0.1",
     "CSA CCM v4.0.12",
     "CyberSecurity Law of the People's Republic of China",
@@ -52,6 +53,7 @@
     "MLPS 2.0 (Level 2)",
     "MLPS 2.0 (Level 3)",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -70,6 +72,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

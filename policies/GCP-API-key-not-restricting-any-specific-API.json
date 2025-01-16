@@ -23,12 +23,15 @@
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC - Cyber Essentials",
+    "NCSC Cloud Security Principles",
     "New Zealand Information Security Manual (NZISM v3.4)",
     "Risk Management in Technology (RMiT)",
     "SOC 2",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 1"
+    "TX-RAMP Level 1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

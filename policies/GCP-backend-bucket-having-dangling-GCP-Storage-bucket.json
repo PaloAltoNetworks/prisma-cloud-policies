@@ -22,8 +22,10 @@
     "DORA",
     "HITRUST CSF v.11.2.0",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST CSF v2.0",
     "SEBI - Consolidated Cybersecurity and Cyber Resilience Framework (CSCRF)",
-    "SOC 2"
+    "SOC 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

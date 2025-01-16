@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-APP-1351",
+  "policyId": "3dbd772f-f257-4f52-813f-7353042e317f",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Function App with public access linked to Blob Storage",
+  "description": "This policy identifies Azure Function Apps configured with public access and linked to Azure Blob Storage.\n\nAzure Function Apps often access Blob Storage to retrieve or store data. When public access is enabled for the Function App, it exposes the application and, potentially, the associated Blob Storage to unauthorized access, leading to potential security risks.\n\nAs a security best practice, it is recommended to evaluate public access for Azure Function Apps and secure Azure Blob Storage.",
+  "rule.criteria": "c7275de1-c9b0-43fd-b6a6-9365fdbfd56f",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-storage-account-list' as X; config from cloud.resource where api.name = 'azure-app-service-web-apps-configurations' as Y; config from cloud.resource where api.name = 'azure-app-service' AND json.rule = 'kind contains functionapp and kind does not contain workflowapp and kind does not equal app and properties.state equal ignore case running and ((properties.publicNetworkAccess exists and properties.publicNetworkAccess equal ignore case Enabled) or (properties.publicNetworkAccess does not exist)) and config.ipSecurityRestrictions[?any((action equals Allow and ipAddress equals Any) or (action equals Allow and ipAddress equals 0.0.0.0/0))] exists' as Z; filter ' $.Y.properties.azureStorageAccounts contains $.X.name and $.Z.name equal ignore case $.Y.name' ; show Z;",
+  "recommendation": "To restrict access to App Service and secure Azure Blob Storage, refer to the following links for security recommendations:\n\nhttps://learn.microsoft.com/en-us/azure/app-service/app-service-ip-restrictions\nhttps://learn.microsoft.com/en-us/azure/storage/blobs/security-recommendations",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
