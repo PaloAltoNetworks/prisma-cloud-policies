@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "HIPAA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
+  ]
 }

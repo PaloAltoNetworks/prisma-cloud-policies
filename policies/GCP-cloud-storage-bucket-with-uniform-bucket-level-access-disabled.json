@@ -38,6 +38,8 @@
     "Insurance Regulatory And Development Authority Of India",
     "MITRE ATT&CK v8.2 [Deprecated]",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC - Cyber Essentials",
+    "NCSC Cloud Security Principles",
     "NIST CSF",
     "NIST SP 800-171 Revision 2",
     "NIST SP 800-171 Revision 3",
@@ -51,6 +53,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

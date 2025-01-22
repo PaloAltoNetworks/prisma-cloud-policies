@@ -14,6 +14,7 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "HIPAA",
     "NIST 800-53 Rev 5",
     "PCI DSS v4.0.1"
   ]

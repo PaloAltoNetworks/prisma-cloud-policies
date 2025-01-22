@@ -13,5 +13,8 @@
   "remediation.cliScriptTemplate": "",
   "remediation.description": "",
   "remediation.impact": "",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "CIS v3.0.0 (Azure) Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
+  ]
 }

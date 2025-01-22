@@ -18,13 +18,16 @@
     "CSA CCM v4.0.12",
     "DORA",
     "GDPR",
+    "HIPAA",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NYDFS 23 CRR-NY 500.0",
     "SOC 2",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -28,6 +28,7 @@
     "CIS v1.5.0 (AWS) - Level 2",
     "CIS v2.0.0 (AWS) - Level 2",
     "CIS v3.0.0 (AWS) Level 2",
+    "CIS v4.0.0 (AWS) Level 2",
     "CSA CCM v.4.0.6",
     "CSA CCM v3.0.1",
     "CSA CCM v4.0.12",
@@ -64,6 +65,7 @@
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
-    "TX-RAMP Level 1"
+    "TX-RAMP Level 1",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

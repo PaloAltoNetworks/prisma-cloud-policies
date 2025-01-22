@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-MEM-1347",
+  "policyId": "927c233a-e2d6-4fc8-84e8-a0d3a974a664",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "informational",
+  "name": "GCP Memorystore for Redis instance not encrypted with CMEK",
+  "description": "This policy identifies Memorystore for Redis instances not encrypted with CMEK.\n\nGCP Memorystore for Redis is a fully managed in-memory data store that simplifies Redis deployment and scaling while ensuring high availability and low-latency access. By using CMEK with Redis instance, you retain complete control over the encryption keys protecting your sensitive data, ensuring that only authorized users with access to these keys can decrypt and access the information. Without CMEK, data is encrypted with Google-managed keys, which may not provide the level of control required for handling sensitive data in certain industries.\n\nIt is recommended to encrypt Redis instance data using a Customer-Managed Encryption Key (CMEK).",
+  "rule.criteria": "f9244a91-1578-433b-ba81-e21ad37b3baa",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-redis-instances-list' AND json.rule = state equal ignore case ready and not(customerManagedKey contains cryptoKeys)",
+  "recommendation": "Encryption cannot be changed for existing Memorystore for Redis instances. A new Memorystore for Redis instance should be created to use CMEK for encryption.\n\nTo create a new Memorystore for Redis instance with CMEK encryption, please refer to the steps below:\n\n1. Sign in to the Google Cloud Management Console. Navigate to the 'Memorystore for Redis' page\n2. Click on the 'CREATE INSTANCE'\n3. Provide all the other details as per the requirements\n4. Under 'Security', under 'Encryption' select the 'Cloud KMS key' checkbox\n5. Select the KMS key you prefer\n5. Click on the 'CREATE INSTANCE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

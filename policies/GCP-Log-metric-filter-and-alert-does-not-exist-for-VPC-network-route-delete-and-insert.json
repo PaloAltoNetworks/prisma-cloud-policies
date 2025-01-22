@@ -28,6 +28,7 @@
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NYDFS 23 CRR-NY 500.0",
     "Otoritas Jasa Keuangan (OJK) 38 POJK.03 2016",
@@ -38,6 +39,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

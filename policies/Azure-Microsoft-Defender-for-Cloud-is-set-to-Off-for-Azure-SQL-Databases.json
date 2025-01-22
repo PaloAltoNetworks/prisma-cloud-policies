@@ -28,6 +28,7 @@
     "CIS v1.5.0 (Azure) - Level 2",
     "CIS v2.0.0 (Azure) Level 2",
     "CIS v2.1.0 (Azure) Level 2",
+    "CIS v3.0.0 (Azure) Level 2",
     "CSA CCM v.4.0.1",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO/IEC 27002:2013",
@@ -43,6 +44,7 @@
     "RBI Baseline Cyber Security and Resilience Requirements",
     "Sarbanes Oxley Act (SOX)",
     "Secure Controls Framework (SCF) - 2022.2.1",
-    "Secure Controls Framework (SCF) - 2024.2"
+    "Secure Controls Framework (SCF) - 2024.2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

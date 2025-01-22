@@ -27,6 +27,7 @@
     "Cybersecurity Maturity Model Certification (CMMC) v.2.0 (Level 2)",
     "DORA",
     "FFIEC",
+    "HIPAA",
     "ISO 27002:2022",
     "ISO/IEC 27001:2022",
     "ITSG-33",
@@ -44,6 +45,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

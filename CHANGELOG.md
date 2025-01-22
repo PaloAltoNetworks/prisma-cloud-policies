@@ -1,5 +1,58 @@
 # Changelog
 
+## PCS-25.1.1 - 2025-01-26
+
+### Added
+
+#### 15 new config policies
+
+- AWS Connect instance not configured with contact flow logs
+- AWS Connect instance using publicly accessible S3 bucket
+- Azure Blob Storage utilized for Azure Machine Learning training job data
+- Azure Container Registry not encrypted with Customer Managed Key (CMK)
+- Azure Container Registry with ARM audience token authentication enabled
+- Azure Container Registry with anonymous authentication enabled
+- Azure Container Registry with exports enabled
+- Azure Container Registry with local admin account enabled
+- Azure Container Registry with repository scoped access token enabled
+- Azure Function App with public access linked to Blob Storage
+- Azure Storage account key expiration policy is not configured
+- GCP Memorystore for Redis instance does not use in transit encryption
+- GCP Memorystore for Redis instance has AUTH disabled
+- GCP Memorystore for Redis instance not encrypted with CMEK
+- GCP Storage bucket with object versioning disabled
+
+#### 7 new compliance standards
+
+- CIS v3.0.0 (Azure) Level 1
+- CIS v3.0.0 (Azure) Level 2
+- CIS v4.0.0 (AWS) Level 1
+- CIS v4.0.0 (AWS) Level 2
+- NCSC - Cyber Essentials
+- NCSC Cloud Security Principles
+- Trusted Information Security Assessment Exchange (TISAX)
+
+### Changed
+
+#### 11 config policies updated
+
+- AWS Security Group allows all ingress traffic on CIFS port (445)
+- Azure Cosmos DB Virtual network is not configured
+- Azure Storage Account storing Cognitive service diagnostic logs is publicly accessible
+- Azure Storage Account storing Machine Learning workspace high business impact data is publicly accessible
+- Azure Storage account container storing activity logs is publicly accessible
+- Azure Storage account diagnostic setting for blob is disabled
+- Azure VM disk configured with overly permissive network access
+- Azure storage account has a blob container with public access
+- GCP VM instance Confidential VM service disabled
+- GCP VPC Flow logs for the subnet is set to Off
+- GCP VPC Network subnets have Private Google access disabled
+
+#### 1 compliance standard updated
+
+- HIPAA
+
+
 ## PCS-24.12.1 - 2024-11-25
 
 ### Added

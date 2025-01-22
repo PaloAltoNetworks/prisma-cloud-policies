@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-GCP-MEM-1346",
+  "policyId": "31eb817a-15ca-4bfa-a92b-0afa481eb4de",
+  "policyType": "config",
+  "cloudType": "gcp",
+  "severity": "low",
+  "name": "GCP Memorystore for Redis instance does not use in transit encryption",
+  "description": "This policy identifies GCP Memorystore for Redis instances with no in transit encryption.\n\nGCP Memorystore for Redis is a fully managed in-memory data store that simplifies Redis deployment and scaling while ensuring high availability and low-latency access. When in-transit encryption is disabled, all data transmitted between your clients and Redis flows as plaintext over the network, making it vulnerable to man-in-the-middle attacks and packet sniffing, potentially exposing sensitive information like session tokens, personal data, or business secrets.\n\nIt is recommended to enable In transit encryption for GCP Memorystore for Redis to prevent malicious actors from intercepting sensitive data.",
+  "rule.criteria": "44d858c2-a112-4f50-81c6-058daefbfc9b",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-redis-instances-list' AND json.rule = state equal ignore case ready and transitEncryptionMode does not equal ignore case SERVER_AUTHENTICATION",
+  "recommendation": "In-transit encryption cannot be changed for existing Memorystore for Redis instances. A new Memorystore for Redis instance instance should be created.\n\nTo create a new Memorystore for Redis instance with In-transit encryption , please refer to the steps below:\n\n1. Sign in to the Google Cloud Management Console. Navigate to the 'Memorystore for Redis' page\n2. Click on the 'CREATE INSTANCE'\n3. Provide all the other details as per the requirements\n4. Under 'Security', select the 'Enable in-transit encryption' checkbox\n5. Click on the 'CREATE INSTANCE'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

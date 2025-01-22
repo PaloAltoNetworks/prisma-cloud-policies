@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AZR-STO-1350",
+  "policyId": "91334e87-860e-4d6b-a0d2-7b6286aabc8d",
+  "policyType": "config",
+  "cloudType": "azure",
+  "severity": "informational",
+  "name": "Azure Blob Storage utilized for Azure Machine Learning training job data",
+  "description": "This policy identifies Azure Blob Storage accounts used for storing data utilized in Azure Machine Learning training jobs. This policy provides visibility into storage utilization for Machine Learning workloads but does not indicate a security or compliance risk.\n\nAzure Blob Storage serves as a robust storage solution for large-scale Machine Learning training data. This policy emphasizes the importance of securing stored data by employing encryption and additional security parameters like firewalls, private endpoints, and access policies to safeguard sensitive information.\n\nAs a security best practice, it is recommended to properly configure Azure Blob Storage utilized in Azure Machine Learning training jobs.",
+  "rule.criteria": "7ee76943-b6f0-4fe2-b861-a9f1fb6f48e0",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-machine-learning-datastores' AND json.rule = properties.datastoreType equal ignore case AzureBlob as X; config from cloud.resource where api.name = 'azure-storage-account-list' as Y; filter ' $.X.properties.accountName equal ignore case $.Y.name ' ; show Y;",
+  "recommendation": "For configuring Azure Blob Storage used in Azure Machine Learning training jobs, refer to the following link for Blob storage security recommendations:\nhttps://learn.microsoft.com/en-us/azure/storage/blobs/security-recommendations",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

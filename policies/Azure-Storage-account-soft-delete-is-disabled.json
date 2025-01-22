@@ -27,6 +27,7 @@
     "CIS v1.5.0 (Azure) - Level 1",
     "CIS v2.0.0 (Azure) Level 1",
     "CIS v2.1.0 (Azure) Level 1",
+    "CIS v3.0.0 (Azure) Level 1",
     "CRI Profile v2.0",
     "CSA CCM v.4.0.1",
     "DORA",
@@ -62,6 +63,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

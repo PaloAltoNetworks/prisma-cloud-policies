@@ -34,6 +34,7 @@
     "CIS v1.5.0 (AWS) - Level 1",
     "CIS v2.0.0 (AWS) - Level 1",
     "CIS v3.0.0 (AWS) Level 1",
+    "CIS v4.0.0 (AWS) Level 1",
     "CRI Profile v1.2.1",
     "CRI Profile v2.0",
     "CSA CCM v.4.0.6",
@@ -70,6 +71,8 @@
     "MLPS 2.0 (Level 2)",
     "MLPS 2.0 (Level 3)",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC - Cyber Essentials",
+    "NCSC Cloud Security Principles",
     "NIST 800-171 Rev1",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
@@ -91,6 +94,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

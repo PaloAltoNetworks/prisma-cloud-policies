@@ -38,6 +38,8 @@
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
     "MLPS 2.0 (Level 2)",
+    "NCSC - Cyber Essentials",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NIST CSF v2.0",
     "PCI DSS v4.0",
@@ -49,6 +51,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -7,8 +7,8 @@
   "name": "GCP VPC Flow logs for the subnet is set to Off",
   "description": "This policy identifies the subnets in VPC Network which have Flow logs disabled. Flow logs enable the capturing of information about the IP traffic going to and from network interfaces in VPC Subnets.  It is recommended to enable the flow logs which can be used for network monitoring, forensics, real-time security analysis.",
   "rule.criteria": "4e0039a6-ead7-4a28-8041-ef4889c312df",
-  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-subnets-list' AND json.rule = purpose does not contain INTERNAL_HTTPS_LOAD_BALANCER and purpose does not contain REGIONAL_MANAGED_PROXY and (enableFlowLogs is false or enableFlowLogs does not exist)",
-  "recommendation": "1. Login to GCP Portal\n2. Goto VPC Network (on Left Panel)\n3. Select the reported VPC network and then click on the alerted subnet \n4. On 'Subnet details' page, click on 'EDIT'\n5. Set 'Flow Logs' to value 'On'\n6. Click on 'SAVE'.",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'gcp' AND api.name = 'gcloud-compute-networks-subnets-list' AND json.rule = purpose does not contain INTERNAL_HTTPS_LOAD_BALANCER and purpose does not contain REGIONAL_MANAGED_PROXY and purpose does not contain GLOBAL_MANAGED_PROXY and purpose does not contain PRIVATE_SERVICE_CONNECT and (enableFlowLogs is false or enableFlowLogs does not exist)",
+  "recommendation": "1. Login to GCP Portal\n2. Goto VPC Network (on Left Panel)\n3. Select the reported VPC network and then click on the alerted subnet\n4. On 'Subnet details' page, click on 'EDIT'\n5. Set 'Flow Logs' to value 'On'\n6. Click on 'SAVE'\nFor more information, refer : https://cloud.google.com/vpc/docs/using-flow-logs#enable-subnet",
   "remediable": true,
   "remediation.cliScriptTemplate": "gcloud compute networks subnets update ${resourceName} --project=${account} --region ${region} --enable-flow-logs",
   "remediation.description": "This CLI command requires 'compute.subnetworks.update' permission. Successful execution will enable GCP VPC Flow logs for subnets to capture information about the IP traffic going to and from network interfaces in VPC Subnets.",
@@ -53,6 +53,7 @@
     "MITRE ATT&CK v14.0 Cloud IaaS for Enterprise",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "NIST 800-53 Rev4",
     "NIST CSF",
@@ -71,6 +72,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
-    "TX-RAMP Level 2"
+    "TX-RAMP Level 2",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

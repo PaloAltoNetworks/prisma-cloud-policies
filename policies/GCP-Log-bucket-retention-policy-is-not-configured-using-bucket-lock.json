@@ -28,6 +28,7 @@
     "DORA",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "GDPR",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ISO 27002:2022",
     "ISO/IEC 27001:2022",
@@ -47,6 +48,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

@@ -32,6 +32,7 @@
     "CIS v1.5.0 (Azure) - Level 1",
     "CIS v2.0.0 (Azure) Level 1",
     "CIS v2.1.0 (Azure) Level 1",
+    "CIS v3.0.0 (Azure) Level 1",
     "CRI Profile v1.2.1",
     "CRI Profile v2.0",
     "CSA CCM v.4.0.1",
@@ -41,6 +42,7 @@
     "FFIEC",
     "Fedramp (Moderate)",
     "GDPR",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "HITRUST v.9.4.2 [Deprecated]",
     "ISO 27002:2022",
@@ -72,6 +74,7 @@
     "Secure Controls Framework (SCF) - 2022.2.1",
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }

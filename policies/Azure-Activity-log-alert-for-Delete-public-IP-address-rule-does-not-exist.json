@@ -17,10 +17,13 @@
     "ACSC Information Security Manual (ISM) (Latest)",
     "CIS v2.0.0 (Azure) Level 1",
     "CIS v2.1.0 (Azure) Level 1",
+    "CIS v3.0.0 (Azure) Level 1",
     "CSA CCM v4.0.12",
+    "HIPAA",
     "HITRUST CSF v.11.2.0",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
+    "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
     "SOC 2",
     "Secure Controls Framework (SCF) - 2024.2"

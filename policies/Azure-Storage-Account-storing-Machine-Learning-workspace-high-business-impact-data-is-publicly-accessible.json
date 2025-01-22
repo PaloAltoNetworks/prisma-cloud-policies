@@ -7,7 +7,7 @@
   "name": "Azure Storage Account storing Machine Learning workspace high business impact data is publicly accessible",
   "description": "This policy identifies Azure Storage Accounts storing Machine Learning workspace high business impact data that are publicly accessible. Azure Storage account stores machine learning artifacts such as job logs. By default, this storage account is used when you upload data to the workspace. The attacker could exploit publicly accessible storage account to get machine learning workspace high business impact data logs and could breach in to the system by leveraging data exposed. It is recommended to restrict storage account access to only to the machine learning services as per business requirement.",
   "rule.criteria": "14d69eff-7a20-4709-9129-66c774d91dea",
-  "searchModel.query": "config from cloud.resource where api.name = 'azure-machine-learning-workspace' AND json.rule = 'properties.provisioningState equal ignore case Succeeded and properties.hbiWorkspace is true and properties.storageAccount exists' as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist)' as Y; filter '$.X.properties.storageAccount contains $.Y.id'; show Y;",
+  "searchModel.query": "config from cloud.resource where api.name = 'azure-machine-learning-workspace' AND json.rule = 'properties.provisioningState equal ignore case Succeeded and properties.hbiWorkspace is true and properties.storageAccount exists' as X; config from cloud.resource where api.name = 'azure-storage-account-list' AND json.rule = 'totalPublicContainers > 0 and (properties.allowBlobPublicAccess is true or properties.allowBlobPublicAccess does not exist) and properties.publicNetworkAccess equal ignore case Enabled and networkRuleSet.virtualNetworkRules is empty and (properties.privateEndpointConnections is empty or properties.privateEndpointConnections does not exist)' as Y; filter '$.X.properties.storageAccount contains $.Y.id'; show Y;",
   "recommendation": "To restirct Storage account access, refer the below URL:\nhttps://learn.microsoft.com/en-gb/azure/storage/blobs/anonymous-read-access-configure?tabs=portal",
   "remediable": false,
   "remediation.cliScriptTemplate": "",
@@ -29,6 +29,7 @@
     "Secure Controls Framework (SCF) - 2024.2",
     "TX-RAMP Level 1",
     "TX-RAMP Level 2",
-    "Telecommunications Security Act - TSA"
+    "Telecommunications Security Act - TSA",
+    "Trusted Information Security Assessment Exchange (TISAX)"
   ]
 }
