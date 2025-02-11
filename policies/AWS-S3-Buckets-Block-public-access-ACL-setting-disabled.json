@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1362",
+  "policyId": "3c582b51-b4de-425b-a140-83f9f010cf09",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "informational",
+  "name": "AWS S3 Buckets Block public access ACL setting disabled",
+  "description": "This policy identifies AWS S3 buckets with the 'Block public access' setting disabled or 'Block public access to buckets and objects granted through new public bucket or access point policies' setting or 'Block public and cross-account access to buckets and objects through any public bucket or access point policies' disabled pose a significant security risk, allowing unauthorized access to sensitive data.\n\nThe 'Block public access' setting in Amazon S3 controls public accessibility of buckets and objects. Disabling this setting, either intentionally or through misconfiguration, exposes data to the internet, potentially leading to data breaches, unauthorized modification, or ransomware attacks by malicious actors or accidental exposure.\n\nThe impact of this misconfiguration can range from data loss and regulatory non-compliance to reputational damage and financial losses. Enabling this setting ensures only authorized users can access the data, minimizing the risk of data breaches and improving overall security posture.\n\nTo mitigate this risk, enable the 'Block all public access' setting for all S3 buckets. Alternatively, use 'Block public access to buckets and objects granted through new public bucket or access point policies' and 'Block public and cross-account access to buckets and objects through any public bucket or access point policies', depending on your specific requirements. Regularly review and audit S3 bucket configurations to prevent accidental or malicious changes.",
+  "rule.criteria": "1ace07f5-1aaa-4083-be9c-00927cc0f8d4",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' AND api.name='aws-s3api-get-bucket-acl' AND json.rule = \"((publicAccessBlockConfiguration does not exist or publicAccessBlockConfiguration.blockPublicAcls is false) and (accountLevelPublicAccessBlockConfiguration does not exist or accountLevelPublicAccessBlockConfiguration.blockPublicAcls is false)) or ((publicAccessBlockConfiguration does not exist or publicAccessBlockConfiguration.ignorePublicAcls is false) and (accountLevelPublicAccessBlockConfiguration does not exist or accountLevelPublicAccessBlockConfiguration.ignorePublicAcls is false))\"",
+  "recommendation": "1. Login to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the 'S3' resource reported in the alert\n4. Click on the 'Permissions'\n5. Under 'Block public access (bucket settings)' click on 'Edit'\n6. Select 'Block all public access' checkbox or the below settings according to your organisation requirements\na.'Block public access to buckets and objects granted through new access control lists (ACLs)'\nb.'Block public access to buckets and objects granted through any access control lists (ACLs)'\n7. Click on 'Save Changes'\n8. 'Confirm' the changes\n\nNote: Make sure updating 'Block public access' setting does not affect S3 bucket data access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
