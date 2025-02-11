@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-S3-1361",
+  "policyId": "b5f5a3f4-e5a8-4646-8c6a-2bc5f93ea0d9",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "medium",
+  "name": "AWS S3 bucket having ACL write permission to AllUsers or AuthenticatedUsers",
+  "description": "This policy identifies AWS S3 buckets with ACLs granting write access to 'AllUsers' or 'AuthenticatedUsers' represent a critical security misconfiguration.\n\nS3 buckets provide object storage, and ACLs manage access control. Granting write access to all users via 'AllUsers' or 'AuthenticatedUsers' exposes all objects within the bucket to modification or deletion by any authenticated AWS user or even anonymous users, depending on the bucket configuration. This opens the door to data breaches, data manipulation, and potential ransomware attacks.\n\nSuch a misconfiguration could result in unauthorized data exfiltration, modification, or deletion leading to significant financial, legal, and reputational damage. Restricting access to authorized users and groups only, following the principle of least privilege, is crucial to protect data confidentiality and integrity.\n\nImplement least privilege access by configuring bucket policies and ACLs to explicitly grant only necessary permissions to specific users or groups. Regularly review and audit S3 bucket permissions to ensure that only authorized entities possess the required access levels. Avoid using 'AllUsers' or 'AuthenticatedUsers' in ACLs at all costs.",
+  "rule.criteria": "ab47d55f-31e5-4678-8f61-90efc3700c90",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-s3api-get-bucket-acl' AND json.rule = acl.grants[?any( grantee is member of ( 'AllUsers', 'AuthenticatedUsers' ) and permission is member of (Write,FullControl) )] exists",
+  "recommendation": "1. Log in to the AWS Console\n2. Navigate to the 'S3' service\n3. Click on the S3 resource reported in the alert\n4. Click on the 'Permissions' tab\n5. If Access Control List is set to 'Public' follow the below steps\n6. Under 'Access Control List', Click on 'Everyone' and uncheck all items\n7. Under 'Access Control List', Click on 'Authenticated users group' and uncheck all items\n8. Click on Save changes\n\nNote: Make sure updating 'Access Control List' does not affect S3 bucket data access.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}
