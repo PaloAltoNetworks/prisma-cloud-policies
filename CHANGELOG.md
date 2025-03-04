@@ -1,5 +1,133 @@
 # Changelog
 
+## PCS-25.2.1 - 2025-02-11
+
+### Added
+
+#### 3 new config policies
+
+- AWS S3 Buckets Block public access ACL setting disabled
+- AWS S3 Buckets Block public access bucket policy setting disabled
+- AWS S3 bucket having ACL write permission to AllUsers or AuthenticatedUsers
+
+### Changed
+
+#### 105 config policies updated
+
+- AWS Access key enabled on root account
+- AWS Access logging not enabled on S3 buckets
+- AWS CloudTrail S3 bucket encrypted with Customer Managed Key (CMK) that is scheduled for deletion
+- AWS Cognito service role with wide privileges does not validate authentication
+- AWS EC2 instance not configured with Instance Metadata Service v2 (IMDSv2)
+- AWS EC2 instance with network path from the internet (0.0.0.0/0)
+- AWS EC2 instance with network path from the internet (0.0.0.0/0) on Admin ports
+- AWS EC2 instance with network path from the internet (0.0.0.0/0) on ports 80/443
+- AWS EC2 instance with network path from the untrust internet source on ports with high risk
+- AWS EC2 instance with network path to the internet (0.0.0.0/0)
+- AWS EKS K8s service with network path from the internet (0.0.0.0/0)
+- AWS EKS K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- AWS EKS K8s service with network path from the untrust internet source on ports with high risk
+- AWS Lambda function URL AuthType set to NONE
+- AWS Lambda function URL having overly permissive cross-origin resource sharing permissions
+- AWS Lambda function managed ENI reachable from any untrust internet source
+- AWS RDS instance with network path from the untrust internet source
+- AWS RDS managed ENI reachable from any untrust internet source
+- AWS Redshift cluster with network path from the untrust internet source
+- AWS Redshift managed ENI reachable from any untrust internet source
+- AWS Route53 Hosted Zone having dangling DNS record with subdomain takeover risk associated with AWS Elastic Beanstalk Instance
+- AWS Route53 Hosted Zone having dangling DNS record with subdomain takeover risk associated with AWS S3 Bucket
+- AWS S3 bucket accessible to unmonitored cloud accounts
+- AWS S3 bucket encrypted using Customer Managed Key (CMK) with overly permissive policy
+- AWS S3 bucket encrypted with Customer Managed Key (CMK) is not enabled for regular rotation
+- AWS S3 bucket is not configured with MFA Delete
+- AWS S3 bucket is utilized for AWS Sagemaker training job data
+- AWS S3 bucket not configured with secure data transport policy
+- AWS S3 bucket policy overly permissive to any principal
+- AWS S3 bucket publicly readable
+- AWS S3 bucket publicly writable
+- AWS S3 bucket used for storing AWS Sagemaker training job output
+- AWS S3 buckets are accessible to any authenticated user
+- AWS S3 buckets with configurations set to host websites
+- AWS Systems Manager EC2 instance having NON_COMPLIANT patch compliance status
+- Azure AKS K8s service with network path from the internet (0.0.0.0/0)
+- Azure AKS K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- Azure AKS K8s service with network path from the untrust internet source on ports with high risk
+- Azure App Service Web app authentication is off
+- Azure App Service web apps with public network access
+- Azure App Services Remote debugging is enabled
+- Azure App service HTTP logging is disabled
+- Azure Batch Account configured with overly permissive network access
+- Azure Cognitive Services account configured with public network access
+- Azure Cognitive Services account hosted with OpenAI is not configured with data loss prevention
+- Azure Cosmos DB (PaaS) instance with network path from the untrust internet source
+- Azure Cosmos DB key based authentication is enabled
+- Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Azure Storage account blob
+- Azure DNS Zone having dangling DNS Record vulnerable to subdomain takeover associated with Web App Service
+- Azure Function App authentication is off
+- Azure Function App doesn't use latest TLS version
+- Azure Function app configured with public network access
+- Azure Machine learning workspace configured with high business impact data have unrestricted network access
+- Azure Machine learning workspace configured with overly permissive network access
+- Azure MySQL (PaaS) instance with network path from the untrust internet source on TCP port 3306
+- Azure PostgreSQL (PaaS) instance with network path from the untrust internet source on TCP port 5432
+- Azure SQL Server (PaaS) with network path from the untrust internet source
+- Azure SQL on Virtual Machine (Linux) with basic authentication
+- Azure SQL server not configured with Active Directory admin authentication
+- Azure Storage Account default network access is set to 'Allow'
+- Azure Storage Account storing Cognitive service diagnostic logs is publicly accessible
+- Azure Storage Account storing Machine Learning workspace high business impact data is publicly accessible
+- Azure Storage Account without Secure transfer enabled
+- Azure Storage Sync Service configured with overly permissive network access
+- Azure Storage account Encryption Customer Managed Keys Disabled
+- Azure Storage account configured with Shared Key authorization
+- Azure Storage account encryption key configured by access policy with privileged operations
+- Azure Storage account encryption key is not rotated regularly
+- Azure VM disk configured with overly permissive network access
+- Azure Virtual Machine (Linux) does not authenticate using SSH keys
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0)
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0) on Admin ports
+- Azure Virtual Machine with network path from the internet (0.0.0.0/0) on ports 80/443
+- Azure Virtual Machine with network path from the untrust internet source on ports with high risk
+- Azure Virtual machine configured with public IP and serial console access
+- Azure storage account has a blob container with public access
+- Azure subscription permission for Microsoft Entra tenant is set to 'Allow everyone'
+- Azure subscriptions with custom roles are overly permissive
+- GCP BigQuery dataset is publicly accessible
+- GCP Cloud Function configured with overly permissive Ingress setting
+- GCP Cloud Function has risky basic role assigned
+- GCP Cloud Function is publicly accessible
+- GCP Cloud Run service is publicly accessible
+- GCP GKE K8s service with network path from the internet (0.0.0.0/0)
+- GCP GKE K8s service with network path from the internet (0.0.0.0/0) on ports 80/443
+- GCP GKE K8s service with network path from the untrust internet source on ports with high risk
+- GCP Google Workspace Super Admin not enrolled with 2-step verification
+- GCP IAM principals with service account privileges
+- GCP Log metric filter and alert does not exist for Project Ownership assignments/changes
+- GCP Log metric filter and alert does not exist for VPC Network Firewall rule changes
+- GCP Log metric filter and alert does not exist for VPC network changes
+- GCP Service account is publicly accessible
+- GCP Storage Bucket does not have Access and Storage Logging enabled
+- GCP Storage Bucket storing GCP Vertex AI pipeline output data
+- GCP Storage Bucket storing GCP Vertex AI training pipeline output model
+- GCP Storage Bucket storing Vertex AI model
+- GCP Storage buckets are publicly accessible to all authenticated users
+- GCP Storage buckets are publicly accessible to all users
+- GCP VM instance configured with default service account
+- GCP VM instance has risky basic role assigned
+- GCP VM instance using a default service account with Cloud Platform access scope
+- GCP VM instance with network path from the internet (0.0.0.0/0)
+- GCP VM instance with network path from the internet (0.0.0.0/0) on Admin ports
+- GCP VM instance with network path from the internet (0.0.0.0/0) on ports 80/443
+- GCP VM instance with network path from the untrust internet source on ports with high risk
+
+#### 4 compliance standards updated
+
+- CIS v4.0.0 (AWS) Level 2
+- NCSC - Cyber Essentials
+- NCSC Cloud Security Principles
+- Trusted Information Security Assessment Exchange (TISAX)
+
+
 ## PCS-25.1.1 - 2025-01-26
 
 ### Added
