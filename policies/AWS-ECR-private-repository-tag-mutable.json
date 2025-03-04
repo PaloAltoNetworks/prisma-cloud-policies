@@ -15,6 +15,8 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
     "Microsoft Cloud Security Benchmark v1",
     "SOC 2"
   ]

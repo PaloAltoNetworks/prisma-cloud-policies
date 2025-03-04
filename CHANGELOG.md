@@ -1,5 +1,39 @@
 # Changelog
 
+## PCS-25.3.1 - 2025-03-04
+
+### Added
+
+#### 3 new config policies
+
+- AWS Lightsail bucket Object Versioning is disabled
+- AWS Lightsail bucket accessible to unmonitored cloud accounts
+- AWS Lightsail bucket publicly readable
+
+#### 5 new compliance standards
+
+- Cloud Security Assurance Program (CSAP) - IaaS
+- Cloud Security Assurance Program (CSAP) - Low
+- Cloud Security Assurance Program (CSAP) - Low SaaS
+- Cloud Security Assurance Program (CSAP) - SaaS Simplified
+- Cloud Security Assurance Program (CSAP) - SaaS Standard
+
+### Changed
+
+#### 5 config policies updated
+
+- AWS CloudFront distribution with access logging disabled
+- AWS CloudTrail is not enabled with multi trail and not capturing all management events
+- Azure Container Registry with anonymous authentication enabled
+- GCP Load balancer HTTPS target proxy is not configured with QUIC protocol
+- Instance affected by Spring Cloud Function SpringShell vulnerability is exposed to network traffic from the internet [CVE-2022-22963]
+
+#### 2 compliance standards updated
+
+- Korea – Information Security Management System (ISMS)
+- NIST CSF v2.0
+
+
 ## PCS-25.2.1 - 2025-02-11
 
 ### Added

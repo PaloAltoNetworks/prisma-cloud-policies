@@ -16,6 +16,8 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "HITRUST CSF v.11.2.0",
     "ITSG-33",
     "MLPS 2.0",

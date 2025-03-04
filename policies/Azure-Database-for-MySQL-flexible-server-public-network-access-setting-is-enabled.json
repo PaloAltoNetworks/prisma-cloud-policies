@@ -15,10 +15,13 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",
+    "Korea – Information Security Management System (ISMS)",
     "NYDFS 23 CRR-NY 500.0",
     "PCI DSS v4.0.1",
     "TX-RAMP Level 1",

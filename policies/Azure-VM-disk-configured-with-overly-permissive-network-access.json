@@ -14,6 +14,13 @@
   "remediation.description": "This CLI command requires 'Microsoft.Compute/disks/write' permission. Successful execution will disable public network access and sets the network access policy to DenyAll for the specified disk, blocking external access. \nNote: As a security best practice, we are disabling public and private access to the disk. However, you can choose between the following options based on your security requirements:\n- Disable public access and enable private access\n- Disable public and private access",
   "remediation.impact": "Disable public network access for Azure Virtual Machine disk",
   "compliance.standard": [
-    "HIPAA"
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
+    "HIPAA",
+    "Korea – Information Security Management System (ISMS)",
+    "NIST CSF v2.0"
   ]
 }

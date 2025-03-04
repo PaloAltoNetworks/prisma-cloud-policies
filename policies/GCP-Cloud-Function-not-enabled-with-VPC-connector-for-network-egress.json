@@ -15,6 +15,10 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
     "Insurance Regulatory And Development Authority Of India",
     "Microsoft Cloud Security Benchmark v1"
   ]

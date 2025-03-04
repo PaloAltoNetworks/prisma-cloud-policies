@@ -15,6 +15,11 @@
   "remediation.impact": "Enables VM instance OSlogin configuration by updating custom metadata of a VM instance",
   "compliance.standard": [
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
     "New Zealand Information Security Manual (NZISM v3.4)",

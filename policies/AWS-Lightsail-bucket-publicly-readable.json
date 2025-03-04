@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LS-1365",
+  "policyId": "a35af1a3-f043-4f21-9d51-6bf53ca77231",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "high",
+  "name": "AWS Lightsail bucket publicly readable",
+  "description": "Publicly readable objects in AWS Lightsail buckets expose sensitive data to unauthorized access, increasing the risk of data breaches and reputational harm.\n\nAWS Lightsail provides object storage through buckets, enabling data storage and retrieval. A misconfiguration allowing public readability exposes all stored data. Untrusted parties can freely access this information, leading to data exfiltration, intellectual property theft, and financial losses.\n\nTo mitigate this risk, enforce the principle of least privilege. Restricting bucket access to authorized users is crucial for maintaining data confidentiality and integrity.\n\nConfigure bucket permissions to be private, only granting access to specific users or groups needing it. Regularly review and audit bucket access controls to detect and address any misconfigurations promptly.",
+  "rule.criteria": "79b690c7-3a7a-4329-815d-fe39dc61d8dd",
+  "searchModel.query": "config from cloud.resource where api.name = 'aws-lightsail-storage-bucket' AND json.rule = accessRules.getObject equal ignore case public as X; config from cloud.resource where api.name = 'aws-s3control-public-access-block' AND json.rule = blockPublicAcls is false or blockPublicPolicy is false or ignorePublicAcls is false or restrictPublicBuckets is false as Y; filter '$.X.arn contains $.Y.accountId' ; show X;",
+  "recommendation": "1. Sign in to the Lightsail console https://lightsail.aws.amazon.com/\n2. In the left navigation pane, choose 'Storage'\n3. Under 'Buckets', select the reported bucket\n4. Click on the 'Permissions' tab\n5. Scroll down to the 'Bucket Access Permissions' section\n6. Click on 'Change permissions' to modify the bucket access permissions of the storage bucket\n7. Select the option 'All objects are private' and click on 'Save'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

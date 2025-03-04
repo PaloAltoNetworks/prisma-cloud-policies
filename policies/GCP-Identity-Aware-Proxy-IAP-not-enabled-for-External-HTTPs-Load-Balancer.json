@@ -16,8 +16,10 @@
   "compliance.standard": [
     "HIPAA",
     "ISO/IEC 27001:2022",
+    "Korea – Information Security Management System (ISMS)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
+    "NIST CSF v2.0",
     "Risk Management in Technology (RMiT)",
     "TX-RAMP Level 2",
     "Trusted Information Security Assessment Exchange (TISAX)"

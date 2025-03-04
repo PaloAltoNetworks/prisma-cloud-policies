@@ -16,6 +16,11 @@
   "compliance.standard": [
     "CIS v2.1.0 (Azure) Level 1",
     "CIS v3.0.0 (Azure) Level 1",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "MLPS 2.0 (Level 2)",
     "Microsoft Cloud Security Benchmark v1",
     "SOC 2",

@@ -15,10 +15,14 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "DORA",
     "ISO/IEC 27001:2022",
     "ITSG-33",
+    "Korea – Information Security Management System (ISMS)",
     "Microsoft Cloud Security Benchmark v1",
+    "NIST CSF v2.0",
     "SOC 2",
     "TX-RAMP Level 2"
   ]

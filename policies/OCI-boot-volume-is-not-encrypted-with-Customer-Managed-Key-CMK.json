@@ -16,6 +16,10 @@
   "compliance.standard": [
     "CIS v2.0.0 (OCI) - Level 2",
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
     "DORA",
     "GDPR",
     "HIPAA",

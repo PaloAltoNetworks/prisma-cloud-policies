@@ -15,8 +15,13 @@
   "remediation.impact": "",
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
+    "Korea – Information Security Management System (ISMS)",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5",
+    "NIST CSF v2.0",
     "PCI DSS v4.0.1"
   ]
 }

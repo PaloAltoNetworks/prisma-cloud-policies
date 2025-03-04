@@ -16,6 +16,10 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
     "DORA",
     "HIPAA",
     "HITRUST CSF v.11.2.0",

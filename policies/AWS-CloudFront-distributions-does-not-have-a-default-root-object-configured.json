@@ -14,6 +14,9 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "NIST 800-53 Rev 5"
   ]
