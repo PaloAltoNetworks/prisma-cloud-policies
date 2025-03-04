@@ -13,5 +13,9 @@
   "remediation.cliScriptTemplate": "az acr update --name ${resourceName} --resource-group ${resourceGroup} --admin-enabled false",
   "remediation.description": "This CLI command requires 'Microsoft.ContainerRegistry/registries/write' permission. Successful execution disables the local admin account for the specified Azure Container Registry, ensuring it cannot be accessed using local credentials.",
   "remediation.impact": "Disable local admin account for Azure Container Registry",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard"
+  ]
 }

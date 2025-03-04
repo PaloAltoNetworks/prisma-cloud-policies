@@ -14,8 +14,12 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
+    "Korea – Information Security Management System (ISMS)",
     "NYDFS 23 CRR-NY 500.0",
     "TX-RAMP Level 2"
   ]

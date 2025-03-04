@@ -13,5 +13,9 @@
   "remediation.cliScriptTemplate": "az acr update --name ${resourceName} --allow-exports false --public-network-enabled false",
   "remediation.description": "This CLI command requires 'Microsoft.ContainerRegistry/registries/write' permission. Successful execution disables the exports and public network access for the specified Azure Container Registry.",
   "remediation.impact": "Disable export configuration for Azure Container Registry",
-  "compliance.standard": ""
+  "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard"
+  ]
 }

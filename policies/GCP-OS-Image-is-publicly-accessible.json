@@ -14,8 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
     "HIPAA",
     "Insurance Regulatory And Development Authority Of India",
+    "Korea – Information Security Management System (ISMS)",
     "NIST 800-53 Rev 5",
     "PCI DSS v4.0.1"
   ]

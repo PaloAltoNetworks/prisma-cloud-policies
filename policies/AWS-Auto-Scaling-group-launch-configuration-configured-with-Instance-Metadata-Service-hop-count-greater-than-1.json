@@ -14,6 +14,11 @@
   "remediation.description": "",
   "remediation.impact": "",
   "compliance.standard": [
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "Framework for Adoption of Cloud Services by SEBI Regulated Entities (REs)",
     "ITSG-33",
     "MITRE ATT&CK v13.0 Cloud IaaS for Enterprise",

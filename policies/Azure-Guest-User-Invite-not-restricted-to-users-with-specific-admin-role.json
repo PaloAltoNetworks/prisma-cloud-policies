@@ -16,6 +16,9 @@
   "compliance.standard": [
     "CIS v3.0.0 (Azure) Level 2",
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "Microsoft Cloud Security Benchmark v1",
     "NIST 800-53 Rev 5"
   ]

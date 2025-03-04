@@ -15,6 +15,11 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CIS Controls v8.1",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "ISO/IEC 27001:2022",
     "ITSG-33",
     "Insurance Regulatory And Development Authority Of India",

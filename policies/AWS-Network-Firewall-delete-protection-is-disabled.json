@@ -16,7 +16,9 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "Insurance Regulatory And Development Authority Of India",
+    "Korea – Information Security Management System (ISMS)",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
+    "NIST CSF v2.0",
     "SOC 2"
   ]
 }

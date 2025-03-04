@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LS-1364",
+  "policyId": "dc2f206d-5740-4c6f-8806-3473937b17d1",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Lightsail bucket accessible to unmonitored cloud accounts",
+  "description": "AWS Lightsail buckets with permissions granted to unmonitored cloud accounts pose a significant security risk. These buckets, offering internet-accessible storage, could be compromised if unauthorized accounts gain access.\n\nLightsail buckets provide object storage, allowing data retrieval from anywhere. Granting 'read' access to unmonitored cloud accounts introduces a substantial risk. Attackers might exploit this misconfiguration to exfiltrate sensitive data or inject malicious content, potentially leading to data breaches or system compromise.\n\nTo mitigate this risk, restrict access to Lightsail buckets to only explicitly trusted and monitored cloud accounts. Only trusted and monitored cloud accounts should possess the necessary permissions.\n\nRegularly review and audit bucket permissions, removing access for any unmonitored or untrusted accounts. Implement robust monitoring and alerting to detect any unauthorized access attempts.",
+  "rule.criteria": "cdd61e41-56c1-43d0-857e-3dfd487d5252",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-lightsail-storage-bucket' AND json.rule = 'readonlyAccessAccounts is not empty and _AWSCloudAccount.isRedLockMonitored($.readonlyAccessAccounts[*]) is false'",
+  "recommendation": "1. Sign in to the Lightsail console https://lightsail.aws.amazon.com/\n2. In the left navigation pane, choose 'Storage'\n3. Under 'Buckets', select the reported bucket\n4. Click on the 'Permissions'\n5. Scroll down to the 'Cross-account access' section.\n6. Locate the AWS account(s) that have been granted access.\n7. Click on the 'trash/bin icon' next to the account ID to remove it.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

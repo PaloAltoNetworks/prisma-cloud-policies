@@ -16,6 +16,11 @@
   "compliance.standard": [
     "ACSC Information Security Manual (ISM) (Latest)",
     "CIS Controls v8.1",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "HIPAA",
     "ISO/IEC 27001:2022",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",

@@ -1,0 +1,17 @@
+{
+  "policyUpi": "PC-AWS-LS-1366",
+  "policyId": "6a9433ad-fed0-47f8-b707-b9adff9d2018",
+  "policyType": "config",
+  "cloudType": "aws",
+  "severity": "low",
+  "name": "AWS Lightsail bucket Object Versioning is disabled",
+  "description": "AWS Lightsail buckets lacking object versioning are susceptible to data loss and unauthorized modification. Disabling this feature removes the ability to revert to previous versions of objects after accidental deletion or malicious alteration.\n\nLightsail buckets provide object storage, allowing data access from anywhere. Object versioning creates version history for every object stored. Without versioning, accidental deletion or malicious overwrites result in permanent data loss, severely impacting data integrity and potentially leading to business disruption or data breaches. Attackers could exploit this misconfiguration to permanently delete or modify critical data.\n\nTo mitigate this risk, enable object versioning on all AWS Lightsail buckets, this ensures data recoverability, protecting against accidental or malicious actions and mitigating the risk of significant data loss.\n\nRegularly review bucket configurations to ensure object versioning remains active. Implement robust access control mechanisms.",
+  "rule.criteria": "b7403dbd-795c-4761-8adf-452f9cb757a2",
+  "searchModel.query": "config from cloud.resource where cloud.type = 'aws' and api.name = 'aws-lightsail-storage-bucket' AND json.rule = objectVersioning does not equal ignore case Enabled",
+  "recommendation": "1. Sign in to the Lightsail console https://lightsail.aws.amazon.com/\n2. In the left navigation pane, choose 'Storage'\n3. Under 'Buckets', select the reported bucket\n4. Under the 'Versioning' section, toggle the versioning feature to enabled\n5. In the Enable Versioning pop-up, click on 'Yes,enable'.",
+  "remediable": false,
+  "remediation.cliScriptTemplate": "",
+  "remediation.description": "",
+  "remediation.impact": "",
+  "compliance.standard": ""
+}

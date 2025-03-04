@@ -16,6 +16,11 @@
   "compliance.standard": [
     "CIS v2.0.0 (GCP) Level 2",
     "CIS v3.0.0 (GCP) Level 2",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
+    "Cloud Security Assurance Program (CSAP) - SaaS Standard",
     "GDPR",
     "ISO/IEC 27001:2022",
     "ITSG-33",

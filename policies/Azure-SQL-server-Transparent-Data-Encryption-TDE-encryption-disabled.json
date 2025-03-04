@@ -15,6 +15,10 @@
   "remediation.impact": "",
   "compliance.standard": [
     "CSA CCM v4.0.12",
+    "Cloud Security Assurance Program (CSAP) - IaaS",
+    "Cloud Security Assurance Program (CSAP) - Low",
+    "Cloud Security Assurance Program (CSAP) - Low SaaS",
+    "Cloud Security Assurance Program (CSAP) - SaaS Simplified",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
     "ISO/IEC 27001:2022",

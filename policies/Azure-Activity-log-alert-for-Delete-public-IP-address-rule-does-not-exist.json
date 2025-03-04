@@ -21,10 +21,12 @@
     "CSA CCM v4.0.12",
     "HIPAA",
     "HITRUST CSF v.11.2.0",
+    "Korea – Information Security Management System (ISMS)",
     "MITRE ATT&CK v15.1 Cloud IaaS for Enterprise",
     "Microsoft Cloud Security Benchmark v1",
     "NCSC Cloud Security Principles",
     "NIST 800-53 Rev 5",
+    "NIST CSF v2.0",
     "SOC 2",
     "Secure Controls Framework (SCF) - 2024.2"
   ]
